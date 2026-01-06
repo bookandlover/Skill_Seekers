@@ -1,0 +1,49 @@
+{
+  "title": "Crawl to RAG",
+  "content": "Source: https://docs.tavily.com/examples/use-cases/crawl-to-rag\n\nTurn Any Website into a Searchable Knowledge Base using Tavily and MongoDB.\n\n## The system operates through a two-step process:\n\n### 1. Website Crawling & Vectorization:\n\nUse Tavily's crawling endpoint to extract and sitemap content from a webpage URL, then embed it into a MongoDB Atlas vector index for retrieval.\n\n<img alt=\"Vectorize\" />\n\n### 2. Intelligent Q\\&A Interface:\n\nQuery your crawled data through a conversational agent that provides citation-backed answers while maintaining conversation history and context. The agent intelligently distinguishes between informational questions (requiring vector search) and conversational queries (using general knowledge).\n\n<img alt=\"Chat with vector\" />\n\n## Try Our Crawl to RAG Use Case\n\n### Step 1: Get Your API Key\n\n<Card title=\"Get your Tavily API key\" icon=\"key\" href=\"https://app.tavily.com\" />\n\n### Step 2: Chat with Tavily\n\n<Card title=\"Launch the application\" icon=\"message-bot\" href=\"https://crawl-to-rag.tavily.com/\" />\n\n### Step 3: Read The Open Source Code\n\n<Card title=\"View Github Repository\" icon=\"github\" href=\"https://github.com/tavily-ai/crawl2rag\" />\n\n1. **Advanced Web Crawling**: Deep website content extraction using Tavily's crawling API\n2. **Vector Search**: MongoDB Atlas vector search with OpenAI embeddings for semantic content retrieval\n3. **Smart Question Routing**: Automatic detection of informational vs. conversational queries\n4. **Persistent Memory**: Conversation history and context preservation using LangGraph-MongoDB checkpointing\n5. **Session Management**: Thread-based conversational persistance and vector store management",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "The system operates through a two-step process:",
+      "id": "the-system-operates-through-a-two-step-process:"
+    },
+    {
+      "level": "h3",
+      "text": "1. Website Crawling & Vectorization:",
+      "id": "1.-website-crawling-&-vectorization:"
+    },
+    {
+      "level": "h3",
+      "text": "2. Intelligent Q\\&A Interface:",
+      "id": "2.-intelligent-q\\&a-interface:"
+    },
+    {
+      "level": "h2",
+      "text": "Try Our Crawl to RAG Use Case",
+      "id": "try-our-crawl-to-rag-use-case"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Get Your API Key",
+      "id": "step-1:-get-your-api-key"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Chat with Tavily",
+      "id": "step-2:-chat-with-tavily"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Read The Open Source Code",
+      "id": "step-3:-read-the-open-source-code"
+    },
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    }
+  ],
+  "url": "llms-txt#crawl-to-rag",
+  "links": []
+}

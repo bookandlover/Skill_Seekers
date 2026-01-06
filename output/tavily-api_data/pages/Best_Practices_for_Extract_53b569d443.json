@@ -1,0 +1,108 @@
+{
+  "title": "Best Practices for Extract",
+  "content": "Source: https://docs.tavily.com/documentation/best-practices/best-practices-extract\n\nLearn how to optimize content extraction, choose the right approach, and configure parameters for better performance.\n\n## Extract Parameters\n\nUse query to rerank extracted content chunks based on relevance:\n\n**When to use query:**\n\n* To extract only relevant portions of long documents\n* When you need focused content instead of full page extraction\n* For targeted information retrieval from specific URLs\n\n> When `query` is provided, chunks are reranked based on relevance to the query.\n\n### Chunks Per Source\n\nControl the amount of content returned per URL to prevent context window explosion:\n\n* Returns only relevant content snippets (max 500 characters each) instead of full page content\n* Prevents context window from exploding\n* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`\n* Must be between 1 and 5 chunks per source\n\n> `chunks_per_source` is only available when `query` is provided.\n\n**Example with multiple URLs:**\n\nThis returns the 2 most relevant chunks from each URL, giving you focused, relevant content without overwhelming your context window.\n\n## Extraction Approaches\n\n### Search with include\\_raw\\_content\n\nEnable include\\_raw\\_content=true in Search API calls to retrieve both search results and extracted content simultaneously.\n\n* Quick prototyping\n* Simple queries where search results are likely relevant\n* Single API call convenience\n\n### Direct Extract API\n\nUse the Extract API when you want control over which specific URLs to extract from.\n\n* You already have specific URLs to extract from\n* You want to filter or curate URLs before extraction\n* You need targeted extraction with query and chunks\\_per\\_source\n\n**Key difference:** The main distinction is control, with Extract you choose exactly which URLs to extract from, while Search with `include_raw_content` extracts from all search results.\n\nThe `extract_depth` parameter controls extraction comprehensiveness:\n\n| Depth             | Use case                                      |\n| ----------------- | --------------------------------------------- |\n| `basic` (default) | Simple text extraction, faster processing     |\n| `advanced`        | Complex pages, tables, structured data, media |\n\n### Using `extract_depth=advanced`\n\nBest for content requiring detailed extraction:\n\n**When to use advanced:**\n\n* Dynamic content or JavaScript-rendered pages\n* Tables and structured information\n* Embedded media and rich content\n* Higher extraction success rates needed\n\n<Note>\n  `extract_depth=advanced` provides better accuracy but increases latency and\n  cost. Use `basic` for simple content.\n</Note>\n\n## Advanced Filtering Strategies\n\nBeyond query-based filtering, consider these approaches for curating URLs before extraction:\n\n| Strategy     | When to use                                    |\n| ------------ | ---------------------------------------------- |\n| Re-ranking   | Use dedicated re-ranking models for precision  |\n| LLM-based    | Let an LLM assess relevance before extraction  |\n| Clustering   | Group similar documents, extract from clusters |\n| Domain-based | Filter by trusted domains before extracting    |\n| Score-based  | Filter search results by relevance score       |\n\n### Example: Score-based filtering\n\n## Integration with Search\n\n* **Search** to discover relevant URLs\n* **Filter** by relevance score, domain, or content snippet\n* **Re-rank** if needed using specialized models\n* **Extract** from top-ranked sources with query and chunks\\_per\\_source\n* **Validate** extracted content quality\n* **Process** for your RAG or AI application\n\n### Example end-to-end pipeline\n\n1. **Use query and chunks\\_per\\_source** for targeted, focused extraction\n2. **Choose Extract API** when you need control over which URLs to extract from\n3. **Filter URLs** before extraction using scores, re-ranking, or domain trust\n4. **Choose appropriate extract\\_depth** based on content complexity\n5. **Process URLs concurrently** with async operations for better performance\n6. **Implement error handling** to manage failed extractions gracefully\n7. **Validate extracted content** before downstream processing\n8. **Optimize costs** by extracting only necessary content with chunks\\_per\\_source\n\n> Start with query and chunks\\_per\\_source for targeted extraction. Filter URLs strategically, extract with appropriate depth, and handle errors gracefully for production-ready pipelines.",
+  "code_samples": [
+    {
+      "code": "**When to use query:**\n\n* To extract only relevant portions of long documents\n* When you need focused content instead of full page extraction\n* For targeted information retrieval from specific URLs\n\n> When `query` is provided, chunks are reranked based on relevance to the query.\n\n### Chunks Per Source\n\nControl the amount of content returned per URL to prevent context window explosion:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Key benefits:**\n\n* Returns only relevant content snippets (max 500 characters each) instead of full page content\n* Prevents context window from exploding\n* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`\n* Must be between 1 and 5 chunks per source\n\n> `chunks_per_source` is only available when `query` is provided.\n\n**Example with multiple URLs:**",
+      "language": "unknown"
+    },
+    {
+      "code": "This returns the 2 most relevant chunks from each URL, giving you focused, relevant content without overwhelming your context window.\n\n## Extraction Approaches\n\n### Search with include\\_raw\\_content\n\nEnable include\\_raw\\_content=true in Search API calls to retrieve both search results and extracted content simultaneously.",
+      "language": "unknown"
+    },
+    {
+      "code": "**When to use:**\n\n* Quick prototyping\n* Simple queries where search results are likely relevant\n* Single API call convenience\n\n### Direct Extract API\n\nUse the Extract API when you want control over which specific URLs to extract from.",
+      "language": "unknown"
+    },
+    {
+      "code": "**When to use:**\n\n* You already have specific URLs to extract from\n* You want to filter or curate URLs before extraction\n* You need targeted extraction with query and chunks\\_per\\_source\n\n**Key difference:** The main distinction is control, with Extract you choose exactly which URLs to extract from, while Search with `include_raw_content` extracts from all search results.\n\n## Extract Depth\n\nThe `extract_depth` parameter controls extraction comprehensiveness:\n\n| Depth             | Use case                                      |\n| ----------------- | --------------------------------------------- |\n| `basic` (default) | Simple text extraction, faster processing     |\n| `advanced`        | Complex pages, tables, structured data, media |\n\n### Using `extract_depth=advanced`\n\nBest for content requiring detailed extraction:",
+      "language": "unknown"
+    },
+    {
+      "code": "**When to use advanced:**\n\n* Dynamic content or JavaScript-rendered pages\n* Tables and structured information\n* Embedded media and rich content\n* Higher extraction success rates needed\n\n<Note>\n  `extract_depth=advanced` provides better accuracy but increases latency and\n  cost. Use `basic` for simple content.\n</Note>\n\n## Advanced Filtering Strategies\n\nBeyond query-based filtering, consider these approaches for curating URLs before extraction:\n\n| Strategy     | When to use                                    |\n| ------------ | ---------------------------------------------- |\n| Re-ranking   | Use dedicated re-ranking models for precision  |\n| LLM-based    | Let an LLM assess relevance before extraction  |\n| Clustering   | Group similar documents, extract from clusters |\n| Domain-based | Filter by trusted domains before extracting    |\n| Score-based  | Filter search results by relevance score       |\n\n### Example: Score-based filtering",
+      "language": "unknown"
+    },
+    {
+      "code": "## Integration with Search\n\n### Optimal workflow\n\n* **Search** to discover relevant URLs\n* **Filter** by relevance score, domain, or content snippet\n* **Re-rank** if needed using specialized models\n* **Extract** from top-ranked sources with query and chunks\\_per\\_source\n* **Validate** extracted content quality\n* **Process** for your RAG or AI application\n\n### Example end-to-end pipeline",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Extract Parameters",
+      "id": "extract-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Query",
+      "id": "query"
+    },
+    {
+      "level": "h3",
+      "text": "Chunks Per Source",
+      "id": "chunks-per-source"
+    },
+    {
+      "level": "h2",
+      "text": "Extraction Approaches",
+      "id": "extraction-approaches"
+    },
+    {
+      "level": "h3",
+      "text": "Search with include\\_raw\\_content",
+      "id": "search-with-include\\_raw\\_content"
+    },
+    {
+      "level": "h3",
+      "text": "Direct Extract API",
+      "id": "direct-extract-api"
+    },
+    {
+      "level": "h2",
+      "text": "Extract Depth",
+      "id": "extract-depth"
+    },
+    {
+      "level": "h3",
+      "text": "Using `extract_depth=advanced`",
+      "id": "using-`extract_depth=advanced`"
+    },
+    {
+      "level": "h2",
+      "text": "Advanced Filtering Strategies",
+      "id": "advanced-filtering-strategies"
+    },
+    {
+      "level": "h3",
+      "text": "Example: Score-based filtering",
+      "id": "example:-score-based-filtering"
+    },
+    {
+      "level": "h2",
+      "text": "Integration with Search",
+      "id": "integration-with-search"
+    },
+    {
+      "level": "h3",
+      "text": "Optimal workflow",
+      "id": "optimal-workflow"
+    },
+    {
+      "level": "h3",
+      "text": "Example end-to-end pipeline",
+      "id": "example-end-to-end-pipeline"
+    },
+    {
+      "level": "h2",
+      "text": "Summary",
+      "id": "summary"
+    }
+  ],
+  "url": "llms-txt#best-practices-for-extract",
+  "links": []
+}

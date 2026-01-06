@@ -1,0 +1,13 @@
+{
+  "title": "--- Function that will be called when AI requests a search ---",
+  "content": "def tavily_search(**kwargs):\n    \"\"\"\n    Execute a Tavily web search with the given parameters.\n    This function is called by the AI when it needs to search the web.\n    \"\"\"\n    results = tavily_client.search(**kwargs)\n    return results\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#----function-that-will-be-called-when-ai-requests-a-search----",
+  "links": []
+}

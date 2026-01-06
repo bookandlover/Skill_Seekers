@@ -1,0 +1,8 @@
+{
+  "title": "Initialize Composio toolset",
+  "content": "composio = Composio(\n    api_key=os.getenv(\"COMPOSIO_API_KEY\"),\n    provider=OpenAIProvider()\n)\n\nuser_id = \"your-user-id\"",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-composio-toolset",
+  "links": []
+}

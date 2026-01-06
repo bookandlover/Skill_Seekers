@@ -1,0 +1,23 @@
+{
+  "title": "Ask the model again for the final grounded answer",
+  "content": "final = openai_client.chat.completions.create(\n    model=\"gpt-4o-mini\",\n    messages=messages,\n)\n\nfinal_msg = final.choices[0].message\nprint(\"\\nFINAL ANSWER:\\n\", final_msg.content or \"(no content)\")\npython theme={null}\n  import os\n  import json\n  from tavily import TavilyClient\n  from openai import OpenAI\n\n# --- setup ---\n  tavily_client = TavilyClient(api_key=os.environ[\"TAVILY_API_KEY\"])\n  openai_client = OpenAI(api_key=os.environ[\"OPENAI_API_KEY\"])\n\ndef tavily_search(**kwargs):\n      # Pass ALL supported kwargs straight to Tavily\n      results = tavily_client.search(**kwargs)\n      return results\n\n# --- define tools ---\n  tools = [\n      {\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"tavily_search\",\n              \"description\": \"Search the web with Tavily for up-to-date information\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"query\": {\"type\": \"string\", \"description\": \"The search query\"},\n                      \"max_results\": {\"type\": \"integer\", \"default\": 5},\n                  },\n                  \"required\": [\"query\"],\n              },\n          },\n      }\n  ]\n\n# --- conversation ---\n  messages = [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant that uses Tavily search when needed.\"},\n      {\"role\": \"user\", \"content\": \"What are the top trends in 2025 about AI agents?\"}\n  ]\n\n#Ask the model; let it decide whether to call the tool\n  response = openai_client.chat.completions.create(\n      model=\"gpt-4o-mini\",\n      messages=messages,\n      tools=tools,\n  )\n\nassistant_msg = response.choices[0].message\n  messages.append(assistant_msg)  # keep the assistant msg that requested tool(s)\n\nif getattr(assistant_msg, \"tool_calls\", None):\n      for tc in assistant_msg.tool_calls:\n          args = tc.function.arguments\n          if isinstance(args, str):\n              args = json.loads(args)\n          elif not isinstance(args, dict):\n              args = json.loads(str(args))\n\nif tc.function.name == \"tavily_search\":\n              # forward ALL args\n              results = tavily_search(**args)\n\nmessages.append({\n                  \"role\": \"tool\",\n                  \"tool_call_id\": tc.id,\n                  \"name\": \"tavily_search\",\n                  \"content\": json.dumps(results),\n              })\n  else:\n      print(\"\\nNo tool call requested by the model.\")\n\n# Ask the model again for the final grounded answer\n  final = openai_client.chat.completions.create(\n      model=\"gpt-4o-mini\",\n      messages=messages,\n  )\n\nfinal_msg = final.choices[0].message\n  print(\"\\nFINAL ANSWER:\\n\", final_msg.content or \"(no content)\")\n  python theme={null}\nimport os\nimport json\nfrom tavily import TavilyClient\nfrom openai import OpenAI",
+  "code_samples": [
+    {
+      "code": "<Accordion title=\"Full Code Example\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Accordion>\n\n## Using Tavily with OpenAI Responses API function calling",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Using Tavily with OpenAI Responses API function calling",
+      "id": "using-tavily-with-openai-responses-api-function-calling"
+    }
+  ],
+  "url": "llms-txt#ask-the-model-again-for-the-final-grounded-answer",
+  "links": []
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Get API Key Usage",
+  "content": "Source: https://docs.exa.ai/reference/team-management/get-api-key-usage\n\nget /api-keys/{id}/usage\nRetrieve usage analytics and billing data for a specific API key.\n\n<Card title=\"Get your Exa API key\" icon=\"key\" horizontal href=\"https://dashboard.exa.ai/api-keys\" />\n\nThe Get API Key Usage endpoint allows you to retrieve detailed billing and usage analytics for a specific API key over a given time period. This endpoint returns cost data from Exa's billing system, providing an authoritative view of what you're being billed for that API key.\n\n* **id**: The unique identifier of the API key to retrieve usage for\n\n* **start\\_date** (optional): Start date for the usage period in ISO 8601 format (e.g., `2025-01-01T00:00:00Z` or `2025-01-01`). Defaults to 30 days ago. Must be within the last 100 days.\n* **end\\_date** (optional): End date for the usage period in ISO 8601 format. Defaults to the current time.\n* **group\\_by** (optional): Time granularity for grouping results (`hour`, `day`, or `month`). Currently reserved for future enhancements and does not change the response shape. Defaults to `day`.\n\nReturns detailed usage and billing information including:\n\n* **api\\_key\\_id**: Unique identifier of the API key\n* **api\\_key\\_name**: Descriptive name of the API key (if set)\n* **team\\_id**: Team ID this key belongs to\n* **period**: Object containing the start and end dates of the usage period\n* **total\\_cost\\_usd**: Total cost in USD for the specified period\n* **cost\\_breakdown**: Array of cost breakdowns by price type, each containing:\n  * **price\\_id**: Unique identifier for the price\n  * **price\\_name**: Name of the price (e.g., \"Neural Search\", \"Content Retrieval\")\n  * **quantity**: Total quantity consumed\n  * **amount\\_usd**: Cost in USD for this price type\n* **metadata**: Object containing report generation timestamp\n\n* **100-Day Lookback Limit**: The billing system has a 100-day lookback limit. Requests with `start_date` older than 100 days will return a 400 error.\n* **Zero Usage**: If the API key has no usage in the requested period, `total_cost_usd` will be 0 and `cost_breakdown` may be empty.\n* **Team Ownership**: The service API key used for authentication must belong to the same team as the requested API key. Cross-team access is not permitted.\n* **Date Formats**: Dates can be provided in ISO 8601 format with or without time components (e.g., `2025-01-01` or `2025-01-01T00:00:00Z`).\n\nThis endpoint is useful for:\n\n* Building API-key-level billing dashboards\n* Monitoring usage and costs for specific API keys\n* Creating automated alerts based on usage thresholds\n* Generating usage reports for internal cost allocation\n* Debugging billing questions for specific API keys",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Path Parameters",
+      "id": "path-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Query Parameters",
+      "id": "query-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Response",
+      "id": "response"
+    },
+    {
+      "level": "h2",
+      "text": "Important Notes",
+      "id": "important-notes"
+    },
+    {
+      "level": "h2",
+      "text": "Use Cases",
+      "id": "use-cases"
+    }
+  ],
+  "url": "llms-txt#get-api-key-usage",
+  "links": []
+}

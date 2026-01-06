@@ -1,0 +1,129 @@
+{
+  "title": "Tavily MCP Server",
+  "content": "Source: https://docs.tavily.com/documentation/mcp\n\nTavily MCP Server allows you to use the Tavily API in your MCP clients.\n\n<CardGroup>\n  <Card title=\"GitHub\" icon=\"github\" href=\"https://github.com/tavily-ai/tavily-mcp\">\n    `/tavily-ai/tavily-mcp`\n\n<img alt=\"GitHub Repo stars\" />\n  </Card>\n\n<Card title=\"NPM\" icon=\"npm\" href=\"https://www.npmjs.com/package/tavily-mcp\">\n    `@tavily/mcp`\n\n<img alt=\"npm\" />\n  </Card>\n</CardGroup>\n\n<Tip>\n  **Compatible with both [Cursor](https://cursor.sh) and [Claude Desktop](https://claude.ai/download)!**\n\nTavily MCP is also compatible with any MCP client.\n</Tip>\n\n<Info>\n  **Check out our\n  [tutorial](https://medium.com/@dustin_36183/building-a-knowledge-graph-assistant-combining-tavily-and-neo4j-mcp-servers-with-claude-db92de075df9)\n  on combining Tavily MCP with Neo4j MCP server!**\n</Info>\n\n<Frame>\n  <img alt=\"Tavily MCP Demo\" />\n</Frame>\n\n<Tabs>\n  <Tab title=\"Overview\">\n    The Model Context Protocol (MCP) is an open standard that enables AI systems to interact seamlessly with various data sources and tools, facilitating secure, two-way connections.\n\nDeveloped by Anthropic, the Model Context Protocol (MCP) enables AI assistants like Claude to seamlessly integrate with Tavily's advanced search and data extraction capabilities. This integration provides AI models with real-time access to web information, complete with sophisticated filtering options and domain-specific search features.\n  </Tab>\n\n<Tab title=\"Features\">\n    The Tavily MCP server provides:\n\n* Seamless interaction with the tavily-search and tavily-extract tools\n    * Real-time web search capabilities through the tavily-search tool\n    * Intelligent data extraction from web pages via the tavily-extract tool\n  </Tab>\n</Tabs>\n\nThe easiest way to take advantage of Tavily MCP is by using the remote URL. This provides a seamless experience without requiring local installation or configuration.\n\nSimply use the remote MCP server URL with your Tavily API key:\n\nGet your Tavily API key from [tavily.com](https://www.tavily.com/).\n\n### Connect to Cursor\n\n[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=tavily-remote-mcp\\&config=eyJjb21tYW5kIjoibnB4IC15IG1jcC1yZW1vdGUgaHR0cHM6Ly9tY3AudGF2aWx5LmNvbS9tY3AvP3RhdmlseUFwaUtleT08eW91ci1hcGkta2V5PiJ9)\n\nClick the ⬆️ Add to Cursor ⬆️ button, this will do most of the work for you but you will still need to edit the configuration to add your API-KEY. You can get a Tavily API key [here](https://www.tavily.com/).\n\nonce you click the button you should be redirect to Cursor ...\n\nYou will then be redirected to your `mcp.json` file where you have to add `your-api-key`.\n\n### Connect to Claude Desktop\n\nClaude desktop now supports adding `integrations` which is currently in beta. An integration in this case is the Tavily Remote MCP, below I will explain how to add the MCP as an `integration` in Claude desktop.\n\nOpen claude desktop, click the button with the two sliders and then navigate to add integrations. Name the integration and insert the Tavily remote MCP url with your API key. You can get a Tavily API key [here](https://www.tavily.com/). Click `Add` to confirm.\n\nAllow models to use remote MCP servers to perform tasks.\n\n* You first need to export your OPENAI\\_API\\_KEY\n* You must also add your Tavily API-key to `<your-api-key>`, you can get a Tavily API key [here](https://www.tavily.com/)\n\n### Clients that don't support remote MCPs\n\nmcp-remote is a lightweight bridge that lets MCP clients that can only talk to local (stdio) servers securely connect to remote MCP servers over HTTP + SSE with OAuth-based auth, so you can host and update your server in the cloud while existing clients keep working. It serves as an experimental stop-gap until popular MCP clients natively support remote, authorized servers.\n\nAlternatively, you can also run the MCP server locally.\n\n## Local Installation\n\n<AccordionGroup>\n  <Accordion title=\"Required Tools\" icon=\"wrench\">\n    * [Tavily API key](https://app.tavily.com/home)\n      * If you don't have a Tavily API key, you can sign up for a free account [here](https://app.tavily.com/home)\n    * [Claude Desktop](https://claude.ai/download) or [Cursor](https://cursor.sh)\n    * [Node.js](https://nodejs.org/) (v20 or higher)\n      * You can verify your Node.js installation by running:\n        \n  </Accordion>\n\n<Accordion title=\"Git Installation (Optional)\" icon=\"code-branch\">\n    Only needed if using Git installation method:\n\n* On macOS: `brew install git`\n    * On Linux:\n      * Debian/Ubuntu: `sudo apt install git`\n      * RedHat/CentOS: `sudo yum install git`\n    * On Windows: Download [Git for Windows](https://git-scm.com/download/win)\n  </Accordion>\n</AccordionGroup>\n\n<Note>\n  Although you can launch a server on its own, it's not particularly helpful in\n  isolation. Instead, you should integrate it into an MCP client.\n</Note>\n\n### Configuring MCP Clients\n\n<Tabs>\n  <Tab title=\"Cursor\">\n    > **Note**: Requires Cursor version 0.45.6 or higher\n\nTo set up the Tavily MCP server in Cursor:\n\n1. Open Cursor Settings\n    2. Navigate to Features > MCP Servers\n    3. Click on the \"+ Add New MCP Server\" button\n    4. Fill out the following information:\n       * **Name**: Enter a nickname for the server (e.g., \"tavily-mcp\")\n       * **Type**: Select \"command\" as the type\n       * **Command**: Enter the command to run the server:\n         \n         <Warning>Replace `tvly-YOUR_API_KEY` with your Tavily API key from [app.tavily.com/home](https://app.tavily.com/home)</Warning>\n\n<Frame>\n      <img alt=\"Cursor Interface Example\" />\n    </Frame>\n  </Tab>\n\n<Tab title=\"Claude Desktop\">\n    <CodeGroup>\n\nAdd this configuration (replace `tvly-YOUR_API_KEY-here` with your [Tavily API key](https://tavily.com/api-keys)):\n\n<AccordionGroup>\n  <Accordion title=\"Tavily Search Examples\" icon=\"magnifying-glass\">\n    1. **General Web Search**:\n\n3. **Domain-Specific Search**:\n\n<Accordion title=\"Tavily Extract Examples\" icon=\"file-export\">\n    **Extract Article Content**: `Extract the main content from this article:\n          https://example.com/article`\n  </Accordion>\n\n<Accordion title=\"Combined Usage\" icon=\"wand-magic-sparkles\">\n    \n  </Accordion>\n</AccordionGroup>\n\n<Accordion title=\"Server Not Found\" icon=\"server\">\n  If you encounter server connection issues, run these commands to verify your environment:\n\nMake sure to also check your configuration syntax for any errors.\n</Accordion>\n\n<Accordion title=\"NPX Issues\" icon=\"terminal\">\n  If experiencing problems with npx, locate your executable:\n\n<Tip>\n    Once you have the path, update your configuration to use the full path to the npx executable.\n  </Tip>\n</Accordion>\n\n<Accordion title=\"API Key Issues\" icon=\"key\">\n  When troubleshooting API key problems, verify that your key is:\n\n* Properly formatted with the `tvly-` prefix\n  * Valid and active in your Tavily dashboard\n  * Correctly configured in your environment variables\n\n<Tip>\n    You can test your API key validity by making a simple test request through the [Tavily Playground](https://app.tavily.com/playground)\n  </Tip>\n</Accordion>\n\n<CardGroup>\n  <Card title=\"Model Context Protocol\" icon=\"book\" href=\"https://modelcontextprotocol.io\">\n    For the MCP specification\n  </Card>\n\n<Card title=\"Anthropic\" icon=\"robot\" href=\"https://www.anthropic.com/claude\">\n    For Claude Desktop\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "https://mcp.tavily.com/mcp/?tavilyApiKey=<your-api-key>",
+      "language": "unknown"
+    },
+    {
+      "code": "### Connect to Claude Desktop\n\nClaude desktop now supports adding `integrations` which is currently in beta. An integration in this case is the Tavily Remote MCP, below I will explain how to add the MCP as an `integration` in Claude desktop.\n\nOpen claude desktop, click the button with the two sliders and then navigate to add integrations. Name the integration and insert the Tavily remote MCP url with your API key. You can get a Tavily API key [here](https://www.tavily.com/). Click `Add` to confirm.\n\n### OpenAI\n\nAllow models to use remote MCP servers to perform tasks.\n\n* You first need to export your OPENAI\\_API\\_KEY\n* You must also add your Tavily API-key to `<your-api-key>`, you can get a Tavily API key [here](https://www.tavily.com/)",
+      "language": "unknown"
+    },
+    {
+      "code": "### Clients that don't support remote MCPs\n\nmcp-remote is a lightweight bridge that lets MCP clients that can only talk to local (stdio) servers securely connect to remote MCP servers over HTTP + SSE with OAuth-based auth, so you can host and update your server in the cloud while existing clients keep working. It serves as an experimental stop-gap until popular MCP clients natively support remote, authorized servers.",
+      "language": "unknown"
+    },
+    {
+      "code": "Alternatively, you can also run the MCP server locally.\n\n## Local Installation\n\n### Prerequisites\n\n<AccordionGroup>\n  <Accordion title=\"Required Tools\" icon=\"wrench\">\n    * [Tavily API key](https://app.tavily.com/home)\n      * If you don't have a Tavily API key, you can sign up for a free account [here](https://app.tavily.com/home)\n    * [Claude Desktop](https://claude.ai/download) or [Cursor](https://cursor.sh)\n    * [Node.js](https://nodejs.org/) (v20 or higher)\n      * You can verify your Node.js installation by running:",
+      "language": "unknown"
+    },
+    {
+      "code": "</Accordion>\n\n  <Accordion title=\"Git Installation (Optional)\" icon=\"code-branch\">\n    Only needed if using Git installation method:\n\n    * On macOS: `brew install git`\n    * On Linux:\n      * Debian/Ubuntu: `sudo apt install git`\n      * RedHat/CentOS: `sudo yum install git`\n    * On Windows: Download [Git for Windows](https://git-scm.com/download/win)\n  </Accordion>\n</AccordionGroup>\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n<Note>\n  Although you can launch a server on its own, it's not particularly helpful in\n  isolation. Instead, you should integrate it into an MCP client.\n</Note>\n\n### Configuring MCP Clients\n\n<Tabs>\n  <Tab title=\"Cursor\">\n    > **Note**: Requires Cursor version 0.45.6 or higher\n\n    To set up the Tavily MCP server in Cursor:\n\n    1. Open Cursor Settings\n    2. Navigate to Features > MCP Servers\n    3. Click on the \"+ Add New MCP Server\" button\n    4. Fill out the following information:\n       * **Name**: Enter a nickname for the server (e.g., \"tavily-mcp\")\n       * **Type**: Select \"command\" as the type\n       * **Command**: Enter the command to run the server:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Warning>Replace `tvly-YOUR_API_KEY` with your Tavily API key from [app.tavily.com/home](https://app.tavily.com/home)</Warning>\n\n    <Frame>\n      <img alt=\"Cursor Interface Example\" />\n    </Frame>\n  </Tab>\n\n  <Tab title=\"Claude Desktop\">\n    <CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n    Add this configuration (replace `tvly-YOUR_API_KEY-here` with your [Tavily API key](https://tavily.com/api-keys)):",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n</Tabs>\n\n## Usage Examples\n\n<AccordionGroup>\n  <Accordion title=\"Tavily Search Examples\" icon=\"magnifying-glass\">\n    1. **General Web Search**:",
+      "language": "unknown"
+    },
+    {
+      "code": "2. **News Search**:",
+      "language": "unknown"
+    },
+    {
+      "code": "3. **Domain-Specific Search**:",
+      "language": "unknown"
+    },
+    {
+      "code": "</Accordion>\n\n  <Accordion title=\"Tavily Extract Examples\" icon=\"file-export\">\n    **Extract Article Content**: `Extract the main content from this article:\n          https://example.com/article`\n  </Accordion>\n\n  <Accordion title=\"Combined Usage\" icon=\"wand-magic-sparkles\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Accordion>\n</AccordionGroup>\n\n## Troubleshooting\n\n<Accordion title=\"Server Not Found\" icon=\"server\">\n  If you encounter server connection issues, run these commands to verify your environment:",
+      "language": "unknown"
+    },
+    {
+      "code": "Make sure to also check your configuration syntax for any errors.\n</Accordion>\n\n<Accordion title=\"NPX Issues\" icon=\"terminal\">\n  If experiencing problems with npx, locate your executable:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Remote MCP Server",
+      "id": "remote-mcp-server"
+    },
+    {
+      "level": "h3",
+      "text": "Connect to Cursor",
+      "id": "connect-to-cursor"
+    },
+    {
+      "level": "h3",
+      "text": "Connect to Claude Desktop",
+      "id": "connect-to-claude-desktop"
+    },
+    {
+      "level": "h3",
+      "text": "OpenAI",
+      "id": "openai"
+    },
+    {
+      "level": "h3",
+      "text": "Clients that don't support remote MCPs",
+      "id": "clients-that-don't-support-remote-mcps"
+    },
+    {
+      "level": "h2",
+      "text": "Local Installation",
+      "id": "local-installation"
+    },
+    {
+      "level": "h3",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Configuring MCP Clients",
+      "id": "configuring-mcp-clients"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h2",
+      "text": "Troubleshooting",
+      "id": "troubleshooting"
+    },
+    {
+      "level": "h2",
+      "text": "Acknowledgments",
+      "id": "acknowledgments"
+    }
+  ],
+  "url": "llms-txt#tavily-mcp-server",
+  "links": []
+}

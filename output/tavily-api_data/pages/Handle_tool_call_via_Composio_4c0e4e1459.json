@@ -1,0 +1,14 @@
+{
+  "title": "Handle tool call via Composio",
+  "content": "execution_result = None\nresponse_message = response.choices[0].message\n\nif response_message.tool_calls:\n    execution_result = composio.provider.handle_tool_calls(user_id,response)\n    print(\"Execution Result:\", execution_result)\n    messages.append(response_message)\n    \n    # Add tool response messages\n    for tool_call, result in zip(response_message.tool_calls, execution_result):\n        messages.append({\n            \"role\": \"tool\",\n            \"content\": str(result[\"data\"]),\n            \"tool_call_id\": tool_call.id\n        })\n    \n    # Get final response from LLM\n    final_response = client.chat.completions.create(\n        model=\"gpt-4.1\",\n        messages=messages\n    )\n    print(\"\\nMarket Research Summary:\")\n    print(final_response.choices[0].message.content)\nelse:\n    print(\"LLM responded directly (no tool used):\", response_message.content)\n```\n\n## Additional Use Cases\n\n1. **Research Automation**: Automate the collection and summarization of research data\n2. **Content Curation**: Gather and organize information from multiple sources\n3. **Real-time Data Integration**: Keeping your AI models up-to-date with the latest information.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Additional Use Cases",
+      "id": "additional-use-cases"
+    }
+  ],
+  "url": "llms-txt#handle-tool-call-via-composio",
+  "links": []
+}

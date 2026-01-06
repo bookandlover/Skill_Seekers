@@ -1,0 +1,517 @@
+{
+  "name": "tavily-api",
+  "total_pages": 127,
+  "base_url": "https://docs.tavily.com/documentation",
+  "llms_txt_detected": true,
+  "llms_txt_variant": null,
+  "pages": [
+    {
+      "title": "Changelog",
+      "url": "llms-txt#changelog"
+    },
+    {
+      "title": "About",
+      "url": "llms-txt#about"
+    },
+    {
+      "title": "Credits & Pricing",
+      "url": "llms-txt#credits-&-pricing"
+    },
+    {
+      "title": "Tavily Crawl",
+      "url": "llms-txt#tavily-crawl"
+    },
+    {
+      "title": "Tavily Extract",
+      "url": "llms-txt#tavily-extract"
+    },
+    {
+      "title": "Tavily Map",
+      "url": "llms-txt#tavily-map"
+    },
+    {
+      "title": "Create Research Task",
+      "url": "llms-txt#create-research-task"
+    },
+    {
+      "title": "Get Research Task Status",
+      "url": "llms-txt#get-research-task-status"
+    },
+    {
+      "title": "Streaming",
+      "url": "llms-txt#streaming"
+    },
+    {
+      "title": "Step 1. Instantiating your TavilyClient",
+      "url": "llms-txt#step-1.-instantiating-your-tavilyclient"
+    },
+    {
+      "title": "Step 2. Creating a streaming research task",
+      "url": "llms-txt#step-2.-creating-a-streaming-research-task"
+    },
+    {
+      "title": "Tavily Search",
+      "url": "llms-txt#tavily-search"
+    },
+    {
+      "title": "Usage",
+      "url": "llms-txt#usage"
+    },
+    {
+      "title": "Introduction",
+      "url": "llms-txt#introduction"
+    },
+    {
+      "title": "API Key Management",
+      "url": "llms-txt#api-key-management"
+    },
+    {
+      "title": "Best Practices for Crawl",
+      "url": "llms-txt#best-practices-for-crawl"
+    },
+    {
+      "title": "Best Practices for Extract",
+      "url": "llms-txt#best-practices-for-extract"
+    },
+    {
+      "title": "Best Practices for Search",
+      "url": "llms-txt#best-practices-for-search"
+    },
+    {
+      "title": "Filter results with score > 0.7",
+      "url": "llms-txt#filter-results-with-score->-0.7"
+    },
+    {
+      "title": "Extract location",
+      "url": "llms-txt#extract-location"
+    },
+    {
+      "title": "Extract all emails",
+      "url": "llms-txt#extract-all-emails"
+    },
+    {
+      "title": "Help Center",
+      "url": "llms-txt#help-center"
+    },
+    {
+      "title": "Agent Builder",
+      "url": "llms-txt#agent-builder"
+    },
+    {
+      "title": "Agno",
+      "url": "llms-txt#agno"
+    },
+    {
+      "title": "Initialize the agent with Tavily tools",
+      "url": "llms-txt#initialize-the-agent-with-tavily-tools"
+    },
+    {
+      "title": "Example 1: Basic search with default parameters",
+      "url": "llms-txt#example-1:-basic-search-with-default-parameters"
+    },
+    {
+      "title": "Example 2: Market research with multiple parameters",
+      "url": "llms-txt#example-2:-market-research-with-multiple-parameters"
+    },
+    {
+      "title": "Example 3: Technical documentation search",
+      "url": "llms-txt#example-3:-technical-documentation-search"
+    },
+    {
+      "title": "Example 4: News aggregation",
+      "url": "llms-txt#example-4:-news-aggregation"
+    },
+    {
+      "title": "Anthropic",
+      "url": "llms-txt#anthropic"
+    },
+    {
+      "title": "Set your API keys",
+      "url": "llms-txt#set-your-api-keys"
+    },
+    {
+      "title": "Initialize clients",
+      "url": "llms-txt#initialize-clients"
+    },
+    {
+      "title": "Example usage",
+      "url": "llms-txt#example-usage"
+    },
+    {
+      "title": "Composio",
+      "url": "llms-txt#composio"
+    },
+    {
+      "title": "Use composio managed auth",
+      "url": "llms-txt#use-composio-managed-auth"
+    },
+    {
+      "title": "Initialize OpenAI client with API key",
+      "url": "llms-txt#initialize-openai-client-with-api-key"
+    },
+    {
+      "title": "Initialize Composio toolset",
+      "url": "llms-txt#initialize-composio-toolset"
+    },
+    {
+      "title": "Get the Tavily tool with all available parameters",
+      "url": "llms-txt#get-the-tavily-tool-with-all-available-parameters"
+    },
+    {
+      "title": "Define the market research task with specific parameters",
+      "url": "llms-txt#define-the-market-research-task-with-specific-parameters"
+    },
+    {
+      "title": "Send request to LLM",
+      "url": "llms-txt#send-request-to-llm"
+    },
+    {
+      "title": "Handle tool call via Composio",
+      "url": "llms-txt#handle-tool-call-via-composio"
+    },
+    {
+      "title": "CrewAI",
+      "url": "llms-txt#crewai"
+    },
+    {
+      "title": "Set your API keys",
+      "url": "llms-txt#set-your-api-keys"
+    },
+    {
+      "title": "Initialize the Tavily search tool",
+      "url": "llms-txt#initialize-the-tavily-search-tool"
+    },
+    {
+      "title": "Create an agent that uses the tool",
+      "url": "llms-txt#create-an-agent-that-uses-the-tool"
+    },
+    {
+      "title": "Create a task for the agent",
+      "url": "llms-txt#create-a-task-for-the-agent"
+    },
+    {
+      "title": "Form the crew and execute the task",
+      "url": "llms-txt#form-the-crew-and-execute-the-task"
+    },
+    {
+      "title": "You can configure the tool with specific parameters",
+      "url": "llms-txt#you-can-configure-the-tool-with-specific-parameters"
+    },
+    {
+      "title": "Initialize the Tavily extractor tool",
+      "url": "llms-txt#initialize-the-tavily-extractor-tool"
+    },
+    {
+      "title": "Create an agent that uses the tool",
+      "url": "llms-txt#create-an-agent-that-uses-the-tool"
+    },
+    {
+      "title": "Define a task for the agent",
+      "url": "llms-txt#define-a-task-for-the-agent"
+    },
+    {
+      "title": "Create and run the crew",
+      "url": "llms-txt#create-and-run-the-crew"
+    },
+    {
+      "title": "You can configure the tool with specific parameters",
+      "url": "llms-txt#you-can-configure-the-tool-with-specific-parameters"
+    },
+    {
+      "title": "Dify",
+      "url": "llms-txt#dify"
+    },
+    {
+      "title": "FlowiseAI",
+      "url": "llms-txt#flowiseai"
+    },
+    {
+      "title": "Google ADK",
+      "url": "llms-txt#google-adk"
+    },
+    {
+      "title": "LangChain",
+      "url": "llms-txt#langchain"
+    },
+    {
+      "title": "Basic usage",
+      "url": "llms-txt#basic-usage"
+    },
+    {
+      "title": "!pip install -qU langchain langchain-openai langchain-tavily",
+      "url": "llms-txt#!pip-install--qu-langchain-langchain-openai-langchain-tavily"
+    },
+    {
+      "title": "Initialize the Tavily Search tool",
+      "url": "llms-txt#initialize-the-tavily-search-tool"
+    },
+    {
+      "title": "Initialize the agent with the search tool",
+      "url": "llms-txt#initialize-the-agent-with-the-search-tool"
+    },
+    {
+      "title": "Use the agent",
+      "url": "llms-txt#use-the-agent"
+    },
+    {
+      "title": "Extract content from a URL",
+      "url": "llms-txt#extract-content-from-a-url"
+    },
+    {
+      "title": "Map a website structure",
+      "url": "llms-txt#map-a-website-structure"
+    },
+    {
+      "title": "Crawl and extract content",
+      "url": "llms-txt#crawl-and-extract-content"
+    },
+    {
+      "title": "Create a research task with a structured output schema",
+      "url": "llms-txt#create-a-research-task-with-a-structured-output-schema"
+    },
+    {
+      "title": "Retrieve results for a completed research task",
+      "url": "llms-txt#retrieve-results-for-a-completed-research-task"
+    },
+    {
+      "title": "Langflow",
+      "url": "llms-txt#langflow"
+    },
+    {
+      "title": "Using UV (recommended)",
+      "url": "llms-txt#using-uv-(recommended)"
+    },
+    {
+      "title": "Using pip",
+      "url": "llms-txt#using-pip"
+    },
+    {
+      "title": "LlamaIndex",
+      "url": "llms-txt#llamaindex"
+    },
+    {
+      "title": "Make",
+      "url": "llms-txt#make"
+    },
+    {
+      "title": "n8n",
+      "url": "llms-txt#n8n"
+    },
+    {
+      "title": "OpenAI",
+      "url": "llms-txt#openai"
+    },
+    {
+      "title": "Set your API keys",
+      "url": "llms-txt#set-your-api-keys"
+    },
+    {
+      "title": "Load your API keys from environment variables",
+      "url": "llms-txt#load-your-api-keys-from-environment-variables"
+    },
+    {
+      "title": "--- define tools ---",
+      "url": "llms-txt#----define-tools----"
+    },
+    {
+      "title": "--- conversation ---",
+      "url": "llms-txt#----conversation----"
+    },
+    {
+      "title": "Ask the model again for the final grounded answer",
+      "url": "llms-txt#ask-the-model-again-for-the-final-grounded-answer"
+    },
+    {
+      "title": "--- setup ---",
+      "url": "llms-txt#----setup----"
+    },
+    {
+      "title": "--- Function that will be called when AI requests a search ---",
+      "url": "llms-txt#----function-that-will-be-called-when-ai-requests-a-search----"
+    },
+    {
+      "title": "Define the tool for Tavily web search",
+      "url": "llms-txt#define-the-tool-for-tavily-web-search"
+    },
+    {
+      "title": "This tells the AI what function it can call and what parameters it needs",
+      "url": "llms-txt#this-tells-the-ai-what-function-it-can-call-and-what-parameters-it-needs"
+    },
+    {
+      "title": "--- Step 1: Create initial conversation ---",
+      "url": "llms-txt#----step-1:-create-initial-conversation----"
+    },
+    {
+      "title": "This sets up the conversation context for the AI",
+      "url": "llms-txt#this-sets-up-the-conversation-context-for-the-ai"
+    },
+    {
+      "title": "--- Step 2: First API call - AI decides to search ---",
+      "url": "llms-txt#----step-2:-first-api-call---ai-decides-to-search----"
+    },
+    {
+      "title": "The AI will analyze the user's question and decide if it needs to search the web",
+      "url": "llms-txt#the-ai-will-analyze-the-user's-question-and-decide-if-it-needs-to-search-the-web"
+    },
+    {
+      "title": "--- Step 3: Process the AI's response ---",
+      "url": "llms-txt#----step-3:-process-the-ai's-response----"
+    },
+    {
+      "title": "Add the AI's response (including any function calls) to our conversation",
+      "url": "llms-txt#add-the-ai's-response-(including-any-function-calls)-to-our-conversation"
+    },
+    {
+      "title": "--- Step 4: Execute any function calls the AI made ---",
+      "url": "llms-txt#----step-4:-execute-any-function-calls-the-ai-made----"
+    },
+    {
+      "title": "--- Step 5: Second API call - AI provides final answer ---",
+      "url": "llms-txt#----step-5:-second-api-call---ai-provides-final-answer----"
+    },
+    {
+      "title": "Now the AI has the search results and can provide an informed response",
+      "url": "llms-txt#now-the-ai-has-the-search-results-and-can-provide-an-informed-response"
+    },
+    {
+      "title": "--- Display the final result ---",
+      "url": "llms-txt#----display-the-final-result----"
+    },
+    {
+      "title": "Pydantic AI",
+      "url": "llms-txt#pydantic-ai"
+    },
+    {
+      "title": "Get API key from environment",
+      "url": "llms-txt#get-api-key-from-environment"
+    },
+    {
+      "title": "Initialize the agent with Tavily tools",
+      "url": "llms-txt#initialize-the-agent-with-tavily-tools"
+    },
+    {
+      "title": "Example 1: Basic search for news",
+      "url": "llms-txt#example-1:-basic-search-for-news"
+    },
+    {
+      "title": "StackAI",
+      "url": "llms-txt#stackai"
+    },
+    {
+      "title": "Tines",
+      "url": "llms-txt#tines"
+    },
+    {
+      "title": "Vercel AI SDK",
+      "url": "llms-txt#vercel-ai-sdk"
+    },
+    {
+      "title": "Zapier",
+      "url": "llms-txt#zapier"
+    },
+    {
+      "title": "Tavily MCP Server",
+      "url": "llms-txt#tavily-mcp-server"
+    },
+    {
+      "title": "IBM",
+      "url": "llms-txt#ibm"
+    },
+    {
+      "title": "Snowflake",
+      "url": "llms-txt#snowflake"
+    },
+    {
+      "title": "Privacy Policy",
+      "url": "llms-txt#privacy-policy"
+    },
+    {
+      "title": "Quickstart",
+      "url": "llms-txt#quickstart"
+    },
+    {
+      "title": "Rate Limits",
+      "url": "llms-txt#rate-limits"
+    },
+    {
+      "title": "Tavily Search Crawler",
+      "url": "llms-txt#tavily-search-crawler"
+    },
+    {
+      "title": "Security & Compliance",
+      "url": "llms-txt#security-&-compliance"
+    },
+    {
+      "title": "Projects",
+      "url": "llms-txt#projects"
+    },
+    {
+      "title": "Product News Tracker",
+      "url": "llms-txt#product-news-tracker"
+    },
+    {
+      "title": "Chat",
+      "url": "llms-txt#chat"
+    },
+    {
+      "title": "Company Research",
+      "url": "llms-txt#company-research"
+    },
+    {
+      "title": "Crawl to RAG",
+      "url": "llms-txt#crawl-to-rag"
+    },
+    {
+      "title": "Data Enrichment",
+      "url": "llms-txt#data-enrichment"
+    },
+    {
+      "title": "Market Researcher",
+      "url": "llms-txt#market-researcher"
+    },
+    {
+      "title": "Meeting Prep",
+      "url": "llms-txt#meeting-prep"
+    },
+    {
+      "title": "RAG evaluation",
+      "url": "llms-txt#rag-evaluation"
+    },
+    {
+      "title": "Introduction",
+      "url": "llms-txt#introduction"
+    },
+    {
+      "title": "How does it work?",
+      "url": "llms-txt#how-does-it-work?"
+    },
+    {
+      "title": "Learn More",
+      "url": "llms-txt#learn-more"
+    },
+    {
+      "title": "Frequently Asked Questions",
+      "url": "llms-txt#frequently-asked-questions"
+    },
+    {
+      "title": "Quickstart",
+      "url": "llms-txt#quickstart"
+    },
+    {
+      "title": "SDK Reference",
+      "url": "llms-txt#sdk-reference"
+    },
+    {
+      "title": "Quickstart",
+      "url": "llms-txt#quickstart"
+    },
+    {
+      "title": "SDK Reference",
+      "url": "llms-txt#sdk-reference"
+    },
+    {
+      "title": "null",
+      "url": "llms-txt#null"
+    }
+  ]
+}

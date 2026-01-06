@@ -1,0 +1,75 @@
+{
+  "title": "IBM",
+  "content": "Source: https://docs.tavily.com/documentation/partnerships/IBM\n\nTavily and IBM have partnered to deliver AI-enriched spreadsheets, combining real-time web search with advanced foundation models to transform business data workflows.\n\n<p>\n  <img alt=\"Tavily Logo\" />\n\n<img alt=\"IBM watsonx Logo\" />\n</p>\n\n<p>\n  Powered by <a href=\"https://tavily.com\">Tavily</a> and <a href=\"https://www.ibm.com/products/watsonx-ai\">IBM® watsonx.ai™</a>\n</p>\n\nTavily and IBM have partnered to deliver [AI-enriched spreadsheets](https://github.com/tavily-ai/watsonx-tavily-spreadsheets) that combine Tavily's real-time web search with IBM watsonx.ai's advanced foundation models. This open-source solution enables users to enrich spreadsheet data with live, cited web information and powerful LLM-driven insights.\n\nWith this application, you can:\n\n* 📊 Enrich spreadsheet cells with AI-generated content backed by live web data\n* 🧠 Entity extraction and data processing with Granite LLMs\n* 🔄 Process entire columns in batch for efficient data enhancement\n* 📑 Access source citations for all web-sourced information\n* 📂 Export your enriched data as CSV files for further use\n\n1. **Fill in spreadsheet columns** with your data\n2. **Enrich your spreadsheet**: The app uses Tavily's search and IBM watsonx.ai models to add live, relevant information\n3. **Export as CSV** for further use\n\n<div>\n  <iframe title=\"YouTube video player\" />\n</div>\n\n<img alt=\"Architecture Diagram\" />\n\n## Setup Instructions\n\n<AccordionGroup>\n  <Accordion title=\"API Keys & Environment Variables\">\n    <ul>\n      <li>Get your <a href=\"https://app.tavily.com/home\">Tavily API key</a> and <a href=\"https://www.ibm.com/products/watsonx-ai\">IBM watsonx.ai API key</a>.</li>\n      <li>Create a <code>.env</code> file in the project root.</li>\n    </ul>\n\n<em>Note: <code>FOUNDATION\\_MODEL\\_ID</code> is optional. Defaults to <code>ibm/granite-3-2-8b-instruct</code> if not set.</em>\n\n<ul>\n      <li>Create <code>.env.development</code> in <code>ui/</code> directory.</li>\n    </ul>\n\n<Accordion title=\"Backend Setup (Python)\">\n    <ul>\n      <li>Create and activate a Python 3.11 virtual environment.</li>\n    </ul>\n\n<ul>\n      <li>Install dependencies.</li>\n    </ul>\n\n<ul>\n      <li>Run the backend server.</li>\n    </ul>\n\n<Accordion title=\"Backend Setup (Docker)\">\n    <ul>\n      <li>Build the Docker image.</li>\n    </ul>\n\n<ul>\n      <li>Run the container.</li>\n    </ul>\n\n<Accordion title=\"Frontend Setup\">\n    <ul>\n      <li>Navigate to the frontend directory.</li>\n    </ul>\n\n<ul>\n      <li>Install dependencies.</li>\n    </ul>\n\n<ul>\n      <li>Start the development server.</li>\n    </ul>\n\n<ul>\n      <li>Open <a href=\"http://localhost:5174\">[http://localhost:5174](http://localhost:5174)</a> in your browser.</li>\n    </ul>\n  </Accordion>\n</AccordionGroup>\n\nSee full setup, usage, and contribution details in the [GitHub repository](https://github.com/tavily-ai/watsonx-tavily-spreadsheets).",
+  "code_samples": [
+    {
+      "code": "TAVILY_API_KEY=<your API key>\n    WATSONX_API_KEY=<your API key>\n    WATSONX_PROJECT_ID=<your project id>\n    WATSONX_URL=<your data center url>\n    FOUNDATION_MODEL_ID=<watsonx.ai model id>",
+      "language": "unknown"
+    },
+    {
+      "code": "VITE_API_URL=http://localhost:8000\n    VITE_WS_URL=ws://localhost:8000",
+      "language": "unknown"
+    },
+    {
+      "code": "python3.11 -m venv venv\n    source venv/bin/activate  # On Windows: .\\venv\\Scripts\\activate",
+      "language": "unknown"
+    },
+    {
+      "code": "python3.11 -m pip install -r requirements.txt",
+      "language": "unknown"
+    },
+    {
+      "code": "python app.py",
+      "language": "unknown"
+    },
+    {
+      "code": "docker build -t spreadsheet .",
+      "language": "unknown"
+    },
+    {
+      "code": "docker run -p 8000:8000 --env-file .env spreadsheet",
+      "language": "unknown"
+    },
+    {
+      "code": "cd ui",
+      "language": "unknown"
+    },
+    {
+      "code": "npm install",
+      "language": "unknown"
+    },
+    {
+      "code": "npm run dev",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "What is it?",
+      "id": "what-is-it?"
+    },
+    {
+      "level": "h2",
+      "text": "How it Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Architecture",
+      "id": "architecture"
+    },
+    {
+      "level": "h2",
+      "text": "Setup Instructions",
+      "id": "setup-instructions"
+    }
+  ],
+  "url": "llms-txt#ibm",
+  "links": []
+}

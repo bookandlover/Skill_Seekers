@@ -1,0 +1,13 @@
+{
+  "title": "Create a task for the agent",
+  "content": "research_task = Task(\n    description='Search for the top 3 Agentic AI trends in 2025.',\n    expected_output='A JSON report summarizing the top 3 AI trends found.',\n    agent=researcher\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#create-a-task-for-the-agent",
+  "links": []
+}

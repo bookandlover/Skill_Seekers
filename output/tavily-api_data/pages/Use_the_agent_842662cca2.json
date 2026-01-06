@@ -1,0 +1,43 @@
+{
+  "title": "Use the agent",
+  "content": "response = agent.invoke({\n    \"messages\": [{\"role\": \"user\", \"content\": \"What is the most popular sport in the world? Include only Wikipedia sources.\"}]\n})\npython theme={null}\nfrom langchain_tavily import TavilyExtract\n\ntool = TavilyExtract(\n    extract_depth=\"basic\",\n    # include_images=False\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "> **Tip**: For more relevant and time-aware results, inject today's date into your system prompt. This helps the agent understand the current context when searching for recent information. For example: `f\"You are a helpful research assistant. Today's date is {datetime.today().strftime('%B %d, %Y')}. Use web search to find accurate, up-to-date information.\"`\n\n## Tavily Extract\n\nHere we show how to instantiate the Tavily extract tool. This tool allows you to extract content from URLs using Tavily's Extract API endpoint.\n\n### Available Parameters\n\nThe Tavily Extract API accepts various parameters:\n\n* `extract_depth` (optional, str): The depth of the extraction, either \"basic\" or \"advanced\". Default is \"basic\".\n* `include_images` (optional, bool): Whether to include images in the extraction. Default is False.\n\nFor a comprehensive overview of the available parameters, refer to the [Tavily Extract API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/extract)\n\n### Instantiation",
+      "language": "unknown"
+    },
+    {
+      "code": "### Invoke directly with args\n\nThe Tavily extract tool accepts the following arguments during invocation:\n\n* `urls` (required): A list of URLs to extract content from.\n* Both `extract_depth` and `include_images` can also be set during invocation\n\nNOTE: The optional arguments are available for agents to dynamically set. If you set an argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invocation.\n\n### Direct Tool Invocation",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Tavily Extract",
+      "id": "tavily-extract"
+    },
+    {
+      "level": "h3",
+      "text": "Available Parameters",
+      "id": "available-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Instantiation",
+      "id": "instantiation"
+    },
+    {
+      "level": "h3",
+      "text": "Invoke directly with args",
+      "id": "invoke-directly-with-args"
+    },
+    {
+      "level": "h3",
+      "text": "Direct Tool Invocation",
+      "id": "direct-tool-invocation"
+    }
+  ],
+  "url": "llms-txt#use-the-agent",
+  "links": []
+}

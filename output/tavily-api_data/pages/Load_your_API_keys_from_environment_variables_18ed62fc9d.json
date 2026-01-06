@@ -1,0 +1,23 @@
+{
+  "title": "Load your API keys from environment variables",
+  "content": "tavily_client = TavilyClient(api_key=os.environ[\"TAVILY_API_KEY\"])\nopenai_client = OpenAI(api_key=os.environ[\"OPENAI_API_KEY\"])\npython theme={null}\ndef tavily_search(**kwargs):\n    # Pass ALL supported kwargs straight to Tavily\n    results = tavily_client.search(**kwargs)\n    return results\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Function definition\n\nDefine a function that OpenAI can call to perform searches:",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Function definition",
+      "id": "function-definition"
+    }
+  ],
+  "url": "llms-txt#load-your-api-keys-from-environment-variables",
+  "links": []
+}

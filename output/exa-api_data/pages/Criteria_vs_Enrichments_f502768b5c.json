@@ -1,0 +1,24 @@
+{
+  "title": "Criteria vs Enrichments",
+  "content": "Source: https://docs.exa.ai/websets/dashboard/criteria-versus-enrichments\n\n**Criteria** are filters that determine which results are included in your search. Every result must satisfy all criteria to be included in your final list. Criteria are binary - a result either meets the criterion or it doesn't. If a result fails even one criterion, it's excluded from your results. Criteria are included in the base search cost.\n\n**Enrichments** are data extractors that pull additional information from results that have already passed your criteria. Enrichments don't affect which results you get - they only add columns of data to the results you've already found. Enrichments cost additional credits per result.\n\n## When to Use Criteria\n\nUse criteria for any requirement that should filter your results. If a characteristic is essential to whether you want to see a result, it should be a criterion.\n\n**Examples of good criteria usage:**\n\n* \"Currently employed as a software engineer\" - filters for people in that role\n* \"Has 5+ years of experience\" - filters for seniority level\n* \"Located in San Francisco\" - filters for geography\n* \"Previously worked at Google\" - filters for specific employment history\n* \"Has experience with React and Node.js\" - filters for technical skills\n\n**Common mistake: Using optional preferences as criteria**\n\nIf you're not getting enough results, you may have turned \"nice-to-have\" preferences into hard filters:\n\n* \"Has 5+ years of experience\" when you'd accept 3+ years - consider making this an enrichment so you can sort by it\n* \"Knows Node.js\" when React is the only must-have - move optional skills to enrichments\n* \"Previously worked at a startup\" when it's just a preference - use as an enrichment to prioritize, not filter\n\nWhen a criterion is optional or flexible, move it to enrichments. This lets you see all qualified candidates and manually prioritize based on nice-to-have attributes.\n\n## When to Use Enrichments\n\nUse enrichments for any additional information you want to extract from results that have already passed your criteria. Enrichments are for data you need for outreach, qualification, or deeper research, but that don't affect whether you want to see the result.\n\n**Examples of good enrichment usage:**\n\n* \"Email address\" - extracts contact information from qualified candidates\n* \"Current company size\" - adds context about their employer\n* \"Years of experience\" - provides the exact number after you've already filtered for 5+ years\n* \"Key skills\" - lists their technical stack\n* \"LinkedIn profile URL\" - provides a link for further research\n\n## Example: Senior Software Engineers\n\nLet's say you're looking for senior software engineers with specific experience.\n\n**Query:** \"Senior software engineers with 5+ years of experience in machine learning. Get their email and current company.\"\n\n**Criteria (for filtering):**\n\n* Currently employed as a software engineer\n* Has 5+ years of experience\n* Has experience in machine learning\n\n**Enrichments (for data extraction):**\n\n* Email address\n* Current company name\n\nThis structure ensures you only get candidates who meet your requirements, and then extracts the additional contact information you need from those qualified results.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "When to Use Criteria",
+      "id": "when-to-use-criteria"
+    },
+    {
+      "level": "h2",
+      "text": "When to Use Enrichments",
+      "id": "when-to-use-enrichments"
+    },
+    {
+      "level": "h2",
+      "text": "Example: Senior Software Engineers",
+      "id": "example:-senior-software-engineers"
+    }
+  ],
+  "url": "llms-txt#criteria-vs-enrichments",
+  "links": []
+}

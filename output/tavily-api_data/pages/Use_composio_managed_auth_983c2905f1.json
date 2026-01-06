@@ -1,0 +1,19 @@
+{
+  "title": "Use composio managed auth",
+  "content": "auth_config = composio.auth_configs.create(\n    toolkit=\"tavily\",\n    options={\n        \"type\": \"use_custom_auth\",\n        \"auth_scheme\": \"API_KEY\",\n        \"credentials\": {}\n    }\n)\nprint(auth_config)\nauth_config_id = auth_config.id\n\nuser_id = \"your-user-id\"\nconnection_request = composio.connected_accounts.link(user_id, auth_config_id)\nprint(connection_request.redirect_url)\npython theme={null}\nfrom composio import Composio\nfrom composio_openai import OpenAIProvider\nfrom openai import OpenAI\nimport os\nfrom dotenv import load_dotenv",
+  "code_samples": [
+    {
+      "code": "### Step 4: Example Use Case",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Step 4: Example Use Case",
+      "id": "step-4:-example-use-case"
+    }
+  ],
+  "url": "llms-txt#use-composio-managed-auth",
+  "links": []
+}

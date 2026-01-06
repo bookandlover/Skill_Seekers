@@ -1,0 +1,13 @@
+{
+  "title": "This tells the AI what function it can call and what parameters it needs",
+  "content": "tools = [{\n    \"type\": \"function\",\n    \"name\": \"tavily_search\",\n    \"description\": \"Search the web using Tavily. Provide relevant links in your answer.\",\n    \"parameters\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"query\": {\n                \"type\": \"string\",\n                \"description\": \"Search query for Tavily.\"\n            },\n            \"max_results\": {\n                \"type\": \"integer\",\n                \"description\": \"Max number of results to return\",\n                \"default\": 5\n            }\n        },\n        \"required\": [\"query\", \"max_results\"], \n        \"additionalProperties\": False\n    },\n    \"strict\": True\n}]\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "<a href=\"#schemas\">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#this-tells-the-ai-what-function-it-can-call-and-what-parameters-it-needs",
+  "links": []
+}

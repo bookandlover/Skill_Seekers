@@ -1,0 +1,29 @@
+{
+  "title": "SDK changes: highlights removed and contents returned by default",
+  "content": "Source: https://docs.exa.ai/changelog/sdk-major-version-changes\n\nMajor SDK update with contents included by default in search, highlights feature removed from SDKs, and use_autoprompt field deprecated in all API responses.\n\n**Date: October 28, 2025**\n\nWe're releasing a major version update to our SDKs along with changes to API responses. This update makes content retrieval more convenient while removing deprecated features.\n\n### 1. Contents Included by Default in SDKs\n\nSearch operations in the SDKs now include page contents by default, eliminating the need for a separate contents call in most workflows. You can opt out if you need faster searches without content.\n\n### 2. Highlights Feature Removed from SDKs\n\nThe highlights feature has been completely removed from all SDKs. This feature was previously deprecated and is no longer available in the SDK packages.\n\n> *Update (November 2025): Highlights have been reintroduced in the JavaScript SDK as of `exa-js` v2.0.11. See [JS SDK: highlights restored](/changelog/highlights-restored-js-sdk) for details.*\n\n**Migration Options:**\n\n* **Option 1**: Do not upgrade to the new major version if you still need highlights\n* **Option 2**: Use the API directly to access highlights functionality\n* **Option 3**: Use \"AI Summary\" to get the main summary of \"text\"\n\n### 3. use\\_autoprompt Deprecated in All API Responses\n\nThe `use_autoprompt` field has been deprecated and removed from all API responses across the entire platform. This field is no longer needed with current search improvements.\n\nIf you have questions about upgrading or need help with migration, please reach out to [hello@exa.ai](mailto:hello@exa.ai). We're here to help ensure a smooth transition to the new major version.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "1. Contents Included by Default in SDKs",
+      "id": "1.-contents-included-by-default-in-sdks"
+    },
+    {
+      "level": "h3",
+      "text": "2. Highlights Feature Removed from SDKs",
+      "id": "2.-highlights-feature-removed-from-sdks"
+    },
+    {
+      "level": "h3",
+      "text": "3. use\\_autoprompt Deprecated in All API Responses",
+      "id": "3.-use\\_autoprompt-deprecated-in-all-api-responses"
+    },
+    {
+      "level": "h2",
+      "text": "Need Help?",
+      "id": "need-help?"
+    }
+  ],
+  "url": "llms-txt#sdk-changes:-highlights-removed-and-contents-returned-by-default",
+  "links": []
+}

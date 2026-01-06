@@ -1,0 +1,44 @@
+{
+  "title": "Make Exa Your Default Search Engine",
+  "content": "Source: https://docs.exa.ai/reference/set-exa-as-default-search\n\nSimple steps to set exa.ai as your browser's default search engine\n\nWant to use Exa search every time you search from your browser's address bar? Here's how to set it up in simple steps. What You'll Need:\n\n* A web browser (Chrome, Firefox, Safari, or Edge)\n* 60 seconds of your time\n\n### For Google Chrome\n\n1. **Open Chrome** on your computer\n2. **Go to exa.ai** in your address bar\n3. **Click the three dots** (⋮) in the top right corner\n4. **Click \"Settings\"**\n5. **Click \"Search engine\"** on the left side\n6. **Click \"Manage search engines and site search\"**\n7. **Look for \"exa.ai\"** in the list\n8. **Click the three dots** next to it\n9. **Click \"Make default\"**\n\n**That's it!** Now when you type in Chrome's address bar, it will search with Exa.\n\n### For Mozilla Firefox\n\n1. **Open Firefox** on your computer\n2. **Go to exa.ai** in your address bar\n3. **Right-click in the search box** on the Exa website\n4. **Click \"Add a Keyword for this Search\"**\n5. **Type \"exa\" as the keyword** and click \"Save\"\n6. **Click the hamburger menu** (☰) in the top right\n7. **Click \"Settings\"**\n8. **Click \"Search\"** on the left side\n9. **Find \"Default Search Engine\"**\n10. **Select \"Exa\"** from the dropdown\n\n**Done!** Firefox will now use Exa for your searches.\n\n1. **Open Safari** on your Mac\n2. **Go to exa.ai** in your address bar\n3. **Click \"Safari\"** in the top menu bar\n4. **Click \"Settings\"** (or press ⌘,)\n5. **Click the \"Search\" tab**\n6. **Click the dropdown** next to \"Search engine\"\n7. **Select \"Other\"**\n8. **Type:** `https://exa.ai/search?q=%s`\n9. **Click \"OK\"**\n\n**All set!** Safari will now search with Exa.\n\n### For Microsoft Edge\n\n1. **Open Edge** on your computer\n2. **Go to exa.ai** in your address bar\n3. **Click the three dots** (⋯) in the top right corner\n4. **Click \"Settings\"**\n5. **Click \"Privacy, search, and services\"** on the left\n6. **Scroll down to \"Services\"**\n7. **Click \"Address bar and search\"**\n8. **Click \"Manage search engines\"**\n9. **Look for \"exa.ai\"** in the list\n10. **Click the three dots** next to it\n11. **Click \"Make default\"**\n\n**Perfect!** Edge will now use Exa for searches.\n\nTo make sure it worked:\n\n1. **Click in your browser's address bar**\n2. **Type any search term** (like \"best pizza recipes\")\n3. **Press Enter**\n\nYou should see Exa's search results instead of Google or other search engines.\n\nIf these steps don't work for your browser:\n\n* Make sure you visited exa.ai first\n* Try refreshing the settings page\n\n## Why Use Exa as Your Default?\n\n* **Better results** for research and finding specific information\n* **Clean interface** without ads or seo slop, cluttering your results\n* **Free, fast and accurate** search results every time\n\nNow you can enjoy Exa's powerful search right from your browser's address bar!",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "For Google Chrome",
+      "id": "for-google-chrome"
+    },
+    {
+      "level": "h3",
+      "text": "For Mozilla Firefox",
+      "id": "for-mozilla-firefox"
+    },
+    {
+      "level": "h3",
+      "text": "For Safari (Mac)",
+      "id": "for-safari-(mac)"
+    },
+    {
+      "level": "h3",
+      "text": "For Microsoft Edge",
+      "id": "for-microsoft-edge"
+    },
+    {
+      "level": "h2",
+      "text": "Quick Test",
+      "id": "quick-test"
+    },
+    {
+      "level": "h2",
+      "text": "Need Help?",
+      "id": "need-help?"
+    },
+    {
+      "level": "h2",
+      "text": "Why Use Exa as Your Default?",
+      "id": "why-use-exa-as-your-default?"
+    }
+  ],
+  "url": "llms-txt#make-exa-your-default-search-engine",
+  "links": []
+}

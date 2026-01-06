@@ -1,0 +1,27 @@
+{
+  "title": "Map a website structure",
+  "content": "result = tavily_map.invoke({\n    \"url\": \"https://docs.example.com\",\n    \"instructions\": \"Find all documentation and tutorial pages\"\n})\npython theme={null}\n{\n    'base_url': 'https://docs.example.com',\n    'results': [\n        'https://docs.example.com',\n        'https://docs.example.com/api',\n        'https://docs.example.com/tutorials',\n        'https://docs.example.com/api/endpoints',\n        'https://docs.example.com/tutorials/getting-started'\n    ],\n    'request_id': 'req_abc123',\n    'response_time': 2.1\n}\npython theme={null}\nfrom langchain_tavily import TavilyCrawl\n\ntool = TavilyCrawl()\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Example output:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Tavily Crawl\n\nThe Crawl tool extracts full content from URLs. It works perfectly with mapped URLs or can be used standalone to crawl from a starting point.\n\n#### Available Parameters\n\n* `url` (required, str): The root URL to begin the crawl.\n* `instructions` (optional, str): Natural language instructions guiding content extraction.\n\nFor a comprehensive overview, refer to the [Tavily Crawl API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/crawl)\n\n#### Instantiation",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Direct Tool Invocation",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Tavily Crawl",
+      "id": "tavily-crawl"
+    }
+  ],
+  "url": "llms-txt#map-a-website-structure",
+  "links": []
+}

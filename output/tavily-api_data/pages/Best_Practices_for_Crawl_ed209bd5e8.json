@@ -1,0 +1,212 @@
+{
+  "title": "Best Practices for Crawl",
+  "content": "Source: https://docs.tavily.com/documentation/best-practices/best-practices-crawl\n\nLearn how to optimize crawl parameters, focus your crawls, and efficiently extract content from websites.\n\nUnderstanding when to use each API:\n\n| Feature                | Crawl                        | Map                      |\n| ---------------------- | ---------------------------- | ------------------------ |\n| **Content extraction** | Full content                 | URLs only                |\n| **Use case**           | Deep content analysis        | Site structure discovery |\n| **Speed**              | Slower (extracts content)    | Faster (URLs only)       |\n| **Best for**           | RAG, analysis, documentation | Sitemap generation       |\n\n### Use Crawl when you need:\n\n* Full content extraction from pages\n* Deep content analysis\n* Processing of paginated or nested content\n* Extraction of specific content patterns\n* Integration with RAG systems\n\n### Use Map when you need:\n\n* Quick site structure discovery\n* URL collection without content extraction\n* Sitemap generation\n* Path pattern matching\n* Domain structure analysis\n\nGuide the crawl with natural language to focus on relevant content:\n\n**When to use instructions:**\n\n* To focus crawling on specific topics or content types\n* When you need semantic filtering of pages\n* For agentic use cases where relevance is critical\n\n### Chunks per Source\n\nControl the amount of content returned per page to prevent context window explosion:\n\n* Returns only relevant content snippets (max 500 characters each) instead of full page content\n* Prevents context window from exploding in agentic use cases\n* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`\n\n> `chunks_per_source` is only available when instructions are provided.\n\n### Depth and breadth\n\n| Parameter     | Description                                     | Impact                     |\n| ------------- | ----------------------------------------------- | -------------------------- |\n| `max_depth`   | How many levels deep to crawl from starting URL | Exponential latency growth |\n| `max_breadth` | Maximum links to follow per page                | Horizontal spread          |\n| `limit`       | Total maximum pages to crawl                    | Hard cap on pages          |\n\n**Performance tip:** Each level of depth increases crawl time exponentially. Start with `max_depth=1` and increase as needed.\n\n## Filtering and Focusing\n\nUse regex patterns to include or exclude specific paths:\n\nControl which domains to crawl:\n\nControls extraction quality vs. speed.\n\n| Depth             | When to use                            |\n| ----------------- | -------------------------------------- |\n| `basic` (default) | Simple content, faster processing      |\n| `advanced`        | Complex pages, tables, structured data |\n\n### 1. Deep or Unlinked Content\n\nMany sites have content that's difficult to access through standard means:\n\n* Deeply nested pages not in main navigation\n* Paginated archives (old blog posts, changelogs)\n* Internal search-only content\n\n### 2. Structured but Nonstandard Layouts\n\nFor content that's structured but not marked up in schema.org:\n\n* Documentation\n* Changelogs\n* FAQs\n\n### 3. Multi-modal Information Needs\n\nWhen you need to combine information from multiple sections:\n\n* Cross-referencing content\n* Finding related information\n* Building comprehensive knowledge bases\n\n### 4. Rapidly Changing Content\n\nFor content that updates frequently:\n\n* API documentation\n* Product announcements\n* News sections\n\n### 5. Behind Auth / Paywalls\n\nFor content requiring authentication:\n\n* Internal knowledge bases\n* Customer help centers\n* Gated documentation\n\n### 6. Complete Coverage / Auditing\n\nFor comprehensive content analysis:\n\n* Legal compliance checks\n* Security audits\n* Policy verification\n\n### 7. Semantic Search or RAG Integration\n\nFor feeding content into LLMs or search systems:\n\n* RAG systems\n* Enterprise search\n* Knowledge bases\n\n### 8. Known URL Patterns\n\nWhen you have specific paths to crawl:\n\n* Sitemap-based crawling\n* Section-specific extraction\n* Pattern-based content collection\n\n## Performance Optimization\n\n### Depth vs. Performance\n\n* Each level of depth increases crawl time exponentially\n* Start with max\\_depth: 1 and increase as needed\n* Use max\\_breadth to control horizontal expansion\n* Set appropriate limit to prevent excessive crawling\n\n* Respect site's robots.txt\n* Implement appropriate delays between requests\n* Monitor API usage and limits\n* Use appropriate error handling for rate limits\n\n## Integration with Map\n\nConsider using Map before Crawl to:\n\n1. Discover site structure\n2. Identify relevant paths\n3. Plan crawl strategy\n4. Validate URL patterns\n\n**Example workflow:**\n\n1. Use Map to get site structure\n2. Analyze paths and patterns\n3. Configure Crawl with discovered paths\n4. Execute focused crawl\n\n* Discover site structure before crawling\n* Identify relevant path patterns\n* Avoid unnecessary crawling\n* Validate URL patterns work correctly\n\n* **Problem:** Setting `max_depth=4` or higher\n* **Impact:** Exponential crawl time, unnecessary pages\n* **Solution:** Start with 1-2 levels, increase only if needed\n\n### Unfocused crawling\n\n* **Problem:** No `instructions` provided, crawling entire site\n* **Impact:** Wasted resources, irrelevant content, context explosion\n* **Solution:** Use instructions to focus the crawl semantically\n\n* **Problem:** No `limit` parameter set\n* **Impact:** Runaway crawls, unexpected costs\n* **Solution:** Always set a reasonable `limit` value\n\n### Ignoring failed results\n\n* **Problem:** Not checking which pages failed extraction\n* **Impact:** Incomplete data, missed content\n* **Solution:** Monitor failed results and adjust parameters\n\n* Use instructions and chunks\\_per\\_source for focused, relevant results in agentic use cases\n* Start with conservative parameters (`max_depth=1, max_breadth=20`)\n* Use path patterns to focus crawling on relevant content\n* Choose appropriate extract\\_depth based on content complexity\n* Set reasonable limits to prevent excessive crawling\n* Monitor failed results and adjust patterns accordingly\n* Use Map first to understand site structure\n* Implement error handling for rate limits and failures\n* Respect robots.txt and site policies\n* Optimize for your use case (speed vs. completeness)\n* Process results incrementally rather than waiting for full crawl\n\n> Crawling is powerful but resource-intensive. Focus your crawls, start small, monitor results, and scale gradually based on actual needs.",
+  "code_samples": [
+    {
+      "code": "**When to use instructions:**\n\n* To focus crawling on specific topics or content types\n* When you need semantic filtering of pages\n* For agentic use cases where relevance is critical\n\n### Chunks per Source\n\nControl the amount of content returned per page to prevent context window explosion:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Key benefits:**\n\n* Returns only relevant content snippets (max 500 characters each) instead of full page content\n* Prevents context window from exploding in agentic use cases\n* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`\n\n> `chunks_per_source` is only available when instructions are provided.\n\n### Depth and breadth\n\n| Parameter     | Description                                     | Impact                     |\n| ------------- | ----------------------------------------------- | -------------------------- |\n| `max_depth`   | How many levels deep to crawl from starting URL | Exponential latency growth |\n| `max_breadth` | Maximum links to follow per page                | Horizontal spread          |\n| `limit`       | Total maximum pages to crawl                    | Hard cap on pages          |\n\n**Performance tip:** Each level of depth increases crawl time exponentially. Start with `max_depth=1` and increase as needed.",
+      "language": "unknown"
+    },
+    {
+      "code": "## Filtering and Focusing\n\n### Path patterns\n\nUse regex patterns to include or exclude specific paths:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Domain filtering\n\nControl which domains to crawl:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Extract depth\n\nControls extraction quality vs. speed.\n\n| Depth             | When to use                            |\n| ----------------- | -------------------------------------- |\n| `basic` (default) | Simple content, faster processing      |\n| `advanced`        | Complex pages, tables, structured data |",
+      "language": "unknown"
+    },
+    {
+      "code": "## Use Cases\n\n### 1. Deep or Unlinked Content\n\nMany sites have content that's difficult to access through standard means:\n\n* Deeply nested pages not in main navigation\n* Paginated archives (old blog posts, changelogs)\n* Internal search-only content\n\n**Best Practice:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. Structured but Nonstandard Layouts\n\nFor content that's structured but not marked up in schema.org:\n\n* Documentation\n* Changelogs\n* FAQs\n\n**Best Practice:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 3. Multi-modal Information Needs\n\nWhen you need to combine information from multiple sections:\n\n* Cross-referencing content\n* Finding related information\n* Building comprehensive knowledge bases\n\n**Best Practice:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 4. Rapidly Changing Content\n\nFor content that updates frequently:\n\n* API documentation\n* Product announcements\n* News sections\n\n**Best Practice:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 5. Behind Auth / Paywalls\n\nFor content requiring authentication:\n\n* Internal knowledge bases\n* Customer help centers\n* Gated documentation\n\n**Best Practice:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 6. Complete Coverage / Auditing\n\nFor comprehensive content analysis:\n\n* Legal compliance checks\n* Security audits\n* Policy verification\n\n**Best Practice:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 7. Semantic Search or RAG Integration\n\nFor feeding content into LLMs or search systems:\n\n* RAG systems\n* Enterprise search\n* Knowledge bases\n\n**Best Practice:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 8. Known URL Patterns\n\nWhen you have specific paths to crawl:\n\n* Sitemap-based crawling\n* Section-specific extraction\n* Pattern-based content collection\n\n**Best Practice:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Crawl vs Map",
+      "id": "crawl-vs-map"
+    },
+    {
+      "level": "h3",
+      "text": "Use Crawl when you need:",
+      "id": "use-crawl-when-you-need:"
+    },
+    {
+      "level": "h3",
+      "text": "Use Map when you need:",
+      "id": "use-map-when-you-need:"
+    },
+    {
+      "level": "h2",
+      "text": "Crawl Parameters",
+      "id": "crawl-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Instructions",
+      "id": "instructions"
+    },
+    {
+      "level": "h3",
+      "text": "Chunks per Source",
+      "id": "chunks-per-source"
+    },
+    {
+      "level": "h3",
+      "text": "Depth and breadth",
+      "id": "depth-and-breadth"
+    },
+    {
+      "level": "h2",
+      "text": "Filtering and Focusing",
+      "id": "filtering-and-focusing"
+    },
+    {
+      "level": "h3",
+      "text": "Path patterns",
+      "id": "path-patterns"
+    },
+    {
+      "level": "h3",
+      "text": "Domain filtering",
+      "id": "domain-filtering"
+    },
+    {
+      "level": "h3",
+      "text": "Extract depth",
+      "id": "extract-depth"
+    },
+    {
+      "level": "h2",
+      "text": "Use Cases",
+      "id": "use-cases"
+    },
+    {
+      "level": "h3",
+      "text": "1. Deep or Unlinked Content",
+      "id": "1.-deep-or-unlinked-content"
+    },
+    {
+      "level": "h3",
+      "text": "2. Structured but Nonstandard Layouts",
+      "id": "2.-structured-but-nonstandard-layouts"
+    },
+    {
+      "level": "h3",
+      "text": "3. Multi-modal Information Needs",
+      "id": "3.-multi-modal-information-needs"
+    },
+    {
+      "level": "h3",
+      "text": "4. Rapidly Changing Content",
+      "id": "4.-rapidly-changing-content"
+    },
+    {
+      "level": "h3",
+      "text": "5. Behind Auth / Paywalls",
+      "id": "5.-behind-auth-/-paywalls"
+    },
+    {
+      "level": "h3",
+      "text": "6. Complete Coverage / Auditing",
+      "id": "6.-complete-coverage-/-auditing"
+    },
+    {
+      "level": "h3",
+      "text": "7. Semantic Search or RAG Integration",
+      "id": "7.-semantic-search-or-rag-integration"
+    },
+    {
+      "level": "h3",
+      "text": "8. Known URL Patterns",
+      "id": "8.-known-url-patterns"
+    },
+    {
+      "level": "h2",
+      "text": "Performance Optimization",
+      "id": "performance-optimization"
+    },
+    {
+      "level": "h3",
+      "text": "Depth vs. Performance",
+      "id": "depth-vs.-performance"
+    },
+    {
+      "level": "h3",
+      "text": "Rate Limiting",
+      "id": "rate-limiting"
+    },
+    {
+      "level": "h2",
+      "text": "Integration with Map",
+      "id": "integration-with-map"
+    },
+    {
+      "level": "h2",
+      "text": "Common Pitfalls",
+      "id": "common-pitfalls"
+    },
+    {
+      "level": "h3",
+      "text": "Excessive depth",
+      "id": "excessive-depth"
+    },
+    {
+      "level": "h3",
+      "text": "Unfocused crawling",
+      "id": "unfocused-crawling"
+    },
+    {
+      "level": "h3",
+      "text": "Missing limits",
+      "id": "missing-limits"
+    },
+    {
+      "level": "h3",
+      "text": "Ignoring failed results",
+      "id": "ignoring-failed-results"
+    },
+    {
+      "level": "h2",
+      "text": "Summary",
+      "id": "summary"
+    }
+  ],
+  "url": "llms-txt#best-practices-for-crawl",
+  "links": []
+}

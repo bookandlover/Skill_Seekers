@@ -1,0 +1,8 @@
+{
+  "title": "Example 2: Market research with multiple parameters",
+  "content": "agent.print_response(\n    \"Analyze the competitive landscape of AI-powered customer service solutions in 2024, \"\n    \"focusing on market leaders and emerging trends\",\n    markdown=True\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#example-2:-market-research-with-multiple-parameters",
+  "links": []
+}

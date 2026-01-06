@@ -1,0 +1,39 @@
+{
+  "title": "Chat",
+  "content": "Source: https://docs.tavily.com/examples/use-cases/chat\n\nBuild a conversational chat agent with real-time web search, crawl, and extract capabilities using Tavily's API\n\n<img alt=\"Tavily Chatbot Demo\" />\n\n### Step 1: Get Your API Key\n\n<Card title=\"Get your Tavily API key\" icon=\"key\" href=\"https://app.tavily.com\" />\n\n### Step 2: Chat with Tavily\n\n<Card title=\"Launch the application\" icon=\"message-bot\" href=\"https://chat.tavily.com\" />\n\n### Step 3: Read The Open Source Code\n\n<Card title=\"View Github Repository\" icon=\"github\" href=\"https://github.com/tavily-ai/tavily-chat\" />\n\n1. **Fast Results**: Tavily's API delivers quick responses essential for real-time chat experiences.\n2. **Intelligent Parameter Selection**: Dynamically select API parameters based on conversation context using LangChain integration. Specifically designed for agentic systems. All you need is a natural language input, no need to configure structured JSON for our API.\n3. **Content Snippets**: Tavily provides compact summaries of search results in the `content` field, best for maintaining small context sizes in low latency, multi-turn applications.\n4. **Source Attribution**: All search, extract, and crawl results include URLs, enabling easy implementation of citations for transparency and credibility in responses.\n\nThe chatbot uses a simple ReAct architecture to manage conversation flow and decision-making. Here's how the core components work together:\n\nThe workflow consists of several key components:\n\n<AccordionGroup>\n  <Accordion title=\"1. Code Snippet: Graph Structure\">\n    The chatbot uses LangGraph MemorySaver to manage conversation flow. The graph structure conrtols how messages are processed and routed.\n\n<Tip>\n      This code snippet is not meant to run standalone. View the full implementation in our [github repository](https://github.com/tavily-ai/tavily-chat).\n    </Tip>\n\n<Accordion title=\"2. Routing Logic\">\n    The router decides whether to use base knowledge or perform a Tavily web search, extract, or crawl based on:\n\n* Question complexity\n    * Need for current information\n    * Available conversation context\n  </Accordion>\n\n<Accordion title=\"3. Memory Management\">\n    The chatbot maintains conversation history using a memory system that:\n\n* Preserves context across multiple exchanges\n    * Stores relevant search results for future reference\n    * Manages system prompts and initialization\n  </Accordion>\n\n<Accordion title=\"4. Real-time Search Integration\">\n    When Tavily access is needed, the chatbot:\n\n* Performs targeted web search, extract, or crawl using the LangChain integration\n    * Includes source citations\n  </Accordion>\n\n<Accordion title=\"5. Streaming Updates\">\n    Users receive real-time updates on:\n\n* Search progress\n    * Response generation\n    * Source processing\n  </Accordion>\n</AccordionGroup>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Try Our Chatbot",
+      "id": "try-our-chatbot"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Get Your API Key",
+      "id": "step-1:-get-your-api-key"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Chat with Tavily",
+      "id": "step-2:-chat-with-tavily"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Read The Open Source Code",
+      "id": "step-3:-read-the-open-source-code"
+    },
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    },
+    {
+      "level": "h2",
+      "text": "How Does It Work?",
+      "id": "how-does-it-work?"
+    }
+  ],
+  "url": "llms-txt#chat",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Extract location",
+  "content": "text = \"Company: Tavily, Location: New York\"\nmatch = re.search(r\"Location: (\\w+)\", text)\nlocation = match.group(1) if match else None  # \"New York\"",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#extract-location",
+  "links": []
+}

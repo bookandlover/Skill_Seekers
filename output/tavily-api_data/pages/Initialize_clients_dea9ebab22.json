@@ -1,0 +1,60 @@
+{
+  "title": "Initialize clients",
+  "content": "client = Anthropic(api_key=os.environ[\"ANTHROPIC_API_KEY\"])\ntavily_client = TavilyClient(api_key=os.environ[\"TAVILY_API_KEY\"])\nMODEL_NAME = \"claude-sonnet-4-20250514\"\npython theme={null}\nSYSTEM_PROMPT = (\n    \"You are a research assistant. Use the tavily_search tool when needed. \"\n    \"After tools run and tool results are provided back to you, produce a concise, well-structured summary \"\n    \"with a short bullet list of key points and a 'Sources' section listing the URLs. \"\n)\npython theme={null}\ntools = [\n    {\n        \"name\": \"tavily_search\",\n        \"description\": \"Search the web using Tavily. Return relevant links & summaries.\",\n        \"input_schema\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"query\": {\"type\": \"string\", \"description\": \"Search query string.\"},\n                \"max_results\": {\"type\": \"integer\", \"default\": 5},\n                \"search_depth\": {\"type\": \"string\", \"enum\": [\"basic\", \"advanced\"]},\n            },\n            \"required\": [\"query\"]\n        }\n    }\n]\npython theme={null}\ndef tavily_search(**kwargs):\n    return tavily_client.search(**kwargs)\n\ndef process_tool_call(name, args):\n    if name == \"tavily_search\":\n        return tavily_search(**args)\n    raise ValueError(f\"Unknown tool: {name}\")\npython theme={null}\ndef chat_with_claude(user_message: str):\n    print(f\"\\n{'='*50}\\nUser Message: {user_message}\\n{'='*50}\")\n\n# ---- Call 1: allow tools so Claude can ask for searches ----\n    initial_response = client.messages.create(\n        model=MODEL_NAME,\n        max_tokens=4096,\n        system=SYSTEM_PROMPT,\n        messages=[{\"role\": \"user\", \"content\": [{\"type\": \"text\", \"text\": user_message}]}],\n        tools=tools,\n    )\n\nprint(\"\\nInitial Response stop_reason:\", initial_response.stop_reason)\n    print(\"Initial content:\", initial_response.content)\n\n# If Claude already answered in text, return it\n    if initial_response.stop_reason != \"tool_use\":\n        final_text = next((b.text for b in initial_response.content if getattr(b, \"type\", None) == \"text\"), None)\n        print(\"\\nFinal Response:\", final_text)\n        return final_text\n\n# ---- Execute ALL tool_use blocks from Call 1 ----\n    tool_result_blocks = []\n    for block in initial_response.content:\n        if getattr(block, \"type\", None) == \"tool_use\":\n            result = process_tool_call(block.name, block.input)\n            tool_result_blocks.append({\n                \"type\": \"tool_result\",\n                \"tool_use_id\": block.id,\n                \"content\": [{\"type\": \"text\", \"text\": json.dumps(result)}],\n            })\n\n# ---- Call 2: NO tools; ask for the final summary from tool results ----\n    final_response = client.messages.create(\n        model=MODEL_NAME,\n        max_tokens=4096,\n        system=SYSTEM_PROMPT,\n        messages=[\n            {\"role\": \"user\", \"content\": [{\"type\": \"text\", \"text\": user_message}]},\n            {\"role\": \"assistant\", \"content\": initial_response.content},    # Claude's tool requests\n            {\"role\": \"user\", \"content\": tool_result_blocks},    # Your tool results\n            {\"role\": \"user\", \"content\": [{\"type\": \"text\", \"text\":\n                \"Please synthesize the final answer now based on the tool results above. \"\n                \"Include 3–7 bullets and a 'Sources' section with URLs.\"}]},\n        ],\n    )\n\nfinal_text = next((b.text for b in final_response.content if getattr(b, \"type\", None) == \"text\"), None)\n    print(\"\\nFinal Response:\", final_text)\n    return final_text\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "## Implementation\n\n### System prompt\n\nDefine a system prompt to guide Claude's behavior:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Tool schema\n\nDefine the Tavily search tool for Claude with enhanced parameters:",
+      "language": "unknown"
+    },
+    {
+      "code": "<a href=\"#schemas\">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>\n\n### Tool execution\n\nCreate optimized functions to handle Tavily searches:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Main chat function\n\nThe main function that handles the two-step conversation with Claude:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Usage example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Implementation",
+      "id": "implementation"
+    },
+    {
+      "level": "h3",
+      "text": "System prompt",
+      "id": "system-prompt"
+    },
+    {
+      "level": "h3",
+      "text": "Tool schema",
+      "id": "tool-schema"
+    },
+    {
+      "level": "h3",
+      "text": "Tool execution",
+      "id": "tool-execution"
+    },
+    {
+      "level": "h3",
+      "text": "Main chat function",
+      "id": "main-chat-function"
+    },
+    {
+      "level": "h3",
+      "text": "Usage example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#initialize-clients",
+  "links": []
+}

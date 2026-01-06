@@ -1,0 +1,215 @@
+{
+  "title": "Exa for Google Sheets",
+  "content": "Source: https://docs.exa.ai/reference/exa-for-sheets\n\nBring the power of Exa's semantic search directly into Google Sheets. Query the web, retrieve relevant results, and enrich your spreadsheets with up-to-date information—all without leaving your worksheet.\n\nExa for Sheets is a Google Apps Script integration that enables you to:\n\n* Run semantic web searches directly from spreadsheet cells\n* Generate AI-powered answers with web citations\n* Retrieve and parse web content at scale\n* Find similar pages to reference URLs\n* Automate research and data collection workflows\n\n<Steps>\n  <Step title=\"Open Google Sheets\">\n    Navigate to [Google Sheets](https://sheets.google.com) and open a new or existing spreadsheet.\n  </Step>\n\n<Step title=\"Install Exa AI Add-on\">\n    1. Go directly to the [Exa AI add-on](https://workspace.google.com/marketplace/app/exa_ai/465545439521) in the Google Workspace Marketplace\n    2. Click **Install** and grant the necessary permissions\n\nAlternatively, you can search manually:\n\n* Click **Extensions** → **Add-ons** → **Get add-ons** in the menu bar\n    * Search for \"Exa AI\" in the Google Workspace Marketplace\n\n<img src=\"https://mintcdn.com/exa-52/O7mBjFSY5eCtLx6i/images/integrations/exa-for-sheets/exa-sheets.png?fit=max&auto=format&n=O7mBjFSY5eCtLx6i&q=85&s=22a03e6a26d60ab1eb204f37661698dc\" alt=\"\" data-og-width=\"2246\" width=\"2246\" data-og-height=\"867\" height=\"867\" data-path=\"images/integrations/exa-for-sheets/exa-sheets.png\" data-optimize=\"true\" data-opv=\"3\" srcset=\"https://mintcdn.com/exa-52/O7mBjFSY5eCtLx6i/images/integrations/exa-for-sheets/exa-sheets.png?w=280&fit=max&auto=format&n=O7mBjFSY5eCtLx6i&q=85&s=1df8053eca1dfa4d319e4033c7289f60 280w, https://mintcdn.com/exa-52/O7mBjFSY5eCtLx6i/images/integrations/exa-for-sheets/exa-sheets.png?w=560&fit=max&auto=format&n=O7mBjFSY5eCtLx6i&q=85&s=f9803a620ae2649145b659a3430d9013 560w, https://mintcdn.com/exa-52/O7mBjFSY5eCtLx6i/images/integrations/exa-for-sheets/exa-sheets.png?w=840&fit=max&auto=format&n=O7mBjFSY5eCtLx6i&q=85&s=4d26a6fba877aebd3d3087c34fc94d70 840w, https://mintcdn.com/exa-52/O7mBjFSY5eCtLx6i/images/integrations/exa-for-sheets/exa-sheets.png?w=1100&fit=max&auto=format&n=O7mBjFSY5eCtLx6i&q=85&s=19b3b3ecdb9fbf3ded73259a51edf31d 1100w, https://mintcdn.com/exa-52/O7mBjFSY5eCtLx6i/images/integrations/exa-for-sheets/exa-sheets.png?w=1650&fit=max&auto=format&n=O7mBjFSY5eCtLx6i&q=85&s=c4f4d7093df9f52c688a1133f378a20d 1650w, https://mintcdn.com/exa-52/O7mBjFSY5eCtLx6i/images/integrations/exa-for-sheets/exa-sheets.png?w=2500&fit=max&auto=format&n=O7mBjFSY5eCtLx6i&q=85&s=3122ffca0137ee7c0b562debb27085a2 2500w\" />\n  </Step>\n\n<Step title=\"Configure Your API Key\">\n    1. After installation, you'll see a new **Exa AI** menu in Google Sheets\n    2. Click **Extensions** → **Exa AI** → **Open Sidebar**\n    3. Get your API key from [dashboard.exa.ai](https://dashboard.exa.ai/api-keys)\n    4. Paste your API key in the sidebar and click **Save Key**\n  </Step>\n\n<Step title=\"Start Using Exa Functions\">\n    You're all set! Start using Exa functions like `=EXA_SEARCH()`, `=EXA_ANSWER()`, and more in your spreadsheet cells.\n  </Step>\n</Steps>\n\n## Using Exa in Sheets\n\n### EXA\\_SEARCH - Search the Web\n\nSearch the web and return URLs:\n\n* `query` (required, string): Your search query\n* `numResults` (optional, number): Number of results to return (1-10, default: 1)\n* `searchType` (optional, string): \"auto\", \"neural\", or \"fast\" (default: \"auto\")\n* `prefix` (optional, string): Text to prepend to the query\n* `suffix` (optional, string): Text to append to the query\n\n**Returns:** Vertical array of URLs that automatically spills into cells below\n\n### EXA\\_ANSWER - Generate AI Answers\n\nGenerate AI-powered answers based on web search results:\n\n* `prompt` (required, string): The main question or prompt\n* `prefix` (optional, string): Text to prepend to the prompt\n* `suffix` (optional, string): Text to append to the prompt\n* `includeCitations` (optional, boolean): If TRUE, includes source citations (default: FALSE)\n\n**Returns:** String containing the answer with optional citations\n\n### EXA\\_CONTENTS - Extract Content\n\nExtract text content from a specified URL:\n\n* `url` (required, string): Full URL starting with http/https\n\n**Returns:** String containing the main text content from the URL\n\n### EXA\\_FINDSIMILAR - Find Similar Pages\n\nFind URLs similar to a reference URL:\n\n* `url` (required, string): Reference URL to find similar content\n* `numResults` (optional, number): Number of results (1-10, default: 1)\n* `includeDomainsStr` (optional, string): Comma-separated domains to include\n* `excludeDomainsStr` (optional, string): Comma-separated domains to exclude\n* `includeTextStr` (optional, string): Phrase that must appear in results\n* `excludeTextStr` (optional, string): Phrase that must not appear in results\n\n**Returns:** Vertical array of similar URLs\n\nAutomatically gather competitor information and industry trends:\n\nBuild reading lists and curate relevant articles:\n\n### Research Automation\n\nGet AI-powered answers with citations for research:\n\n## Using Claude for Sheets with Exa\n\nYou can combine Exa for Sheets with Claude for Sheets to create powerful research and analysis workflows. While Exa finds and retrieves relevant web content, Claude can process, analyze, and transform that content.\n\n### What is Claude for Sheets?\n\nClaude for Sheets is a Google Sheets add-on that brings Anthropic's AI assistant directly into your spreadsheets. It allows you to use AI to analyze, summarize, rewrite, and process text data right in your cells.\n\n**Install Claude for Sheets**: [Google Workspace Marketplace](https://workspace.google.com/marketplace/app/claude_for_sheets/909417792257)\n\n### Combining Exa and Claude\n\nHere's how you can use both tools together:\n\n1. **Use Exa to find content**: Search for relevant URLs or extract content from web pages\n2. **Use Claude to process the results**: Analyze, summarize, or transform the content Exa retrieved\n\n## Available Functions Reference\n\n| Function                                                                                                | Description                 | Returns       |\n| ------------------------------------------------------------------------------------------------------- | --------------------------- | ------------- |\n| `=EXA_SEARCH(query, [numResults], [searchType], [prefix], [suffix])`                                    | Search the web semantically | Array of URLs |\n| `=EXA_ANSWER(prompt, [prefix], [suffix], [includeCitations])`                                           | Generate AI-powered answers | Answer text   |\n| `=EXA_CONTENTS(url)`                                                                                    | Extract content from URL    | Text content  |\n| `=EXA_FINDSIMILAR(url, [numResults], [includeDomains], [excludeDomains], [includeText], [excludeText])` | Find similar pages          | Array of URLs |\n\nThe Exa for Sheets sidebar provides additional functionality:\n\n### API Key Management\n\n* Save and manage your Exa API key securely\n* Keys are stored in your Google account using UserProperties\n* View masked key display (first 4 + last 4 characters)\n* Remove keys when needed\n\n* **Refresh Selected Cells**: Update multiple Exa function results at once\n* Select a range of cells containing Exa functions\n* Click \"Refresh Selected Cells\" to re-execute all functions\n* Automatically handles spilled array values\n\n### Built-in Documentation\n\n* Quick reference for all available functions\n* Parameter descriptions and types\n* Function signatures with examples\n\n## Tips and Best Practices\n\n<Tip>\n  **Array Formulas**: `EXA_SEARCH` and `EXA_FINDSIMILAR` return arrays that automatically spill into cells below. Make sure you have empty cells below your formula to avoid `#SPILL!` errors.\n</Tip>\n\n<Tip>\n  **Batch Refresh**: Use the sidebar's batch refresh feature to update multiple cells at once instead of manually editing each formula.\n</Tip>\n\n<Warning>\n  **Rate Limits**: Be mindful of your API rate limits when running large batch operations. Each function call counts as one API request.\n</Warning>\n\n<Note>\n  **Search Types**: Use \"neural\" for semantic similarity, \"fast\" for quick searches, or \"auto\" to let Exa choose the best approach automatically.\n</Note>\n\n## Dynamic Queries with Concatenation\n\nBuild powerful dynamic queries by combining cell references with text using the `&` operator or `CONCAT()` function:\n\n### Basic Concatenation\n\nCombine text and cell values to create dynamic search queries:\n\nIf cell A2 contains \"artificial intelligence\", this searches for \"latest news about artificial intelligence\".\n\n### Multiple Cell References\n\nCombine multiple cells to build complex queries:\n\nExample: A2=\"Tesla\", B2=\"production numbers\", C2=\"2024\" → searches for \"Tesla production numbers in 2024\"\n\n### Using CONCAT for Cleaner Formulas\n\nFor longer queries, use `CONCAT()` for better readability:\n\n### Dynamic Prefixes and Suffixes\n\nUse the prefix and suffix parameters with cell references:\n\nThis prepends and appends text to your query dynamically.\n\n### Conditional Queries\n\nCombine with `IF()` statements for conditional searches:\n\n### Example Use Cases\n\n**Research Tracker:**\n\n**Competitor Analysis:**\n\n**Content Discovery:**\n\n## Privacy & Security\n\n* API keys are stored securely using Google Apps Script's UserProperties service\n* Keys are only accessible to your Google account\n* No data is stored outside your Google account and the Exa API\n* [Privacy Policy](https://exa.ai/exa-for-sheets/privacy-policy)\n\nCheck out the [GitHub repository](https://github.com/exa-labs/exa-sheets).",
+  "code_samples": [
+    {
+      "code": "=EXA_SEARCH(\"latest developments in renewable energy\", 5)",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_ANSWER(\"What is quantum computing?\", \"\", \"\", TRUE)",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_CONTENTS(\"https://example.com/article\")",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_FINDSIMILAR(\"https://example.com\", 5)",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_SEARCH(\"startup funding rounds in AI sector 2024\", 10, \"neural\")",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_FINDSIMILAR(\"https://example.com/best-practices\", 5)",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_ANSWER(\"What are the latest trends in renewable energy?\", \"\", \"\", TRUE)",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_SEARCH(\"latest news about \" & A2, 5)",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_SEARCH(A2 & \" \" & B2 & \" in \" & C2, 10, \"neural\")",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_SEARCH(CONCAT(\"research papers about \", A2, \" published after \", B2), 5)",
+      "language": "unknown"
+    },
+    {
+      "code": "=EXA_SEARCH(A2, 5, \"neural\", \"Find information about: \", \" site:edu\")",
+      "language": "unknown"
+    },
+    {
+      "code": "=IF(A2<>\"\", EXA_SEARCH(CONCAT(\"latest \", A2, \" trends\"), 5), \"Enter a topic\")",
+      "language": "unknown"
+    },
+    {
+      "code": "Column A: Topic name\nColumn B: =EXA_SEARCH(\"latest research on \" & A2 & \" 2024\", 3)",
+      "language": "unknown"
+    },
+    {
+      "code": "Column A: Company name\nColumn B: Industry\nColumn C: =EXA_SEARCH(A2 & \" \" & B2 & \" market analysis\", 5, \"neural\")",
+      "language": "unknown"
+    },
+    {
+      "code": "Column A: Seed URL\nColumn B: =EXA_FINDSIMILAR(A2, 10)\nColumn C: =EXA_CONTENTS(B2)",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Using Exa in Sheets",
+      "id": "using-exa-in-sheets"
+    },
+    {
+      "level": "h3",
+      "text": "EXA\\_SEARCH - Search the Web",
+      "id": "exa\\_search---search-the-web"
+    },
+    {
+      "level": "h3",
+      "text": "EXA\\_ANSWER - Generate AI Answers",
+      "id": "exa\\_answer---generate-ai-answers"
+    },
+    {
+      "level": "h3",
+      "text": "EXA\\_CONTENTS - Extract Content",
+      "id": "exa\\_contents---extract-content"
+    },
+    {
+      "level": "h3",
+      "text": "EXA\\_FINDSIMILAR - Find Similar Pages",
+      "id": "exa\\_findsimilar---find-similar-pages"
+    },
+    {
+      "level": "h2",
+      "text": "Example Use Cases",
+      "id": "example-use-cases"
+    },
+    {
+      "level": "h3",
+      "text": "Market Research",
+      "id": "market-research"
+    },
+    {
+      "level": "h3",
+      "text": "Content Curation",
+      "id": "content-curation"
+    },
+    {
+      "level": "h3",
+      "text": "Research Automation",
+      "id": "research-automation"
+    },
+    {
+      "level": "h2",
+      "text": "Using Claude for Sheets with Exa",
+      "id": "using-claude-for-sheets-with-exa"
+    },
+    {
+      "level": "h3",
+      "text": "What is Claude for Sheets?",
+      "id": "what-is-claude-for-sheets?"
+    },
+    {
+      "level": "h3",
+      "text": "Combining Exa and Claude",
+      "id": "combining-exa-and-claude"
+    },
+    {
+      "level": "h2",
+      "text": "Available Functions Reference",
+      "id": "available-functions-reference"
+    },
+    {
+      "level": "h2",
+      "text": "Sidebar Features",
+      "id": "sidebar-features"
+    },
+    {
+      "level": "h3",
+      "text": "API Key Management",
+      "id": "api-key-management"
+    },
+    {
+      "level": "h3",
+      "text": "Batch Operations",
+      "id": "batch-operations"
+    },
+    {
+      "level": "h3",
+      "text": "Built-in Documentation",
+      "id": "built-in-documentation"
+    },
+    {
+      "level": "h2",
+      "text": "Tips and Best Practices",
+      "id": "tips-and-best-practices"
+    },
+    {
+      "level": "h2",
+      "text": "Dynamic Queries with Concatenation",
+      "id": "dynamic-queries-with-concatenation"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Concatenation",
+      "id": "basic-concatenation"
+    },
+    {
+      "level": "h3",
+      "text": "Multiple Cell References",
+      "id": "multiple-cell-references"
+    },
+    {
+      "level": "h3",
+      "text": "Using CONCAT for Cleaner Formulas",
+      "id": "using-concat-for-cleaner-formulas"
+    },
+    {
+      "level": "h3",
+      "text": "Dynamic Prefixes and Suffixes",
+      "id": "dynamic-prefixes-and-suffixes"
+    },
+    {
+      "level": "h3",
+      "text": "Conditional Queries",
+      "id": "conditional-queries"
+    },
+    {
+      "level": "h3",
+      "text": "Example Use Cases",
+      "id": "example-use-cases"
+    },
+    {
+      "level": "h2",
+      "text": "Privacy & Security",
+      "id": "privacy-&-security"
+    },
+    {
+      "level": "h2",
+      "text": "Github Repository",
+      "id": "github-repository"
+    }
+  ],
+  "url": "llms-txt#exa-for-google-sheets",
+  "links": []
+}

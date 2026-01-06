@@ -1,0 +1,13 @@
+{
+  "title": "Add the AI's response (including any function calls) to our conversation",
+  "content": "input_list += response.output\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#add-the-ai's-response-(including-any-function-calls)-to-our-conversation",
+  "links": []
+}

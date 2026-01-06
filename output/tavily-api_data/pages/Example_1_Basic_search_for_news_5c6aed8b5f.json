@@ -1,0 +1,19 @@
+{
+  "title": "Example 1: Basic search for news",
+  "content": "result = agent.run_sync('Tell me the top news in the GenAI world, give me links.')\nprint(result.output)\nmarkdown theme={null}\nHere are some of the top recent news articles related to GenAI:\n\n1. How CLEAR users can improve risk analysis with GenAI – Thomson Reuters\n   Read more: https://legal.thomsonreuters.com/blog/how-clear-users-can-improve-risk-analysis-with-genai/\n   (This article discusses how CLEAR's new GenAI-powered tool streamlines risk analysis by quickly summarizing key information from various public data sources.)\n\n2. TELUS Digital Survey Reveals Enterprise Employees Are Entering Sensitive Data Into AI Assistants More Than You Think – FT.com\n   Read more: https://markets.ft.com/data/announce/detail?dockey=600-202502260645BIZWIRE_USPRX____20250226_BW490609-1\n   (This news piece highlights findings from a TELUS Digital survey showing that many enterprise employees use public GenAI tools and sometimes even enter sensitive data.)\n\n3. The Essential Guide to Generative AI – Virtualization Review\n   Read more: https://virtualizationreview.com/Whitepapers/2025/02/SNOWFLAKE-The-Essential-Guide-to-Generative-AI.aspx\n   (This guide provides insights into how GenAI is revolutionizing enterprise strategies and productivity, with input from industry leaders.)\n```\n\n## Additional Use Cases\n\n1. **Content Curation**: Gather and organize information from multiple sources\n2. **Real-time Data Integration**: Keep your AI agents up-to-date with the latest information\n3. **Technical Documentation**: Search and analyze technical documentation\n4. **Market Analysis**: Conduct comprehensive market research and analysis",
+  "code_samples": [
+    {
+      "code": "Example Response:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Additional Use Cases",
+      "id": "additional-use-cases"
+    }
+  ],
+  "url": "llms-txt#example-1:-basic-search-for-news",
+  "links": []
+}

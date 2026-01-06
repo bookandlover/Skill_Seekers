@@ -1,0 +1,8 @@
+{
+  "title": "Get API key from environment",
+  "content": "api_key = os.getenv('TAVILY_API_KEY')\nassert api_key is not None",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#get-api-key-from-environment",
+  "links": []
+}

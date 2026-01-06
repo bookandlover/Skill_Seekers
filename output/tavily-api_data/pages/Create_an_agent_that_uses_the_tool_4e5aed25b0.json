@@ -1,0 +1,13 @@
+{
+  "title": "Create an agent that uses the tool",
+  "content": "extractor_agent = Agent(\n    role='Web Page Content Extractor',\n    goal='Extract key information from the given web pages',\n    backstory='You are an expert at extracting relevant content from websites using the Tavily Extract.',\n    tools=[tavily_tool],\n    verbose=True\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#create-an-agent-that-uses-the-tool",
+  "links": []
+}

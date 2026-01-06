@@ -1,0 +1,25 @@
+{
+  "title": "--- conversation ---",
+  "content": "messages = [\n    {\"role\": \"system\", \"content\": \"You are a helpful assistant that uses Tavily search when needed.\"},\n    {\"role\": \"user\", \"content\": \"What are the top trends in 2025 about AI agents?\"}\n]\npython theme={null}\n#Ask the model; let it decide whether to call the tool\nresponse = openai_client.chat.completions.create(\n    model=\"gpt-4o-mini\",\n    messages=messages,\n    tools=tools,\n)\npython theme={null}\nassistant_msg = response.choices[0].message\n # keep the assistant msg that requested tool(s)\nmessages.append(assistant_msg) \npython theme={null}\n\nif getattr(assistant_msg, \"tool_calls\", None):\n    for tc in assistant_msg.tool_calls:\n        args = tc.function.arguments\n        if isinstance(args, str):\n            args = json.loads(args)\n        elif not isinstance(args, dict):\n            args = json.loads(str(args))\n\nif tc.function.name == \"tavily_search\":\n            # forward ALL args\n            results = tavily_search(**args)\n\nmessages.append({\n                \"role\": \"tool\",\n                \"tool_call_id\": tc.id,\n                \"name\": \"tavily_search\",\n                \"content\": json.dumps(results),\n            })\nelse:\n    print(\"\\nNo tool call requested by the model.\")",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#----conversation----",
+  "links": []
+}

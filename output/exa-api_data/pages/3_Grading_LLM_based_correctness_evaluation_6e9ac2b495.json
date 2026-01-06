@@ -1,0 +1,8 @@
+{
+  "title": "3. Grading (LLM-based correctness evaluation)",
+  "content": "grade = grading_llm.evaluate(\n    question=query,\n    expected_answer=ground_truth,\n    generated_answer=answer\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#3.-grading-(llm-based-correctness-evaluation)",
+  "links": []
+}

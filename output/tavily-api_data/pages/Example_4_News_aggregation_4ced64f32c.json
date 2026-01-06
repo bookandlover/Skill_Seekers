@@ -1,0 +1,14 @@
+{
+  "title": "Example 4: News aggregation",
+  "content": "agent.print_response(\n    \"Gather the latest news about artificial intelligence from tech news websites \"\n    \"published in the last week\",\n    markdown=True\n)\n```\n\n## Additional Use Cases\n\n1. **Content Curation**: Gather and organize information from multiple sources\n2. **Real-time Data Integration**: Keep your AI agents up-to-date with the latest information\n3. **Technical Documentation**: Search and analyze technical documentation\n4. **Market Analysis**: Conduct comprehensive market research and analysis",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Additional Use Cases",
+      "id": "additional-use-cases"
+    }
+  ],
+  "url": "llms-txt#example-4:-news-aggregation",
+  "links": []
+}

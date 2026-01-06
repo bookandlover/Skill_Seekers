@@ -1,0 +1,19 @@
+{
+  "title": "Old approach - limited to LinkedIn",
+  "content": "result = exa.search(\"VP of Product at Microsoft\", category=\"linkedin\")\npython  theme={null}",
+  "code_samples": [
+    {
+      "code": "### After",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "After",
+      "id": "after"
+    }
+  ],
+  "url": "llms-txt#old-approach---limited-to-linkedin",
+  "links": []
+}

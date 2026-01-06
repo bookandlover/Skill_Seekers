@@ -1,0 +1,33 @@
+{
+  "title": "Python SDK Specification",
+  "content": "Source: https://docs.exa.ai/sdks/python-sdk-specification\n\nEnumeration of methods and types in the Exa Python SDK (exa_py).\n\nInstall the [exa-py](https://github.com/exa-labs/exa-py) SDK\n\nand then instantiate an Exa client\n\n<Card title=\"Get API Key\" icon=\"key\" horizontal href=\"https://dashboard.exa.ai/login?redirect=/docs?path=/reference/python-sdk-specification\">\n  Follow this link to get your API key\n</Card>\n\nPerform an Exa search given an input query and retrieve a list of relevant results as links.\n\n```Python Python theme={null}",
+  "code_samples": [
+    {
+      "code": "and then instantiate an Exa client",
+      "language": "unknown"
+    },
+    {
+      "code": "<Card title=\"Get API Key\" icon=\"key\" horizontal href=\"https://dashboard.exa.ai/login?redirect=/docs?path=/reference/python-sdk-specification\">\n  Follow this link to get your API key\n</Card>\n\n## `search` Method\n\nPerform an Exa search given an input query and retrieve a list of relevant results as links.\n\n### Input Example:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Getting started",
+      "id": "getting-started"
+    },
+    {
+      "level": "h2",
+      "text": "`search` Method",
+      "id": "`search`-method"
+    },
+    {
+      "level": "h3",
+      "text": "Input Example:",
+      "id": "input-example:"
+    }
+  ],
+  "url": "llms-txt#python-sdk-specification",
+  "links": []
+}

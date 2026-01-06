@@ -1,0 +1,47 @@
+{
+  "title": "Quickstart",
+  "content": "Source: https://docs.tavily.com/sdk/python/quick-start\n\nIntegrate Tavily's powerful APIs natively in your Python apps.\n\n<Tip>\n  Looking for the Python SDK Reference? Head to our [Python SDK Reference](/sdk/python/reference) and learn how to use `tavily-python`.\n</Tip>\n\nThe Python SDK allows for easy interaction with the Tavily API, offering the full range of our search functionality directly from your Python programs. Easily integrate smart search capabilities into your applications, harnessing Tavily's powerful search features.\n\n<CardGroup>\n  <Card title=\"GitHub\" icon=\"github\" href=\"https://github.com/tavily-ai/tavily-python\">\n    `/tavily-ai/tavily-python`\n\n<img alt=\"GitHub Repo stars\" />\n  </Card>\n\n<Card title=\"PyPI\" icon=\"python\" href=\"https://pypi.org/project/tavily-python\">\n    `tavily-python`\n\n<img alt=\"PyPI downloads\" />\n  </Card>\n</CardGroup>\n\nGet started with our Python SDK in less than 5 minutes!\n\n<Card icon=\"key\" href=\"https://app.tavily.com\" title=\"Get your free API key\">\n  You get 1,000 free API Credits every month. **No credit card required.**\n</Card>\n\nYou can install the Tavily Python SDK using the following:\n\nWith Tavily's Python SDK, you can search the web in only 4 lines of code:\n\nYou can also easily extract content from URLs:\n\nTavily also allows you to perform a smart crawl starting at a given URL.\n\nThese examples are very simple, and you can do so much more with Tavily!\n\nOur Python SDK supports the full feature range of our [REST API](/documentation/api-reference/introduction), and more. We offer both a synchronous and an asynchronous client, for increased flexibility.\n\n* The `search` function lets you harness the full power of Tavily Search.\n* The `extract` function allows you to easily retrieve web content with Tavily Extract.\n* The `crawl` and `map`functions allow you to intelligently traverse websites and extract content.\n\nFor more details, head to the [Python SDK Reference](/sdk/python/reference).",
+  "code_samples": [
+    {
+      "code": "### Usage\n\nWith Tavily's Python SDK, you can search the web in only 4 lines of code:",
+      "language": "unknown"
+    },
+    {
+      "code": "You can also easily extract content from URLs:",
+      "language": "unknown"
+    },
+    {
+      "code": "Tavily also allows you to perform a smart crawl starting at a given URL.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Quickstart",
+      "id": "quickstart"
+    },
+    {
+      "level": "h3",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h3",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    }
+  ],
+  "url": "llms-txt#quickstart",
+  "links": []
+}

@@ -1,0 +1,65 @@
+{
+  "title": "Exa AI SDK",
+  "content": "Exa is a Websearch API. Add Exa websearch tool to your LLMs in just a few lines of code. Giving your AI apps websearch capabilites. Works with AI SDK by Vercel.\n\nGet your API key from the [Exa Dashboard](https://dashboard.exa.ai/api-keys).\n\n**Defaults when you use `webSearch()`:**\n\n* Type: `auto` (best search)\n* Results: `10`\n* Text: `3000 characters per result`\n* Livecrawl: `fallback` (fresh content when needed)\n\n1. Get your API key from the [Exa Dashboard](https://dashboard.exa.ai/api-keys)\n2. Add it to your `.env` file:\n\nThat's it! The package reads it automatically.\n\nHere's a full-featured example combining the most useful search settings:\n\n## TypeScript Support\n\nFull TypeScript types included:\n\n* [GitHub Repository](https://github.com/exa-labs/ai-sdk) - View source code of this npm package\n* [Try npm Package](https://www.npmjs.com/package/@exalabs/ai-sdk) - View on npm\n* [Vercel AI SDK Docs](https://ai-sdk.dev/cookbook/node/web-search-agent#exa) - Web Search Agent guide featuring Exa\n* [API Dashboard](https://dashboard.exa.ai) - Try Exa API on the dashboard\n* [Get your API Keys](https://dashboard.exa.ai/api-keys) - Get your API keys\n* [Exa Website](https://exa.ai) - Learn more about Exa",
+  "code_samples": [
+    {
+      "code": "## Quick Start",
+      "language": "unknown"
+    },
+    {
+      "code": "Get your API key from the [Exa Dashboard](https://dashboard.exa.ai/api-keys).\n\n**Defaults when you use `webSearch()`:**\n\n* Type: `auto` (best search)\n* Results: `10`\n* Text: `3000 characters per result`\n* Livecrawl: `fallback` (fresh content when needed)\n\n## Setup\n\n1. Get your API key from the [Exa Dashboard](https://dashboard.exa.ai/api-keys)\n2. Add it to your `.env` file:",
+      "language": "unknown"
+    },
+    {
+      "code": "That's it! The package reads it automatically.\n\n## Example\n\nHere's a full-featured example combining the most useful search settings:",
+      "language": "unknown"
+    },
+    {
+      "code": "## All Options",
+      "language": "unknown"
+    },
+    {
+      "code": "## TypeScript Support\n\nFull TypeScript types included:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Install",
+      "id": "install"
+    },
+    {
+      "level": "h2",
+      "text": "Quick Start",
+      "id": "quick-start"
+    },
+    {
+      "level": "h2",
+      "text": "Setup",
+      "id": "setup"
+    },
+    {
+      "level": "h2",
+      "text": "Example",
+      "id": "example"
+    },
+    {
+      "level": "h2",
+      "text": "All Options",
+      "id": "all-options"
+    },
+    {
+      "level": "h2",
+      "text": "TypeScript Support",
+      "id": "typescript-support"
+    },
+    {
+      "level": "h2",
+      "text": "Links",
+      "id": "links"
+    }
+  ],
+  "url": "llms-txt#exa-ai-sdk",
+  "links": []
+}

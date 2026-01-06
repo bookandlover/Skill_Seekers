@@ -1,0 +1,73 @@
+{
+  "title": "null",
+  "content": "Source: https://docs.tavily.com/welcome\n\n<div>\n  <div>\n    <h1>\n      Build with <span>Tavily</span>\n    </h1>\n\n<p>\n      Your journey to state-of-the-art web search starts right here.\n    </p>\n  </div>\n\n<div>\n    <div>\n      <div>\n        Installation\n      </div>\n\n<Columns>\n        <Card title=\"Python SDK\" icon=\"python\">\n          \n        </Card>\n\n<Card title=\"JavaScript SDK\" icon=\"node\">\n          \n        </Card>\n      </Columns>\n\n<div>\n        Try it now\n      </div>\n\n<Tabs>\n        <Tab title=\"Search the web\" icon=\"search\">\n          <CodeGroup>\n\n<a href=\"/documentation/api-reference/endpoint/search\">\n            Learn more about the Search API →\n          </a>\n        </Tab>\n\n<Tab title=\"Extract webpages\" icon=\"file-code\">\n          <CodeGroup>\n\n<a href=\"/documentation/api-reference/endpoint/extract\">\n            Learn more about the Extract API →\n          </a>\n        </Tab>\n\n<Tab title=\"Crawl webpages\" icon=\"spider\">\n          <CodeGroup>\n\n<a href=\"/documentation/api-reference/endpoint/crawl\">\n            Learn more about the Crawl API →\n          </a>\n        </Tab>\n\n<Tab title=\"Map webpages\" icon=\"map\">\n          <CodeGroup>\n\n<a href=\"/documentation/api-reference/endpoint/map\">\n            Learn more about the Map API →\n          </a>\n        </Tab>\n\n<Tab title=\"Create Research Task\" icon=\"book\">\n          <CodeGroup>\n\n<a href=\"/documentation/api-reference/endpoint/research\">\n            Learn more about the Research API →\n          </a>\n        </Tab>\n      </Tabs>\n    </div>\n  </div>\n\n<h3>\n      Developer Resources\n    </h3>\n  </div>\n\n<div>\n    <CardGroup>\n      <Card title=\"API Credits Overview\" icon=\"book-open\" href=\"/documentation/api-credits\">\n        Learn how Tavily API credits work.\n      </Card>\n\n<Card title=\"Rate Limits\" icon=\"gauge\" href=\"/documentation/rate-limits\">\n        Understand Tavily's rate limits and policies.\n      </Card>\n\n<Card title=\"Playground\" icon=\"play\" href=\"https://app.tavily.com/playground\">\n        Try Tavily's APIs interactively.\n      </Card>\n    </CardGroup>\n  </div>\n</div>\n\n<div>\n  <div>\n    <div>\n      <Icon icon=\"circle-question\" />\n\n<span>\n        <span>Question?</span>\n\n<a href=\"mailto:support@tavily.com\">\n          Contact Us\n        </a>\n      </span>\n    </div>\n\n<div>\n      <Icon icon=\"discourse\" />\n\n<span>\n        <span>Integration issues?</span>\n\n<a href=\"https://community.tavily.com/\">\n          Join Community\n        </a>\n      </span>\n    </div>\n\n<div>\n      <Icon icon=\"sparkles\" />\n\n<span>\n        <span>Using LLMs?</span>\n\n<a href=\"/llms.txt\">\n          Read LLMs.txt\n        </a>\n      </span>\n    </div>\n\n<div>\n      <Icon icon=\"circle-check\" />\n\n<span>\n        <span>Something not right?</span>\n\n<a href=\"https://status.tavily.com/\">\n          Check Status\n        </a>\n      </span>\n    </div>\n  </div>\n\n<div>\n    <div>\n      <div>\n        <div>\n          <span>© Tavily</span>\n\n<a href=\"https://www.tavily.com/privacy\">\n            Privacy Policy\n          </a>\n        </div>\n\n<div>\n          <a href=\"https://www.linkedin.com/company/tavily\" aria-label=\"LinkedIn\">\n            <Icon icon=\"linkedin\" />\n          </a>\n\n<a href=\"https://x.com/tavilyai\" aria-label=\"Twitter\">\n            <Icon icon=\"twitter\" />\n          </a>\n\n<a href=\"https://github.com/tavily-ai\" aria-label=\"GitHub\">\n            <Icon icon=\"github\" />\n          </a>\n\n<a href=\"https://www.youtube.com/@TavilyAI\" aria-label=\"YouTube\">\n            <Icon icon=\"youtube\" />\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>",
+  "code_samples": [
+    {
+      "code": "</Card>\n\n        <Card title=\"JavaScript SDK\" icon=\"node\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Card>\n      </Columns>\n\n      <div>\n        Try it now\n      </div>\n\n      <Tabs>\n        <Tab title=\"Search the web\" icon=\"search\">\n          <CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n          <a href=\"/documentation/api-reference/endpoint/search\">\n            Learn more about the Search API →\n          </a>\n        </Tab>\n\n        <Tab title=\"Extract webpages\" icon=\"file-code\">\n          <CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n          <a href=\"/documentation/api-reference/endpoint/extract\">\n            Learn more about the Extract API →\n          </a>\n        </Tab>\n\n        <Tab title=\"Crawl webpages\" icon=\"spider\">\n          <CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n          <a href=\"/documentation/api-reference/endpoint/crawl\">\n            Learn more about the Crawl API →\n          </a>\n        </Tab>\n\n        <Tab title=\"Map webpages\" icon=\"map\">\n          <CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n          <a href=\"/documentation/api-reference/endpoint/map\">\n            Learn more about the Map API →\n          </a>\n        </Tab>\n\n        <Tab title=\"Create Research Task\" icon=\"book\">\n          <CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#null",
+  "links": []
+}

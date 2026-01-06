@@ -1,0 +1,8 @@
+{
+  "title": "Enable specific tools only",
+  "content": "npx exa-mcp-server tools=web_search_exa",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#enable-specific-tools-only",
+  "links": []
+}

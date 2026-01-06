@@ -1,0 +1,8 @@
+{
+  "title": "How does it work?",
+  "content": "<Frame>\n  <img alt=\"Web Evaluation Graph\" />\n</Frame>\n\nThe Real-Time Dataset Generator follows a systematic workflow to create high-quality evaluation datasets:\n\n<Steps>\n  <Step title=\"Input\">\n    The workflow begins with user-provided inputs.\n  </Step>\n\n<Step title=\"Domain-Specific Search Query Generation\">\n    If a subject is provided (e.g., “NBA Basketball”), the system **generates a\n    set of search queries**. This ensures queries are tailored to gather\n    high-quality, recent, and subject-specific information.\n  </Step>\n\n<Step title=\"Web Search with Tavily\">\n    This step guarantees that the dataset reflects **current and relevant\n    information**, particularly for web search RAG evaluation, where up-to-date\n    data is crucial.This is the **heart of the RAG Dataset Generator**,\n    transforming queries into actionable, high-quality data that forms the\n    foundation of the evaluation set.\n  </Step>\n\n<Step title=\"Q&A Pair Generation\">\n    For each website returned by Tavily, the system generates question-answer pair\n    using a **map-reduce paradigm** to ensure efficient processing across multiple\n    sources. This step is implemented using LangGraph’s Send API.\n  </Step>\n\n<Step title=\"Saving the Evaluation Set\">\n    Finally, the generated dataset is saved either **locally** or to\n    **Langsmith**, based on the input configuration.\n  </Step>\n\n<Step title=\"Output\">\n    The result is a well-structured, subject-specific evaluation dataset, ready for use in advanced evaluation methods like **LLM-as-a-Judge**.\n  </Step>\n</Steps>",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#how-does-it-work?",
+  "links": []
+}

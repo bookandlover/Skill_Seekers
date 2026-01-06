@@ -1,0 +1,8 @@
+{
+  "title": "The AI will analyze the user's question and decide if it needs to search the web",
+  "content": "response = openai_client.responses.create(\n    model=\"gpt-4o-mini\",\n    tools=tools,\n    input=input_list,\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#the-ai-will-analyze-the-user's-question-and-decide-if-it-needs-to-search-the-web",
+  "links": []
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Introducing Exa People Search",
+  "content": "Source: https://docs.exa.ai/changelog/people-search-launch\n\nWe're launching state-of-the-art people search with 1B+ indexed profiles. The 'linkedin' category is now replaced with 'people' for better results.\n\n**Date: December 19, 2025**\n\nWe're launching **Exa People Search**, a new way to find and discover people on the web, designed for real production use across sales, recruiting, research, and more.\n\n<Info>\n  Try People Search in our API Playground with `category = \"people\"`. [Try People Search in the dashboard →](https://dashboard.exa.ai/playground/search?q=product%20managers%20at%20microsoft\\&c=people\\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22auto%22%7D)\n</Info>\n\n**State-of-the-art people search**: Exa indexed 1B+ public profiles and trained a hybrid retrieval system (fine-tuned embeddings + Exa Search) to deliver highly accurate role, skill, and company based people search at web scale.\n\n**Usecase focused**: Customers can run queries like \"VP of Product at Microsoft\" or \"enterprise sales reps from Microsoft in EMEA\" and programmatically enrich results with profiles for sales, recruiting, and market research workflows.\n\nWe're replacing the `linkedin` category with the new `people` category to provide better, more comprehensive people search results.\n\n```python  theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What's New",
+      "id": "what's-new"
+    },
+    {
+      "level": "h2",
+      "text": "What Changed",
+      "id": "what-changed"
+    },
+    {
+      "level": "h3",
+      "text": "Before",
+      "id": "before"
+    }
+  ],
+  "url": "llms-txt#introducing-exa-people-search",
+  "links": []
+}

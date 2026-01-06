@@ -1,0 +1,47 @@
+{
+  "title": "Crawl and extract content",
+  "content": "result = tavily_crawl.invoke({\n    \"url\": \"https://docs.example.com\",\n    \"instructions\": \"Extract API documentation and code examples\"\n})\npython theme={null}\n{\n    'base_url': 'https://docs.example.com',\n    'results': [\n        {\n            'url': 'https://docs.example.com',\n            'raw_content': '# Documentation\\nWelcome to our API documentation...'\n        },\n        {\n            'url': 'https://docs.example.com/api',\n            'raw_content': '# API Reference\\nComplete API reference guide...'\n        }\n    ],\n    'response_time': 4.5,\n    'request_id': 'req_abc123'\n}\npython theme={null}\nfrom langchain_tavily import TavilyResearch\n\ntavily_research = TavilyResearch(\n    # model=\"auto\",\n    # citation_format=\"numbered\",\n    # stream=False,\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Example output:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Tavily Research\n\nHere we show how to instantiate the Tavily research tool. This tool allows you to create comprehensive research tasks using Tavily's Research API endpoint, with optional structured output.\n\n### Available Parameters\n\n* `input` (required, str): The research task or question to investigate.\n* `model` (optional, str): The research model to use, one of `\"mini\"`, `\"pro\"`, or `\"auto\"`. Default is `\"auto\"`.\n* `output_schema` (optional, dict): A JSON Schema object that defines the structure of the research output. Must include a `properties` field and may optionally include a `required` field.\n* `stream` (optional, bool): Whether to stream the research results as they are generated. When `True`, returns a streaming response. Default is `False`.\n* `citation_format` (optional, str): The format for citations in the research report, one of `\"numbered\"`, `\"mla\"`, `\"apa\"`, or `\"chicago\"`. Default is `\"numbered\"`.\n\n### Instantiation",
+      "language": "unknown"
+    },
+    {
+      "code": "### Invoke directly with args\n\nThe Tavily research tool accepts the following arguments during invocation:\n\n* `input` (required): A natural language research task or question.\n* The following arguments can also be set during invocation: `model`, `output_schema`, `stream`, and `citation_format`.\n\nNOTE: The optional arguments are available for agents to dynamically set. If you set an argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invocation.\n\n### Direct Tool Invocation",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Tavily Research",
+      "id": "tavily-research"
+    },
+    {
+      "level": "h3",
+      "text": "Available Parameters",
+      "id": "available-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Instantiation",
+      "id": "instantiation"
+    },
+    {
+      "level": "h3",
+      "text": "Invoke directly with args",
+      "id": "invoke-directly-with-args"
+    },
+    {
+      "level": "h3",
+      "text": "Direct Tool Invocation",
+      "id": "direct-tool-invocation"
+    }
+  ],
+  "url": "llms-txt#crawl-and-extract-content",
+  "links": []
+}

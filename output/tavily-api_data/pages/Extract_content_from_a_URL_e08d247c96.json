@@ -1,0 +1,32 @@
+{
+  "title": "Extract content from a URL",
+  "content": "result = tavily_extract.invoke({\n    \"urls\": [\"https://en.wikipedia.org/wiki/Lionel_Messi\"]\n})\npython theme={null}\n{\n    'results': [{\n        'url': 'https://en.wikipedia.org/wiki/Lionel_Messi',\n        'raw_content': 'Lionel Messi\\nLionel Andrés \"Leo\" Messi...',\n        'images': []\n    }],\n    'failed_results': [],\n    'response_time': 0.79\n}\npython theme={null}\nfrom langchain_tavily import TavilyMap\n\ntool = TavilyMap()\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Example output:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Tavily Map/Crawl\n\nTavily provides two complementary tools for website exploration: **Map** and **Crawl**. The `map` tool discovers and lists URLs from a website, providing a structural overview without extracting content. The `crawl` tool then extracts the full content from these discovered URLs, making it ideal for data extraction, documentation indexing, and building knowledge bases.\n\n### Tavily Map\n\nThe Map tool discovers all internal links starting from a base URL, perfect for understanding site structure or planning content extraction.\n\n#### Available Parameters\n\n* `url` (required, str): The root URL to begin mapping.\n* `instructions` (optional, str): Natural language instructions guiding the mapping process.\n\nFor a comprehensive overview, refer to the [Tavily Map API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/map)\n\n#### Instantiation",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Direct Tool Invocation",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Tavily Map/Crawl",
+      "id": "tavily-map/crawl"
+    },
+    {
+      "level": "h3",
+      "text": "Tavily Map",
+      "id": "tavily-map"
+    }
+  ],
+  "url": "llms-txt#extract-content-from-a-url",
+  "links": []
+}

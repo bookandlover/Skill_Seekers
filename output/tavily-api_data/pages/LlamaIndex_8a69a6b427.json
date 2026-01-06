@@ -1,0 +1,24 @@
+{
+  "title": "LlamaIndex",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/llamaindex\n\nSearch the web from LlamaIndex with Tavily.\n\n<Note>\n  This tool has a more extensive example use case documented in a Jupyter notebook [here](https://github.com/run-llama/llama_index/blob/main/llama-index-integrations/tools/llama-index-tools-tavily-research/examples/tavily.ipynb).\n</Note>\n\n## Install Tavily and LlamaIndex\n\nThe following dependencies are required to properly run the integration:\n\nYou can use access Tavily in LlamaIndex through the `TavilyToolSpec`.\n\nHere is a simple use case that performs a web search with Tavily and generates an answer to the user's search query:\n\n`search`: Search for relevant dynamic data based on a query. Returns a list of urls and their relevant content.\n\nThis loader is designed to be used as a way to load data as a Tool in an Agent. See [here](https://github.com/emptycrown/llama-hub/tree/main) for examples.",
+  "code_samples": [
+    {
+      "code": "## Usage\n\nYou can use access Tavily in LlamaIndex through the `TavilyToolSpec`.\n\nHere is a simple use case that performs a web search with Tavily and generates an answer to the user's search query:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Install Tavily and LlamaIndex",
+      "id": "install-tavily-and-llamaindex"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#llamaindex",
+  "links": []
+}

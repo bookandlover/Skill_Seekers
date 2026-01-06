@@ -1,0 +1,44 @@
+{
+  "title": "Agent Builder",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/agent-builder\n\nIntegrate OpenAI’s Agent Builder with Tavily’s MCP server to empower your AI agents with real-time web access.\n\nBefore you begin, make sure you have:\n\n* A [Tavily API key](https://app.tavily.com/home) (sign up for free if you don't have one)\n* An OpenAI account with [organization verification](https://help.openai.com/en/articles/10910291-api-organization-verification)\n\n<Step title=\"Create a new workflow in Agent Builder\">\n  Navigate to [Agent Builder](https://platform.openai.com/agent-builder) and click **Create New Workflow** to begin building your AI agent.\n\n<img alt=\"Create New Workflow\" />\n</Step>\n\n<Step title=\"Select the agent node in your workflow\">\n  Click on the agent node in your workflow canvas to open the configuration panel.\n\n<img alt=\"Agent Block\" />\n</Step>\n\n<Step title=\"Open the Tools configuration\">\n  In the configuration panel, locate and click on **Tools** in the sidebar to add external capabilities to your agent.\n\n<img alt=\"Tools Panel\" />\n</Step>\n\n<Step title=\"Connect Tavily's MCP server\">\n  In the MCP configuration section, paste the Tavily MCP server URL:\n\nRemember to replace `YOUR_API_KEY` with your actual Tavily API key.\n\n<Tip>\n    Need an API key? Get one instantly from your [Tavily dashboard](https://app.tavily.com/home)\n  </Tip>\n\nClick **Connect** to establish the connection to Tavily.\n\n<img alt=\"Tavily MCP Configuration\" />\n</Step>\n\n<Step title=\"Enable Tavily capabilities for your agent\">\n  Once connected, you'll see Tavily's suite of tools available:\n\n* **tavily\\_search** - Execute a search query.\n  * **tavily\\_extract** - Extract web page content from one or more specified URLs.\n  * **tavily\\_map** - Traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.\n  * **tavily\\_crawl** - Traversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.\n\nSelect the tools you want to activate for this agent, then click **Add** to integrate them.\n\n<img alt=\"Tavily Tools Available\" />\n</Step>\n\n<Step title=\"Customize your agent's behavior\">\n  Now configure your agent:\n\n* **Name**: Choose a descriptive name for your agent\n  * **Instructions**: Define the agent's role and how it should use Tavily's tools\n  * **Reasoning**: Set the appropriate reasoning effort level\n  * Click **Preview** to test the configuration\n\n**Sample instructions:**\n\n<img alt=\"Agent Configuration Panel\" />\n</Step>\n\n<Step title=\"Verify your agent works correctly\">\n  Test your agent with queries that require real-time information to verify everything is working as expected.\n\n<img alt=\"Agent Testing Interface\" />\n</Step>\n\n## Real-World Applications\n\n### Market Research Agents\n\nBuild agents that continuously monitor industry trends, competitor activities, and market sentiment by searching for and analyzing relevant business information.\n\n### Content Curation Systems\n\nCreate agents that automatically find, extract, and summarize content from multiple sources based on your specific criteria and preferences.\n\n### Competitive Intelligence\n\nDevelop agents that crawl competitor websites, map their content strategies, and extract pricing, features, and positioning information.\n\n### News & Event Monitors\n\nBuild agents that track breaking news on specific topics by leveraging Tavily's news search mode, providing real-time updates with citations.",
+  "code_samples": [
+    {
+      "code": "Remember to replace `YOUR_API_KEY` with your actual Tavily API key.\n\n  <Tip>\n    Need an API key? Get one instantly from your [Tavily dashboard](https://app.tavily.com/home)\n  </Tip>\n\n  Click **Connect** to establish the connection to Tavily.\n\n  <img alt=\"Tavily MCP Configuration\" />\n</Step>\n\n<Step title=\"Enable Tavily capabilities for your agent\">\n  Once connected, you'll see Tavily's suite of tools available:\n\n  * **tavily\\_search** - Execute a search query.\n  * **tavily\\_extract** - Extract web page content from one or more specified URLs.\n  * **tavily\\_map** - Traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.\n  * **tavily\\_crawl** - Traversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.\n\n  Select the tools you want to activate for this agent, then click **Add** to integrate them.\n\n  <img alt=\"Tavily Tools Available\" />\n</Step>\n\n<Step title=\"Customize your agent's behavior\">\n  Now configure your agent:\n\n  * **Name**: Choose a descriptive name for your agent\n  * **Instructions**: Define the agent's role and how it should use Tavily's tools\n  * **Reasoning**: Set the appropriate reasoning effort level\n  * Click **Preview** to test the configuration\n\n  **Sample instructions:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Getting Started",
+      "id": "getting-started"
+    },
+    {
+      "level": "h2",
+      "text": "Real-World Applications",
+      "id": "real-world-applications"
+    },
+    {
+      "level": "h3",
+      "text": "Market Research Agents",
+      "id": "market-research-agents"
+    },
+    {
+      "level": "h3",
+      "text": "Content Curation Systems",
+      "id": "content-curation-systems"
+    },
+    {
+      "level": "h3",
+      "text": "Competitive Intelligence",
+      "id": "competitive-intelligence"
+    },
+    {
+      "level": "h3",
+      "text": "News & Event Monitors",
+      "id": "news-&-event-monitors"
+    }
+  ],
+  "url": "llms-txt#agent-builder",
+  "links": []
+}

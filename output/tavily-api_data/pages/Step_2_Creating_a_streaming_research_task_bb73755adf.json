@@ -1,0 +1,46 @@
+{
+  "title": "Step 2. Creating a streaming research task",
+  "content": "stream = tavily_client.research(\n    input=\"Research the latest developments in AI\",\n    model=\"pro\",\n    stream=True\n)\n\nfor chunk in stream:\n    print(chunk.decode('utf-8'))\njavascript theme={null}\nconst { tavily } = require(\"@tavily/core\");\n\nconst tvly = tavily({ apiKey: \"tvly-YOUR_API_KEY\" });\n\nconst stream = await tvly.research(\"Research the latest developments in AI\", {\n  model: \"pro\",\n  stream: true,\n});\n\nfor await (const chunk of result as AsyncGenerator<Buffer, void, unknown>) {\n    console.log(chunk.toString('utf-8'));\n}\njson theme={null}\n{\n  \"delta\": {\n    \"role\": \"assistant\",\n    \"content\": {\n      \"company\": \"Acme Corp\",\n      \"key_metrics\": [\"Revenue: $1M\", \"Growth: 50%\"],\n      \"summary\": \"Company showing strong growth...\"\n    }\n  }\n}\njson theme={null}\n{\n  \"id\": \"1d77bdf5-38a4-46c1-87a6-663dbc4528ec\",\n  \"object\": \"error\",\n  \"error\": \"An error occurred while streaming the research task\"\n}\njson theme={null}\n{\n  \"request_id\": \"123e4567-e89b-12d3-a456-426614174111\",\n  \"created_at\": \"2025-01-15T10:30:00Z\",\n  \"status\": \"pending\",\n  \"input\": \"What are the latest developments in AI?\",\n  \"model\": \"mini\",\n  \"response_time\": 1.23\n}\n```\n\nYou can then poll the status endpoint to check when the research is complete.",
+  "code_samples": [
+    {
+      "code": "### JavaScript Example",
+      "language": "unknown"
+    },
+    {
+      "code": "## Structured Output with Streaming\n\nWhen using `output_schema` to request structured data, the `content` field will contain an object instead of a string:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Error Handling\n\nIf an error occurs during streaming, you may receive an error event:",
+      "language": "unknown"
+    },
+    {
+      "code": "Always implement proper error handling in your streaming client to gracefully handle these cases.\n\n## Non-Streaming Alternative\n\nIf you don't need real-time updates, set `stream: false` (or omit the parameter) to receive a single complete response:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "JavaScript Example",
+      "id": "javascript-example"
+    },
+    {
+      "level": "h2",
+      "text": "Structured Output with Streaming",
+      "id": "structured-output-with-streaming"
+    },
+    {
+      "level": "h2",
+      "text": "Error Handling",
+      "id": "error-handling"
+    },
+    {
+      "level": "h2",
+      "text": "Non-Streaming Alternative",
+      "id": "non-streaming-alternative"
+    }
+  ],
+  "url": "llms-txt#step-2.-creating-a-streaming-research-task",
+  "links": []
+}

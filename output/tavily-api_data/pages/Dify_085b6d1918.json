@@ -1,0 +1,44 @@
+{
+  "title": "Dify",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/dify\n\nTavily is now available for no-code integration through Dify.\n\nIntegrate Tavily with Dify to enhance your AI workflows without writing any code. Dify is a no-code platform that allows you to build and deploy AI applications using various tools, including the **Tavily Search API** and **Tavily Extract API**. This integration enables access to real-time web data, improving the capabilities of your AI applications.\n\n## How to set up Tavily with Dify\n\nFollow these steps to integrate Tavily with Dify:\n\n<AccordionGroup>\n  <Accordion title=\"Step 1: Log in to Dify\">\n    Go to [Dify](https://dify.ai/) and log in to your account.\n  </Accordion>\n\n<Accordion title=\"Step 2: Obtain Your Tavily API Key\">\n    Go to the [Tavily Dashboard](https://app.tavily.com/home) to obtain your **API key**.\n  </Accordion>\n\n<Accordion title=\"Step 3: Install the Tavily Tool\">\n    Install the **Tavily tool** from the [Plugin Marketplace](https://marketplace.dify.ai/plugins/langgenius/tavily) to enable integration with your Dify workflows.\n  </Accordion>\n\n<Accordion title=\"Step 4: Authorize Tavily in Dify\">\n    In **Dify**, navigate to **Tools > Tavily > To Authorize** and enter your **Tavily API key** to connect your Dify instance to Tavily.\n  </Accordion>\n</AccordionGroup>\n\n## Using the Tavily tool in Dify\n\nTavily can be utilized in various Dify application types:\n\n### Chatflow / Workflow Applications\n\nDify’s Chatflow and Workflow applications support Tavily tool nodes, which include:\n\n* **Tavily Search API** – Perform dynamic web searches and retrieve up-to-date information.\n* **Tavily Extract API** – Extract raw content from web pages.\n\nThese nodes allow you to automate tasks such as research, content curation, and real-time data integration into your workflows.\n\n### Agent Applications\n\nIn Agent applications, you can integrate the Tavily tool to access web data in real time. Use this to:\n\n* Retrieve structured and relevant search results.\n* Extract raw content for further processing.\n* Provide accurate, context-aware answers to user queries.\n\n## Example use case: automated deep research\n\nUse **Tavily Search API** within **Dify** to conduct automated, multi-step searches, iterating through multiple queries to gather, refine, and summarize insights for comprehensive reports.\n\nFor a detailed walkthrough, check out this blog post:\n[DeepResearch: Building a Research Automation App with Dify](https://dify.ai/blog/deepresearch-building-a-research-automation-app-with-dify)\n\n## Best practices for using Tavily in Dify\n\n* **Design Concise Queries** – Use focused queries to maximize the relevance of search results.\n* **Utilize Domain Filtering** – Use the `include_domains` parameter to narrow search results to specific domains.\n* **Enable an Agentic Workflow** – Leverage an LLM to dynamically generate and refine queries for Tavily.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "How to set up Tavily with Dify",
+      "id": "how-to-set-up-tavily-with-dify"
+    },
+    {
+      "level": "h2",
+      "text": "Using the Tavily tool in Dify",
+      "id": "using-the-tavily-tool-in-dify"
+    },
+    {
+      "level": "h3",
+      "text": "Chatflow / Workflow Applications",
+      "id": "chatflow-/-workflow-applications"
+    },
+    {
+      "level": "h3",
+      "text": "Agent Applications",
+      "id": "agent-applications"
+    },
+    {
+      "level": "h2",
+      "text": "Example use case: automated deep research",
+      "id": "example-use-case:-automated-deep-research"
+    },
+    {
+      "level": "h2",
+      "text": "Best practices for using Tavily in Dify",
+      "id": "best-practices-for-using-tavily-in-dify"
+    }
+  ],
+  "url": "llms-txt#dify",
+  "links": []
+}

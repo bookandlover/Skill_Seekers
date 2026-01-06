@@ -1,0 +1,42 @@
+{
+  "title": "JS SDK: highlights restored",
+  "content": "Source: https://docs.exa.ai/changelog/highlights-restored-js-sdk\n\nThe highlights feature has been reintroduced in the JavaScript SDK (exa-js) as of version 2.0.11.\n\n**Date: November 26, 2025**\n\nThe highlights feature is back in the JavaScript SDK. Following user feedback, we've reintroduced highlights in `exa-js` v2.0.11, allowing you to extract key sentences from search results with relevance scores.\n\nThe `highlights` option is now available in search and contents operations:\n\n* `highlights: true` - Returns highlighted sentences with default settings\n* `highlights: { numSentences, highlightsPerUrl, query }` - Customize extraction behavior\n\n* `highlights: string[]` - Array of extracted key sentences\n* `highlightScores: number[]` - Relevance scores for each highlight\n\n**Basic highlights:**\n\n**Combined with text:**\n\nThis update applies only to the JavaScript SDK (`exa-js`). Other SDKs can access highlights via direct API calls.",
+  "code_samples": [
+    {
+      "code": "**With options:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Combined with text:**",
+      "language": "unknown"
+    },
+    {
+      "code": "## Scope\n\nThis update applies only to the JavaScript SDK (`exa-js`). Other SDKs can access highlights via direct API calls.\n\n## Installation",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What's Back",
+      "id": "what's-back"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h2",
+      "text": "Scope",
+      "id": "scope"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    }
+  ],
+  "url": "llms-txt#js-sdk:-highlights-restored",
+  "links": []
+}

@@ -1,0 +1,34 @@
+{
+  "title": "StackAI",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/stackai\n\nUsing Tavily in StackAI to enhance your AI workflows with real-time web data.\n\nIntegrate [Tavily with StackAI](https://www.stack-ai.com/integrations/tavily) to enhance your AI workflows with real-time web data. With this integration, you can easily fetch and utilize live web content in your StackAI workflows.\n\n<Frame>\n  <img alt=\"stackai\" />\n</Frame>\n\n## How to set up Tavily with StackAI\n\n<AccordionGroup>\n  <Accordion title=\"Step 1: Log in to StackAI\">\n    <p>\n      <a href=\"https://stack-ai.com/\">Log in</a> to your StackAI account or\n      self-hosted instance.\n    </p>\n  </Accordion>\n\n<Accordion title=\"Step 2: Create a New Workflow\">\n    <p>Create a new workflow or choose one of the available templates.</p>\n  </Accordion>\n\n<Accordion title=\"Step 3: Add Tavily to Your Workflow\">\n    <p>**Option 1: Add Tavily as a Node**</p>\n\n<ul>\n      <li>\n        Search for \"Tavily\" under the **Apps** section in the left sidebar.\n      </li>\n\n<li>Drag and drop the \"Tavily\" app into your canvas.</li>\n    </ul>\n\n<p>**Option 2: Add Tavily as a Tool to an AI Agent**</p>\n\n<ul>\n      <li>\n        Choose between \"Search\", \"Crawl\", \"Extract\" or \"Map\" tool based on your\n        needs.\n      </li>\n    </ul>\n\n**Configure the Tavily Node or Tool:**\n\n<ul>\n      <li>\n        In the Connect Tavily section, create a new connection by entering a\n        connection name and your [Tavily API key](https://app.tavily.com/home).\n      </li>\n    </ul>\n\n**Configuring parameters:**\n    <p>**For Search:**</p>\n\n<ul>\n      <li>\n        Enter your search <code>query</code> (can be manually entered or\n        populated from another node's output)\n      </li>\n\n<li>\n        Select a <code>topic</code> (\"general\" or \"news\")\n      </li>\n\n<li>Choose whether to include raw content or generate an answer</li>\n      <li>Specify Maximum Search Results to return</li>\n      <li>Set search depth and other optional parameters</li>\n    </ul>\n\n<p>**For Extract:**</p>\n\n<ul>\n      <li>\n        Enter the URL(s) to extract content from (can be a single URL or\n        multiple URLs from another node's output)\n      </li>\n\n<li>Choose Extract Depth (\"basic\" or \"advanced\")</li>\n      <li>Specify the output format (\"markdown\" or \"text\")</li>\n    </ul>\n\n<p>**For Crawl:**</p>\n\n<ul>\n      <li>Enter the **Root URL** to crawl</li>\n      <li>Set the crawl instructions to guide the crawler</li>\n      <li>Set the Limit on the number of pages to crawl</li>\n    </ul>\n\n<ul>\n      <li>Enter the **Root URL** to begin the mapping</li>\n      <li>Set the map instructions to guide the mapping process</li>\n      <li>Set the mapping depth to control how deep the mapping goes</li>\n    </ul>\n\n<p>**Test:** Run the node to verify your configuration.</p>\n  </Accordion>\n\n<Accordion title=\"Step 4: Process and Use Tavily Results\">\n    <p>Utilize the search, crawl, extract, or map results in your workflow:</p>\n\n<ul>\n      <li>Process data through additional nodes</li>\n      <li>Send information to your CRM, database, or email</li>\n      <li>Generate reports or notifications</li>\n      <li>Feed data into AI models for further processing</li>\n    </ul>\n  </Accordion>\n</AccordionGroup>\n\n## Use cases for Tavily in StackAI\n\nLeverage Tavily's capabilities to create powerful automated workflows:\n\n* **Job Search Automation**: Find and summarize new job postings, then send results to your inbox\n* **Competitive Intelligence**: Automatically gather and analyze competitor information\n* **Market Research**: Track industry trends and market developments\n* **Content Curation**: Collect and organize relevant content for your business\n* **Lead Enrichment**: Enhance lead data with real-time information\n* **News Monitoring**: Stay updated with the latest developments in your field\n\n## Detailed example - AI News Summary\n\nHere's an example workflow that uses Tavily to search for the latest articles on \"AI advancements\" and sends a summary to your email:\n\n<AccordionGroup>\n  <Accordion title=\"Workflow Steps\">\n    <ol>\n      <li>**Trigger:** Schedule the workflow to run daily</li>\n      <li>**AI Agent:** Add an AI agent node to your workflow</li>\n\n<li>\n        **Search:** The AI agent uses Tavily to find recent articles on “AI\n        advancements”\n      </li>\n\n<li>\n        **Summarize:** The AI agent summarizes the most important news and\n        trends\n      </li>\n\n<li>\n        **Delivery:** Send the summarized briefing via Email, Slack, or another\n        integration\n      </li>\n    </ol>\n  </Accordion>\n</AccordionGroup>\n\nTo optimize your Tavily integration in StackAI:\n\n* Tightly constrain Tavily queries to specific intent, time range, and domains to avoid noisy retrieval.\n* Force concise, structured outputs (bullets/JSON with only required fields) to reduce tokens and parsing errors.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "How to set up Tavily with StackAI",
+      "id": "how-to-set-up-tavily-with-stackai"
+    },
+    {
+      "level": "h2",
+      "text": "Use cases for Tavily in StackAI",
+      "id": "use-cases-for-tavily-in-stackai"
+    },
+    {
+      "level": "h2",
+      "text": "Detailed example - AI News Summary",
+      "id": "detailed-example---ai-news-summary"
+    },
+    {
+      "level": "h2",
+      "text": "Best practices",
+      "id": "best-practices"
+    }
+  ],
+  "url": "llms-txt#stackai",
+  "links": []
+}

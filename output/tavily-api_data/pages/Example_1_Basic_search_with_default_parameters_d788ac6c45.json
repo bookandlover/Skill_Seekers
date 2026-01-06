@@ -1,0 +1,8 @@
+{
+  "title": "Example 1: Basic search with default parameters",
+  "content": "agent.print_response(\"Latest developments in quantum computing\", markdown=True)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#example-1:-basic-search-with-default-parameters",
+  "links": []
+}

@@ -1,0 +1,43 @@
+{
+  "title": "Pydantic AI",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/pydantic-ai\n\nTavily is now available for integration through Pydantic AI.\n\nIntegrate[Tavily with Pydantic AI](https://ai.pydantic.dev/common-tools/#tavily-search-tool) to enhance your AI agents with powerful web search capabilities. Pydantic AI provides a framework for building AI agents with tools, making it easy to incorporate real-time web search and data extraction into your applications.\n\n## Step-by-Step Integration Guide\n\n### Step 1: Install Required Packages\n\nInstall the necessary Python packages:\n\n### Step 2: Set Up API Keys\n\n* **Tavily API Key:** [Get your Tavily API key here](https://app.tavily.com/home)\n\nSet this as an environment variable in your terminal or add it to your environment configuration file:\n\n### Step 3: Initialize Pydantic AI Agent with Tavily Tools\n\n```python theme={null}\nimport os\nfrom pydantic_ai.agent import Agent\nfrom pydantic_ai.common_tools.tavily import tavily_search_tool",
+  "code_samples": [
+    {
+      "code": "### Step 2: Set Up API Keys\n\n* **Tavily API Key:** [Get your Tavily API key here](https://app.tavily.com/home)\n\nSet this as an environment variable in your terminal or add it to your environment configuration file:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 3: Initialize Pydantic AI Agent with Tavily Tools",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Step-by-Step Integration Guide",
+      "id": "step-by-step-integration-guide"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Install Required Packages",
+      "id": "step-1:-install-required-packages"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Set Up API Keys",
+      "id": "step-2:-set-up-api-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Initialize Pydantic AI Agent with Tavily Tools",
+      "id": "step-3:-initialize-pydantic-ai-agent-with-tavily-tools"
+    }
+  ],
+  "url": "llms-txt#pydantic-ai",
+  "links": []
+}

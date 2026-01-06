@@ -1,0 +1,130 @@
+{
+  "title": "Exa MCP",
+  "content": "Source: https://docs.exa.ai/reference/exa-mcp\n\n[![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square\\&logoColor=white)](https://cursor.com/en/install-mcp?name=exa\\&config=eyJuYW1lIjoiZXhhIiwidHlwZSI6Imh0dHAiLCJ1cmwiOiJodHRwczovL21jcC5leGEuYWkvbWNwIn0=)\n[![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square\\&logo=visualstudiocode\\&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=exa\\&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.exa.ai%2Fmcp%22%7D)\n\n### exa-code: fast and efficient web context for coding agents\n\nVibe coding should never have a bad vibe. `exa-code` is a huge step towards coding agents that never hallucinate.\n\nWhen your coding agent makes a search query, `exa-code` searches over billions of GitHub repos, docs pages, StackOverflow posts, and more to find the perfect, token-efficient context that the agent needs to code correctly. It's powered by the Exa search engine.\n\nExamples of queries you can make with `exa-code`:\n\n* use Exa search in python and request content with `livecrawl=\"preferred\"` and a 12s `livecrawlTimeout`\n* use correct syntax for vercel ai sdk to call gpt-5 nano asking it how are you\n\n**Works with Cursor and Claude Code!** Use the HTTP-based configuration format:\n\nInstalling Exa MCP like below will install Exa web search as well as `exa-code`. To maximize performance, be sure to leave *only* `exa-code` turned on in your MCP client.\n\nExa MCP Server enables AI assistants like Claude to perform real-time web searches through the Exa Search API, allowing them to access up-to-date information from the internet. It is open-source, check out [GitHub](https://github.com/exa-labs/exa-mcp-server/).\n\nConnect directly to Exa's hosted MCP server using this URL:\n\nYou can enable specific tool(s) using the `tools` parameter (if multiple, then with a comma-separated list):\n\nYou may include your exa api key in the url like this:\n\n**Note:** By default, only `web_search_exa` and `get_code_context_exa` are enabled. Add other tools as needed using the `tools` parameter.\n\n### Claude Desktop Configuration for Remote MCP\n\nAdd this to your Claude Desktop configuration file:\n\n### Cursor and Claude Code Configuration for Remote MCP\n\nFor Cursor and Claude Code, use this HTTP-based configuration format:\n\nReplace the above link to this to enable all tools:\n\n**Note:** By default, only `web_search_exa` and `get_code_context_exa` are enabled. You can enable additional tools using the `tools` parameter (see examples below).\n\nExa MCP includes several specialized search tools:\n\n| Tool                       | Description                                                                                                                                                                                                                                                                                     |\n| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`get_code_context_exa`** | **NEW!** Search and get relevant code snippets, examples, and documentation from open source libraries, GitHub repositories, and programming frameworks. Perfect for finding up-to-date code documentation, implementation examples, API usage patterns, and best practices from real codebases |\n| `web_search_exa`           | Performs real-time web searches with optimized results and content extraction                                                                                                                                                                                                                   |\n| `deep_researcher_start`    | Start a smart AI researcher for complex questions. The AI will search the web, read many sources, and think deeply about your question to create a detailed research report                                                                                                                     |\n| `deep_researcher_check`    | Check if your research is ready and get the results. Use this after starting a research task to see if it's done and get your comprehensive report                                                                                                                                              |\n| `company_research`         | Comprehensive company research tool that crawls company websites to gather detailed information about businesses                                                                                                                                                                                |\n| `crawling`                 | Extracts content from specific URLs, useful for reading articles, PDFs, or any web page when you have the exact URL                                                                                                                                                                             |\n| `linkedin_search`          | Search LinkedIn for companies and people using Exa AI. Simply include company names, person names, or specific LinkedIn URLs in your query                                                                                                                                                      |\n\nOnce configured, you can ask Claude to perform searches:\n\n### Code Search Examples\n\n* \"Show me how to use React hooks with TypeScript\"\n* \"Find examples of how to implement authentication with NextJS\"\n* \"Get documentation and examples for the pandas library\"\n\n### Other Search Examples\n\n* \"Research the company exa.ai and find information about their pricing\"\n* \"Start a deep research project on the impact of artificial intelligence on healthcare, then check when it's complete to get a comprehensive report\"\n\n## Local Installation\n\n### Using Claude Code\n\nThe quickest way to set up Exa MCP is using Claude Code:\n\nReplace `YOUR_API_KEY` with your Exa API key from above.\n\n## Configuring Claude Desktop\n\nTo configure Claude Desktop to use Exa MCP:\n\n1. **Enable Developer Mode in Claude Desktop**\n   * Open Claude Desktop\n   * Click on the top-left menu\n   * Enable Developer Mode\n\n2. **Open the Configuration File**\n\n* After enabling Developer Mode, go to Settings\n   * Navigate to the Developer Option\n   * Click \"Edit Config\" to open the configuration file\n\nAlternatively, you can open it directly:\n\n3. **Add Exa MCP Configuration**\n\nAdd the following to your configuration:\n\nReplace `your-api-key-here` with your actual Exa API key.\n\n4. **Enabling Specific Tools**\n\nTo enable only code search (recommended for developers):\n\nTo enable code search and web search together:\n\nThe simplest way to install and run Exa MCP is via NPX:\n\n```bash  theme={null}",
+  "code_samples": [
+    {
+      "code": "Installing Exa MCP like below will install Exa web search as well as `exa-code`. To maximize performance, be sure to leave *only* `exa-code` turned on in your MCP client.\n\n***\n\nExa MCP Server enables AI assistants like Claude to perform real-time web searches through the Exa Search API, allowing them to access up-to-date information from the internet. It is open-source, check out [GitHub](https://github.com/exa-labs/exa-mcp-server/).\n\n## Remote Exa MCP\n\nConnect directly to Exa's hosted MCP server using this URL:",
+      "language": "unknown"
+    },
+    {
+      "code": "You can enable specific tool(s) using the `tools` parameter (if multiple, then with a comma-separated list):",
+      "language": "unknown"
+    },
+    {
+      "code": "Or enable all tools:",
+      "language": "unknown"
+    },
+    {
+      "code": "You may include your exa api key in the url like this:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Note:** By default, only `web_search_exa` and `get_code_context_exa` are enabled. Add other tools as needed using the `tools` parameter.\n\n### Claude Desktop Configuration for Remote MCP\n\nAdd this to your Claude Desktop configuration file:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Cursor and Claude Code Configuration for Remote MCP\n\nFor Cursor and Claude Code, use this HTTP-based configuration format:",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace the above link to this to enable all tools:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Available Tools\n\n**Note:** By default, only `web_search_exa` and `get_code_context_exa` are enabled. You can enable additional tools using the `tools` parameter (see examples below).\n\nExa MCP includes several specialized search tools:\n\n| Tool                       | Description                                                                                                                                                                                                                                                                                     |\n| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`get_code_context_exa`** | **NEW!** Search and get relevant code snippets, examples, and documentation from open source libraries, GitHub repositories, and programming frameworks. Perfect for finding up-to-date code documentation, implementation examples, API usage patterns, and best practices from real codebases |\n| `web_search_exa`           | Performs real-time web searches with optimized results and content extraction                                                                                                                                                                                                                   |\n| `deep_researcher_start`    | Start a smart AI researcher for complex questions. The AI will search the web, read many sources, and think deeply about your question to create a detailed research report                                                                                                                     |\n| `deep_researcher_check`    | Check if your research is ready and get the results. Use this after starting a research task to see if it's done and get your comprehensive report                                                                                                                                              |\n| `company_research`         | Comprehensive company research tool that crawls company websites to gather detailed information about businesses                                                                                                                                                                                |\n| `crawling`                 | Extracts content from specific URLs, useful for reading articles, PDFs, or any web page when you have the exact URL                                                                                                                                                                             |\n| `linkedin_search`          | Search LinkedIn for companies and people using Exa AI. Simply include company names, person names, or specific LinkedIn URLs in your query                                                                                                                                                      |\n\n## Usage Examples\n\nOnce configured, you can ask Claude to perform searches:\n\n### Code Search Examples\n\n* \"Show me how to use React hooks with TypeScript\"\n* \"Find examples of how to implement authentication with NextJS\"\n* \"Get documentation and examples for the pandas library\"\n\n### Other Search Examples\n\n* \"Research the company exa.ai and find information about their pricing\"\n* \"Start a deep research project on the impact of artificial intelligence on healthcare, then check when it's complete to get a comprehensive report\"\n\n## Local Installation\n\n### Using Claude Code\n\nThe quickest way to set up Exa MCP is using Claude Code:",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace `YOUR_API_KEY` with your Exa API key from above.\n\n## Configuring Claude Desktop\n\nTo configure Claude Desktop to use Exa MCP:\n\n1. **Enable Developer Mode in Claude Desktop**\n   * Open Claude Desktop\n   * Click on the top-left menu\n   * Enable Developer Mode\n\n2. **Open the Configuration File**\n\n   * After enabling Developer Mode, go to Settings\n   * Navigate to the Developer Option\n   * Click \"Edit Config\" to open the configuration file\n\n   Alternatively, you can open it directly:\n\n   **macOS:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Windows:**",
+      "language": "unknown"
+    },
+    {
+      "code": "3. **Add Exa MCP Configuration**\n\n   Add the following to your configuration:",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace `your-api-key-here` with your actual Exa API key.\n\n4. **Enabling Specific Tools**\n\n   To enable only code search (recommended for developers):",
+      "language": "unknown"
+    },
+    {
+      "code": "To enable code search and web search together:",
+      "language": "unknown"
+    },
+    {
+      "code": "To enable all tools:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Using NPX\n\nThe simplest way to install and run Exa MCP is via NPX:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "exa-code: fast and efficient web context for coding agents",
+      "id": "exa-code:-fast-and-efficient-web-context-for-coding-agents"
+    },
+    {
+      "level": "h2",
+      "text": "Remote Exa MCP",
+      "id": "remote-exa-mcp"
+    },
+    {
+      "level": "h3",
+      "text": "Claude Desktop Configuration for Remote MCP",
+      "id": "claude-desktop-configuration-for-remote-mcp"
+    },
+    {
+      "level": "h3",
+      "text": "Cursor and Claude Code Configuration for Remote MCP",
+      "id": "cursor-and-claude-code-configuration-for-remote-mcp"
+    },
+    {
+      "level": "h2",
+      "text": "Available Tools",
+      "id": "available-tools"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Code Search Examples",
+      "id": "code-search-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Other Search Examples",
+      "id": "other-search-examples"
+    },
+    {
+      "level": "h2",
+      "text": "Local Installation",
+      "id": "local-installation"
+    },
+    {
+      "level": "h3",
+      "text": "Using Claude Code",
+      "id": "using-claude-code"
+    },
+    {
+      "level": "h2",
+      "text": "Configuring Claude Desktop",
+      "id": "configuring-claude-desktop"
+    },
+    {
+      "level": "h3",
+      "text": "Using NPX",
+      "id": "using-npx"
+    }
+  ],
+  "url": "llms-txt#exa-mcp",
+  "links": []
+}

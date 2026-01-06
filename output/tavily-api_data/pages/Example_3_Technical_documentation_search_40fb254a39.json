@@ -1,0 +1,8 @@
+{
+  "title": "Example 3: Technical documentation search",
+  "content": "agent.print_response(\n    \"Find the latest documentation and tutorials about Python async programming, \"\n    \"focusing on asyncio and FastAPI\",\n    markdown=True\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#example-3:-technical-documentation-search",
+  "links": []
+}

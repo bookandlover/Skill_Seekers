@@ -1,0 +1,8 @@
+{
+  "title": "Define the market research task with specific parameters",
+  "content": "task = {\n    \"query\": \"Analyze the competitive landscape of AI-powered customer service solutions in 2024\",\n    \"search_depth\": \"advanced\",  \n    \"include_answer\": True,      \n    \"max_results\": 10,  \n    # Focus on relevant industry sources         \n    \"include_domains\": [        \n        \"techcrunch.com\",\n        \"venturebeat.com\",\n        \"forbes.com\",\n        \"gartner.com\",\n        \"marketsandmarkets.com\"\n    ],\n}",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#define-the-market-research-task-with-specific-parameters",
+  "links": []
+}

@@ -1,0 +1,169 @@
+{
+  "title": "Returns: \"correct\", \"partial\", or \"incorrect\"",
+  "content": "python Python theme={null}\n  result = exa.search_and_contents(\n      query,\n      type=\"fast\",\n      num_results=10,\n      text={\"max_characters\": 5000}\n  )\n  javascript JavaScript theme={null}\n  const result = await exa.searchAndContents(query, {\n      type: \"fast\",\n      numResults: 10,\n      text: {maxCharacters: 5000}\n  });\n  bash cURL theme={null}\n  curl -X POST https://api.exa.ai/search \\\n    -H \"x-api-key: YOUR_API_KEY\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n      \"query\": \"your query here\",\n      \"type\": \"fast\",\n      \"num_results\": 10,\n      \"contents\": {\"text\": {\"max_characters\": 5000}}\n    }'\n  python Python theme={null}\n  result = exa.search_and_contents(\n      query,\n      type=\"auto\",\n      num_results=10,\n      text={\"max_characters\": 5000}\n  )\n  javascript JavaScript theme={null}\n  const result = await exa.searchAndContents(query, {\n      type: \"auto\",\n      numResults: 10,\n      text: {maxCharacters: 5000}\n  });\n  python Python theme={null}\n  result = exa.search_and_contents(\n      query,\n      type=\"deep\",\n      additional_queries=[variation1, variation2],\n      num_results=10,\n      text=True,\n      context=True,\n      livecrawl=\"fallback\"\n  )\n  javascript JavaScript theme={null}\n  const result = await exa.searchAndContents(query, {\n      type: \"deep\",\n      additionalQueries: [variation1, variation2],\n      numResults: 10,\n      text: true,\n      context: true,\n      livecrawl: \"fallback\"\n  });\n  python Python theme={null}\n  from exa_py import Exa\n  import json\n  from datetime import datetime\n\nexa = Exa(api_key=\"YOUR_API_KEY\")\n\ndef evaluate_simpleqa(dataset_path, config):\n      \"\"\"\n      Run SimpleQA evaluation with specified configuration.\n\nArgs:\n          dataset_path: Path to SimpleQA JSON file\n          config: Dict with keys: type, num_results, text, livecrawl\n      \"\"\"\n      with open(dataset_path) as f:\n          questions = json.load(f)\n\nresults = []\n      latencies = []\n\nfor item in questions:\n          query = item['question']\n          ground_truth = item['answer']\n\n# Retrieval\n          start = datetime.now()\n          search_result = exa.search_and_contents(\n              query,\n              type=config['type'],\n              num_results=config['num_results'],\n              text=config['text'],\n              livecrawl=config['livecrawl']\n          )\n          latency = (datetime.now() - start).total_seconds() * 1000\n          latencies.append(latency)\n\n# Synthesis (using your LLM)\n          context = \"\\n\\n\".join([r.text for r in search_result.results])\n          answer = your_llm.generate(\n              f\"Answer concisely using only the context.\\n\\n\"\n              f\"Context: {context}\\n\\n\"\n              f\"Question: {query}\\n\\n\"\n              f\"Answer:\"\n          )\n\n# Grading (using your grading LLM)\n          grade = grading_llm.evaluate(\n              question=query,\n              expected=ground_truth,\n              generated=answer\n          )\n\nresults.append({\n              'query': query,\n              'grade': grade,\n              'latency_ms': latency\n          })\n\n# Calculate metrics\n      accuracy = sum(1 for r in results if r['grade'] == 'correct') / len(results)\n      p50_latency = sorted(latencies)[len(latencies) // 2]\n\nreturn {\n          'accuracy': accuracy,\n          'p50_latency_ms': p50_latency,\n          'total_queries': len(results),\n          'config': config\n      }\n\n# Run evaluation\n  config = {\n      'type': 'fast',\n      'num_results': 10,\n      'text': {'max_characters': 5000}\n  }\n\nresults = evaluate_simpleqa('simpleqa.json', config)\n  print(f\"Accuracy: {results['accuracy']:.2%}\")\n  print(f\"P50 Latency: {results['p50_latency_ms']:.0f}ms\")\n  javascript JavaScript theme={null}\n  import Exa from 'exa-js';\n  import fs from 'fs/promises';\n\nconst exa = new Exa(\"YOUR_API_KEY\");\n\nasync function evaluateSimpleQA(datasetPath, config) {\n      const data = JSON.parse(await fs.readFile(datasetPath, 'utf8'));\n\nconst results = [];\n      const latencies = [];\n\nfor (const item of data) {\n          const { question, answer: groundTruth } = item;\n\n// Retrieval\n          const start = Date.now();\n          const searchResult = await exa.searchAndContents(question, {\n              type: config.type,\n              numResults: config.numResults,\n              text: config.text,\n              livecrawl: config.livecrawl\n          });\n          const latency = Date.now() - start;\n          latencies.push(latency);\n\n// Synthesis\n          const context = searchResult.results\n              .map(r => r.text)\n              .join('\\n\\n');\n          const answer = await yourLLM.generate(\n              `Answer concisely using only the context.\\n\\n` +\n              `Context: ${context}\\n\\n` +\n              `Question: ${question}\\n\\n` +\n              `Answer:`\n          );\n\n// Grading\n          const grade = await gradingLLM.evaluate({\n              question,\n              expected: groundTruth,\n              generated: answer\n          });\n\nresults.push({ question, grade, latency });\n      }\n\n// Calculate metrics\n      const accuracy = results.filter(r => r.grade === 'correct').length / results.length;\n      const p50Latency = latencies.sort((a, b) => a - b)[Math.floor(latencies.length / 2)];\n\nreturn { accuracy, p50Latency, totalQueries: results.length, config };\n  }\n\n// Run evaluation\n  const config = {\n      type: 'fast',\n      numResults: 10,\n      text: {maxCharacters: 5000}\n  };\n\nconst results = await evaluateSimpleQA('simpleqa.json', config);\n  console.log(`Accuracy: ${(results.accuracy * 100).toFixed(1)}%`);\n  console.log(`P50 Latency: ${results.p50Latency}ms`);\n  python  theme={null}\nconfigs = [\n    {'name': 'Fast', 'type': 'fast'},\n    {'name': 'Auto', 'type': 'auto'},\n    {'name': 'Deep', 'type': 'deep'},\n]\n\nfor config in configs:\n    results = evaluate_simpleqa('simpleqa.json', config)\n    print(f\"{config['name']}: {results['accuracy']:.1%} @ {results['p50_latency_ms']:.0f}ms\")\n\n`Fast`: 94.2% @ 450ms\n`Auto`: 95.8% @ 1050ms\n`Deep`: 97.2% @ 4950ms\n```\n\n### For Low-Latency QA Benchmarks\n\n**Datasets**: SimpleQA, WebWalkerQA, Seal0 (single-step)\n\n* Use `type=\"fast\"` or `type=\"auto\"`\n* Fix `num_results=10`\n* Use `text={\"max_characters\": 5000}` for consistent context length\n\n**Expected performance**:\n\n* Accuracy: 90-95% on factual queries\n* Latency: 400-600ms (Fast), 900-1200ms (Auto)\n\n### For Agentic Workflow Benchmarks\n\n**Datasets**: FRAMES (agentic), MultiLoKo, BrowseComp, HLE\n\n* Use `type=\"deep\"`\n* Provide 2-3 query variations via `additional_queries` (Python) / `additionalQueries` (JavaScript) for best results\n* Enable `context=True` for rich summaries\n* Set `livecrawl=\"fallback\"` for freshness\n\n**For tool calling evaluations**: See the [Evaluating Exa with Tool Calling](#evaluating-exa-with-tool-calling) section below for guidance on setting up agents to autonomously invoke Exa search.\n\n**Expected performance**:\n\n* Accuracy: 85-96% on complex multi-hop queries\n* Latency: 4000-6000ms\n* Higher comprehensive coverage vs single-query search\n\n### For Freshness Benchmarks\n\n**Datasets**: FreshQA, time-sensitive custom queries\n\n* Use any search type based on latency requirements\n* Set `livecrawl=\"preferred\"` or `livecrawl=\"fallback\"`\n* Include recent date filters if needed\n\n**Expected performance**:\n\n* Freshness: Up-to-date information from recent sources\n* Latency: +500-2000ms vs cached content\n\n### For Production Deployment\n\n1. **Run comparative benchmarks** across `Fast`, `Auto`, and `Deep` to understand your quality-latency frontier\n2. **Match search type to use case**:\n   * Real-time user-facing: `Fast`\n   * General chatbot/assistant: `Auto`\n   * Deep research/agent workflows: `Deep`\n3. **Monitor in production**: Track accuracy, latency, and cost metrics continuously\n4. **Optimize parameters**: Adjust `livecrawl`, `num_results`, and content options based on actual usage patterns\n5. **Document your evaluation**: Record configurations, datasets, and results for reproducibility\n\n### For Meaningful Cross-System Comparisons\n\n1. **Standardize everything**:\n   * Identical query sets\n   * Same downstream LLM for synthesis\n   * Same grading model/rubric\n   * Fixed `num_results` across systems\n2. **Compare within latency classes** — find the closest competitor in terms of P50 latency:\n   * For Exa Fast (\\<500ms): Compare to other sub-1s APIs with similar latency\n   * For Exa Auto (\\~1s): Compare to mid-latency systems (800ms-1500ms)\n   * For Exa Deep (>2s): Compare to other multi-second agentic/research systems\n3. **Account for feature differences**:\n   * Some systems don't offer content retrieval\n   * Some don't support livecrawling\n   * Some have different context limits\n4. **Measure what matters for your use case**:\n   * If latency \\<500ms is required, only benchmark Fast-class systems\n   * If accuracy >95% is required, accept higher latency configurations\n\n## Additional Resources\n\n* [How Exa Search Works](/reference/how-exa-search-works) - Deep dive into neural search and search types\n* [Exa's Capabilities Explained](/reference/exas-capabilities-explained) - Feature overview and use cases\n* [Livecrawling Contents](/reference/livecrawling-contents) - When and how to use livecrawling\n* [API Reference: Search](/reference/search) - Complete parameter documentation\n\nFor questions about evaluation methodology or custom benchmark needs, [join our Discord community](https://discord.com/invite/HCShtBqbfV) or [reach out to our team](https://exa.ai).",
+  "code_samples": [
+    {
+      "code": "#### Phase 4: Results Analysis\n\nAggregate metrics:\n\n* **Accuracy**: Percentage of correct answers\n* **Partial-credit accuracy**: Weighted score (e.g., correct=1.0, partial=0.5, incorrect=0.0)\n* **Retrieval coverage**: Percentage of queries where relevant information was retrieved\n* **P50 latency**: Median response time across all queries\n* **Cost per query**: Total API cost divided by number of queries\n\n## Optimal Exa Settings for Evaluation\n\n### Configuration Parameters\n\n| Parameter                                  | Purpose                      | Evaluation Recommendations                                                                                                 |\n| ------------------------------------------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |\n| `type`                                     | Search method                | Match to benchmark type (fast/auto/deep)                                                                                   |\n| `num_results`                              | Number of results            | Fix at 10 for consistency across comparisons                                                                               |\n| `text`                                     | Retrieve full content        | Set to `true` for RAG-style evaluation                                                                                     |\n| `context`                                  | Get AI-generated summaries   | Set to `true` for Deep search                                                                                              |\n| `livecrawl`                                | Real-time web fetching       | Default `\"fallback\"` is recommended; use `\"preferred\"` for freshness tests                                                 |\n| `additional_queries` / `additionalQueries` | Query variations (Deep only) | Provide 2-3 variations for best Deep search results. Use `additional_queries` in Python, `additionalQueries` in JavaScript |\n\n### Recommended Configuration Templates\n\n#### Fast-Baseline Configuration\n\nFor latency-sensitive evaluations:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n#### Auto-Quality Configuration\n\nFor balanced evaluations:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n#### Deep-Comprehensive Configuration\n\nFor agentic and research evaluations:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n## Choosing Datasets for Evaluation\n\n### Benchmark-to-Search-Type Mapping\n\n| Benchmark                | Description                              | Recommended Search Type                | Focus Area                   |\n| ------------------------ | ---------------------------------------- | -------------------------------------- | ---------------------------- |\n| **SimpleQA**             | Single-step factual questions            | `Fast`, `Auto`                         | Low-latency QA accuracy      |\n| **FRAMES** (single-step) | Straightforward retrieval tasks          | `Fast`, `Auto`                         | Single-hop retrieval quality |\n| **FRAMES** (agentic)     | Multi-step reasoning requiring iteration | `Deep`                                 | Agentic workflow performance |\n| **MultiLoKo**            | Multi-hop knowledge queries              | `Deep`                                 | Complex reasoning chains     |\n| **BrowseComp**           | Web browsing comprehension               | `Deep`                                 | Context understanding        |\n| **Seal0**                | General search quality                   | `Fast`, `Auto`, `Deep`                 | Overall performance          |\n| **WebWalkerQA**          | Navigation-style queries                 | `Fast`, `Auto`                         | Real-world search scenarios  |\n| **HLE**                  | Hard, long, emerging questions           | `Deep`                                 | Difficult edge cases         |\n| **FreshQA**              | Time-sensitive queries                   | All types with `livecrawl=\"preferred\"` | Freshness/timeliness         |\n\n### Dataset Characteristics\n\n#### SimpleQA\n\n* **Purpose**: Tests fast, factual question-answering\n* **Query style**: \"What is the capital of France?\", \"Who invented the telephone?\"\n* **Evaluation focus**: Accuracy and latency for straightforward queries\n* **Exa configuration**: Fast search with cached content\n\n#### FRAMES\n\n* **Purpose**: Evaluates both single-step and multi-step retrieval\n* **Two slices**:\n  * Single-step: Direct queries answerable from one search\n  * Agentic: Complex queries requiring multiple search iterations\n* **Evaluation focus**: Versatility across task complexity\n* **Exa configuration**: `Fast`/`Auto` for single-step, `Deep` for agentic\n\n#### MultiLoKo & BrowseComp\n\n* **Purpose**: Multi-hop reasoning and deep comprehension\n* **Query style**: Questions requiring synthesis across multiple sources\n* **Evaluation focus**: Quality of context and reasoning support\n* **Exa configuration**: `Deep` search with query expansion\n\n#### Seal0\n\n* **Purpose**: General search quality benchmark\n* **Query style**: Diverse real-world queries\n* **Evaluation focus**: Overall retrieval accuracy\n* **Exa configuration**: All search types (compare performance)\n\n#### HLE (Hard, Long, Emerging)\n\n* **Purpose**: Stress-test with difficult queries\n* **Query style**: Complex, lengthy queries about recent topics\n* **Evaluation focus**: Handling edge cases and emerging information\n* **Exa configuration**: `Deep` search with livecrawling\n\n## Benchmark Results\n\n### Low-Latency Search Engines\n\nPerformance on speed-critical tasks (latency \\<1s):\n\n<img src=\"https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Independent%20Search%20Engines%20FINAL.png?fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=7c6804f4576e71f3b69c8e1b8c19ae7e\" alt=\"Benchmark results for low-latency search engines\" data-og-width=\"5841\" width=\"5841\" data-og-height=\"3600\" height=\"3600\" data-path=\"assets/Independent Search Engines FINAL.png\" data-optimize=\"true\" data-opv=\"3\" srcset=\"https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Independent%20Search%20Engines%20FINAL.png?w=280&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=5d579c8fa368e88ee0f029476527f436 280w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Independent%20Search%20Engines%20FINAL.png?w=560&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=600e40f90690bd67baab85709cefadde 560w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Independent%20Search%20Engines%20FINAL.png?w=840&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=e7c9fe14625b7bcf9eb5de5a97d0e113 840w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Independent%20Search%20Engines%20FINAL.png?w=1100&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=7dd9f8a1f2b8ad7b74012e13274ebaa3 1100w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Independent%20Search%20Engines%20FINAL.png?w=1650&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=846f25278bc86d23d4a1f2c348ce1edb 1650w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Independent%20Search%20Engines%20FINAL.png?w=2500&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=a10e6ab9b0df39020af19388aee55922 2500w\" />\n\n**Key findings**:\n\n* Exa Fast achieves 94% accuracy on SimpleQA with median latency \\<500ms\n* Strong performance across multiple benchmarks while maintaining speed advantage\n* Ideal for real-time applications and high-volume agent workflows\n\n### Agentic Search APIs\n\nPerformance on complex, multi-step tasks (latency >2s):\n\n<img src=\"https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Agentic%20Search%20FINAL.png?fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=46d42ac16e47b2104017639863a6a311\" alt=\"Benchmark results for agentic search APIs\" data-og-width=\"5841\" width=\"5841\" data-og-height=\"3600\" height=\"3600\" data-path=\"assets/Agentic Search FINAL.png\" data-optimize=\"true\" data-opv=\"3\" srcset=\"https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Agentic%20Search%20FINAL.png?w=280&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=b5ac4d0611f60b705ea1b3f768a5c826 280w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Agentic%20Search%20FINAL.png?w=560&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=8304d8126346bcfbb19b829e12039e9e 560w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Agentic%20Search%20FINAL.png?w=840&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=19510b6c0bf780b4c90dcad4939c1c1f 840w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Agentic%20Search%20FINAL.png?w=1100&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=bcb141ebba2b0e1963e980dbc01b5108 1100w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Agentic%20Search%20FINAL.png?w=1650&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=aee62fa6f8269f08f07067bc4b8d0a73 1650w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/Agentic%20Search%20FINAL.png?w=2500&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=43e9b47a03866e8e2418fab0818e18cf 2500w\" />\n\n**Key findings**:\n\n* Exa Deep leads on FRAMES (96%) and MultiLoKo (89%) benchmarks\n* Query expansion and rich context enable superior agentic performance\n* Higher latency justified by comprehensive, high-quality results\n\n## Quality-Latency Tradeoffs\n\n### Understanding the Spectrum\n\nDifferent use cases require different points on the quality-latency spectrum:\n\n| Use Case               | Priority | Recommended Type | Expected Latency | Quality Characteristics      |\n| ---------------------- | -------- | ---------------- | ---------------- | ---------------------------- |\n| Voice agents           | Speed    | `Fast`           | \\<500ms          | Good factual accuracy        |\n| Chatbot grounding      | Balanced | `Auto`           | \\~1000ms         | Versatile, high quality      |\n| Research assistant     | Depth    | `Deep`           | \\~5000ms         | Comprehensive, multi-faceted |\n| Batch enrichment       | Quality  | `Deep`           | \\~5000ms         | Maximum coverage             |\n| Real-time autocomplete | Speed    | `Fast`           | \\<500ms          | Relevant suggestions         |\n\n### Interpreting Tradeoffs\n\nWhen analyzing evaluation results:\n\n1. **Don't compare across latency classes**: `Fast` search at 500ms vs `Deep` search at 5000ms serve different purposes. **Always find the closest competitor in terms of latency for meaningful comparisons** — compare systems with similar P50 latency ranges.\n\n2. **Benchmark within peer groups**:\n   * Compare Exa Fast (\\<500ms) to other sub-1s APIs\n   * Compare Exa Auto (\\~1s) to similar mid-latency systems\n   * Compare Exa Deep (>2s) to other agentic/research-oriented systems\n\n3. **Consider total workflow time**: For multi-step agents, `Fast` search may complete the entire workflow faster than `Deep` search on a single query\n\n4. **Account for quality requirements**: If accuracy >90% is required, accept higher latency; if \\<1s is required, accept some quality tradeoff\n\n### Factors That Impact Latency\n\nBeyond search type selection, several parameters affect response time:\n\n| Parameter                                       | Latency Impact | Recommendation                      |\n| ----------------------------------------------- | -------------- | ----------------------------------- |\n| `livecrawl=\"preferred\"`                         | +500-2000ms    | Use only when freshness is critical |\n| `livecrawl=\"fallback\"`                          | Variable       | Balanced freshness/speed (default)  |\n| AI-generated summaries                          | +300-800ms     | Evaluate necessity vs speed         |\n| `num_results > 10`                              | +50-200ms      | Keep at 10 for fair comparisons     |\n| Complex date filters                            | +100-300ms     | Simplify when possible              |\n| Text filtering (`include_text`, `exclude_text`) | +100-500ms     | Use sparingly                       |\n\n## Running Production-Grade Evaluations\n\n### Example: SimpleQA Evaluation Script\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n### Multi-Configuration Comparison\n\nBest practice: Run multiple configurations to understand tradeoffs:",
+      "language": "unknown"
+    },
+    {
+      "code": "Example output:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Optimal Exa Settings for Evaluation",
+      "id": "optimal-exa-settings-for-evaluation"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration Parameters",
+      "id": "configuration-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Recommended Configuration Templates",
+      "id": "recommended-configuration-templates"
+    },
+    {
+      "level": "h2",
+      "text": "Choosing Datasets for Evaluation",
+      "id": "choosing-datasets-for-evaluation"
+    },
+    {
+      "level": "h3",
+      "text": "Benchmark-to-Search-Type Mapping",
+      "id": "benchmark-to-search-type-mapping"
+    },
+    {
+      "level": "h3",
+      "text": "Dataset Characteristics",
+      "id": "dataset-characteristics"
+    },
+    {
+      "level": "h2",
+      "text": "Benchmark Results",
+      "id": "benchmark-results"
+    },
+    {
+      "level": "h3",
+      "text": "Low-Latency Search Engines",
+      "id": "low-latency-search-engines"
+    },
+    {
+      "level": "h3",
+      "text": "Agentic Search APIs",
+      "id": "agentic-search-apis"
+    },
+    {
+      "level": "h2",
+      "text": "Quality-Latency Tradeoffs",
+      "id": "quality-latency-tradeoffs"
+    },
+    {
+      "level": "h3",
+      "text": "Understanding the Spectrum",
+      "id": "understanding-the-spectrum"
+    },
+    {
+      "level": "h3",
+      "text": "Interpreting Tradeoffs",
+      "id": "interpreting-tradeoffs"
+    },
+    {
+      "level": "h3",
+      "text": "Factors That Impact Latency",
+      "id": "factors-that-impact-latency"
+    },
+    {
+      "level": "h2",
+      "text": "Running Production-Grade Evaluations",
+      "id": "running-production-grade-evaluations"
+    },
+    {
+      "level": "h3",
+      "text": "Example: SimpleQA Evaluation Script",
+      "id": "example:-simpleqa-evaluation-script"
+    },
+    {
+      "level": "h3",
+      "text": "Multi-Configuration Comparison",
+      "id": "multi-configuration-comparison"
+    },
+    {
+      "level": "h2",
+      "text": "Recommendations",
+      "id": "recommendations"
+    },
+    {
+      "level": "h3",
+      "text": "For Low-Latency QA Benchmarks",
+      "id": "for-low-latency-qa-benchmarks"
+    },
+    {
+      "level": "h3",
+      "text": "For Agentic Workflow Benchmarks",
+      "id": "for-agentic-workflow-benchmarks"
+    },
+    {
+      "level": "h3",
+      "text": "For Freshness Benchmarks",
+      "id": "for-freshness-benchmarks"
+    },
+    {
+      "level": "h3",
+      "text": "For Production Deployment",
+      "id": "for-production-deployment"
+    },
+    {
+      "level": "h3",
+      "text": "For Meaningful Cross-System Comparisons",
+      "id": "for-meaningful-cross-system-comparisons"
+    },
+    {
+      "level": "h2",
+      "text": "Additional Resources",
+      "id": "additional-resources"
+    }
+  ],
+  "url": "llms-txt#returns:-\"correct\",-\"partial\",-or-\"incorrect\"",
+  "links": []
+}

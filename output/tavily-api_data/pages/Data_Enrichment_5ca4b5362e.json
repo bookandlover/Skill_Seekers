@@ -1,0 +1,29 @@
+{
+  "title": "Data Enrichment",
+  "content": "Source: https://docs.tavily.com/examples/use-cases/data-enrichment\n\nEnhance datasets with Tavily's APIs.\n\n#### Fill in spreadsheet columns\n\n<img alt=\"Enrichment1 Demo\" />\n\n#### Enrich your spreadsheet\n\n<img alt=\"Enrichment2 Demo\" />\n\n<img alt=\"Enrichment3 Demo\" />\n\n## Try Our Data Enrichment Agent\n\n### Step 1: Get Your API Key\n\n<Card title=\"Get your Tavily API key\" icon=\"key\" href=\"https://app.tavily.com\" />\n\n### Step 2: Try the Data Enrichment Agent\n\n<Card title=\"Launch the application\" icon=\"message-bot\" href=\"https://sheets.tavily.com/\" />\n\n### Step 3: Read The Open Source Code\n\n<Card title=\"View Github Repository\" icon=\"github\" href=\"https://github.com/tavily-ai/tavily-sheets\" />",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Try Our Data Enrichment Agent",
+      "id": "try-our-data-enrichment-agent"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Get Your API Key",
+      "id": "step-1:-get-your-api-key"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Try the Data Enrichment Agent",
+      "id": "step-2:-try-the-data-enrichment-agent"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Read The Open Source Code",
+      "id": "step-3:-read-the-open-source-code"
+    }
+  ],
+  "url": "llms-txt#data-enrichment",
+  "links": []
+}

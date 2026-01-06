@@ -1,0 +1,8 @@
+{
+  "title": "1. Retrieval step",
+  "content": "results = exa.search_and_contents(\n    query,\n    type=\"fast\",  # or \"auto\", \"deep\"\n    num_results=10,\n    text={\"max_characters\": 5000}\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#1.-retrieval-step",
+  "links": []
+}

@@ -1,0 +1,133 @@
+{
+  "title": "Best Practices for Search",
+  "content": "Source: https://docs.tavily.com/documentation/best-practices/best-practices-search\n\nLearn how to optimize your queries, refine search filters, and leverage advanced parameters for better performance.\n\n## Query Optimization\n\n### Keep your query under 400 characters\n\nKeep queries concise—under **400 characters**. Think of it as a query for an agent performing web search, not long-form prompts.\n\n### Break complex queries into sub-queries\n\nFor complex or multi-topic queries, send separate focused requests:\n\nThe `search_depth` parameter controls the tradeoff between latency and relevance:\n\n<Expandable title=\"Latency vs relevance chart\">\n  <img alt=\"Latency vs Relevance by Search Depth\" />\n\n*This chart is a heuristic and is not to scale.*\n</Expandable>\n\n| Depth        | Latency | Relevance | Content Type |\n| ------------ | ------- | --------- | ------------ |\n| `ultra-fast` | Lowest  | Lower     | Content      |\n| `fast`       | Low     | Good      | Chunks       |\n| `basic`      | Medium  | High      | Content      |\n| `advanced`   | Higher  | Highest   | Chunks       |\n\n| Type        | Description                                               |\n| ----------- | --------------------------------------------------------- |\n| **Content** | NLP-based summary of the page, providing general context  |\n| **Chunks**  | Short snippets reranked by relevance to your search query |\n\nUse **chunks** when you need highly targeted information aligned with your query. Use **content** when a general page summary is sufficient.\n\n### Fast + Ultra-Fast\n\n| Depth        | When to use                                                                                                                                                             |\n| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `ultra-fast` | When latency is absolutely crucial. Delivers near-instant results, prioritizing speed over relevance. Ideal for real-time applications where response time is critical. |\n| `fast`       | When latency is more important than relevance, but you want results in reranked chunks format. Good for applications that need quick, targeted snippets.                |\n| `basic`      | A solid balance between relevance and latency. Best for general-purpose searches where you need quality results without the overhead of advanced processing.            |\n| `advanced`   | When you need the highest relevance and are willing to trade off latency. Best for queries seeking specific, detailed information.                                      |\n\n### Using `search_depth=advanced`\n\nBest for queries seeking specific information:\n\n| Parameter                 | Description                                             |\n| ------------------------- | ------------------------------------------------------- |\n| `time_range`              | Filter by relative time: `day`, `week`, `month`, `year` |\n| `start_date` / `end_date` | Filter by specific date range (format: `YYYY-MM-DD`)    |\n\nUse `topic` to filter by content type. Set to `news` for news sources (includes `published_date` metadata):\n\n| Parameter         | Description                           |\n| ----------------- | ------------------------------------- |\n| `include_domains` | Limit to specific domains             |\n| `exclude_domains` | Filter out specific domains           |\n| `country`         | Boost results from a specific country |\n\n<Note>Keep domain lists short and relevant for best results.</Note>\n\nLimits results returned (default: `5`). Setting too high may return lower-quality results.\n\n### `include_raw_content`\n\nReturns full extracted page content. For comprehensive extraction, consider a two-step process:\n\n1. Search to retrieve relevant URLs\n2. Use [Extract API](/documentation/best-practices/best-practices-extract#2-two-step-process-search-then-extract) to get content\n\n### `auto_parameters`\n\nTavily automatically configures parameters based on query intent. Your explicit values override automatic ones.\n\n<Note>\n  `auto_parameters` may set `search_depth` to `advanced` (2 credits). Set it\n  manually to control cost.\n</Note>\n\n## Async & Performance\n\nUse async calls for concurrent requests:\n\nLeverage response metadata to refine results:\n\n| Field         | Use case                           |\n| ------------- | ---------------------------------- |\n| `score`       | Filter/rank by relevance score     |\n| `title`       | Keyword filtering on headlines     |\n| `content`     | Quick relevance check              |\n| `raw_content` | Deep analysis and regex extraction |\n\n### Score-based filtering\n\nThe `score` indicates relevance between query and content. Higher is better, but the ideal threshold depends on your use case.\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "## Search Depth\n\nThe `search_depth` parameter controls the tradeoff between latency and relevance:\n\n<Expandable title=\"Latency vs relevance chart\">\n  <img alt=\"Latency vs Relevance by Search Depth\" />\n\n  *This chart is a heuristic and is not to scale.*\n</Expandable>\n\n| Depth        | Latency | Relevance | Content Type |\n| ------------ | ------- | --------- | ------------ |\n| `ultra-fast` | Lowest  | Lower     | Content      |\n| `fast`       | Low     | Good      | Chunks       |\n| `basic`      | Medium  | High      | Content      |\n| `advanced`   | Higher  | Highest   | Chunks       |\n\n### Content types\n\n| Type        | Description                                               |\n| ----------- | --------------------------------------------------------- |\n| **Content** | NLP-based summary of the page, providing general context  |\n| **Chunks**  | Short snippets reranked by relevance to your search query |\n\nUse **chunks** when you need highly targeted information aligned with your query. Use **content** when a general page summary is sufficient.\n\n### Fast + Ultra-Fast\n\n| Depth        | When to use                                                                                                                                                             |\n| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `ultra-fast` | When latency is absolutely crucial. Delivers near-instant results, prioritizing speed over relevance. Ideal for real-time applications where response time is critical. |\n| `fast`       | When latency is more important than relevance, but you want results in reranked chunks format. Good for applications that need quick, targeted snippets.                |\n| `basic`      | A solid balance between relevance and latency. Best for general-purpose searches where you need quality results without the overhead of advanced processing.            |\n| `advanced`   | When you need the highest relevance and are willing to trade off latency. Best for queries seeking specific, detailed information.                                      |\n\n### Using `search_depth=advanced`\n\nBest for queries seeking specific information:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Filtering Results\n\n### By date\n\n| Parameter                 | Description                                             |\n| ------------------------- | ------------------------------------------------------- |\n| `time_range`              | Filter by relative time: `day`, `week`, `month`, `year` |\n| `start_date` / `end_date` | Filter by specific date range (format: `YYYY-MM-DD`)    |",
+      "language": "unknown"
+    },
+    {
+      "code": "### By topic\n\nUse `topic` to filter by content type. Set to `news` for news sources (includes `published_date` metadata):",
+      "language": "unknown"
+    },
+    {
+      "code": "### By domain\n\n| Parameter         | Description                           |\n| ----------------- | ------------------------------------- |\n| `include_domains` | Limit to specific domains             |\n| `exclude_domains` | Filter out specific domains           |\n| `country`         | Boost results from a specific country |",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>Keep domain lists short and relevant for best results.</Note>\n\n## Response Content\n\n### `max_results`\n\nLimits results returned (default: `5`). Setting too high may return lower-quality results.\n\n### `include_raw_content`\n\nReturns full extracted page content. For comprehensive extraction, consider a two-step process:\n\n1. Search to retrieve relevant URLs\n2. Use [Extract API](/documentation/best-practices/best-practices-extract#2-two-step-process-search-then-extract) to get content\n\n### `auto_parameters`\n\nTavily automatically configures parameters based on query intent. Your explicit values override automatic ones.",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  `auto_parameters` may set `search_depth` to `advanced` (2 credits). Set it\n  manually to control cost.\n</Note>\n\n## Async & Performance\n\nUse async calls for concurrent requests:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Post-Processing\n\n### Using metadata\n\nLeverage response metadata to refine results:\n\n| Field         | Use case                           |\n| ------------- | ---------------------------------- |\n| `score`       | Filter/rank by relevance score     |\n| `title`       | Keyword filtering on headlines     |\n| `content`     | Quick relevance check              |\n| `raw_content` | Deep analysis and regex extraction |\n\n### Score-based filtering\n\nThe `score` indicates relevance between query and content. Higher is better, but the ideal threshold depends on your use case.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Query Optimization",
+      "id": "query-optimization"
+    },
+    {
+      "level": "h3",
+      "text": "Keep your query under 400 characters",
+      "id": "keep-your-query-under-400-characters"
+    },
+    {
+      "level": "h3",
+      "text": "Break complex queries into sub-queries",
+      "id": "break-complex-queries-into-sub-queries"
+    },
+    {
+      "level": "h2",
+      "text": "Search Depth",
+      "id": "search-depth"
+    },
+    {
+      "level": "h3",
+      "text": "Content types",
+      "id": "content-types"
+    },
+    {
+      "level": "h3",
+      "text": "Fast + Ultra-Fast",
+      "id": "fast-+-ultra-fast"
+    },
+    {
+      "level": "h3",
+      "text": "Using `search_depth=advanced`",
+      "id": "using-`search_depth=advanced`"
+    },
+    {
+      "level": "h2",
+      "text": "Filtering Results",
+      "id": "filtering-results"
+    },
+    {
+      "level": "h3",
+      "text": "By date",
+      "id": "by-date"
+    },
+    {
+      "level": "h3",
+      "text": "By topic",
+      "id": "by-topic"
+    },
+    {
+      "level": "h3",
+      "text": "By domain",
+      "id": "by-domain"
+    },
+    {
+      "level": "h2",
+      "text": "Response Content",
+      "id": "response-content"
+    },
+    {
+      "level": "h3",
+      "text": "`max_results`",
+      "id": "`max_results`"
+    },
+    {
+      "level": "h3",
+      "text": "`include_raw_content`",
+      "id": "`include_raw_content`"
+    },
+    {
+      "level": "h3",
+      "text": "`auto_parameters`",
+      "id": "`auto_parameters`"
+    },
+    {
+      "level": "h2",
+      "text": "Async & Performance",
+      "id": "async-&-performance"
+    },
+    {
+      "level": "h2",
+      "text": "Post-Processing",
+      "id": "post-processing"
+    },
+    {
+      "level": "h3",
+      "text": "Using metadata",
+      "id": "using-metadata"
+    },
+    {
+      "level": "h3",
+      "text": "Score-based filtering",
+      "id": "score-based-filtering"
+    }
+  ],
+  "url": "llms-txt#best-practices-for-search",
+  "links": []
+}

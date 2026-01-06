@@ -1,0 +1,39 @@
+{
+  "title": "Market Researcher",
+  "content": "Source: https://docs.tavily.com/examples/use-cases/market-researcher\n\nGet comprehensive market insights and analysis for stocks in your portfolio\n\n<img alt=\"Tavily Market Researcher\" />\n\n## Try Our Market Researcher\n\n### Step 1: Get Your API Key\n\n<Card title=\"Get your Tavily API key\" icon=\"key\" href=\"https://app.tavily.com\" />\n\n### Step 2: Try the Market Researcher\n\n<Card title=\"Launch the application\" icon=\"message-bot\" href=\"https://market-researcher.tavily.com/\" />\n\n### Step 3: Read The Open Source Code\n\n<Card title=\"View Github Repository\" icon=\"github\" href=\"https://github.com/tavily-ai/market-researcher\" />\n\n1. **Real-time Financial Research**: Real‑time financial news and market data aggregation performed in real-time.\n2. **Full Portfolio Coverage**: Input all your the stocks in your portfolio and get an analysis with comparative insights.\n3. **Report Generation**: Automated report generation with source citations, so all news and claims are backed by sources.\n4. **Efficient and Scalable**: Tavily handles multiple queries simultaneously, making it capable of processing large datasets quickly. This efficiency reduces the time needed for comprehensive research, allowing for faster decision-making.\n\nWe use the Tavily 'news' and Tavily 'finance' parameters to make two separate search calls for each ticker retrieving the most relevant and up to date financial news data and metrics. All the searches are parallelized to maximize speed.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Try Our Market Researcher",
+      "id": "try-our-market-researcher"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Get Your API Key",
+      "id": "step-1:-get-your-api-key"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Try the Market Researcher",
+      "id": "step-2:-try-the-market-researcher"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Read The Open Source Code",
+      "id": "step-3:-read-the-open-source-code"
+    },
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    },
+    {
+      "level": "h2",
+      "text": "How Does It Work?",
+      "id": "how-does-it-work?"
+    }
+  ],
+  "url": "llms-txt#market-researcher",
+  "links": []
+}

@@ -1,0 +1,91 @@
+{
+  "title": ")",
+  "content": "python  theme={null}\nresult = exa.search_and_contents(\n    \"latest AI breakthroughs in 2025\",\n    type=\"fast\",\n    num_results=10,\n    text={\"max_characters\": 5000}\n)\npython  theme={null}\nresult = exa.search_and_contents(\n    \"companies building climate tech solutions\",\n    type=\"auto\",  # or omit - auto is default\n    num_results=10,\n    text={\"max_characters\": 5000}\n)\npython  theme={null}\nresult = exa.search_and_contents(\n    \"impact of quantum computing on cryptography\",\n    type=\"deep\",\n    additional_queries=[\n        \"quantum threats to encryption\",\n        \"post-quantum cryptography research\"\n    ],\n    num_results=10,\n    text=True,\n    context=True  # Required for `Deep` search summaries\n)\npython  theme={null}",
+  "code_samples": [
+    {
+      "code": "Setting a consistent `max_characters` ensures fair comparisons by standardizing content length across all queries. The `context` parameter returns a single RAG-ready string, while `text` returns individual content for each result. **Note: `Deep` search may require `context=True` to return detailed summaries.** Only add additional parameters (date filters, domain restrictions, etc.) when they're essential to your specific evaluation objective.\n\n### Compare Within Latency Classes\n\n**Critical: Always find the closest competitor in terms of P50 latency for meaningful comparisons.**\n\nDon't compare systems with vastly different latency profiles — a 500ms API serves different use cases than a 5000ms API. Instead, benchmark within similar latency ranges:\n\n* **For Exa Fast (\\<500ms)**: Compare to other sub-1s APIs with similar latency\n* **For Exa Auto (\\~1s)**: Compare to mid-latency systems (800ms-1500ms)\n* **For Exa Deep (>2s)**: Compare to other multi-second agentic/research systems\n\nComparing across latency classes (e.g., `Fast` vs `Deep`) is not meaningful — they're optimized for different requirements and use cases.\n\n## Search Types: Understanding the Quality-Latency Spectrum\n\nExa offers four search types, each optimized for different evaluation scenarios:\n\n<img src=\"https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/latency.png?fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=53ffd3e8eaea4a83b81ebd6f677c1473\" alt=\"Exa search types positioned on speed vs depth/quality spectrum\" data-og-width=\"1289\" width=\"1289\" data-og-height=\"677\" height=\"677\" data-path=\"assets/latency.png\" data-optimize=\"true\" data-opv=\"3\" srcset=\"https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/latency.png?w=280&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=19c653e3a9974a69ca60dd5942d3b901 280w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/latency.png?w=560&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=b8c9d9fb56bdce0086feaa612ee1ec75 560w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/latency.png?w=840&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=2c69c19683204368c0e24bcb94783e17 840w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/latency.png?w=1100&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=e584594bfc6eef8e8ec5265871a1e4d5 1100w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/latency.png?w=1650&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=97a0e28265b8c7998e2231f18f9968a2 1650w, https://mintcdn.com/exa-52/lUWjcwF6jErKZoyG/assets/latency.png?w=2500&fit=max&auto=format&n=lUWjcwF6jErKZoyG&q=85&s=a736d68bc036bbff8207934b0cf64939 2500w\" />\n\n### Fast Search\n\n**Optimized for**: Speed-critical applications\n\n**Characteristics**:\n\n* Median latency: \\~500ms (excluding network and optional features)\n* Streamlined neural and reranking models\n* Best for single-step factual queries\n\n**When to benchmark with Fast**:\n\n* Low-latency QA datasets (SimpleQA, WebWalkerQA)\n* Real-time applications (voice agents, autocomplete)\n* High-volume agentic workflows where latency accumulates\n\n**Example configuration**:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Auto Search (Default)\n\n**Optimized for**: Balanced performance without manual tuning\n\n**Characteristics**:\n\n* Median latency: \\~1000ms\n* Intelligently combines multiple search methods\n* Reranker model adapts to query type\n\n**When to benchmark with Auto**:\n\n* General-purpose search evaluations\n* When query types vary significantly\n* Production workloads requiring versatility\n\n**Example configuration**:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Deep Search\n\n<Info>\n  Learn more about Deep search in our [Deep Search changelog](/changelog/new-deep-search-type).\n</Info>\n\n**Optimized for**: Comprehensive research and multi-hop queries\n\n**Characteristics**:\n\n* Median latency: \\~5000ms\n* Automatic query expansion or custom query variations via `additional_queries` (Python) / `additionalQueries` (JavaScript)\n* Rich contextual summaries for each result (requires `context=True`)\n* Parallel search across multiple query formulations\n\n<Note>\n  **Using query variations**: Provide 2-3 query variations using `additional_queries` (Python) or `additionalQueries` (JavaScript) for best results. If not provided, Deep search will automatically generate variations.\n</Note>\n\n**When to benchmark with Deep**:\n\n* Agentic workflows (FRAMES, MultiLoKo, BrowseComp)\n* Complex research tasks requiring multiple perspectives\n* Scenarios where comprehensive coverage matters more than speed\n\n**Example configuration**:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Neural Search\n\n**Optimized for**: Semantic similarity and exploratory queries\n\n**Characteristics**:\n\n* Embeddings-based next-link prediction\n* Excels at thematic and conceptual relationships\n* Incorporated into Fast and Auto search types\n\n**When to benchmark with Neural**:\n\n* Exploratory search tasks\n* Finding semantically related content\n* Long-form query matching\n\n## Evaluating Exa with Tool Calling\n\nFor evaluating Exa in agentic workflows where LLMs autonomously call search tools, proper tool calling setup is critical. Tool calling allows agents to dynamically invoke Exa search based on user queries and reasoning steps.\n\n### Why Tool Calling Matters for Evaluation\n\nWhen benchmarking agentic systems:\n\n* **Agents decide when to search**: The LLM determines if/when to call Exa based on the task\n* **Dynamic parameter selection**: Agents may choose search parameters (though we recommend minimal defaults)\n* **Multi-step workflows**: Agents can make multiple Exa calls in sequence or parallel\n\n### Tool Calling Best Practices for Evaluation\n\n1. **Keep tool definitions minimal**: Don't expose too many parameters to the agent — this encourages over-filtering\n2. **Use consistent tool schemas**: Standardize tool definitions across all evaluated systems\n3. **Monitor tool call patterns**: Track how often and when agents invoke Exa vs competitors\n\n### Implementation Guides\n\nSee our detailed guides for implementing Exa with popular LLM providers:\n\n* **[Anthropic Tool Calling](/reference/anthropic-tool-calling)** - Using Claude with Exa search integration\n* **[OpenAI Tool Calling](/reference/openai-tool-calling)** - Integrating Exa with GPT models\n* **[OpenAI Responses API](/reference/openai-responses-api-with-exa)** - Recommended for new OpenAI projects\n\nThese guides show how to define Exa search as a tool and handle the agent's tool call responses properly.\n\n***\n\n## Evaluation Methodology\n\n### Core Principles for Fair Benchmarking\n\nTo ensure reproducible, meaningful comparisons:\n\n1. **Use default settings**: Start with minimal parameters (`type`, `num_results`, `text`). Avoid adding restrictive filters (date ranges, domains, text inclusion/exclusion) unless they're core to your evaluation — these often cause over-optimization that artificially limits results without meaningful benefit.\n\n2. **Standardize queries**: Use identical query sets across all systems\n\n3. **Control downstream processing**: Use the same LLM for answer synthesis and grading\n\n4. **Disable prompt engineering**: Evaluate base API performance without query optimization\n\n5. **Measure consistently**: Track P50 latency, accuracy, and coverage using identical metrics\n\n6. **Document configurations**: Record all parameter settings for reproducibility\n\n### Four-Phase Evaluation Workflow\n\n#### Phase 1: Scope Definition\n\nDefine evaluation objectives:\n\n* What capabilities are you testing? (factual QA, research depth, freshness, etc.)\n* What latency requirements matter for your use case?\n* Are you evaluating single-step retrieval or multi-step agentic workflows?\n\n#### Phase 2: Dataset Selection\n\nChoose benchmarks aligned with your scope (see Datasets section below):\n\n* **Low-latency factual QA**: SimpleQA, WebWalkerQA\n* **Single-step retrieval**: FRAMES (single-step slice), Seal0\n* **Agentic workflows**: FRAMES (agentic slice), MultiLoKo, BrowseComp\n* **Complex reasoning**: HLE (hard, long, emerging questions)\n* **Freshness**: FreshQA, time-sensitive queries\n\n#### Phase 3: Run Configurations\n\nExecute standardized retrieval-synthesis-grading loop:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Compare Within Latency Classes",
+      "id": "compare-within-latency-classes"
+    },
+    {
+      "level": "h2",
+      "text": "Search Types: Understanding the Quality-Latency Spectrum",
+      "id": "search-types:-understanding-the-quality-latency-spectrum"
+    },
+    {
+      "level": "h3",
+      "text": "Fast Search",
+      "id": "fast-search"
+    },
+    {
+      "level": "h3",
+      "text": "Auto Search (Default)",
+      "id": "auto-search-(default)"
+    },
+    {
+      "level": "h3",
+      "text": "Deep Search",
+      "id": "deep-search"
+    },
+    {
+      "level": "h3",
+      "text": "Neural Search",
+      "id": "neural-search"
+    },
+    {
+      "level": "h2",
+      "text": "Evaluating Exa with Tool Calling",
+      "id": "evaluating-exa-with-tool-calling"
+    },
+    {
+      "level": "h3",
+      "text": "Why Tool Calling Matters for Evaluation",
+      "id": "why-tool-calling-matters-for-evaluation"
+    },
+    {
+      "level": "h3",
+      "text": "Tool Calling Best Practices for Evaluation",
+      "id": "tool-calling-best-practices-for-evaluation"
+    },
+    {
+      "level": "h3",
+      "text": "Implementation Guides",
+      "id": "implementation-guides"
+    },
+    {
+      "level": "h2",
+      "text": "Evaluation Methodology",
+      "id": "evaluation-methodology"
+    },
+    {
+      "level": "h3",
+      "text": "Core Principles for Fair Benchmarking",
+      "id": "core-principles-for-fair-benchmarking"
+    },
+    {
+      "level": "h3",
+      "text": "Four-Phase Evaluation Workflow",
+      "id": "four-phase-evaluation-workflow"
+    }
+  ],
+  "url": "llms-txt#)",
+  "links": []
+}

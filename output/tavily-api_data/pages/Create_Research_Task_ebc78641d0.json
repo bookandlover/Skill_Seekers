@@ -1,0 +1,8 @@
+{
+  "title": "Create Research Task",
+  "content": "Source: https://docs.tavily.com/documentation/api-reference/endpoint/research\n\nPOST /research\nTavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-research-task",
+  "links": []
+}

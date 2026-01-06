@@ -1,0 +1,19 @@
+{
+  "title": "Create and run the crew",
+  "content": "crew = Crew(\n    agents=[extractor_agent],\n    tasks=[extract_task],\n    verbose=False\n)\n\nresult = crew.kickoff()\nprint(result)\npython theme={null}\nfrom crewai_tools import TavilyExtractorTool",
+  "code_samples": [
+    {
+      "code": "### Customizing extract tool parameters\n\n**Example:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Customizing extract tool parameters",
+      "id": "customizing-extract-tool-parameters"
+    }
+  ],
+  "url": "llms-txt#create-and-run-the-crew",
+  "links": []
+}

@@ -1,0 +1,34 @@
+{
+  "title": "OpenAI",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/openai\n\nIntegrate Tavily with OpenAI to enhance your AI applications with real-time web search capabilities.\n\nThis guide shows you how to integrate Tavily with OpenAI to create more powerful and informed AI applications. By combining OpenAI's language models with Tavily's real-time web search capabilities, you can build AI systems and agentic AI applications that access current information and provide up-to-date responses.\n\nBefore you begin, make sure you have:\n\n* An OpenAI API key from [OpenAI Platform](https://platform.openai.com/)\n* A Tavily API key from [Tavily Dashboard](https://app.tavily.com/sign-in)\n\nInstall the required packages:\n\nSet up your API keys:\n\n```python theme={null}\nimport os",
+  "code_samples": [
+    {
+      "code": "## Setup\n\nSet up your API keys:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Setup",
+      "id": "setup"
+    }
+  ],
+  "url": "llms-txt#openai",
+  "links": []
+}

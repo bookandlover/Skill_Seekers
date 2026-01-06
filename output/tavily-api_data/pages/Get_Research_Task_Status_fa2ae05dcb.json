@@ -1,0 +1,8 @@
+{
+  "title": "Get Research Task Status",
+  "content": "Source: https://docs.tavily.com/documentation/api-reference/endpoint/research-get\n\nGET /research/{request_id}\nRetrieve the status and results of a research task using its request ID.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#get-research-task-status",
+  "links": []
+}

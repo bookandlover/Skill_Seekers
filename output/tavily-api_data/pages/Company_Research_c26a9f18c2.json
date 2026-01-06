@@ -1,0 +1,34 @@
+{
+  "title": "Company Research",
+  "content": "Source: https://docs.tavily.com/examples/use-cases/company-research\n\nPerform in-depth company research with Tavily Search and Extract.\n\n<img alt=\"Company Research Demo\" />\n\n## Try Our Company Researcher\n\n### Step 1: Get Your API Key\n\n<Card title=\"Get your Tavily API key\" icon=\"key\" href=\"https://app.tavily.com\" />\n\n### Step 2: Try the Company Researcher\n\n<Card title=\"Launch the application\" icon=\"message-bot\" href=\"https://companyresearcher.tavily.com/\" />\n\n### Step 3: Read The Open Source Code\n\n<Card title=\"View Github Repository\" icon=\"github\" href=\"https://github.com/pogjester/company-research-agent\" />\n\n## Why Use Tavily for company research?\n\n<Tip>\n  This is one of the most popular use cases for Tavily. Our powerful APIs can easily be integrated with agentic workflows to perform in-depth, accurate company research.\n</Tip>\n\nTavily offers several advantages for conducting in-depth company research:\n\n1. **Comprehensive Data Gathering**: Tavily's advanced search algorithms pull relevant information from a wide range of online sources, providing a robust foundation for in-depth company research.\n\n2. **Flexible Agentic Search**: When Tavily is integrated into agentic workflows, such as those powered by frameworks like LangGraph, it allows AI agents to dynamically tailor their search strategies. The agents can decide to perform either a news or general search depending on the context, retrieve raw content for more in-depth analysis, or simply pull summaries when high-level insights are sufficient. This adaptability ensures that the research process is optimized according to the specific requirements of the task and the nature of the data available, bringing a new level of autonomy and intelligence to the research process.\n\n3. **Real-time Data Retrieval**: Tavily ensures that the data used for research is up-to-date by querying live sources. This is crucial for company research where timely information can impact the accuracy and relevance of the analysis.\n\n4. **Efficient and Scalable**: Tavily handles multiple queries simultaneously, making it capable of processing large datasets quickly. This efficiency reduces the time needed for comprehensive research, allowing for faster decision-making.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Try Our Company Researcher",
+      "id": "try-our-company-researcher"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Get Your API Key",
+      "id": "step-1:-get-your-api-key"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Try the Company Researcher",
+      "id": "step-2:-try-the-company-researcher"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Read The Open Source Code",
+      "id": "step-3:-read-the-open-source-code"
+    },
+    {
+      "level": "h2",
+      "text": "Why Use Tavily for company research?",
+      "id": "why-use-tavily-for-company-research?"
+    }
+  ],
+  "url": "llms-txt#company-research",
+  "links": []
+}

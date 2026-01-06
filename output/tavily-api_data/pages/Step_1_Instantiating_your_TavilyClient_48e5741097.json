@@ -1,0 +1,8 @@
+{
+  "title": "Step 1. Instantiating your TavilyClient",
+  "content": "tavily_client = TavilyClient(api_key=\"tvly-YOUR_API_KEY\")",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#step-1.-instantiating-your-tavilyclient",
+  "links": []
+}

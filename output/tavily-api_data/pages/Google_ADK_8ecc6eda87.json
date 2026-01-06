@@ -1,0 +1,116 @@
+{
+  "title": "Google ADK",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/google-adk\n\nConnect your Google ADK agent to Tavily's AI-focused search, extraction, and crawling platform for real-time web intelligence.\n\nThe Tavily MCP Server connects your ADK agent to Tavily's AI-focused search, extraction, and crawling platform. This gives your agent the ability to perform real-time web searches, intelligently extract specific data from web pages, and crawl or create structured maps of websites.\n\nBefore you begin, make sure you have:\n\n* Python 3.9 or later\n* pip for installing packages\n* A [Tavily API key](https://app.tavily.com/home) (sign up for free if you don't have one)\n* A [Gemini API key](https://aistudio.google.com/app/apikey) for Google AI Studio\n\nInstall ADK by running:\n\n## Building Your Agent\n\n### Step 1: Create an Agent Project\n\nRun the `adk create` command to start a new agent project:\n\nThis creates a new directory with the following structure:\n\n### Step 2: Update Your Agent Code\n\nEdit the `my_agent/agent.py` file to integrate Tavily. Choose either **Remote MCP Server** or **Local MCP Server**:\n\n### Step 3: Set Your API Keys\n\nUpdate the `my_agent/.env` file with your API keys:\n\nOr manually edit the `.env` file:\n\n### Step 4: Run Your Agent\n\nYou can run your ADK agent in two ways:\n\n#### Run with Command-Line Interface\n\nRun your agent using the `adk run` command:\n\nThis starts an interactive command-line interface where you can chat with your agent and test Tavily's capabilities.\n\n#### Run with Web Interface\n\nStart the ADK web interface for a visual testing experience:\n\n**Note:** Run this command from the parent directory that contains your `my_agent/` folder. For example, if your agent is inside `agents/my_agent/`, run `adk web` from the `agents/` directory.\n\nThis starts a web server with a chat interface. Access it at `http://localhost:8000`, select your agent from the dropdown, and start chatting.\n\nOnce your agent is set up and running, you can interact with it through the command-line interface or web interface. Here's a simple example:\n\nThe agent automatically combines multiple Tavily tools to provide comprehensive answers, making it easy to explore websites and gather information without manual navigation.\n\n<img alt=\"Tavily-ADK\" />\n\nOnce connected, your agent gains access to Tavily's powerful web intelligence tools:\n\nExecute a search query to find relevant information across the web.\n\nExtract structured data from any web page. Extract text, links, and images from single pages or batch process multiple URLs efficiently.\n\nTraverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.\n\nTraversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.",
+  "code_samples": [
+    {
+      "code": "## Building Your Agent\n\n### Step 1: Create an Agent Project\n\nRun the `adk create` command to start a new agent project:",
+      "language": "unknown"
+    },
+    {
+      "code": "This creates a new directory with the following structure:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 2: Update Your Agent Code\n\nEdit the `my_agent/agent.py` file to integrate Tavily. Choose either **Remote MCP Server** or **Local MCP Server**:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n### Step 3: Set Your API Keys\n\nUpdate the `my_agent/.env` file with your API keys:",
+      "language": "unknown"
+    },
+    {
+      "code": "Or manually edit the `.env` file:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 4: Run Your Agent\n\nYou can run your ADK agent in two ways:\n\n#### Run with Command-Line Interface\n\nRun your agent using the `adk run` command:",
+      "language": "unknown"
+    },
+    {
+      "code": "This starts an interactive command-line interface where you can chat with your agent and test Tavily's capabilities.\n\n#### Run with Web Interface\n\nStart the ADK web interface for a visual testing experience:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Note:** Run this command from the parent directory that contains your `my_agent/` folder. For example, if your agent is inside `agents/my_agent/`, run `adk web` from the `agents/` directory.\n\nThis starts a web server with a chat interface. Access it at `http://localhost:8000`, select your agent from the dropdown, and start chatting.\n\n## Example Usage\n\nOnce your agent is set up and running, you can interact with it through the command-line interface or web interface. Here's a simple example:\n\n**User Query:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Building Your Agent",
+      "id": "building-your-agent"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Create an Agent Project",
+      "id": "step-1:-create-an-agent-project"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Update Your Agent Code",
+      "id": "step-2:-update-your-agent-code"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Set Your API Keys",
+      "id": "step-3:-set-your-api-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Step 4: Run Your Agent",
+      "id": "step-4:-run-your-agent"
+    },
+    {
+      "level": "h2",
+      "text": "Example Usage",
+      "id": "example-usage"
+    },
+    {
+      "level": "h2",
+      "text": "Available Tools",
+      "id": "available-tools"
+    },
+    {
+      "level": "h3",
+      "text": "tavily-search",
+      "id": "tavily-search"
+    },
+    {
+      "level": "h3",
+      "text": "tavily-extract",
+      "id": "tavily-extract"
+    },
+    {
+      "level": "h3",
+      "text": "tavily-map",
+      "id": "tavily-map"
+    },
+    {
+      "level": "h3",
+      "text": "tavily-crawl",
+      "id": "tavily-crawl"
+    }
+  ],
+  "url": "llms-txt#google-adk",
+  "links": []
+}

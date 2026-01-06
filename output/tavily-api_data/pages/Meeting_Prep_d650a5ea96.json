@@ -1,0 +1,39 @@
+{
+  "title": "Meeting Prep",
+  "content": "Source: https://docs.tavily.com/examples/use-cases/meeting-prep\n\nBuild an intelligent meeting preparation agent with real-time web research capabilities using Tavily's API and Google Calendar integration\n\nThis repository demonstrates how to build a meeting preparation agent with real-time web access, leveraging Tavily's advanced search capabilities. This agent will connect to your Google Calendar via MCP, extract meeting information, and use Tavily search for profile research on the meeting attendees and general information on the companies you are meeting with.\n\n<img alt=\"Meeting Prep Agent Demo\" />\n\n## Try Our Meeting Prep Agent\n\n### Step 1: Get Your API Key\n\n<Card title=\"Get your Tavily API key\" icon=\"key\" href=\"https://app.tavily.com\" />\n\n### Step 2: Read The Open Source Code and Clone the App\n\n<Card title=\"View Github Repository\" icon=\"github\" href=\"https://github.com/tavily-ai/meeting-prep-agent\" />\n\n<img alt=\"Meeting Prep Agent Diagram\" />\n\n1. **Real-time Web Search**: Instantly fetches up-to-date information using Tavily's search API.\n2. **Agentic Reasoning**: Combines MCP and ReAct agent flows for smarter, context-aware responses.\n3. **Streaming Substeps**: See agentic reasoning and substeps streamed live for transparency.\n4. **Citations**: All web search results are cited for easy verification.\n5. **Google Calendar Integration**: (via mcp-use) Access and analyze your meeting data.\n6. **Async FastAPI Backend**: High-performance, async-ready backend for fast responses.\n7. **Modern React Frontend**: Interactive UI for dynamic user interactions.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Try Our Meeting Prep Agent",
+      "id": "try-our-meeting-prep-agent"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Get Your API Key",
+      "id": "step-1:-get-your-api-key"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Read The Open Source Code and Clone the App",
+      "id": "step-2:-read-the-open-source-code-and-clone-the-app"
+    },
+    {
+      "level": "h2",
+      "text": "System Diagram",
+      "id": "system-diagram"
+    },
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    }
+  ],
+  "url": "llms-txt#meeting-prep",
+  "links": []
+}

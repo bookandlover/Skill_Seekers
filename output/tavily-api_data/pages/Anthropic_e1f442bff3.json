@@ -1,0 +1,24 @@
+{
+  "title": "Anthropic",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/anthropic\n\nIntegrate Tavily with Anthropic Claude to enhance your AI applications with real-time web search capabilities.\n\nInstall the required packages:\n\nSet up your API keys:\n\n```python theme={null}\nimport os",
+  "code_samples": [
+    {
+      "code": "## Setup\n\nSet up your API keys:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Setup",
+      "id": "setup"
+    }
+  ],
+  "url": "llms-txt#anthropic",
+  "links": []
+}

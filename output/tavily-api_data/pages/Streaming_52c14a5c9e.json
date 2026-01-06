@@ -1,0 +1,108 @@
+{
+  "title": "Streaming",
+  "content": "Source: https://docs.tavily.com/documentation/api-reference/endpoint/research-streaming\n\nStream real-time research progress and results from Tavily Research API\n\nWhen using the Tavily Research API, you can stream responses in real-time by setting `stream: true` in your request. This allows you to receive research progress updates, tool calls, and final results as they're generated, providing a better user experience for long-running research tasks.\n\nStreaming is particularly useful for:\n\n* Displaying research progress to users in real-time\n* Monitoring tool calls and search queries as they execute\n* Receiving incremental updates during lengthy research operations\n* Building interactive research interfaces\n\n## Enabling Streaming\n\nTo enable streaming, set the `stream` parameter to `true` when making a request to the Research endpoint:\n\nThe API will respond with a `text/event-stream` content type, sending Server-Sent Events (SSE) as the research progresses.\n\nEach streaming event follows a consistent structure compatible with the OpenAI chat completions format:\n\n| Field     | Type    | Description                                           |\n| --------- | ------- | ----------------------------------------------------- |\n| `id`      | string  | Unique identifier for the stream event                |\n| `object`  | string  | Always `\"chat.completion.chunk\"` for streaming events |\n| `model`   | string  | The research model being used (`\"mini\"` or `\"pro\"`)   |\n| `created` | integer | Unix timestamp when the event was created             |\n| `choices` | array   | Array containing the delta with event details         |\n\nThe streaming response includes different types of events in the `delta` object. Here are the main event types you'll encounter:\n\n### 1. Tool Call Events\n\nWhen the research agent performs actions like web searches, you'll receive tool call events:\n\n**Tool Call Delta Fields:**\n\n| Field                 | Type   | Description                                                        |\n| --------------------- | ------ | ------------------------------------------------------------------ |\n| `type`                | string | Either `\"tool_call\"` or `\"tool_response\"`                          |\n| `tool_call`           | array  | Details about the tool being invoked                               |\n| `name`                | string | Name of the tool (see [Tool Types](#tool-types) below)             |\n| `id`                  | string | Unique identifier for the tool call                                |\n| `arguments`           | string | Description of the action being performed                          |\n| `queries`             | array  | *(WebSearch only)* The search queries being executed               |\n| `parent_tool_call_id` | string | *(Pro mode only)* ID of the parent tool call for nested operations |\n\n### 2. Tool Response Events\n\nAfter a tool executes, you'll receive response events with discovered sources:\n\n**Tool Response Fields:**\n\n| Field                 | Type   | Description                                                     |\n| --------------------- | ------ | --------------------------------------------------------------- |\n| `name`                | string | Name of the tool that completed                                 |\n| `id`                  | string | Unique identifier matching the original tool call               |\n| `arguments`           | string | Completion status message                                       |\n| `sources`             | array  | Sources discovered by the tool (with `url`, `title`, `favicon`) |\n| `parent_tool_call_id` | string | *(Pro mode only)* ID of the parent tool call                    |\n\n### 3. Content Events\n\nThe final research report is streamed as content chunks:\n\n* Can be a **string** (markdown-formatted report chunks) when no `output_schema` is provided\n* Can be an **object** (structured data) when an `output_schema` is specified\n\nAfter the content is streamed, a sources event is emitted containing all sources used in the research:\n\n**Source Object Fields:**\n\n| Field     | Type   | Description                  |\n| --------- | ------ | ---------------------------- |\n| `url`     | string | The URL of the source        |\n| `title`   | string | The title of the source page |\n| `favicon` | string | URL to the source's favicon  |\n\nSignals the completion of the streaming response:\n\nDuring research, you'll encounter the following tool types in streaming events:\n\n| Tool Name          | Description                                                    | Model    |\n| ------------------ | -------------------------------------------------------------- | -------- |\n| `Planning`         | Initializes the research plan based on the input query         | Both     |\n| `Generating`       | Generates the final research report from collected information | Both     |\n| `WebSearch`        | Executes web searches to gather information                    | Both     |\n| `ResearchSubtopic` | Conducts deep research on specific subtopics                   | Pro only |\n\n### Research Flow Example\n\nA typical streaming session follows this sequence:\n\n1. **Planning** tool\\_call → Initializing research plan\n2. **Planning** tool\\_response → Research plan initialized\n3. **WebSearch** tool\\_call → Executing search queries (with `queries` array)\n4. **WebSearch** tool\\_response → Search completed (with `sources` array)\n5. *(Pro mode)* **ResearchSubtopic** tool\\_call/response cycles for deeper research\n6. **Generating** tool\\_call → Generating final report\n7. **Generating** tool\\_response → Report generated\n8. **Content** events → Streamed report chunks\n9. **Sources** event → Complete list of all sources used\n10. **Done** event → Stream complete\n\n## Handling Streaming Responses\n\n```python theme={null}\nfrom tavily import TavilyClient",
+  "code_samples": [
+    {
+      "code": "The API will respond with a `text/event-stream` content type, sending Server-Sent Events (SSE) as the research progresses.\n\n## Event Structure\n\nEach streaming event follows a consistent structure compatible with the OpenAI chat completions format:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Core Fields\n\n| Field     | Type    | Description                                           |\n| --------- | ------- | ----------------------------------------------------- |\n| `id`      | string  | Unique identifier for the stream event                |\n| `object`  | string  | Always `\"chat.completion.chunk\"` for streaming events |\n| `model`   | string  | The research model being used (`\"mini\"` or `\"pro\"`)   |\n| `created` | integer | Unix timestamp when the event was created             |\n| `choices` | array   | Array containing the delta with event details         |\n\n## Event Types\n\nThe streaming response includes different types of events in the `delta` object. Here are the main event types you'll encounter:\n\n### 1. Tool Call Events\n\nWhen the research agent performs actions like web searches, you'll receive tool call events:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Tool Call Delta Fields:**\n\n| Field                 | Type   | Description                                                        |\n| --------------------- | ------ | ------------------------------------------------------------------ |\n| `type`                | string | Either `\"tool_call\"` or `\"tool_response\"`                          |\n| `tool_call`           | array  | Details about the tool being invoked                               |\n| `name`                | string | Name of the tool (see [Tool Types](#tool-types) below)             |\n| `id`                  | string | Unique identifier for the tool call                                |\n| `arguments`           | string | Description of the action being performed                          |\n| `queries`             | array  | *(WebSearch only)* The search queries being executed               |\n| `parent_tool_call_id` | string | *(Pro mode only)* ID of the parent tool call for nested operations |\n\n### 2. Tool Response Events\n\nAfter a tool executes, you'll receive response events with discovered sources:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Tool Response Fields:**\n\n| Field                 | Type   | Description                                                     |\n| --------------------- | ------ | --------------------------------------------------------------- |\n| `name`                | string | Name of the tool that completed                                 |\n| `id`                  | string | Unique identifier matching the original tool call               |\n| `arguments`           | string | Completion status message                                       |\n| `sources`             | array  | Sources discovered by the tool (with `url`, `title`, `favicon`) |\n| `parent_tool_call_id` | string | *(Pro mode only)* ID of the parent tool call                    |\n\n### 3. Content Events\n\nThe final research report is streamed as content chunks:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Content Field:**\n\n* Can be a **string** (markdown-formatted report chunks) when no `output_schema` is provided\n* Can be an **object** (structured data) when an `output_schema` is specified\n\n### 4. Sources Event\n\nAfter the content is streamed, a sources event is emitted containing all sources used in the research:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Source Object Fields:**\n\n| Field     | Type   | Description                  |\n| --------- | ------ | ---------------------------- |\n| `url`     | string | The URL of the source        |\n| `title`   | string | The title of the source page |\n| `favicon` | string | URL to the source's favicon  |\n\n### 5. Done Event\n\nSignals the completion of the streaming response:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Tool Types\n\nDuring research, you'll encounter the following tool types in streaming events:\n\n| Tool Name          | Description                                                    | Model    |\n| ------------------ | -------------------------------------------------------------- | -------- |\n| `Planning`         | Initializes the research plan based on the input query         | Both     |\n| `Generating`       | Generates the final research report from collected information | Both     |\n| `WebSearch`        | Executes web searches to gather information                    | Both     |\n| `ResearchSubtopic` | Conducts deep research on specific subtopics                   | Pro only |\n\n### Research Flow Example\n\nA typical streaming session follows this sequence:\n\n1. **Planning** tool\\_call → Initializing research plan\n2. **Planning** tool\\_response → Research plan initialized\n3. **WebSearch** tool\\_call → Executing search queries (with `queries` array)\n4. **WebSearch** tool\\_response → Search completed (with `sources` array)\n5. *(Pro mode)* **ResearchSubtopic** tool\\_call/response cycles for deeper research\n6. **Generating** tool\\_call → Generating final report\n7. **Generating** tool\\_response → Report generated\n8. **Content** events → Streamed report chunks\n9. **Sources** event → Complete list of all sources used\n10. **Done** event → Stream complete\n\n## Handling Streaming Responses\n\n### Python Example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Enabling Streaming",
+      "id": "enabling-streaming"
+    },
+    {
+      "level": "h2",
+      "text": "Event Structure",
+      "id": "event-structure"
+    },
+    {
+      "level": "h3",
+      "text": "Core Fields",
+      "id": "core-fields"
+    },
+    {
+      "level": "h2",
+      "text": "Event Types",
+      "id": "event-types"
+    },
+    {
+      "level": "h3",
+      "text": "1. Tool Call Events",
+      "id": "1.-tool-call-events"
+    },
+    {
+      "level": "h3",
+      "text": "2. Tool Response Events",
+      "id": "2.-tool-response-events"
+    },
+    {
+      "level": "h3",
+      "text": "3. Content Events",
+      "id": "3.-content-events"
+    },
+    {
+      "level": "h3",
+      "text": "4. Sources Event",
+      "id": "4.-sources-event"
+    },
+    {
+      "level": "h3",
+      "text": "5. Done Event",
+      "id": "5.-done-event"
+    },
+    {
+      "level": "h2",
+      "text": "Tool Types",
+      "id": "tool-types"
+    },
+    {
+      "level": "h3",
+      "text": "Research Flow Example",
+      "id": "research-flow-example"
+    },
+    {
+      "level": "h2",
+      "text": "Handling Streaming Responses",
+      "id": "handling-streaming-responses"
+    },
+    {
+      "level": "h3",
+      "text": "Python Example",
+      "id": "python-example"
+    }
+  ],
+  "url": "llms-txt#streaming",
+  "links": []
+}

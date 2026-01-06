@@ -1,0 +1,19 @@
+{
+  "title": "Langflow",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/langflow\n\nIntegrate Tavily with Langflow, an open-source visual framework for building multi-agent and RAG applications.\n\nIntegrate [Tavily with Langflow](https://blog.langflow.org/web-search-in-your-ai-agents-a-langflow-tutorial/) to create powerful AI workflows using a visual interface. Langflow is an open-source tool that provides a visual builder for creating AI agents and workflows, making it easy to incorporate Tavily's search and extraction capabilities into your applications.\n\nLangflow works with Python 3.10 to 3.13. You can install it using either UV (recommended) or pip:",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    }
+  ],
+  "url": "llms-txt#langflow",
+  "links": []
+}

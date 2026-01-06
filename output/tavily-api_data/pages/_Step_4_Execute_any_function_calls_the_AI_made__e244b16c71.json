@@ -1,0 +1,13 @@
+{
+  "title": "--- Step 4: Execute any function calls the AI made ---",
+  "content": "for item in response.output:\n    if item.type == \"function_call\":\n        if item.name == \"tavily_search\":\n            # Parse the arguments the AI provided for the search\n            parsed_args = json.loads(item.arguments)\n            \n            # Execute the actual Tavily search\n            results = tavily_search(**parsed_args)\n            \n            # Add the search results back to the conversation\n            # This tells the AI what it found when it searched\n            function_output = {\n                \"type\": \"function_call_output\",\n                \"call_id\": item.call_id,\n                \"output\": json.dumps({\n                  \"results\": results\n                })\n            }\n            input_list.append(function_output)",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#----step-4:-execute-any-function-calls-the-ai-made----",
+  "links": []
+}

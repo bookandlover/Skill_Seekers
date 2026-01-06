@@ -1,0 +1,23 @@
+{
+  "title": "Basic usage",
+  "content": "result = tavily_search.invoke({\"query\": \"What happened at the last wimbledon\"})\npython theme={null}\n{\n 'query': 'What happened at the last wimbledon',\n 'follow_up_questions': None,\n 'answer': None,\n 'images': [],\n 'results': [\n   {'url': 'https://en.wikipedia.org/wiki/Wimbledon_Championships',\n    'title': 'Wimbledon Championships - Wikipedia',\n    'content': 'Due to the COVID-19 pandemic, Wimbledon 2020 was cancelled ...',\n    'score': 0.62365627198,\n    'raw_content': None},\n   {'url': 'https://www.cbsnews.com/news/wimbledon-men-final-carlos-alcaraz-novak-djokovic/',\n    'title': \"Carlos Alcaraz beats Novak Djokovic at Wimbledon men's final to ...\",\n    'content': 'In attendance on Sunday was Catherine, the Princess of Wales ...',\n    'score': 0.5154731446,\n    'raw_content': None}\n ],\n 'response_time': 2.3\n}\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Example output:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Use with Agent",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Use with Agent",
+      "id": "use-with-agent"
+    }
+  ],
+  "url": "llms-txt#basic-usage",
+  "links": []
+}

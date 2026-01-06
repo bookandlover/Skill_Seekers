@@ -1,0 +1,38 @@
+{
+  "title": "New Deep Search Type",
+  "content": "Source: https://docs.exa.ai/changelog/new-deep-search-type\n\nIntroducing Exa Deep: Get better results with smart query expansion and high-quality summaries.\n\n**Date: November 20, 2025**\n\nWe're excited to introduce **Exa Deep** - a new search type that finds better results by running multiple searches at once and gives you high-quality context for each result. You can send just one query (we'll create variations automatically) or provide your own query variations using the `additionalQueries` parameter for even better results.\n\n<Info>\n  Deep search is available on our API Playground. [Try Deep search in the dashboard →](https://dashboard.exa.ai/playground/search?q=blog%20post%20about%20AI\\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22deep%22%2C%22livecrawl%22%3A%22fallback%22%7D)\n</Info>\n\n### How Deep Search Works\n\nWhen you use Deep search, here's what happens:\n\n1. **Query Expansion**: If you only send one query, we automatically create variations. If you send query variations yourself using `additionalQueries`, we use those instead. For best results, consider having a good LLM model (like GPT-5 or Claude 4.5 Sonnet) generate the query variations for you.\n2. **Parallel Search**: We search for your main query and all variations at the same time\n3. **Smart Ranking**: We combine and rank all results to give you the most relevant ones\n4. **Summary Generation**: Each result gets a detailed, accurate summary\n\n### How to Use Deep Search\n\nUsing Deep search is simple - just add `type=\"deep\"` to your search requests. You can also add `additionalQueries` for even better results:\n\n**Basic Deep Search:**\n\n**Deep Search with Query Variations:**\n\n### What You Get Back\n\nDeep search returns a `context` field that gives you detailed context:\n\n### Available Search Types\n\nNow you have four search types to choose from:\n\n* **Auto** (default): Our best search, intelligently combines multiple search methods\n* **Fast**: Fastest search with lowest latency\n* **Deep**: Deep search with query expansion and summaries\n* **Neural**: Predicts the most relevant results based on query meaning\n\nWe're excited for you to try Deep search and see how it can improve your search results!",
+  "code_samples": [
+    {
+      "code": "**Deep Search with Query Variations:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### What You Get Back\n\nDeep search returns a `context` field that gives you detailed context:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "How Deep Search Works",
+      "id": "how-deep-search-works"
+    },
+    {
+      "level": "h3",
+      "text": "How to Use Deep Search",
+      "id": "how-to-use-deep-search"
+    },
+    {
+      "level": "h3",
+      "text": "What You Get Back",
+      "id": "what-you-get-back"
+    },
+    {
+      "level": "h3",
+      "text": "Available Search Types",
+      "id": "available-search-types"
+    }
+  ],
+  "url": "llms-txt#new-deep-search-type",
+  "links": []
+}

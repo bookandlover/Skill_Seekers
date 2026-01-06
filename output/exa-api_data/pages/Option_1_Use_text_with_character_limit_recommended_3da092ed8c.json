@@ -1,0 +1,8 @@
+{
+  "title": "Option 1: Use text with character limit (recommended for consistent comparisons)",
+  "content": "exa.search_and_contents(\n    query,\n    type=\"fast\",  # or \"auto\" (for `Deep`, see Option 2)\n    num_results=10,\n    text={\"max_characters\": 5000}\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#option-1:-use-text-with-character-limit-(recommended-for-consistent-comparisons)",
+  "links": []
+}

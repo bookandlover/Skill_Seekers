@@ -1,0 +1,8 @@
+{
+  "title": "Now the AI has the search results and can provide an informed response",
+  "content": "response = openai_client.responses.create(\n    model=\"gpt-4o-mini\",\n    instructions=\"Based on the Tavily search results provided, give me a comprehensive summary with citations.\",\n    input=input_list,\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#now-the-ai-has-the-search-results-and-can-provide-an-informed-response",
+  "links": []
+}

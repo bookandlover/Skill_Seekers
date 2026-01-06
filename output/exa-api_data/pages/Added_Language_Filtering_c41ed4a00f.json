@@ -1,0 +1,24 @@
+{
+  "title": "Added Language Filtering",
+  "content": "Source: https://docs.exa.ai/changelog/language-filtering-default\n\nLanguage filtering is now turned on for everyone by default. Exa now detects your query language and only searches web search results in the same language.\n\n**Date: November 5, 2025**\n\nWe now return results that match the language of your search query. This feature is now turned on by default for all users.\n\nBefore this update, Exa would mostly return results in your query language, but you might also get results from other languages mixed in. Now, Exa detects what language you're searching in and only shows you web search results in that same language.\n\n## What This Means for You\n\n1. **Better results**: Your search results will now be more relevant because they match your query language.\n2. **No setup needed**: This feature is already working for your account - you don't need to do anything.\n3. **Works across languages**: Whether you search in English, Spanish, French, or any other language, you'll get results in that language.\n\nWhen you search, Exa automatically:\n\n* Detects what language your query is in\n* Searches only through web search results in that same language\n* Returns results that are more relevant to your language needs\n\nThis update makes search results much more useful, especially if you work with content in multiple languages. The filtering works particularly well and has shown big improvements in our testing.\n\nIf you have any questions about this update, please reach out to [hello@exa.ai](mailto:hello@exa.ai).",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What Changed",
+      "id": "what-changed"
+    },
+    {
+      "level": "h2",
+      "text": "What This Means for You",
+      "id": "what-this-means-for-you"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    }
+  ],
+  "url": "llms-txt#added-language-filtering",
+  "links": []
+}

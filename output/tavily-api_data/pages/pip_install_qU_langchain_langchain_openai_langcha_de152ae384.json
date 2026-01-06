@@ -1,0 +1,8 @@
+{
+  "title": "!pip install -qU langchain langchain-openai langchain-tavily",
+  "content": "from langchain.agents import create_agent\nfrom langchain_openai import ChatOpenAI\nfrom langchain_tavily import TavilySearch",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#!pip-install--qu-langchain-langchain-openai-langchain-tavily",
+  "links": []
+}

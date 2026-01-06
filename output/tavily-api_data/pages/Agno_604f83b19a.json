@@ -1,0 +1,43 @@
+{
+  "title": "Agno",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/agno\n\nTavily is now available for integration through Agno.\n\nIntegrate [Tavily with Agno](https://docs.agno.com/tools/toolkits/search/tavily#tavily) to enhance your AI agents with powerful web search capabilities. Agno provides a lightweight library for building agents with memory, knowledge, tools, and reasoning, making it easy to incorporate real-time web search and data extraction into your AI applications.\n\n## Step-by-Step Integration Guide\n\n### Step 1: Install Required Packages\n\nInstall the necessary Python packages:\n\n### Step 2: Set Up API Keys\n\n* **Tavily API Key:** [Get your Tavily API key here](https://app.tavily.com/home)\n* **OpenAI API Key:** [Get your OpenAI API key here](https://platform.openai.com/account/api-keys)\n\nSet these as environment variables in your terminal or add them to your environment configuration file:\n\n### Step 3: Initialize Agno Agent with Tavily Tools\n\n```python theme={null}\nfrom agno.agent import Agent\nfrom agno.tools.tavily import TavilyTools\nimport os",
+  "code_samples": [
+    {
+      "code": "### Step 2: Set Up API Keys\n\n* **Tavily API Key:** [Get your Tavily API key here](https://app.tavily.com/home)\n* **OpenAI API Key:** [Get your OpenAI API key here](https://platform.openai.com/account/api-keys)\n\nSet these as environment variables in your terminal or add them to your environment configuration file:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 3: Initialize Agno Agent with Tavily Tools",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Step-by-Step Integration Guide",
+      "id": "step-by-step-integration-guide"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Install Required Packages",
+      "id": "step-1:-install-required-packages"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Set Up API Keys",
+      "id": "step-2:-set-up-api-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Initialize Agno Agent with Tavily Tools",
+      "id": "step-3:-initialize-agno-agent-with-tavily-tools"
+    }
+  ],
+  "url": "llms-txt#agno",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Basic search",
+  "content": "result = exa.search(\n  \"hottest AI startups\",\n  num_results=2\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#basic-search",
+  "links": []
+}

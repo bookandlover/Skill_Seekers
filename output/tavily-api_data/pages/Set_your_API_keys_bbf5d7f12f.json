@@ -1,0 +1,48 @@
+{
+  "title": "Set your API keys",
+  "content": "os.environ[\"OPENAI_API_KEY\"] = \"your-openai-api-key\"\nos.environ[\"TAVILY_API_KEY\"] = \"your-tavily-api-key\"\nbash theme={null}\npip install -U openai-agents\npython theme={null}\nimport os\nimport asyncio\nfrom agents import Agent, Runner, function_tool\nfrom tavily import TavilyClient\n\ntavily_client = TavilyClient(api_key=os.environ[\"TAVILY_API_KEY\"])\npython theme={null}\n@function_tool\ndef tavily_search(query: str) -> str:\n    \"\"\"\n    Perform a web search using Tavily and return a summarized result.\n    \"\"\"\n    response = tavily_client.search(query,search_depth='advanced',max_results='5')\n    results = response.get(\"results\", [])\n    return results or \"No results found.\"\npython theme={null}\nasync def main():\n    agent = Agent(\n        name=\"Web Research Agent\",\n        instructions=\"Use tavily_search when you need up-to-date info.\",\n        tools=[tavily_search],\n    )\n    out = await Runner.run(agent, \"Latest developments about quantum computing from 2025\")\n    print(out.final_output)\npython theme={null}\nasyncio.run(main())\npython theme={null}\n\nimport os\n  import asyncio\n  from agents import Agent, Runner, function_tool\n  from tavily import TavilyClient\n\ntavily_client = TavilyClient(api_key=os.environ[\"TAVILY_API_KEY\"])\n\n@function_tool\n  def tavily_search(query: str) -> str:\n      \"\"\"\n      Perform a web search using Tavily and return a summarized result.\n      \"\"\"\n      response = tavily_client.search(query,search_depth='advanced',max_results='5')\n      results = response.get(\"results\", [])\n      return results or \"No results found.\"\n\nasync def main():\n      agent = Agent(\n          name=\"Web Research Agent\",\n          instructions=\"Use tavily_search when you need up-to-date info.\",\n          tools=[tavily_search],\n      )\n      out = await Runner.run(agent, \"Latest developments about quantum computing from 2025\")\n      print(out.final_output)\n\nasyncio.run(main())\n  python theme={null}\nimport os\nimport json\nfrom tavily import TavilyClient\nfrom openai import OpenAI",
+  "code_samples": [
+    {
+      "code": "## Using Tavily with OpenAI agents SDK",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "> **Note:** You can enhance the function by adding more parameters like `topic=\"news\"`, `include_domains=[\"example.com\"]`, `time_range=\"week\"`, etc. to customize your search results.\n\n> You can set `auto_parameters=True` to have Tavily automatically configure search parameters based on the content and intent of your query. You can still set other parameters manually, and any explicit values you provide will override the automatic ones.",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "<Accordion title=\"Full Code Example\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Accordion>\n\n## Using Tavily with OpenAI Chat Completions API function calling",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Using Tavily with OpenAI agents SDK",
+      "id": "using-tavily-with-openai-agents-sdk"
+    },
+    {
+      "level": "h2",
+      "text": "Using Tavily with OpenAI Chat Completions API function calling",
+      "id": "using-tavily-with-openai-chat-completions-api-function-calling"
+    }
+  ],
+  "url": "llms-txt#set-your-api-keys",
+  "links": []
+}

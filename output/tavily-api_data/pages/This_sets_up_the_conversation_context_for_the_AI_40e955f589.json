@@ -1,0 +1,8 @@
+{
+  "title": "This sets up the conversation context for the AI",
+  "content": "input_list = [\n    {\"role\": \"system\", \"content\": \"You are a helpful assistant that uses Tavily search when needed.\"},\n    {\"role\": \"user\", \"content\": \"What are the top trends in 2025 about AI agents?\"}\n]",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#this-sets-up-the-conversation-context-for-the-ai",
+  "links": []
+}

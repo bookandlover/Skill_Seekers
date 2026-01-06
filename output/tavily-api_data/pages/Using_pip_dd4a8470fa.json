@@ -1,0 +1,59 @@
+{
+  "title": "Using pip",
+  "content": "pip install langflow\nbash theme={null}\nlangflow run\n```\n\nThis will start the Langflow server locally at `http://localhost:7860`.\n\n### Step 2: Using Tavily Components\n\nLangflow provides two main Tavily components in the **Tools** section of the components library:\n\n1. **Tavily Search API**: Perform web searches and retrieve relevant information\n   * Located under Tools > Tavily Search API\n   * **Configuration Options**: Select the component and go to \"Controls\" to access all available settings. Here are some key examples:\n     * Max Results: Number of results to return\n     * Search Depth: \"basic\" or \"advanced\"\n     * *Note: Additional parameters are available in the Controls panel*\n\n2. **Tavily Extract API**: Extract content from web pages\n   * Located under Tools > Tavily Extract API\n   * **Configuration Options**: Select the component and go to \"Controls\" to access all available settings. Here are some key examples:\n     * Extract Depth: \"basic\" or \"advanced\"\n     * *Note: Additional parameters are available in the Controls panel*\n\n### Step 3: Configure Your Tavily API Key\n\nTo use Tavily components, you need to enter your [Tavily API key](https://app.tavily.com/home) under \"Tavily API Key\"\n\n### Basic Search Workflow\n\n1. Add a Tavily Search component to your flow\n2. Connect it to a prompt template\n3. Configure the search parameters\n4. Add an LLM component to process the results\n5. Connect to an output component\n\n### Content Extraction Workflow\n\n1. Add a Tavily Extract component\n2. Connect it to a URL input\n3. Configure extraction parameters\n4. Add processing components as needed\n5. Connect to your desired output\n\n1. **Research Assistant**\n   * Combine Tavily Search with LLMs for comprehensive research\n   * Extract and summarize information from multiple sources\n\n2. **Content Aggregation**\n   * Use Tavily Extract to gather content from specific websites\n   * Process and format the extracted content\n\n3. **Market Intelligence**\n   * Create workflows for competitive analysis\n   * Monitor industry trends and news\n\n4. **Documentation Search**\n   * Build custom documentation search interfaces\n   * Extract and format technical documentation\n\n## Additional Resources\n\n* [Langflow GitHub Repository](https://github.com/langflow-ai/langflow)\n* [Langflow Documentation](https://docs.langflow.org)",
+  "code_samples": [
+    {
+      "code": "## Setting Up Tavily Components in Langflow\n\n### Step 1: Launch Langflow\n\nAfter installation, start Langflow:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Setting Up Tavily Components in Langflow",
+      "id": "setting-up-tavily-components-in-langflow"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Launch Langflow",
+      "id": "step-1:-launch-langflow"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Using Tavily Components",
+      "id": "step-2:-using-tavily-components"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Configure Your Tavily API Key",
+      "id": "step-3:-configure-your-tavily-api-key"
+    },
+    {
+      "level": "h2",
+      "text": "Example Workflows",
+      "id": "example-workflows"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Search Workflow",
+      "id": "basic-search-workflow"
+    },
+    {
+      "level": "h3",
+      "text": "Content Extraction Workflow",
+      "id": "content-extraction-workflow"
+    },
+    {
+      "level": "h2",
+      "text": "Example Use Cases",
+      "id": "example-use-cases"
+    },
+    {
+      "level": "h2",
+      "text": "Additional Resources",
+      "id": "additional-resources"
+    }
+  ],
+  "url": "llms-txt#using-pip",
+  "links": []
+}

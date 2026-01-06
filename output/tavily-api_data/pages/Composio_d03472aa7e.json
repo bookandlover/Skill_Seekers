@@ -1,0 +1,43 @@
+{
+  "title": "Composio",
+  "content": "Source: https://docs.tavily.com/documentation/integrations/composio\n\nTavily is now available for integration through Composio.\n\nIntegrate Tavily with Composio to enhance your AI workflows with powerful web search capabilities. Composio provides a platform to connect your AI agents to external tools like Tavily, making it easy to incorporate real-time web search and data extraction into your applications.\n\n## Step-by-Step Integration Guide\n\n### Step 1: Install Required Packages\n\nInstall the necessary Python packages:\n\n### Step 2: Set Up API Keys\n\n* **OpenAI API Key:** [Get your OpenAI API key here](https://platform.openai.com/account/api-keys)\n* **Composio API Key:** [Get your Composio API key here](https://app.composio.dev/dashboard)\n\nSet these as environment variables in your terminal or add them to your environment configuration file:\n\n### Step 3: Connect Tavily to Composio\n\n```python theme={null}\nfrom composio import Composio\nfrom dotenv import load_dotenv\n\ncomposio = Composio()",
+  "code_samples": [
+    {
+      "code": "### Step 2: Set Up API Keys\n\n* **OpenAI API Key:** [Get your OpenAI API key here](https://platform.openai.com/account/api-keys)\n* **Composio API Key:** [Get your Composio API key here](https://app.composio.dev/dashboard)\n\nSet these as environment variables in your terminal or add them to your environment configuration file:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 3: Connect Tavily to Composio",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Step-by-Step Integration Guide",
+      "id": "step-by-step-integration-guide"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Install Required Packages",
+      "id": "step-1:-install-required-packages"
+    },
+    {
+      "level": "h3",
+      "text": "Step 2: Set Up API Keys",
+      "id": "step-2:-set-up-api-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Connect Tavily to Composio",
+      "id": "step-3:-connect-tavily-to-composio"
+    }
+  ],
+  "url": "llms-txt#composio",
+  "links": []
+}

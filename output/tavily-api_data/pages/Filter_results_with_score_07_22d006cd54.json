@@ -1,0 +1,19 @@
+{
+  "title": "Filter results with score > 0.7",
+  "content": "filtered = [r for r in results if r['score'] > 0.7]\npython theme={null}\nimport re",
+  "code_samples": [
+    {
+      "code": "### Regex extraction\n\nExtract structured data from `raw_content`:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Regex extraction",
+      "id": "regex-extraction"
+    }
+  ],
+  "url": "llms-txt#filter-results-with-score->-0.7",
+  "links": []
+}

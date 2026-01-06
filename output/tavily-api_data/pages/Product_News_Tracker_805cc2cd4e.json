@@ -1,0 +1,55 @@
+{
+  "title": "Product News Tracker",
+  "content": "Source: https://docs.tavily.com/examples/quick-tutorials/product-news-tracker\n\nStay informed with real-time product news using Tavily's APIs.\n\n## What will you learn?\n\nIn this use case, you'll discover how to gather a company's product news and updates using Tavily's Search API. This tutorial outlines how to get started with the Tavily Python SDK, how to properly configure search parameters for optimal results, and how to effectively interact with Tavily’s Search API to retrieve the latest product updates for a specified company.\n\n### Self-Reported News\n\nOur system gathers official updates including **blog posts**, **product announcements**, and **company news** by utilizing the `include_domain` parameter. This allows us to focus specifically on content from:\n\n* A company's official website\n\nThis domain-filtered approach ensures efficient credit usage while maintaining search accuracy.\n\n### Third-Party Coverage\n\nTo capture external perspectives, we employ specialized news search parameters:\n\n* Set `topic = news` to focus on reputable news sources\n* Utilize `time_range = month` for current coverage\n\n<Tip>\n  For the functionality discussed in this tutorial, `search_depth = basic` will\n  be sufficient to acheive the intended results.\n</Tip>\n\n> We have prepared a [Jupyter Notebook](https://github.com/tavily-ai/tavily-cookbook/blob/main/search/product_news_tracker.ipynb) outlining the contents of this tutorial\n\nFirst create an account and get your free API key.\n\n<Card title=\"Get your Tavily API key\" icon=\"key\" href=\"https://app.tavily.com\" />\n\nNext, use the Tavily Python SDK to create the workflow.\n\n<Steps>\n  <Step title=\"Install the Tavily Python SDK\">\n    \n  </Step>\n\n<Step title=\"Import the necessary libraries\">\n    \n  </Step>\n\n<Step title=\"Instantiate the Tavily Client\">\n    \n  </Step>\n\n<Step title=\"Define the search parameters\">\n    \n  </Step>\n\n<Step title=\"Execute the search\">\n    \n  </Step>\n\n<Step title=\"Output\">\n    \n  </Step>\n</Steps>",
+  "code_samples": [
+    {
+      "code": "</Step>\n\n  <Step title=\"Import the necessary libraries\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Step>\n\n  <Step title=\"Instantiate the Tavily Client\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Step>\n\n  <Step title=\"Define the search parameters\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Step>\n\n  <Step title=\"Execute the search\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Step>\n\n  <Step title=\"Output\">",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What will you learn?",
+      "id": "what-will-you-learn?"
+    },
+    {
+      "level": "h2",
+      "text": "How does it work?",
+      "id": "how-does-it-work?"
+    },
+    {
+      "level": "h3",
+      "text": "Self-Reported News",
+      "id": "self-reported-news"
+    },
+    {
+      "level": "h3",
+      "text": "Third-Party Coverage",
+      "id": "third-party-coverage"
+    },
+    {
+      "level": "h2",
+      "text": "Getting Started",
+      "id": "getting-started"
+    }
+  ],
+  "url": "llms-txt#product-news-tracker",
+  "links": []
+}

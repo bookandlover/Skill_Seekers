@@ -1,0 +1,8 @@
+{
+  "title": "Learn More",
+  "content": "Want to dive deeper into web-based RAG evaluation? Check out these resources:\n\n<CardGroup>\n  <Card title=\"Blog Post\" icon=\"newspaper\" href=\"https://blog.tavily.com/effortless-web-based-rag-evaluation-using-tavily-and-langgraph/\">\n    Read our detailed blog post about generating dynamic RAG evaluation datasets\n  </Card>\n\n<Card title=\"GitHub\" icon=\"github\" href=\"https://github.com/Eyalbenba/tavily-web-eval-generator\">\n    `/Eyalbenba/tavily-web-eval-generator`\n\n<img alt=\"GitHub Repo stars\" />\n  </Card>\n</CardGroup>",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#learn-more",
+  "links": []
+}

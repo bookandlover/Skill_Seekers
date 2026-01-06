@@ -1,0 +1,13 @@
+{
+  "title": "--- define tools ---",
+  "content": "tools = [\n    {\n        \"type\": \"function\",\n        \"function\": {\n            \"name\": \"tavily_search\",\n            \"description\": \"Search the web with Tavily for up-to-date information\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"query\": {\"type\": \"string\", \"description\": \"The search query\"},\n                    \"max_results\": {\"type\": \"integer\", \"default\": 5},\n                },\n                \"required\": [\"query\"],\n            },\n        },\n    }\n]\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "<a href=\"#schemas\">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#----define-tools----",
+  "links": []
+}

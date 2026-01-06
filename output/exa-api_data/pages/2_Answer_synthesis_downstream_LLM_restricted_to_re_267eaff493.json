@@ -1,0 +1,8 @@
+{
+  "title": "2. Answer synthesis (downstream LLM restricted to retrieved context)",
+  "content": "context = \"\\n\\n\".join([r.text for r in results.results])\nanswer = llm.generate(\n    f\"Answer the question using only the provided context.\\n\\n\"\n    f\"Context: {context}\\n\\n\"\n    f\"Question: {query}\\n\\n\"\n    f\"Answer:\"\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#2.-answer-synthesis-(downstream-llm-restricted-to-retrieved-context)",
+  "links": []
+}

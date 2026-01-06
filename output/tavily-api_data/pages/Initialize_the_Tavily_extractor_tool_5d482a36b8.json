@@ -1,0 +1,13 @@
+{
+  "title": "Initialize the Tavily extractor tool",
+  "content": "tavily_tool = TavilyExtractorTool()\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#initialize-the-tavily-extractor-tool",
+  "links": []
+}

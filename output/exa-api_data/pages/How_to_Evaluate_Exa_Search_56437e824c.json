@@ -1,0 +1,19 @@
+{
+  "title": "How to Evaluate Exa Search",
+  "content": "Source: https://docs.exa.ai/reference/evaluating-exa-search\n\nComprehensive guide to benchmarking Exa's search API: methodology, optimal settings, datasets, and quality-latency tradeoffs\n\nEvaluating search APIs requires careful methodology to ensure fair, reproducible comparisons. This guide provides a framework for assessing Exa's search capabilities across multiple dimensions:\n\n* **Retrieval Quality**: Accuracy and relevance of returned results\n* **Latency**: Response time from query to results\n* **Freshness**: Ability to retrieve up-to-date information\n* **Cost Efficiency**: Value delivered per API call\n* **Agentic Suitability**: Performance in multi-step reasoning workflows\n\nExa is designed to excel across different use cases:\n\n* **Deep Research**: Multi-hop queries requiring comprehensive context and query expansion\n* **Agentic Workflows**: Complex tasks involving multiple search iterations and reasoning steps\n* **Low-Latency QA**: Fast factual question-answering for real-time applications\n* **Semantic Discovery**: Finding conceptually related content beyond keyword matching\n\n### Best Practice: Start with Defaults\n\n**The most important recommendation for fair evaluation: use Exa's default settings.**\n\nAdding restrictive parameters (date filters, domain restrictions, text inclusion/exclusion) often causes agents to over-optimize in non-meaningful ways, unnecessarily limiting results and reducing quality without providing valuable insights. Unless your evaluation specifically tests a filtered use case, avoid adding constraints that don't reflect real-world usage.\n\n**Recommended minimal configuration:**\n\n```python  theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h3",
+      "text": "Best Practice: Start with Defaults",
+      "id": "best-practice:-start-with-defaults"
+    }
+  ],
+  "url": "llms-txt#how-to-evaluate-exa-search",
+  "links": []
+}

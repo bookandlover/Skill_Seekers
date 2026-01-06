@@ -1,0 +1,19 @@
+{
+  "title": "--- setup ---",
+  "content": "tavily_client = TavilyClient(api_key=os.environ[\"TAVILY_API_KEY\"])\nopenai_client = OpenAI(api_key=os.environ[\"OPENAI_API_KEY\"])\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Function definition\n\nDefine a function that OpenAI can call to perform searches:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Function definition",
+      "id": "function-definition"
+    }
+  ],
+  "url": "llms-txt#----setup----",
+  "links": []
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Tavily Search Crawler",
+  "content": "Source: https://docs.tavily.com/documentation/search-crawler\n\nLike any other search engine, Tavily Search has a crawler to discover new pages and index their content.\n\nThe Tavily Search crawler does not advertise a differentiated user agent because we must avoid discrimination from websites that allow only Google to crawl them. However, if a domain or page is not crawlable by Googlebot, then Tavily Search’s bot will not crawl it either.\n\n### Indexing and Delisting\n\n* robots.txt is not used to prevent a page from being indexed. Instead, a site owner can delist a page by using the robots noindex directive.\n* Once your web page has been updated with this directive, Tavily needs to re-fetch it to apply the changes.\n\n### Right to Be Forgotten\n\nIf your inquiry is about delisting web pages containing personal data about you, please follow the guidance and process of the [right to be forgotten](/documentation/Right-To-Be-Forgotten).\n\n### Reporting Non-Existent Pages\n\nIn case Tavily Search is returning a page that no longer exists, and you would like to have it delisted, you may contact us at **[support@tavily.com](mailto:support@tavily.com)**.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Indexing and Delisting",
+      "id": "indexing-and-delisting"
+    },
+    {
+      "level": "h3",
+      "text": "Right to Be Forgotten",
+      "id": "right-to-be-forgotten"
+    },
+    {
+      "level": "h3",
+      "text": "Reporting Non-Existent Pages",
+      "id": "reporting-non-existent-pages"
+    }
+  ],
+  "url": "llms-txt#tavily-search-crawler",
+  "links": []
+}

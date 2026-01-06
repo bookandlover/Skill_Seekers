@@ -1,0 +1,8 @@
+{
+  "title": "Initialize the agent with the search tool",
+  "content": "agent = create_agent(\n    model=ChatOpenAI(model=\"gpt-5\"),\n    tools=[tavily_search],\n    system_prompt=\"You are a helpful research assistant. Use web search to find accurate, up-to-date information.\"\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-the-agent-with-the-search-tool",
+  "links": []
+}

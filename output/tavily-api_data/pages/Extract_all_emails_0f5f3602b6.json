@@ -1,0 +1,8 @@
+{
+  "title": "Extract all emails",
+  "content": "text = \"Contact: john@example.com, support@tavily.com\"\nemails = re.findall(r\"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\", text)\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#extract-all-emails",
+  "links": []
+}

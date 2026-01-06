@@ -1,0 +1,39 @@
+{
+  "title": "Snowflake",
+  "content": "Source: https://docs.tavily.com/documentation/partnerships/snowflake\n\nTavily is now available as a native app on the [Snowflake Marketplace](https://www.snowflake.com/en/product/features/marketplace/).\n\nThe Tavily Snowflake Native App brings powerful web search capabilities directly into your Snowflake environment, allowing you to download and install it natively within your Snowflake account in an easy and secure way.\n\n## Installation and Setup\n\n1. After logging into your Snowflake account, click on ***Marketplace*** from the sidebar.\n\n2. In the search bar, search for ***Tavily*** and find the ***Tavily Search API*** app.\n\n3. Click on ***GET*** in the right top side to download the app into your Snowflake account.\n\n4. Read through the permissions and click on ***Agree and Continue*** and click on ***GET***.\n\n5. After the app finished downloading, hover over ***Catalog*** in the left sidebar and click on ***Apps***.\n\n6. Locate the Tavily app named ***Tavily Search API*** in the installed apps section.\n\n7. Now you have to configure the application.\n\n8. Visit [https://tavily.com](https://tavily.com) to get your API key if you don't already have one.\n\n9. After you have your API key, click on the ***Configure*** button and pass the API key in the secret value box to configure the API key for your native app.\n\n10. Now, in the ***Review integration requests*** section, click on ***Review*** and toggle the button to the right to enable your app ***Access the Tavily external API for web search***.\n\n11. Click on ***Save***. Now you have successfully configured your application for use in the Snowflake environment.\n\n12. Click on ***Next*** to visit the app page.\n\n### Using TAVILY\\_WEB\\_SEARCH in Snowsight\n\n1. After installation in the app page, you can click on ***Open Worksheet*** to pop up a Snowflake worksheet with a pre-loaded SQL query to use Tavily web search.\n\n2. Make sure to select the appropriate database for your worksheet. In the top right, ensure the database is `TAVILY_SEARCH_API` and the schema is `TAVILY_SCHEMA`.\n\n3. Now you can click the ***Run*** button on the top left of your worksheet to run the query.\n\nSQL Procedure: `TAVILY_SCHEMA.TAVILY_WEB_SEARCH`\n\n* `QUERY` (VARCHAR): The search query in natural language\n\n* `SEARCH_DEPTH` (VARCHAR, optional): `'basic'` (default) or `'advanced'`\n\n* `MAX_RESULTS` (INTEGER, optional): Maximum number of results (default: 5)\n\n**Data Enrichment**:\nWith this setup, you can enhance your Snowflake database with up-to-date information from the web, enabling you to fill your data warehouse with real-world data and keep your analytics current with the latest trends and events.\n\n`For example`: During data analysis in your Snowflake environment, you may discover records with missing, null, or outdated values, such as incomplete company details, stale product information, or missing metadata. Instead of filling these gaps manually, you can leverage the `TAVILY_WEB_SEARCH` stored procedure to automatically query reliable sources on the web. This allows you to fetch the most current information available and enrich your dataset directly within Snowflake, improving data completeness, accuracy, and overall analytical value.\n\n### Using TAVILY\\_WEB\\_SEARCH in Snowflake Intelligence\n\n1. **Set up Snowflake Intelligence**: Follow the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence) to set up Snowflake Intelligence. Make sure you have the snowflake\\_intelligence database, required schema and GRANTs before proceeding to the next steps.\n\n2. **Create an Agent**: In the Snowsight UI sidebar, navigate to the ***Agents*** admin page under ***AI & ML***, click on ***create agent*** and provide agent object name, display name and create the agent.\n\n3. **Add the TAVILY\\_WEB\\_SEARCH Custom Tool**: Within the current agent's menu bar, navigate to the ***Tools*** section and click on ***+Add*** in Custom tools.\n\n* Select the Resource type as ***Procedure***\n\n* Select the database and schema: `TAVILY_SEARCH_API.TAVILY_SCHEMA`\n\n* Select the custom tool identifier: `TAVILY_SEARCH_API.TAVILY_SCHEMA.TAVILY_WEB_SEARCH`\n\n* Give your tool a descriptive name\n\n* Configure the following parameters with their descriptions:\n\n* `query`: \"Search query\"\n\n* `search_depth`: \"The depth of the search. It can be 'basic' or 'advanced'\"\n\n* `max_results`: \"The maximum number of search results to return. Minimum is 1 and Maximum is 20\"\n\n* Click on ***Add*** to attach the tool to your agent\n\n* Make sure to click on ***Save*** in the top right corner to update the agent\n\n4. **Use the Agent**: In the Snowsight UI sidebar, navigate to the ***Snowflake Intelligence*** landing page under ***AI & ML***, select the agent you created, and use the tool.\n\n`Real-time AI agents`:\nWith Snowflake Intelligence, you can ask complex questions about your data in natural language and receive insights from your own personalized enterprise intelligence agent. To ensure those insights are both accurate and current, it’s important to ground the agent in real-time information. By integrating the `TAVILY_WEB_SEARCH` tool, you allow the agent to automatically pull fresh, relevant data from the web, thus resulting in more trustworthy analysis and more informed decision-making.\n\nThe following video walks you through the above-mentioned steps for installing, configuring, and using the Tavily Snowflake Native App.\n\n<div>\n  <iframe title=\"YouTube video player\" />\n</div>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Installation and Setup",
+      "id": "installation-and-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Use cases",
+      "id": "use-cases"
+    },
+    {
+      "level": "h3",
+      "text": "Using TAVILY\\_WEB\\_SEARCH in Snowsight",
+      "id": "using-tavily\\_web\\_search-in-snowsight"
+    },
+    {
+      "level": "h3",
+      "text": "Using TAVILY\\_WEB\\_SEARCH in Snowflake Intelligence",
+      "id": "using-tavily\\_web\\_search-in-snowflake-intelligence"
+    },
+    {
+      "level": "h2",
+      "text": "Tutorial",
+      "id": "tutorial"
+    }
+  ],
+  "url": "llms-txt#snowflake",
+  "links": []
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Google ADK",
+  "content": "Source: https://docs.exa.ai/integrations/google-adk\n\nLearn how to use Exa's search API with Google's Agent Development Kit (ADK). Google ADK works with Exa through our MCP (Model Context Protocol) server.\n\nFor the official Google ADK documentation about Exa integration, visit the [Google ADK Exa integration page](https://google.github.io/adk-docs/tools/third-party/exa/).\n\n## What is Google ADK?\n\nGoogle's Agent Development Kit (ADK) is a simple framework for building AI agents. It helps developers create and run AI agents that can do different tasks. ADK works with Google's Gemini models and other AI systems. It makes building agents feel more like regular software development.\n\n## Exa MCP Integration\n\nExa has an MCP server that works with Google ADK. This lets your ADK agents search the web, find similar content, get clean text from web pages, and do research - all using Exa websearch.\n\n* Create an [API Key](https://dashboard.exa.ai/api-keys) in Exa.\n\n## Use with Google ADK\n\nYou can use Exa with Google ADK in two ways: with a local MCP server or a remote MCP server.\n\n### Remote MCP Server\n\n* [Exa MCP Server Documentation](https://docs.exa.ai/reference/exa-mcp)\n* [Exa MCP Server Repository](https://github.com/exa-labs/exa-mcp-server)",
+  "code_samples": [
+    {
+      "code": "### Remote MCP Server",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What is Google ADK?",
+      "id": "what-is-google-adk?"
+    },
+    {
+      "level": "h2",
+      "text": "Exa MCP Integration",
+      "id": "exa-mcp-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Use with Google ADK",
+      "id": "use-with-google-adk"
+    },
+    {
+      "level": "h3",
+      "text": "Local MCP Server",
+      "id": "local-mcp-server"
+    },
+    {
+      "level": "h3",
+      "text": "Remote MCP Server",
+      "id": "remote-mcp-server"
+    },
+    {
+      "level": "h2",
+      "text": "More Resources",
+      "id": "more-resources"
+    }
+  ],
+  "url": "llms-txt#google-adk",
+  "links": []
+}

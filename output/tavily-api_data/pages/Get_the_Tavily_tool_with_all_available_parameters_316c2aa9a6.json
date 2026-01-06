@@ -1,0 +1,8 @@
+{
+  "title": "Get the Tavily tool with all available parameters",
+  "content": "tools = composio.tools.get(user_id,\n    toolkits=['TAVILY']\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#get-the-tavily-tool-with-all-available-parameters",
+  "links": []
+}

@@ -1,0 +1,29 @@
+{
+  "title": "New approach - comprehensive people search across the web",
+  "content": "result = exa.search(\"VP of Product at Microsoft\", category=\"people\")\nbash  theme={null}\ncurl -X POST https://api.exa.ai/search \\\n  -H \"x-api-key: EXA_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"Product managers at Microsoft\",\n    \"category\": \"people\",\n    \"numResults\": 10\n  }'\n```\n\nThe new `people` category provides:\n\n* **Broader coverage**: 1B+ profiles across the entire web, not just LinkedIn\n* **Better accuracy**: Fine-tuned embeddings specifically for people search\n* **More relevant results**: Hybrid retrieval system optimized for role, skill, and company queries\n\n* Read our blog post: [Introducing Exa's People Search Benchmarks](https://exa.ai/blog/people-search-benchmark)\n* Follow our announcement: [Twitter/X](https://x.com/ExaAILabs/status/2001373897154007390)\n* Try it in the [API Playground](https://dashboard.exa.ai/playground/search?q=product%20managers%20at%20microsoft\\&c=people\\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22auto%22%7D)\n\nIf you have questions about migrating from the `linkedin` category or want to learn more about optimizing your people search queries, reach out to [hello@exa.ai](mailto:hello@exa.ai). We're here to help you get the most out of Exa People Search!",
+  "code_samples": [
+    {
+      "code": "## How to Use People Search\n\nSimply use `category=\"people\"` in your search requests:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How to Use People Search",
+      "id": "how-to-use-people-search"
+    },
+    {
+      "level": "h2",
+      "text": "Learn More",
+      "id": "learn-more"
+    },
+    {
+      "level": "h2",
+      "text": "Need Help?",
+      "id": "need-help?"
+    }
+  ],
+  "url": "llms-txt#new-approach---comprehensive-people-search-across-the-web",
+  "links": []
+}

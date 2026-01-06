@@ -1,0 +1,267 @@
+{
+  "title": "Websets MCP",
+  "content": "Source: https://docs.exa.ai/reference/websets-mcp\n\n[![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square\\&logoColor=white)](https://cursor.com/en/install-mcp?name=websets\\&config=eyJuYW1lIjoid2Vic2V0cyIsInR5cGUiOiJodHRwIiwidXJsIjoiaHR0cHM6Ly93ZWJzZXRzbWNwLmV4YS5haS9tY3AifQ==)\n[![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square\\&logo=visualstudiocode\\&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=websets\\&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fwebsetsmcp.exa.ai%2Fmcp%22%7D)\n\n### Websets MCP: Build and enrich collections of web entities with AI\n\nWebsets MCP Server enables AI assistants like Claude to create, search, and enrich collections of web entities (companies, people, research papers, articles) through the Exa Websets API. Automatically discover entities, verify them against criteria, and extract custom data with AI-powered enrichments.\n\nExamples of what you can do with Websets MCP:\n\n* Find and verify AI startups in San Francisco with funding over \\$10M\n* Create a list of research papers on quantum computing and extract key findings\n* Build a database of companies in specific industries and enrich with CEO names, revenue, and employee counts\n* Monitor industries for new companies matching your criteria\n\n**Works with Cursor and Claude Code!** Use the HTTP-based configuration format below.\n\nWebsets MCP provides powerful tools for entity search, verification, and data enrichment, making it easy to build custom datasets for research, sales, recruiting, and more.\n\n## Remote Websets MCP\n\nConnect directly to Exa's hosted Websets MCP server using this URL:\n\nYou **must** include your Exa API key in the URL:\n\n**Note:** Unlike the standard Exa MCP, the Websets MCP does not require a separate Websets/Smithery key when using the custom domain. Only your Exa API key is required.\n\n### Claude Desktop Configuration for Remote MCP\n\nAdd this to your Claude Desktop configuration file:\n\nReplace `YOUR_EXA_API_KEY` with your actual Exa API key.\n\n### Cursor and Claude Code Configuration for Remote MCP\n\nFor Cursor and Claude Code, use this HTTP-based configuration format:\n\nReplace `YOUR_EXA_API_KEY` with your actual Exa API key.\n\nWebsets MCP includes 14 specialized tools for managing websets, searches, enrichments, and monitors:\n\n### Webset Management\n\n| Tool                | Description                                                                                                                                                          |\n| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_webset`** | Create a new webset collection with automatic search and optional enrichments. Specify your search query, criteria for filtering results, and data fields to extract |\n| `list_websets`      | List all websets in your account with pagination support                                                                                                             |\n| `get_webset`        | Get detailed information about a specific webset including its status, searches, enrichments, and items                                                              |\n| `update_webset`     | Update a webset's metadata with custom key-value pairs                                                                                                               |\n\n| Tool                | Description                                                                     |\n| ------------------- | ------------------------------------------------------------------------------- |\n| `list_webset_items` | List all items (entities) in a webset with their properties and enrichment data |\n| `get_item`          | Get detailed information about a specific item in a webset                      |\n\n### Search Operations\n\n| Tool                | Description                                                                                                                                           |\n| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_search`** | Create a new search to find and add entities to a webset. Specify entity type (company, person, paper, article), search query, and filtering criteria |\n| `get_search`        | Check the status and results of a search operation                                                                                                    |\n| `cancel_search`     | Cancel a running search operation                                                                                                                     |\n\n### Enrichment Operations\n\n| Tool                    | Description                                                                                                                           |\n| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_enrichment`** | Create a new enrichment to extract custom data from webset items. Supports text, number, date, email, phone, URL, and options formats |\n| `get_enrichment`        | Get details about a specific enrichment including its progress and status                                                             |\n| `delete_enrichment`     | Delete an enrichment and all its extracted data                                                                                       |\n| `cancel_enrichment`     | Cancel a running enrichment operation                                                                                                 |\n\n### Monitor Operations\n\n| Tool                 | Description                                                                                                                                     |\n| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_monitor`** | Create a monitor to automatically update a webset on a schedule using cron expressions. Monitors run searches periodically to find new entities |\n\n<Card title=\"Get your Exa API key\" icon=\"key\" horizontal href=\"https://dashboard.exa.ai/api-keys\" />\n\nOnce configured, you can ask your AI assistant to perform webset operations:\n\n### Creating a Webset\n\nThis will use `create_webset` to:\n\n* Search for AI startups in San Francisco\n* Filter for companies founded after 2020\n* Automatically enrich each company with CEO name and funding amount\n\n### Searching for Entities\n\nThis will use `create_search` to add more companies matching specific criteria.\n\n### Creating Enrichments\n\nThis will use `create_enrichment` to extract employee counts.\n\n### Setting Up Monitors\n\nThis will use `create_monitor` to automatically update your webset weekly.\n\n### Listing and Viewing Results\n\nThis will use `list_webset_items` to display the collected entities with their enrichment data.\n\nWebsets support multiple entity types:\n\n* **Companies** - Search and enrich company data\n* **People** - Find and verify individuals with specific criteria\n* **Research Papers** - Discover academic papers and extract key information\n* **Articles** - Find articles and blog posts on specific topics\n* **Custom** - Define your own entity type\n\n### Enrichment Formats\n\nExtract data in multiple formats:\n\n* **text** - Free-form text (e.g., company description, CEO name)\n* **number** - Numeric values (e.g., employee count, revenue)\n* **date** - Dates (e.g., founding date, last funding round)\n* **email** - Email addresses\n* **phone** - Phone numbers\n* **url** - Website URLs\n* **options** - Multiple choice selection from predefined options (e.g., company stage: Seed, Series A, Series B)\n\nUse natural language criteria to filter search results:\n\n* \"Founded after 2020\"\n* \"Has raised more than \\$10M in funding\"\n* \"Located in the United States\"\n* \"Has more than 50 employees\"\n\nThe AI will evaluate each potential entity against your criteria and only include matches.\n\n### Automated Monitoring\n\nSet up monitors with cron expressions to keep your websets up-to-date:\n\n* `0 9 * * 1` - Every Monday at 9:00 AM\n* `0 0 * * *` - Every day at midnight\n* `0 */6 * * *` - Every 6 hours\n\nMonitors automatically run searches and add new matching entities to your webset.\n\n### Building a Company Database\n\n### Research Paper Collection\n\n### People Search for Recruiting\n\nWebsets MCP provides a seamless interface to the Websets API. For more detailed information about the underlying API, visit:\n\n* [Websets API Documentation](/websets/api/overview)\n* [Websets Dashboard Guide](/websets/dashboard/get-started)\n* [Websets Overview](/websets/overview)\n\n## Configuration Details\n\n### Claude Desktop (macOS)\n\nConfiguration file location:\n\n### Claude Desktop (Windows)\n\nConfiguration file location:\n\n### Required Parameters\n\nWhen using the hosted MCP server at `https://websetsmcp.exa.ai/mcp`, you **must** include your Exa API key:\n\n### Parameter Formats\n\nWhen creating websets, searches, enrichments, and monitors through natural language with your AI assistant, the following formats are automatically used:\n\n**Search Criteria Format:**\n\n**Enrichment Format:**\n\n**Entity Type Format:**\n\n**Cron Expression Format (for Monitors):**\n\n## Tips for Best Results\n\n1. **Be specific with search queries** - The more specific your query, the better the results\n2. **Use clear criteria** - Write criteria in simple, declarative sentences\n3. **Choose appropriate enrichment formats** - Use \"options\" format when you want to categorize data\n4. **Start small** - Begin with a small search count (5-10 items) to test your query and criteria\n5. **Monitor long-running operations** - Use `get_search` and `get_enrichment` to check progress\n6. **Use external IDs** - Provide your own IDs to websets for easier reference in your application\n\n**Issue: Enrichment not extracting the right data**\n\n* Solution: Make your enrichment description more specific and include example formats\n\n**Issue: Search returning no results**\n\n* Solution: Try broadening your search criteria or making your query less specific\n\n**Issue: Monitor not running**\n\n* Solution: Verify your cron expression format (5 fields: minute hour day month weekday)\n\n* Check the [Websets FAQ](/websets/faq)\n* Visit the [Websets API Documentation](/websets/api/overview)\n* Join our [Discord community](https://discord.com/invite/HCShtBqbfV)\n\n## Additional Resources\n\n* [Websets Dashboard](https://websets.exa.ai/) - Visual interface for managing websets\n* [Websets API Reference](/websets/api/overview) - Complete API documentation\n* [Websets Examples](/websets/dashboard/websets-example-queries) - Example queries and use cases\n* [Exa Search API](/reference/search) - The underlying search technology",
+  "code_samples": [
+    {
+      "code": "https://websetsmcp.exa.ai/mcp",
+      "language": "unknown"
+    },
+    {
+      "code": "https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace `YOUR_EXA_API_KEY` with your actual Exa API key.\n\n### Cursor and Claude Code Configuration for Remote MCP\n\nFor Cursor and Claude Code, use this HTTP-based configuration format:",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace `YOUR_EXA_API_KEY` with your actual Exa API key.\n\n## Available Tools\n\nWebsets MCP includes 14 specialized tools for managing websets, searches, enrichments, and monitors:\n\n### Webset Management\n\n| Tool                | Description                                                                                                                                                          |\n| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_webset`** | Create a new webset collection with automatic search and optional enrichments. Specify your search query, criteria for filtering results, and data fields to extract |\n| `list_websets`      | List all websets in your account with pagination support                                                                                                             |\n| `get_webset`        | Get detailed information about a specific webset including its status, searches, enrichments, and items                                                              |\n| `update_webset`     | Update a webset's metadata with custom key-value pairs                                                                                                               |\n\n### Item Management\n\n| Tool                | Description                                                                     |\n| ------------------- | ------------------------------------------------------------------------------- |\n| `list_webset_items` | List all items (entities) in a webset with their properties and enrichment data |\n| `get_item`          | Get detailed information about a specific item in a webset                      |\n\n### Search Operations\n\n| Tool                | Description                                                                                                                                           |\n| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_search`** | Create a new search to find and add entities to a webset. Specify entity type (company, person, paper, article), search query, and filtering criteria |\n| `get_search`        | Check the status and results of a search operation                                                                                                    |\n| `cancel_search`     | Cancel a running search operation                                                                                                                     |\n\n### Enrichment Operations\n\n| Tool                    | Description                                                                                                                           |\n| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_enrichment`** | Create a new enrichment to extract custom data from webset items. Supports text, number, date, email, phone, URL, and options formats |\n| `get_enrichment`        | Get details about a specific enrichment including its progress and status                                                             |\n| `delete_enrichment`     | Delete an enrichment and all its extracted data                                                                                       |\n| `cancel_enrichment`     | Cancel a running enrichment operation                                                                                                 |\n\n### Monitor Operations\n\n| Tool                 | Description                                                                                                                                     |\n| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |\n| **`create_monitor`** | Create a monitor to automatically update a webset on a schedule using cron expressions. Monitors run searches periodically to find new entities |\n\n## Getting Started\n\n<Card title=\"Get your Exa API key\" icon=\"key\" horizontal href=\"https://dashboard.exa.ai/api-keys\" />\n\n## Usage Examples\n\nOnce configured, you can ask your AI assistant to perform webset operations:\n\n### Creating a Webset",
+      "language": "unknown"
+    },
+    {
+      "code": "This will use `create_webset` to:\n\n* Search for AI startups in San Francisco\n* Filter for companies founded after 2020\n* Automatically enrich each company with CEO name and funding amount\n\n### Searching for Entities",
+      "language": "unknown"
+    },
+    {
+      "code": "This will use `create_search` to add more companies matching specific criteria.\n\n### Creating Enrichments",
+      "language": "unknown"
+    },
+    {
+      "code": "This will use `create_enrichment` to extract employee counts.\n\n### Setting Up Monitors",
+      "language": "unknown"
+    },
+    {
+      "code": "This will use `create_monitor` to automatically update your webset weekly.\n\n### Listing and Viewing Results",
+      "language": "unknown"
+    },
+    {
+      "code": "This will use `list_webset_items` to display the collected entities with their enrichment data.\n\n## Key Features\n\n### Entity Types\n\nWebsets support multiple entity types:\n\n* **Companies** - Search and enrich company data\n* **People** - Find and verify individuals with specific criteria\n* **Research Papers** - Discover academic papers and extract key information\n* **Articles** - Find articles and blog posts on specific topics\n* **Custom** - Define your own entity type\n\n### Enrichment Formats\n\nExtract data in multiple formats:\n\n* **text** - Free-form text (e.g., company description, CEO name)\n* **number** - Numeric values (e.g., employee count, revenue)\n* **date** - Dates (e.g., founding date, last funding round)\n* **email** - Email addresses\n* **phone** - Phone numbers\n* **url** - Website URLs\n* **options** - Multiple choice selection from predefined options (e.g., company stage: Seed, Series A, Series B)\n\n### Search Criteria\n\nUse natural language criteria to filter search results:\n\n* \"Founded after 2020\"\n* \"Has raised more than \\$10M in funding\"\n* \"Located in the United States\"\n* \"Has more than 50 employees\"\n\nThe AI will evaluate each potential entity against your criteria and only include matches.\n\n### Automated Monitoring\n\nSet up monitors with cron expressions to keep your websets up-to-date:\n\n* `0 9 * * 1` - Every Monday at 9:00 AM\n* `0 0 * * *` - Every day at midnight\n* `0 */6 * * *` - Every 6 hours\n\nMonitors automatically run searches and add new matching entities to your webset.\n\n## Advanced Examples\n\n### Building a Company Database",
+      "language": "unknown"
+    },
+    {
+      "code": "### Research Paper Collection",
+      "language": "unknown"
+    },
+    {
+      "code": "### People Search for Recruiting",
+      "language": "unknown"
+    },
+    {
+      "code": "## API Integration\n\nWebsets MCP provides a seamless interface to the Websets API. For more detailed information about the underlying API, visit:\n\n* [Websets API Documentation](/websets/api/overview)\n* [Websets Dashboard Guide](/websets/dashboard/get-started)\n* [Websets Overview](/websets/overview)\n\n## Configuration Details\n\n### Claude Desktop (macOS)\n\nConfiguration file location:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Claude Desktop (Windows)\n\nConfiguration file location:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Required Parameters\n\nWhen using the hosted MCP server at `https://websetsmcp.exa.ai/mcp`, you **must** include your Exa API key:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Parameter Formats\n\nWhen creating websets, searches, enrichments, and monitors through natural language with your AI assistant, the following formats are automatically used:\n\n**Search Criteria Format:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Enrichment Format:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Entity Type Format:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Cron Expression Format (for Monitors):**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Websets MCP: Build and enrich collections of web entities with AI",
+      "id": "websets-mcp:-build-and-enrich-collections-of-web-entities-with-ai"
+    },
+    {
+      "level": "h2",
+      "text": "Remote Websets MCP",
+      "id": "remote-websets-mcp"
+    },
+    {
+      "level": "h3",
+      "text": "Claude Desktop Configuration for Remote MCP",
+      "id": "claude-desktop-configuration-for-remote-mcp"
+    },
+    {
+      "level": "h3",
+      "text": "Cursor and Claude Code Configuration for Remote MCP",
+      "id": "cursor-and-claude-code-configuration-for-remote-mcp"
+    },
+    {
+      "level": "h2",
+      "text": "Available Tools",
+      "id": "available-tools"
+    },
+    {
+      "level": "h3",
+      "text": "Webset Management",
+      "id": "webset-management"
+    },
+    {
+      "level": "h3",
+      "text": "Item Management",
+      "id": "item-management"
+    },
+    {
+      "level": "h3",
+      "text": "Search Operations",
+      "id": "search-operations"
+    },
+    {
+      "level": "h3",
+      "text": "Enrichment Operations",
+      "id": "enrichment-operations"
+    },
+    {
+      "level": "h3",
+      "text": "Monitor Operations",
+      "id": "monitor-operations"
+    },
+    {
+      "level": "h2",
+      "text": "Getting Started",
+      "id": "getting-started"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Creating a Webset",
+      "id": "creating-a-webset"
+    },
+    {
+      "level": "h3",
+      "text": "Searching for Entities",
+      "id": "searching-for-entities"
+    },
+    {
+      "level": "h3",
+      "text": "Creating Enrichments",
+      "id": "creating-enrichments"
+    },
+    {
+      "level": "h3",
+      "text": "Setting Up Monitors",
+      "id": "setting-up-monitors"
+    },
+    {
+      "level": "h3",
+      "text": "Listing and Viewing Results",
+      "id": "listing-and-viewing-results"
+    },
+    {
+      "level": "h2",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h3",
+      "text": "Entity Types",
+      "id": "entity-types"
+    },
+    {
+      "level": "h3",
+      "text": "Enrichment Formats",
+      "id": "enrichment-formats"
+    },
+    {
+      "level": "h3",
+      "text": "Search Criteria",
+      "id": "search-criteria"
+    },
+    {
+      "level": "h3",
+      "text": "Automated Monitoring",
+      "id": "automated-monitoring"
+    },
+    {
+      "level": "h2",
+      "text": "Advanced Examples",
+      "id": "advanced-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Building a Company Database",
+      "id": "building-a-company-database"
+    },
+    {
+      "level": "h3",
+      "text": "Research Paper Collection",
+      "id": "research-paper-collection"
+    },
+    {
+      "level": "h3",
+      "text": "People Search for Recruiting",
+      "id": "people-search-for-recruiting"
+    },
+    {
+      "level": "h2",
+      "text": "API Integration",
+      "id": "api-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration Details",
+      "id": "configuration-details"
+    },
+    {
+      "level": "h3",
+      "text": "Claude Desktop (macOS)",
+      "id": "claude-desktop-(macos)"
+    },
+    {
+      "level": "h3",
+      "text": "Claude Desktop (Windows)",
+      "id": "claude-desktop-(windows)"
+    },
+    {
+      "level": "h3",
+      "text": "Required Parameters",
+      "id": "required-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Parameter Formats",
+      "id": "parameter-formats"
+    },
+    {
+      "level": "h2",
+      "text": "Tips for Best Results",
+      "id": "tips-for-best-results"
+    },
+    {
+      "level": "h2",
+      "text": "Troubleshooting",
+      "id": "troubleshooting"
+    },
+    {
+      "level": "h3",
+      "text": "Common Issues",
+      "id": "common-issues"
+    },
+    {
+      "level": "h3",
+      "text": "Getting Help",
+      "id": "getting-help"
+    },
+    {
+      "level": "h2",
+      "text": "Additional Resources",
+      "id": "additional-resources"
+    }
+  ],
+  "url": "llms-txt#websets-mcp",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "additional_queries=[\"variation 1\", \"variation 2\"],  # Optional query variations",
+  "content": "",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#additional_queries=[\"variation-1\",-\"variation-2\"],--#-optional-query-variations",
+  "links": []
+}

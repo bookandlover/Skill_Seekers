@@ -1,0 +1,19 @@
+{
+  "title": "Form the crew and execute the task",
+  "content": "crew = Crew(\n    agents=[researcher],\n    tasks=[research_task],\n    verbose=True\n)\n\nresult = crew.kickoff()\nprint(result)\npython theme={null}\nfrom crewai_tools import TavilySearchTool",
+  "code_samples": [
+    {
+      "code": "### Customizing search tool parameters\n\n**Example:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Customizing search tool parameters",
+      "id": "customizing-search-tool-parameters"
+    }
+  ],
+  "url": "llms-txt#form-the-crew-and-execute-the-task",
+  "links": []
+}

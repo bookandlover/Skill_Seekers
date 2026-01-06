@@ -1,0 +1,8 @@
+{
+  "title": "Tavily Map",
+  "content": "Source: https://docs.tavily.com/documentation/api-reference/endpoint/map\n\nPOST /map\nTavily Map traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#tavily-map",
+  "links": []
+}

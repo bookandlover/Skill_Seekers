@@ -1,0 +1,13 @@
+{
+  "title": "Define a task for the agent",
+  "content": "extract_task = Task(\n    description='Extract the main content from the URL https://en.wikipedia.org/wiki/Lionel_Messi .',\n    expected_output='A JSON string containing the extracted content from the URL.',\n    agent=extractor_agent\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#define-a-task-for-the-agent",
+  "links": []
+}
