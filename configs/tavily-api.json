@@ -1,0 +1,24 @@
+{
+  "name": "tavily-api",
+  "description": "Tavily Search API documentation for AI-powered web search, content extraction, and research capabilities. Use this skill when implementing Tavily API endpoints (search, extract, crawl, map, research) or integrating with Python/JavaScript SDKs.",
+  "base_url": "https://docs.tavily.com/documentation",
+  "selectors": {
+    "main_content": "article",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["/documentation/"],
+    "exclude": ["/changelog", "/_next/", "/static/", ".png", ".jpg", ".svg", ".ico"]
+  },
+  "categories": {
+    "introduction": ["introduction", "getting-started", "welcome", "overview", "faq"],
+    "api_reference": ["api-reference", "endpoint", "search", "extract", "crawl", "map", "research", "usage"],
+    "sdks": ["python", "javascript", "sdk", "client", "library"],
+    "integrations": ["mcp", "integration", "partner", "ibm", "snowflake", "ecosystem"],
+    "examples": ["example", "tutorial", "use-case", "recipe"],
+    "best_practices": ["best-practice", "tip", "guide", "optimization"]
+  },
+  "rate_limit": 0.5,
+  "max_pages": 200
+}
