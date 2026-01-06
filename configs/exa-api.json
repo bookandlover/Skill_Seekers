@@ -1,0 +1,37 @@
+{
+  "name": "exa-api",
+  "description": "Exa AI search API documentation. Use for web search, content retrieval, similarity search, RAG applications, and AI-powered web research with Exa's neural search capabilities.",
+  "base_url": "https://docs.exa.ai/",
+  "start_urls": [
+    "https://docs.exa.ai/reference/getting-started",
+    "https://docs.exa.ai/reference/quickstart",
+    "https://docs.exa.ai/reference/search",
+    "https://docs.exa.ai/reference/get-contents",
+    "https://docs.exa.ai/reference/find-similar-links",
+    "https://docs.exa.ai/reference/answer",
+    "https://docs.exa.ai/sdks/python-sdk-specification",
+    "https://docs.exa.ai/sdks/typescript-sdk-specification",
+    "https://docs.exa.ai/examples/exa-rag"
+  ],
+  "selectors": {
+    "main_content": "article",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["/reference/", "/sdks/", "/examples/", "/integrations/", "/websets/"],
+    "exclude": ["/changelog/", "/_static/", "/search"]
+  },
+  "categories": {
+    "getting_started": ["getting-started", "quickstart", "overview", "intro"],
+    "search": ["search", "query", "neural", "auto", "fast", "deep"],
+    "contents": ["contents", "get-contents", "crawl", "livecrawl", "text", "highlights"],
+    "similarity": ["similar", "find-similar", "similarity"],
+    "answer": ["answer", "rag", "research"],
+    "sdk": ["sdk", "python", "typescript", "javascript"],
+    "integrations": ["langchain", "llamaindex", "openai", "anthropic", "crewai", "mcp"],
+    "websets": ["websets", "monitors", "webhooks", "enrichments"]
+  },
+  "rate_limit": 0.5,
+  "max_pages": 150
+}
