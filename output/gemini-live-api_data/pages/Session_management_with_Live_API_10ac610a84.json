@@ -1,0 +1,154 @@
+{
+  "url": "https://ai.google.dev/gemini-api/docs/live-session",
+  "title": "Session management with Live API",
+  "content": "In the Live API, a session refers to a persistent connection where input and output are streamed continuously over the same connection (read more about how it works). This unique session design enables low latency and supports unique features, but can also introduce challenges, like session time limits, and early termination. This guide covers strategies for overcoming the session management challenges that can arise when using the Live API.\n\nWithout compression, audio-only sessions are limited to 15 minutes, and audio-video sessions are limited to 2 minutes. Exceeding these limits will terminate the session (and therefore, the connection), but you can use context window compression to extend sessions to an unlimited amount of time.\n\nThe lifetime of a connection is limited as well, to around 10 minutes. When the connection terminates, the session terminates as well. In this case, you can configure a single session to stay active over multiple connections using session resumption. You'll also receive a GoAway message before the connection ends, allowing you to take further actions.\n\nTo enable longer sessions, and avoid abrupt connection termination, you can enable context window compression by setting the contextWindowCompression field as part of the session configuration.\n\nIn the ContextWindowCompressionConfig, you can configure a sliding-window mechanism and the number of tokens that triggers compression.\n\nTo prevent session termination when the server periodically resets the WebSocket connection, configure the sessionResumption field within the setup configuration.\n\nPassing this configuration causes the server to send SessionResumptionUpdate messages, which can be used to resume the session by passing the last resumption token as the SessionResumptionConfig.handle of the subsequent connection.\n\nResumption tokens are valid for 2 hr after the last sessions termination.\n\nThe server sends a GoAway message that signals that the current connection will soon be terminated. This message includes the timeLeft, indicating the remaining time and lets you take further action before the connection will be terminated as ABORTED.\n\nThe server sends a generationComplete message that signals that the model finished generating the response.\n\nExplore more ways to work with the Live API in the full Capabilities guide, the Tool use page, or the Live API cookbook.\n\nExcept as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License. For details, see the Google Developers Site Policies. Java is a registered trademark of Oracle and/or its affiliates.\n\nLast updated 2025-12-18 UTC.",
+  "headings": [
+    {
+      "level": "h1",
+      "text": "Session management with Live API",
+      "id": ""
+    },
+    {
+      "level": "h2",
+      "text": "Session lifetime",
+      "id": "maximum-session-duration"
+    },
+    {
+      "level": "h2",
+      "text": "Context window compression",
+      "id": "context-window-compression"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript"
+    },
+    {
+      "level": "h2",
+      "text": "Session resumption",
+      "id": "session-resumption"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python_1"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript_1"
+    },
+    {
+      "level": "h2",
+      "text": "Receiving a message before the session disconnects",
+      "id": "goaway-message"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python_2"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript_2"
+    },
+    {
+      "level": "h2",
+      "text": "Receiving a message when the generation is complete",
+      "id": "generation-complete-message"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python_3"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript_3"
+    },
+    {
+      "level": "h2",
+      "text": "What's next",
+      "id": "whats-next"
+    }
+  ],
+  "code_samples": [
+    {
+      "code": "from google.genai import types\n\nconfig = types.LiveConnectConfig(\n    response_modalities=[\"AUDIO\"],\n    context_window_compression=(\n        # Configures compression with default parameters.\n        types.ContextWindowCompressionConfig(\n            sliding_window=types.SlidingWindow(),\n        )\n    ),\n)",
+      "language": "sql"
+    },
+    {
+      "code": "from google.genai import types\n\nconfig = types.LiveConnectConfig(\n    response_modalities=[\"AUDIO\"],\n    context_window_compression=(\n        # Configures compression with default parameters.\n        types.ContextWindowCompressionConfig(\n            sliding_window=types.SlidingWindow(),\n        )\n    ),\n)",
+      "language": "sql"
+    },
+    {
+      "code": "const config = {\n  responseModalities: [Modality.AUDIO],\n  contextWindowCompression: { slidingWindow: {} }\n};",
+      "language": "css"
+    },
+    {
+      "code": "const config = {\n  responseModalities: [Modality.AUDIO],\n  contextWindowCompression: { slidingWindow: {} }\n};",
+      "language": "css"
+    },
+    {
+      "code": "import asyncio\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\nmodel = \"gemini-2.5-flash-native-audio-preview-12-2025\"\n\nasync def main():\n    print(f\"Connecting to the service with handle {previous_session_handle}...\")\n    async with client.aio.live.connect(\n        model=model,\n        config=types.LiveConnectConfig(\n            response_modalities=[\"AUDIO\"],\n            session_resumption=types.SessionResumptionConfig(\n                # The handle of the session to resume is passed here,\n                # or else None to start a new session.\n                handle=previous_session_handle\n            ),\n        ),\n    ) as session:\n        while True:\n            await session.send_client_content(\n                turns=types.Content(\n                    role=\"user\", parts=[types.Part(text=\"Hello world!\")]\n                )\n            )\n            async for message in session.receive():\n                # Periodically, the server will send update messages that may\n                # contain a handle for the current state of the session.\n                if message.session_resumption_update:\n                    update = message.session_resumption_update\n                    if update.resumable and update.new_handle:\n                        # The handle should be retained and linked to the session.\n                        return update.new_handle\n\n                # For the purposes of this example, placeholder input is continually fed\n                # to the model. In non-sample code, the model inputs would come from\n                # the user.\n                if message.server_content and message.server_content.turn_complete:\n                    break\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "language": "python"
+    },
+    {
+      "code": "import asyncio\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\nmodel = \"gemini-2.5-flash-native-audio-preview-12-2025\"\n\nasync def main():\n    print(f\"Connecting to the service with handle {previous_session_handle}...\")\n    async with client.aio.live.connect(\n        model=model,\n        config=types.LiveConnectConfig(\n            response_modalities=[\"AUDIO\"],\n            session_resumption=types.SessionResumptionConfig(\n                # The handle of the session to resume is passed here,\n                # or else None to start a new session.\n                handle=previous_session_handle\n            ),\n        ),\n    ) as session:\n        while True:\n            await session.send_client_content(\n                turns=types.Content(\n                    role=\"user\", parts=[types.Part(text=\"Hello world!\")]\n                )\n            )\n            async for message in session.receive():\n                # Periodically, the server will send update messages that may\n                # contain a handle for the current state of the session.\n                if message.session_resumption_update:\n                    update = message.session_resumption_update\n                    if update.resumable and update.new_handle:\n                        # The handle should be retained and linked to the session.\n                        return update.new_handle\n\n                # For the purposes of this example, placeholder input is continually fed\n                # to the model. In non-sample code, the model inputs would come from\n                # the user.\n                if message.server_content and message.server_content.turn_complete:\n                    break\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "language": "python"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality } from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst model = 'gemini-2.5-flash-native-audio-preview-12-2025';\n\nasync function live() {\n  const responseQueue = [];\n\n  async function waitMessage() {\n    let done = false;\n    let message = undefined;\n    while (!done) {\n      message = responseQueue.shift();\n      if (message) {\n        done = true;\n      } else {\n        await new Promise((resolve) => setTimeout(resolve, 100));\n      }\n    }\n    return message;\n  }\n\n  async function handleTurn() {\n    const turns = [];\n    let done = false;\n    while (!done) {\n      const message = await waitMessage();\n      turns.push(message);\n      if (message.serverContent && message.serverContent.turnComplete) {\n        done = true;\n      }\n    }\n    return turns;\n  }\n\nconsole.debug('Connecting to the service with handle %s...', previousSessionHandle)\nconst session = await ai.live.connect({\n  model: model,\n  callbacks: {\n    onopen: function () {\n      console.debug('Opened');\n    },\n    onmessage: function (message) {\n      responseQueue.push(message);\n    },\n    onerror: function (e) {\n      console.debug('Error:', e.message);\n    },\n    onclose: function (e) {\n      console.debug('Close:', e.reason);\n    },\n  },\n  config: {\n    responseModalities: [Modality.AUDIO],\n    sessionResumption: { handle: previousSessionHandle }\n    // The handle of the session to resume is passed here, or else null to start a new session.\n  }\n});\n\nconst inputTurns = 'Hello how are you?';\nsession.sendClientContent({ turns: inputTurns });\n\nconst turns = await handleTurn();\nfor (const turn of turns) {\n  if (turn.sessionResumptionUpdate) {\n    if (turn.sessionResumptionUpdate.resumable && turn.sessionResumptionUpdate.newHandle) {\n      let newHandle = turn.sessionResumptionUpdate.newHandle\n      // ...Store newHandle and start new session with this handle here\n    }\n  }\n}\n\n  session.close();\n}\n\nasync function main() {\n  await live().catch((e) => console.error('got error', e));\n}\n\nmain();",
+      "language": "javascript"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality } from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst model = 'gemini-2.5-flash-native-audio-preview-12-2025';\n\nasync function live() {\n  const responseQueue = [];\n\n  async function waitMessage() {\n    let done = false;\n    let message = undefined;\n    while (!done) {\n      message = responseQueue.shift();\n      if (message) {\n        done = true;\n      } else {\n        await new Promise((resolve) => setTimeout(resolve, 100));\n      }\n    }\n    return message;\n  }\n\n  async function handleTurn() {\n    const turns = [];\n    let done = false;\n    while (!done) {\n      const message = await waitMessage();\n      turns.push(message);\n      if (message.serverContent && message.serverContent.turnComplete) {\n        done = true;\n      }\n    }\n    return turns;\n  }\n\nconsole.debug('Connecting to the service with handle %s...', previousSessionHandle)\nconst session = await ai.live.connect({\n  model: model,\n  callbacks: {\n    onopen: function () {\n      console.debug('Opened');\n    },\n    onmessage: function (message) {\n      responseQueue.push(message);\n    },\n    onerror: function (e) {\n      console.debug('Error:', e.message);\n    },\n    onclose: function (e) {\n      console.debug('Close:', e.reason);\n    },\n  },\n  config: {\n    responseModalities: [Modality.AUDIO],\n    sessionResumption: { handle: previousSessionHandle }\n    // The handle of the session to resume is passed here, or else null to start a new session.\n  }\n});\n\nconst inputTurns = 'Hello how are you?';\nsession.sendClientContent({ turns: inputTurns });\n\nconst turns = await handleTurn();\nfor (const turn of turns) {\n  if (turn.sessionResumptionUpdate) {\n    if (turn.sessionResumptionUpdate.resumable && turn.sessionResumptionUpdate.newHandle) {\n      let newHandle = turn.sessionResumptionUpdate.newHandle\n      // ...Store newHandle and start new session with this handle here\n    }\n  }\n}\n\n  session.close();\n}\n\nasync function main() {\n  await live().catch((e) => console.error('got error', e));\n}\n\nmain();",
+      "language": "javascript"
+    },
+    {
+      "code": "async for response in session.receive():\n    if response.go_away is not None:\n        # The connection will soon be terminated\n        print(response.go_away.time_left)",
+      "language": "rust"
+    },
+    {
+      "code": "async for response in session.receive():\n    if response.go_away is not None:\n        # The connection will soon be terminated\n        print(response.go_away.time_left)",
+      "language": "rust"
+    },
+    {
+      "code": "const turns = await handleTurn();\n\nfor (const turn of turns) {\n  if (turn.goAway) {\n    console.debug('Time left: %s\\n', turn.goAway.timeLeft);\n  }\n}",
+      "language": "javascript"
+    },
+    {
+      "code": "const turns = await handleTurn();\n\nfor (const turn of turns) {\n  if (turn.goAway) {\n    console.debug('Time left: %s\\n', turn.goAway.timeLeft);\n  }\n}",
+      "language": "javascript"
+    },
+    {
+      "code": "async for response in session.receive():\n    if response.server_content.generation_complete is True:\n        # The generation is complete",
+      "language": "bash"
+    },
+    {
+      "code": "async for response in session.receive():\n    if response.server_content.generation_complete is True:\n        # The generation is complete",
+      "language": "bash"
+    },
+    {
+      "code": "const turns = await handleTurn();\n\nfor (const turn of turns) {\n  if (turn.serverContent && turn.serverContent.generationComplete) {\n    // The generation is complete\n  }\n}",
+      "language": "javascript"
+    },
+    {
+      "code": "const turns = await handleTurn();\n\nfor (const turn of turns) {\n  if (turn.serverContent && turn.serverContent.generationComplete) {\n    // The generation is complete\n  }\n}",
+      "language": "javascript"
+    }
+  ],
+  "patterns": [],
+  "links": [
+    "https://ai.google.dev/gemini-api/docs/live-session",
+    "https://ai.google.dev/gemini-api/docs/live-guide",
+    "https://ai.google.dev/gemini-api/docs/live-tools"
+  ]
+}

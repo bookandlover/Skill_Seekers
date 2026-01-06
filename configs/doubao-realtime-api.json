@@ -1,0 +1,34 @@
+{
+  "name": "doubao-realtime-api",
+  "description": "豆包端到端实时语音大模型 API 文档 - 火山引擎提供的实时语音交互模型，支持语音输入输出、低延迟对话、多种声音模型",
+  "base_url": "https://www.volcengine.com/docs/6561/",
+  "selectors": {
+    "main_content": "article, .doc-content, .markdown-body, main",
+    "title": "h1, .doc-title, title",
+    "code_blocks": "pre code, .code-block code"
+  },
+  "url_patterns": {
+    "include": [
+      "1594360",
+      "1594356",
+      "1597643",
+      "1597646"
+    ],
+    "exclude": []
+  },
+  "seed_urls": [
+    "https://www.volcengine.com/docs/6561/1594360?lang=zh",
+    "https://www.volcengine.com/docs/6561/1594356?lang=zh",
+    "https://www.volcengine.com/docs/6561/1597643?lang=zh",
+    "https://www.volcengine.com/docs/6561/1597646?lang=zh"
+  ],
+  "categories": {
+    "overview": ["产品简介", "概述", "overview", "introduction"],
+    "quickstart": ["快速入门", "quickstart", "getting-started"],
+    "api_reference": ["API", "接口", "reference", "WebSocket", "事件"],
+    "examples": ["示例", "example", "demo", "代码"]
+  },
+  "rate_limit": 1.0,
+  "max_pages": 10,
+  "follow_links": false
+}

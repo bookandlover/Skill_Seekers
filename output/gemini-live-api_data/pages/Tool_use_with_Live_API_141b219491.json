@@ -1,0 +1,180 @@
+{
+  "url": "https://ai.google.dev/gemini-api/docs/live-tools",
+  "title": "Tool use with Live API",
+  "content": "Tool use allows Live API to go beyond just conversation by enabling it to perform actions in the real-world and pull in external context while maintaining a real time connection. You can define tools such as Function calling and Google Search with the Live API.\n\nHere's a brief overview of the available tools for Live API models:\n\nLive API supports function calling, just like regular content generation requests. Function calling lets the Live API interact with external data and programs, greatly increasing what your applications can accomplish.\n\nYou can define function declarations as part of the session configuration. After receiving tool calls, the client should respond with a list of FunctionResponse objects using the session.send_tool_response method.\n\nSee the Function calling tutorial to learn more.\n\nFrom a single prompt, the model can generate multiple function calls and the code necessary to chain their outputs. This code executes in a sandbox environment, generating subsequent BidiGenerateContentToolCall messages.\n\nFunction calling executes sequentially by default, meaning execution pauses until the results of each function call are available. This ensures sequential processing, which means you won't be able to continue interacting with the model while the functions are being run.\n\nIf you don't want to block the conversation, you can tell the model to run the functions asynchronously. To do so, you first need to add a behavior to the function definitions:\n\nNON-BLOCKING ensures the function runs asynchronously while you can continue interacting with the model.\n\nThen you need to tell the model how to behave when it receives the FunctionResponse using the scheduling parameter. It can either:\n\nOr do nothing and use that knowledge later on in the discussion (scheduling=\"SILENT\")\n\nYou can enable Grounding with Google Search as part of the session configuration. This increases the Live API's accuracy and prevents hallucinations. See the Grounding tutorial to learn more.\n\nYou can combine multiple tools within the Live API, increasing your application's capabilities even more:\n\nExcept as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License. For details, see the Google Developers Site Policies. Java is a registered trademark of Oracle and/or its affiliates.\n\nLast updated 2025-12-18 UTC.",
+  "headings": [
+    {
+      "level": "h1",
+      "text": "Tool use with Live API",
+      "id": ""
+    },
+    {
+      "level": "h2",
+      "text": "Overview of supported tools",
+      "id": "tools-overview"
+    },
+    {
+      "level": "h2",
+      "text": "Function calling",
+      "id": "function-calling"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript"
+    },
+    {
+      "level": "h2",
+      "text": "Asynchronous function calling",
+      "id": "async-function-calling"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python_1"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript_1"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python_2"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript_2"
+    },
+    {
+      "level": "h2",
+      "text": "Grounding with Google Search",
+      "id": "google-search"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python_3"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript_3"
+    },
+    {
+      "level": "h2",
+      "text": "Combining multiple tools",
+      "id": "combine-tools"
+    },
+    {
+      "level": "h3",
+      "text": "Python",
+      "id": "python_4"
+    },
+    {
+      "level": "h3",
+      "text": "JavaScript",
+      "id": "javascript_4"
+    },
+    {
+      "level": "h2",
+      "text": "What's next",
+      "id": "whats-next"
+    }
+  ],
+  "code_samples": [
+    {
+      "code": "import asyncio\nimport wave\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nmodel = \"gemini-2.5-flash-native-audio-preview-12-2025\"\n\n# Simple function definitions\nturn_on_the_lights = {\"name\": \"turn_on_the_lights\"}\nturn_off_the_lights = {\"name\": \"turn_off_the_lights\"}\n\ntools = [{\"function_declarations\": [turn_on_the_lights, turn_off_the_lights]}]\nconfig = {\"response_modalities\": [\"AUDIO\"], \"tools\": tools}\n\nasync def main():\n    async with client.aio.live.connect(model=model, config=config) as session:\n        prompt = \"Turn on the lights please\"\n        await session.send_client_content(turns={\"parts\": [{\"text\": prompt}]})\n\n        wf = wave.open(\"audio.wav\", \"wb\")\n        wf.setnchannels(1)\n        wf.setsampwidth(2)\n        wf.setframerate(24000)  # Output is 24kHz\n\n        async for response in session.receive():\n            if response.data is not None:\n                wf.writeframes(response.data)\n            elif response.tool_call:\n                print(\"The tool was called\")\n                function_responses = []\n                for fc in response.tool_call.function_calls:\n                    function_response = types.FunctionResponse(\n                        id=fc.id,\n                        name=fc.name,\n                        response={ \"result\": \"ok\" } # simple, hard-coded function response\n                    )\n                    function_responses.append(function_response)\n\n                await session.send_tool_response(function_responses=function_responses)\n\n        wf.close()\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "language": "python"
+    },
+    {
+      "code": "import asyncio\nimport wave\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nmodel = \"gemini-2.5-flash-native-audio-preview-12-2025\"\n\n# Simple function definitions\nturn_on_the_lights = {\"name\": \"turn_on_the_lights\"}\nturn_off_the_lights = {\"name\": \"turn_off_the_lights\"}\n\ntools = [{\"function_declarations\": [turn_on_the_lights, turn_off_the_lights]}]\nconfig = {\"response_modalities\": [\"AUDIO\"], \"tools\": tools}\n\nasync def main():\n    async with client.aio.live.connect(model=model, config=config) as session:\n        prompt = \"Turn on the lights please\"\n        await session.send_client_content(turns={\"parts\": [{\"text\": prompt}]})\n\n        wf = wave.open(\"audio.wav\", \"wb\")\n        wf.setnchannels(1)\n        wf.setsampwidth(2)\n        wf.setframerate(24000)  # Output is 24kHz\n\n        async for response in session.receive():\n            if response.data is not None:\n                wf.writeframes(response.data)\n            elif response.tool_call:\n                print(\"The tool was called\")\n                function_responses = []\n                for fc in response.tool_call.function_calls:\n                    function_response = types.FunctionResponse(\n                        id=fc.id,\n                        name=fc.name,\n                        response={ \"result\": \"ok\" } # simple, hard-coded function response\n                    )\n                    function_responses.append(function_response)\n\n                await session.send_tool_response(function_responses=function_responses)\n\n        wf.close()\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "language": "python"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality } from '@google/genai';\nimport * as fs from \"node:fs\";\nimport pkg from 'wavefile';  // npm install wavefile\nconst { WaveFile } = pkg;\n\nconst ai = new GoogleGenAI({});\nconst model = 'gemini-2.5-flash-native-audio-preview-12-2025';\n\n// Simple function definitions\nconst turn_on_the_lights = { name: \"turn_on_the_lights\" } // , description: '...', parameters: { ... }\nconst turn_off_the_lights = { name: \"turn_off_the_lights\" }\n\nconst tools = [{ functionDeclarations: [turn_on_the_lights, turn_off_the_lights] }]\n\nconst config = {\n  responseModalities: [Modality.AUDIO],\n  tools: tools\n}\n\nasync function live() {\n  const responseQueue = [];\n\n  async function waitMessage() {\n    let done = false;\n    let message = undefined;\n    while (!done) {\n      message = responseQueue.shift();\n      if (message) {\n        done = true;\n      } else {\n        await new Promise((resolve) => setTimeout(resolve, 100));\n      }\n    }\n    return message;\n  }\n\n  async function handleTurn() {\n    const turns = [];\n    let done = false;\n    while (!done) {\n      const message = await waitMessage();\n      turns.push(message);\n      if (message.serverContent && message.serverContent.turnComplete) {\n        done = true;\n      } else if (message.toolCall) {\n        done = true;\n      }\n    }\n    return turns;\n  }\n\n  const session = await ai.live.connect({\n    model: model,\n    callbacks: {\n      onopen: function () {\n        console.debug('Opened');\n      },\n      onmessage: function (message) {\n        responseQueue.push(message);\n      },\n      onerror: function (e) {\n        console.debug('Error:', e.message);\n      },\n      onclose: function (e) {\n        console.debug('Close:', e.reason);\n      },\n    },\n    config: config,\n  });\n\n  const inputTurns = 'Turn on the lights please';\n  session.sendClientContent({ turns: inputTurns });\n\n  let turns = await handleTurn();\n\n  for (const turn of turns) {\n    if (turn.toolCall) {\n      console.debug('A tool was called');\n      const functionResponses = [];\n      for (const fc of turn.toolCall.functionCalls) {\n        functionResponses.push({\n          id: fc.id,\n          name: fc.name,\n          response: { result: \"ok\" } // simple, hard-coded function response\n        });\n      }\n\n      console.debug('Sending tool response...\\n');\n      session.sendToolResponse({ functionResponses: functionResponses });\n    }\n  }\n\n  // Check again for new messages\n  turns = await handleTurn();\n\n  // Combine audio data strings and save as wave file\n  const combinedAudio = turns.reduce((acc, turn) => {\n      if (turn.data) {\n          const buffer = Buffer.from(turn.data, 'base64');\n          const intArray = new Int16Array(buffer.buffer, buffer.byteOffset, buffer.byteLength / Int16Array.BYTES_PER_ELEMENT);\n          return acc.concat(Array.from(intArray));\n      }\n      return acc;\n  }, []);\n\n  const audioBuffer = new Int16Array(combinedAudio);\n\n  const wf = new WaveFile();\n  wf.fromScratch(1, 24000, '16', audioBuffer);  // output is 24kHz\n  fs.writeFileSync('audio.wav', wf.toBuffer());\n\n  session.close();\n}\n\nasync function main() {\n  await live().catch((e) => console.error('got error', e));\n}\n\nmain();",
+      "language": "javascript"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality } from '@google/genai';\nimport * as fs from \"node:fs\";\nimport pkg from 'wavefile';  // npm install wavefile\nconst { WaveFile } = pkg;\n\nconst ai = new GoogleGenAI({});\nconst model = 'gemini-2.5-flash-native-audio-preview-12-2025';\n\n// Simple function definitions\nconst turn_on_the_lights = { name: \"turn_on_the_lights\" } // , description: '...', parameters: { ... }\nconst turn_off_the_lights = { name: \"turn_off_the_lights\" }\n\nconst tools = [{ functionDeclarations: [turn_on_the_lights, turn_off_the_lights] }]\n\nconst config = {\n  responseModalities: [Modality.AUDIO],\n  tools: tools\n}\n\nasync function live() {\n  const responseQueue = [];\n\n  async function waitMessage() {\n    let done = false;\n    let message = undefined;\n    while (!done) {\n      message = responseQueue.shift();\n      if (message) {\n        done = true;\n      } else {\n        await new Promise((resolve) => setTimeout(resolve, 100));\n      }\n    }\n    return message;\n  }\n\n  async function handleTurn() {\n    const turns = [];\n    let done = false;\n    while (!done) {\n      const message = await waitMessage();\n      turns.push(message);\n      if (message.serverContent && message.serverContent.turnComplete) {\n        done = true;\n      } else if (message.toolCall) {\n        done = true;\n      }\n    }\n    return turns;\n  }\n\n  const session = await ai.live.connect({\n    model: model,\n    callbacks: {\n      onopen: function () {\n        console.debug('Opened');\n      },\n      onmessage: function (message) {\n        responseQueue.push(message);\n      },\n      onerror: function (e) {\n        console.debug('Error:', e.message);\n      },\n      onclose: function (e) {\n        console.debug('Close:', e.reason);\n      },\n    },\n    config: config,\n  });\n\n  const inputTurns = 'Turn on the lights please';\n  session.sendClientContent({ turns: inputTurns });\n\n  let turns = await handleTurn();\n\n  for (const turn of turns) {\n    if (turn.toolCall) {\n      console.debug('A tool was called');\n      const functionResponses = [];\n      for (const fc of turn.toolCall.functionCalls) {\n        functionResponses.push({\n          id: fc.id,\n          name: fc.name,\n          response: { result: \"ok\" } // simple, hard-coded function response\n        });\n      }\n\n      console.debug('Sending tool response...\\n');\n      session.sendToolResponse({ functionResponses: functionResponses });\n    }\n  }\n\n  // Check again for new messages\n  turns = await handleTurn();\n\n  // Combine audio data strings and save as wave file\n  const combinedAudio = turns.reduce((acc, turn) => {\n      if (turn.data) {\n          const buffer = Buffer.from(turn.data, 'base64');\n          const intArray = new Int16Array(buffer.buffer, buffer.byteOffset, buffer.byteLength / Int16Array.BYTES_PER_ELEMENT);\n          return acc.concat(Array.from(intArray));\n      }\n      return acc;\n  }, []);\n\n  const audioBuffer = new Int16Array(combinedAudio);\n\n  const wf = new WaveFile();\n  wf.fromScratch(1, 24000, '16', audioBuffer);  // output is 24kHz\n  fs.writeFileSync('audio.wav', wf.toBuffer());\n\n  session.close();\n}\n\nasync function main() {\n  await live().catch((e) => console.error('got error', e));\n}\n\nmain();",
+      "language": "javascript"
+    },
+    {
+      "code": "# Non-blocking function definitions\nturn_on_the_lights = {\"name\": \"turn_on_the_lights\", \"behavior\": \"NON_BLOCKING\"} # turn_on_the_lights will run asynchronously\nturn_off_the_lights = {\"name\": \"turn_off_the_lights\"} # turn_off_the_lights will still pause all interactions with the model",
+      "language": "json"
+    },
+    {
+      "code": "# Non-blocking function definitions\nturn_on_the_lights = {\"name\": \"turn_on_the_lights\", \"behavior\": \"NON_BLOCKING\"} # turn_on_the_lights will run asynchronously\nturn_off_the_lights = {\"name\": \"turn_off_the_lights\"} # turn_off_the_lights will still pause all interactions with the model",
+      "language": "json"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality, Behavior } from '@google/genai';\n\n// Non-blocking function definitions\nconst turn_on_the_lights = {name: \"turn_on_the_lights\", behavior: Behavior.NON_BLOCKING}\n\n// Blocking function definitions\nconst turn_off_the_lights = {name: \"turn_off_the_lights\"}\n\nconst tools = [{ functionDeclarations: [turn_on_the_lights, turn_off_the_lights] }]",
+      "language": "sql"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality, Behavior } from '@google/genai';\n\n// Non-blocking function definitions\nconst turn_on_the_lights = {name: \"turn_on_the_lights\", behavior: Behavior.NON_BLOCKING}\n\n// Blocking function definitions\nconst turn_off_the_lights = {name: \"turn_off_the_lights\"}\n\nconst tools = [{ functionDeclarations: [turn_on_the_lights, turn_off_the_lights] }]",
+      "language": "sql"
+    },
+    {
+      "code": "# for a non-blocking function definition, apply scheduling in the function response:\n  function_response = types.FunctionResponse(\n      id=fc.id,\n      name=fc.name,\n      response={\n          \"result\": \"ok\",\n          \"scheduling\": \"INTERRUPT\" # Can also be WHEN_IDLE or SILENT\n      }\n  )",
+      "language": "json"
+    },
+    {
+      "code": "# for a non-blocking function definition, apply scheduling in the function response:\n  function_response = types.FunctionResponse(\n      id=fc.id,\n      name=fc.name,\n      response={\n          \"result\": \"ok\",\n          \"scheduling\": \"INTERRUPT\" # Can also be WHEN_IDLE or SILENT\n      }\n  )",
+      "language": "json"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality, Behavior, FunctionResponseScheduling } from '@google/genai';\n\n// for a non-blocking function definition, apply scheduling in the function response:\nconst functionResponse = {\n  id: fc.id,\n  name: fc.name,\n  response: {\n    result: \"ok\",\n    scheduling: FunctionResponseScheduling.INTERRUPT  // Can also be WHEN_IDLE or SILENT\n  }\n}",
+      "language": "python"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality, Behavior, FunctionResponseScheduling } from '@google/genai';\n\n// for a non-blocking function definition, apply scheduling in the function response:\nconst functionResponse = {\n  id: fc.id,\n  name: fc.name,\n  response: {\n    result: \"ok\",\n    scheduling: FunctionResponseScheduling.INTERRUPT  // Can also be WHEN_IDLE or SILENT\n  }\n}",
+      "language": "python"
+    },
+    {
+      "code": "import asyncio\nimport wave\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nmodel = \"gemini-2.5-flash-native-audio-preview-12-2025\"\n\ntools = [{'google_search': {}}]\nconfig = {\"response_modalities\": [\"AUDIO\"], \"tools\": tools}\n\nasync def main():\n    async with client.aio.live.connect(model=model, config=config) as session:\n        prompt = \"When did the last Brazil vs. Argentina soccer match happen?\"\n        await session.send_client_content(turns={\"parts\": [{\"text\": prompt}]})\n\n        wf = wave.open(\"audio.wav\", \"wb\")\n        wf.setnchannels(1)\n        wf.setsampwidth(2)\n        wf.setframerate(24000)  # Output is 24kHz\n\n        async for chunk in session.receive():\n            if chunk.server_content:\n                if chunk.data is not None:\n                    wf.writeframes(chunk.data)\n\n                # The model might generate and execute Python code to use Search\n                model_turn = chunk.server_content.model_turn\n                if model_turn:\n                    for part in model_turn.parts:\n                        if part.executable_code is not None:\n                            print(part.executable_code.code)\n\n                        if part.code_execution_result is not None:\n                            print(part.code_execution_result.output)\n\n        wf.close()\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "language": "python"
+    },
+    {
+      "code": "import asyncio\nimport wave\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nmodel = \"gemini-2.5-flash-native-audio-preview-12-2025\"\n\ntools = [{'google_search': {}}]\nconfig = {\"response_modalities\": [\"AUDIO\"], \"tools\": tools}\n\nasync def main():\n    async with client.aio.live.connect(model=model, config=config) as session:\n        prompt = \"When did the last Brazil vs. Argentina soccer match happen?\"\n        await session.send_client_content(turns={\"parts\": [{\"text\": prompt}]})\n\n        wf = wave.open(\"audio.wav\", \"wb\")\n        wf.setnchannels(1)\n        wf.setsampwidth(2)\n        wf.setframerate(24000)  # Output is 24kHz\n\n        async for chunk in session.receive():\n            if chunk.server_content:\n                if chunk.data is not None:\n                    wf.writeframes(chunk.data)\n\n                # The model might generate and execute Python code to use Search\n                model_turn = chunk.server_content.model_turn\n                if model_turn:\n                    for part in model_turn.parts:\n                        if part.executable_code is not None:\n                            print(part.executable_code.code)\n\n                        if part.code_execution_result is not None:\n                            print(part.code_execution_result.output)\n\n        wf.close()\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "language": "python"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality } from '@google/genai';\nimport * as fs from \"node:fs\";\nimport pkg from 'wavefile';  // npm install wavefile\nconst { WaveFile } = pkg;\n\nconst ai = new GoogleGenAI({});\nconst model = 'gemini-2.5-flash-native-audio-preview-12-2025';\n\nconst tools = [{ googleSearch: {} }]\nconst config = {\n  responseModalities: [Modality.AUDIO],\n  tools: tools\n}\n\nasync function live() {\n  const responseQueue = [];\n\n  async function waitMessage() {\n    let done = false;\n    let message = undefined;\n    while (!done) {\n      message = responseQueue.shift();\n      if (message) {\n        done = true;\n      } else {\n        await new Promise((resolve) => setTimeout(resolve, 100));\n      }\n    }\n    return message;\n  }\n\n  async function handleTurn() {\n    const turns = [];\n    let done = false;\n    while (!done) {\n      const message = await waitMessage();\n      turns.push(message);\n      if (message.serverContent && message.serverContent.turnComplete) {\n        done = true;\n      } else if (message.toolCall) {\n        done = true;\n      }\n    }\n    return turns;\n  }\n\n  const session = await ai.live.connect({\n    model: model,\n    callbacks: {\n      onopen: function () {\n        console.debug('Opened');\n      },\n      onmessage: function (message) {\n        responseQueue.push(message);\n      },\n      onerror: function (e) {\n        console.debug('Error:', e.message);\n      },\n      onclose: function (e) {\n        console.debug('Close:', e.reason);\n      },\n    },\n    config: config,\n  });\n\n  const inputTurns = 'When did the last Brazil vs. Argentina soccer match happen?';\n  session.sendClientContent({ turns: inputTurns });\n\n  let turns = await handleTurn();\n\n  let combinedData = '';\n  for (const turn of turns) {\n    if (turn.serverContent && turn.serverContent.modelTurn && turn.serverContent.modelTurn.parts) {\n      for (const part of turn.serverContent.modelTurn.parts) {\n        if (part.executableCode) {\n          console.debug('executableCode: %s\\n', part.executableCode.code);\n        }\n        else if (part.codeExecutionResult) {\n          console.debug('codeExecutionResult: %s\\n', part.codeExecutionResult.output);\n        }\n        else if (part.inlineData && typeof part.inlineData.data === 'string') {\n          combinedData += atob(part.inlineData.data);\n        }\n      }\n    }\n  }\n\n  // Convert the base64-encoded string of bytes into a Buffer.\n  const buffer = Buffer.from(combinedData, 'binary');\n\n  // The buffer contains raw bytes. For 16-bit audio, we need to interpret every 2 bytes as a single sample.\n  const intArray = new Int16Array(buffer.buffer, buffer.byteOffset, buffer.byteLength / Int16Array.BYTES_PER_ELEMENT);\n\n  const wf = new WaveFile();\n  // The API returns 16-bit PCM audio at a 24kHz sample rate.\n  wf.fromScratch(1, 24000, '16', intArray);\n  fs.writeFileSync('audio.wav', wf.toBuffer());\n\n  session.close();\n}\n\nasync function main() {\n  await live().catch((e) => console.error('got error', e));\n}\n\nmain();",
+      "language": "javascript"
+    },
+    {
+      "code": "import { GoogleGenAI, Modality } from '@google/genai';\nimport * as fs from \"node:fs\";\nimport pkg from 'wavefile';  // npm install wavefile\nconst { WaveFile } = pkg;\n\nconst ai = new GoogleGenAI({});\nconst model = 'gemini-2.5-flash-native-audio-preview-12-2025';\n\nconst tools = [{ googleSearch: {} }]\nconst config = {\n  responseModalities: [Modality.AUDIO],\n  tools: tools\n}\n\nasync function live() {\n  const responseQueue = [];\n\n  async function waitMessage() {\n    let done = false;\n    let message = undefined;\n    while (!done) {\n      message = responseQueue.shift();\n      if (message) {\n        done = true;\n      } else {\n        await new Promise((resolve) => setTimeout(resolve, 100));\n      }\n    }\n    return message;\n  }\n\n  async function handleTurn() {\n    const turns = [];\n    let done = false;\n    while (!done) {\n      const message = await waitMessage();\n      turns.push(message);\n      if (message.serverContent && message.serverContent.turnComplete) {\n        done = true;\n      } else if (message.toolCall) {\n        done = true;\n      }\n    }\n    return turns;\n  }\n\n  const session = await ai.live.connect({\n    model: model,\n    callbacks: {\n      onopen: function () {\n        console.debug('Opened');\n      },\n      onmessage: function (message) {\n        responseQueue.push(message);\n      },\n      onerror: function (e) {\n        console.debug('Error:', e.message);\n      },\n      onclose: function (e) {\n        console.debug('Close:', e.reason);\n      },\n    },\n    config: config,\n  });\n\n  const inputTurns = 'When did the last Brazil vs. Argentina soccer match happen?';\n  session.sendClientContent({ turns: inputTurns });\n\n  let turns = await handleTurn();\n\n  let combinedData = '';\n  for (const turn of turns) {\n    if (turn.serverContent && turn.serverContent.modelTurn && turn.serverContent.modelTurn.parts) {\n      for (const part of turn.serverContent.modelTurn.parts) {\n        if (part.executableCode) {\n          console.debug('executableCode: %s\\n', part.executableCode.code);\n        }\n        else if (part.codeExecutionResult) {\n          console.debug('codeExecutionResult: %s\\n', part.codeExecutionResult.output);\n        }\n        else if (part.inlineData && typeof part.inlineData.data === 'string') {\n          combinedData += atob(part.inlineData.data);\n        }\n      }\n    }\n  }\n\n  // Convert the base64-encoded string of bytes into a Buffer.\n  const buffer = Buffer.from(combinedData, 'binary');\n\n  // The buffer contains raw bytes. For 16-bit audio, we need to interpret every 2 bytes as a single sample.\n  const intArray = new Int16Array(buffer.buffer, buffer.byteOffset, buffer.byteLength / Int16Array.BYTES_PER_ELEMENT);\n\n  const wf = new WaveFile();\n  // The API returns 16-bit PCM audio at a 24kHz sample rate.\n  wf.fromScratch(1, 24000, '16', intArray);\n  fs.writeFileSync('audio.wav', wf.toBuffer());\n\n  session.close();\n}\n\nasync function main() {\n  await live().catch((e) => console.error('got error', e));\n}\n\nmain();",
+      "language": "javascript"
+    },
+    {
+      "code": "prompt = \"\"\"\nHey, I need you to do two things for me.\n\n1. Use Google Search to look up information about the largest earthquake in California the week of Dec 5 2024?\n2. Then turn on the lights\n\nThanks!\n\"\"\"\n\ntools = [\n    {\"google_search\": {}},\n    {\"function_declarations\": [turn_on_the_lights, turn_off_the_lights]},\n]\n\nconfig = {\"response_modalities\": [\"AUDIO\"], \"tools\": tools}\n\n# ... remaining model call",
+      "language": "json"
+    },
+    {
+      "code": "prompt = \"\"\"\nHey, I need you to do two things for me.\n\n1. Use Google Search to look up information about the largest earthquake in California the week of Dec 5 2024?\n2. Then turn on the lights\n\nThanks!\n\"\"\"\n\ntools = [\n    {\"google_search\": {}},\n    {\"function_declarations\": [turn_on_the_lights, turn_off_the_lights]},\n]\n\nconfig = {\"response_modalities\": [\"AUDIO\"], \"tools\": tools}\n\n# ... remaining model call",
+      "language": "json"
+    },
+    {
+      "code": "const prompt = `Hey, I need you to do two things for me.\n\n1. Use Google Search to look up information about the largest earthquake in California the week of Dec 5 2024?\n2. Then turn on the lights\n\nThanks!\n`\n\nconst tools = [\n  { googleSearch: {} },\n  { functionDeclarations: [turn_on_the_lights, turn_off_the_lights] }\n]\n\nconst config = {\n  responseModalities: [Modality.AUDIO],\n  tools: tools\n}\n\n// ... remaining model call",
+      "language": "json"
+    },
+    {
+      "code": "const prompt = `Hey, I need you to do two things for me.\n\n1. Use Google Search to look up information about the largest earthquake in California the week of Dec 5 2024?\n2. Then turn on the lights\n\nThanks!\n`\n\nconst tools = [\n  { googleSearch: {} },\n  { functionDeclarations: [turn_on_the_lights, turn_off_the_lights] }\n]\n\nconst config = {\n  responseModalities: [Modality.AUDIO],\n  tools: tools\n}\n\n// ... remaining model call",
+      "language": "json"
+    }
+  ],
+  "patterns": [],
+  "links": [
+    "https://ai.google.dev/gemini-api/docs/live-tools",
+    "https://ai.google.dev/gemini-api/docs/live-guide",
+    "https://ai.google.dev/gemini-api/docs/live-session"
+  ]
+}

@@ -26,7 +26,7 @@ ENV/
 env/
 
 # Output directory
-output/
+# output/  # Commented out to allow tracking skill outputs
 *.zip
 
 # IDE

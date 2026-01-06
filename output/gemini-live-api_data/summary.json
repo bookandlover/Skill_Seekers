@@ -1,0 +1,25 @@
+{
+  "name": "gemini-live-api",
+  "total_pages": 4,
+  "base_url": "https://ai.google.dev/gemini-api/docs/live",
+  "llms_txt_detected": false,
+  "llms_txt_variant": null,
+  "pages": [
+    {
+      "title": "Get started with Live API",
+      "url": "https://ai.google.dev/gemini-api/docs/live"
+    },
+    {
+      "title": "Live API capabilities guide",
+      "url": "https://ai.google.dev/gemini-api/docs/live-guide"
+    },
+    {
+      "title": "Tool use with Live API",
+      "url": "https://ai.google.dev/gemini-api/docs/live-tools"
+    },
+    {
+      "title": "Session management with Live API",
+      "url": "https://ai.google.dev/gemini-api/docs/live-session"
+    }
+  ]
+}
