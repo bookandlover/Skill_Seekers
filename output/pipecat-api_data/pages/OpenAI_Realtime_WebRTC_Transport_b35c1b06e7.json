@@ -1,0 +1,29 @@
+{
+  "title": "OpenAI Realtime WebRTC Transport",
+  "content": "Source: https://docs.pipecat.ai/client/android/transports/openai-webrtc\n\nWebRTC implementation for Android using OpenAI\n\nThe OpenAI Realtime WebRTC transport implementation enables real-time audio communication with the OpenAI Realtime service, using a direct WebRTC connection.\n\nAdd the transport dependency to your `build.gradle`:\n\n<CardGroup>\n  <Card title=\"Demo\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-client-android-openai-realtime-webrtc-demo\">\n    Simple Chatbot Demo\n  </Card>\n\n<Card title=\"Source\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat-client-android-transports/\">\n    Client Transports\n  </Card>\n</CardGroup>\n\n<Card title=\"Pipecat Android Client Reference\" icon=\"book-open\" href=\"https://docs-android.rtvi.ai/\">\n  Complete API documentation for the Pipecat Android client.\n</Card>",
+  "code_samples": [
+    {
+      "code": "## Usage\n\nCreate a client:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h2",
+      "text": "Resources",
+      "id": "resources"
+    }
+  ],
+  "url": "llms-txt#openai-realtime-webrtc-transport",
+  "links": []
+}

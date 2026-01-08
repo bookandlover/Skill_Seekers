@@ -1,0 +1,67 @@
+{
+  "title": "Daily Phone Numbers",
+  "content": "Source: https://docs.pipecat.ai/guides/telephony/daily-phone-numbers\n\nPurchase and manage phone numbers for Daily's PSTN services\n\nUse Daily's [REST API](https://docs.daily.co/reference/rest-api/phone-numbers) to find, buy, list, and release phone numbers programmatically.\n\n<Tip>\n  You can also purchase phone numbers through the Pipecat Cloud Dashboard by\n  going to `Settings` > `Telephony` and following the UI.\n</Tip>\n\n### Search for available phone numbers\n\nWe offer several [search filters](https://docs.daily.co/reference/rest-api/phone-numbers/list-available-numbers), such as, `region`, `city`, `areacode`, etc that can help narrow down the search space for a phone number. The response contains phone numbers that meet the chosen criteria. For simplicty, in the below examples, we will use `+19499870006` as an example `phone_number`.\n\n### Buy a phone number\n\nTo purchase the chosen number, make a POST request to the [buy-phone-number](https://docs.daily.co/reference/rest-api/phone-numbers/buy-phone-number) and pass the chosen phone number in the data field. The response returns the phone number and a unique id. The unique id is needed when releasing the chosen phone number, for example.\n\n<Info>\n  Use the id to select the desired phone number for dial-out. Pass it as\n  `callerId` in the `start_dialout` API or include it in the `dialout_settings`\n  JSON.\n</Info>\n\n### Release a phone number\n\nTo release a phone number associated with your account. Successfully deleting the number takes the phone number out of operation.\n\n<Warning>\n  For compliance reasons, a phone number cannot be released until 14 days after\n  purchase. A successful release operation cannot be undone, and the phone\n  number will be taken out of operation.\n</Warning>\n\n### List all purchased phone numbers\n\nYou can also list all your purchased phone numbers using the following [API](https://docs.daily.co/reference/rest-api/phone-numbers/purchased-phone-numbers)\n\n### CNAM Registration\n\nPlease contact `help@daily.co` for adding Caller Name (CNAM) to the purchased phone numbers. Daily will need your Name or Company Name to register with the United States CNAM Registry. Once registered, the Caller ID will display the appropriate name on the calling party's device.\n\nWe need the following information:\n\n* All phone numbers and the corresponding CNAM entry. A CNAM entry can only be 14 letter long, including spaces.\n* Company documents\n* An employee's ID/driver's license\n\n<Info>\n  It can take up to 48 hours for the CNAM to reflect on the national caller ID\n  name database and can take longer to update for major carriers, who check the\n  national database periodically.\n</Info>",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n### Buy a phone number\n\nTo purchase the chosen number, make a POST request to the [buy-phone-number](https://docs.daily.co/reference/rest-api/phone-numbers/buy-phone-number) and pass the chosen phone number in the data field. The response returns the phone number and a unique id. The unique id is needed when releasing the chosen phone number, for example.\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n<Info>\n  Use the id to select the desired phone number for dial-out. Pass it as\n  `callerId` in the `start_dialout` API or include it in the `dialout_settings`\n  JSON.\n</Info>\n\n### Release a phone number\n\nTo release a phone number associated with your account. Successfully deleting the number takes the phone number out of operation.\n\n<Warning>\n  For compliance reasons, a phone number cannot be released until 14 days after\n  purchase. A successful release operation cannot be undone, and the phone\n  number will be taken out of operation.\n</Warning>\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n### List all purchased phone numbers\n\nYou can also list all your purchased phone numbers using the following [API](https://docs.daily.co/reference/rest-api/phone-numbers/purchased-phone-numbers)\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Search for available phone numbers",
+      "id": "search-for-available-phone-numbers"
+    },
+    {
+      "level": "h3",
+      "text": "Buy a phone number",
+      "id": "buy-a-phone-number"
+    },
+    {
+      "level": "h3",
+      "text": "Release a phone number",
+      "id": "release-a-phone-number"
+    },
+    {
+      "level": "h3",
+      "text": "List all purchased phone numbers",
+      "id": "list-all-purchased-phone-numbers"
+    },
+    {
+      "level": "h3",
+      "text": "CNAM Registration",
+      "id": "cnam-registration"
+    }
+  ],
+  "url": "llms-txt#daily-phone-numbers",
+  "links": []
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Server API Reference",
+  "content": "Source: https://docs.pipecat.ai/server/introduction\n\nComplete reference for Pipecat’s Python server APIs and services\n\nPipecat's server-side functionality is organized into three main categories:\n\n<CardGroup>\n  <Card title=\"Services\" icon=\"puzzle-piece\">\n    AI service integrations for speech, language, vision, and more\n  </Card>\n\n<Card title=\"Frameworks\" icon=\"puzzle\">\n    > User RTVI for client/server communication or Pipecat Flows for building structured conversations\n  </Card>\n\n<Card title=\"Utilities\" icon=\"wrench\">\n    Helper functions and tools for audio, filtering, and flows\n  </Card>\n</CardGroup>\n\n## Service Categories\n\nPipecat integrates with various AI services across different categories:\n\n<CardGroup>\n  <Card title=\"Transport\" icon=\"network-wired\">\n    WebRTC and WebSocket implementations for real-time communication\n  </Card>\n\n<Card title=\"Speech Processing\" icon=\"waveform-lines\">\n    Speech-to-text, text-to-speech, and speech-to-speech services\n  </Card>\n\n<Card title=\"Language Models\" icon=\"brain\">\n    Integration with various LLM providers\n  </Card>\n\n<Card title=\"Vision & Media\" icon=\"image\">\n    Image generation, video processing, and computer vision\n  </Card>\n</CardGroup>\n\n1. Browse our [Supported Services](/server/services/supported-services) to see available integrations\n2. Install required dependencies for your chosen services\n3. Reference individual service docs for detailed configuration options\n\n```python theme={null}\nfrom pipecat.audio.vad.silero import SileroVADAnalyzer\nfrom pipecat.pipeline import Pipeline\nfrom pipecat.processors.aggregators.llm_context import LLMContext\nfrom pipecat.processors.aggregators.llm_response_universal import LLMContextAggregatorPair\nfrom pipecat.services.cartesia.tts import CartesiaTTSService\nfrom pipecat.services.deepgram.stt import DeepgramSTTService\nfrom pipecat.services.openai.llm import OpenAILLMService\nfrom pipecat.transports.daily.transport import DailyParams, DailyTransport\n\ntransport = DailyTransport(\n    room_url,\n    token,\n    \"Respond bot\",\n    DailyParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        vad_analyzer=SileroVADAnalyzer(),\n    ),\n)",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Service Categories",
+      "id": "service-categories"
+    },
+    {
+      "level": "h2",
+      "text": "Getting Started",
+      "id": "getting-started"
+    },
+    {
+      "level": "h2",
+      "text": "Example Usage",
+      "id": "example-usage"
+    }
+  ],
+  "url": "llms-txt#server-api-reference",
+  "links": []
+}

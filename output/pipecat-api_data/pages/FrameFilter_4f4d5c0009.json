@@ -1,0 +1,34 @@
+{
+  "title": "FrameFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/filters/frame-filter\n\nProcessor that selectively passes through only specified frame types\n\n`FrameFilter` is a processor that filters frames based on their types, only passing through frames that match specified types (plus some system frames like `EndFrame` and `SystemFrame`).\n\n## Constructor Parameters\n\n<ParamField type=\"Tuple[Type[Frame], ...]\">\n  Tuple of frame types that should be passed through the filter\n</ParamField>\n\nWhen a frame passes through the filter, it is checked against the provided types. Only frames that match one of the specified types (or are system frames) will be passed downstream. All other frames are dropped.\n\nThe processor always passes through:\n\n* Frames matching any of the specified types\n* `EndFrame` and `SystemFrame` instances (always allowed, so as to not block the pipeline)\n\n```python theme={null}\nfrom pipecat.frames.frames import TextFrame, AudioRawFrame, Frame\nfrom pipecat.processors.filters import FrameFilter\nfrom typing import Tuple, Type",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Functionality",
+      "id": "functionality"
+    },
+    {
+      "level": "h2",
+      "text": "Output Frames",
+      "id": "output-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#framefilter",
+  "links": []
+}

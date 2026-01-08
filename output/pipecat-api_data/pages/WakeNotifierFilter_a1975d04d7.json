@@ -1,0 +1,34 @@
+{
+  "title": "WakeNotifierFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/filters/wake-notifier-filter\n\nProcessor that triggers a notifier when specified frame types pass a custom filter\n\n`WakeNotifierFilter` monitors the pipeline for specific frame types and triggers a notification when those frames pass a custom filter condition. It passes all frames through unchanged while performing this notification side-effect.\n\n## Constructor Parameters\n\n<ParamField type=\"BaseNotifier\">\n  The notifier object to trigger when conditions are met\n</ParamField>\n\n<ParamField type=\"Tuple[Type[Frame]]\">\n  Tuple of frame types to monitor\n</ParamField>\n\n<ParamField type=\"Callable[[Frame], Awaitable[bool]]\">\n  Async function that examines each matching frame and returns True to trigger\n  notification\n</ParamField>\n\nThe processor operates as follows:\n\n1. Checks if the incoming frame matches any of the specified types\n2. If it's a matching type, calls the filter function with the frame\n3. If the filter returns True, triggers the notifier\n4. Passes all frames through unchanged, regardless of the filtering result\n\nThis allows for notification side-effects without modifying the pipeline's data flow.\n\n* All frames pass through unchanged in their original direction\n* No frames are modified or filtered out\n\n```python theme={null}\nfrom pipecat.frames.frames import TranscriptionFrame, UserStartedSpeakingFrame\nfrom pipecat.processors.filters import WakeNotifierFilter\nfrom pipecat.sync.event_notifier import EventNotifier",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Functionality",
+      "id": "functionality"
+    },
+    {
+      "level": "h2",
+      "text": "Output Frames",
+      "id": "output-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#wakenotifierfilter",
+  "links": []
+}

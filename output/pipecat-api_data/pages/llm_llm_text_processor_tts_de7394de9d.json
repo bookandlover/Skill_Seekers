@@ -1,0 +1,19 @@
+{
+  "title": "llm -> llm_text_processor -> tts",
+  "content": "python theme={null}\nfrom pipecat.utils.text.pattern_pair_aggregator import MatchAction, PatternPairAggregator",
+  "code_samples": [
+    {
+      "code": "### Handling Special Values in LLM Output\n\nThis example demonstrates how to identify and process custom tags in LLM output that denote special content, such as credit cards that should be handled differently by downstream services.\nIn this case, the TTS should spell it out, while RTVI should obfuscate the number.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Handling Special Values in LLM Output",
+      "id": "handling-special-values-in-llm-output"
+    }
+  ],
+  "url": "llms-txt#llm-->-llm_text_processor-->-tts",
+  "links": []
+}

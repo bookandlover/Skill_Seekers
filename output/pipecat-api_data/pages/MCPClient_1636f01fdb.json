@@ -1,0 +1,53 @@
+{
+  "title": "MCPClient",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/mcp/mcp\n\nService to connect to MCP (Model Context Protocol) servers\n\nMCP is an open standard for enabling AI agents to interact with external data and tools. `MCPClient` provides a way to access and call tools via MCP. For example, instead of writing bespoke function call implementations for an external API, you may use an MCP server that provides a bridge to the API. *Be aware there may be security implications.* See [MCP documenation](https://github.com/modelcontextprotocol) for more details.\n\nTo use `MCPClient`, install the required dependencies:\n\nYou may also need to set environment variables as required by the specific MCP server to which you are connecting.\n\n### Constructor Parameters\n\nYou can connect to your MCP server via Stdio or SSE transport. See [here](https://modelcontextprotocol.io/docs/concepts/transports#built-in-transport-types) for more documentation on MCP transports.\n\n<ParamField type=\"str | StdioServerParameters\">\n  You can provide either:\n\n* URL: \"[https://your.mcp.server/sse](https://your.mcp.server/sse)\"\n  * StdioServerParameters, which are defined as:\n\nSee more information regarding server params [here](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients).\n\n### MCP Stdio Transport Implementation\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "You may also need to set environment variables as required by the specific MCP server to which you are connecting.\n\n## Configuration\n\n### Constructor Parameters\n\nYou can connect to your MCP server via Stdio or SSE transport. See [here](https://modelcontextprotocol.io/docs/concepts/transports#built-in-transport-types) for more documentation on MCP transports.\n\n<ParamField type=\"str | StdioServerParameters\">\n  You can provide either:\n\n  * URL: \"[https://your.mcp.server/sse](https://your.mcp.server/sse)\"\n  * StdioServerParameters, which are defined as:",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n### Input Parameters\n\nSee more information regarding server params [here](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients).\n\n## Usage Example\n\n### MCP Stdio Transport Implementation",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Input Parameters",
+      "id": "input-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    },
+    {
+      "level": "h3",
+      "text": "MCP Stdio Transport Implementation",
+      "id": "mcp-stdio-transport-implementation"
+    }
+  ],
+  "url": "llms-txt#mcpclient",
+  "links": []
+}

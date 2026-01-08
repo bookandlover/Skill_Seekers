@@ -1,0 +1,8 @@
+{
+  "title": "Add pattern for voice tags",
+  "content": "pattern_aggregator.add_pattern(\n    type=\"voice\",\n    start_pattern=\"<voice>\",\n    end_pattern=\"</voice>\",\n    action=MatchAction.REMOVE\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-pattern-for-voice-tags",
+  "links": []
+}

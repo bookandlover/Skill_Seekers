@@ -1,0 +1,57 @@
+{
+  "title": "OpenAI-compatible service via base_url",
+  "content": "llm = OpenAILLMService(\n    api_key=os.getenv(\"OTHER_API_KEY\"),\n    base_url=\"https://api.other-provider.com/v1\"  # Custom endpoint\n)\npython theme={null}\nfrom pipecat.services.openai.base_llm import BaseOpenAILLMService\nfrom pipecat.services.openai.llm import OpenAILLMService\n\nllm = OpenAILLMService(\n    api_key=os.getenv(\"OPENAI_API_KEY\"),\n    model=\"gpt-4\",\n    params=BaseOpenAILLMService.InputParams(\n        temperature=0.7,            # Response creativity (0.0-2.0)\n        max_completion_tokens=150,  # Maximum response length\n        frequency_penalty=0.5,      # Reduce repetition (0.0-2.0)\n        presence_penalty=0.5,       # Encourage topic diversity (0.0-2.0)\n    ),\n)\npython theme={null}\nllm = YourLLMService(\n    # Service-specific options...\n    run_in_parallel=True,  # Whether function calls run in parallel (default: True)\n)\npython theme={null}\n@llm.event_handler(\"on_completion_timeout\")\nasync def on_completion_timeout(service):\n    logger.warning(\"LLM completion timed out\")\n    # Handle timeout (retry, fallback, etc.)\n\n@llm.event_handler(\"on_function_calls_started\")\nasync def on_function_calls_started(service, function_calls):\n    logger.info(f\"Starting {len(function_calls)} function calls\")\n    # Optionally notify user that bot is \"thinking\"\n    await tts.queue_frame(TTSSpeakFrame(\"Let me check on that.\"))\n```\n\n**Available events:**\n\n* **`on_completion_timeout`**: Triggered when LLM requests timeout\n* **`on_function_calls_started`**: Triggered when function calls are initiated\n\nThese handlers enable you to provide user feedback and implement error recovery strategies.\n\nLLMs can call external functions to access real-time data and perform actions beyond their training data. This enables capabilities like checking weather, querying databases, or controlling external APIs.\n\nFunction calls and their results are automatically stored in the conversation context by the context aggregator.\n\n<Card title=\"Function Calling\" icon=\"code\" href=\"/guides/learn/function-calling\">\n  Learn how to enable LLMs to interact with external services and APIs\n</Card>\n\n* **Pipeline placement matters** - LLM goes after user context, before TTS\n* **Token streaming enables real-time responses** - no waiting for complete generation\n* **OpenAI compatibility** enables easy provider switching\n* **Function calling extends capabilities** beyond training data\n* **Configuration affects behavior** - tune temperature, penalties, and limits\n* **Services are modular** - swap providers without changing pipeline code\n\nNow that you understand LLM configuration, let's explore how function calling enables your bot to interact with external services and real-time data.\n\n<Card title=\"Function Calling\" icon=\"arrow-right\" href=\"/guides/learn/function-calling\">\n  Learn how to enable LLMs to interact with external services and APIs\n</Card>",
+  "code_samples": [
+    {
+      "code": "This architecture allows you to quickly plug in different LLM services without changing your pipeline code.\n\n## LLM Configuration\n\n### Service-Specific Configuration\n\nEach LLM service has its own configuration options. For example, configuring OpenAI with various parameters:",
+      "language": "unknown"
+    },
+    {
+      "code": "For detailed configuration options specific to each provider:\n\n<Card title=\"Individual LLM Services\" icon=\"settings\" href=\"/server/services/supported-services#large-language-models\">\n  Explore configuration options for each supported LLM provider\n</Card>\n\n### Base Class Configuration\n\nAll LLM services inherit from the `LLMService` base class with shared configuration options:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Key options:**\n\n* **`run_in_parallel`**: Controls whether function calls execute simultaneously or sequentially\n  * `True` (default): Faster execution when multiple functions are called\n  * `False`: Sequential execution for dependent function calls\n\n## Event Handlers\n\nLLM services provide event handlers for monitoring completion lifecycle:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "LLM Configuration",
+      "id": "llm-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Service-Specific Configuration",
+      "id": "service-specific-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Base Class Configuration",
+      "id": "base-class-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Event Handlers",
+      "id": "event-handlers"
+    },
+    {
+      "level": "h2",
+      "text": "Function Calling",
+      "id": "function-calling"
+    },
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#openai-compatible-service-via-base_url",
+  "links": []
+}

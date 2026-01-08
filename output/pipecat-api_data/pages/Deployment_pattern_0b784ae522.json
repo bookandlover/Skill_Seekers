@@ -1,0 +1,53 @@
+{
+  "title": "Deployment pattern",
+  "content": "Source: https://docs.pipecat.ai/deployment/pattern\n\nBasic deployment pattern for Pipecat bots\n\nA Pipecat project will often consist of the following:\n\n<Card title=\"1. Bot file\">\n  E.g. `bot.py`. Your Pipecat bot / agent, containing all the pipelines that you\n  want to run in order to communicate with an end-user. A bot file may take some\n  command line arguments, such as a transport URL and configuration.\n</Card>\n\n<Card title=\"2. Bot runner\">\n  E.g. `bot_runner.py`. Typically a basic HTTP service that listens for incoming\n  user requests and spawns the relevant bot file in response.\n</Card>\n\n<Note>\n  You can call these files whatever you like! We use `bot.py` and\n  `bot_runner.py` for simplicity.\n</Note>\n\n### Typical user / bot flow\n\nThere are many ways to approach connecting users to bots. Pipecat is unopinionated about *how* exactly you should do this, but it's helpful to put an idea forward.\n\nAt a very basic level, it may look something like this:\n\n<Steps>\n  <Step title=\"User requests to join session via client / app\">\n    Client initiates a HTTP request to a hosted bot runner service.\n  </Step>\n\n<Step title=\"Bot runner handles the request\">\n    Authenticates, configures and instantiates everything necessary for the\n    session to commence (e.g. a new WebSocket channel, or WebRTC room, etc.)\n  </Step>\n\n<Step title=\"Bot runner spawns bot / agent\">\n    A new bot process / VM is created for the user to connect with (passing\n    across any necessary configuration.) Your project may load just one bot\n    file, contextually swap between multiple, or launch many at once.\n  </Step>\n\n<Step title=\"Bot instantiates and joins session via specified transport credentials\">\n    Bot initializes, connects to the session (e.g. locally or via WebSockets,\n    WebRTC etc) and runs your bot code.\n  </Step>\n\n<Step title=\"Bot runner returns status to client\">\n    Once the bot is ready, the runner resolves the HTTP request with details for\n    the client to connect.\n  </Step>\n</Steps>\n\n<Frame>\n  <img alt=\"Basic pipeline image\" />\n</Frame>\n\nThe majority of use-cases require a way to trigger and manage a bot session over the internet. We call these bot runners; a HTTP service that provides a gateway for spawning bots on-demand.\n\nThe anatomy of a bot runner service is entirery arbitrary, but at very least will have a method that spawns a new bot process, for example:\n\nThis pseudo code defines a `/start_bot/` endpoint which listens for incoming user `POST` requests or webhooks, then configures the session (such as creating rooms on your transport provider) and instantiates a new bot process.\n\nA client will typically require some information regarding the newly spawned bot, such as a web address, so we also return some JSON with the necessary details.\n\nYour [transport layer](/server/services/transport/daily) is responsible for sending and receiving audio and video data over the internet.\n\nYou will have implemented a transport layer as part of your `bot.py` pipeline. This may be a service that you want to host and include in your deployment, or it may be a third-party service waiting for peers to connect (such as [Daily](https://www.daily.co), or a websocket.)\n\nFor this example, we will make use of Daily’s WebRTC transport. This will mean that our `bot_runner.py` will need to do some configuration when it spawns a new bot:\n\n1. Create and configure a new Daily room for the session to take place in.\n2. Issue both the bot and the user an authentication token to join the session.\n\nWhatever you use for your transport layer, you’ll likely need to setup some environmental variables and run some custom code before spawning the agent.\n\n### Best practice for bot files\n\nA good pattern to work to is the assumption that your `bot.py` is an encapsulated entity and does not have any knowledge of the `bot_runner.py`. You should provide the bot everything it needs to operate during instantiation.\n\nSticking to this approach helps keep things simple and makes it easier to step through debugging (if the bot launched and something goes wrong, you know to look for errors in your bot file.)\n\nLet's assume we have a fully service-driven `bot.py` that connects to a WebRTC session, passes audio transcription to GPT4 and returns audio text-to-speech with ElevenLabs.\n\nWe'll also use Silero voice activity detection, to better know when the user has stopped talking.\n\nTo launch this bot, let's create a `bot_runner.py` that:\n\n* Creates an API for users to send requests to.\n* Launches a bot as a subprocess.\n\n```python bot_runner.py theme={null}\nimport os\nimport argparse\nimport subprocess\n\nfrom pipecat.transports.services.helpers.daily_rest import DailyRESTHelper, DailyRoomObject, DailyRoomProperties, DailyRoomParams\n\nfrom fastapi import FastAPI, Request, HTTPException\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom fastapi.responses import JSONResponse",
+  "code_samples": [
+    {
+      "code": "This pseudo code defines a `/start_bot/` endpoint which listens for incoming user `POST` requests or webhooks, then configures the session (such as creating rooms on your transport provider) and instantiates a new bot process.\n\nA client will typically require some information regarding the newly spawned bot, such as a web address, so we also return some JSON with the necessary details.\n\n### Data transport\n\nYour [transport layer](/server/services/transport/daily) is responsible for sending and receiving audio and video data over the internet.\n\nYou will have implemented a transport layer as part of your `bot.py` pipeline. This may be a service that you want to host and include in your deployment, or it may be a third-party service waiting for peers to connect (such as [Daily](https://www.daily.co), or a websocket.)\n\nFor this example, we will make use of Daily’s WebRTC transport. This will mean that our `bot_runner.py` will need to do some configuration when it spawns a new bot:\n\n1. Create and configure a new Daily room for the session to take place in.\n2. Issue both the bot and the user an authentication token to join the session.\n\nWhatever you use for your transport layer, you’ll likely need to setup some environmental variables and run some custom code before spawning the agent.\n\n### Best practice for bot files\n\nA good pattern to work to is the assumption that your `bot.py` is an encapsulated entity and does not have any knowledge of the `bot_runner.py`. You should provide the bot everything it needs to operate during instantiation.\n\nSticking to this approach helps keep things simple and makes it easier to step through debugging (if the bot launched and something goes wrong, you know to look for errors in your bot file.)\n\n***\n\n## Example\n\nLet's assume we have a fully service-driven `bot.py` that connects to a WebRTC session, passes audio transcription to GPT4 and returns audio text-to-speech with ElevenLabs.\n\nWe'll also use Silero voice activity detection, to better know when the user has stopped talking.",
+      "language": "unknown"
+    },
+    {
+      "code": "### HTTP API\n\nTo launch this bot, let's create a `bot_runner.py` that:\n\n* Creates an API for users to send requests to.\n* Launches a bot as a subprocess.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Project structure",
+      "id": "project-structure"
+    },
+    {
+      "level": "h3",
+      "text": "Typical user / bot flow",
+      "id": "typical-user-/-bot-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Bot runner",
+      "id": "bot-runner"
+    },
+    {
+      "level": "h3",
+      "text": "Data transport",
+      "id": "data-transport"
+    },
+    {
+      "level": "h3",
+      "text": "Best practice for bot files",
+      "id": "best-practice-for-bot-files"
+    },
+    {
+      "level": "h2",
+      "text": "Example",
+      "id": "example"
+    },
+    {
+      "level": "h3",
+      "text": "HTTP API",
+      "id": "http-api"
+    }
+  ],
+  "url": "llms-txt#deployment-pattern",
+  "links": []
+}

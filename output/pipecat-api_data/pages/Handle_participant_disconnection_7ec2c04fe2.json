@@ -1,0 +1,8 @@
+{
+  "title": "Handle participant disconnection",
+  "content": "@transport.event_handler(\"on_participant_left\")\nasync def on_participant_left(transport, participant, reason):\n    await task.cancel()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#handle-participant-disconnection",
+  "links": []
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Sarvam AI",
+  "content": "Source: https://docs.pipecat.ai/server/services/tts/sarvam\n\nText-to-speech service implementation using Sarvam AI's TTS API\n\n`SarvamTTSService` provides text-to-speech synthesis specialized for Indian languages and voices. The service offers extensive voice customization options including pitch, pace, and loudness control, with support for multiple Indian languages and preprocessing for mixed-language content.\n\n<CardGroup>\n  <Card title=\"Sarvam TTS API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.sarvam.tts.html\">\n    Pipecat's API methods for Sarvam AI TTS integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07z-interruptible-sarvam.py\">\n    Complete example with Indian language support\n  </Card>\n\n<Card title=\"Sarvam Documentation\" icon=\"book\" href=\"https://docs.sarvam.ai/api-reference-docs/text-to-speech/convert\">\n    Official Sarvam AI text-to-speech API documentation\n  </Card>\n\n<Card title=\"Sarvam Console\" icon=\"microphone\" href=\"https://www.sarvam.ai/\">\n    Access Indian language voices and API keys\n  </Card>\n</CardGroup>\n\nTo use Sarvam AI services, no additional dependencies are required beyond the base installation:\n\n### Sarvam AI Account Setup\n\nBefore using Sarvam AI TTS services, you need:\n\n1. **Sarvam AI Account**: Sign up at [Sarvam AI Console](https://www.sarvam.ai/)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Language Selection**: Choose from available Indian language voices\n\n### Required Environment Variables\n\n* `SARVAM_API_KEY`: Your Sarvam AI API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Sarvam AI Account Setup",
+      "id": "sarvam-ai-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#sarvam-ai",
+  "links": []
+}

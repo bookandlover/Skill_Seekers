@@ -1,0 +1,28 @@
+{
+  "title": "Use whatever agent name would be useful for you to see in the Datadog dashboard",
+  "content": "logs:\n  - type: file\n    path: /var/log/<my-agent-name>/datadog.log\n    service: <my-agent-name>\n    source: python\n    sourcecategory: sourcecode\ndockerfile theme={null}\nCOPY ./python.d /etc/datadog-agent/conf.d/python.d\npython theme={null}\nimport json",
+  "code_samples": [
+    {
+      "code": "### Update `Dockerfile` for logging\n\nEnsure the following is present in your [`Dockerfile`](#update-dockerfile-with-the-datadog-agent):",
+      "language": "unknown"
+    },
+    {
+      "code": "This configures the Datadog Agent to collect logs from your agent.\n\n### Configure `logger` in `bot.py`\n\nAdd a Datadog sink to your logger.\n\nThis sink will write log lines into a file that your Datadog Agent will read from, in a Datadog-friendly format.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Update `Dockerfile` for logging",
+      "id": "update-`dockerfile`-for-logging"
+    },
+    {
+      "level": "h3",
+      "text": "Configure `logger` in `bot.py`",
+      "id": "configure-`logger`-in-`bot.py`"
+    }
+  ],
+  "url": "llms-txt#use-whatever-agent-name-would-be-useful-for-you-to-see-in-the-datadog-dashboard",
+  "links": []
+}

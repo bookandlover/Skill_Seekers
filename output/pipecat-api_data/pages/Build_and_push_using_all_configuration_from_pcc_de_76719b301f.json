@@ -1,0 +1,19 @@
+{
+  "title": "Build and push using all configuration from pcc-deploy.toml",
+  "content": "pipecat cloud docker build-push\nshell theme={null}",
+  "code_samples": [
+    {
+      "code": "### Override Version",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Override Version",
+      "id": "override-version"
+    }
+  ],
+  "url": "llms-txt#build-and-push-using-all-configuration-from-pcc-deploy.toml",
+  "links": []
+}

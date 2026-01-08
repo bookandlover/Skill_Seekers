@@ -1,0 +1,13 @@
+{
+  "title": "Global strategy configuration",
+  "content": "flow_manager = FlowManager(\n    task=task,\n    llm=llm,\n    context_aggregator=context_aggregator,\n    context_strategy=ContextStrategyConfig(\n        strategy=ContextStrategy.APPEND,\n    )\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Or on a per-node basis:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#global-strategy-configuration",
+  "links": []
+}

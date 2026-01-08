@@ -1,0 +1,38 @@
+{
+  "title": "These will execute in order: speak first, then end pipeline",
+  "content": "await task.queue_frames([\n    TTSSpeakFrame(\"Goodbye!\"),\n    EndFrame()\n])\npython theme={null}\nclass TranscriptionLogger(FrameProcessor):\n    async def process_frame(self, frame: Frame, direction: FrameDirection):\n        # Always call parent first\n        await super().process_frame(frame, direction)\n\n# Handle specific frame types\n        if isinstance(frame, TranscriptionFrame):\n            print(f\"Transcription: {frame.text}\")\n\n# Push frame to next processor\n        await self.push_frame(frame, direction)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### How Frame Processors Work\n\nEvery frame processor follows the same pattern with two key methods:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Key methods:**\n\n* **`process_frame()`**: Inspect and handle incoming frames\n* **`push_frame()`**: Send frames upstream or downstream\n\n<Card title=\"Custom Frame Processors\" icon=\"code\" href=\"/guides/fundamentals/custom-frame-processor\">\n  Learn how to build your own frame processors\n</Card>\n\n## How Data Flows Through Pipelines\n\nUnderstanding data flow is crucial for building effective pipelines:\n\n### Frame Processing Order\n\n**Order matters**: Processors must be arranged so that each receives the frame types it needs:\n\n1. `transport.input()` creates `InputAudioRawFrame`s from user audio\n2. `stt` receives audio frames and outputs `TranscriptionFrame`s\n3. `llm` processes text and generates `LLMTextFrame`s\n4. `tts` converts text frames to `TTSAudioRawFrame`s, `AggregatedTextFrame`s, and `TTSTextFrame`s\n5. `transport.output()` creates `OutputAudioRawFrame`s and sends audio back to user\n\n* Note: An `LLMTextProcessor` can sit between the `llm` and `tts` to pre-aggregate `LLMTextFrame`s into `AggregatedTextFrame`s. This simply moves the aggregation step\n  out of the TTS.\n\n### Frame Propagation\n\n**Processors always push frames**: Processors don't consume frames, they pass them along:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "How Frame Processors Work",
+      "id": "how-frame-processors-work"
+    },
+    {
+      "level": "h2",
+      "text": "How Data Flows Through Pipelines",
+      "id": "how-data-flows-through-pipelines"
+    },
+    {
+      "level": "h3",
+      "text": "Frame Processing Order",
+      "id": "frame-processing-order"
+    },
+    {
+      "level": "h3",
+      "text": "Frame Propagation",
+      "id": "frame-propagation"
+    }
+  ],
+  "url": "llms-txt#these-will-execute-in-order:-speak-first,-then-end-pipeline",
+  "links": []
+}

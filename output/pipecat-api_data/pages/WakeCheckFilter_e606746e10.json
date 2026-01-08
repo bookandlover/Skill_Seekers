@@ -1,0 +1,39 @@
+{
+  "title": "WakeCheckFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/filters/wake-check-filter\n\nProcessor that passes frames only after detecting wake phrases in transcriptions\n\n`WakeCheckFilter` monitors `TranscriptionFrame`s for specified wake phrases and only allows frames to pass through after a wake phrase has been detected. It includes a keepalive timeout to maintain the awake state for a period after detection, allowing continuous conversation without requiring repeated wake phrases.\n\n## Constructor Parameters\n\n<ParamField type=\"list[str]\">\n  List of wake phrases to detect in transcriptions\n</ParamField>\n\n<ParamField type=\"float\">\n  Number of seconds to remain in the awake state after each transcription\n</ParamField>\n\nThe filter maintains state for each participant and processes frames as follows:\n\n1. `TranscriptionFrame` objects are checked for wake phrases\n2. If a wake phrase is detected, the filter enters the \"AWAKE\" state\n3. While in the \"AWAKE\" state, all transcription frames pass through\n4. After no activity for the keepalive timeout period, the filter returns to \"IDLE\"\n5. All non-transcription frames pass through normally\n\nWake phrases are detected using regular expressions that match whole words with flexible spacing, making detection resilient to minor transcription variations.\n\n<ParamField type=\"WakeState\">\n  Default state - only non-transcription frames pass through\n</ParamField>\n\n<ParamField type=\"WakeState\">\n  Active state after wake phrase detection - all frames pass through\n</ParamField>\n\n* All non-transcription frames pass through unchanged\n* After wake phrase detection, transcription frames pass through\n* When awake, transcription frames reset the keepalive timer\n\n```python theme={null}\nfrom pipecat.processors.filters import WakeCheckFilter",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Functionality",
+      "id": "functionality"
+    },
+    {
+      "level": "h2",
+      "text": "States",
+      "id": "states"
+    },
+    {
+      "level": "h2",
+      "text": "Output Frames",
+      "id": "output-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#wakecheckfilter",
+  "links": []
+}

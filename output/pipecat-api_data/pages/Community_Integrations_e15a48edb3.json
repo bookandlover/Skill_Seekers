@@ -1,0 +1,29 @@
+{
+  "title": "Community Integrations",
+  "content": "Source: https://docs.pipecat.ai/server/services/community-integrations\n\nCommunity-maintained service integrations for Pipecat\n\nCommunity Integrations are service integrations built and maintained by developers in the Pipecat community. These are not officially supported by the Pipecat team but are listed here to help you discover what's available.\n\nWant to add your integration? See our [Community Integrations Guide](https://github.com/pipecat-ai/pipecat/blob/main/COMMUNITY_INTEGRATIONS.md).\n\nSpeech-to-Text services receive and audio input and output transcriptions.\n\n| Service                         | Repository | Maintainer(s) |\n| ------------------------------- | ---------- | ------------- |\n| *No community integrations yet* |            |               |\n\n## Large Language Models\n\nLLMs receive text or audio based input and output a streaming text response.\n\n| Service                         | Repository | Maintainer(s) |\n| ------------------------------- | ---------- | ------------- |\n| *No community integrations yet* |            |               |\n\n## Knowledge Retrieval\n\nSemantic retrieval services enable context-aware search and retrieval of relevant information.\n\n| Service                          | Repository                                                                         | Maintainer(s)                      |\n| -------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------- |\n| [Moss](https://www.usemoss.dev/) | [https://github.com/usemoss/pipecat-moss](https://github.com/usemoss/pipecat-moss) | [Moss](https://github.com/usemoss) |\n\nText-to-Speech services receive text input and output audio streams or chunks.\n\n| Service                          | Repository                                                                                         | Maintainer(s)                                 |\n| -------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------- |\n| [Murf AI](https://murf.ai/api)   | [https://github.com/murf-ai/pipecat-murf-tts](https://github.com/murf-ai/pipecat-murf-tts)         | [murf-ai](https://github.com/murf-ai)         |\n| [Typecast](https://typecast.ai/) | [https://github.com/neosapience/pipecat-typecast](https://github.com/neosapience/pipecat-typecast) | [neosapience](https://github.com/neosapience) |",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Speech-to-Text",
+      "id": "speech-to-text"
+    },
+    {
+      "level": "h2",
+      "text": "Large Language Models",
+      "id": "large-language-models"
+    },
+    {
+      "level": "h2",
+      "text": "Knowledge Retrieval",
+      "id": "knowledge-retrieval"
+    },
+    {
+      "level": "h2",
+      "text": "Text-to-Speech",
+      "id": "text-to-speech"
+    }
+  ],
+  "url": "llms-txt#community-integrations",
+  "links": []
+}

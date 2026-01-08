@@ -1,0 +1,8 @@
+{
+  "title": "Get the URL for the remote Smart Turn service",
+  "content": "remote_smart_turn_url = os.getenv(\"REMOTE_SMART_TURN_URL\")",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#get-the-url-for-the-remote-smart-turn-service",
+  "links": []
+}

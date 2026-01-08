@@ -1,0 +1,29 @@
+{
+  "title": "Small WebRTC Transport",
+  "content": "Source: https://docs.pipecat.ai/client/android/transports/small-webrtc\n\nWebRTC implementation for Android\n\nThe Small WebRTC transport implementation enables real-time audio communication with the Small WebRTC Pipecat transport, using a direct WebRTC connection.\n\nAdd the transport dependency to your `build.gradle`:\n\n<CardGroup>\n  <Card title=\"Demo\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/p2p-webrtc/video-transform/client/android\">\n    Demo App\n  </Card>\n\n<Card title=\"Source\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat-client-android-transports/\">\n    Client Transports\n  </Card>\n</CardGroup>\n\n<Card title=\"Pipecat Android Client Reference\" icon=\"book-open\" href=\"https://docs-android.rtvi.ai/\">\n  Complete API documentation for the Pipecat Android client.\n</Card>",
+  "code_samples": [
+    {
+      "code": "## Usage\n\nCreate a client:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h2",
+      "text": "Resources",
+      "id": "resources"
+    }
+  ],
+  "url": "llms-txt#small-webrtc-transport",
+  "links": []
+}

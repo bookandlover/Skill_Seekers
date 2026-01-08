@@ -1,0 +1,8 @@
+{
+  "title": "Add to transport configuration",
+  "content": "transport = DailyTransport(\n    room_url,\n    token,\n    \"Audio Bot\",\n    DailyParams(\n        audio_in_enabled=True,\n        audio_in_filter=KrispVivaFilter(),  # Enable Krisp noise reduction\n        audio_out_enabled=True,\n        vad_analyzer=SileroVADAnalyzer(),\n    ),\n)\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-to-transport-configuration",
+  "links": []
+}

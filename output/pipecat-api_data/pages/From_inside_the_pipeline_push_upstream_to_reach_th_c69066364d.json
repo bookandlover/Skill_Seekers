@@ -1,0 +1,8 @@
+{
+  "title": "From inside the pipeline, push upstream to reach the source",
+  "content": "await self.push_frame(EndTaskFrame(), FrameDirection.UPSTREAM)\nawait self.push_frame(CancelTaskFrame(), FrameDirection.UPSTREAM)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#from-inside-the-pipeline,-push-upstream-to-reach-the-source",
+  "links": []
+}

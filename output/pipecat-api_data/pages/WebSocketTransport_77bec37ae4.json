@@ -1,0 +1,75 @@
+{
+  "title": "WebSocketTransport",
+  "content": "Source: https://docs.pipecat.ai/client/js/transports/websocket\n\nA lightweight transport for WebSocket based connections with Pipecat\n\n`WebSocketTransport` enables a purely WebSocket based connection between clients and your Pipecat application. It implements bidirectional audio and video streaming using a WebSocket for real-time communication.\n\nThis transport is intended for lightweight implementations, particularly for local development and testing. It expects your Pipecat server to include the corresponding [`WebSocketTransport` server-side](/server/services/transport/websocket-server) implementation.\n\n<Warning>\n  The `WebSocketTransport` is best suited for server-server applications and prototyping client/server apps.\n\nFor client/server production applications, we strongly recommend using a WebRTC-based transport for robust network and media handling. For more on WebRTC vs. Websocket communication, check out [this article](https://voiceaiandvoiceagents.com/#websockets-webrtc).\n</Warning>\n\n### Constructor Options\n\n<ParamField name=\"wsUrl\" type=\"string\">\n  URL of the WebSocket server. This is the endpoint your client will connect to\n  for WebSocket communication.\n</ParamField>\n\n<ParamField name=\"serializer\" type=\"WebSocketSerializer\">\n  The serializer to use for encoding/decoding messages sent over the WebSocket\n  connection. The websocket-transport package provides two serializer options: -\n  `ProtobufFrameSerializer`: Uses Protocol Buffers for serialization. -\n  `TwilioSerializer`: Uses Twilio's serialization format. The main purpose of\n  the TwilioSerializer is to allow testing the bots built to work with Twilio\n  without having to make phone calls.\n</ParamField>\n\n<ParamField name=\"recorderSampleRate\" type=\"number\">\n  Sample rate for which to encode the audio input. Default is `16000`.\n</ParamField>\n\n<ParamField name=\"playerSampleRate\" type=\"number\">\n  Sample rate for which to decode the incoming audio for output. Default is\n  `24000`.\n</ParamField>\n\n<ParamField name=\"mediaManager\" type=\"MediaManager\">\n  The media manager to use for handling local audio and video streams. This\n  should not be overridden unless you have a specific reason to use a different\n  media manager. The default is `DailyMediaManager`, which is suitable for most\n  use cases. Note that the `DailyMediaManager` does not use any of Daily's\n  services, it simply takes advantage of vast media support provided by the\n  Daily library.\n</ParamField>\n\n### TransportConnectionParams\n\nThe `WebSocketTransport` takes the same options as the constructor; `WebSocketTransportOptions`. Anything provided here will override the defaults set in the constructor. The `wsUrl` is required to establish a connection.\n\nFor most operations, you will not interact with the transport directly. Most methods have an equivalent in the `PipecatClient` and should be called from the `PipecatClient`. However, there is one transport-specific methods that you may need to call directly. When doing so, be sure to access your transport via the `transport` property of the `PipecatClient` instance.\n\n<ResponseField name=\"handleUserAudioStream\" type=\"method\">\n  If implementing your own serializer, you will need to pass the user audio\n  stream to the transport via this method, which takes an `ArrayBuffer` of audio\n  data.\n\nThe transport implements the various [`PipecatClient` event handlers](/client/js/api-reference/callbacks).\n\n## Reconnection Handling\n\nThe WebSocketTransport does provide reconnection handling. If the WebSocket connection is lost, it will attempt to reconnect twice. If all reconnection attempts fail, the transport will gracefully disconnect.\n\n<CardGroup>\n  <Card title=\"WebSocket Demo\" icon=\"video\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/websocket\">\n    Basic Agent example using a WebSocket transport\n  </Card>\n\n<Card title=\"Twilio Demo\" icon=\"video\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot\">\n    Example using a WebSocket transport to simulate a Twilio connection to a bot\n  </Card>\n\n<Card title=\"Source\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat-client-web-transports/tree/main/transports/websocket-transport\">\n    `WebSocketTransport`\n  </Card>\n\n<Card title=\"Package\" icon=\"browser\" href=\"https://www.npmjs.com/package/@pipecat-ai/websocket-transport\">\n    `@pipecat-ai/websocket-transport`\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "## API Reference\n\n### Constructor Options",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Properties\n\n<ParamField name=\"wsUrl\" type=\"string\">\n  URL of the WebSocket server. This is the endpoint your client will connect to\n  for WebSocket communication.\n</ParamField>\n\n<ParamField name=\"serializer\" type=\"WebSocketSerializer\">\n  The serializer to use for encoding/decoding messages sent over the WebSocket\n  connection. The websocket-transport package provides two serializer options: -\n  `ProtobufFrameSerializer`: Uses Protocol Buffers for serialization. -\n  `TwilioSerializer`: Uses Twilio's serialization format. The main purpose of\n  the TwilioSerializer is to allow testing the bots built to work with Twilio\n  without having to make phone calls.\n</ParamField>\n\n<ParamField name=\"recorderSampleRate\" type=\"number\">\n  Sample rate for which to encode the audio input. Default is `16000`.\n</ParamField>\n\n<ParamField name=\"playerSampleRate\" type=\"number\">\n  Sample rate for which to decode the incoming audio for output. Default is\n  `24000`.\n</ParamField>\n\n<ParamField name=\"mediaManager\" type=\"MediaManager\">\n  The media manager to use for handling local audio and video streams. This\n  should not be overridden unless you have a specific reason to use a different\n  media manager. The default is `DailyMediaManager`, which is suitable for most\n  use cases. Note that the `DailyMediaManager` does not use any of Daily's\n  services, it simply takes advantage of vast media support provided by the\n  Daily library.\n</ParamField>\n\n### TransportConnectionParams\n\nThe `WebSocketTransport` takes the same options as the constructor; `WebSocketTransportOptions`. Anything provided here will override the defaults set in the constructor. The `wsUrl` is required to establish a connection.\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n### Methods\n\nFor most operations, you will not interact with the transport directly. Most methods have an equivalent in the `PipecatClient` and should be called from the `PipecatClient`. However, there is one transport-specific methods that you may need to call directly. When doing so, be sure to access your transport via the `transport` property of the `PipecatClient` instance.\n\n<ResponseField name=\"handleUserAudioStream\" type=\"method\">\n  If implementing your own serializer, you will need to pass the user audio\n  stream to the transport via this method, which takes an `ArrayBuffer` of audio\n  data.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Setup",
+      "id": "basic-setup"
+    },
+    {
+      "level": "h2",
+      "text": "API Reference",
+      "id": "api-reference"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Options",
+      "id": "constructor-options"
+    },
+    {
+      "level": "h3",
+      "text": "TransportConnectionParams",
+      "id": "transportconnectionparams"
+    },
+    {
+      "level": "h3",
+      "text": "Methods",
+      "id": "methods"
+    },
+    {
+      "level": "h2",
+      "text": "Events",
+      "id": "events"
+    },
+    {
+      "level": "h2",
+      "text": "Reconnection Handling",
+      "id": "reconnection-handling"
+    },
+    {
+      "level": "h2",
+      "text": "More Information",
+      "id": "more-information"
+    }
+  ],
+  "url": "llms-txt#websockettransport",
+  "links": []
+}

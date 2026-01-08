@@ -1,0 +1,39 @@
+{
+  "title": "SoundfileMixer",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/audio/soundfile-mixer\n\nAudio mixer for combining real-time audio with sound files\n\n`SoundfileMixer` is an audio mixer that combines incoming audio with audio from files. It supports multiple audio file formats through the soundfile library and can handle runtime volume adjustments and sound switching.\n\nThe soundfile mixer requires additional dependencies:\n\n## Constructor Parameters\n\n<ParamField type=\"Mapping[str, str]\">\n  Dictionary mapping sound names to file paths. Files must be mono (single channel).\n</ParamField>\n\n<ParamField type=\"str\">\n  Name of the default sound to play (must be a key in sound\\_files).\n</ParamField>\n\n<ParamField type=\"float\">\n  Initial volume for the mixed sound. Values typically range from 0.0 to 1.0, but can go higher.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to loop the sound file when it reaches the end.\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Updates mixer settings at runtime\n\n<Expandable title=\"properties\">\n    <ParamField type=\"str\">\n      Changes the current playing sound (must be a key in sound\\_files)\n    </ParamField>\n\n<ParamField type=\"float\">\n      Updates the mixing volume\n    </ParamField>\n\n<ParamField type=\"bool\">\n      Updates whether the sound should loop\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Enables or disables the mixer\n\n<Expandable title=\"properties\">\n    <ParamField type=\"bool\">\n      Whether mixing should be enabled\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "## Constructor Parameters\n\n<ParamField type=\"Mapping[str, str]\">\n  Dictionary mapping sound names to file paths. Files must be mono (single channel).\n</ParamField>\n\n<ParamField type=\"str\">\n  Name of the default sound to play (must be a key in sound\\_files).\n</ParamField>\n\n<ParamField type=\"float\">\n  Initial volume for the mixed sound. Values typically range from 0.0 to 1.0, but can go higher.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to loop the sound file when it reaches the end.\n</ParamField>\n\n## Control Frames\n\n<ParamField type=\"Frame\">\n  Updates mixer settings at runtime\n\n  <Expandable title=\"properties\">\n    <ParamField type=\"str\">\n      Changes the current playing sound (must be a key in sound\\_files)\n    </ParamField>\n\n    <ParamField type=\"float\">\n      Updates the mixing volume\n    </ParamField>\n\n    <ParamField type=\"bool\">\n      Updates whether the sound should loop\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Enables or disables the mixer\n\n  <Expandable title=\"properties\">\n    <ParamField type=\"bool\">\n      Whether mixing should be enabled\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n## Usage Example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Control Frames",
+      "id": "control-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#soundfilemixer",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "This handler will receive events from both processors",
+  "content": "@transcript.event_handler(\"on_transcript_update\")\nasync def handle_update(processor, frame):\n    for message in frame.messages:\n        print(f\"{message.role}: {message.content}\")\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#this-handler-will-receive-events-from-both-processors",
+  "links": []
+}

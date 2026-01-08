@@ -1,0 +1,19 @@
+{
+  "title": "Only tag with the specific version, not 'latest'",
+  "content": "pipecat cloud docker build-push --no-latest\n```\n\nAll images are built for the `linux/arm64` platform, which is required for Pipecat Cloud deployments. This is automatically configured and cannot be changed.\n\nThe command provides helpful error messages for common issues:\n\n* **Authentication errors**: Suggests the appropriate `docker login` command\n* **Missing Dockerfile**: Indicates that a Dockerfile must be present in the current directory\n* **Registry access issues**: Provides guidance on checking permissions and authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Platform Support",
+      "id": "platform-support"
+    },
+    {
+      "level": "h2",
+      "text": "Error Handling",
+      "id": "error-handling"
+    }
+  ],
+  "url": "llms-txt#only-tag-with-the-specific-version,-not-'latest'",
+  "links": []
+}

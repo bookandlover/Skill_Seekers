@@ -1,0 +1,34 @@
+{
+  "title": "NullFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/filters/null-filter\n\nProcessor that blocks all frames except system frames\n\n`NullFilter` is a filtering processor that blocks all frames from passing through, with the exception of system frames and end frames which are required for proper pipeline operation.\n\n## Constructor Parameters\n\nThe `NullFilter` constructor accepts no specific parameters beyond those inherited from `FrameProcessor`.\n\nWhen a frame passes through the processor:\n\n* If the frame is a `SystemFrame` or `EndFrame`, it is passed through\n* All other frame types are blocked and do not continue through the pipeline\n\nThis filter effectively acts as a barrier that allows only the essential system frames required for pipeline initialization, shutdown, and management.\n\n`NullFilter` is useful in several scenarios:\n\n* Temporarily disabling parts of a pipeline without removing components\n* Creating dead-end branches in parallel pipelines\n* Testing pipeline behavior with blocked communication\n* Implementing conditional pipelines where certain paths should be blocked\n\n```python theme={null}\nfrom pipecat.processors.filters import NullFilter",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Functionality",
+      "id": "functionality"
+    },
+    {
+      "level": "h2",
+      "text": "Use Cases",
+      "id": "use-cases"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#nullfilter",
+  "links": []
+}

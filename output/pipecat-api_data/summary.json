@@ -1,0 +1,2941 @@
+{
+  "name": "pipecat-api",
+  "total_pages": 733,
+  "base_url": "https://docs.pipecat.ai/getting-started/introduction",
+  "llms_txt_detected": true,
+  "llms_txt_variant": null,
+  "pages": [
+    {
+      "title": "agent",
+      "url": "llms-txt#agent"
+    },
+    {
+      "title": "auth",
+      "url": "llms-txt#auth"
+    },
+    {
+      "title": "deploy",
+      "url": "llms-txt#deploy"
+    },
+    {
+      "title": "Basic agent configuration",
+      "url": "llms-txt#basic-agent-configuration"
+    },
+    {
+      "title": "Secrets and credentials",
+      "url": "llms-txt#secrets-and-credentials"
+    },
+    {
+      "title": "Resource allocation",
+      "url": "llms-txt#resource-allocation"
+    },
+    {
+      "title": "Features",
+      "url": "llms-txt#features"
+    },
+    {
+      "title": "Auto-scaling configuration",
+      "url": "llms-txt#auto-scaling-configuration"
+    },
+    {
+      "title": "Krisp VIVA noise cancellation",
+      "url": "llms-txt#krisp-viva-noise-cancellation"
+    },
+    {
+      "title": "Use config file but override the region",
+      "url": "llms-txt#use-config-file-but-override-the-region"
+    },
+    {
+      "title": "Use config file but force update without confirmation",
+      "url": "llms-txt#use-config-file-but-force-update-without-confirmation"
+    },
+    {
+      "title": "docker",
+      "url": "llms-txt#docker"
+    },
+    {
+      "title": "Build and push using all configuration from pcc-deploy.toml",
+      "url": "llms-txt#build-and-push-using-all-configuration-from-pcc-deploy.toml"
+    },
+    {
+      "title": "Use a different version than what's in pcc-deploy.toml",
+      "url": "llms-txt#use-a-different-version-than-what's-in-pcc-deploy.toml"
+    },
+    {
+      "title": "Build and tag locally without pushing",
+      "url": "llms-txt#build-and-tag-locally-without-pushing"
+    },
+    {
+      "title": "Override registry settings for one-time builds",
+      "url": "llms-txt#override-registry-settings-for-one-time-builds"
+    },
+    {
+      "title": "Only tag with the specific version, not 'latest'",
+      "url": "llms-txt#only-tag-with-the-specific-version,-not-'latest'"
+    },
+    {
+      "title": "organizations",
+      "url": "llms-txt#organizations"
+    },
+    {
+      "title": "regions",
+      "url": "llms-txt#regions"
+    },
+    {
+      "title": "secrets",
+      "url": "llms-txt#secrets"
+    },
+    {
+      "title": "init",
+      "url": "llms-txt#init"
+    },
+    {
+      "title": "Initialize in current directory",
+      "url": "llms-txt#initialize-in-current-directory"
+    },
+    {
+      "title": "Initialize in a specific directory",
+      "url": "llms-txt#initialize-in-a-specific-directory"
+    },
+    {
+      "title": "CLI Overview",
+      "url": "llms-txt#cli-overview"
+    },
+    {
+      "title": "or",
+      "url": "llms-txt#or"
+    },
+    {
+      "title": "tail",
+      "url": "llms-txt#tail"
+    },
+    {
+      "title": "API Reference",
+      "url": "llms-txt#api-reference"
+    },
+    {
+      "title": "SDK Introduction",
+      "url": "llms-txt#sdk-introduction"
+    },
+    {
+      "title": "RTVIClient Migration Guide for Android",
+      "url": "llms-txt#rtviclient-migration-guide-for-android"
+    },
+    {
+      "title": "Daily WebRTC Transport",
+      "url": "llms-txt#daily-webrtc-transport"
+    },
+    {
+      "title": "Gemini Live Websocket Transport",
+      "url": "llms-txt#gemini-live-websocket-transport"
+    },
+    {
+      "title": "OpenAI Realtime WebRTC Transport",
+      "url": "llms-txt#openai-realtime-webrtc-transport"
+    },
+    {
+      "title": "Small WebRTC Transport",
+      "url": "llms-txt#small-webrtc-transport"
+    },
+    {
+      "title": "SDK Introduction",
+      "url": "llms-txt#sdk-introduction"
+    },
+    {
+      "title": "Daily WebRTC Transport",
+      "url": "llms-txt#daily-webrtc-transport"
+    },
+    {
+      "title": "Client SDKs",
+      "url": "llms-txt#client-sdks"
+    },
+    {
+      "title": "API Reference",
+      "url": "llms-txt#api-reference"
+    },
+    {
+      "title": "SDK Introduction",
+      "url": "llms-txt#sdk-introduction"
+    },
+    {
+      "title": "RTVIClient Migration Guide for IOS",
+      "url": "llms-txt#rtviclient-migration-guide-for-ios"
+    },
+    {
+      "title": "Daily WebRTC Transport",
+      "url": "llms-txt#daily-webrtc-transport"
+    },
+    {
+      "title": "Gemini Live Websocket Transport",
+      "url": "llms-txt#gemini-live-websocket-transport"
+    },
+    {
+      "title": "OpenAIRealTimeWebRTCTransport",
+      "url": "llms-txt#openairealtimewebrtctransport"
+    },
+    {
+      "title": "SmallWebRTCTransport",
+      "url": "llms-txt#smallwebrtctransport"
+    },
+    {
+      "title": "Callbacks and events",
+      "url": "llms-txt#callbacks-and-events"
+    },
+    {
+      "title": "PipecatClient Constructor",
+      "url": "llms-txt#pipecatclient-constructor"
+    },
+    {
+      "title": "Client Methods",
+      "url": "llms-txt#client-methods"
+    },
+    {
+      "title": "Errors",
+      "url": "llms-txt#errors"
+    },
+    {
+      "title": "Custom Messaging",
+      "url": "llms-txt#custom-messaging"
+    },
+    {
+      "title": "SDK Introduction",
+      "url": "llms-txt#sdk-introduction"
+    },
+    {
+      "title": "RTVIClient Migration Guide for JavaScript",
+      "url": "llms-txt#rtviclient-migration-guide-for-javascript"
+    },
+    {
+      "title": "Daily WebRTC Transport",
+      "url": "llms-txt#daily-webrtc-transport"
+    },
+    {
+      "title": "GeminiLiveWebSocketTransport",
+      "url": "llms-txt#geminilivewebsockettransport"
+    },
+    {
+      "title": "OpenAIRealTimeWebRTCTransport",
+      "url": "llms-txt#openairealtimewebrtctransport"
+    },
+    {
+      "title": "SmallWebRTCTransport",
+      "url": "llms-txt#smallwebrtctransport"
+    },
+    {
+      "title": "Transport Overview",
+      "url": "llms-txt#transport-overview"
+    },
+    {
+      "title": "WebSocketTransport",
+      "url": "llms-txt#websockettransport"
+    },
+    {
+      "title": "RTVIClient Migration Guide",
+      "url": "llms-txt#rtviclient-migration-guide"
+    },
+    {
+      "title": "API Reference",
+      "url": "llms-txt#api-reference"
+    },
+    {
+      "title": "SDK Introduction",
+      "url": "llms-txt#sdk-introduction"
+    },
+    {
+      "title": "RTVIClient Migration Guide for React Native",
+      "url": "llms-txt#rtviclient-migration-guide-for-react-native"
+    },
+    {
+      "title": "Daily WebRTC Transport",
+      "url": "llms-txt#daily-webrtc-transport"
+    },
+    {
+      "title": "SmallWebRTCTransport",
+      "url": "llms-txt#smallwebrtctransport"
+    },
+    {
+      "title": "Components",
+      "url": "llms-txt#components"
+    },
+    {
+      "title": "Hooks",
+      "url": "llms-txt#hooks"
+    },
+    {
+      "title": "SDK Introduction",
+      "url": "llms-txt#sdk-introduction"
+    },
+    {
+      "title": "RTVIClient Migration Guide for React",
+      "url": "llms-txt#rtviclient-migration-guide-for-react"
+    },
+    {
+      "title": "The RTVI Standard",
+      "url": "llms-txt#the-rtvi-standard"
+    },
+    {
+      "title": "Overview",
+      "url": "llms-txt#overview"
+    },
+    {
+      "title": "Run at buildtime",
+      "url": "llms-txt#run-at-buildtime"
+    },
+    {
+      "title": "Deployment pattern",
+      "url": "llms-txt#deployment-pattern"
+    },
+    {
+      "title": "Load API keys from env",
+      "url": "llms-txt#load-api-keys-from-env"
+    },
+    {
+      "title": "------------ Configuration ------------",
+      "url": "llms-txt#-------------configuration-------------"
+    },
+    {
+      "title": "List of require env vars our bot requires",
+      "url": "llms-txt#list-of-require-env-vars-our-bot-requires"
+    },
+    {
+      "title": "----------------- API -----------------",
+      "url": "llms-txt#------------------api------------------"
+    },
+    {
+      "title": "----------------- Main -----------------",
+      "url": "llms-txt#------------------main------------------"
+    },
+    {
+      "title": "Install and activate a virtual env",
+      "url": "llms-txt#install-and-activate-a-virtual-env"
+    },
+    {
+      "title": "Accounts and Organizations",
+      "url": "llms-txt#accounts-and-organizations"
+    },
+    {
+      "title": "Create a new API key",
+      "url": "llms-txt#create-a-new-api-key"
+    },
+    {
+      "title": "List available keys",
+      "url": "llms-txt#list-available-keys"
+    },
+    {
+      "title": "Starting Sessions",
+      "url": "llms-txt#starting-sessions"
+    },
+    {
+      "title": "Run the async function",
+      "url": "llms-txt#run-the-async-function"
+    },
+    {
+      "title": "or from a file",
+      "url": "llms-txt#or-from-a-file"
+    },
+    {
+      "title": "Agent Images",
+      "url": "llms-txt#agent-images"
+    },
+    {
+      "title": "Deployments",
+      "url": "llms-txt#deployments"
+    },
+    {
+      "title": "Troubleshooting",
+      "url": "llms-txt#troubleshooting"
+    },
+    {
+      "title": "Logging and Observability",
+      "url": "llms-txt#logging-and-observability"
+    },
+    {
+      "title": "Scaling",
+      "url": "llms-txt#scaling"
+    },
+    {
+      "title": "Defaults to zero",
+      "url": "llms-txt#defaults-to-zero"
+    },
+    {
+      "title": "Maintain 1 warm instance at all times",
+      "url": "llms-txt#maintain-1-warm-instance-at-all-times"
+    },
+    {
+      "title": "Limit pool to 25 active sessions running concurrently",
+      "url": "llms-txt#limit-pool-to-25-active-sessions-running-concurrently"
+    },
+    {
+      "title": "Secrets",
+      "url": "llms-txt#secrets"
+    },
+    {
+      "title": "Create image pull secret",
+      "url": "llms-txt#create-image-pull-secret"
+    },
+    {
+      "title": "Enter your Docker Hub username when prompted",
+      "url": "llms-txt#enter-your-docker-hub-username-when-prompted"
+    },
+    {
+      "title": "Enter your access token (not password) when prompted",
+      "url": "llms-txt#enter-your-access-token-(not-password)-when-prompted"
+    },
+    {
+      "title": "Enable bytecode compilation",
+      "url": "llms-txt#enable-bytecode-compilation"
+    },
+    {
+      "title": "Copy from the cache instead of linking since it's a mounted volume",
+      "url": "llms-txt#copy-from-the-cache-instead-of-linking-since-it's-a-mounted-volume"
+    },
+    {
+      "title": "Set the secret as an environment variable",
+      "url": "llms-txt#set-the-secret-as-an-environment-variable"
+    },
+    {
+      "title": "Install the project's dependencies using the lockfile and settings",
+      "url": "llms-txt#install-the-project's-dependencies-using-the-lockfile-and-settings"
+    },
+    {
+      "title": "Copy the application code",
+      "url": "llms-txt#copy-the-application-code"
+    },
+    {
+      "title": "Capacity Planning",
+      "url": "llms-txt#capacity-planning"
+    },
+    {
+      "title": "CI with GitHub Actions",
+      "url": "llms-txt#ci-with-github-actions"
+    },
+    {
+      "title": "AWS ECR",
+      "url": "llms-txt#aws-ecr"
+    },
+    {
+      "title": "Get ECR login token",
+      "url": "llms-txt#get-ecr-login-token"
+    },
+    {
+      "title": "Create image pull secret using REST API",
+      "url": "llms-txt#create-image-pull-secret-using-rest-api"
+    },
+    {
+      "title": "Build and push using your pcc-deploy.toml configuration",
+      "url": "llms-txt#build-and-push-using-your-pcc-deploy.toml-configuration"
+    },
+    {
+      "title": "refresh-ecr-token.sh",
+      "url": "llms-txt#refresh-ecr-token.sh"
+    },
+    {
+      "title": "Get fresh ECR token",
+      "url": "llms-txt#get-fresh-ecr-token"
+    },
+    {
+      "title": "Update the existing image pull secret",
+      "url": "llms-txt#update-the-existing-image-pull-secret"
+    },
+    {
+      "title": "GCP Artifact Registry",
+      "url": "llms-txt#gcp-artifact-registry"
+    },
+    {
+      "title": "Authenticate Docker with your service account key",
+      "url": "llms-txt#authenticate-docker-with-your-service-account-key"
+    },
+    {
+      "title": "Build and push using your pcc-deploy.toml configuration",
+      "url": "llms-txt#build-and-push-using-your-pcc-deploy.toml-configuration"
+    },
+    {
+      "title": "Container Registry Overview",
+      "url": "llms-txt#container-registry-overview"
+    },
+    {
+      "title": "Create image pull secret",
+      "url": "llms-txt#create-image-pull-secret"
+    },
+    {
+      "title": "Daily WebRTC",
+      "url": "llms-txt#daily-webrtc"
+    },
+    {
+      "title": "Krisp Noise Cancellation",
+      "url": "llms-txt#krisp-noise-cancellation"
+    },
+    {
+      "title": "Krisp VIVA Noise Cancellation",
+      "url": "llms-txt#krisp-viva-noise-cancellation"
+    },
+    {
+      "title": "Managed API Keys",
+      "url": "llms-txt#managed-api-keys"
+    },
+    {
+      "title": "Regions",
+      "url": "llms-txt#regions"
+    },
+    {
+      "title": "Smart Turn Detection",
+      "url": "llms-txt#smart-turn-detection"
+    },
+    {
+      "title": "Daily PSTN Dial-in",
+      "url": "llms-txt#daily-pstn-dial-in"
+    },
+    {
+      "title": "Use customer data in your system prompt",
+      "url": "llms-txt#use-customer-data-in-your-system-prompt"
+    },
+    {
+      "title": "Daily PSTN Dial-out",
+      "url": "llms-txt#daily-pstn-dial-out"
+    },
+    {
+      "title": "Exotel Websocket Transport",
+      "url": "llms-txt#exotel-websocket-transport"
+    },
+    {
+      "title": "Plivo Websocket Transport",
+      "url": "llms-txt#plivo-websocket-transport"
+    },
+    {
+      "title": "Telnyx Websocket Transport",
+      "url": "llms-txt#telnyx-websocket-transport"
+    },
+    {
+      "title": "Twilio Websocket Transport",
+      "url": "llms-txt#twilio-websocket-transport"
+    },
+    {
+      "title": "Using Datadog",
+      "url": "llms-txt#using-datadog"
+    },
+    {
+      "title": "dailyco/pipecat-base:latest should also work",
+      "url": "llms-txt#dailyco/pipecat-base:latest-should-also-work"
+    },
+    {
+      "title": "Include the following line only if you need logging (see \"Enabling Logging\")",
+      "url": "llms-txt#include-the-following-line-only-if-you-need-logging-(see-\"enabling-logging\")"
+    },
+    {
+      "title": "Uncomment the below lines if you DON'T need traces (see \"Enabling Traces\")",
+      "url": "llms-txt#uncomment-the-below-lines-if-you-don't-need-traces-(see-\"enabling-traces\")"
+    },
+    {
+      "title": "apm_config:",
+      "url": "llms-txt#apm_config:"
+    },
+    {
+      "title": "enabled: false",
+      "url": "llms-txt#enabled:-false"
+    },
+    {
+      "title": "Uncomment the below lines if you DON'T need custom metrics (see \"Enabling Custom Metrics\")",
+      "url": "llms-txt#uncomment-the-below-lines-if-you-don't-need-custom-metrics-(see-\"enabling-custom-metrics\")"
+    },
+    {
+      "title": "use_dogstatsd: false",
+      "url": "llms-txt#use_dogstatsd:-false"
+    },
+    {
+      "title": "Write the Datadog API key to the config file",
+      "url": "llms-txt#write-the-datadog-api-key-to-the-config-file"
+    },
+    {
+      "title": "Start the Datadog Agent service",
+      "url": "llms-txt#start-the-datadog-agent-service"
+    },
+    {
+      "title": "Include the below line only if you need traces (see \"Enabling Traces\")",
+      "url": "llms-txt#include-the-below-line-only-if-you-need-traces-(see-\"enabling-traces\")"
+    },
+    {
+      "title": "HACK: here we restart the Datadog Trace Agent specifically, since we know it failed to start above",
+      "url": "llms-txt#hack:-here-we-restart-the-datadog-trace-agent-specifically,-since-we-know-it-failed-to-start-above"
+    },
+    {
+      "title": "Check the status of the Datadog Agent subsystems for logging, custom metrics, and traces",
+      "url": "llms-txt#check-the-status-of-the-datadog-agent-subsystems-for-logging,-custom-metrics,-and-traces"
+    },
+    {
+      "title": "service datadog-agent status",
+      "url": "llms-txt#service-datadog-agent-status"
+    },
+    {
+      "title": "service datadog-agent-trace status",
+      "url": "llms-txt#service-datadog-agent-trace-status"
+    },
+    {
+      "title": "datadog-agent status",
+      "url": "llms-txt#datadog-agent-status"
+    },
+    {
+      "title": "Display the Datadog agent log",
+      "url": "llms-txt#display-the-datadog-agent-log"
+    },
+    {
+      "title": "cat /var/log/datadog/agent.log",
+      "url": "llms-txt#cat-/var/log/datadog/agent.log"
+    },
+    {
+      "title": "Install the Datadog Agent",
+      "url": "llms-txt#install-the-datadog-agent"
+    },
+    {
+      "title": "(note that you can literally use \"dummy\"—or anything else—as the API key)",
+      "url": "llms-txt#(note-that-you-can-literally-use-\"dummy\"—or-anything-else—as-the-api-key)"
+    },
+    {
+      "title": "Configure Datadog Agent",
+      "url": "llms-txt#configure-datadog-agent"
+    },
+    {
+      "title": "Include the below line if you need logging (see \"Enabling Logging\")",
+      "url": "llms-txt#include-the-below-line-if-you-need-logging-(see-\"enabling-logging\")"
+    },
+    {
+      "title": "Include the below lines only if you need traces or custom metrics (see \"Enabling Traces\" or \"Enabling Custom Metrics\")",
+      "url": "llms-txt#include-the-below-lines-only-if-you-need-traces-or-custom-metrics-(see-\"enabling-traces\"-or-\"enabling-custom-metrics\")"
+    },
+    {
+      "title": "Prepare file system for the Datadog Agent to use for Unix Sockets",
+      "url": "llms-txt#prepare-file-system-for-the-datadog-agent-to-use-for-unix-sockets"
+    },
+    {
+      "title": "Start Datadog Agent (move pre-app script to expected place where it'll be invoked by Pipecat Cloud base image)",
+      "url": "llms-txt#start-datadog-agent-(move-pre-app-script-to-expected-place-where-it'll-be-invoked-by-pipecat-cloud-base-image)"
+    },
+    {
+      "title": "Use whatever agent name would be useful for you to see in the Datadog dashboard",
+      "url": "llms-txt#use-whatever-agent-name-would-be-useful-for-you-to-see-in-the-datadog-dashboard"
+    },
+    {
+      "title": "Format log lines so that:",
+      "url": "llms-txt#format-log-lines-so-that:"
+    },
+    {
+      "title": "- Datadog can parse and display log levels, messages, and timestamps",
+      "url": "llms-txt#--datadog-can-parse-and-display-log-levels,-messages,-and-timestamps"
+    },
+    {
+      "title": "- You can search Datadog logs by session_id",
+      "url": "llms-txt#--you-can-search-datadog-logs-by-session_id"
+    },
+    {
+      "title": "DELETE or COMMENT OUT the following lines, if they're present",
+      "url": "llms-txt#delete-or-comment-out-the-following-lines,-if-they're-present"
+    },
+    {
+      "title": "apm_config:",
+      "url": "llms-txt#apm_config:"
+    },
+    {
+      "title": "enabled: false",
+      "url": "llms-txt#enabled:-false"
+    },
+    {
+      "title": "DELETE or COMMENT OUT the following line, if it's present",
+      "url": "llms-txt#delete-or-comment-out-the-following-line,-if-it's-present"
+    },
+    {
+      "title": "use_dogstatsd: false",
+      "url": "llms-txt#use_dogstatsd:-false"
+    },
+    {
+      "title": "WhatsApp Business Calling API",
+      "url": "llms-txt#whatsapp-business-calling-api"
+    },
+    {
+      "title": "Introduction",
+      "url": "llms-txt#introduction"
+    },
+    {
+      "title": "Create an Agent",
+      "url": "llms-txt#create-an-agent"
+    },
+    {
+      "title": "Delete an Agent",
+      "url": "llms-txt#delete-an-agent"
+    },
+    {
+      "title": "Retrieve Agent Logs",
+      "url": "llms-txt#retrieve-agent-logs"
+    },
+    {
+      "title": "Retrieve Agent Sessions",
+      "url": "llms-txt#retrieve-agent-sessions"
+    },
+    {
+      "title": "List All Agents",
+      "url": "llms-txt#list-all-agents"
+    },
+    {
+      "title": "Get Agent Details",
+      "url": "llms-txt#get-agent-details"
+    },
+    {
+      "title": "Update an Agent",
+      "url": "llms-txt#update-an-agent"
+    },
+    {
+      "title": "Get Organization Properties",
+      "url": "llms-txt#get-organization-properties"
+    },
+    {
+      "title": "Update Organization Properties",
+      "url": "llms-txt#update-organization-properties"
+    },
+    {
+      "title": "List Regions",
+      "url": "llms-txt#list-regions"
+    },
+    {
+      "title": "Create or Update Secrets",
+      "url": "llms-txt#create-or-update-secrets"
+    },
+    {
+      "title": "Delete Entire Secret Set",
+      "url": "llms-txt#delete-entire-secret-set"
+    },
+    {
+      "title": "Delete Specific Secret From Set",
+      "url": "llms-txt#delete-specific-secret-from-set"
+    },
+    {
+      "title": "List All Secret Sets",
+      "url": "llms-txt#list-all-secret-sets"
+    },
+    {
+      "title": "Get Secret Set Details",
+      "url": "llms-txt#get-secret-set-details"
+    },
+    {
+      "title": "Start an Agent session",
+      "url": "llms-txt#start-an-agent-session"
+    },
+    {
+      "title": "Stop an Agent session",
+      "url": "llms-txt#stop-an-agent-session"
+    },
+    {
+      "title": "Examples",
+      "url": "llms-txt#examples"
+    },
+    {
+      "title": "Run the async function",
+      "url": "llms-txt#run-the-async-function"
+    },
+    {
+      "title": "Error Handling",
+      "url": "llms-txt#error-handling"
+    },
+    {
+      "title": "Python SDK Overview",
+      "url": "llms-txt#python-sdk-overview"
+    },
+    {
+      "title": "Run the async function",
+      "url": "llms-txt#run-the-async-function"
+    },
+    {
+      "title": "Session Arguments",
+      "url": "llms-txt#session-arguments"
+    },
+    {
+      "title": "Session Management",
+      "url": "llms-txt#session-management"
+    },
+    {
+      "title": "HIPAA",
+      "url": "llms-txt#hipaa"
+    },
+    {
+      "title": "Security Guide",
+      "url": "llms-txt#security-guide"
+    },
+    {
+      "title": "DON'T do this",
+      "url": "llms-txt#don't-do-this"
+    },
+    {
+      "title": "DO this instead",
+      "url": "llms-txt#do-this-instead"
+    },
+    {
+      "title": "Create a secret set with your API keys",
+      "url": "llms-txt#create-a-secret-set-with-your-api-keys"
+    },
+    {
+      "title": "Reference in deployment",
+      "url": "llms-txt#reference-in-deployment"
+    },
+    {
+      "title": "Create an image pull secret for private registry",
+      "url": "llms-txt#create-an-image-pull-secret-for-private-registry"
+    },
+    {
+      "title": "Alternatively, use base64 encoding for credentials",
+      "url": "llms-txt#alternatively,-use-base64-encoding-for-credentials"
+    },
+    {
+      "title": "Use it during deployment",
+      "url": "llms-txt#use-it-during-deployment"
+    },
+    {
+      "title": "Create a public API key for client applications",
+      "url": "llms-txt#create-a-public-api-key-for-client-applications"
+    },
+    {
+      "title": "Associate with specific agents",
+      "url": "llms-txt#associate-with-specific-agents"
+    },
+    {
+      "title": "Cerebrium",
+      "url": "llms-txt#cerebrium"
+    },
+    {
+      "title": "Fly.io",
+      "url": "llms-txt#fly.io"
+    },
+    {
+      "title": "Modal",
+      "url": "llms-txt#modal"
+    },
+    {
+      "title": "Modify .env to provide your service API Keys",
+      "url": "llms-txt#modify-.env-to-provide-your-service-api-keys"
+    },
+    {
+      "title": "Pipecat Cloud",
+      "url": "llms-txt#pipecat-cloud"
+    },
+    {
+      "title": "Examples",
+      "url": "llms-txt#examples"
+    },
+    {
+      "title": "Build Your Next Bot",
+      "url": "llms-txt#build-your-next-bot"
+    },
+    {
+      "title": "or",
+      "url": "llms-txt#or"
+    },
+    {
+      "title": "Ecosystem",
+      "url": "llms-txt#ecosystem"
+    },
+    {
+      "title": "Introduction",
+      "url": "llms-txt#introduction"
+    },
+    {
+      "title": "Continue Learning",
+      "url": "llms-txt#continue-learning"
+    },
+    {
+      "title": "Quickstart",
+      "url": "llms-txt#quickstart"
+    },
+    {
+      "title": "Create AI Services",
+      "url": "llms-txt#create-ai-services"
+    },
+    {
+      "title": "All messages use the OpenAI message format",
+      "url": "llms-txt#all-messages-use-the-openai-message-format"
+    },
+    {
+      "title": "Create the pipeline with the processors",
+      "url": "llms-txt#create-the-pipeline-with-the-processors"
+    },
+    {
+      "title": "Create a PipelineTask to manage the pipeline execution",
+      "url": "llms-txt#create-a-pipelinetask-to-manage-the-pipeline-execution"
+    },
+    {
+      "title": "Event handler for when a client connects",
+      "url": "llms-txt#event-handler-for-when-a-client-connects"
+    },
+    {
+      "title": "Event handler for when a client disconnects",
+      "url": "llms-txt#event-handler-for-when-a-client-disconnects"
+    },
+    {
+      "title": "Create a PipelineRunner to run the task",
+      "url": "llms-txt#create-a-pipelinerunner-to-run-the-task"
+    },
+    {
+      "title": "Finally, run the task using the runner",
+      "url": "llms-txt#finally,-run-the-task-using-the-runner"
+    },
+    {
+      "title": "This will start the pipeline and begin processing frames",
+      "url": "llms-txt#this-will-start-the-pipeline-and-begin-processing-frames"
+    },
+    {
+      "title": "Building with Gemini Live",
+      "url": "llms-txt#building-with-gemini-live"
+    },
+    {
+      "title": "Remove the hard-coded example room URL",
+      "url": "llms-txt#remove-the-hard-coded-example-room-url"
+    },
+    {
+      "title": "Add your Daily and Gemini API keys",
+      "url": "llms-txt#add-your-daily-and-gemini-api-keys"
+    },
+    {
+      "title": "Use Gemini implementation",
+      "url": "llms-txt#use-gemini-implementation"
+    },
+    {
+      "title": "Start the bot process for a specific room",
+      "url": "llms-txt#start-the-bot-process-for-a-specific-room"
+    },
+    {
+      "title": "Noise cancellation with Krisp",
+      "url": "llms-txt#noise-cancellation-with-krisp"
+    },
+    {
+      "title": "Add to transport configuration",
+      "url": "llms-txt#add-to-transport-configuration"
+    },
+    {
+      "title": "Noise cancellation with Krisp VIVA",
+      "url": "llms-txt#noise-cancellation-with-krisp-viva"
+    },
+    {
+      "title": "Add to transport configuration",
+      "url": "llms-txt#add-to-transport-configuration"
+    },
+    {
+      "title": "Building With OpenAI Audio Models and APIs",
+      "url": "llms-txt#building-with-openai-audio-models-and-apis"
+    },
+    {
+      "title": "Pipecat Flows",
+      "url": "llms-txt#pipecat-flows"
+    },
+    {
+      "title": "Use directly in NodeConfig",
+      "url": "llms-txt#use-directly-in-nodeconfig"
+    },
+    {
+      "title": "Global strategy configuration",
+      "url": "llms-txt#global-strategy-configuration"
+    },
+    {
+      "title": "Per-node strategy configuration",
+      "url": "llms-txt#per-node-strategy-configuration"
+    },
+    {
+      "title": "WhatsApp Business Calling API",
+      "url": "llms-txt#whatsapp-business-calling-api"
+    },
+    {
+      "title": "Only needed for local development",
+      "url": "llms-txt#only-needed-for-local-development"
+    },
+    {
+      "title": "Custom FrameProcessor",
+      "url": "llms-txt#custom-frameprocessor"
+    },
+    {
+      "title": "Create and initialize the custom FrameProcessor",
+      "url": "llms-txt#create-and-initialize-the-custom-frameprocessor"
+    },
+    {
+      "title": "Push downstream (default)",
+      "url": "llms-txt#push-downstream-(default)"
+    },
+    {
+      "title": "Push upstream",
+      "url": "llms-txt#push-upstream"
+    },
+    {
+      "title": "Detecting Idle Users",
+      "url": "llms-txt#detecting-idle-users"
+    },
+    {
+      "title": "Simple handler that doesn't use retry count",
+      "url": "llms-txt#simple-handler-that-doesn't-use-retry-count"
+    },
+    {
+      "title": "OR",
+      "url": "llms-txt#or"
+    },
+    {
+      "title": "Advanced handler with retry logic",
+      "url": "llms-txt#advanced-handler-with-retry-logic"
+    },
+    {
+      "title": "IVR Navigation",
+      "url": "llms-txt#ivr-navigation"
+    },
+    {
+      "title": "Define your navigation goal",
+      "url": "llms-txt#define-your-navigation-goal"
+    },
+    {
+      "title": "Create navigator with extended response time for IVR systems",
+      "url": "llms-txt#create-navigator-with-extended-response-time-for-ivr-systems"
+    },
+    {
+      "title": "Metrics",
+      "url": "llms-txt#metrics"
+    },
+    {
+      "title": "Recording Conversation Audio",
+      "url": "llms-txt#recording-conversation-audio"
+    },
+    {
+      "title": "Create audio buffer processor with default settings",
+      "url": "llms-txt#create-audio-buffer-processor-with-default-settings"
+    },
+    {
+      "title": "30-second chunks (recommended for most use cases)",
+      "url": "llms-txt#30-second-chunks-(recommended-for-most-use-cases)"
+    },
+    {
+      "title": "Method 1: Simple concatenation (same format)",
+      "url": "llms-txt#method-1:-simple-concatenation-(same-format)"
+    },
+    {
+      "title": "Method 2: Using file list (recommended for many chunks)",
+      "url": "llms-txt#method-2:-using-file-list-(recommended-for-many-chunks)"
+    },
+    {
+      "title": "Create filelist.txt with format:",
+      "url": "llms-txt#create-filelist.txt-with-format:"
+    },
+    {
+      "title": "file 'chunk_001.wav'",
+      "url": "llms-txt#file-'chunk_001.wav'"
+    },
+    {
+      "title": "file 'chunk_002.wav'",
+      "url": "llms-txt#file-'chunk_002.wav'"
+    },
+    {
+      "title": "...",
+      "url": "llms-txt#..."
+    },
+    {
+      "title": "Saving Conversation Transcripts",
+      "url": "llms-txt#saving-conversation-transcripts"
+    },
+    {
+      "title": "Create a single transcript processor instance",
+      "url": "llms-txt#create-a-single-transcript-processor-instance"
+    },
+    {
+      "title": "User Input Muting with STTMuteFilter",
+      "url": "llms-txt#user-input-muting-with-sttmutefilter"
+    },
+    {
+      "title": "Configure with one or more strategies",
+      "url": "llms-txt#configure-with-one-or-more-strategies"
+    },
+    {
+      "title": "Voicemail Detection",
+      "url": "llms-txt#voicemail-detection"
+    },
+    {
+      "title": "Create an LLM for classification",
+      "url": "llms-txt#create-an-llm-for-classification"
+    },
+    {
+      "title": "Initialize the detector",
+      "url": "llms-txt#initialize-the-detector"
+    },
+    {
+      "title": "Context Management",
+      "url": "llms-txt#context-management"
+    },
+    {
+      "title": "Example context structure",
+      "url": "llms-txt#example-context-structure"
+    },
+    {
+      "title": "Create LLM service",
+      "url": "llms-txt#create-llm-service"
+    },
+    {
+      "title": "Create context with initial messages",
+      "url": "llms-txt#create-context-with-initial-messages"
+    },
+    {
+      "title": "Create context (messages only)",
+      "url": "llms-txt#create-context-(messages-only)"
+    },
+    {
+      "title": "Create context aggregator instance",
+      "url": "llms-txt#create-context-aggregator-instance"
+    },
+    {
+      "title": "Define available functions",
+      "url": "llms-txt#define-available-functions"
+    },
+    {
+      "title": "Create tools schema",
+      "url": "llms-txt#create-tools-schema"
+    },
+    {
+      "title": "Create context with both messages and tools",
+      "url": "llms-txt#create-context-with-both-messages-and-tools"
+    },
+    {
+      "title": "Add a new system message to context",
+      "url": "llms-txt#add-a-new-system-message-to-context"
+    },
+    {
+      "title": "Example: Bot speaks first when pipeline starts",
+      "url": "llms-txt#example:-bot-speaks-first-when-pipeline-starts"
+    },
+    {
+      "title": "Example: Bot speaks after context is edited",
+      "url": "llms-txt#example:-bot-speaks-after-context-is-edited"
+    },
+    {
+      "title": "Function Calling",
+      "url": "llms-txt#function-calling"
+    },
+    {
+      "title": "Define a function using the standard schema",
+      "url": "llms-txt#define-a-function-using-the-standard-schema"
+    },
+    {
+      "title": "Create a tools schema with your functions",
+      "url": "llms-txt#create-a-tools-schema-with-your-functions"
+    },
+    {
+      "title": "Pass this to your LLM context",
+      "url": "llms-txt#pass-this-to-your-llm-context"
+    },
+    {
+      "title": "Define a direct function",
+      "url": "llms-txt#define-a-direct-function"
+    },
+    {
+      "title": "Create a tools schema, passing your function directly to it",
+      "url": "llms-txt#create-a-tools-schema,-passing-your-function-directly-to-it"
+    },
+    {
+      "title": "Pass this to your LLM context",
+      "url": "llms-txt#pass-this-to-your-llm-context"
+    },
+    {
+      "title": "Standard functions",
+      "url": "llms-txt#standard-functions"
+    },
+    {
+      "title": "Custom Gemini search tool",
+      "url": "llms-txt#custom-gemini-search-tool"
+    },
+    {
+      "title": "Create a tools schema with both standard and custom tools",
+      "url": "llms-txt#create-a-tools-schema-with-both-standard-and-custom-tools"
+    },
+    {
+      "title": "Initialize the LLM context with your function schemas",
+      "url": "llms-txt#initialize-the-llm-context-with-your-function-schemas"
+    },
+    {
+      "title": "Create the context aggregator to collect the user and assistant context",
+      "url": "llms-txt#create-the-context-aggregator-to-collect-the-user-and-assistant-context"
+    },
+    {
+      "title": "Create the pipeline",
+      "url": "llms-txt#create-the-pipeline"
+    },
+    {
+      "title": "LLM Inference",
+      "url": "llms-txt#llm-inference"
+    },
+    {
+      "title": "Native OpenAI",
+      "url": "llms-txt#native-openai"
+    },
+    {
+      "title": "OpenAI-compatible service via base_url",
+      "url": "llms-txt#openai-compatible-service-via-base_url"
+    },
+    {
+      "title": "Overview of Pipecat",
+      "url": "llms-txt#overview-of-pipecat"
+    },
+    {
+      "title": "Pipeline & Frame Processing",
+      "url": "llms-txt#pipeline-&-frame-processing"
+    },
+    {
+      "title": "SystemFrames (processed immediately)",
+      "url": "llms-txt#systemframes-(processed-immediately)"
+    },
+    {
+      "title": "DataFrames (queued and ordered)",
+      "url": "llms-txt#dataframes-(queued-and-ordered)"
+    },
+    {
+      "title": "ControlFrames (queued and ordered)",
+      "url": "llms-txt#controlframes-(queued-and-ordered)"
+    },
+    {
+      "title": "These will execute in order: speak first, then end pipeline",
+      "url": "llms-txt#these-will-execute-in-order:-speak-first,-then-end-pipeline"
+    },
+    {
+      "title": "This pipeline allows multiple processors to use the same audio",
+      "url": "llms-txt#this-pipeline-allows-multiple-processors-to-use-the-same-audio"
+    },
+    {
+      "title": "Create the runner",
+      "url": "llms-txt#create-the-runner"
+    },
+    {
+      "title": "Run the pipeline",
+      "url": "llms-txt#run-the-pipeline"
+    },
+    {
+      "title": "Handle system signals automatically",
+      "url": "llms-txt#handle-system-signals-automatically"
+    },
+    {
+      "title": "Useful when running a file directly",
+      "url": "llms-txt#useful-when-running-a-file-directly"
+    },
+    {
+      "title": "Custom signal handling",
+      "url": "llms-txt#custom-signal-handling"
+    },
+    {
+      "title": "Useful when the PipelineRunner is managed by",
+      "url": "llms-txt#useful-when-the-pipelinerunner-is-managed-by"
+    },
+    {
+      "title": "another system like the development runner",
+      "url": "llms-txt#another-system-like-the-development-runner"
+    },
+    {
+      "title": "Graceful shutdown on client disconnect",
+      "url": "llms-txt#graceful-shutdown-on-client-disconnect"
+    },
+    {
+      "title": "Await the pipeline task",
+      "url": "llms-txt#await-the-pipeline-task"
+    },
+    {
+      "title": "Pipeline Termination",
+      "url": "llms-txt#pipeline-termination"
+    },
+    {
+      "title": "EndFrame or CancelFrame flows through entire pipeline for shutdown",
+      "url": "llms-txt#endframe-or-cancelframe-flows-through-entire-pipeline-for-shutdown"
+    },
+    {
+      "title": "From outside the pipeline",
+      "url": "llms-txt#from-outside-the-pipeline"
+    },
+    {
+      "title": "From inside a function call",
+      "url": "llms-txt#from-inside-a-function-call"
+    },
+    {
+      "title": "Run the pipeline",
+      "url": "llms-txt#run-the-pipeline"
+    },
+    {
+      "title": "From inside the pipeline, push upstream to reach the source",
+      "url": "llms-txt#from-inside-the-pipeline,-push-upstream-to-reach-the-source"
+    },
+    {
+      "title": "The pipeline source will then convert these to proper termination frames",
+      "url": "llms-txt#the-pipeline-source-will-then-convert-these-to-proper-termination-frames"
+    },
+    {
+      "title": "and push them downstream through the entire pipeline",
+      "url": "llms-txt#and-push-them-downstream-through-the-entire-pipeline"
+    },
+    {
+      "title": "Session Initialization",
+      "url": "llms-txt#session-initialization"
+    },
+    {
+      "title": "P2P WebRTC (opens browser interface)",
+      "url": "llms-txt#p2p-webrtc-(opens-browser-interface)"
+    },
+    {
+      "title": "Daily room-based WebRTC",
+      "url": "llms-txt#daily-room-based-webrtc"
+    },
+    {
+      "title": "Telephony (requires ngrok or similar)",
+      "url": "llms-txt#telephony-(requires-ngrok-or-similar)"
+    },
+    {
+      "title": "Speech Input & Turn Detection",
+      "url": "llms-txt#speech-input-&-turn-detection"
+    },
+    {
+      "title": "Configure VAD for responsive turn detection",
+      "url": "llms-txt#configure-vad-for-responsive-turn-detection"
+    },
+    {
+      "title": "Responsive VAD with turn detection",
+      "url": "llms-txt#responsive-vad-with-turn-detection"
+    },
+    {
+      "title": "Enable interruptions for natural flow",
+      "url": "llms-txt#enable-interruptions-for-natural-flow"
+    },
+    {
+      "title": "Speech to Text",
+      "url": "llms-txt#speech-to-text"
+    },
+    {
+      "title": "Configure using LiveOptions for full control",
+      "url": "llms-txt#configure-using-liveoptions-for-full-control"
+    },
+    {
+      "title": "Configure in transport params",
+      "url": "llms-txt#configure-in-transport-params"
+    },
+    {
+      "title": "Text to Speech",
+      "url": "llms-txt#text-to-speech"
+    },
+    {
+      "title": "Create pattern aggregator",
+      "url": "llms-txt#create-pattern-aggregator"
+    },
+    {
+      "title": "Add pattern for JSON data",
+      "url": "llms-txt#add-pattern-for-json-data"
+    },
+    {
+      "title": "Set the aggregator on an LLMTextProcessor",
+      "url": "llms-txt#set-the-aggregator-on-an-llmtextprocessor"
+    },
+    {
+      "title": "Initialize TTS service, and don't speak JSON data",
+      "url": "llms-txt#initialize-tts-service,-and-don't-speak-json-data"
+    },
+    {
+      "title": "add the llm_text_processor to your pipeline after the llm and before the tts",
+      "url": "llms-txt#add-the-llm_text_processor-to-your-pipeline-after-the-llm-and-before-the-tts"
+    },
+    {
+      "title": "llm -> llm_text_processor -> tts",
+      "url": "llms-txt#llm-->-llm_text_processor-->-tts"
+    },
+    {
+      "title": "Create pattern aggregator",
+      "url": "llms-txt#create-pattern-aggregator"
+    },
+    {
+      "title": "Add patterns for different parts of an explanation",
+      "url": "llms-txt#add-patterns-for-different-parts-of-an-explanation"
+    },
+    {
+      "title": "Set the aggregator on an LLMTextProcessor",
+      "url": "llms-txt#set-the-aggregator-on-an-llmtextprocessor"
+    },
+    {
+      "title": "Text-to-Speech service",
+      "url": "llms-txt#text-to-speech-service"
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will insert Cartesia's spell tags around the provided text.",
+      "url": "llms-txt#this-will-insert-cartesia's-spell-tags-around-the-provided-text."
+    },
+    {
+      "title": "Setup the text transformers in TTS to spell out phone numbers and replace",
+      "url": "llms-txt#setup-the-text-transformers-in-tts-to-spell-out-phone-numbers-and-replace"
+    },
+    {
+      "title": "acronyms. The string below matches the type defined in the PatternPairAggregator",
+      "url": "llms-txt#acronyms.-the-string-below-matches-the-type-defined-in-the-patternpairaggregator"
+    },
+    {
+      "title": "above so that whenever those segments are encountered, this transform",
+      "url": "llms-txt#above-so-that-whenever-those-segments-are-encountered,-this-transform"
+    },
+    {
+      "title": "is applied",
+      "url": "llms-txt#is-applied"
+    },
+    {
+      "title": "add the llm_text_processor to your pipeline after the llm and before the tts",
+      "url": "llms-txt#add-the-llm_text_processor-to-your-pipeline-after-the-llm-and-before-the-tts"
+    },
+    {
+      "title": "llm -> llm_text_processor -> tts",
+      "url": "llms-txt#llm-->-llm_text_processor-->-tts"
+    },
+    {
+      "title": "Make bot speak directly",
+      "url": "llms-txt#make-bot-speak-directly"
+    },
+    {
+      "title": "Change voice speed during conversation",
+      "url": "llms-txt#change-voice-speed-during-conversation"
+    },
+    {
+      "title": "Transports",
+      "url": "llms-txt#transports"
+    },
+    {
+      "title": "Create provider-specific serializer",
+      "url": "llms-txt#create-provider-specific-serializer"
+    },
+    {
+      "title": "Configure transport with serializer",
+      "url": "llms-txt#configure-transport-with-serializer"
+    },
+    {
+      "title": "What's Next",
+      "url": "llms-txt#what's-next"
+    },
+    {
+      "title": "Daily Phone Numbers",
+      "url": "llms-txt#daily-phone-numbers"
+    },
+    {
+      "title": "Daily PSTN",
+      "url": "llms-txt#daily-pstn"
+    },
+    {
+      "title": "Exotel WebSocket Integration",
+      "url": "llms-txt#exotel-websocket-integration"
+    },
+    {
+      "title": "Create Exotel serializer with call details",
+      "url": "llms-txt#create-exotel-serializer-with-call-details"
+    },
+    {
+      "title": "Configure WebSocket transport",
+      "url": "llms-txt#configure-websocket-transport"
+    },
+    {
+      "title": "Your bot pipeline setup here...",
+      "url": "llms-txt#your-bot-pipeline-setup-here..."
+    },
+    {
+      "title": "Start your bot directly",
+      "url": "llms-txt#start-your-bot-directly"
+    },
+    {
+      "title": "For local development, use ngrok to expose your WebSocket",
+      "url": "llms-txt#for-local-development,-use-ngrok-to-expose-your-websocket"
+    },
+    {
+      "title": "Use the ngrok WebSocket URL (wss://abc123.ngrok.io/ws) in your App Bazaar flow",
+      "url": "llms-txt#use-the-ngrok-websocket-url-(wss://abc123.ngrok.io/ws)-in-your-app-bazaar-flow"
+    },
+    {
+      "title": "Parse WebSocket data (same as dial-in)",
+      "url": "llms-txt#parse-websocket-data-(same-as-dial-in)"
+    },
+    {
+      "title": "Extract call information",
+      "url": "llms-txt#extract-call-information"
+    },
+    {
+      "title": "Customize bot behavior for outbound calls",
+      "url": "llms-txt#customize-bot-behavior-for-outbound-calls"
+    },
+    {
+      "title": "OR",
+      "url": "llms-txt#or"
+    },
+    {
+      "title": "Use the ngrok URL in your App Bazaar Voicebot applet",
+      "url": "llms-txt#use-the-ngrok-url-in-your-app-bazaar-voicebot-applet"
+    },
+    {
+      "title": "Overview",
+      "url": "llms-txt#overview"
+    },
+    {
+      "title": "Plivo WebSocket Integration",
+      "url": "llms-txt#plivo-websocket-integration"
+    },
+    {
+      "title": "Example: Adding custom parameters to the WebSocket URL",
+      "url": "llms-txt#example:-adding-custom-parameters-to-the-websocket-url"
+    },
+    {
+      "title": "Create Plivo serializer with call details",
+      "url": "llms-txt#create-plivo-serializer-with-call-details"
+    },
+    {
+      "title": "Configure WebSocket transport",
+      "url": "llms-txt#configure-websocket-transport"
+    },
+    {
+      "title": "Your bot pipeline setup here...",
+      "url": "llms-txt#your-bot-pipeline-setup-here..."
+    },
+    {
+      "title": "Start your server",
+      "url": "llms-txt#start-your-server"
+    },
+    {
+      "title": "In another terminal, start ngrok",
+      "url": "llms-txt#in-another-terminal,-start-ngrok"
+    },
+    {
+      "title": "Use the ngrok URL in your Plivo XML Application",
+      "url": "llms-txt#use-the-ngrok-url-in-your-plivo-xml-application"
+    },
+    {
+      "title": "Parse WebSocket data (same as dial-in)",
+      "url": "llms-txt#parse-websocket-data-(same-as-dial-in)"
+    },
+    {
+      "title": "Extract call information",
+      "url": "llms-txt#extract-call-information"
+    },
+    {
+      "title": "Access custom data from runner args",
+      "url": "llms-txt#access-custom-data-from-runner-args"
+    },
+    {
+      "title": "Customize bot behavior for outbound calls",
+      "url": "llms-txt#customize-bot-behavior-for-outbound-calls"
+    },
+    {
+      "title": "Create Plivo serializer",
+      "url": "llms-txt#create-plivo-serializer"
+    },
+    {
+      "title": "Configure transport",
+      "url": "llms-txt#configure-transport"
+    },
+    {
+      "title": "Use the ngrok URL in your Plivo XML Application",
+      "url": "llms-txt#use-the-ngrok-url-in-your-plivo-xml-application"
+    },
+    {
+      "title": "Telnyx WebSocket Integration",
+      "url": "llms-txt#telnyx-websocket-integration"
+    },
+    {
+      "title": "Create Telnyx serializer with call details",
+      "url": "llms-txt#create-telnyx-serializer-with-call-details"
+    },
+    {
+      "title": "Configure WebSocket transport",
+      "url": "llms-txt#configure-websocket-transport"
+    },
+    {
+      "title": "Your bot pipeline setup here...",
+      "url": "llms-txt#your-bot-pipeline-setup-here..."
+    },
+    {
+      "title": "Parse WebSocket data (same as dial-in)",
+      "url": "llms-txt#parse-websocket-data-(same-as-dial-in)"
+    },
+    {
+      "title": "Extract call information",
+      "url": "llms-txt#extract-call-information"
+    },
+    {
+      "title": "Customize bot behavior for outbound calls",
+      "url": "llms-txt#customize-bot-behavior-for-outbound-calls"
+    },
+    {
+      "title": "When creating the TeXML for outbound calls, include custom parameters",
+      "url": "llms-txt#when-creating-the-texml-for-outbound-calls,-include-custom-parameters"
+    },
+    {
+      "title": "Daily + Twilio SIP",
+      "url": "llms-txt#daily-+-twilio-sip"
+    },
+    {
+      "title": "Start your server",
+      "url": "llms-txt#start-your-server"
+    },
+    {
+      "title": "In another terminal, start ngrok",
+      "url": "llms-txt#in-another-terminal,-start-ngrok"
+    },
+    {
+      "title": "Use the ngrok URL (e.g., https://a1b2c3.ngrok.io/call) as your webhook",
+      "url": "llms-txt#use-the-ngrok-url-(e.g.,-https://a1b2c3.ngrok.io/call)-as-your-webhook"
+    },
+    {
+      "title": "Use the ngrok URL as your Twilio webhook",
+      "url": "llms-txt#use-the-ngrok-url-as-your-twilio-webhook"
+    },
+    {
+      "title": "Instead of subprocess.Popen(bot_cmd)",
+      "url": "llms-txt#instead-of-subprocess.popen(bot_cmd)"
+    },
+    {
+      "title": "Twilio WebSocket Integration",
+      "url": "llms-txt#twilio-websocket-integration"
+    },
+    {
+      "title": "When creating the outbound call, include custom parameters",
+      "url": "llms-txt#when-creating-the-outbound-call,-include-custom-parameters"
+    },
+    {
+      "title": "Create the outbound call",
+      "url": "llms-txt#create-the-outbound-call"
+    },
+    {
+      "title": "Parse WebSocket data (same as dial-in)",
+      "url": "llms-txt#parse-websocket-data-(same-as-dial-in)"
+    },
+    {
+      "title": "Access custom parameters",
+      "url": "llms-txt#access-custom-parameters"
+    },
+    {
+      "title": "Customize bot behavior for outbound calls",
+      "url": "llms-txt#customize-bot-behavior-for-outbound-calls"
+    },
+    {
+      "title": "Recipes",
+      "url": "llms-txt#recipes"
+    },
+    {
+      "title": "Pipecat Flows",
+      "url": "llms-txt#pipecat-flows"
+    },
+    {
+      "title": "RTVI (Real-Time Voice Interaction)",
+      "url": "llms-txt#rtvi-(real-time-voice-interaction)"
+    },
+    {
+      "title": "Create the RTVI processor",
+      "url": "llms-txt#create-the-rtvi-processor"
+    },
+    {
+      "title": "Include the RTVIProcessor in your pipeline",
+      "url": "llms-txt#include-the-rtviprocessor-in-your-pipeline"
+    },
+    {
+      "title": "Add the RTVIObserver to your pipeline task",
+      "url": "llms-txt#add-the-rtviobserver-to-your-pipeline-task"
+    },
+    {
+      "title": "Handle client connection",
+      "url": "llms-txt#handle-client-connection"
+    },
+    {
+      "title": "Handle participant disconnection",
+      "url": "llms-txt#handle-participant-disconnection"
+    },
+    {
+      "title": "Run the pipeline",
+      "url": "llms-txt#run-the-pipeline"
+    },
+    {
+      "title": "RTVI Observer",
+      "url": "llms-txt#rtvi-observer"
+    },
+    {
+      "title": "Create the RTVIProcessor",
+      "url": "llms-txt#create-the-rtviprocessor"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "Create pipeline task with observer",
+      "url": "llms-txt#create-pipeline-task-with-observer"
+    },
+    {
+      "title": "RTVIProcessor",
+      "url": "llms-txt#rtviprocessor"
+    },
+    {
+      "title": "Create the RTVIProcessor",
+      "url": "llms-txt#create-the-rtviprocessor"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "1. Define option handler",
+      "url": "llms-txt#1.-define-option-handler"
+    },
+    {
+      "title": "2. Create RTVIService",
+      "url": "llms-txt#2.-create-rtviservice"
+    },
+    {
+      "title": "3. Register with processor",
+      "url": "llms-txt#3.-register-with-processor"
+    },
+    {
+      "title": "1. Define handler function",
+      "url": "llms-txt#1.-define-handler-function"
+    },
+    {
+      "title": "2. Create and register RTVIAction",
+      "url": "llms-txt#2.-create-and-register-rtviaction"
+    },
+    {
+      "title": "General error",
+      "url": "llms-txt#general-error"
+    },
+    {
+      "title": "Request-specific error",
+      "url": "llms-txt#request-specific-error"
+    },
+    {
+      "title": "Set bot as ready",
+      "url": "llms-txt#set-bot-as-ready"
+    },
+    {
+      "title": "Handle interruptions",
+      "url": "llms-txt#handle-interruptions"
+    },
+    {
+      "title": "Send a custom message",
+      "url": "llms-txt#send-a-custom-message"
+    },
+    {
+      "title": "Server API Reference",
+      "url": "llms-txt#server-api-reference"
+    },
+    {
+      "title": "Configure services",
+      "url": "llms-txt#configure-services"
+    },
+    {
+      "title": "Create context and aggregators",
+      "url": "llms-txt#create-context-and-aggregators"
+    },
+    {
+      "title": "Create pipeline",
+      "url": "llms-txt#create-pipeline"
+    },
+    {
+      "title": "Reference docs",
+      "url": "llms-txt#reference-docs"
+    },
+    {
+      "title": "Pipeline Heartbeats",
+      "url": "llms-txt#pipeline-heartbeats"
+    },
+    {
+      "title": "ParallelPipeline",
+      "url": "llms-txt#parallelpipeline"
+    },
+    {
+      "title": "Create producer/consumer pair for cross-branch communication",
+      "url": "llms-txt#create-producer/consumer-pair-for-cross-branch-communication"
+    },
+    {
+      "title": "Pipeline Idle Detection",
+      "url": "llms-txt#pipeline-idle-detection"
+    },
+    {
+      "title": "Default configuration - cancel after 5 minutes of inactivity",
+      "url": "llms-txt#default-configuration---cancel-after-5-minutes-of-inactivity"
+    },
+    {
+      "title": "Custom configuration",
+      "url": "llms-txt#custom-configuration"
+    },
+    {
+      "title": "Create pipeline",
+      "url": "llms-txt#create-pipeline"
+    },
+    {
+      "title": "Configure task with custom idle settings",
+      "url": "llms-txt#configure-task-with-custom-idle-settings"
+    },
+    {
+      "title": "Add event handler for idle timeout",
+      "url": "llms-txt#add-event-handler-for-idle-timeout"
+    },
+    {
+      "title": "PipelineParams",
+      "url": "llms-txt#pipelineparams"
+    },
+    {
+      "title": "Create with default parameters",
+      "url": "llms-txt#create-with-default-parameters"
+    },
+    {
+      "title": "Or customize specific parameters",
+      "url": "llms-txt#or-customize-specific-parameters"
+    },
+    {
+      "title": "Pass to PipelineTask",
+      "url": "llms-txt#pass-to-pipelinetask"
+    },
+    {
+      "title": "Create comprehensive parameters",
+      "url": "llms-txt#create-comprehensive-parameters"
+    },
+    {
+      "title": "Create pipeline and task",
+      "url": "llms-txt#create-pipeline-and-task"
+    },
+    {
+      "title": "Run the pipeline",
+      "url": "llms-txt#run-the-pipeline"
+    },
+    {
+      "title": "PipelineTask",
+      "url": "llms-txt#pipelinetask"
+    },
+    {
+      "title": "Create a pipeline",
+      "url": "llms-txt#create-a-pipeline"
+    },
+    {
+      "title": "Create a task with the pipeline",
+      "url": "llms-txt#create-a-task-with-the-pipeline"
+    },
+    {
+      "title": "Queue frames for processing",
+      "url": "llms-txt#queue-frames-for-processing"
+    },
+    {
+      "title": "Run the pipeline",
+      "url": "llms-txt#run-the-pipeline"
+    },
+    {
+      "title": "Sentry Metrics",
+      "url": "llms-txt#sentry-metrics"
+    },
+    {
+      "title": "Community Integrations",
+      "url": "llms-txt#community-integrations"
+    },
+    {
+      "title": "Video",
+      "url": "llms-txt#video"
+    },
+    {
+      "title": "fal",
+      "url": "llms-txt#fal"
+    },
+    {
+      "title": "Google Imagen",
+      "url": "llms-txt#google-imagen"
+    },
+    {
+      "title": "OpenAI Image Generation",
+      "url": "llms-txt#openai-image-generation"
+    },
+    {
+      "title": "Anthropic",
+      "url": "llms-txt#anthropic"
+    },
+    {
+      "title": "AWS Bedrock",
+      "url": "llms-txt#aws-bedrock"
+    },
+    {
+      "title": "Azure",
+      "url": "llms-txt#azure"
+    },
+    {
+      "title": "Cerebras",
+      "url": "llms-txt#cerebras"
+    },
+    {
+      "title": "DeepSeek",
+      "url": "llms-txt#deepseek"
+    },
+    {
+      "title": "Fireworks AI",
+      "url": "llms-txt#fireworks-ai"
+    },
+    {
+      "title": "Google Gemini",
+      "url": "llms-txt#google-gemini"
+    },
+    {
+      "title": "Google Vertex AI",
+      "url": "llms-txt#google-vertex-ai"
+    },
+    {
+      "title": "Grok",
+      "url": "llms-txt#grok"
+    },
+    {
+      "title": "Groq",
+      "url": "llms-txt#groq"
+    },
+    {
+      "title": "NVIDIA NIM",
+      "url": "llms-txt#nvidia-nim"
+    },
+    {
+      "title": "Ollama",
+      "url": "llms-txt#ollama"
+    },
+    {
+      "title": "OpenAI",
+      "url": "llms-txt#openai"
+    },
+    {
+      "title": "OpenPipe",
+      "url": "llms-txt#openpipe"
+    },
+    {
+      "title": "OpenRouter",
+      "url": "llms-txt#openrouter"
+    },
+    {
+      "title": "Perplexity",
+      "url": "llms-txt#perplexity"
+    },
+    {
+      "title": "Qwen",
+      "url": "llms-txt#qwen"
+    },
+    {
+      "title": "SambaNova",
+      "url": "llms-txt#sambanova"
+    },
+    {
+      "title": "Together AI",
+      "url": "llms-txt#together-ai"
+    },
+    {
+      "title": "Mem0",
+      "url": "llms-txt#mem0"
+    },
+    {
+      "title": "AWS Nova Sonic",
+      "url": "llms-txt#aws-nova-sonic"
+    },
+    {
+      "title": "Gemini Live",
+      "url": "llms-txt#gemini-live"
+    },
+    {
+      "title": "Gemini Live Vertex AI",
+      "url": "llms-txt#gemini-live-vertex-ai"
+    },
+    {
+      "title": "OpenAI Realtime",
+      "url": "llms-txt#openai-realtime"
+    },
+    {
+      "title": "ExotelFrameSerializer",
+      "url": "llms-txt#exotelframeserializer"
+    },
+    {
+      "title": "Frame Serializer Overview",
+      "url": "llms-txt#frame-serializer-overview"
+    },
+    {
+      "title": "PlivoFrameSerializer",
+      "url": "llms-txt#plivoframeserializer"
+    },
+    {
+      "title": "TelnyxFrameSerializer",
+      "url": "llms-txt#telnyxframeserializer"
+    },
+    {
+      "title": "TwilioFrameSerializer",
+      "url": "llms-txt#twilioframeserializer"
+    },
+    {
+      "title": "AssemblyAI",
+      "url": "llms-txt#assemblyai"
+    },
+    {
+      "title": "AWS Transcribe",
+      "url": "llms-txt#aws-transcribe"
+    },
+    {
+      "title": "Azure",
+      "url": "llms-txt#azure"
+    },
+    {
+      "title": "Cartesia",
+      "url": "llms-txt#cartesia"
+    },
+    {
+      "title": "Deepgram",
+      "url": "llms-txt#deepgram"
+    },
+    {
+      "title": "ElevenLabs",
+      "url": "llms-txt#elevenlabs"
+    },
+    {
+      "title": "Fal (Wizper)",
+      "url": "llms-txt#fal-(wizper)"
+    },
+    {
+      "title": "Gladia",
+      "url": "llms-txt#gladia"
+    },
+    {
+      "title": "Google",
+      "url": "llms-txt#google"
+    },
+    {
+      "title": "Groq (Whisper)",
+      "url": "llms-txt#groq-(whisper)"
+    },
+    {
+      "title": "OpenAI",
+      "url": "llms-txt#openai"
+    },
+    {
+      "title": "NVIDIA Riva",
+      "url": "llms-txt#nvidia-riva"
+    },
+    {
+      "title": "SambaNova (Whisper)",
+      "url": "llms-txt#sambanova-(whisper)"
+    },
+    {
+      "title": "Sarvam",
+      "url": "llms-txt#sarvam"
+    },
+    {
+      "title": "Soniox",
+      "url": "llms-txt#soniox"
+    },
+    {
+      "title": "Speechmatics",
+      "url": "llms-txt#speechmatics"
+    },
+    {
+      "title": "Ultravox",
+      "url": "llms-txt#ultravox"
+    },
+    {
+      "title": "Whisper",
+      "url": "llms-txt#whisper"
+    },
+    {
+      "title": "Supported Services",
+      "url": "llms-txt#supported-services"
+    },
+    {
+      "title": "DailyTransport",
+      "url": "llms-txt#dailytransport"
+    },
+    {
+      "title": "FastAPIWebsocketTransport",
+      "url": "llms-txt#fastapiwebsockettransport"
+    },
+    {
+      "title": "LiveKitTransport",
+      "url": "llms-txt#livekittransport"
+    },
+    {
+      "title": "SmallWebRTCTransport",
+      "url": "llms-txt#smallwebrtctransport"
+    },
+    {
+      "title": "TavusTransport",
+      "url": "llms-txt#tavustransport"
+    },
+    {
+      "title": "WebSocket Transports",
+      "url": "llms-txt#websocket-transports"
+    },
+    {
+      "title": "WhatsAppTransport",
+      "url": "llms-txt#whatsapptransport"
+    },
+    {
+      "title": "Async",
+      "url": "llms-txt#async"
+    },
+    {
+      "title": "AWS Polly",
+      "url": "llms-txt#aws-polly"
+    },
+    {
+      "title": "Azure",
+      "url": "llms-txt#azure"
+    },
+    {
+      "title": "Cartesia",
+      "url": "llms-txt#cartesia"
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will insert Cartesia's spell tags around the provided text.",
+      "url": "llms-txt#this-will-insert-cartesia's-spell-tags-around-the-provided-text."
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will insert Cartesia's sarcasm tag in front of any sentence that is just \"whatever\".",
+      "url": "llms-txt#this-will-insert-cartesia's-sarcasm-tag-in-front-of-any-sentence-that-is-just-\"whatever\"."
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will insert a one second pause after questions.",
+      "url": "llms-txt#this-will-insert-a-one-second-pause-after-questions."
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will increase the volume for any full text aggregation that is in all caps.",
+      "url": "llms-txt#this-will-increase-the-volume-for-any-full-text-aggregation-that-is-in-all-caps."
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will make the word slow always be spoken more slowly.",
+      "url": "llms-txt#this-will-make-the-word-slow-always-be-spoken-more-slowly."
+    },
+    {
+      "title": "Deepgram",
+      "url": "llms-txt#deepgram"
+    },
+    {
+      "title": "ElevenLabs",
+      "url": "llms-txt#elevenlabs"
+    },
+    {
+      "title": "Fish Audio",
+      "url": "llms-txt#fish-audio"
+    },
+    {
+      "title": "Google",
+      "url": "llms-txt#google"
+    },
+    {
+      "title": "Groq",
+      "url": "llms-txt#groq"
+    },
+    {
+      "title": "Inworld",
+      "url": "llms-txt#inworld"
+    },
+    {
+      "title": "LMNT",
+      "url": "llms-txt#lmnt"
+    },
+    {
+      "title": "MiniMax",
+      "url": "llms-txt#minimax"
+    },
+    {
+      "title": "Neuphonic",
+      "url": "llms-txt#neuphonic"
+    },
+    {
+      "title": "OpenAI",
+      "url": "llms-txt#openai"
+    },
+    {
+      "title": "Piper",
+      "url": "llms-txt#piper"
+    },
+    {
+      "title": "PlayHT",
+      "url": "llms-txt#playht"
+    },
+    {
+      "title": "Rime",
+      "url": "llms-txt#rime"
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will insert Rime's spell tags around the provided text.",
+      "url": "llms-txt#this-will-insert-rime's-spell-tags-around-the-provided-text."
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will insert a one second pause after questions.",
+      "url": "llms-txt#this-will-insert-a-one-second-pause-after-questions."
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will a phoneme in place of the word \"potato\" to define how it",
+      "url": "llms-txt#this-will-a-phoneme-in-place-of-the-word-\"potato\"-to-define-how-it"
+    },
+    {
+      "title": "should be pronounced.",
+      "url": "llms-txt#should-be-pronounced."
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will make the word slow always be spoken more slowly.",
+      "url": "llms-txt#this-will-make-the-word-slow-always-be-spoken-more-slowly."
+    },
+    {
+      "title": "NVIDIA Riva",
+      "url": "llms-txt#nvidia-riva"
+    },
+    {
+      "title": "Sarvam AI",
+      "url": "llms-txt#sarvam-ai"
+    },
+    {
+      "title": "Speechmatics",
+      "url": "llms-txt#speechmatics"
+    },
+    {
+      "title": "XTTS",
+      "url": "llms-txt#xtts"
+    },
+    {
+      "title": "HeyGen",
+      "url": "llms-txt#heygen"
+    },
+    {
+      "title": "Simli",
+      "url": "llms-txt#simli"
+    },
+    {
+      "title": "Tavus",
+      "url": "llms-txt#tavus"
+    },
+    {
+      "title": "Moondream",
+      "url": "llms-txt#moondream"
+    },
+    {
+      "title": "AICFilter",
+      "url": "llms-txt#aicfilter"
+    },
+    {
+      "title": "AudioBufferProcessor",
+      "url": "llms-txt#audiobufferprocessor"
+    },
+    {
+      "title": "KoalaFilter",
+      "url": "llms-txt#koalafilter"
+    },
+    {
+      "title": "KrispFilter",
+      "url": "llms-txt#krispfilter"
+    },
+    {
+      "title": "KrispVivaFilter",
+      "url": "llms-txt#krispvivafilter"
+    },
+    {
+      "title": "SileroVADAnalyzer",
+      "url": "llms-txt#silerovadanalyzer"
+    },
+    {
+      "title": "SoundfileMixer",
+      "url": "llms-txt#soundfilemixer"
+    },
+    {
+      "title": "Initialize mixer with sound files",
+      "url": "llms-txt#initialize-mixer-with-sound-files"
+    },
+    {
+      "title": "Add to transport",
+      "url": "llms-txt#add-to-transport"
+    },
+    {
+      "title": "Control mixer at runtime",
+      "url": "llms-txt#control-mixer-at-runtime"
+    },
+    {
+      "title": "DailyRESTHelper",
+      "url": "llms-txt#dailyresthelper"
+    },
+    {
+      "title": "Access SIP endpoint if available",
+      "url": "llms-txt#access-sip-endpoint-if-available"
+    },
+    {
+      "title": "Example of what a DailyRoomObject looks like when received",
+      "url": "llms-txt#example-of-what-a-dailyroomobject-looks-like-when-received"
+    },
+    {
+      "title": "Create a room that expires in 1 hour",
+      "url": "llms-txt#create-a-room-that-expires-in-1-hour"
+    },
+    {
+      "title": "Basic token generation",
+      "url": "llms-txt#basic-token-generation"
+    },
+    {
+      "title": "Advanced token generation with additional properties",
+      "url": "llms-txt#advanced-token-generation-with-additional-properties"
+    },
+    {
+      "title": "DTMFAggregator",
+      "url": "llms-txt#dtmfaggregator"
+    },
+    {
+      "title": "Create DTMF aggregator with default settings",
+      "url": "llms-txt#create-dtmf-aggregator-with-default-settings"
+    },
+    {
+      "title": "Set up Twilio serializer for phone integration",
+      "url": "llms-txt#set-up-twilio-serializer-for-phone-integration"
+    },
+    {
+      "title": "Create pipeline with DTMF processing",
+      "url": "llms-txt#create-pipeline-with-dtmf-processing"
+    },
+    {
+      "title": "Configure for menu system with star termination",
+      "url": "llms-txt#configure-for-menu-system-with-star-termination"
+    },
+    {
+      "title": "Update system prompt to handle DTMF input",
+      "url": "llms-txt#update-system-prompt-to-handle-dtmf-input"
+    },
+    {
+      "title": "IVRNavigator",
+      "url": "llms-txt#ivrnavigator"
+    },
+    {
+      "title": "Context is automatically saved and restored during mode transitions",
+      "url": "llms-txt#context-is-automatically-saved-and-restored-during-mode-transitions"
+    },
+    {
+      "title": "No manual intervention required for basic scenarios",
+      "url": "llms-txt#no-manual-intervention-required-for-basic-scenarios"
+    },
+    {
+      "title": "For advanced context manipulation:",
+      "url": "llms-txt#for-advanced-context-manipulation:"
+    },
+    {
+      "title": "Switch to conversation-optimized timing",
+      "url": "llms-txt#switch-to-conversation-optimized-timing"
+    },
+    {
+      "title": "VoicemailDetector",
+      "url": "llms-txt#voicemaildetector"
+    },
+    {
+      "title": "FrameFilter",
+      "url": "llms-txt#framefilter"
+    },
+    {
+      "title": "Create a filter that only passes TextFrames and AudioRawFrames",
+      "url": "llms-txt#create-a-filter-that-only-passes-textframes-and-audiorawframes"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "FunctionFilter",
+      "url": "llms-txt#functionfilter"
+    },
+    {
+      "title": "Create filter that only allows TextFrames with more than 10 characters",
+      "url": "llms-txt#create-filter-that-only-allows-textframes-with-more-than-10-characters"
+    },
+    {
+      "title": "Apply filter to downstream frames only",
+      "url": "llms-txt#apply-filter-to-downstream-frames-only"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "IdentityFilter",
+      "url": "llms-txt#identityfilter"
+    },
+    {
+      "title": "Create an identity filter",
+      "url": "llms-txt#create-an-identity-filter"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "NullFilter",
+      "url": "llms-txt#nullfilter"
+    },
+    {
+      "title": "Create a null filter that blocks all non-system frames",
+      "url": "llms-txt#create-a-null-filter-that-blocks-all-non-system-frames"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "STTMuteFilter",
+      "url": "llms-txt#sttmutefilter"
+    },
+    {
+      "title": "Create a state manager",
+      "url": "llms-txt#create-a-state-manager"
+    },
+    {
+      "title": "Callback function that determines whether to mute",
+      "url": "llms-txt#callback-function-that-determines-whether-to-mute"
+    },
+    {
+      "title": "Configure filter with CUSTOM strategy",
+      "url": "llms-txt#configure-filter-with-custom-strategy"
+    },
+    {
+      "title": "Later, when you want to trigger muting (e.g., during session timeout):",
+      "url": "llms-txt#later,-when-you-want-to-trigger-muting-(e.g.,-during-session-timeout):"
+    },
+    {
+      "title": "WakeCheckFilter",
+      "url": "llms-txt#wakecheckfilter"
+    },
+    {
+      "title": "Create filter with wake phrases",
+      "url": "llms-txt#create-filter-with-wake-phrases"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "WakeNotifierFilter",
+      "url": "llms-txt#wakenotifierfilter"
+    },
+    {
+      "title": "Create an event notifier",
+      "url": "llms-txt#create-an-event-notifier"
+    },
+    {
+      "title": "Create filter that notifies when certain wake phrases are detected",
+      "url": "llms-txt#create-filter-that-notifies-when-certain-wake-phrases-are-detected"
+    },
+    {
+      "title": "Add to pipeline",
+      "url": "llms-txt#add-to-pipeline"
+    },
+    {
+      "title": "In another component, wait for the notification",
+      "url": "llms-txt#in-another-component,-wait-for-the-notification"
+    },
+    {
+      "title": "LLMTextProcessor",
+      "url": "llms-txt#llmtextprocessor"
+    },
+    {
+      "title": "Pipeline - The following pipeline is typical for a STT->LLM->TTS bot + RTVI",
+      "url": "llms-txt#pipeline---the-following-pipeline-is-typical-for-a-stt->llm->tts-bot-+-rtvi"
+    },
+    {
+      "title": "with the addition of the LLMTextProcessor to handle special text segments.",
+      "url": "llms-txt#with-the-addition-of-the-llmtextprocessor-to-handle-special-text-segments."
+    },
+    {
+      "title": "Producer & Consumer Processors",
+      "url": "llms-txt#producer-&-consumer-processors"
+    },
+    {
+      "title": "Create a producer that captures TTS audio frames",
+      "url": "llms-txt#create-a-producer-that-captures-tts-audio-frames"
+    },
+    {
+      "title": "Define an async transformer function",
+      "url": "llms-txt#define-an-async-transformer-function"
+    },
+    {
+      "title": "Create a consumer to receive the frames",
+      "url": "llms-txt#create-a-consumer-to-receive-the-frames"
+    },
+    {
+      "title": "Use in a ParallelPipeline",
+      "url": "llms-txt#use-in-a-parallelpipeline"
+    },
+    {
+      "title": "Interruption Strategies",
+      "url": "llms-txt#interruption-strategies"
+    },
+    {
+      "title": "Prioritize word count, then volume (hypothetical future strategy)",
+      "url": "llms-txt#prioritize-word-count,-then-volume-(hypothetical-future-strategy)"
+    },
+    {
+      "title": "MCPClient",
+      "url": "llms-txt#mcpclient"
+    },
+    {
+      "title": "Import MCPClient and StdioServerParameters",
+      "url": "llms-txt#import-mcpclient-and-stdioserverparameters"
+    },
+    {
+      "title": "Initialize an LLM",
+      "url": "llms-txt#initialize-an-llm"
+    },
+    {
+      "title": "Initialize and configure MCPClient with server parameters",
+      "url": "llms-txt#initialize-and-configure-mcpclient-with-server-parameters"
+    },
+    {
+      "title": "Create tools schema from the MCP server and register them with llm",
+      "url": "llms-txt#create-tools-schema-from-the-mcp-server-and-register-them-with-llm"
+    },
+    {
+      "title": "Create context with system message and tools",
+      "url": "llms-txt#create-context-with-system-message-and-tools"
+    },
+    {
+      "title": "Tip: Let the LLM know it has access to tools from an MCP server by including it in the system prompt.",
+      "url": "llms-txt#tip:-let-the-llm-know-it-has-access-to-tools-from-an-mcp-server-by-including-it-in-the-system-prompt."
+    },
+    {
+      "title": "Import MCPClient",
+      "url": "llms-txt#import-mcpclient"
+    },
+    {
+      "title": "Initialize an LLM",
+      "url": "llms-txt#initialize-an-llm"
+    },
+    {
+      "title": "Initialize and configure MCPClient with MCP SSE server url",
+      "url": "llms-txt#initialize-and-configure-mcpclient-with-mcp-sse-server-url"
+    },
+    {
+      "title": "Create tools schema from the MCP server and register them with llm",
+      "url": "llms-txt#create-tools-schema-from-the-mcp-server-and-register-them-with-llm"
+    },
+    {
+      "title": "Create context with system message and tools",
+      "url": "llms-txt#create-context-with-system-message-and-tools"
+    },
+    {
+      "title": "Tip: Let the LLM know it has access to tools from an MCP server by including it in the system prompt.",
+      "url": "llms-txt#tip:-let-the-llm-know-it-has-access-to-tools-from-an-mcp-server-by-including-it-in-the-system-prompt."
+    },
+    {
+      "title": "Debug Log Observer",
+      "url": "llms-txt#debug-log-observer"
+    },
+    {
+      "title": "LLM Log Observer",
+      "url": "llms-txt#llm-log-observer"
+    },
+    {
+      "title": "Observer Pattern",
+      "url": "llms-txt#observer-pattern"
+    },
+    {
+      "title": "Transcription Log Observer",
+      "url": "llms-txt#transcription-log-observer"
+    },
+    {
+      "title": "Turn Tracking Observer",
+      "url": "llms-txt#turn-tracking-observer"
+    },
+    {
+      "title": "Access the observer",
+      "url": "llms-txt#access-the-observer"
+    },
+    {
+      "title": "Register event handlers",
+      "url": "llms-txt#register-event-handlers"
+    },
+    {
+      "title": "Create a custom observer instance",
+      "url": "llms-txt#create-a-custom-observer-instance"
+    },
+    {
+      "title": "Add it as a regular observer",
+      "url": "llms-txt#add-it-as-a-regular-observer"
+    },
+    {
+      "title": "User-Bot Latency Observer",
+      "url": "llms-txt#user-bot-latency-observer"
+    },
+    {
+      "title": "OpenTelemetry Tracing",
+      "url": "llms-txt#opentelemetry-tracing"
+    },
+    {
+      "title": "Step 1: Initialize OpenTelemetry with your chosen exporter",
+      "url": "llms-txt#step-1:-initialize-opentelemetry-with-your-chosen-exporter"
+    },
+    {
+      "title": "Step 2: Enable tracing in your PipelineTask",
+      "url": "llms-txt#step-2:-enable-tracing-in-your-pipelinetask"
+    },
+    {
+      "title": "Initialize tracing if enabled",
+      "url": "llms-txt#initialize-tracing-if-enabled"
+    },
+    {
+      "title": "Create your services",
+      "url": "llms-txt#create-your-services"
+    },
+    {
+      "title": "Build pipeline",
+      "url": "llms-txt#build-pipeline"
+    },
+    {
+      "title": "Create pipeline task with tracing enabled",
+      "url": "llms-txt#create-pipeline-task-with-tracing-enabled"
+    },
+    {
+      "title": "Run the pipeline",
+      "url": "llms-txt#run-the-pipeline"
+    },
+    {
+      "title": "Development Runner",
+      "url": "llms-txt#development-runner"
+    },
+    {
+      "title": "Your imports",
+      "url": "llms-txt#your-imports"
+    },
+    {
+      "title": "Opens http://localhost:7860/client",
+      "url": "llms-txt#opens-http://localhost:7860/client"
+    },
+    {
+      "title": "ESP32 compatibility mode",
+      "url": "llms-txt#esp32-compatibility-mode"
+    },
+    {
+      "title": "Opens http://localhost:7860 with room creation interface",
+      "url": "llms-txt#opens-http://localhost:7860-with-room-creation-interface"
+    },
+    {
+      "title": "Also provides POST /start endpoint for Pipecat clients",
+      "url": "llms-txt#also-provides-post-/start-endpoint-for-pipecat-clients"
+    },
+    {
+      "title": "Direct connection for testing (bypasses web server)",
+      "url": "llms-txt#direct-connection-for-testing-(bypasses-web-server)"
+    },
+    {
+      "title": "Enable PSTN dial-in webhook handling",
+      "url": "llms-txt#enable-pstn-dial-in-webhook-handling"
+    },
+    {
+      "title": "Set up environment variables first",
+      "url": "llms-txt#set-up-environment-variables-first"
+    },
+    {
+      "title": "Then run with public proxy",
+      "url": "llms-txt#then-run-with-public-proxy"
+    },
+    {
+      "title": "Define transport configurations using factory functions",
+      "url": "llms-txt#define-transport-configurations-using-factory-functions"
+    },
+    {
+      "title": "Start the Daily runner",
+      "url": "llms-txt#start-the-daily-runner"
+    },
+    {
+      "title": "The /start endpoint is now available at:",
+      "url": "llms-txt#the-/start-endpoint-is-now-available-at:"
+    },
+    {
+      "title": "POST http://localhost:7860/start",
+      "url": "llms-txt#post-http://localhost:7860/start"
+    },
+    {
+      "title": "Webhook endpoint available at:",
+      "url": "llms-txt#webhook-endpoint-available-at:"
+    },
+    {
+      "title": "POST http://localhost:7860/daily-dialin-webhook",
+      "url": "llms-txt#post-http://localhost:7860/daily-dialin-webhook"
+    },
+    {
+      "title": "Example with ngrok",
+      "url": "llms-txt#example-with-ngrok"
+    },
+    {
+      "title": "Configure webhook URL in Daily dashboard:",
+      "url": "llms-txt#configure-webhook-url-in-daily-dashboard:"
+    },
+    {
+      "title": "https://your-subdomain.ngrok.io/daily-dialin-webhook",
+      "url": "llms-txt#https://your-subdomain.ngrok.io/daily-dialin-webhook"
+    },
+    {
+      "title": "Transport Utilities",
+      "url": "llms-txt#transport-utilities"
+    },
+    {
+      "title": "Tuple unpacking (legacy style)",
+      "url": "llms-txt#tuple-unpacking-(legacy-style)"
+    },
+    {
+      "title": "Object access (recommended)",
+      "url": "llms-txt#object-access-(recommended)"
+    },
+    {
+      "title": "Use with LiveKitTransport",
+      "url": "llms-txt#use-with-livekittransport"
+    },
+    {
+      "title": "Generate agent token for your bot",
+      "url": "llms-txt#generate-agent-token-for-your-bot"
+    },
+    {
+      "title": "Generate user token for testing",
+      "url": "llms-txt#generate-user-token-for-testing"
+    },
+    {
+      "title": "Returns pc_id for WebRTC or participant ID for Daily",
+      "url": "llms-txt#returns-pc_id-for-webrtc-or-participant-id-for-daily"
+    },
+    {
+      "title": "Capture participant's camera",
+      "url": "llms-txt#capture-participant's-camera"
+    },
+    {
+      "title": "Capture participant's screen",
+      "url": "llms-txt#capture-participant's-screen"
+    },
+    {
+      "title": "LLMSwitcher",
+      "url": "llms-txt#llmswitcher"
+    },
+    {
+      "title": "Create LLM services",
+      "url": "llms-txt#create-llm-services"
+    },
+    {
+      "title": "Create switcher",
+      "url": "llms-txt#create-switcher"
+    },
+    {
+      "title": "Use in pipeline",
+      "url": "llms-txt#use-in-pipeline"
+    },
+    {
+      "title": "Switch to cheaper model for simple tasks",
+      "url": "llms-txt#switch-to-cheaper-model-for-simple-tasks"
+    },
+    {
+      "title": "ServiceSwitcher",
+      "url": "llms-txt#serviceswitcher"
+    },
+    {
+      "title": "Create TTS services",
+      "url": "llms-txt#create-tts-services"
+    },
+    {
+      "title": "Create switcher with both services",
+      "url": "llms-txt#create-switcher-with-both-services"
+    },
+    {
+      "title": "Use in pipeline",
+      "url": "llms-txt#use-in-pipeline"
+    },
+    {
+      "title": "Later, switch to Cartesia",
+      "url": "llms-txt#later,-switch-to-cartesia"
+    },
+    {
+      "title": "Fal Smart Turn",
+      "url": "llms-txt#fal-smart-turn"
+    },
+    {
+      "title": "Smart Turn Overview",
+      "url": "llms-txt#smart-turn-overview"
+    },
+    {
+      "title": "Get the URL for the remote Smart Turn service",
+      "url": "llms-txt#get-the-url-for-the-remote-smart-turn-service"
+    },
+    {
+      "title": "Create the transport with Smart Turn detection",
+      "url": "llms-txt#create-the-transport-with-smart-turn-detection"
+    },
+    {
+      "title": "Create the transport with Smart Turn detection",
+      "url": "llms-txt#create-the-transport-with-smart-turn-detection"
+    },
+    {
+      "title": "MarkdownTextFilter",
+      "url": "llms-txt#markdowntextfilter"
+    },
+    {
+      "title": "Create the filter",
+      "url": "llms-txt#create-the-filter"
+    },
+    {
+      "title": "Use with TTS service",
+      "url": "llms-txt#use-with-tts-service"
+    },
+    {
+      "title": "Create filter that removes code blocks and tables",
+      "url": "llms-txt#create-filter-that-removes-code-blocks-and-tables"
+    },
+    {
+      "title": "Text Aggregators and Filters",
+      "url": "llms-txt#text-aggregators-and-filters"
+    },
+    {
+      "title": "PatternPairAggregator",
+      "url": "llms-txt#patternpairaggregator"
+    },
+    {
+      "title": "Define voice IDs",
+      "url": "llms-txt#define-voice-ids"
+    },
+    {
+      "title": "Initialize TTS service, starting with default narrator voice",
+      "url": "llms-txt#initialize-tts-service,-starting-with-default-narrator-voice"
+    },
+    {
+      "title": "Create pattern aggregator",
+      "url": "llms-txt#create-pattern-aggregator"
+    },
+    {
+      "title": "Add pattern for voice tags",
+      "url": "llms-txt#add-pattern-for-voice-tags"
+    },
+    {
+      "title": "Register handler for voice switching",
+      "url": "llms-txt#register-handler-for-voice-switching"
+    },
+    {
+      "title": "Set the aggregator on an LLMTextProcessor",
+      "url": "llms-txt#set-the-aggregator-on-an-llmtextprocessor"
+    },
+    {
+      "title": "add the llm_text_processor to your pipeline after the llm and before the tts",
+      "url": "llms-txt#add-the-llm_text_processor-to-your-pipeline-after-the-llm-and-before-the-tts"
+    },
+    {
+      "title": "llm -> llm_text_processor -> tts",
+      "url": "llms-txt#llm-->-llm_text_processor-->-tts"
+    },
+    {
+      "title": "Create pattern aggregator",
+      "url": "llms-txt#create-pattern-aggregator"
+    },
+    {
+      "title": "Add pattern for JSON data",
+      "url": "llms-txt#add-pattern-for-json-data"
+    },
+    {
+      "title": "Set the aggregator on an LLMTextProcessor",
+      "url": "llms-txt#set-the-aggregator-on-an-llmtextprocessor"
+    },
+    {
+      "title": "Initialize TTS service, and don't speak JSON data",
+      "url": "llms-txt#initialize-tts-service,-and-don't-speak-json-data"
+    },
+    {
+      "title": "add the llm_text_processor to your pipeline after the llm and before the tts",
+      "url": "llms-txt#add-the-llm_text_processor-to-your-pipeline-after-the-llm-and-before-the-tts"
+    },
+    {
+      "title": "llm -> llm_text_processor -> tts",
+      "url": "llms-txt#llm-->-llm_text_processor-->-tts"
+    },
+    {
+      "title": "Create pattern aggregator",
+      "url": "llms-txt#create-pattern-aggregator"
+    },
+    {
+      "title": "Add patterns for different parts of an explanation",
+      "url": "llms-txt#add-patterns-for-different-parts-of-an-explanation"
+    },
+    {
+      "title": "Set the aggregator on an LLMTextProcessor",
+      "url": "llms-txt#set-the-aggregator-on-an-llmtextprocessor"
+    },
+    {
+      "title": "Text-to-Speech service",
+      "url": "llms-txt#text-to-speech-service"
+    },
+    {
+      "title": "Text transformers for TTS",
+      "url": "llms-txt#text-transformers-for-tts"
+    },
+    {
+      "title": "This will insert Cartesia's spell tags around the provided text.",
+      "url": "llms-txt#this-will-insert-cartesia's-spell-tags-around-the-provided-text."
+    },
+    {
+      "title": "Setup the text transformers in TTS to spell out credit card numbers.",
+      "url": "llms-txt#setup-the-text-transformers-in-tts-to-spell-out-credit-card-numbers."
+    },
+    {
+      "title": "The string below matches the type defined in the PatternPairAggregator",
+      "url": "llms-txt#the-string-below-matches-the-type-defined-in-the-patternpairaggregator"
+    },
+    {
+      "title": "above so that whenever those segments are encountered, this transform",
+      "url": "llms-txt#above-so-that-whenever-those-segments-are-encountered,-this-transform"
+    },
+    {
+      "title": "is applied",
+      "url": "llms-txt#is-applied"
+    },
+    {
+      "title": "RTVI processor and observer with a text transformer to obfuscate",
+      "url": "llms-txt#rtvi-processor-and-observer-with-a-text-transformer-to-obfuscate"
+    },
+    {
+      "title": "credit card numbers in the bot's output.",
+      "url": "llms-txt#credit-card-numbers-in-the-bot's-output."
+    },
+    {
+      "title": "add the llm_text_processor to your pipeline after the llm and before the tts",
+      "url": "llms-txt#add-the-llm_text_processor-to-your-pipeline-after-the-llm-and-before-the-tts"
+    },
+    {
+      "title": "rtviIn -> llm -> llm_text_processor -> tts",
+      "url": "llms-txt#rtviin-->-llm-->-llm_text_processor-->-tts"
+    },
+    {
+      "title": "add rtviOut as an observer to your pipeline task",
+      "url": "llms-txt#add-rtviout-as-an-observer-to-your-pipeline-task"
+    },
+    {
+      "title": "TranscriptProcessor",
+      "url": "llms-txt#transcriptprocessor"
+    },
+    {
+      "title": "This handler will receive events from both processors",
+      "url": "llms-txt#this-handler-will-receive-events-from-both-processors"
+    },
+    {
+      "title": "UserIdleProcessor",
+      "url": "llms-txt#useridleprocessor"
+    }
+  ]
+}

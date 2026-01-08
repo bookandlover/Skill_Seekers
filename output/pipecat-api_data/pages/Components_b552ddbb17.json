@@ -1,0 +1,60 @@
+{
+  "title": "Components",
+  "content": "Source: https://docs.pipecat.ai/client/react/components\n\nReady-to-use React components for Pipecat applications\n\nThe Pipecat React SDK provides several components for handling audio, video, and visualization in your application.\n\n## PipecatClientProvider\n\nThe root component for providing Pipecat client context to your application.\n\n<ParamField type=\"PipecatClient\">\n  A singleton instance of `PipecatClient`\n</ParamField>\n\n## PipecatClientAudio\n\nCreates a new `<audio>` element that mounts the bot's audio track.\n\n## PipecatClientVideo\n\nCreates a new `<video>` element that renders either the bot or local participant's video track.\n\n<ParamField type=\"('local' | 'bot')\">\n  Defines which participant's video track is rendered\n</ParamField>\n\n<ParamField type=\"('contain' | 'cover')\">\n  Defines whether the video should be fully contained or cover the box. Default: 'contain'\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Forces the video to be mirrored, if set\n</ParamField>\n\n<ParamField type=\"function\">\n  Triggered whenever the video's rendered width or height changes\n</ParamField>\n\n## PipecatClientCamToggle\n\nA headless component to read and set the local participant's camera state.\n\n<ParamField type=\"function\">\n  Triggered whenever the local participant's camera state changes\n</ParamField>\n\n<ParamField type=\"boolean\">\n  If true, the component will not allow toggling the camera state. Default: false\n</ParamField>\n\n<ParamField type=\"function\">\n  A render prop that provides state and handlers to the children\n</ParamField>\n\n## PipecatClientMicToggle\n\nA headless component to read and set the local participant's microphone state.\n\n<ParamField type=\"function\">\n  Triggered whenever the local participant's microphone state changes\n</ParamField>\n\n<ParamField type=\"boolean\">\n  If true, the component will not allow toggling the microphone state. Default: false\n</ParamField>\n\n<ParamField type=\"function\">\n  A render prop that provides state and handlers to the children\n</ParamField>\n\nRenders a visual representation of audio input levels on a `<canvas>` element.\n\n<ParamField type=\"string\">\n  The participant type to visualize audio for\n</ParamField>\n\n<ParamField type=\"string\">\n  The background color of the canvas. Default: 'transparent'\n</ParamField>\n\n<ParamField type=\"string\">\n  The color of the audio level bars. Default: 'black'\n</ParamField>\n\n<ParamField type=\"number\">\n  The number of bars to display. Default: 5\n</ParamField>\n\n<ParamField type=\"number\">\n  The gap between bars in pixels. Default: 12\n</ParamField>\n\n<ParamField type=\"number\">\n  The width of each bar in pixels. Default: 30\n</ParamField>\n\n<ParamField type=\"number\">\n  The maximum height at full volume of each bar in pixels. Default: 120\n</ParamField>",
+  "code_samples": [
+    {
+      "code": "**Props**\n\n<ParamField type=\"PipecatClient\">\n  A singleton instance of `PipecatClient`\n</ParamField>\n\n## PipecatClientAudio\n\nCreates a new `<audio>` element that mounts the bot's audio track.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Props**\n\nNo props required\n\n## PipecatClientVideo\n\nCreates a new `<video>` element that renders either the bot or local participant's video track.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Props**\n\n<ParamField type=\"('local' | 'bot')\">\n  Defines which participant's video track is rendered\n</ParamField>\n\n<ParamField type=\"('contain' | 'cover')\">\n  Defines whether the video should be fully contained or cover the box. Default: 'contain'\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Forces the video to be mirrored, if set\n</ParamField>\n\n<ParamField type=\"function\">\n  Triggered whenever the video's rendered width or height changes\n</ParamField>\n\n## PipecatClientCamToggle\n\nA headless component to read and set the local participant's camera state.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Props**\n\n<ParamField type=\"function\">\n  Triggered whenever the local participant's camera state changes\n</ParamField>\n\n<ParamField type=\"boolean\">\n  If true, the component will not allow toggling the camera state. Default: false\n</ParamField>\n\n<ParamField type=\"function\">\n  A render prop that provides state and handlers to the children\n</ParamField>\n\n## PipecatClientMicToggle\n\nA headless component to read and set the local participant's microphone state.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Props**\n\n<ParamField type=\"function\">\n  Triggered whenever the local participant's microphone state changes\n</ParamField>\n\n<ParamField type=\"boolean\">\n  If true, the component will not allow toggling the microphone state. Default: false\n</ParamField>\n\n<ParamField type=\"function\">\n  A render prop that provides state and handlers to the children\n</ParamField>\n\n## VoiceVisualizer\n\nRenders a visual representation of audio input levels on a `<canvas>` element.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "PipecatClientProvider",
+      "id": "pipecatclientprovider"
+    },
+    {
+      "level": "h2",
+      "text": "PipecatClientAudio",
+      "id": "pipecatclientaudio"
+    },
+    {
+      "level": "h2",
+      "text": "PipecatClientVideo",
+      "id": "pipecatclientvideo"
+    },
+    {
+      "level": "h2",
+      "text": "PipecatClientCamToggle",
+      "id": "pipecatclientcamtoggle"
+    },
+    {
+      "level": "h2",
+      "text": "PipecatClientMicToggle",
+      "id": "pipecatclientmictoggle"
+    },
+    {
+      "level": "h2",
+      "text": "VoiceVisualizer",
+      "id": "voicevisualizer"
+    }
+  ],
+  "url": "llms-txt#components",
+  "links": []
+}

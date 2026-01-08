@@ -1,0 +1,34 @@
+{
+  "title": "FunctionFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/filters/function-filter\n\nProcessor that filters frames using a custom filter function\n\n`FunctionFilter` is a flexible processor that uses a custom async function to determine which frames to pass through. This allows for complex, dynamic filtering logic beyond simple type checking.\n\n## Constructor Parameters\n\n<ParamField type=\"Callable[[Frame], Awaitable[bool]]\">\n  Async function that examines each frame and returns True to allow it or False\n  to filter it out\n</ParamField>\n\n<ParamField type=\"FrameDirection\">\n  Which direction of frames to filter (DOWNSTREAM or UPSTREAM)\n</ParamField>\n\nWhen a frame passes through the processor:\n\n1. System frames and end frames are always passed through\n2. Frames moving in a different direction than specified are always passed through\n3. Other frames are passed to the filter function\n4. If the filter function returns True, the frame is passed through\n\nThe processor conditionally passes through frames based on:\n\n* Frame type (system frames and end frames always pass)\n* Frame direction (only filters in the specified direction)\n* Result of the custom filter function\n\n```python theme={null}\nfrom pipecat.frames.frames import TextFrame, Frame\nfrom pipecat.processors.filters import FunctionFilter\nfrom pipecat.processors.frame_processor import FrameDirection",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Functionality",
+      "id": "functionality"
+    },
+    {
+      "level": "h2",
+      "text": "Output Frames",
+      "id": "output-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#functionfilter",
+  "links": []
+}

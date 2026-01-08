@@ -1,0 +1,8 @@
+{
+  "title": "Create provider-specific serializer",
+  "content": "serializer = TwilioFrameSerializer(\n    stream_sid=stream_sid,\n    call_sid=call_sid,\n    account_sid=os.getenv(\"TWILIO_ACCOUNT_SID\", \"\"),\n    auth_token=os.getenv(\"TWILIO_AUTH_TOKEN\", \"\"),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-provider-specific-serializer",
+  "links": []
+}

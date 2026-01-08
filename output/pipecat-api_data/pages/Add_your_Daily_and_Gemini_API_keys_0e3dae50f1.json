@@ -1,0 +1,8 @@
+{
+  "title": "Add your Daily and Gemini API keys",
+  "content": "DAILY_API_KEY=[your key here]\nGEMINI_API_KEY=[your key here]",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-your-daily-and-gemini-api-keys",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Extract call information",
+  "content": "stream_id = call_data[\"stream_id\"]\ncall_control_id = call_data[\"call_control_id\"]\nfrom_number = call_data[\"from\"]  # Your Telnyx number\nto_number = call_data[\"to\"]      # Target number you're calling",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#extract-call-information",
+  "links": []
+}

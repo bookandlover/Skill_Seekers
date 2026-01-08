@@ -1,0 +1,8 @@
+{
+  "title": "Useful when running a file directly",
+  "content": "runner = PipelineRunner(handle_sigint=True)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#useful-when-running-a-file-directly",
+  "links": []
+}

@@ -1,0 +1,76 @@
+{
+  "title": "IVR Navigation",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/ivr\n\nAutomatically navigate phone system menus using AI-powered decision making\n\nThe `IVRNavigator` enables your bot to automatically navigate Interactive Voice Response (IVR) phone systems to reach specific goals. Instead of manually programming navigation paths, you provide an end goal and the bot handles the complex decision-making required to traverse phone menus using DTMF tones and conversational responses.\n\n## How IVR Navigation Works\n\nThe IVRNavigator combines several intelligent capabilities:\n\n1. **Goal-oriented navigation**: You specify what you want to accomplish (e.g., \"reach billing support\")\n2. **Automatic classification**: Detects whether incoming audio is an IVR system or human conversation\n3. **Smart decision making**: Analyzes menu options and selects the best path toward your goal\n4. **Multi-modal responses**: Uses both DTMF tones for menu selection, natural language for prompts, and waits when no input is appropriate\n5. **Status tracking**: Monitors progress and reports completion, waiting, or stuck states\n\n## Navigation Outcomes\n\nThe `IVRNavigator` can reach several outcomes during navigation:\n\nThe navigator successfully reaches its goal and is ready for the next step. Common actions:\n\n* [Terminate the pipeline](/guides/learn/pipeline-termination) if the goal is complete\n* Transfer the call to a human agent\n* Allow your bot to start a conversation with the reached department\n\nThe navigator cannot find a path forward in the IVR system. This might happen when:\n\n* Required information (account numbers, PINs) isn't available\n* The menu options don't align with the stated goal\n* The system encounters errors or invalid selections\n\n## Flexible Entry Points\n\nOne of the `IVRNavigator`'s key features is flexible entry point handling. When you dial a phone number, you might encounter either:\n\n* An IVR system with menu options\n* A direct connection to a human\n\nThe navigator automatically detects which scenario occurs and emits appropriate events:\n\n### Human Conversation Detected\n\nWhen a human answers instead of an IVR system, an `on_conversation_detected` event is emitted. You can handle that event to transition to a conversation.\n\nNote that the `on_conversation_detected` event also emits a `conversation_history` parameter that contains the previous conversation history. This allows you to build a prompt that includes your conversation system prompt plus any conversation history up to that point in time.\n\n### IVR System Detected\n\nWhen an IVR system is detected, the IVR Navigator automatically transitions into navigation mode:\n\n* **System prompt**: Updates to use your specified navigation goal\n* **VAD timing**: Adjusts to `stop_secs=2.0` (or your custom `ivr_vad_params`) to allow time for complete menu announcements\n* **Navigation logic**: Begins analyzing menu options and making decisions toward your goal\n\nNo additional code is required. The navigator handles this transition automatically.\n\n**Optional Event Handling**\n\nIf you need to log the detection or perform custom actions, you can handle the `on_ivr_status_changed` event:\n\n## Basic Implementation\n\n### Step 1: Create the IVR Navigator\n\n```python theme={null}\nfrom pipecat.extensions.ivr.ivr_navigator import IVRNavigator\nfrom pipecat.audio.vad.vad_analyzer import VADParams",
+  "code_samples": [
+    {
+      "code": "### Stuck ⚠️\n\nThe navigator cannot find a path forward in the IVR system. This might happen when:\n\n* Required information (account numbers, PINs) isn't available\n* The menu options don't align with the stated goal\n* The system encounters errors or invalid selections",
+      "language": "unknown"
+    },
+    {
+      "code": "## Flexible Entry Points\n\nOne of the `IVRNavigator`'s key features is flexible entry point handling. When you dial a phone number, you might encounter either:\n\n* An IVR system with menu options\n* A direct connection to a human\n\nThe navigator automatically detects which scenario occurs and emits appropriate events:\n\n### Human Conversation Detected\n\nWhen a human answers instead of an IVR system, an `on_conversation_detected` event is emitted. You can handle that event to transition to a conversation.",
+      "language": "unknown"
+    },
+    {
+      "code": "Note that the `on_conversation_detected` event also emits a `conversation_history` parameter that contains the previous conversation history. This allows you to build a prompt that includes your conversation system prompt plus any conversation history up to that point in time.\n\n### IVR System Detected\n\nWhen an IVR system is detected, the IVR Navigator automatically transitions into navigation mode:\n\n* **System prompt**: Updates to use your specified navigation goal\n* **VAD timing**: Adjusts to `stop_secs=2.0` (or your custom `ivr_vad_params`) to allow time for complete menu announcements\n* **Navigation logic**: Begins analyzing menu options and making decisions toward your goal\n\nNo additional code is required. The navigator handles this transition automatically.\n\n**Optional Event Handling**\n\nIf you need to log the detection or perform custom actions, you can handle the `on_ivr_status_changed` event:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Basic Implementation\n\n### Step 1: Create the IVR Navigator",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "How IVR Navigation Works",
+      "id": "how-ivr-navigation-works"
+    },
+    {
+      "level": "h2",
+      "text": "Navigation Outcomes",
+      "id": "navigation-outcomes"
+    },
+    {
+      "level": "h3",
+      "text": "Completed ✅",
+      "id": "completed-✅"
+    },
+    {
+      "level": "h3",
+      "text": "Stuck ⚠️",
+      "id": "stuck-⚠️"
+    },
+    {
+      "level": "h2",
+      "text": "Flexible Entry Points",
+      "id": "flexible-entry-points"
+    },
+    {
+      "level": "h3",
+      "text": "Human Conversation Detected",
+      "id": "human-conversation-detected"
+    },
+    {
+      "level": "h3",
+      "text": "IVR System Detected",
+      "id": "ivr-system-detected"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Implementation",
+      "id": "basic-implementation"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Create the IVR Navigator",
+      "id": "step-1:-create-the-ivr-navigator"
+    }
+  ],
+  "url": "llms-txt#ivr-navigation",
+  "links": []
+}

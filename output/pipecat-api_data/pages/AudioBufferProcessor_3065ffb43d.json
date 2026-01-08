@@ -1,0 +1,149 @@
+{
+  "title": "AudioBufferProcessor",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/audio/audio-buffer-processor\n\nProcess and buffer audio frames from conversations with flexible event handling\n\nThe `AudioBufferProcessor` captures and buffers audio frames from both input (user) and output (bot) sources during conversations. It provides synchronized audio streams with configurable sample rates, supports both mono and stereo output, and offers flexible event handlers for various audio processing workflows.\n\n<ParamField type=\"Optional[int]\">\n  The desired output sample rate in Hz. If `None`, uses the transport's sample\n  rate from the `StartFrame`.\n</ParamField>\n\n<ParamField type=\"int\">\n  Number of output audio channels:\n\n* `1`: Mono output (user and bot audio are mixed together)\n  * `2`: Stereo output (user audio on left channel, bot audio on right channel)\n</ParamField>\n\n<ParamField type=\"int\">\n  Buffer size in bytes that triggers audio data events:\n\n* `0`: Events only trigger when recording stops\n  * `>0`: Events trigger whenever buffer reaches this size (useful for chunked processing)\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to enable per-turn audio event handlers (`on_user_turn_audio_data` and\n  `on_bot_turn_audio_data`).\n</ParamField>\n\nThe current sample rate of the audio processor in Hz.\n\nThe number of channels in the audio output (1 for mono, 2 for stereo).\n\n### start\\_recording()\n\nStart recording audio from both user and bot sources. Initializes recording state and resets audio buffers.\n\n### stop\\_recording()\n\nStop recording and trigger final audio data handlers with any remaining buffered audio.\n\nCheck if both user and bot audio buffers contain data.\n\n**Returns:** `True` if both buffers contain audio data.\n\nThe processor supports multiple event handlers for different audio processing workflows. Register handlers using the `@processor.event_handler()` decorator.\n\nTriggered when `buffer_size` is reached or recording stops, providing merged audio.\n\n* `buffer`: The AudioBufferProcessor instance\n* `audio`: Merged audio data (format depends on `num_channels` setting)\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Number of channels (1 or 2)\n\n### on\\_track\\_audio\\_data\n\nTriggered alongside `on_audio_data`, providing separate user and bot audio tracks.\n\n* `buffer`: The AudioBufferProcessor instance\n* `user_audio`: Raw user audio bytes (always mono)\n* `bot_audio`: Raw bot audio bytes (always mono)\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Always 1 for individual tracks\n\n### on\\_user\\_turn\\_audio\\_data\n\nTriggered when a user speaking turn ends. Requires `enable_turn_audio=True`.\n\n* `buffer`: The AudioBufferProcessor instance\n* `audio`: Audio data from the user's speaking turn\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Always 1 (mono)\n\n### on\\_bot\\_turn\\_audio\\_data\n\nTriggered when a bot speaking turn ends. Requires `enable_turn_audio=True`.\n\n* `buffer`: The AudioBufferProcessor instance\n* `audio`: Audio data from the bot's speaking turn\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Always 1 (mono)\n\n## Audio Processing Features\n\n* **Automatic resampling**: Converts incoming audio to the specified sample rate\n* **Buffer synchronization**: Aligns user and bot audio streams temporally\n* **Silence insertion**: Fills gaps in non-continuous audio streams to maintain timing\n* **Turn tracking**: Monitors speaking turns when `enable_turn_audio=True`\n\n### STT Audio Passthrough\n\nIf using an STT service in your pipeline, enable audio passthrough to make audio available to the AudioBufferProcessor:\n\n<Note>`audio_passthrough` is enabled by default.</Note>\n\n### Pipeline Placement\n\nAdd the AudioBufferProcessor after `transport.output()` to capture both user and bot audio:",
+  "code_samples": [
+    {
+      "code": "### Parameters\n\n<ParamField type=\"Optional[int]\">\n  The desired output sample rate in Hz. If `None`, uses the transport's sample\n  rate from the `StartFrame`.\n</ParamField>\n\n<ParamField type=\"int\">\n  Number of output audio channels:\n\n  * `1`: Mono output (user and bot audio are mixed together)\n  * `2`: Stereo output (user audio on left channel, bot audio on right channel)\n</ParamField>\n\n<ParamField type=\"int\">\n  Buffer size in bytes that triggers audio data events:\n\n  * `0`: Events only trigger when recording stops\n  * `>0`: Events trigger whenever buffer reaches this size (useful for chunked processing)\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to enable per-turn audio event handlers (`on_user_turn_audio_data` and\n  `on_bot_turn_audio_data`).\n</ParamField>\n\n## Properties\n\n### sample\\_rate",
+      "language": "unknown"
+    },
+    {
+      "code": "The current sample rate of the audio processor in Hz.\n\n### num\\_channels",
+      "language": "unknown"
+    },
+    {
+      "code": "The number of channels in the audio output (1 for mono, 2 for stereo).\n\n## Methods\n\n### start\\_recording()",
+      "language": "unknown"
+    },
+    {
+      "code": "Start recording audio from both user and bot sources. Initializes recording state and resets audio buffers.\n\n### stop\\_recording()",
+      "language": "unknown"
+    },
+    {
+      "code": "Stop recording and trigger final audio data handlers with any remaining buffered audio.\n\n### has\\_audio()",
+      "language": "unknown"
+    },
+    {
+      "code": "Check if both user and bot audio buffers contain data.\n\n**Returns:** `True` if both buffers contain audio data.\n\n## Event Handlers\n\nThe processor supports multiple event handlers for different audio processing workflows. Register handlers using the `@processor.event_handler()` decorator.\n\n### on\\_audio\\_data\n\nTriggered when `buffer_size` is reached or recording stops, providing merged audio.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Parameters:**\n\n* `buffer`: The AudioBufferProcessor instance\n* `audio`: Merged audio data (format depends on `num_channels` setting)\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Number of channels (1 or 2)\n\n### on\\_track\\_audio\\_data\n\nTriggered alongside `on_audio_data`, providing separate user and bot audio tracks.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Parameters:**\n\n* `buffer`: The AudioBufferProcessor instance\n* `user_audio`: Raw user audio bytes (always mono)\n* `bot_audio`: Raw bot audio bytes (always mono)\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Always 1 for individual tracks\n\n### on\\_user\\_turn\\_audio\\_data\n\nTriggered when a user speaking turn ends. Requires `enable_turn_audio=True`.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Parameters:**\n\n* `buffer`: The AudioBufferProcessor instance\n* `audio`: Audio data from the user's speaking turn\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Always 1 (mono)\n\n### on\\_bot\\_turn\\_audio\\_data\n\nTriggered when a bot speaking turn ends. Requires `enable_turn_audio=True`.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Parameters:**\n\n* `buffer`: The AudioBufferProcessor instance\n* `audio`: Audio data from the bot's speaking turn\n* `sample_rate`: Sample rate in Hz\n* `num_channels`: Always 1 (mono)\n\n## Audio Processing Features\n\n* **Automatic resampling**: Converts incoming audio to the specified sample rate\n* **Buffer synchronization**: Aligns user and bot audio streams temporally\n* **Silence insertion**: Fills gaps in non-continuous audio streams to maintain timing\n* **Turn tracking**: Monitors speaking turns when `enable_turn_audio=True`\n\n## Integration Notes\n\n### STT Audio Passthrough\n\nIf using an STT service in your pipeline, enable audio passthrough to make audio available to the AudioBufferProcessor:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>`audio_passthrough` is enabled by default.</Note>\n\n### Pipeline Placement\n\nAdd the AudioBufferProcessor after `transport.output()` to capture both user and bot audio:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h3",
+      "text": "Parameters",
+      "id": "parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Properties",
+      "id": "properties"
+    },
+    {
+      "level": "h3",
+      "text": "sample\\_rate",
+      "id": "sample\\_rate"
+    },
+    {
+      "level": "h3",
+      "text": "num\\_channels",
+      "id": "num\\_channels"
+    },
+    {
+      "level": "h2",
+      "text": "Methods",
+      "id": "methods"
+    },
+    {
+      "level": "h3",
+      "text": "start\\_recording()",
+      "id": "start\\_recording()"
+    },
+    {
+      "level": "h3",
+      "text": "stop\\_recording()",
+      "id": "stop\\_recording()"
+    },
+    {
+      "level": "h3",
+      "text": "has\\_audio()",
+      "id": "has\\_audio()"
+    },
+    {
+      "level": "h2",
+      "text": "Event Handlers",
+      "id": "event-handlers"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_audio\\_data",
+      "id": "on\\_audio\\_data"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_track\\_audio\\_data",
+      "id": "on\\_track\\_audio\\_data"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_user\\_turn\\_audio\\_data",
+      "id": "on\\_user\\_turn\\_audio\\_data"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_bot\\_turn\\_audio\\_data",
+      "id": "on\\_bot\\_turn\\_audio\\_data"
+    },
+    {
+      "level": "h2",
+      "text": "Audio Processing Features",
+      "id": "audio-processing-features"
+    },
+    {
+      "level": "h2",
+      "text": "Integration Notes",
+      "id": "integration-notes"
+    },
+    {
+      "level": "h3",
+      "text": "STT Audio Passthrough",
+      "id": "stt-audio-passthrough"
+    },
+    {
+      "level": "h3",
+      "text": "Pipeline Placement",
+      "id": "pipeline-placement"
+    }
+  ],
+  "url": "llms-txt#audiobufferprocessor",
+  "links": []
+}

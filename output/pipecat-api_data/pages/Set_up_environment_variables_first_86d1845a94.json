@@ -1,0 +1,8 @@
+{
+  "title": "Set up environment variables first",
+  "content": "export TWILIO_ACCOUNT_SID=your_account_sid\nexport TWILIO_AUTH_TOKEN=your_auth_token",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#set-up-environment-variables-first",
+  "links": []
+}

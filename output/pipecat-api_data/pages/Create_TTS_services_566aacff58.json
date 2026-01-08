@@ -1,0 +1,8 @@
+{
+  "title": "Create TTS services",
+  "content": "elevenlabs = ElevenLabsTTSService(api_key=os.getenv(\"ELEVENLABS_API_KEY\"), voice_id=os.getenv(\"ELEVENLABS_VOICE_ID\"))\ncartesia = CartesiaTTSService(api_key=os.getenv(\"CARTESIA_API_KEY\"), voice_id=os.getenv(\"CARTESIA_VOICE_ID\"))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-tts-services",
+  "links": []
+}

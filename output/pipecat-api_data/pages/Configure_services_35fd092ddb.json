@@ -1,0 +1,8 @@
+{
+  "title": "Configure services",
+  "content": "stt = DeepgramSTTService(api_key=KEY)\nllm = OpenAILLMService(api_key=KEY, model=\"gpt-4o\")\ntts = CartesiaTTSService(api_key=KEY, voice_id=ID)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#configure-services",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "This will insert Cartesia's spell tags around the provided text.",
+  "content": "async def spell_out_text(text: str, type: str) -> str:\n    return CartesiaTTSService.SPELL(text)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#this-will-insert-cartesia's-spell-tags-around-the-provided-text.",
+  "links": []
+}

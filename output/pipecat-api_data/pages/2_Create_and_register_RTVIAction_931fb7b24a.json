@@ -1,0 +1,37 @@
+{
+  "title": "2. Create and register RTVIAction",
+  "content": "print_action = RTVIAction(\n    service=\"conversation\",\n    action=\"print_message\",\n    arguments=[\n        RTVIActionArgument(name=\"message\", type=\"string\")\n    ],\n    result=\"bool\",\n    handler=handle_print_message\n)\nrtvi.register_action(print_action)\npython theme={null}\nsearch_action = RTVIAction(\n    service=\"knowledge\",\n    action=\"search\",\n    arguments=[\n        RTVIActionArgument(name=\"query\", type=\"string\"),\n        RTVIActionArgument(name=\"limit\", type=\"number\")\n    ],\n    result=\"array\",\n    handler=handle_search\n)\npython theme={null}\n\nawait processor.handle_function_call(\n    function_name=function_name,\n    tool_call_id=tool_call_id,\n    arguments=arguments,\n)\n\nawait processor.handle_function_call(params)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Action Arguments\n\nActions can accept typed arguments from clients:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Function Calls\n\nHandle LLM function calls with client interaction:",
+      "language": "unknown"
+    },
+    {
+      "code": "The function call process:\n\n1. LLM requests a function call\n2. Processor notifies client with `llm-function-call` message\n3. Client executes function and returns result\n4. Result is passed back to LLM via `FunctionCallResultFrame`\n5. Conversation continues\n\n## Error Handling\n\nSend error messages to clients:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Action Arguments",
+      "id": "action-arguments"
+    },
+    {
+      "level": "h2",
+      "text": "Function Calls",
+      "id": "function-calls"
+    },
+    {
+      "level": "h2",
+      "text": "Error Handling",
+      "id": "error-handling"
+    }
+  ],
+  "url": "llms-txt#2.-create-and-register-rtviaction",
+  "links": []
+}

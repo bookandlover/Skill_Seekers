@@ -1,0 +1,8 @@
+{
+  "title": "Create with default parameters",
+  "content": "params = PipelineParams()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-with-default-parameters",
+  "links": []
+}

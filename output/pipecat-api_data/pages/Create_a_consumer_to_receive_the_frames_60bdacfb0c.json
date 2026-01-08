@@ -1,0 +1,8 @@
+{
+  "title": "Create a consumer to receive the frames",
+  "content": "consumer = ConsumerProcessor(\n    producer=producer,\n    direction=FrameDirection.DOWNSTREAM\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-a-consumer-to-receive-the-frames",
+  "links": []
+}

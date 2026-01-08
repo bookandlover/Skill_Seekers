@@ -1,0 +1,43 @@
+{
+  "title": "Observer Pattern",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/observers/observer-pattern\n\nUnderstanding and implementing observers in Pipecat\n\nThe Observer pattern in Pipecat allows non-intrusive monitoring of frames as they flow through the pipeline. Observers can watch frame traffic without affecting the pipeline's core functionality.\n\n<Warning>DEPRECATED: The old observer pattern with individual parameters (`on_push_frame(src, dst, frame, direction, timestamp)`) is deprecated. Use the new pattern with data objects (`on_push_frame(data: FramePushed)`) instead.</Warning>\n\nAll observers must inherit from `BaseObserver` and can implement two main methods:\n\n* `on_push_frame(data: FramePushed)`: Called when a frame is pushed from one processor to another\n* `on_process_frame(data: FrameProcessed)`: Called when a frame is being processed by a processor\n\n## Available Observers\n\nPipecat provides several built-in observers:\n\n* **LLMLogObserver**: Logs LLM activity and responses\n* **TranscriptionLogObserver**: Logs speech-to-text transcription events\n* **RTVIObserver**: Converts internal frames to RTVI protocol messages for server to client messaging\n\n## Using Multiple Observers\n\nYou can attach multiple observers to a pipeline task. Each observer will be notified of all frames:\n\n## Example: Debug Observer\n\nHere's an example observer that logs interruptions and bot speaking events:\n\nObservers are particularly useful for:\n\n* Debugging frame flow\n* Logging specific events\n* Monitoring pipeline behavior\n* Collecting metrics\n* Converting internal frames to external messages",
+  "code_samples": [
+    {
+      "code": "## Available Observers\n\nPipecat provides several built-in observers:\n\n* **LLMLogObserver**: Logs LLM activity and responses\n* **TranscriptionLogObserver**: Logs speech-to-text transcription events\n* **RTVIObserver**: Converts internal frames to RTVI protocol messages for server to client messaging\n\n## Using Multiple Observers\n\nYou can attach multiple observers to a pipeline task. Each observer will be notified of all frames:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Example: Debug Observer\n\nHere's an example observer that logs interruptions and bot speaking events:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Base Observer",
+      "id": "base-observer"
+    },
+    {
+      "level": "h2",
+      "text": "Available Observers",
+      "id": "available-observers"
+    },
+    {
+      "level": "h2",
+      "text": "Using Multiple Observers",
+      "id": "using-multiple-observers"
+    },
+    {
+      "level": "h2",
+      "text": "Example: Debug Observer",
+      "id": "example:-debug-observer"
+    },
+    {
+      "level": "h2",
+      "text": "Common Use Cases",
+      "id": "common-use-cases"
+    }
+  ],
+  "url": "llms-txt#observer-pattern",
+  "links": []
+}

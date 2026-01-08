@@ -1,0 +1,34 @@
+{
+  "title": "Daily WebRTC Transport",
+  "content": "Source: https://docs.pipecat.ai/client/react-native/transports/daily\n\nThe DailyTransport class provides a WebRTC transport layer using [Daily.co's](https://daily.co) infrastructure. It wraps a React-Native-Daily-JS call client to handle audio/video device management, WebRTC connections, and real-time communication between clients and bots. For complete documentation on Daily's API, see the [Daily RN API Reference](https://docs.daily.co/reference/rn-daily-js).\n\nThis transport is designed for production use cases, leveraging Daily's global infrastructure for low-latency, high-quality audio and video streaming. It expects your Pipecat server to include the corresponding [`DailyTransport` server-side](/server/services/transport/daily) implementation.\n\n### Constructor Options\n\n<ParamField>\n  The `DailyTransportConstructorOptions` extends the `DailyFactoryOptions` type that is accepted by the underlying Daily instance. These options are passed directly through to the Daily constructor. See the [Daily RN API Reference](https://docs.daily.co/reference/rn-daily-js/daily-call-client/properties) for a complete list of options.\n</ParamField>\n\n<Note>\n  The Pipecat React Native SDK leverages the Pipecat JavaScript SDK for seamless integration with React Native applications.\n  For detailed information, please reference to the [Javascript SDK docs](/client/js/transports/daily).\n\n**Just ensure you use the appropriate transport layer for React Native.**\n</Note>\n\n<CardGroup>\n  <Card title=\"Demo\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot\">\n    Simple Chatbot Demo\n  </Card>\n\n<Card title=\"Source\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat-client-react-native-transports/tree/main/transports/daily\">\n    `RNDailyTransport`\n  </Card>\n</CardGroup>\n\n<Card title=\"Package\" icon=\"browser\" href=\"https://www.npmjs.com/package/@pipecat-ai/react-native-daily-transport\">\n  `@pipecat-ai/react-native-daily-transport`\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Setup",
+      "id": "basic-setup"
+    },
+    {
+      "level": "h2",
+      "text": "API Reference",
+      "id": "api-reference"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Options",
+      "id": "constructor-options"
+    },
+    {
+      "level": "h2",
+      "text": "More Information",
+      "id": "more-information"
+    }
+  ],
+  "url": "llms-txt#daily-webrtc-transport",
+  "links": []
+}

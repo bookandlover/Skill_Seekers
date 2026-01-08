@@ -1,0 +1,8 @@
+{
+  "title": "Push downstream (default)",
+  "content": "await self.push_frame(frame, FrameDirection.DOWNSTREAM)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#push-downstream-(default)",
+  "links": []
+}

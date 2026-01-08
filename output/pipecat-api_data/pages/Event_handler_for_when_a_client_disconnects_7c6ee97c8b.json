@@ -1,0 +1,19 @@
+{
+  "title": "Event handler for when a client disconnects",
+  "content": "@transport.event_handler(\"on_client_disconnected\")\nasync def on_client_disconnected(transport, client):\n    logger.info(f\"Client disconnected\")\n    # Cancel the task when the client disconnects\n    # This stops the pipeline and all processors, cleaning up resources\n    await task.cancel()\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "When a client connects, the bot adds a greeting instruction and queues a context frame to initiate the conversation. When disconnecting, it properly cancels the task to clean up resources.\n\n### Running the Pipeline\n\nFinally, the pipeline is executed by a PipelineRunner:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Running the Pipeline",
+      "id": "running-the-pipeline"
+    }
+  ],
+  "url": "llms-txt#event-handler-for-when-a-client-disconnects",
+  "links": []
+}

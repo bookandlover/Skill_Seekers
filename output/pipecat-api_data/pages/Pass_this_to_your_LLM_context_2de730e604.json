@@ -1,0 +1,25 @@
+{
+  "title": "Pass this to your LLM context",
+  "content": "context = LLMContext(\n    messages=[{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}],\n    tools=tools\n)\ncontext_aggregator = LLMContextAggregatorPair(context)\npython OpenAI theme={null}\n  from openai.types.chat import ChatCompletionToolParam\n\n# OpenAI native format\n  tools = [\n      ChatCompletionToolParam(\n          type=\"function\",\n          function={\n              \"name\": \"get_current_weather\",\n              \"description\": \"Get the current weather\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"location\": {\n                          \"type\": \"string\",\n                          \"description\": \"The city and state, e.g. San Francisco, CA\",\n                      },\n                      \"format\": {\n                          \"type\": \"string\",\n                          \"enum\": [\"celsius\", \"fahrenheit\"],\n                          \"description\": \"The temperature unit to use.\",\n                      },\n                  },\n                  \"required\": [\"location\", \"format\"],\n              },\n          },\n      )\n  ]\n  python Anthropic theme={null}\n  # Anthropic native format\n  tools = [\n      {\n          \"name\": \"get_weather\",\n          \"description\": \"Get the weather in a given location\",\n          \"input_schema\": {\n              \"type\": \"object\",\n              \"properties\": {\n                  \"location\": {\n                      \"type\": \"string\",\n                      \"description\": \"The city, e.g. San Francisco\",\n                  },\n                  \"format\": {\n                      \"type\": \"string\",\n                      \"enum\": [\"celsius\", \"fahrenheit\"],\n                      \"description\": \"The temperature unit to use.\",\n                  },\n              },\n              \"required\": [\"location\", \"format\"],\n          },\n      }\n  ]\n  python Gemini theme={null}\n  # Gemini native format\n  tools = [\n      {\n          \"function_declarations\": [\n              {\n                  \"name\": \"get_weather_current\",\n                  \"description\": \"Get the current weather\",\n                  \"parameters\": {\n                      \"type\": \"object\",\n                      \"properties\": {\n                          \"location\": {\n                              \"type\": \"string\",\n                              \"description\": \"Location as 'city,state,country'\",\n                          },\n                          \"format\": {\n                              \"type\": \"string\",\n                              \"enum\": [\"celsius\", \"fahrenheit\"],\n                              \"description\": \"The temperature unit to use.\",\n                          },\n                      },\n                      \"required\": [\"location\", \"format\"],\n                  },\n              }\n          ]\n      }\n  ]\n  python theme={null}\nfrom pipecat.adapters.schemas.tools_schema import AdapterType, ToolsSchema",
+  "code_samples": [
+    {
+      "code": "#### Using Provider-Specific Formats (Alternative)\n\nYou can also define functions in the provider-specific format if needed:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n#### Provider-Specific Custom Tools\n\nSome providers support unique tools that don't fit the standard function schema. For these cases, you can add custom tools:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#pass-this-to-your-llm-context",
+  "links": []
+}

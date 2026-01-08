@@ -1,0 +1,44 @@
+{
+  "title": "Pipeline Heartbeats",
+  "content": "Source: https://docs.pipecat.ai/server/pipeline/heartbeats\n\nMonitor pipeline health with heartbeat frames\n\nPipeline heartbeats provide a way to monitor the health of your pipeline by sending periodic heartbeat frames through the system. When enabled, the pipeline will send heartbeat frames every second and monitor their progress through the pipeline.\n\n## Enabling Heartbeats\n\nHeartbeats can be enabled by setting `enable_heartbeats` to `True` in the `PipelineParams`:\n\nWhen heartbeats are enabled:\n\n1. The pipeline sends a `HeartbeatFrame` every second\n2. The frame traverses through all processors in the pipeline, from source to sink\n3. The pipeline monitors how long it takes for heartbeat frames to complete their journey\n4. If a heartbeat frame isn't received within 5 seconds, a warning is logged\n\n* Trace-level logs showing heartbeat processing time\n* Warning messages if heartbeats aren't received within the monitoring window\n\nExample warning message:\n\nHeartbeat monitoring is useful for:\n\n* Detecting pipeline stalls or blockages\n* Monitoring processing latency through the pipeline\n* Identifying performance issues in specific processors\n* Ensuring the pipeline remains responsive\n\nThe heartbeat system uses two key timing constants:\n\n* `HEARTBEAT_SECONDS = 1.0` - Interval between heartbeat frames\n* `HEARTBEAT_MONITOR_SECONDS = 10.0` - Time before warning if no heartbeat received\n\n<Note>\n  These values are currently fixed but may be configurable in future versions.\n</Note>",
+  "code_samples": [
+    {
+      "code": "## How It Works\n\nWhen heartbeats are enabled:\n\n1. The pipeline sends a `HeartbeatFrame` every second\n2. The frame traverses through all processors in the pipeline, from source to sink\n3. The pipeline monitors how long it takes for heartbeat frames to complete their journey\n4. If a heartbeat frame isn't received within 5 seconds, a warning is logged\n\n## Monitoring Output\n\nThe system will log:\n\n* Trace-level logs showing heartbeat processing time\n* Warning messages if heartbeats aren't received within the monitoring window\n\nExample warning message:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Enabling Heartbeats",
+      "id": "enabling-heartbeats"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Monitoring Output",
+      "id": "monitoring-output"
+    },
+    {
+      "level": "h2",
+      "text": "Use Cases",
+      "id": "use-cases"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    }
+  ],
+  "url": "llms-txt#pipeline-heartbeats",
+  "links": []
+}

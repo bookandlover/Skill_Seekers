@@ -1,0 +1,8 @@
+{
+  "title": "Switch to cheaper model for simple tasks",
+  "content": "await task.queue_frame(ManuallySwitchServiceFrame(service=gpt35))\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#switch-to-cheaper-model-for-simple-tasks",
+  "links": []
+}

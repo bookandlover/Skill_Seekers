@@ -1,0 +1,8 @@
+{
+  "title": "Add patterns for different parts of an explanation",
+  "content": "pattern_aggregator.add_pattern(\n    type=\"credit_card\",\n    start_pattern=\"<card>\",\n    end_pattern=\"</card>\",\n    action=MatchAction.AGGREGATE\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-patterns-for-different-parts-of-an-explanation",
+  "links": []
+}

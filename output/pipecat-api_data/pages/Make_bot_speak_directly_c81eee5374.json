@@ -1,0 +1,19 @@
+{
+  "title": "Make bot speak directly",
+  "content": "await tts.queue_frame(TTSSpeakFrame(\"Hello, how can I help you?\"))\npython theme={null}\nfrom pipecat.frames.frames import TTSUpdateSettingsFrame",
+  "code_samples": [
+    {
+      "code": "### Dynamic Settings Updates\n\nUpdate TTS settings during conversation:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Dynamic Settings Updates",
+      "id": "dynamic-settings-updates"
+    }
+  ],
+  "url": "llms-txt#make-bot-speak-directly",
+  "links": []
+}

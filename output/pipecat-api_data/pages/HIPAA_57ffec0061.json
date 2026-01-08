@@ -1,0 +1,29 @@
+{
+  "title": "HIPAA",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/security/hipaa\n\nHIPAA compliance for Pipecat Cloud\n\nPipecat Cloud provides HIPAA-compliant infrastructure for healthcare applications that need to process Protected Health Information (PHI).\n\n## Infrastructure Compliance\n\nPipecat Cloud's infrastructure meets HIPAA controls for:\n\n* Data processing\n* Data transmission\n* Secure handling of PHI\n\n## Data Logging with HIPAA Controls\n\nWhen HIPAA controls are enabled for your account:\n\n**No application data is logged** - This includes conversation history and any PHI that may be contained in your application logs.\n\n**Rationale**: Pipecat follows the HIPAA \"minimum necessary\" rule by logging only what's essential to run the service, rather than storing your PHI data.\n\n**Alternative logging**: Configure an independent logging solution to route your application logs to your own secure log storage system.\n\n## Business Associate Agreement (BAA)\n\nDaily can sign a Business Associate Agreement covering:\n\n* Pipecat Cloud\n* Daily WebRTC infrastructure\n* Daily transcription services\n\nA single BAA covers all these services.\n\nContact us at [help@daily.co](mailto:help@daily.co) to:\n\n* Enable HIPAA controls for your account\n* Sign a Business Associate Agreement\n* Learn more about HIPAA compliance features",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Infrastructure Compliance",
+      "id": "infrastructure-compliance"
+    },
+    {
+      "level": "h2",
+      "text": "Data Logging with HIPAA Controls",
+      "id": "data-logging-with-hipaa-controls"
+    },
+    {
+      "level": "h2",
+      "text": "Business Associate Agreement (BAA)",
+      "id": "business-associate-agreement-(baa)"
+    },
+    {
+      "level": "h2",
+      "text": "Getting Started",
+      "id": "getting-started"
+    }
+  ],
+  "url": "llms-txt#hipaa",
+  "links": []
+}

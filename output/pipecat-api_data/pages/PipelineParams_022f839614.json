@@ -1,0 +1,19 @@
+{
+  "title": "PipelineParams",
+  "content": "Source: https://docs.pipecat.ai/server/pipeline/pipeline-params\n\nConfigure pipeline execution with PipelineParams\n\nThe `PipelineParams` class provides a structured way to configure various aspects of pipeline execution. These parameters control behaviors like audio settings, metrics collection, heartbeat monitoring, and interruption handling.\n\n```python theme={null}\nfrom pipecat.pipeline.task import PipelineParams, PipelineTask",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Usage",
+      "id": "basic-usage"
+    }
+  ],
+  "url": "llms-txt#pipelineparams",
+  "links": []
+}

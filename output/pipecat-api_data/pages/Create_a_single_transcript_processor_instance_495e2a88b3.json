@@ -1,0 +1,33 @@
+{
+  "title": "Create a single transcript processor instance",
+  "content": "transcript = TranscriptProcessor()\npython theme={null}\npipeline = Pipeline(\n    [\n        transport.input(),\n        stt,                            # Speech-to-text\n        transcript.user(),              # Captures user transcripts\n        context_aggregator.user(),\n        llm,\n        tts,                            # Text-to-speech\n        transport.output(),\n        transcript.assistant(),         # Captures assistant transcripts\n        context_aggregator.assistant(),\n    ]\n)\npython theme={null}\n@transcript.event_handler(\"on_transcript_update\")\nasync def handle_transcript_update(processor, frame):\n    # Each message contains role (user/assistant), content, and timestamp\n    for message in frame.messages:\n        print(f\"[{message.timestamp}] {message.role}: {message.content}\")\n```\n\n<Tip>\n  In addition to console logging, you can save transcripts to a database or file\n  for later analysis.\n</Tip>\n\n<CardGroup>\n  <Card title=\"Try the Transcript Example\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/28-transcription-processor.py\">\n    Explore a complete working example that demonstrates how to collect and save\n    conversation transcripts with Pipecat.\n  </Card>\n\n<Card title=\"TranscriptProcessor Reference\" icon=\"book\" href=\"/server/utilities/transcript-processor\">\n    Read the complete API reference documentation for advanced configuration\n    options and event handlers.\n  </Card>\n</CardGroup>\n\nConsider implementing transcript recording in your application for debugging during development and preserving important conversations in production. The transcript data can also be useful for analyzing conversation patterns and improving your bot's responses over time.",
+  "code_samples": [
+    {
+      "code": "### Step 2: Add to Your Pipeline\n\nPlace the processors in your pipeline at the appropriate positions:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  Place `transcript.user()` after the STT processor and `transcript.assistant()`\n  after `transport.output()` to ensure accurate transcript collection.\n</Note>\n\n### Step 3: Handle Transcript Updates\n\nRegister an event handler to process transcript updates:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Step 2: Add to Your Pipeline",
+      "id": "step-2:-add-to-your-pipeline"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Handle Transcript Updates",
+      "id": "step-3:-handle-transcript-updates"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#create-a-single-transcript-processor-instance",
+  "links": []
+}

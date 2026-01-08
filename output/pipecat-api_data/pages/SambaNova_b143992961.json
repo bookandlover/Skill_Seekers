@@ -1,0 +1,34 @@
+{
+  "title": "SambaNova",
+  "content": "Source: https://docs.pipecat.ai/server/services/llm/sambanova\n\nLLM service implementation using SambaNova's API with OpenAI-compatible interface\n\n`SambaNovaLLMService` provides access to SambaNova's language models through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management with SambaNova's high-performance inference platform.\n\n<CardGroup>\n  <Card title=\"SambaNova LLM API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.sambanova.llm.html\">\n    Pipecat's API methods for SambaNova integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14s-function-calling-sambanova.py\">\n    Complete example with function calling\n  </Card>\n\n<Card title=\"SambaNova Documentation\" icon=\"book\" href=\"https://docs.sambanova.ai/\">\n    Official SambaNova API documentation and features\n  </Card>\n\n<Card title=\"SambaNova Cloud\" icon=\"microphone\" href=\"https://cloud.sambanova.ai/?utm_source=pipecat&utm_medium=external&utm_campaign=cloud_signup\">\n    Access models and manage API keys\n  </Card>\n</CardGroup>\n\nTo use SambaNova services, install the required dependencies:\n\n### SambaNova Account Setup\n\nBefore using SambaNova LLM services, you need:\n\n1. **SambaNova Account**: Sign up at [SambaNova Cloud](https://cloud.sambanova.ai/?utm_source=pipecat\\&utm_medium=external\\&utm_campaign=cloud_signup)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Model Selection**: Choose from available high-performance models\n\n### Required Environment Variables\n\n* `SAMBANOVA_API_KEY`: Your SambaNova API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "SambaNova Account Setup",
+      "id": "sambanova-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#sambanova",
+  "links": []
+}

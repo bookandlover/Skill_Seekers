@@ -1,0 +1,24 @@
+{
+  "title": "LLMTextProcessor",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/frame/llm-text-processor\n\nA processor for aggregating LLMTextFrames into logical units before passing them to downstream services\n\n`LLMTextProcessor` is a processor designed to aggregate `LLMTextFrame`s into coherent text units before passing them to downstream services, such as TTS. By utilizing text aggregators, it ensures that text is properly segmented and structured, enhancing the quality of subsequent processing. This processor expects `LLMTextFrame`s as input and outputs `AggregatedTextFrame`s containing the aggregated text.\n\n<Note>\n  If an `LLMTextProcessor` is in use, the `text_aggregator` parameter of TTS services will be ignored, as text aggregation is handled upstream.\n</Note>\n\nThe benefit of pre-aggregating LLM text frames is that it allows for more controlled and meaningful text synthesis. Downstream services can operate on complete sentences or logical text blocks. For TTS services, this means being able to customize how certain types of text are spoken (e.g., spelling out phone numbers, stripping out url protocols, or inserting other tts-specific annotations) or even skipping over certain text segments entirely (e.g., code snippets or markup).  For other services, such as RTVI, it allows for sending these logical text units as separate `bot-output` messages, supporting custom client-side handling and rendering (e.g. collapsible code blocks, clickable links, etc.).\n\n<CardGroup>\n  <Card title=\"LLMTextProcessor API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.processors.aggregators.llm_text_processor.html\">\n    Pipecat's API methods for LLMTextProcessor\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/code-helper\">\n    Complete example with LLMTextProcessor and custom TTS and RTVI handling\n  </Card>\n</CardGroup>\n\n## Constructor Parameters\n\n<ParamField type=\"BaseTextAggregator\">\n  An instance of a text aggregator (e.g., `PatternPairAggregator` or a custom aggregator type) used to aggregate incoming text from `LLMTextFrame`s.\n  If `None`, a `SimpleTextAggregator` will be used by default, aggregating text based on sentence boundaries.\n</ParamField>\n\nThe `LLMTextProcessor` should be integrated into your pipeline after the LLM service and before any services that consume text, such as TTS. It processes incoming `LLMTextFrame`s, aggregates their text content, and outputs `AggregatedTextFrame`s.\n\n<Tip>\n  For more usage examples, check out the docs for the [PatternPairAggregator](/server/utilities/text/pattern-pair-aggregator#usage-examples).\n</Tip>\n\n```python theme={null}\nfrom pipecat.processors.aggregators.llm_text_processor import LLMTextProcessor\n\nllm_text_aggregator = PatternPairAggregator()\nllm_text_aggregator.add_pattern(\n    type=\"code\",\n    start_pattern=\"<code>\",\n    end_pattern=\"</code>\",\n    action=MatchAction.AGGREGATE,\n)\nllm_text_processor = LLMTextProcessor(text_aggregator=llm_text_aggregator)",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#llmtextprocessor",
+  "links": []
+}

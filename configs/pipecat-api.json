@@ -1,0 +1,17 @@
+{
+  "name": "pipecat-api",
+  "description": "Pipecat framework for building voice and multimodal AI agents. Use for real-time voice pipelines, WebRTC integration, LLM services, TTS/STT, and AI conversation flows.",
+  "base_url": "https://docs.pipecat.ai/getting-started/introduction",
+  "selectors": {
+    "main_content": "article",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": [],
+    "exclude": []
+  },
+  "categories": {},
+  "rate_limit": 0.5,
+  "max_pages": 500
+}

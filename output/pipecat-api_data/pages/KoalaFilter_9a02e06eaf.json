@@ -1,0 +1,57 @@
+{
+  "title": "KoalaFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/audio/koala-filter\n\nAudio noise reduction filter using Koala AI technology from Picovoice\n\n`KoalaFilter` is an audio processor that reduces background noise in real-time audio streams using Koala Noise Suppression technology from Picovoice. It inherits from `BaseAudioFilter` and processes audio frames to improve audio quality by removing unwanted noise.\n\nTo use Koala, you need a Picovoice access key. Get started at [Picovoice Console](https://console.picovoice.ai/signup).\n\nThe Koala filter requires additional dependencies:\n\nYou'll also need to set up your Koala access key as an environment variable: `KOALA_ACCESS_KEY`\n\n## Constructor Parameters\n\n<ParamField type=\"str\">\n  Picovoice access key for using the Koala noise suppression service\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Specific control frame to toggle filtering on/off\n\n* Requires Picovoice access key\n* Supports real-time audio processing\n* Handles 16-bit PCM audio format\n* Can be dynamically enabled/disabled\n* Maintains audio quality while reducing noise\n* Efficient processing for low latency\n* Automatically handles audio frame buffering\n* Sample rate must match Koala's required sample rate",
+  "code_samples": [
+    {
+      "code": "You'll also need to set up your Koala access key as an environment variable: `KOALA_ACCESS_KEY`\n\n## Constructor Parameters\n\n<ParamField type=\"str\">\n  Picovoice access key for using the Koala noise suppression service\n</ParamField>\n\n## Input Frames\n\n<ParamField type=\"Frame\">\n  Specific control frame to toggle filtering on/off",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n## Usage Example",
+      "language": "unknown"
+    },
+    {
+      "code": "## Audio Flow",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Input Frames",
+      "id": "input-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    },
+    {
+      "level": "h2",
+      "text": "Audio Flow",
+      "id": "audio-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#koalafilter",
+  "links": []
+}

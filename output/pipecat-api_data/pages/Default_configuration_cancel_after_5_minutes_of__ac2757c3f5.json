@@ -1,0 +1,8 @@
+{
+  "title": "Default configuration - cancel after 5 minutes of inactivity",
+  "content": "task = PipelineTask(pipeline)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#default-configuration---cancel-after-5-minutes-of-inactivity",
+  "links": []
+}

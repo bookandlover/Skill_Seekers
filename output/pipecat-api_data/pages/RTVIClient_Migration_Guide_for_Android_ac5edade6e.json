@@ -1,0 +1,96 @@
+{
+  "title": "RTVIClient Migration Guide for Android",
+  "content": "Source: https://docs.pipecat.ai/client/android/migration-guide\n\nA Guide to migrating from RTVIClient to PipecatClient for Android\n\nThis guide covers migrating from the `RTVIClient` to the new `PipecatClient` in an Android application. The new client introduces simplified configuration, modern messaging patterns, and improved function call handling. For an overview of the changes, see the top-level [RTVIClient Migration Guide](/client/migration-guide).\n\n### 1. Package and Class Names\n\n### 2. Client and Transport Configuration\n\nPreviously, the `RTVIClient` constructor accepted a transport factory parameter, whereas in v1.0.0 the transport is passed in directly.\n\nParameters such as the connection URL are no longer passed in at construction time. These should be given to `startBot()`, `startBotAndConnect()`, or `connect()`.\n\nPreviously, the `connect()` method did a POST request to your bot's HTTP endpoint, which returned the connection details (such as room URL and token), before making the actual connection.\n\nThis functionality has been split out into `startBot()`, which provides more flexibility in how the request is performed.\n\nA helper method `startBotAndConnect()` unifies the two steps and is the equivalent of the original `connect()` method. You can call `connect()` directly if you wish to skip the POST step.\n\n### 4. Function Call Handling\n\nHelpers like `LLMHelper` have been removed. You now register function call handlers directly on the `PipecatClient`.\n\n### 5. Pipeline Configuration Initialization\n\nPreviously, you could provide a pipeline configuration as part of the `RTVIClient` constructor, and it was expected to be in a specific format. Now, if you would like to pass any initial pipeline configurations, you do so as `requestData` added to the endpoint you provide to `startBot()` or `startBotAndConnect()`. In both cases, you would need server-side code to parse and apply these settings, but now you can define the structure and what pieces of configuration you want to send.\n\nCheck out [this section of docs](../js/api-reference/messages#connection-time-configuration) for an example, complete with server-side code showing how to initialize the pipeline configuration at connection time.\n\n### 6. LLM Context Updates\n\nPreviously, context updates were done via helpers. Now, use `appendToContext()`:\n\n### 7. Pipeline Configuration Updates\n\nPreviously, the client supported updating the pipeline configuration using a specific method that took a configuration object in a generic format. Dynamic and predefined configuration updates, however, are a security concern, allowing clients to override settings and potentially abuse API keys. For this reason, it has been removed and most configuration updates need to be handled custom by your application. To do so, you should take advantage of the client-server messaging system, which allows you to send messages to the server and handle responses. This way, you can implement your own logic for updating configurations securely.\n\nNew messaging types replace old action/config helpers:\n\nCheck out [this section of docs](../js/api-reference/messages#sending-custom-messages-to-the-server) for a more complete example, along with an example on making a request (`sendClientRequest()`) to wait for a response.\n\n1. **Constructor Params Removed**: No pipeline or endpoint config in constructor.\n2. **Helpers Removed**: RTVIClientHelper, LLMHelper are gone.\n3. **Configs Removed**: All configuration-related methods, events, and types have been removed: `getConfig()`, `updateConfig()`, `describeConfig()`, `onConfigUpdated`, `onConfigDescribed`, etc.\n4. **Actions Removed**: All actions-related methods, events, and types have been removed: `action()`, `describeActions()`, `onActionsAvailable`, etc.\n5. **New Messaging Methods**:\n\n* `appendToContext()`\n   * `sendClientRequest()`\n   * `sendClientMessage()`\n   * `disconnectBot()`\n   * `registerFunctionCallHandler()` / `unregisterFunctionCallHandler()` / `unregisterAllFunctionCallHandlers()`",
+  "code_samples": [
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. Client and Transport Configuration\n\nPreviously, the `RTVIClient` constructor accepted a transport factory parameter, whereas in v1.0.0 the transport is passed in directly.\n\nParameters such as the connection URL are no longer passed in at construction time. These should be given to `startBot()`, `startBotAndConnect()`, or `connect()`.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 3. Connection\n\nPreviously, the `connect()` method did a POST request to your bot's HTTP endpoint, which returned the connection details (such as room URL and token), before making the actual connection.\n\nThis functionality has been split out into `startBot()`, which provides more flexibility in how the request is performed.\n\nA helper method `startBotAndConnect()` unifies the two steps and is the equivalent of the original `connect()` method. You can call `connect()` directly if you wish to skip the POST step.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 4. Function Call Handling\n\nHelpers like `LLMHelper` have been removed. You now register function call handlers directly on the `PipecatClient`.",
+      "language": "unknown"
+    },
+    {
+      "code": "### 5. Pipeline Configuration Initialization\n\nPreviously, you could provide a pipeline configuration as part of the `RTVIClient` constructor, and it was expected to be in a specific format. Now, if you would like to pass any initial pipeline configurations, you do so as `requestData` added to the endpoint you provide to `startBot()` or `startBotAndConnect()`. In both cases, you would need server-side code to parse and apply these settings, but now you can define the structure and what pieces of configuration you want to send.\n\nCheck out [this section of docs](../js/api-reference/messages#connection-time-configuration) for an example, complete with server-side code showing how to initialize the pipeline configuration at connection time.\n\n### 6. LLM Context Updates\n\nPreviously, context updates were done via helpers. Now, use `appendToContext()`:",
+      "language": "unknown"
+    },
+    {
+      "code": "### 7. Pipeline Configuration Updates\n\nPreviously, the client supported updating the pipeline configuration using a specific method that took a configuration object in a generic format. Dynamic and predefined configuration updates, however, are a security concern, allowing clients to override settings and potentially abuse API keys. For this reason, it has been removed and most configuration updates need to be handled custom by your application. To do so, you should take advantage of the client-server messaging system, which allows you to send messages to the server and handle responses. This way, you can implement your own logic for updating configurations securely.\n\nNew messaging types replace old action/config helpers:",
+      "language": "unknown"
+    },
+    {
+      "code": "Check out [this section of docs](../js/api-reference/messages#sending-custom-messages-to-the-server) for a more complete example, along with an example on making a request (`sendClientRequest()`) to wait for a response.\n\n### 8. Disconnecting",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Key Changes",
+      "id": "key-changes"
+    },
+    {
+      "level": "h3",
+      "text": "1. Package and Class Names",
+      "id": "1.-package-and-class-names"
+    },
+    {
+      "level": "h3",
+      "text": "2. Client and Transport Configuration",
+      "id": "2.-client-and-transport-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "3. Connection",
+      "id": "3.-connection"
+    },
+    {
+      "level": "h3",
+      "text": "4. Function Call Handling",
+      "id": "4.-function-call-handling"
+    },
+    {
+      "level": "h3",
+      "text": "5. Pipeline Configuration Initialization",
+      "id": "5.-pipeline-configuration-initialization"
+    },
+    {
+      "level": "h3",
+      "text": "6. LLM Context Updates",
+      "id": "6.-llm-context-updates"
+    },
+    {
+      "level": "h3",
+      "text": "7. Pipeline Configuration Updates",
+      "id": "7.-pipeline-configuration-updates"
+    },
+    {
+      "level": "h3",
+      "text": "8. Disconnecting",
+      "id": "8.-disconnecting"
+    },
+    {
+      "level": "h2",
+      "text": "Breaking Changes",
+      "id": "breaking-changes"
+    }
+  ],
+  "url": "llms-txt#rtviclient-migration-guide-for-android",
+  "links": []
+}

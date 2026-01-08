@@ -1,0 +1,28 @@
+{
+  "title": "All messages use the OpenAI message format",
+  "content": "messages = [\n    {\n        \"role\": \"system\",\n        \"content\": \"You are a friendly AI assistant. Respond naturally and keep your answers conversational.\",\n    },\n]\n\ncontext = LLMContext(messages)\ncontext_aggregator = LLMContextAggregatorPair(context)\npython theme={null}\nrtvi = RTVIProcessor(config=RTVIConfig(config=[]))\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "The context aggregator automatically collects user messages (after speech-to-text) and assistant responses (after text-to-speech), maintaining the conversation flow without manual intervention.\n\n### RTVI Protocol\n\nWhen building web or mobile clients, you can use [Pipecat's client SDKs](/client/introduction) that communicate with your bot via the [RTVI (Real-Time Voice Interaction) protocol](/client/rtvi-standard). In our quickstart example, we initialize the RTVI processor to handle client-server messaging and events:",
+      "language": "unknown"
+    },
+    {
+      "code": "See below for how we incorporate the RTVI processor into the pipeline.\n\n### Pipeline Configuration\n\nThe core of your bot is a Pipeline that processes data through a series of processors:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "RTVI Protocol",
+      "id": "rtvi-protocol"
+    },
+    {
+      "level": "h3",
+      "text": "Pipeline Configuration",
+      "id": "pipeline-configuration"
+    }
+  ],
+  "url": "llms-txt#all-messages-use-the-openai-message-format",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Copy the application code",
+  "content": "COPY ./bot.py bot.py\n```\n\nWe recommend using Pipecat Cloud's built-in management for the most secure and versatile method of managing secrets.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#copy-the-application-code",
+  "links": []
+}

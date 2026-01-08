@@ -1,0 +1,8 @@
+{
+  "title": "Create Telnyx serializer with call details",
+  "content": "serializer = TelnyxFrameSerializer(\n    stream_id=stream_id,\n    call_control_id=call_control_id,\n    api_key=os.getenv(\"TELNYX_API_KEY\"),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-telnyx-serializer-with-call-details",
+  "links": []
+}

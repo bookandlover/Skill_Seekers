@@ -1,0 +1,19 @@
+{
+  "title": "should be pronounced.",
+  "content": "async def maybe_say_potato_all_fancylike(text: str, type: str) -> str:\n    if using_fancy_voice:\n        return RimeTTSService.PRONOUNCE(text, \"potato\", \"potato\")\n    else:\n        return RimeTTSService.PRONOUNCE(text, \"potato\", \"poteto\")\n\ntts = RimeTTSService(\n    api_key=os.getenv(\"RIME_API_KEY\"),\n    text_transforms=[\n        (\"*\", maybe_say_potato_all_fancylike), # Apply to all text\n    ],\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### INLINE\\_SPEED(self, text: str, speed: float) -> str:\n\nA convenience method to support Rime's [inline speed adjustment feature](https://docs.rime.ai/api-reference/speed). It will wrap the provided text in the `[]` tags and add the provided speed to the `inlineSpeedAlpha` field in the request metadata.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "INLINE\\_SPEED(self, text: str, speed: float) -> str:",
+      "id": "inline\\_speed(self,-text:-str,-speed:-float)-->-str:"
+    }
+  ],
+  "url": "llms-txt#should-be-pronounced.",
+  "links": []
+}

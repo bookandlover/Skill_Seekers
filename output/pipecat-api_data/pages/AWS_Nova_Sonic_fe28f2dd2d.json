@@ -1,0 +1,39 @@
+{
+  "title": "AWS Nova Sonic",
+  "content": "Source: https://docs.pipecat.ai/server/services/s2s/aws\n\nReal-time speech-to-speech service implementation using AWS Nova Sonic\n\n`AWSNovaSonicLLMService` enables natural, real-time conversations with AWS Nova Sonic. It provides built-in audio transcription, voice activity detection, and context management for creating interactive AI experiences with bidirectional audio streaming, text generation, and function calling capabilities.\n\n<CardGroup>\n  <Card title=\"AWS Nova Sonic API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.aws.nova_sonic.llm.html\">\n    Pipecat's API methods for AWS Nova Sonic integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/40-aws-nova-sonic.py\">\n    Complete AWS Nova Sonic conversation example\n  </Card>\n\n<Card title=\"AWS Bedrock Documentation\" icon=\"book\" href=\"https://docs.aws.amazon.com/bedrock/\">\n    Official AWS Bedrock and Nova Sonic documentation\n  </Card>\n\n<Card title=\"AWS Console\" icon=\"external-link\" href=\"https://console.aws.amazon.com/bedrock/\">\n    Access AWS Bedrock and manage Nova Sonic models\n  </Card>\n</CardGroup>\n\nTo use AWS Nova Sonic services, install the required dependencies:\n\n### AWS Account Setup\n\nBefore using AWS Nova Sonic services, you need:\n\n1. **AWS Account**: Set up at [AWS Console](https://console.aws.amazon.com/)\n2. **Bedrock Access**: Enable AWS Bedrock service in your region\n3. **Model Access**: Request access to Nova Sonic models in Bedrock\n4. **IAM Credentials**: Configure AWS access keys with Bedrock permissions\n\n### Required Environment Variables\n\n* `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key\n* `AWS_ACCESS_KEY_ID`: Your AWS access key ID\n* `AWS_REGION`: AWS region where Bedrock is available\n\n* **Real-time Speech-to-Speech**: Direct audio input to audio output processing\n* **Built-in Transcription**: Automatic speech-to-text with real-time streaming\n* **Voice Activity Detection**: Automatic detection of speech start/stop\n* **Function Calling**: Support for external function and API integration\n* **Multiple Voices**: Choose from matthew, tiffany, and amy voice options",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "AWS Account Setup",
+      "id": "aws-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h3",
+      "text": "Key Features",
+      "id": "key-features"
+    }
+  ],
+  "url": "llms-txt#aws-nova-sonic",
+  "links": []
+}

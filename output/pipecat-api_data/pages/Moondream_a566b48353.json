@@ -1,0 +1,39 @@
+{
+  "title": "Moondream",
+  "content": "Source: https://docs.pipecat.ai/server/services/vision/moondream\n\nVision service implementation using Moondream for local image analysis and question answering\n\n`MoondreamService` provides local image analysis and question-answering capabilities using the Moondream model. It runs entirely on your local machine, supporting various hardware acceleration options including CUDA, Intel XPU, and Apple MPS for privacy-focused computer vision applications.\n\n<CardGroup>\n  <Card title=\"Moondream Vision API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.moondream.vision.html\">\n    Pipecat's API methods for Moondream vision integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/12-describe-video.py\">\n    Browse examples using Moondream vision\n  </Card>\n\n<Card title=\"Moondream Documentation\" icon=\"book\" href=\"https://www.moondream.ai/\">\n    Official Moondream model documentation\n  </Card>\n\n<Card title=\"Hugging Face Model\" icon=\"microphone\" href=\"https://huggingface.co/vikhyatk/moondream2\">\n    Access Moondream model on Hugging Face\n  </Card>\n</CardGroup>\n\nTo use Moondream services, install the required dependencies:\n\n### Local Model Setup\n\nBefore using Moondream vision services, you need:\n\n1. **Model Download**: First run will automatically download the Moondream model from Hugging Face\n2. **Hardware Configuration**: Set up CUDA, Intel XPU, or Apple MPS for optimal performance\n3. **Storage Space**: Ensure sufficient disk space for model files\n4. **Memory Requirements**: Adequate RAM/VRAM for model inference\n\n### Hardware Acceleration\n\nThe service automatically detects and uses the best available hardware:\n\n* **Intel XPU**: Requires intel\\_extension\\_for\\_pytorch\n* **NVIDIA CUDA**: For GPU acceleration\n* **Apple Metal (MPS)**: For Apple Silicon optimization\n* **CPU**: Fallback option for any system\n\n### Configuration Options\n\n* **Model Selection**: Choose Moondream model version and revision\n* **Hardware Override**: Force CPU usage if needed\n* **Local Processing**: Complete privacy with no external API calls\n\n<Tip>\n  No API keys required - Moondream runs entirely locally for complete privacy\n  and control.\n</Tip>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Local Model Setup",
+      "id": "local-model-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Hardware Acceleration",
+      "id": "hardware-acceleration"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    }
+  ],
+  "url": "llms-txt#moondream",
+  "links": []
+}

@@ -1,0 +1,19 @@
+{
+  "title": "and push them downstream through the entire pipeline",
+  "content": "<Note>\n  The pipeline source automatically converts `EndTaskFrame` to `EndFrame` and\n  `CancelTaskFrame` to `CancelFrame` when pushing downstream, ensuring proper\n  termination handling throughout the pipeline.\n</Note>\n\n* **Frame-based termination** - shutdown uses the same frame system as processing\n* **Choose the right method** - graceful for natural endings, immediate for disconnections\n* **Event handlers enable automatic termination** - respond to user disconnections cleanly\n* **Idle detection provides safety net** - prevents hanging processes and resource waste\n* **SystemFrames bypass queues** - CancelFrames process immediately for fast shutdown\n* **Resource cleanup is automatic** - proper termination ensures clean resource disposal\n\nYou now understand how to build, run, and properly terminate voice AI pipelines! Next, let's explore advanced development tools that can accelerate your Pipecat development process.\n\n<Card title=\"Next Steps\" icon=\"arrow-right\" href=\"/guides/learn/whats-next\">\n  You've completed the learning guide! Continue to see recommended next steps.\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#and-push-them-downstream-through-the-entire-pipeline",
+  "links": []
+}

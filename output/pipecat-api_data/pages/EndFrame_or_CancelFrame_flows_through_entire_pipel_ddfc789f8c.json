@@ -1,0 +1,24 @@
+{
+  "title": "EndFrame or CancelFrame flows through entire pipeline for shutdown",
+  "content": "",
+  "code_samples": [
+    {
+      "code": "**Termination frames:**\n\n* **`EndFrame`**: A queued ControlFrame that triggers graceful shutdown after processing pending frames\n* **`CancelFrame`**: A SystemFrame that triggers immediate shutdown, discarding pending frames\n\nBoth frames flow downstream through the pipeline, allowing each processor to clean up resources appropriately.\n\n## Termination Methods\n\nPipecat provides two primary approaches for pipeline termination, each designed for different scenarios:\n\n### 1. Graceful Termination\n\nGraceful termination allows the bot to complete its current processing before shutting down. This is ideal when you want the bot to properly end a conversation. For example, after completing a specific task or reaching a natural conclusion.\n\n**When to use:**\n\n* Natural conversation endings\n* Task completion scenarios\n* When the bot should say goodbye\n\n**Implementation options:**\n\nPush an `EndFrame` from outside your pipeline:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Termination Methods",
+      "id": "termination-methods"
+    },
+    {
+      "level": "h3",
+      "text": "1. Graceful Termination",
+      "id": "1.-graceful-termination"
+    }
+  ],
+  "url": "llms-txt#endframe-or-cancelframe-flows-through-entire-pipeline-for-shutdown",
+  "links": []
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Limit pool to 25 active sessions running concurrently",
+  "content": "pipecat cloud deploy [agent-name] --max-agents 25\nshell theme={null}\npipecat cloud deploy [agent-name] [image] --min-agents 1 --max-agents 5\n```\n\nPlease note that changing your scaling parameters will not disrupt any active sessions.\nIf you reduce your max instance count below the number of currently active sessions, you will still be billed for the duration of those sessions.\n\nEffective capacity planning is crucial for production deployments to ensure your agents respond immediately.\n\nPipecat Cloud auto-scales your agents. For most cases, the only action you need to take is to set the `--min-agents` parameter to 1. However, if your application experiences fluctuations in traffic, you may need to plan for additional warm capacity to ensure your agents are always ready to respond immediately.\n\n<Card title=\"Capacity Planning Guide\" icon=\"calculator\" href=\"../guides/capacity-planning\">\n  See our guide for calculating reserved agents, understanding warm capacity,\n  and implementing scaling strategies for production.\n</Card>\n\nPipecat Cloud bills based on:\n\n* **Active session minutes**: Time your agents spend handling live sessions\n* **Reserved session minutes**: Time your warm agent instances are kept running, even when idle\n\nAn active session starts when you call the `/start` endpoint (or CLI or SDK equivalent) and ends when your agent's pipeline shuts down.\n\nReserved session minutes are optional and controlled by setting `--min-agents` in your deployment configuration.\n\n<Note>\n  Both active and reserved session time is measured to the second and billed in\n  minutes.\n</Note>",
+  "code_samples": [
+    {
+      "code": "### Agent lifecycle\n\n<Steps>\n  <Step title=\"Pool Initialization\">\n    * Provisions the minimum number of warm agent instances based on `min-agents` configuration (defaults to `0`)\n    * Listens for session requests to route to available agent instances\n  </Step>\n\n  <Step title=\"Session Assignment\">\n    * ✅ If a warm instance is available, the session will be assigned to that instance\n    * ⏳ If no warm agent instances are available, and your pool is not at capacity, a new instance will be provisioned to handle the request (e.g a cold-start)\n    * ❌ If your pool is at capacity, your application will receive a `429` response from the start request\n  </Step>\n\n  <Step title=\"Auto-scaling\">\n    * The Pipecat Cloud auto-scaler determines if additional warm agent instances should be created to support further requests.\n    * Once a session concludes, agent instances are either returned to the pool to serve another session or discarded\n  </Step>\n</Steps>\n\n<Note>\n  <b>Your are billed for warm agent instances</b>, even if they are not handling\n  active sessions. Developers should consider their deployment strategy when\n  cost optimizing, adjusting the minimum and maximum instance count accordingly.\n  See [current pricing](https://www.daily.co/pricing/pipecat-cloud) for details.\n</Note>\n\n## Cold-starts\n\nA cold start may occur when an active session request is made and no warm agent instances are available in the pool to handle it. In this case, Pipecat Cloud will provision a new instance to handle the request.\n\nCold starts require additional time to provision the instance and load the agent instances, which may result in a delay for the user. To minimize cold starts, you can configure your pool to maintain a minimum number of warm agent instances at all times.\n\n<Frame>\n  <img />\n</Frame>\n\nPipecat Cloud aims to mitigate cold starts as much as possible through [auto-scaling](#auto-scaling).\n\n<AccordionGroup>\n  <Accordion title=\"How long does a cold start take?\">\n    The exact duration of a cold start depends on multiple factors, such as the size of your agent image and the complexity of your agent. In general, cold starts take around 10 seconds. Once you have a running instance of a deployed image, new sessions start immediately with no cold start delay.\n\n    For developers, especially during test and development, using scale-to-zero with cold starts is a good place to start as it saves money. Once you understand your utilization pattern, you can build a strategy around optimizing start times by maintaining warm agent instances.\n  </Accordion>\n\n  <Accordion title=\"Mitigation strategies\">\n    To avoid cold starts, you can:\n\n    * Adjust the number of warm agent instances (`min-agents`) in your pool to ensure that there are always agent instances available to handle requests.\n    * Adjust your maximum instance count (`max-agents`) and issue capacity notifications in your application.\n  </Accordion>\n</AccordionGroup>\n\n### Scale-to-zero\n\nFor some deployments, using a minimum instance count of 0 is preferable (e.g. while in development.) Since you are only charged for warm agents instances and active sessions, this can be a cost-effective way to manage deployments where fast start times are not required.\n\nWhen the minimum instance count is set to 0, the pool will scale down to 0 agent instances when there are no active sessions. Idle agent instances are maintained for 5 minutes before being terminated.\n\n<Tip>\n  Scale-to-zero is not recommended for production deployments where immediate\n  response is required.\n</Tip>\n\n## Auto-scaling\n\nPipecat Cloud performs auto-scaling by default on all deployments. Auto-scaling is accomplished through the following mechanisms:\n\n* Scaling up based on request velocity\n* Maintaining efficiency within max-agents limit\n* Scaling down to min-agents (or zero) during low usage\n* Supporting burst workloads automatically\n\n### Auto-Scaling Buffer\n\n<Note>\n  <b>Pipecat Cloud maintains a free auto-scaling buffer</b> in addition to your\n  paid reserved agent instances. This saves you from over-provisioning warm\n  agent instances while still ensuring fast response times during traffic\n  increases.\n</Note>\n\nWhen your traffic increases and you have active sessions running, our system automatically:\n\n* Proactively provisions additional idle agent instances based on your current usage patterns\n* Provides these buffer agent instances at no additional cost to you\n* Ensures you can continue handling traffic spikes even when all your paid warm agents are in use\n\nFor example, with multiple active sessions:\n\n* The system is already spinning up additional buffer agent instances in the background\n* These buffer agent instances become available within \\~10 seconds\n* You can continue calling the `/start` endpoint without worrying about configuring additional capacity\n\nThis approach means:\n\n* You can set a lower `min-agents` value than your peak traffic requirements\n* You'll still avoid cold starts in most scenarios\n* You get better cost efficiency without sacrificing performance\n\nThe only scenario where you need to consider higher `min-agents` values is for extremely rapid traffic spikes (tens or hundreds of calls per second) where the buffer can't be provisioned fast enough.\n\n### Scaling Philosophy\n\nOur scaling system is designed to minimize the need for manual capacity planning. Here's how we recommend thinking about scaling:\n\n* **Start simple:** We encourage you to set `min-agents` to 0 initially and test how the system performs for your specific use case. Many applications work well without any pre-warmed agent instances.\n\n* **Optimize as needed:** We work hard to make cold starts rare and as fast as possible so that, for many applications, you don't have to worry about warm instances at all.\n\n* **Tune for traffic patterns:** If you have spiky workloads with bursty traffic patterns, setting an appropriate `min-agents` value can help prevent cold starts during critical periods. Consider scheduling higher `min-agents` values only during your peak usage hours.\n\nOur goal is to make scaling decisions as simple as possible while giving you the controls you need for optimization when required.\n\n## Updating scaling configuration\n\nYou can update your deployment's configuration at any time via the CLI or Pipecat Cloud Dashboard.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Agent lifecycle",
+      "id": "agent-lifecycle"
+    },
+    {
+      "level": "h2",
+      "text": "Cold-starts",
+      "id": "cold-starts"
+    },
+    {
+      "level": "h3",
+      "text": "Scale-to-zero",
+      "id": "scale-to-zero"
+    },
+    {
+      "level": "h2",
+      "text": "Auto-scaling",
+      "id": "auto-scaling"
+    },
+    {
+      "level": "h3",
+      "text": "Auto-Scaling Buffer",
+      "id": "auto-scaling-buffer"
+    },
+    {
+      "level": "h3",
+      "text": "Scaling Philosophy",
+      "id": "scaling-philosophy"
+    },
+    {
+      "level": "h2",
+      "text": "Updating scaling configuration",
+      "id": "updating-scaling-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Capacity Planning",
+      "id": "capacity-planning"
+    },
+    {
+      "level": "h2",
+      "text": "Usage summary",
+      "id": "usage-summary"
+    }
+  ],
+  "url": "llms-txt#limit-pool-to-25-active-sessions-running-concurrently",
+  "links": []
+}

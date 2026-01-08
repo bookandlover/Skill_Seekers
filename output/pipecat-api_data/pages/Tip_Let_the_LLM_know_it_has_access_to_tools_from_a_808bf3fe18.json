@@ -1,0 +1,24 @@
+{
+  "title": "Tip: Let the LLM know it has access to tools from an MCP server by including it in the system prompt.",
+  "content": "context = LLMContext(\n    messages=[\n        {\n            \"role\": \"system\",\n            \"content\": \"You are a helpful assistant in a voice conversation. You have access to MCP tools. Keep responses concise.\"\n        }\n    ],\n    tools=tools\n)\npython theme={null}\nasync def register_tools(self, llm) -> ToolsSchema:\n```\n\n## Additional documentation\n\n<Note>\n  See [MCP's docs](https://github.com/modelcontextprotocol/python-sdk) for MCP\n  related updates.\n</Note>",
+  "code_samples": [
+    {
+      "code": "## Methods\n\n<ResponseField name=\"register_tools\" type=\"async method\">\n  Converts MCP tools to Pipecat-friendly function definitions and registers the\n  functions with the llm.\n</ResponseField>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Methods",
+      "id": "methods"
+    },
+    {
+      "level": "h2",
+      "text": "Additional documentation",
+      "id": "additional-documentation"
+    }
+  ],
+  "url": "llms-txt#tip:-let-the-llm-know-it-has-access-to-tools-from-an-mcp-server-by-including-it-in-the-system-prompt.",
+  "links": []
+}

@@ -1,0 +1,49 @@
+{
+  "title": "KrispVivaFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/audio/krisp-viva-filter\n\nAudio noise reduction filter using Krisp VIVA model\n\n`KrispVivaFilter` is an audio processor that reduces background noise in real-time audio streams using Krisp VIVA SDK. It inherits from `BaseAudioFilter` and processes audio frames to improve audio quality by removing unwanted noise using Krisp's proprietary noise suppression algorithms.\n\nTo use Krisp, you need a Krisp SDK license. Get started at [Krisp.ai](https://krisp.ai/developers/).\n\n<Tip>\n  Looking for help getting started with Krisp and Pipecat? Checkout our [Krisp\n  noise cancellation guide](/guides/features/krisp).\n</Tip>\n\nSee the [Krisp guide](/guides/features/krisp) to learn how to install the Krisp VIVA SDK.\n\n## Environment Variables\n\nYou need to provide the path to the Krisp model file (.kef extension). This can either be done by setting the `KRISP_VIVA_MODEL_PATH` environment variable or by setting the `model_path` in the constructor.\n\n## Constructor Parameters\n\n<ParamField type=\"str\">\n  Path to the Krisp model file (.kef extension).\n\nYou can set the `model_path` directly. Alternatively, you can set the `KRISP_VIVA_MODEL_PATH` environment variable to the model file path.\n</ParamField>\n\n<ParamField type=\"int\">\n  Noise suppression level for the filter\n</ParamField>\n\n## Supported Sample Rates\n\nThe filter supports the following sample rates:\n\n* 8000 Hz\n* 16000 Hz\n* 24000 Hz\n* 32000 Hz\n* 44100 Hz\n* 48000 Hz\n\n<ParamField type=\"Frame\">\n  Specific control frame to toggle filtering on/off",
+  "code_samples": [
+    {
+      "code": "</ParamField>\n\n## Usage Example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Environment Variables",
+      "id": "environment-variables"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Supported Sample Rates",
+      "id": "supported-sample-rates"
+    },
+    {
+      "level": "h2",
+      "text": "Input Frames",
+      "id": "input-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#krispvivafilter",
+  "links": []
+}

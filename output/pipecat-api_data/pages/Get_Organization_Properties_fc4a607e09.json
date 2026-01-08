@@ -1,0 +1,8 @@
+{
+  "title": "Get Organization Properties",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/properties-get\n\nGET /properties\nRetrieve current values of configurable properties for your organization.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#get-organization-properties",
+  "links": []
+}

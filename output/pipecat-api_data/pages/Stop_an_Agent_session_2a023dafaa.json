@@ -1,0 +1,8 @@
+{
+  "title": "Stop an Agent session",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/stop\n\nDELETE /agents/{agentName}/sessions/{sessionId}\nStop a running agent session and clean up its resources.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#stop-an-agent-session",
+  "links": []
+}

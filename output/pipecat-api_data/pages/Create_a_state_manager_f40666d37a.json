@@ -1,0 +1,8 @@
+{
+  "title": "Create a state manager",
+  "content": "class SessionState:\n    def __init__(self):\n        self.session_ending = False\n\nsession_state = SessionState()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-a-state-manager",
+  "links": []
+}

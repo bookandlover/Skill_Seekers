@@ -1,0 +1,24 @@
+{
+  "title": "30-second chunks (recommended for most use cases)",
+  "content": "SAMPLE_RATE = 24000\nCHUNK_DURATION = 30  # seconds\naudiobuffer = AudioBufferProcessor(\n    sample_rate=SAMPLE_RATE,\n    buffer_size=SAMPLE_RATE * 2 * CHUNK_DURATION  # 2 bytes per sample (16-bit)\n)\n\n@audiobuffer.event_handler(\"on_track_audio_data\")\nasync def on_chunk_ready(buffer, user_audio, bot_audio, sample_rate, num_channels):\n    global chunk_counter\n\n# Upload or save individual chunks\n    await upload_audio_chunk(f\"user_chunk_{chunk_counter:03d}.wav\", user_audio, sample_rate, 1)\n    await upload_audio_chunk(f\"bot_chunk_{chunk_counter:03d}.wav\", bot_audio, sample_rate, 1)\n\nchunk_counter += 1\nbash theme={null}",
+  "code_samples": [
+    {
+      "code": "### Multipart Upload Strategy\n\nFor cloud storage, consider using multipart uploads to stream audio chunks:\n\n**Conceptual Approach:**\n\n1. **Initialize multipart upload** when recording starts\n2. **Upload chunks as parts** when buffers fill (every \\~30 seconds)\n3. **Complete multipart upload** when recording ends\n4. **Post-process** to create final WAV file(s)\n\n**Benefits:**\n\n* Memory efficient for long sessions\n* Fault tolerant (no data loss if connection drops)\n* Enables real-time processing and analysis\n* Parallel upload of multiple tracks\n\n### Post-Processing Pipeline\n\nAfter uploading chunks, create final audio files using tools like FFmpeg:\n\n**Concatenating Audio Files:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Multipart Upload Strategy",
+      "id": "multipart-upload-strategy"
+    },
+    {
+      "level": "h3",
+      "text": "Post-Processing Pipeline",
+      "id": "post-processing-pipeline"
+    }
+  ],
+  "url": "llms-txt#30-second-chunks-(recommended-for-most-use-cases)",
+  "links": []
+}

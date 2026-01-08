@@ -1,0 +1,37 @@
+{
+  "title": "Advanced token generation with additional properties",
+  "content": "token_params = DailyMeetingTokenParams(\n    properties=DailyMeetingTokenProperties(\n        user_name=\"John Doe\",\n        start_video_off=True\n    )\n)\ntoken = await helper.get_token(\n    room_url=\"https://your-domain.daily.co/my-room\",\n    expiry_time=1800,\n    owner=False,\n    eject_at_token_exp=True,\n    params=token_params\n)\npython theme={null}\nsuccess = await helper.delete_room_by_url(\"https://your-domain.daily.co/my-room\")\nif success:\n    print(\"Room deleted successfully\")\npython theme={null}\nsuccess = await helper.delete_room_by_name(\"my-room\")\nif success:\n    print(\"Room deleted successfully\")\npython theme={null}\nroom_name = helper.get_name_from_url(\"https://your-domain.daily.co/my-room\")\nprint(f\"Room name: {room_name}\")  # Outputs: \"my-room\"\n```",
+  "code_samples": [
+    {
+      "code": "## Delete Room By URL\n\nDeletes a room using its URL.\n\n<ParamField type=\"string\">\n  The complete Daily room URL\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "## Delete Room By Name\n\nDeletes a room using its name.\n\n<ParamField type=\"string\">\n  The name of the Daily room\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "## Get Name From URL\n\nExtracts the room name from a Daily room URL.\n\n<ParamField type=\"string\">\n  The complete Daily room URL\n</ParamField>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Delete Room By URL",
+      "id": "delete-room-by-url"
+    },
+    {
+      "level": "h2",
+      "text": "Delete Room By Name",
+      "id": "delete-room-by-name"
+    },
+    {
+      "level": "h2",
+      "text": "Get Name From URL",
+      "id": "get-name-from-url"
+    }
+  ],
+  "url": "llms-txt#advanced-token-generation-with-additional-properties",
+  "links": []
+}

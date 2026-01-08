@@ -1,0 +1,8 @@
+{
+  "title": "Set bot as ready",
+  "content": "await processor.set_bot_ready()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#set-bot-as-ready",
+  "links": []
+}

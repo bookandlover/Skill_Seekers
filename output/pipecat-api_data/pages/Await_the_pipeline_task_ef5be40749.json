@@ -1,0 +1,43 @@
+{
+  "title": "Await the pipeline task",
+  "content": "await runner.run(task)\npython theme={null}\nparams = PipelineParams(\n    # Audio configuration (affects all audio processors)\n    audio_in_sample_rate=16000,\n    audio_out_sample_rate=24000,\n\n# Performance monitoring\n    enable_metrics=True,\n    enable_usage_metrics=True,\n\n# Debugging and development\n    send_initial_empty_metrics=False,\n    report_only_initial_ttfb=True,\n)\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=params,\n    observers=[\n        RTVIObserver(rtvi),           # RTVI protocol events\n        CustomMetricsObserver(),      # Your custom metrics\n    ],\n)\n```\n\nThese configuration options enable you to optimize performance, debug issues, and monitor your pipeline in production:\n\n<CardGroup>\n  <Card title=\"Pipeline Parameters\" icon=\"screwdriver-wrench\" href=\"/server/pipeline/pipeline-params\">\n    Configure execution parameters, audio settings, and debugging options\n  </Card>\n\n<Card title=\"Metrics Guide\" icon=\"chart-line\" href=\"/guides/fundamentals/metrics\">\n    Monitor pipeline performance, latency, and API usage in real-time\n  </Card>\n\n<Card title=\"Observer Pattern\" icon=\"eye\" href=\"/server/utilities/observers/observer-pattern\">\n    Monitor pipeline events, frame processing, and custom application events\n  </Card>\n</CardGroup>\n\n* **Order matters** - arrange processors so each gets the frames it needs\n* **Processors push frames** - processors pass frames downstream, not consume them\n* **Frame types determine processing** - SystemFrames bypass queues, others are ordered\n* **Queuing ensures reliability** - frames are processed in guaranteed order\n* **Parallel processing** enables conditional logic and multi-modal handling\n* **PipelineTask** configures execution parameters and monitoring\n* **PipelineRunner** manages the complete pipeline lifecycle\n* **PipelineParams** control pipeline-wide behavior like audio settings and metrics\n\nNow that you understand how pipelines orchestrate processing, let's explore the different transport options that connect your pipeline to users.\n\n<Card title=\"Transports\" icon=\"arrow-right\" href=\"/guides/learn/transports\">\n  Learn about the different ways users can connect to your voice AI pipeline\n</Card>",
+  "code_samples": [
+    {
+      "code": "**Pipeline states during execution:**\n\n* **Starting**: Initializing processors and connections\n* **Running**: Actively processing frames and handling events\n* **Stopping**: Gracefully shutting down processors\n* **Stopped**: All resources cleaned up\n\n## Configuring Pipeline Behavior\n\nBeyond the basic pipeline structure, you can fine-tune behavior through PipelineParams and add monitoring capabilities:\n\n### Pipeline Parameters\n\n`PipelineParams` lets you configure how your entire pipeline operates:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Monitoring and Observability\n\nAdd observers to monitor pipeline events and track custom application metrics:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Configuring Pipeline Behavior",
+      "id": "configuring-pipeline-behavior"
+    },
+    {
+      "level": "h3",
+      "text": "Pipeline Parameters",
+      "id": "pipeline-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Monitoring and Observability",
+      "id": "monitoring-and-observability"
+    },
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#await-the-pipeline-task",
+  "links": []
+}

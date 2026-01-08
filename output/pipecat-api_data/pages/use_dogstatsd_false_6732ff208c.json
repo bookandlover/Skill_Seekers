@@ -1,0 +1,37 @@
+{
+  "title": "use_dogstatsd: false",
+  "content": "dockerfile theme={null}\nRUN mkdir -p /var/run/datadog/\nRUN chown dd-agent:dd-agent /var/run/datadog/\n\ndatadog\npython theme={null}\nfrom datadog import statsd\n\ndef my_function_call():\n    statsd.increment(\"myagent.my_function_call\")\n```",
+  "code_samples": [
+    {
+      "code": "### Prepare file system in `Dockerfile`\n\nEnsure the following is present in your [`Dockerfile`](#update-dockerfile-with-the-datadog-agent):",
+      "language": "unknown"
+    },
+    {
+      "code": "### Add `datadog` Python library\n\nIn your `requirements.txt`:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Record custom metrics in `bot.py`",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Prepare file system in `Dockerfile`",
+      "id": "prepare-file-system-in-`dockerfile`"
+    },
+    {
+      "level": "h3",
+      "text": "Add `datadog` Python library",
+      "id": "add-`datadog`-python-library"
+    },
+    {
+      "level": "h3",
+      "text": "Record custom metrics in `bot.py`",
+      "id": "record-custom-metrics-in-`bot.py`"
+    }
+  ],
+  "url": "llms-txt#use_dogstatsd:-false",
+  "links": []
+}

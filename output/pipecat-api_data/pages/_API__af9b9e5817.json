@@ -1,0 +1,8 @@
+{
+  "title": "----------------- API -----------------",
+  "content": "app.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"]\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#------------------api------------------",
+  "links": []
+}

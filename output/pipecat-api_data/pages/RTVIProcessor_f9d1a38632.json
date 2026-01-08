@@ -1,0 +1,14 @@
+{
+  "title": "RTVIProcessor",
+  "content": "Source: https://docs.pipecat.ai/server/frameworks/rtvi/rtvi-processor\n\nCore coordinator for RTVI protocol communication\n\nThe `RTVIProcessor` manages bidirectional communication between clients and your Pipecat application. It processes client messages, handles service configuration, executes actions, and coordinates function calls.\n\nAdd the `RTVIProcessor` to your pipeline:\n\n```python theme={null}\nfrom pipecat.processors.rtvi import RTVIProcessor, RTVIConfig, RTVIServiceConfig",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Initialization",
+      "id": "initialization"
+    }
+  ],
+  "url": "llms-txt#rtviprocessor",
+  "links": []
+}

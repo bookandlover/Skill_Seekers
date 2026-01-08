@@ -1,0 +1,39 @@
+{
+  "title": "Use it during deployment",
+  "content": "pipecat cloud deploy my-agent my-private-repo/image:latest --credentials dockerhub\nbash theme={null}",
+  "code_samples": [
+    {
+      "code": "Credentials are securely stored and only used during image pulls.\n\n<Tip>\n  The optional `--base64encode` flag provides an additional layer of obfuscation\n  when entering credentials in environments where terminal history or session\n  logging might be a concern.\n</Tip>\n\n### How does Pipecat Cloud protect my agent code?\n\nYour deployed code remains private and protected through multiple layers:\n\n* Containers run in isolated Kubernetes pods\n* Network policies restrict cross-agent communication\n* Each organization has separate namespaces\n* Access controls prevent unauthorized access to running containers\n\n## Runtime Security\n\n### Can other customers access my agents or data?\n\nPipecat Cloud implements strong multi-tenant isolation:\n\n* Organizational namespacing creates logical boundaries between customers\n* Network policies prevent cross-namespace communication\n* Kubernetes RBAC controls limit access to running pods\n* Authentication is required for all API access\n\n### How are my agents protected at runtime?\n\nPipecat Cloud provides several runtime security measures:\n\n* **Network Controls**: Restrict egress to necessary services\n* **Access Monitoring**: Track authentication and access patterns\n* **Secret Injection**: Environment variables for secure credential access\n\n### Who can start sessions with my agents?\n\nOnly clients with valid API keys for your organization can start agent sessions. For security best practices:\n\n1. **Use server-side code** to start agent sessions, keeping API keys secure on your server\n2. **Never expose API keys** in client-side code",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "How does Pipecat Cloud protect my agent code?",
+      "id": "how-does-pipecat-cloud-protect-my-agent-code?"
+    },
+    {
+      "level": "h2",
+      "text": "Runtime Security",
+      "id": "runtime-security"
+    },
+    {
+      "level": "h3",
+      "text": "Can other customers access my agents or data?",
+      "id": "can-other-customers-access-my-agents-or-data?"
+    },
+    {
+      "level": "h3",
+      "text": "How are my agents protected at runtime?",
+      "id": "how-are-my-agents-protected-at-runtime?"
+    },
+    {
+      "level": "h3",
+      "text": "Who can start sessions with my agents?",
+      "id": "who-can-start-sessions-with-my-agents?"
+    }
+  ],
+  "url": "llms-txt#use-it-during-deployment",
+  "links": []
+}

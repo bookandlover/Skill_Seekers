@@ -1,0 +1,13 @@
+{
+  "title": "Returns pc_id for WebRTC or participant ID for Daily",
+  "content": "python theme={null}\nfrom pipecat.runner.utils import maybe_capture_participant_camera, maybe_capture_participant_screen",
+  "code_samples": [
+    {
+      "code": "**Video Capture** (Daily only):",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#returns-pc_id-for-webrtc-or-participant-id-for-daily",
+  "links": []
+}

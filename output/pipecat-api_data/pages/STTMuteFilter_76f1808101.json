@@ -1,0 +1,77 @@
+{
+  "title": "STTMuteFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/filters/stt-mute\n\nProcessor for controlling STT muting and interruption handling during bot speech and function calls\n\n`STTMuteFilter` is a general-purpose processor that combines STT muting and interruption control. When active, it prevents both transcription and interruptions during specified conditions (e.g., bot speech, function calls), providing a cleaner conversation flow.\n\nThe processor supports multiple simultaneous strategies for when to mute the STT service, making it flexible for different use cases.\n\n<Tip>\n  Want to try it out? Check out the [STTMuteFilter foundational\n  demo](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/24-stt-mute-filter.py)\n</Tip>\n\n## Constructor Parameters\n\n<ParamField type=\"STTMuteConfig\">\n  Configuration object that defines the muting strategies and optional custom\n  logic\n</ParamField>\n\n<ParamField type=\"Optional[STTService]\">\n  The STT service to control (deprecated, will be removed in a future version)\n</ParamField>\n\nThe processor is configured using `STTMuteConfig`, which determines when and how the STT service should be muted:\n\n<ParamField type=\"set[STTMuteStrategy]\">\n  Set of muting strategies to apply\n</ParamField>\n\n<ParamField type=\"Callable[[STTMuteFilter], Awaitable[bool]]\">\n  Optional callback for custom muting logic (required when strategy is `CUSTOM`)\n</ParamField>\n\n### Muting Strategies\n\n`STTMuteConfig` accepts a set of these `STTMuteStrategy` values:\n\n<ParamField type=\"STTMuteStrategy\">\n  Mute only during the bot's first speech (typically during introduction)\n</ParamField>\n\n<ParamField type=\"STTMuteStrategy\">\n  Start muted and remain muted until first bot speech completes. Useful when bot\n  speaks first and you want to ensure its first response cannot be interrupted.\n</ParamField>\n\n<ParamField type=\"STTMuteStrategy\">\n  Mute during LLM function calls (e.g., API requests, external service calls)\n</ParamField>\n\n<ParamField type=\"STTMuteStrategy\">\n  Mute during all bot speech\n</ParamField>\n\n<ParamField type=\"STTMuteStrategy\">\n  Use custom logic provided via callback to determine when to mute. The callback\n  is invoked when the bot is speaking and can use application state to decide\n  whether to mute. When the bot stops speaking, unmuting occurs automatically if\n  no other strategy requires muting.\n</ParamField>\n\n<Note>\n  `MUTE_UNTIL_FIRST_BOT_COMPLETE` and `FIRST_SPEECH` strategies should not be\n  used together as they handle the first bot speech differently.\n</Note>\n\n<ParamField type=\"Frame\">\n  Indicates bot has started speaking\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Indicates bot has stopped speaking\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Indicates a function call has started\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Indicates a function call has completed\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Indicates an interim transcription result (suppressed when muted)\n</ParamField>\n\n<ParamField type=\"Frame\">\n  User interruption start event (suppressed when muted)\n</ParamField>\n\n<ParamField type=\"Frame\">\n  User interruption stop event (suppressed when muted)\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Indicates a transcription result (suppressed when muted)\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Indicates user has started speaking (suppressed when muted)\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Indicates user has stopped speaking (suppressed when muted)\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Control frame to mute/unmute the STT service\n</ParamField>\n\nAll input frames are passed through except VAD-related frames (interruptions and user speaking events) when muted.\n\n### Basic Usage (Mute During Bot's First Speech)\n\n### Mute Until First Bot Response Completes\n\nThis ensures no user speech is processed until after the bot's first complete response.\n\n### Always Mute During Bot Speech\n\n### Custom Muting Logic\n\nThe `CUSTOM` strategy allows you to control muting based on application state when the bot is speaking. The callback will be invoked whenever the bot is speaking, and your logic decides whether to mute:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "### Mute Until First Bot Response Completes",
+      "language": "unknown"
+    },
+    {
+      "code": "This ensures no user speech is processed until after the bot's first complete response.\n\n### Always Mute During Bot Speech",
+      "language": "unknown"
+    },
+    {
+      "code": "### Custom Muting Logic\n\nThe `CUSTOM` strategy allows you to control muting based on application state when the bot is speaking. The callback will be invoked whenever the bot is speaking, and your logic decides whether to mute:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Muting Strategies",
+      "id": "muting-strategies"
+    },
+    {
+      "level": "h2",
+      "text": "Input Frames",
+      "id": "input-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Output Frames",
+      "id": "output-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Usage (Mute During Bot's First Speech)",
+      "id": "basic-usage-(mute-during-bot's-first-speech)"
+    },
+    {
+      "level": "h3",
+      "text": "Mute Until First Bot Response Completes",
+      "id": "mute-until-first-bot-response-completes"
+    },
+    {
+      "level": "h3",
+      "text": "Always Mute During Bot Speech",
+      "id": "always-mute-during-bot-speech"
+    },
+    {
+      "level": "h3",
+      "text": "Custom Muting Logic",
+      "id": "custom-muting-logic"
+    }
+  ],
+  "url": "llms-txt#sttmutefilter",
+  "links": []
+}

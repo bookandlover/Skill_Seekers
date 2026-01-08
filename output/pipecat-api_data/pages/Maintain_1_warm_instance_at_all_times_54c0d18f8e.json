@@ -1,0 +1,19 @@
+{
+  "title": "Maintain 1 warm instance at all times",
+  "content": "pipecat cloud deploy [agent-name] --min-agents 1\nshell theme={null}",
+  "code_samples": [
+    {
+      "code": "<Warning>\n  Setting `--min-agents` to 1 or greater will incur charges even when the agent\n  is not in use.\n</Warning>\n\n### Maximum agents\n\n`max-agents`\n\n* Sets hard limit on concurrent sessions\n* Acts as a cost control / load mechanism\n* Returns HTTP 429 when pool capacity is reached\n\n<Frame>\n  <img />\n</Frame>\n\n<Note>\n  During beta, each deployment made to Pipecat Cloud has a maximum allowed pool\n  size of 50. Please contact us at [help@daily.co](mailto:help@daily.co) or via\n  [Discord](https://discord.gg/dailyco) if you require more capacity.\n</Note>\n\nDeployments can optionally be made with a `max-agents` configuration that limits the number of agent instances that your pool can contain.\nThis exists as a cost control measure, allowing developers to limit the total number of active sessions that can be run at any one time.\n\nThe maximum instance count is a hard limit, meaning requests made to a pool that is at capacity will receive a `429` response. See [starting sessions](./active-sessions#agent-capacity) for more information for how to handle this in your application code.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Maximum agents",
+      "id": "maximum-agents"
+    }
+  ],
+  "url": "llms-txt#maintain-1-warm-instance-at-all-times",
+  "links": []
+}

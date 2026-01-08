@@ -1,0 +1,8 @@
+{
+  "title": "Delete an Agent",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-delete\n\nDELETE /agents/{agentName}\nPermanently delete an agent and its associated resources.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#delete-an-agent",
+  "links": []
+}

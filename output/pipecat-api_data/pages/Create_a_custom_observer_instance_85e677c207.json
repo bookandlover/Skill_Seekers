@@ -1,0 +1,8 @@
+{
+  "title": "Create a custom observer instance",
+  "content": "custom_turn_tracker = TurnTrackingObserver(\n    turn_end_timeout_secs=3.5,     # Turn end timeout (default: 2.5)\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-a-custom-observer-instance",
+  "links": []
+}

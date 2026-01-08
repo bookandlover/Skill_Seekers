@@ -1,0 +1,13 @@
+{
+  "title": "List available keys",
+  "content": "pipecat cloud organizations keys list\nbash theme={null}\npipecat cloud organizations keys use\n```\n\nSelecting a key will modify your local configuration file and use it for all subsequent commands.\n\nPlease be aware that if the key is cycled or revoked, you will need to run the `keys use` command again to update your local configuration file with a new key.",
+  "code_samples": [
+    {
+      "code": "When using the CLI, you can specify a default API key to use for all commands that require it:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#list-available-keys",
+  "links": []
+}

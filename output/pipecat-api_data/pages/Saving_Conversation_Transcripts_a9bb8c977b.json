@@ -1,0 +1,29 @@
+{
+  "title": "Saving Conversation Transcripts",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/saving-transcripts\n\nLearn how to collect and save conversation transcripts between users and your bot\n\nRecording transcripts of conversations between users and your bot is useful for debugging, analysis, and creating a record of interactions. Pipecat's `TranscriptProcessor` makes it easy to collect both user and bot messages as they occur.\n\nThe `TranscriptProcessor` collects transcripts by:\n\n1. Capturing what the user says (from `TranscriptionFrame`s)\n2. Capturing what the bot says (from `TTSTextFrame`s)\n3. Emitting events with transcript updates in real-time\n4. Allowing you to handle these events with custom logic\n\n<Note>\n  The `TranscriptProcessor` provides two separate processors: one for user\n  speech and one for assistant speech. Both emit the same event type when new\n  transcript content is available.\n</Note>\n\n## Basic Implementation\n\n### Step 1: Create a Transcript Processor\n\nFirst, initialize the transcript processor:\n\n```python theme={null}\nfrom pipecat.processors.transcript_processor import TranscriptProcessor",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Implementation",
+      "id": "basic-implementation"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Create a Transcript Processor",
+      "id": "step-1:-create-a-transcript-processor"
+    }
+  ],
+  "url": "llms-txt#saving-conversation-transcripts",
+  "links": []
+}

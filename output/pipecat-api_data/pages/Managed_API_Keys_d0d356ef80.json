@@ -1,0 +1,53 @@
+{
+  "title": "Managed API Keys",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/managed-api-keys\n\nUsing managed API keys for your Pipecat Cloud agents\n\nPipecat Cloud provides API keys for some Pipecat services that you can use directly in your applications. These managed keys give you access to competitive pricing, higher rate limits, pre-signed BAAs and DPAs for compliance, and integrated billing with your Pipecat Cloud account.\n\n<Note>\n  Managed keys are currently in beta. We are planning to add more services based\n  on demand. If you're interested in us supporting a specific service, let us\n  know by emailing [pipecat-ai@daily.co](mailto:pipecat-ai@daily.co).\n</Note>\n\n## Supported Services\n\n* **Deepgram Flux (STT)**\n\nUsage of managed keys is billed through your Pipecat Cloud account. For detailed pricing information, visit our [pricing page](https://www.daily.co/pricing/pipecat-cloud/).\n\n## How to Use Managed Keys\n\n### Enable in Deployment Configuration\n\nWhen deploying your agent, you need to enable managed keys in your configuration.\n\n**Using pcc-deploy.toml:**\n\n<Info>\n  This setting is configured per agent deployment. Any changes require\n  redeploying your agent to take effect.\n</Info>\n\nWhen initializing a supported service in your Pipecat application, use the special string `\"PIPECATCLOUD\"` as the API key. This tells Pipecat Cloud to use the managed key when your agent is deployed.\n\nTo ensure your code works both locally (with your own API key) and when deployed (with managed keys), use this pattern:\n\n* Uses your local `DEEPGRAM_API_KEY` environment variable during development\n* Automatically switches to the managed key when deployed to Pipecat Cloud\n\n<Note>\n  The `PIPECATCLOUD` key is only available for Deepgram Flux (STT) when there is\n  no value for `DEEPGRAM_API_KEY` in your corresponding secrets set.\n</Note>\n\nIf you have any questions about using managed keys, reach out to us on [Discord](https://discord.gg/pipecat). Our community and team are happy to help!",
+  "code_samples": [
+    {
+      "code": "**Using the CLI:**",
+      "language": "unknown"
+    },
+    {
+      "code": "<Info>\n  This setting is configured per agent deployment. Any changes require\n  redeploying your agent to take effect.\n</Info>\n\n### Update Your Code\n\nWhen initializing a supported service in your Pipecat application, use the special string `\"PIPECATCLOUD\"` as the API key. This tells Pipecat Cloud to use the managed key when your agent is deployed.\n\nTo ensure your code works both locally (with your own API key) and when deployed (with managed keys), use this pattern:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Supported Services",
+      "id": "supported-services"
+    },
+    {
+      "level": "h2",
+      "text": "Pricing",
+      "id": "pricing"
+    },
+    {
+      "level": "h2",
+      "text": "How to Use Managed Keys",
+      "id": "how-to-use-managed-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Enable in Deployment Configuration",
+      "id": "enable-in-deployment-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Update Your Code",
+      "id": "update-your-code"
+    },
+    {
+      "level": "h2",
+      "text": "Getting Help",
+      "id": "getting-help"
+    }
+  ],
+  "url": "llms-txt#managed-api-keys",
+  "links": []
+}

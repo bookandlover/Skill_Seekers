@@ -1,0 +1,34 @@
+{
+  "title": "Google Imagen",
+  "content": "Source: https://docs.pipecat.ai/server/services/image-generation/google-imagen\n\nImage generation service implementation using Google's Imagen models\n\n`GoogleImageGenService` provides high-quality image generation capabilities using Google's Imagen models. It supports generating multiple images from text prompts with various customization options and advanced prompt understanding for photorealistic and artistic image creation.\n\n<CardGroup>\n  <Card title=\"Google Imagen API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.google.image.html\">\n    Pipecat's API methods for Google Imagen integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/03b-still-frame-imagen.py\">\n    Browse examples using Google Imagen\n  </Card>\n\n<Card title=\"Google Imagen Documentation\" icon=\"book\" href=\"https://cloud.google.com/vertex-ai/generative-ai/docs/image/overview\">\n    Official Google Imagen API documentation and guides\n  </Card>\n\n<Card title=\"Google Cloud Console\" icon=\"image\" href=\"https://console.cloud.google.com/\">\n    Access Imagen models and manage API keys\n  </Card>\n</CardGroup>\n\nTo use Google Imagen services, install the required dependencies:\n\n### Google Cloud Setup\n\nBefore using Google Imagen services, you need:\n\n1. **Google Cloud Account**: Set up at [Google Cloud Console](https://console.cloud.google.com/)\n2. **API Key**: Generate a Google API key with Vertex AI access\n3. **Project Configuration**: Enable Vertex AI API for your project\n4. **Model Access**: Ensure access to Imagen generation models\n\n### Required Environment Variables\n\n* `GOOGLE_API_KEY`: Your Google API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Google Cloud Setup",
+      "id": "google-cloud-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#google-imagen",
+  "links": []
+}

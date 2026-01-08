@@ -1,0 +1,121 @@
+{
+  "title": "deploy",
+  "content": "Source: https://docs.pipecat.ai/cli/cloud/deploy\n\nCreate or modify an agent deployment\n\nThe `deploy` command creates a new agent deployment or updates an existing one. It builds a deployment manifest with the provided parameters and monitors the deployment status until the agent is ready.\n\nIf the agent name already exists, you'll be prompted to confirm the update unless the `--force` flag is used.\n\nThis command will wait for the active deployment / revision to enter a ready state before returning. If the deployment fails, the command will exit with an [error](/deployment/pipecat-cloud/fundamentals/error-codes) with more information.\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n<ParamField type=\"string\">\n  URL of the Docker image to deploy. Must be a valid Docker image URL. For\n  example: `docker.io/my-repo/my-image:latest`.\n</ParamField>\n\n<ParamField type=\"string\">\n  Name of the image pull secret to use for accessing private repositories. The\n  secret must be previously created using the `pipecat cloud secrets\n      image-pull-secret` command.\n</ParamField>\n\n<ParamField type=\"string\">\n  Organization to deploy the agent to. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n<ParamField type=\"string\">\n  Name of the secret set to use for the deployment. The secret set must exist in\n  the specified organization.\n</ParamField>\n\n<ParamField type=\"number\">\n  Minimum number of agent instances to keep warm at all times. Default is 0,\n  which means the agent will scale down to zero when not in use. Setting this to\n  1 or higher avoids cold starts.\n</ParamField>\n\n<ParamField type=\"number\">\n  Maximum number of allowed agent instances. Must be between 1 and 50. If you\n  need more agents, please contact us at [help@daily.co](mailto:help@daily.co) or via\n  [Discord](https://discord.gg/dailyco).\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Enable Krisp noise cancellation for this deployed agent. In addition, you also\n  need to enable the `KrispFilter()` for your transport. See the [Krisp Noise\n  Cancellation](/deployment/pipecat-cloud/guides/krisp-noise-cancellation) guide\n  for more information.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Enable [managed API keys](/deployment/pipecat-cloud/guides/managed-api-keys)\n  for this deployed agent.\n</ParamField>\n\n<ParamField type=\"string\">\n  The agent profile to use for resource allocation. Valid values are:\n  `agent-1x`, `agent-2x`, `agent-3x`.\n\nSee [Agent Profiles](/deployment/pipecat-cloud/fundamentals/deploy#agent-profiles) for more information.\n</ParamField>\n\n<ParamField type=\"string\">\n  Region where the agent will be deployed. If not specified, uses your\n  organization's default region (typically `us-west`). Choose a region close to\n  your users for optimal latency.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Force deployment and skip confirmation prompts. Use with caution.\n</ParamField>\n\n**Deploy a new agent:**\n\n**Update an existing agent with a new image:**\n\n**Deploy with a specific secret set:**\n\n**Deploy a private image using image pull credentials:**\n\n**Keep one instance always warm to avoid cold starts:**\n\n**Limit the maximum number of agent instances:**\n\n**Deploy to a specific region:**\n\n## Configuration File (pcc-deploy.toml)\n\nThe `deploy` command supports a configuration file for repeatable deployments. Create a `pcc-deploy.toml` file in your project root to define deployment settings that can be shared across your team and version controlled.\n\nPlace `pcc-deploy.toml` in the same directory where you run the `pipecat cloud deploy` command. The CLI will automatically detect and use this file.\n\nValues are applied with the following order of precedence:\n\n1. CLI arguments (highest priority)\n2. `pcc-deploy.toml` values\n3. Default values (lowest priority)\n\nThis allows you to define defaults in the config file while still overriding specific values via CLI flags when needed.\n\n### Configuration Options\n\n<ParamField type=\"string\">\n  Name of the agent to deploy. Must start with a lowercase letter or number, can\n  include hyphens, and must end with a lowercase letter or number.\n\n<ParamField type=\"string\">\n  Docker image URL with tag.\n\n<ParamField type=\"string\">\n  Region where the agent will be deployed. If not specified, uses your\n  organization's default region (typically `us-west`).\n\n<ParamField type=\"string\">\n  Name of the secret set to use for environment variables. The secret set must\n  exist in the same region as the agent.\n\n<ParamField type=\"string\">\n  Name of the image pull secret for private registries. The image pull secret must exist in the same region as the agent.\n\n<ParamField type=\"string\">\n  Agent profile for resource allocation. Valid values: `agent-1x`, `agent-2x`, `agent-3x`.\n\n<ParamField type=\"boolean\">\n  **Deprecated:** Enable legacy Krisp noise cancellation. Use `krisp_viva` instead.\n\n<ParamField type=\"boolean\">\n  Enable managed API keys for this deployment.\n\n#### Scaling Configuration\n\nDefine auto-scaling behavior in a `[scaling]` section:\n\n<ParamField type=\"number\">\n  Minimum number of agent instances to keep warm. Setting to 0 allows scaling to zero but may result in cold starts.\n\n<ParamField type=\"number\">\n  Maximum number of agent instances allowed.\n\n#### Krisp VIVA Configuration\n\nConfigure Krisp VIVA noise cancellation in a `[krisp_viva]` section:\n\n<ParamField type=\"string\">\n  Krisp VIVA audio filter model. Valid values: `tel` (telephony, up to 16kHz) or `pro` (WebRTC, up to 32kHz). Omit or set to `null` to disable.",
+  "code_samples": [
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n<ParamField type=\"string\">\n  URL of the Docker image to deploy. Must be a valid Docker image URL. For\n  example: `docker.io/my-repo/my-image:latest`.\n</ParamField>\n\n**Options:**\n\n<ParamField type=\"string\">\n  Name of the image pull secret to use for accessing private repositories. The\n  secret must be previously created using the `pipecat cloud secrets\n      image-pull-secret` command.\n</ParamField>\n\n<ParamField type=\"string\">\n  Organization to deploy the agent to. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n<ParamField type=\"string\">\n  Name of the secret set to use for the deployment. The secret set must exist in\n  the specified organization.\n</ParamField>\n\n<ParamField type=\"number\">\n  Minimum number of agent instances to keep warm at all times. Default is 0,\n  which means the agent will scale down to zero when not in use. Setting this to\n  1 or higher avoids cold starts.\n</ParamField>\n\n<ParamField type=\"number\">\n  Maximum number of allowed agent instances. Must be between 1 and 50. If you\n  need more agents, please contact us at [help@daily.co](mailto:help@daily.co) or via\n  [Discord](https://discord.gg/dailyco).\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Enable Krisp noise cancellation for this deployed agent. In addition, you also\n  need to enable the `KrispFilter()` for your transport. See the [Krisp Noise\n  Cancellation](/deployment/pipecat-cloud/guides/krisp-noise-cancellation) guide\n  for more information.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Enable [managed API keys](/deployment/pipecat-cloud/guides/managed-api-keys)\n  for this deployed agent.\n</ParamField>\n\n<ParamField type=\"string\">\n  The agent profile to use for resource allocation. Valid values are:\n  `agent-1x`, `agent-2x`, `agent-3x`.\n\n  See [Agent Profiles](/deployment/pipecat-cloud/fundamentals/deploy#agent-profiles) for more information.\n</ParamField>\n\n<ParamField type=\"string\">\n  Region where the agent will be deployed. If not specified, uses your\n  organization's default region (typically `us-west`). Choose a region close to\n  your users for optimal latency.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Force deployment and skip confirmation prompts. Use with caution.\n</ParamField>\n\n## Examples\n\n**Deploy a new agent:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Update an existing agent with a new image:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Deploy with a specific secret set:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Deploy a private image using image pull credentials:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Keep one instance always warm to avoid cold starts:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Limit the maximum number of agent instances:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Deploy to a specific region:**",
+      "language": "unknown"
+    },
+    {
+      "code": "## Configuration File (pcc-deploy.toml)\n\nThe `deploy` command supports a configuration file for repeatable deployments. Create a `pcc-deploy.toml` file in your project root to define deployment settings that can be shared across your team and version controlled.\n\n### File Location\n\nPlace `pcc-deploy.toml` in the same directory where you run the `pipecat cloud deploy` command. The CLI will automatically detect and use this file.\n\n### Precedence\n\nValues are applied with the following order of precedence:\n\n1. CLI arguments (highest priority)\n2. `pcc-deploy.toml` values\n3. Default values (lowest priority)\n\nThis allows you to define defaults in the config file while still overriding specific values via CLI flags when needed.\n\n### Configuration Options\n\n#### Required Fields\n\n<ParamField type=\"string\">\n  Name of the agent to deploy. Must start with a lowercase letter or number, can\n  include hyphens, and must end with a lowercase letter or number.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n<ParamField type=\"string\">\n  Docker image URL with tag.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n#### Optional Fields\n\n<ParamField type=\"string\">\n  Region where the agent will be deployed. If not specified, uses your\n  organization's default region (typically `us-west`).",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n<ParamField type=\"string\">\n  Name of the secret set to use for environment variables. The secret set must\n  exist in the same region as the agent.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n<ParamField type=\"string\">\n  Name of the image pull secret for private registries. The image pull secret must exist in the same region as the agent.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n<ParamField type=\"string\">\n  Agent profile for resource allocation. Valid values: `agent-1x`, `agent-2x`, `agent-3x`.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n<ParamField type=\"boolean\">\n  **Deprecated:** Enable legacy Krisp noise cancellation. Use `krisp_viva` instead.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n<ParamField type=\"boolean\">\n  Enable managed API keys for this deployment.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n#### Scaling Configuration\n\nDefine auto-scaling behavior in a `[scaling]` section:\n\n<ParamField type=\"number\">\n  Minimum number of agent instances to keep warm. Setting to 0 allows scaling to zero but may result in cold starts.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n<ParamField type=\"number\">\n  Maximum number of agent instances allowed.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n#### Krisp VIVA Configuration\n\nConfigure Krisp VIVA noise cancellation in a `[krisp_viva]` section:\n\n<ParamField type=\"string\">\n  Krisp VIVA audio filter model. Valid values: `tel` (telephony, up to 16kHz) or `pro` (WebRTC, up to 32kHz). Omit or set to `null` to disable.",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n### Complete Example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h2",
+      "text": "Examples",
+      "id": "examples"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration File (pcc-deploy.toml)",
+      "id": "configuration-file-(pcc-deploy.toml)"
+    },
+    {
+      "level": "h3",
+      "text": "File Location",
+      "id": "file-location"
+    },
+    {
+      "level": "h3",
+      "text": "Precedence",
+      "id": "precedence"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    },
+    {
+      "level": "h3",
+      "text": "Complete Example",
+      "id": "complete-example"
+    }
+  ],
+  "url": "llms-txt#deploy",
+  "links": []
+}

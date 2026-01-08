@@ -1,0 +1,8 @@
+{
+  "title": "Parse WebSocket data (same as dial-in)",
+  "content": "transport_type, call_data = await parse_telephony_websocket(websocket)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#parse-websocket-data-(same-as-dial-in)",
+  "links": []
+}

@@ -1,0 +1,44 @@
+{
+  "title": "Producer & Consumer Processors",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/frame/producer-consumer\n\nRoute frames between different parts of a pipeline, allowing selective frame sharing across parallel branches or within complex pipelines\n\nThe Producer and Consumer processors work as a pair to route frames between different parts of a pipeline, particularly useful when working with [`ParallelPipeline`](/server/pipeline/parallel-pipeline). They allow you to selectively capture frames from one pipeline branch and inject them into another.\n\n`ProducerProcessor` examines frames flowing through the pipeline, applies a filter to decide which frames to share, and optionally transforms these frames before sending them to connected consumers.\n\n### Constructor Parameters\n\n<ParamField type=\"Callable[[Frame], Awaitable[bool]]\">\n  An async function that determines which frames should be sent to consumers.\n  Should return `True` for frames to be shared.\n</ParamField>\n\n<ParamField type=\"Callable[[Frame], Awaitable[Frame]]\">\n  Optional async function that transforms frames before sending to consumers. By\n  default, passes frames unchanged.\n</ParamField>\n\n<ParamField type=\"bool\">\n  When `True`, passes all frames through the normal pipeline flow. When `False`,\n  only passes through frames that don't match the filter.\n</ParamField>\n\n`ConsumerProcessor` receives frames from a `ProducerProcessor` and injects them into its pipeline branch.\n\n### Constructor Parameters\n\n<ParamField type=\"ProducerProcessor\">\n  The producer processor that will send frames to this consumer.\n</ParamField>\n\n<ParamField type=\"Callable[[Frame], Awaitable[Frame]]\">\n  Optional async function that transforms frames before injecting them into the\n  pipeline.\n</ParamField>\n\n<ParamField type=\"FrameDirection\">\n  The direction in which to push received frames. Usually `DOWNSTREAM` to send\n  frames forward in the pipeline.\n</ParamField>\n\n### Basic Usage: Moving TTS Audio Between Branches\n\n```python theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "ProducerProcessor",
+      "id": "producerprocessor"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "ConsumerProcessor",
+      "id": "consumerprocessor"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Usage: Moving TTS Audio Between Branches",
+      "id": "basic-usage:-moving-tts-audio-between-branches"
+    }
+  ],
+  "url": "llms-txt#producer-&-consumer-processors",
+  "links": []
+}

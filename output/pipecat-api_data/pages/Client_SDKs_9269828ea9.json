@@ -1,0 +1,62 @@
+{
+  "title": "Client SDKs",
+  "content": "Source: https://docs.pipecat.ai/client/introduction\n\nClient libraries for building real-time AI applications with Pipecat\n\n<Note>\n  All Client SDKs have transitioned to v1.0, which uses a new, simpler API\n  design. For guidance in transitioning to the new API, please refer to the\n  migration guide for each platform. If you have any questions or need\n  assistance, please reach out to us on [Discord](https://discord.gg/pipecat).\n</Note>\n\nPipecat provides client SDKs for multiple platforms, all implementing the RTVI (Real-Time Voice and Video Inference) standard. These SDKs make it easy to build real-time AI applications that can handle voice, video, and text interactions.\n\n<CardGroup>\n  <Card title=\"Javascript\" icon=\"JS\" href=\"/client/js/introduction\">\n    Pipecat JS SDK\n  </Card>\n\n<Card title=\"React\" icon=\"react\" href=\"/client/react/introduction\">\n    Pipecat React SDK\n  </Card>\n\n<Card title=\"React Native\" icon=\"react\" href=\"/client/react-native/introduction\">\n    Pipecat React Native SDK\n  </Card>\n\n<Card title=\"Swift\" icon=\"swift\" href=\"/client/ios/introduction\">\n    Pipecat iOS SDK\n  </Card>\n\n<Card title=\"Kotlin\" icon=\"android\" href=\"/client/android/introduction\">\n    Pipecat Android SDK\n  </Card>\n\n<Card title=\"C++\" icon=\"C\" href=\"/client/c++/introduction\">\n    Pipecat C++ SDK\n  </Card>\n</CardGroup>\n\n## Core Functionality\n\nAll Pipecat client SDKs provide:\n\n<CardGroup>\n  <Card title=\"Media Management\" icon=\"video\">\n    Handle device inputs and media streams for audio and video\n  </Card>\n\n<Card title=\"Bot Integration\" icon=\"robot\">\n    Configure and communicate with your Pipecat bot\n  </Card>\n\n<Card title=\"Session Management\" icon=\"arrows-rotate\">\n    Manage connection state and error handling\n  </Card>\n</CardGroup>\n\nThe main class for interacting with Pipecat bots. It is the primary type you will interact with.\n\nThe `PipecatClient` wraps a Transport, which defines and provides the underlying connection mechanism (e.g., WebSocket, WebRTC). Your Pipecat pipeline will contain a corresponding transport.\n\nRepresents a message sent to or received from a Pipecat bot.\n\n## Simple Usage Examples\n\n<Tabs>\n  <Tab title=\"Connecting to a Bot\">\n    Establish ongoing connections via WebSocket or WebRTC for:\n\n* Live voice conversations\n    * Real-time video processing\n    * Continuous interactions\n\n</CodeGroup>\n  </Tab>\n\n<Tab title=\"Custom Messaging\">\n    Send custom messages and handle responses from your bot. This is useful for:\n\n* Running server-side functionality\n    * Triggering specific bot actions\n    * Querying the server\n    * Responding to server requests\n\n</CodeGroup>\n  </Tab>\n</Tabs>\n\nPipecat's client SDKs implement the RTVI (Real-Time Voice and Video Inference) standard, an open specification for real-time AI inference. This means:\n\n* Your code can work with any RTVI-compatible inference service\n* You get battle-tested tooling for real-time multimedia handling\n* You can easily set up development and testing environments\n\nGet started by trying out examples:\n\n<CardGroup>\n  <Card title=\"Simple Chatbot Example\" icon=\"robot\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot\">\n    Complete client-server example with both bot backend (Python) and frontend\n    implementation (JS, React, React Native, iOS, and Android).\n  </Card>\n\n<Card title=\"More Examples\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples\">\n    Explore our full collection of example applications and implementations\n    across different platforms and use cases.\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n  </Tab>\n\n  <Tab title=\"Custom Messaging\">\n    Send custom messages and handle responses from your bot. This is useful for:\n\n    * Running server-side functionality\n    * Triggering specific bot actions\n    * Querying the server\n    * Responding to server requests\n\n    <CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Core Functionality",
+      "id": "core-functionality"
+    },
+    {
+      "level": "h2",
+      "text": "Core Types",
+      "id": "core-types"
+    },
+    {
+      "level": "h3",
+      "text": "PipecatClient",
+      "id": "pipecatclient"
+    },
+    {
+      "level": "h3",
+      "text": "Transport",
+      "id": "transport"
+    },
+    {
+      "level": "h3",
+      "text": "RTVIMessage",
+      "id": "rtvimessage"
+    },
+    {
+      "level": "h2",
+      "text": "Simple Usage Examples",
+      "id": "simple-usage-examples"
+    },
+    {
+      "level": "h2",
+      "text": "About RTVI",
+      "id": "about-rtvi"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#client-sdks",
+  "links": []
+}

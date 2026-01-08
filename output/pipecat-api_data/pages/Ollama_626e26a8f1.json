@@ -1,0 +1,39 @@
+{
+  "title": "Ollama",
+  "content": "Source: https://docs.pipecat.ai/server/services/llm/ollama\n\nLLM service implementation using Ollama with OpenAI-compatible interface\n\n`OLLamaLLMService` provides access to locally-run Ollama models through an OpenAI-compatible interface. It inherits from `BaseOpenAILLMService` and allows you to run various open-source models locally while maintaining compatibility with OpenAI's API format for privacy and cost control.\n\n<CardGroup>\n  <Card title=\"Ollama LLM API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.ollama.llm.html\">\n    Pipecat's API methods for Ollama integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/tree/main/examples\">\n    Browse examples using Ollama models\n  </Card>\n\n<Card title=\"Ollama Documentation\" icon=\"book\" href=\"https://ollama.com/library\">\n    Official Ollama documentation and model library\n  </Card>\n\n<Card title=\"Download Ollama\" icon=\"microphone\" href=\"https://ollama.com/download\">\n    Download and setup instructions for Ollama\n  </Card>\n</CardGroup>\n\nTo use Ollama services, you need to install both Ollama and the Pipecat dependency:\n\n1. **Install Ollama** on your system from [ollama.com/download](https://ollama.com/download)\n2. **Install Pipecat dependency**:\n\n3. **Pull a model** (first time only):\n\n### Ollama Local Setup\n\nBefore using Ollama LLM services, you need:\n\n1. **Ollama Installation**: Download and install Ollama from [ollama.com](https://ollama.com/download)\n2. **Model Selection**: Pull your desired models (llama2, mistral, codellama, etc.)\n3. **Local Service**: Ensure Ollama service is running (default port 11434)\n4. **Hardware**: Sufficient RAM and storage for your chosen models\n\n* **No API Keys Required**: Ollama runs entirely locally\n* **Model Management**: Use `ollama pull <model>` to download models\n* **Service URL**: Default is `http://localhost:11434` (configurable)\n\n<Tip>\n  Ollama runs as a local service on port 11434. No API key required for complete\n  privacy!\n</Tip>",
+  "code_samples": [
+    {
+      "code": "3. **Pull a model** (first time only):",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Ollama Local Setup",
+      "id": "ollama-local-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration",
+      "id": "configuration"
+    }
+  ],
+  "url": "llms-txt#ollama",
+  "links": []
+}

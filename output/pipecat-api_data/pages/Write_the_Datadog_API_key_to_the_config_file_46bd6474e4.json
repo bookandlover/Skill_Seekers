@@ -1,0 +1,8 @@
+{
+  "title": "Write the Datadog API key to the config file",
+  "content": "echo \"api_key: $DD_API_KEY\" >> /etc/datadog-agent/datadog.yaml",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#write-the-datadog-api-key-to-the-config-file",
+  "links": []
+}

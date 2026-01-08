@@ -1,0 +1,24 @@
+{
+  "title": "Build and push using your pcc-deploy.toml configuration",
+  "content": "pipecat cloud docker build-push\nbash theme={null}\npipecat cloud deploy\n```\n\n## Configuration Reference\n\nReplace the following placeholders with your actual values:\n\n* `<location>` with your Artifact Registry location (e.g., `us-central1`, `asia-east1`)\n* `<project-id>` with your Google Cloud project ID\n* `<repo-name>` with your Artifact Registry repository name\n* `key-file.json` with the path to your service account JSON key file\n\n<Note>\n  The service account used for image credentials should have the `Artifact\n      Registry Reader` role or equivalent permissions to pull images from your\n  private repository.\n</Note>",
+  "code_samples": [
+    {
+      "code": "This command automatically builds for the correct platform (`linux/arm64`) and pushes to your configured Artifact Registry repository.\n\n## Deploy Your Agent\n\nDeploy using your configured `pcc-deploy.toml`:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Deploy Your Agent",
+      "id": "deploy-your-agent"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration Reference",
+      "id": "configuration-reference"
+    }
+  ],
+  "url": "llms-txt#build-and-push-using-your-pcc-deploy.toml-configuration",
+  "links": []
+}

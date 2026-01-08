@@ -1,0 +1,23 @@
+{
+  "title": "tail",
+  "content": "Source: https://docs.pipecat.ai/cli/tail\n\nA terminal dashboard for monitoring Pipecat sessions in real-time\n\n**Tail** is a terminal dashboard for monitoring your Pipecat sessions in real-time with logs, conversations, metrics, and audio levels all in one place.\n\n* 📜 Follow system logs in real time\n* 💬 Track conversations as they happen\n* 🔊 Monitor user and agent audio levels\n* 📈 Keep an eye on service metrics and usage\n* 🖥️ Run locally as a pipeline runner or connect to a remote session\n\n<ParamField type=\"string\">\n  WebSocket URL to connect to. Defaults to `ws://localhost:9292`.\n</ParamField>\n\n* Add `pipecat-ai-cli` to your project's dependencies.\n\n* Update your Pipecat code to include the `TailObserver`:\n\n* Start the Tail app separately:",
+  "code_samples": [
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  WebSocket URL to connect to. Defaults to `ws://localhost:9292`.\n</ParamField>\n\n## How to Use Tail\n\n* Add `pipecat-ai-cli` to your project's dependencies.\n\n* Update your Pipecat code to include the `TailObserver`:",
+      "language": "unknown"
+    },
+    {
+      "code": "* Start the Tail app separately:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How to Use Tail",
+      "id": "how-to-use-tail"
+    }
+  ],
+  "url": "llms-txt#tail",
+  "links": []
+}

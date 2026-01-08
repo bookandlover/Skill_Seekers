@@ -1,0 +1,14 @@
+{
+  "title": "Using Datadog",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/using-datadog\n\nHow to add Datadog logging, traces, and custom metrics to your Pipecat Cloud agents\n\nThis guide explains how to use [Datadog](https://www.datadoghq.com/) with your Pipecat Cloud agents for logging, traces, and custom metrics.\n\n<Warning>\n  This guide is a work in progress and may have some sharp edges. However, it\n  has been vetted for basic usage.\n</Warning>\n\n* Have a Datadog account and API key.\n* Use at least version `0.0.7` of the Pipecat Cloud base image:\n\n```dockerfile theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    }
+  ],
+  "url": "llms-txt#using-datadog",
+  "links": []
+}

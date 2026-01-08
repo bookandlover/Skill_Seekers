@@ -1,0 +1,34 @@
+{
+  "title": "Groq",
+  "content": "Source: https://docs.pipecat.ai/server/services/tts/groq\n\nText-to-speech service implementation using Groq's TTS API\n\n`GroqTTSService` provides fast text-to-speech synthesis using Groq's TTS API with multiple voice options. The service operates at a fixed 48kHz sample rate and offers efficient audio streaming for real-time applications with ultra-low latency.\n\n<CardGroup>\n  <Card title=\"Groq TTS API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.groq.tts.html\">\n    Pipecat's API methods for Groq TTS integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07l-interruptible-groq.py\">\n    Complete example with Groq STT and LLM\n  </Card>\n\n<Card title=\"Groq Documentation\" icon=\"book\" href=\"https://console.groq.com/docs/api-reference#models\">\n    Official Groq API documentation and models\n  </Card>\n\n<Card title=\"Voice Options\" icon=\"microphone\" href=\"https://console.groq.com/\">\n    Explore available voice models and features\n  </Card>\n</CardGroup>\n\nTo use Groq services, install the required dependencies:\n\n### Groq Account Setup\n\nBefore using Groq TTS services, you need:\n\n1. **Groq Account**: Sign up at [Groq Console](https://console.groq.com/login)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Voice Selection**: Choose from available voice models\n\n### Required Environment Variables\n\n* `GROQ_API_KEY`: Your Groq API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Groq Account Setup",
+      "id": "groq-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#groq",
+  "links": []
+}

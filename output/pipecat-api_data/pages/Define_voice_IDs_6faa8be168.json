@@ -1,0 +1,8 @@
+{
+  "title": "Define voice IDs",
+  "content": "VOICE_IDS = {\n    \"narrator\": \"c45bc5ec-dc68-4feb-8829-6e6b2748095d\",\n    \"female\": \"71a7ad14-091c-4e8e-a314-022ece01c121\",\n    \"male\": \"7cf0e2b1-8daf-4fe4-89ad-f6039398f359\",\n}",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#define-voice-ids",
+  "links": []
+}

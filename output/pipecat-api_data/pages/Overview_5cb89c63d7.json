@@ -1,0 +1,64 @@
+{
+  "title": "Overview",
+  "content": "Source: https://docs.pipecat.ai/guides/telephony/overview\n\nHow to call your bots (or have them call you)\n\nYou can dial-in to your Pipecat bots, and have them dial-out too, across both PSTN and SIP. The technical implementation will depend on your chosen transport and phone number vendor; each will likely have their own methods and events to consider.\n\n**PSTN (Public Switched Telephone Network)**: The traditional phone network consisting of physical phone lines, cables, and transmission links. PSTN operates on a one-user-per-line basis.\n\n**SIP (Session Initiation Protocol)**: A signaling protocol used for voice and video calls over IP networks. SIP can handle multiple users per line and enables advanced call control features like transfers, forwarding, and multi-party calls.\n\n## Telephony Connection Options\n\n### WebSocket Connections\n\n**Best for:** Simple telephony workflows and quick prototypes\n\n* **How it works:** Real-time audio streaming over WebSocket connections\n* **Call control:** Basic, managed by the telephony provider\n* **Supported providers:** Twilio, Telnyx, Plivo, Exotel\n* **Limitations:** No advanced call center features like transfers or reconnects\n\n* Simple inbound/outbound calling\n* Integration with existing Twilio Studio or Flex workflows\n* Quick setup with minimal configuration\n\n### WebRTC Connections\n\n**Best for:** When connecting web clients to telephony systems or for more complex transfer scenarios\n\n* **How it works:** Peer-to-peer real-time communication optimized for varying network conditions\n* **Call control:** Advanced, includes track-level control\n* **Supported providers:** Daily (with PSTN integration)\n* **Benefits:** Designed for scale, handles network variations gracefully\n\n* When connecting web or mobile clients to telephony systems\n* Applications requiring high-quality audio/video\n* Users on devices with varying network conditions\n\n**Best for:** Enterprise telephony and advanced call control scenarios\n\n* **How it works:** Industry-standard protocol for voice/video calls over IP\n* **Call control:** Full control, including transfers, forwarding, multi-party, etc.\n* **Integration:** Works with legacy call centers and telephony systems\n* **Vendor flexibility:** Supports multiple telephony vendors without platform-specific code\n\n* Multi-agent or multi-party calls\n* Integration with legacy call centers\n* Advanced features: warm transfers, agent assist, call forwarding\n* Enterprise telephony requirements\n\n<Note>\n  **Multiple providers:** You can configure your Pipecat bots to handle multiple\n  vendors simultaneously. For example, use both Daily and Twilio as phone number\n  providers concurrently.\n</Note>\n\n## Telephony Provider Options\n\n### Daily PSTN (WebRTC)\n\nDirect PSTN connectivity through Daily's platform with WebRTC transport.\n\n* **Setup:** Purchase phone numbers directly through Daily\n* **Transport:** WebRTC for optimal audio quality\n* **Use case:** A range of use cases, from simple to complex including cold and warm transfers\n\n[**Daily PSTN Guide →**](./daily-pstn)\n\n### Daily + SIP Integration\n\nCombine Daily's WebRTC transport with SIP-based telephony providers.\n\n* **Setup:** Use existing Twilio numbers with Daily transport\n* **Transport:** WebRTC with SIP forwarding\n* **Use case:** Leverage existing Twilio workflows with Daily's transport benefits\n\n[**Daily + Twilio SIP Guide →**](./twilio-daily-sip)\n\n### WebSocket Providers\n\nDirect integration with telephony providers using WebSocket connections.\n\n<CardGroup>\n  <Card title=\"Twilio WebSocket\" icon=\"phone\" href=\"./twilio-websockets\">\n    Media Streams integration with Twilio's telephony platform\n  </Card>\n\n<Card title=\"Telnyx WebSocket\" icon=\"phone\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/telnyx-chatbot\">\n    Real-time media streaming with Telnyx services\n  </Card>\n\n<Card title=\"Plivo WebSocket\" icon=\"phone\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/plivo-chatbot\">\n    Voice streaming API integration with Plivo\n  </Card>\n\n<Card title=\"Exotel WebSocket\" icon=\"phone\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/exotel-chatbot\">\n    WebSocket integration with Exotel telephony platform\n  </Card>\n</CardGroup>\n\nChoose the telephony option that best fits your use case and follow the corresponding guide. Each option provides complete setup instructions and example code to get you started quickly.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "level": "h2",
+      "text": "Key Terms",
+      "id": "key-terms"
+    },
+    {
+      "level": "h2",
+      "text": "Telephony Connection Options",
+      "id": "telephony-connection-options"
+    },
+    {
+      "level": "h3",
+      "text": "WebSocket Connections",
+      "id": "websocket-connections"
+    },
+    {
+      "level": "h3",
+      "text": "WebRTC Connections",
+      "id": "webrtc-connections"
+    },
+    {
+      "level": "h3",
+      "text": "SIP Connections",
+      "id": "sip-connections"
+    },
+    {
+      "level": "h2",
+      "text": "Telephony Provider Options",
+      "id": "telephony-provider-options"
+    },
+    {
+      "level": "h3",
+      "text": "Daily PSTN (WebRTC)",
+      "id": "daily-pstn-(webrtc)"
+    },
+    {
+      "level": "h3",
+      "text": "Daily + SIP Integration",
+      "id": "daily-+-sip-integration"
+    },
+    {
+      "level": "h3",
+      "text": "WebSocket Providers",
+      "id": "websocket-providers"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#overview",
+  "links": []
+}

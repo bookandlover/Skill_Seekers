@@ -1,0 +1,49 @@
+{
+  "title": "Plivo WebSocket Integration",
+  "content": "Source: https://docs.pipecat.ai/guides/telephony/plivo-websockets\n\nComplete guide to using Plivo Media Streaming with Pipecat for dial-in and dial-out functionality\n\n## Things you'll need\n\n* An active [Plivo](https://www.plivo.com) account with API credentials\n* One or more Plivo provisioned phone numbers\n* A public-facing server or tunneling service like [ngrok](https://ngrok.com/)\n* API keys for speech-to-text, text-to-speech, and LLM services\n\n<CardGroup>\n  <Card title=\"Plivo Dial-in Example\" icon=\"phone-arrow-down-left\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/plivo-chatbot/inbound\">\n    Complete dial-in implementation using Plivo Media Streaming over WebSocket\n  </Card>\n\n<Card title=\"Plivo Dial-out Example\" icon=\"phone-arrow-up-right\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/plivo-chatbot/outbound\">\n    Outbound calling using Plivo Media Streaming with WebSocket transport\n  </Card>\n</CardGroup>\n\n## Phone Number Setup\n\nYou'll need Plivo phone numbers for both dial-in and dial-out functionality:\n\n* Visit [plivo.com](https://www.plivo.com) and purchase phone numbers\n* Ensure your numbers support Voice capabilities\n* Configure XML applications for dial-in numbers (covered below)\n\nConfigure your environment variables for Plivo and AI services:\n\nDial-in allows users to call your Plivo number and connect to your Pipecat bot via WebSocket Media Streaming.\n\nHere's the sequence of events when someone calls your Plivo number:\n\n1. **Plivo receives an incoming call** to your phone number\n2. **Plivo calls your XML server** with call details\n3. **Your server responds with XML** that establishes a WebSocket connection\n4. **Plivo opens a WebSocket** to your server with real-time audio\n5. **Your bot processes the audio** using the Pipecat pipeline\n6. **The bot responds with audio** sent back to Plivo over WebSocket\n7. **Plivo plays the audio** to the caller in real-time\n\n### Set up your XML server\n\nYour server handles Plivo webhooks and WebSocket connections for real-time audio streaming. When Plivo receives a call, your server:\n\n1. **Receives the webhook** with call details (CallUUID, caller information)\n2. **Returns XML** that establishes a WebSocket connection to your server\n3. **Accepts the WebSocket** connection from Plivo\n4. **Parses call data** from the WebSocket messages\n5. **Runs the Pipecat bot** with the parsed call information\n\nThe server orchestrates the real-time audio streaming between Plivo's telephony infrastructure and your Pipecat bot pipeline.\n\n### Custom Data with Query Parameters\n\nYou can pass custom data to your bot by adding query parameters to the WebSocket URL in your XML response. This works for both dial-in and dial-out scenarios:\n\n```python server.py theme={null}",
+  "code_samples": [
+    {
+      "code": "## Dial-in\n\nDial-in allows users to call your Plivo number and connect to your Pipecat bot via WebSocket Media Streaming.\n\n### How It Works\n\nHere's the sequence of events when someone calls your Plivo number:\n\n1. **Plivo receives an incoming call** to your phone number\n2. **Plivo calls your XML server** with call details\n3. **Your server responds with XML** that establishes a WebSocket connection\n4. **Plivo opens a WebSocket** to your server with real-time audio\n5. **Your bot processes the audio** using the Pipecat pipeline\n6. **The bot responds with audio** sent back to Plivo over WebSocket\n7. **Plivo plays the audio** to the caller in real-time\n\n### Set up your XML server\n\nYour server handles Plivo webhooks and WebSocket connections for real-time audio streaming. When Plivo receives a call, your server:\n\n1. **Receives the webhook** with call details (CallUUID, caller information)\n2. **Returns XML** that establishes a WebSocket connection to your server\n3. **Accepts the WebSocket** connection from Plivo\n4. **Parses call data** from the WebSocket messages\n5. **Runs the Pipecat bot** with the parsed call information\n\nThe server orchestrates the real-time audio streaming between Plivo's telephony infrastructure and your Pipecat bot pipeline.\n\n### Custom Data with Query Parameters\n\nYou can pass custom data to your bot by adding query parameters to the WebSocket URL in your XML response. This works for both dial-in and dial-out scenarios:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Things you'll need",
+      "id": "things-you'll-need"
+    },
+    {
+      "level": "h2",
+      "text": "Phone Number Setup",
+      "id": "phone-number-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Environment Setup",
+      "id": "environment-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Dial-in",
+      "id": "dial-in"
+    },
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Set up your XML server",
+      "id": "set-up-your-xml-server"
+    },
+    {
+      "level": "h3",
+      "text": "Custom Data with Query Parameters",
+      "id": "custom-data-with-query-parameters"
+    }
+  ],
+  "url": "llms-txt#plivo-websocket-integration",
+  "links": []
+}

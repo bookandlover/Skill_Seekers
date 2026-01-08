@@ -1,0 +1,8 @@
+{
+  "title": "Simple handler that doesn't use retry count",
+  "content": "async def handle_user_idle(processor):\n    # Send a reminder to the user\n    await processor.push_frame(TTSSpeakFrame(\"Are you still there?\"))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#simple-handler-that-doesn't-use-retry-count",
+  "links": []
+}

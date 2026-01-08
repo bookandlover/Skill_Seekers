@@ -1,0 +1,8 @@
+{
+  "title": "Run the async function",
+  "content": "if __name__ == \"__main__\":\n    asyncio.run(main())\n```\n\nFor more detailed examples and use cases, see the [Examples](./examples) section.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#run-the-async-function",
+  "links": []
+}

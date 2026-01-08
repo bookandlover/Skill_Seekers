@@ -1,0 +1,8 @@
+{
+  "title": "Configure WebSocket transport",
+  "content": "transport = FastAPIWebsocketTransport(\n    websocket=websocket,\n    params=FastAPIWebsocketParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        add_wav_header=False,\n        vad_analyzer=SileroVADAnalyzer(),\n        serializer=serializer,\n    ),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#configure-websocket-transport",
+  "links": []
+}

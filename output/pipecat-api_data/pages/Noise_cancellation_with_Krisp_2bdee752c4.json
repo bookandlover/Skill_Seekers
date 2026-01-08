@@ -1,0 +1,93 @@
+{
+  "title": "Noise cancellation with Krisp",
+  "content": "Source: https://docs.pipecat.ai/guides/features/krisp\n\nLearn how to integrate Krisp noise cancellation into your Pipecat application\n\n<Warning>\n  The `KrispFilter` is deprecated and will be removed in a future version.\n  Please use the `KrispVivaFilter`, which is the latest model from Krisp. See\n  the [Krisp VIVA guide](/guides/features/krisp-viva) for more information.\n</Warning>\n\nThis guide will walk you through setting up and using Krisp's noise reduction capabilities in your Pipecat application. Krisp provides professional-grade noise cancellation that can significantly improve audio quality in real-time communications.\n\nTo use Krisp's noise cancellation, you'll need to obtain their SDK and models through a Krisp developer account. Our Pipecat Krisp module simplifies the integration process, which we'll cover in this guide.\n\n### Get Access to Krisp SDK and Models\n\n1. Create a Krisp developers account at [krisp.ai/developers](https://krisp.ai/developers)\n2. Download the [Krisp Desktop SDK (v7)](https://sdk.krisp.ai/sdk/desktop) that matches your platform:\n   * Linux: `Desktop SDK v7.0.2: Linux`\n   * macOS (ARM): `Desktop SDK v7.0.1: Mac ARM`\n   * macOS (Intel): `Desktop SDK v7.0.1: Mac Intel`\n   * Windows(ARM): `Desktop SDK v7.0.2: Windows ARM`\n   * Windows (x64): `Desktop SDK v7.0.2: Windows`\n3. Download the corresponding models. We recommend trying the `Background Voice Cancellation` model. Recommended model for each platform:\n   * Linux (ARM): `hs.c6.f.s.de56df.kw`\n   * Mac (ARM): `hs.c6.f.s.de56df.kw`\n   * Linux (x86\\_64): `hs.c6.f.s.de56df.kw`\n   * Mac (x86\\_64): `hs.c6.f.s.de56df.kw`\n   * Windows (x86\\_64): `hs.c6.f.s.de56df.kw`\n\n<Frame>\n  <img alt=\"Krisp SDK Portal\" />\n</Frame>\n\n### Install build dependencies\n\nThe `pipecat-ai-krisp` module is a python wrapper around Krisp's C++ SDK. To build the module, you'll need to install the following dependencies:\n\n<Tabs>\n  <Tab title=\"macOS\">\n    \n  </Tab>\n\n<Tab title=\"Ubuntu/Debian\">\n    \n  </Tab>\n\n<Tab title=\"Windows\">\n    \n  </Tab>\n</Tabs>\n\n<Note>\n  For Windows users: Make sure you have Visual Studio installed with C++\n  development tools, or alternatively, have the Visual C++ Build Tools\n  installed.\n</Note>\n\n### Install the pipecat-ai-krisp module\n\nIn your Pipecat repo, activate your virtual environment:\n\n<Tabs>\n  <Tab title=\"macOS/Linux\">\n    \n  </Tab>\n\n<Tab title=\"Windows\">\n    \n  </Tab>\n</Tabs>\n\nExport the path to your Krisp SDK and model files:\n\n<Tabs>\n  <Tab title=\"macOS/Linux\">\n    \n  </Tab>\n\n<Tab title=\"Windows\">\n    \n  </Tab>\n</Tabs>\n\n<Tip>\n  When selecting a `KRISP_MODEL_PATH`, ensure that you're selecting the actual\n  model file, not just the directory. The path should look something like this:\n\n<Tabs>\n    <Tab title=\"ARM Linux\">\n      \n    </Tab>\n\n<Tab title=\"Mac ARM\">\n      \n    </Tab>\n\n<Tab title=\"Windows\">\n      \n    </Tab>\n  </Tabs>\n</Tip>\n\nNext, install the `pipecat-ai[krisp]` module, which will automatically build the `pipecat-ai-krisp` python wrapper module:\n\n### Test the integration\n\nYou can now test the Krisp integration. The easiest way to do this is to run the foundational example: [07p-interruptible-krisp.py](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07p-interruptible-krisp.py).\n\n<Tip>\n  You can run a foundational example by running the following command:\n\n#### Important for macOS users\n\nIf you're running on macOS you may receive a security warning about running the script. This is expected. You can allow access by going to `System Settings > Privacy & Security` then click `Allow Anyway` to permit the example to run.\n\n<Frame>\n  <img alt=\"Security & Privacy\" />\n</Frame>\n\nAfter allowing and re-running, you may get a pop-up asking for permission. Select `Open Anyway` to run the script.\n\n<Frame>\n  <img alt=\"Open Anyway\" />\n</Frame>\n\nHere's a basic example of how to add Krisp noise reduction to your Pipecat pipeline:\n\n```python theme={null}\nfrom pipecat.audio.filters.krisp_filter import KrispFilter\nfrom pipecat.transports.services.daily import DailyParams, DailyTransport",
+  "code_samples": [
+    {
+      "code": "</Tab>\n\n  <Tab title=\"Ubuntu/Debian\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"Windows\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n</Tabs>\n\n<Note>\n  For Windows users: Make sure you have Visual Studio installed with C++\n  development tools, or alternatively, have the Visual C++ Build Tools\n  installed.\n</Note>\n\n### Install the pipecat-ai-krisp module\n\nIn your Pipecat repo, activate your virtual environment:\n\n<Tabs>\n  <Tab title=\"macOS/Linux\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"Windows\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n</Tabs>\n\nExport the path to your Krisp SDK and model files:\n\n<Tabs>\n  <Tab title=\"macOS/Linux\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"Windows\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n</Tabs>\n\n<Tip>\n  When selecting a `KRISP_MODEL_PATH`, ensure that you're selecting the actual\n  model file, not just the directory. The path should look something like this:\n\n  <Tabs>\n    <Tab title=\"ARM Linux\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n    <Tab title=\"Mac ARM\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n    <Tab title=\"Windows\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n  </Tabs>\n</Tip>\n\nNext, install the `pipecat-ai[krisp]` module, which will automatically build the `pipecat-ai-krisp` python wrapper module:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Test the integration\n\nYou can now test the Krisp integration. The easiest way to do this is to run the foundational example: [07p-interruptible-krisp.py](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07p-interruptible-krisp.py).\n\n<Tip>\n  You can run a foundational example by running the following command:",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tip>\n\n#### Important for macOS users\n\nIf you're running on macOS you may receive a security warning about running the script. This is expected. You can allow access by going to `System Settings > Privacy & Security` then click `Allow Anyway` to permit the example to run.\n\n<Frame>\n  <img alt=\"Security & Privacy\" />\n</Frame>\n\nAfter allowing and re-running, you may get a pop-up asking for permission. Select `Open Anyway` to run the script.\n\n<Frame>\n  <img alt=\"Open Anyway\" />\n</Frame>\n\n## Usage Example\n\nHere's a basic example of how to add Krisp noise reduction to your Pipecat pipeline:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Walkthrough",
+      "id": "walkthrough"
+    },
+    {
+      "level": "h3",
+      "text": "Get Access to Krisp SDK and Models",
+      "id": "get-access-to-krisp-sdk-and-models"
+    },
+    {
+      "level": "h3",
+      "text": "Install build dependencies",
+      "id": "install-build-dependencies"
+    },
+    {
+      "level": "h3",
+      "text": "Install the pipecat-ai-krisp module",
+      "id": "install-the-pipecat-ai-krisp-module"
+    },
+    {
+      "level": "h3",
+      "text": "Test the integration",
+      "id": "test-the-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#noise-cancellation-with-krisp",
+  "links": []
+}

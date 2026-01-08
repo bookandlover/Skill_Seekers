@@ -1,0 +1,48 @@
+{
+  "title": "Only needed for local development",
+  "content": "WHATSAPP_WEBHOOK_VERIFICATION_TOKEN=pk_**\npython theme={null}\ntransport = SmallWebRTCTransport(\n    webrtc_connection=webrtc_connection,\n    params=TransportParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        vad_analyzer=SileroVADAnalyzer(),\n    ),\n)\nbash theme={null}\n   Error validating access token\n   ```\n   * Generate a new access token under **WhatsApp → API Setup**, then update your `WHATSAPP_TOKEN` and redeploy your agent.\n\n2. **Webhook Verification Failed**\n   * Ensure the verify token in Meta Developer Console matches your environment variable.\n   * If using Pipecat Cloud, it must be your public API key.\n   * Confirm that your webhook URL is publicly accessible.\n\n3. **Bot Not Answering Calls**\n   * Verify your phone number has calling enabled.\n   * Check that your environment variables are correctly set.\n   * Ensure Pipecat is running and reachable.\n\n* Voice calling requires WhatsApp Business API access.\n* Test phone numbers are valid for 90 days in development mode.\n* Production deployment requires verified business credentials.\n\n* [WhatsApp Cloud API – Getting Started](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started/)\n* [Voice Calling API Docs](https://developers.facebook.com/docs/whatsapp/cloud-api/calling/)\n* [Webhook Configuration](https://developers.facebook.com/docs/whatsapp/webhooks/)\n* [SDP Overview & Examples](https://developers.facebook.com/docs/whatsapp/cloud-api/calling/reference#sdp-overview-and-sample-sdp-structures)",
+  "code_samples": [
+    {
+      "code": "> If you are using Pipecat Cloud, you must configure these values as secrets.\n\n### Example",
+      "language": "unknown"
+    },
+    {
+      "code": "## Testing the Integration\n\n1. From the WhatsApp app, call your registered WhatsApp Business number.\n2. The call will be routed to your Pipecat application.\n3. Your bot should automatically answer and begin the conversation.\n\n## Full demo\n\n<Card title=\"Demo\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/p2p-webrtc/pipecat-cloud\">\n  Pipecat Cloud WhatsApp Demo\n</Card>\n\n## Troubleshooting\n\nCommon issues and their solutions:\n\n1. **Expired WhatsApp Token**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Example",
+      "id": "example"
+    },
+    {
+      "level": "h2",
+      "text": "Testing the Integration",
+      "id": "testing-the-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Full demo",
+      "id": "full-demo"
+    },
+    {
+      "level": "h2",
+      "text": "Troubleshooting",
+      "id": "troubleshooting"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    },
+    {
+      "level": "h2",
+      "text": "References",
+      "id": "references"
+    }
+  ],
+  "url": "llms-txt#only-needed-for-local-development",
+  "links": []
+}

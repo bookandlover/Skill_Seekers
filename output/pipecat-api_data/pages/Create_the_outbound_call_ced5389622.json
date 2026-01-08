@@ -1,0 +1,13 @@
+{
+  "title": "Create the outbound call",
+  "content": "call = twilio_client.calls.create(\n    to=target_number,\n    from_=your_twilio_number,\n    twiml=twiml\n)\npython bot.py theme={null}",
+  "code_samples": [
+    {
+      "code": "**Bot Configuration**: The bot receives and uses these parameters:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#create-the-outbound-call",
+  "links": []
+}

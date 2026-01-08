@@ -1,0 +1,34 @@
+{
+  "title": "ElevenLabs",
+  "content": "Source: https://docs.pipecat.ai/server/services/tts/elevenlabs\n\nText-to-speech service using ElevenLab's streaming API with word-level timing\n\nElevenLabs provides high-quality text-to-speech synthesis with two service implementations: `ElevenLabsTTSService` (WebSocket-based) for real-time streaming with word timestamps and audio context management, and `ElevenLabsHttpTTSService` (HTTP-based) for simpler integration. `ElevenLabsTTSService` is recommended for interactive applications requiring low latency and precise timing.\n\n<CardGroup>\n  <Card title=\"ElevenLabs TTS API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.elevenlabs.tts.html\">\n    Pipecat's API methods for ElevenLabs TTS integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07d-interruptible-elevenlabs.py\">\n    Complete example with WebSocket streaming\n  </Card>\n\n<Card title=\"ElevenLabs Documentation\" icon=\"book\" href=\"https://elevenlabs.io/docs/api-reference/text-to-speech/v-1-text-to-speech-voice-id-multi-stream-input\">\n    Official ElevenLabs TTS API documentation\n  </Card>\n\n<Card title=\"Voice Library\" icon=\"microphone\" href=\"https://elevenlabs.io/voice-library\">\n    Browse and clone voices from the community\n  </Card>\n</CardGroup>\n\nTo use ElevenLabs services, install the required dependencies:\n\n### ElevenLabs Account Setup\n\nBefore using ElevenLabs TTS services, you need:\n\n1. **ElevenLabs Account**: Sign up at [ElevenLabs](https://elevenlabs.io/app/sign-up)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Voice Selection**: Choose voice IDs from the [voice library](https://elevenlabs.io/voice-library)\n\n### Required Environment Variables\n\n* `ELEVENLABS_API_KEY`: Your ElevenLabs API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "ElevenLabs Account Setup",
+      "id": "elevenlabs-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#elevenlabs",
+  "links": []
+}

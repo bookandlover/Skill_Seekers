@@ -1,0 +1,8 @@
+{
+  "title": "Event handler for when a client connects",
+  "content": "@transport.event_handler(\"on_client_connected\")\nasync def on_client_connected(transport, client):\n    logger.info(f\"Client connected\")\n    # Add a greeting message to the context\n    messages.append({\"role\": \"system\", \"content\": \"Say hello and briefly introduce yourself.\"})\n    # Prompt the bot to start talking when the client connects\n    await task.queue_frames([LLMRunFrame()])",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#event-handler-for-when-a-client-connects",
+  "links": []
+}

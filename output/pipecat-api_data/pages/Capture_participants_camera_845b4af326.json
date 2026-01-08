@@ -1,0 +1,8 @@
+{
+  "title": "Capture participant's camera",
+  "content": "await maybe_capture_participant_camera(transport, client, framerate=30)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#capture-participant's-camera",
+  "links": []
+}

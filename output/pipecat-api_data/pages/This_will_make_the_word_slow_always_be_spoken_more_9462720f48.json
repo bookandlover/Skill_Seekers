@@ -1,0 +1,8 @@
+{
+  "title": "This will make the word slow always be spoken more slowly.",
+  "content": "async def slow_down_slow_words(text: str, type: str) -> str:\n    return text.replace(\n        \"slow\",\n        RimeTTSService.INLINE_SPEED(\"slow\", speed=0.5)\n    )\n\ntts = RimeTTSService(\n    api_key=os.getenv(\"RIME_API_KEY\"),\n    text_transforms=[\n        (\"*\", slow_down_slow_words), # Apply to all text\n    ],\n)\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#this-will-make-the-word-slow-always-be-spoken-more-slowly.",
+  "links": []
+}

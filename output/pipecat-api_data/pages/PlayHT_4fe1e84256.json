@@ -1,0 +1,34 @@
+{
+  "title": "PlayHT",
+  "content": "Source: https://docs.pipecat.ai/server/services/tts/playht\n\nText-to-speech services using PlayHT's WebSocket and HTTP APIs\n\nPlayHT provides high-quality text-to-speech synthesis with two service implementations: `PlayHTTTSService` (WebSocket-based) for real-time streaming with ultra-low latency, and `PlayHTHttpTTSService` (HTTP-based) for simpler synthesis. `PlayHTTTSService` is recommended for interactive applications requiring low latency and advanced interruption handling.\n\n<CardGroup>\n  <Card title=\"PlayHT TTS API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.playht.tts.html\">\n    Pipecat's API methods for PlayHT TTS integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07e-interruptible-playht.py\">\n    Complete example with voice cloning\n  </Card>\n\n<Card title=\"PlayHT Documentation\" icon=\"book\" href=\"https://docs.play.ht/reference/playht-tts-websocket-api\">\n    Official PlayHT WebSocket API documentation\n  </Card>\n\n<Card title=\"Voice Cloning\" icon=\"microphone\" href=\"https://play.ht/app\">\n    Create and manage custom voices\n  </Card>\n</CardGroup>\n\nTo use PlayHT services, install the required dependencies:\n\n### PlayHT Account Setup\n\nBefore using PlayHT TTS services, you need:\n\n1. **PlayHT Account**: Sign up at [PlayHT Dashboard](https://play.ht/app)\n2. **API Credentials**: Get your User ID and API Key from the dashboard\n3. **Voice Selection**: Choose from standard voices or create custom cloned voices\n\n### Required Environment Variables\n\n* `PLAY_HT_USER_ID`: Your PlayHT user ID\n* `PLAY_HT_API_KEY`: Your PlayHT API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "PlayHT Account Setup",
+      "id": "playht-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#playht",
+  "links": []
+}

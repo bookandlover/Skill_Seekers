@@ -1,0 +1,120 @@
+{
+  "title": "RTVIClient Migration Guide for JavaScript",
+  "content": "Source: https://docs.pipecat.ai/client/js/migration-guide\n\nA Guide to migrating from a JavaScript RTVIClient to PipecatClient\n\nThis guide covers migrating from RTVIClient to the new `PipecatClient` in a JavaScript application. The new client introduces simplified configuration and improved client-server messaging. For an overview of the changes, see the top-level [RTVIClient Migration Guide](/client/migration-guide).\n\n### 1. Package and Class Names\n\n### 2. Client and Transport Configuration\n\nThe core difference here is that the client no longer accepts a `params` field. The configuration that used to be provided here is no longer supported and hitting a `/connect` endpoint is now an explicit step and provided directly to either the `startBot()` or `startBotAndConnect()` method.\n\n### 3. Connection Method\n\nPreviously, `connect()` was called on the client instance without parameters. Now, you provide connection parameters directly to the `connect()` method. This allows for more flexibility and customization of the connection process. For ease of use, we've also introduced a `startBot()` and `startBotAndConnect()` method where you can provide an API endpoint that returns the connection parameters.\n\nThere are three options for connecting now. For migration purposes, you are likely to use option 3 (`startBotAndConnect()`):\n\n1. **Direct Connection**: Provide the connection details directly to `connect()`.\n\n2. **Using startBot()**: Fetch connection details from an API endpoint and pass them to `connect()`.\n\n3. **Using startBotAndConnect()**: Fetch connection details and connect in one step.\n\n### 4. Function Call Handling\n\nPreviously, you would use a helper class to handle function calls and provide a single callback to handle any/all function calls. Now, you can register a callback for each function call by name directly on the `PipecatClient` instance.\n\n### 5. Pipeline Configuration Initialization\n\nPreviously, you could provide a pipeline configuration as part of the `RTVIClient` constructor and it was expected to be in a specific format. Now, if you would like to pass any initial pipeline configurations, you do so as `requestData` added to the endpoint you provide to `connect()`. In both cases, you would need server-side code to parse and apply these settings, but now you can define the structure and what pieces of configuration you want to send.\n\nCheck out [this section of docs](./api-reference/messages#connection-time-configuration) for an example, complete with server-side code showing how to initialize the pipeline configuration at connection time.\n\n### 6. Pipeline Configuration Updates\n\nPreviously, the client supported updating the pipeline configuration using a specific method that took a configuration object in a generic format. Dynamic and predifined configuration updates, however, are a security concern, allowing clients to override settings and potentially abuse API keys. For this reason, it has been removed and most configuration updates need to be handled custom by your application. To do so, you should take advantage of the client-server messaging system, which allows you to send messages to the server and handle responses. This way, you can implement your own logic for updating configurations securely.\n\nCheck out [this section of docs](./api-reference/messages#sending-custom-messages-to-the-server) for a more complete example, along with an example on making a request (`sendClientRequest()`) to wait for a response.\n\n### 7. LLM Context Updates\n\nPreviously, you would use a helper class to update the context. This could be a security concern for the same reasons as mentioned above and should now be done using the [client-server messaging system](./api-reference/messages). However, in the case where you simply wish to add to the user's context, you can use the [`sendText()`](./api-reference/client-methods#sendtext) method on the `PipecatClient` instance. This allows for easy, built-in support for text-based context updates without needing to implement custom messaging.\n\n1. **Configuration Structure**: Connection parameters are now passed to connect() instead of constructor\n2. **Helper System**: Removed in favor of direct `PipecatClient` member functions or client-server messaging.\n\n1. Update package imports to use new names\n2. Move connection configuration from constructor to startBot()/startBotAndConnect()/connect() methods\n3. Replace any helper classes with corresponding `PipecatClient` methods or custom messaging\n4. Update any TypeScript types referencing old names",
+  "code_samples": [
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. Client and Transport Configuration\n\nThe core difference here is that the client no longer accepts a `params` field. The configuration that used to be provided here is no longer supported and hitting a `/connect` endpoint is now an explicit step and provided directly to either the `startBot()` or `startBotAndConnect()` method.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 3. Connection Method\n\nPreviously, `connect()` was called on the client instance without parameters. Now, you provide connection parameters directly to the `connect()` method. This allows for more flexibility and customization of the connection process. For ease of use, we've also introduced a `startBot()` and `startBotAndConnect()` method where you can provide an API endpoint that returns the connection parameters.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**\n\nThere are three options for connecting now. For migration purposes, you are likely to use option 3 (`startBotAndConnect()`):\n\n1. **Direct Connection**: Provide the connection details directly to `connect()`.",
+      "language": "unknown"
+    },
+    {
+      "code": "2. **Using startBot()**: Fetch connection details from an API endpoint and pass them to `connect()`.",
+      "language": "unknown"
+    },
+    {
+      "code": "3. **Using startBotAndConnect()**: Fetch connection details and connect in one step.",
+      "language": "unknown"
+    },
+    {
+      "code": "### 4. Function Call Handling\n\nPreviously, you would use a helper class to handle function calls and provide a single callback to handle any/all function calls. Now, you can register a callback for each function call by name directly on the `PipecatClient` instance.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 5. Pipeline Configuration Initialization\n\nPreviously, you could provide a pipeline configuration as part of the `RTVIClient` constructor and it was expected to be in a specific format. Now, if you would like to pass any initial pipeline configurations, you do so as `requestData` added to the endpoint you provide to `connect()`. In both cases, you would need server-side code to parse and apply these settings, but now you can define the structure and what pieces of configuration you want to send.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**\n\nCheck out [this section of docs](./api-reference/messages#connection-time-configuration) for an example, complete with server-side code showing how to initialize the pipeline configuration at connection time.",
+      "language": "unknown"
+    },
+    {
+      "code": "### 6. Pipeline Configuration Updates\n\nPreviously, the client supported updating the pipeline configuration using a specific method that took a configuration object in a generic format. Dynamic and predifined configuration updates, however, are a security concern, allowing clients to override settings and potentially abuse API keys. For this reason, it has been removed and most configuration updates need to be handled custom by your application. To do so, you should take advantage of the client-server messaging system, which allows you to send messages to the server and handle responses. This way, you can implement your own logic for updating configurations securely.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**\n\nCheck out [this section of docs](./api-reference/messages#sending-custom-messages-to-the-server) for a more complete example, along with an example on making a request (`sendClientRequest()`) to wait for a response.",
+      "language": "unknown"
+    },
+    {
+      "code": "### 7. LLM Context Updates\n\nPreviously, you would use a helper class to update the context. This could be a security concern for the same reasons as mentioned above and should now be done using the [client-server messaging system](./api-reference/messages). However, in the case where you simply wish to add to the user's context, you can use the [`sendText()`](./api-reference/client-methods#sendtext) method on the `PipecatClient` instance. This allows for easy, built-in support for text-based context updates without needing to implement custom messaging.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Key Changes",
+      "id": "key-changes"
+    },
+    {
+      "level": "h3",
+      "text": "1. Package and Class Names",
+      "id": "1.-package-and-class-names"
+    },
+    {
+      "level": "h3",
+      "text": "2. Client and Transport Configuration",
+      "id": "2.-client-and-transport-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "3. Connection Method",
+      "id": "3.-connection-method"
+    },
+    {
+      "level": "h3",
+      "text": "4. Function Call Handling",
+      "id": "4.-function-call-handling"
+    },
+    {
+      "level": "h3",
+      "text": "5. Pipeline Configuration Initialization",
+      "id": "5.-pipeline-configuration-initialization"
+    },
+    {
+      "level": "h3",
+      "text": "6. Pipeline Configuration Updates",
+      "id": "6.-pipeline-configuration-updates"
+    },
+    {
+      "level": "h3",
+      "text": "7. LLM Context Updates",
+      "id": "7.-llm-context-updates"
+    },
+    {
+      "level": "h2",
+      "text": "Breaking Changes",
+      "id": "breaking-changes"
+    },
+    {
+      "level": "h2",
+      "text": "Migration Steps",
+      "id": "migration-steps"
+    }
+  ],
+  "url": "llms-txt#rtviclient-migration-guide-for-javascript",
+  "links": []
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Run at buildtime",
+  "content": "torch.hub.load(\n    repo_or_dir='snakers4/silero-vad',\n    model='silero_vad',\n    force_reload=True\n    )\n```\n\n<Card title=\"Basic deployment pattern\" icon=\"draw-square\" href=\"./pattern\">\n  Introduction to a model for deploying Pipecat bots\n</Card>\n\nOnce you've familiarized yourself with the Pipecat [deployment pattern](./pattern), here are some guides that walk you through the process for various deployment options. Remember, your Pipecat bots are simply Python processes, so you can host them on whichever infrastructure or service best suits your project.\n\n<CardGroup>\n  <Card title=\"Pipecat Cloud\" icon=\"cloud\" href=\"./pipecat-cloud/introduction\">\n    Managed service purpose-built for Pipecat deployments\n  </Card>\n\n<Card title=\"Fly.io\" icon=\"paper-plane\" href=\"./platforms/fly\">\n    For service-driven / CPU bots\n  </Card>\n\n<Card title=\"Modal\" icon=\"rocket\" href=\"./platforms/modal\">\n    For running custom models on GPU-accelerated infrastructure\n  </Card>\n\n<Card title=\"Cerebrium\" icon=\"brain\" href=\"./platforms/cerebrium\">\n    For GPU-accelerated models & specialized AI infrastructure\n  </Card>\n</CardGroup>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Getting started",
+      "id": "getting-started"
+    },
+    {
+      "level": "h2",
+      "text": "Provider guides",
+      "id": "provider-guides"
+    }
+  ],
+  "url": "llms-txt#run-at-buildtime",
+  "links": []
+}

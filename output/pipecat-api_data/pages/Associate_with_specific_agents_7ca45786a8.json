@@ -1,0 +1,64 @@
+{
+  "title": "Associate with specific agents",
+  "content": "pipecat cloud organizations keys use\n```\n\n<Warning>\n  While called \"public API keys,\" these should still be treated as sensitive\n  credentials and not shared with end-users or embedded in client-side code.\n  They are \"public\" only in the sense that they have limited permissions\n  compared to admin keys.\n</Warning>\n\nWe recommend implementing a server-side endpoint that starts sessions on behalf of your users, similar to how you might handle other sensitive API operations.\n\n### Is my data encrypted?\n\nPipecat Cloud encrypts your data throughout the platform:\n\n* **In Transit**: TLS 1.3 encryption for all API communications\n* **At Rest**: AES-256 encryption for stored data\n* **Database**: Hardware-level encryption for database content, such as public API keys which developers control the rotation of\n\n### Where is my data stored?\n\nAll Pipecat Cloud infrastructure is currently located in the US (AWS us-west-2 region). Contact us at `help@daily.co` if you have specific data residency requirements.\n\n### What happens to my data when agents terminate?\n\nEphemeral data used during agent sessions is removed when the session ends. By default, stdout and stderr logs are stored in Pipecat Cloud. You have control over what is logged and where the logging is stored. Refer to [Logging & Observability](../fundamentals/logging) for more information.\n\n## Monitoring & Incident Response\n\n### How does Pipecat Cloud detect security issues?\n\nWe maintain comprehensive logging and monitoring:\n\n* Administrative API calls are logged and retained for 1 year\n* Authentication attempts and access patterns are monitored\n* System events are tracked for security analysis\n\n<Info>\n  Request access to [Daily's Trust Center](https://trust.daily.co/) to learn\n  more about our incident response and security practices.\n</Info>\n\n### How do I report security vulnerabilities?\n\nIf you discover a potential security vulnerability:\n\n1. Email us at [disclosures@daily.co](mailto:disclosures@daily.co) (we'll acknowledge within one week)\n2. Provide reasonable time for us to resolve the issue before disclosure\n3. Make a good faith effort to avoid violating privacy or degrading service\n\n<Note>\n  Reporting security findings directly to Daily helps to ensure continued\n  protection for all users.\n</Note>\n\n## Security Responsibilities\n\nSecurity in cloud environments works best as a partnership. Pipecat Cloud follows a shared responsibility model where we secure the underlying infrastructure and platform, while you maintain responsibility for your application code and configuration. Understanding these boundaries helps ensure comprehensive protection for your agents and data.\n\n### What security aspects does Pipecat Cloud handle?\n\nPipecat Cloud is responsible for:\n\n* Infrastructure and platform security\n* Network security and isolation\n* Secret storage and injection\n* Authentication systems\n* Platform monitoring and logging\n\n### What security aspects am I responsible for?\n\nAs a customer, you're responsible for:\n\n* Application code security\n* API key management\n* Agent configuration security\n* Following container security best practices\n* Proper secrets management\n\n<Tip>\n  While Pipecat Cloud secures log storage, you should ensure your agent code\n  doesn't log sensitive information like credentials, personal data, or\n  proprietary content in stdout/stderr streams.\n</Tip>\n\n## Additional Resources\n\nFor security-related questions or to report security issues:\n\n* **Security Issues**: Email [disclosures@daily.co](mailto:disclosures@daily.co) to report potential vulnerabilities\n* **General Support**: Contact [help@daily.co](mailto:help@daily.co) for security questions",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Data Security",
+      "id": "data-security"
+    },
+    {
+      "level": "h3",
+      "text": "Is my data encrypted?",
+      "id": "is-my-data-encrypted?"
+    },
+    {
+      "level": "h3",
+      "text": "Where is my data stored?",
+      "id": "where-is-my-data-stored?"
+    },
+    {
+      "level": "h3",
+      "text": "What happens to my data when agents terminate?",
+      "id": "what-happens-to-my-data-when-agents-terminate?"
+    },
+    {
+      "level": "h2",
+      "text": "Monitoring & Incident Response",
+      "id": "monitoring-&-incident-response"
+    },
+    {
+      "level": "h3",
+      "text": "How does Pipecat Cloud detect security issues?",
+      "id": "how-does-pipecat-cloud-detect-security-issues?"
+    },
+    {
+      "level": "h3",
+      "text": "How do I report security vulnerabilities?",
+      "id": "how-do-i-report-security-vulnerabilities?"
+    },
+    {
+      "level": "h2",
+      "text": "Security Responsibilities",
+      "id": "security-responsibilities"
+    },
+    {
+      "level": "h3",
+      "text": "What security aspects does Pipecat Cloud handle?",
+      "id": "what-security-aspects-does-pipecat-cloud-handle?"
+    },
+    {
+      "level": "h3",
+      "text": "What security aspects am I responsible for?",
+      "id": "what-security-aspects-am-i-responsible-for?"
+    },
+    {
+      "level": "h2",
+      "text": "Additional Resources",
+      "id": "additional-resources"
+    }
+  ],
+  "url": "llms-txt#associate-with-specific-agents",
+  "links": []
+}

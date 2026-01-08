@@ -1,0 +1,60 @@
+{
+  "title": "enabled: false",
+  "content": "bash theme={null}\nservice datadog-agent-trace restart || true\ndockerfile theme={null}\nRUN mkdir -p /var/run/datadog/\nRUN chown dd-agent:dd-agent /var/run/datadog/\n\nddtrace\npython theme={null}\nfrom ddtrace import tracer\n\n@tracer.wrap()\ndef my_function_call():\n    # ...\nyaml theme={null}",
+  "code_samples": [
+    {
+      "code": "### Start the Datadog Trace Agent in `pre-app.sh`\n\nEnsure the following is present in your [`pre-app.sh`](#create-pre-app-sh):",
+      "language": "unknown"
+    },
+    {
+      "code": "### Prepare file system in `Dockerfile`\n\nEnsure the following is present in your [`Dockerfile`](#update-dockerfile-with-the-datadog-agent):",
+      "language": "unknown"
+    },
+    {
+      "code": "### Add `ddtrace` Python library\n\nIn your `requirements.txt`:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Record traces in `bot.py`",
+      "language": "unknown"
+    },
+    {
+      "code": "## Enabling custom metrics\n\n### Enable custom metrics in `datadog.yaml`\n\nEnsure `use_dogstatsd` is NOT set to `false` in your [`datadog.yaml`](#create-datadog-yaml):",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Start the Datadog Trace Agent in `pre-app.sh`",
+      "id": "start-the-datadog-trace-agent-in-`pre-app.sh`"
+    },
+    {
+      "level": "h3",
+      "text": "Prepare file system in `Dockerfile`",
+      "id": "prepare-file-system-in-`dockerfile`"
+    },
+    {
+      "level": "h3",
+      "text": "Add `ddtrace` Python library",
+      "id": "add-`ddtrace`-python-library"
+    },
+    {
+      "level": "h3",
+      "text": "Record traces in `bot.py`",
+      "id": "record-traces-in-`bot.py`"
+    },
+    {
+      "level": "h2",
+      "text": "Enabling custom metrics",
+      "id": "enabling-custom-metrics"
+    },
+    {
+      "level": "h3",
+      "text": "Enable custom metrics in `datadog.yaml`",
+      "id": "enable-custom-metrics-in-`datadog.yaml`"
+    }
+  ],
+  "url": "llms-txt#enabled:-false",
+  "links": []
+}

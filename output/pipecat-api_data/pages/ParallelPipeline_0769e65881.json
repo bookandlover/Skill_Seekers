@@ -1,0 +1,48 @@
+{
+  "title": "ParallelPipeline",
+  "content": "Source: https://docs.pipecat.ai/server/pipeline/parallel-pipeline\n\nRun multiple pipeline branches in parallel, with synchronized inputs and outputs for complex flows\n\n`ParallelPipeline` allows you to create multiple independent processing branches that run simultaneously, sharing input and coordinating output. It's particularly useful for multi-agent systems, parallel stream processing, and creating redundant service paths.\n\nEach branch receives the same downstream frames, processes them independently, and the results are merged back into a single stream. System frames (like `StartFrame` and `EndFrame`) are synchronized across all branches.\n\n## Constructor Parameters\n\n<ParamField type=\"List[List[FrameProcessor]]\">\n  Multiple lists of processors, where each list defines a parallel branch. All\n  branches execute simultaneously when frames flow through the pipeline.\n</ParamField>\n\n### Multi-Agent Conversation\n\nCreate a conversation with two AI agents that can interact with the user independently:\n\n### Redundant Services with Failover\n\nSet up redundant services with automatic failover:\n\n### Cross-Branch Communication\n\nUsing Producer/Consumer processors to share data between branches:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "### Redundant Services with Failover\n\nSet up redundant services with automatic failover:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Cross-Branch Communication\n\nUsing Producer/Consumer processors to share data between branches:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Multi-Agent Conversation",
+      "id": "multi-agent-conversation"
+    },
+    {
+      "level": "h3",
+      "text": "Redundant Services with Failover",
+      "id": "redundant-services-with-failover"
+    },
+    {
+      "level": "h3",
+      "text": "Cross-Branch Communication",
+      "id": "cross-branch-communication"
+    }
+  ],
+  "url": "llms-txt#parallelpipeline",
+  "links": []
+}

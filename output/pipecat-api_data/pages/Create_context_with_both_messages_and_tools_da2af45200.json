@@ -1,0 +1,48 @@
+{
+  "title": "Create context with both messages and tools",
+  "content": "context = LLMContext(messages, tools)\ncontext_aggregator = LLMContextAggregatorPair(context)\npython theme={null}\npipeline = Pipeline([\n    transport.input(),\n    stt,\n    context_aggregator.user(),      # User context aggregator\n    llm,\n    tts,\n    transport.output(),\n    context_aggregator.assistant(), # Assistant context aggregator\n])\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Function call results are also automatically stored in the context, maintaining a complete conversation history including tool interactions.\n\n<Note>\n  We'll cover function calling in detail in an upcoming section. The context\n  aggregator handles function call storage automatically.\n</Note>\n\n### 3. Add Context Aggregators to Your Pipeline",
+      "language": "unknown"
+    },
+    {
+      "code": "## Context Aggregator Placement\n\nThe placement of context aggregator instances in your pipeline is **crucial** for proper operation:\n\n### User Context Aggregator\n\nPlace the user context aggregator **downstream from the STT service**. Since the user's speech results in `TranscriptionFrame` objects pushed by the STT service, the user aggregator needs to be positioned to collect these frames.\n\n### Assistant Context Aggregator\n\nPlace the assistant context aggregator **after `transport.output()`**. This positioning is important because:\n\n* The TTS service outputs `TTSTextFrame`s in addition to audio\n* The assistant aggregator must be downstream to collect those frames\n* It ensures context updates happen word-by-word for specific services (e.g. Cartesia, ElevenLabs, and Rime)\n* Your context stays updated at the word level in case an interruption occurs\n\n<Tip>\n  Always place the assistant context aggregator **after** `transport.output()`\n  to ensure proper word-level context updates during interruptions.\n</Tip>\n\n## Manual Context Control\n\nYou can programmatically add new messages to the context by pushing or queueing specific frames:\n\n### Adding Messages\n\n* **`LLMMessagesAppendFrame`**: Appends a new message to the existing context\n* **`LLMMessagesUpdateFrame`**: Completely replaces the existing context with new messages",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "3. Add Context Aggregators to Your Pipeline",
+      "id": "3.-add-context-aggregators-to-your-pipeline"
+    },
+    {
+      "level": "h2",
+      "text": "Context Aggregator Placement",
+      "id": "context-aggregator-placement"
+    },
+    {
+      "level": "h3",
+      "text": "User Context Aggregator",
+      "id": "user-context-aggregator"
+    },
+    {
+      "level": "h3",
+      "text": "Assistant Context Aggregator",
+      "id": "assistant-context-aggregator"
+    },
+    {
+      "level": "h2",
+      "text": "Manual Context Control",
+      "id": "manual-context-control"
+    },
+    {
+      "level": "h3",
+      "text": "Adding Messages",
+      "id": "adding-messages"
+    }
+  ],
+  "url": "llms-txt#create-context-with-both-messages-and-tools",
+  "links": []
+}

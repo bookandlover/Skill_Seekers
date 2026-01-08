@@ -1,0 +1,14 @@
+{
+  "title": "Create producer/consumer pair for cross-branch communication",
+  "content": "frame_producer = ProducerProcessor(filter=is_important_frame)\nframe_consumer = ConsumerProcessor(producer=frame_producer)\n\npipeline = Pipeline([\n    transport.input(),\n    ParallelPipeline(\n        # Branch that generates important frames\n        [\n            stt,\n            llm,\n            tts,\n            frame_producer,  # Share frames with other branch\n        ],\n        # Branch that consumes those frames\n        [\n            frame_consumer,  # Receive frames from other branch\n            llm,             # Speech to Speech LLM (audio in)\n        ]\n    ),\n    transport.output(),\n])\n```\n\n1. `ParallelPipeline` adds special source and sink processors to each branch\n2. System frames (like `StartFrame` and `EndFrame`) are sent to all branches\n3. Other frames flow downstream to all branch sources\n4. Results from each branch are collected at the sinks\n5. The pipeline ensures `EndFrame`s are only passed through after all branches complete",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    }
+  ],
+  "url": "llms-txt#create-producer/consumer-pair-for-cross-branch-communication",
+  "links": []
+}

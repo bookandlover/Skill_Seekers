@@ -1,0 +1,8 @@
+{
+  "title": "General error",
+  "content": "await processor.send_error(\"Invalid configuration\")",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#general-error",
+  "links": []
+}

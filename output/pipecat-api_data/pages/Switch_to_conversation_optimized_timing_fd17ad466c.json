@@ -1,0 +1,24 @@
+{
+  "title": "Switch to conversation-optimized timing",
+  "content": "@ivr_navigator.event_handler(\"on_conversation_detected\")\nasync def optimize_for_conversation(processor, conversation_history):\n    # Reduce response delay for natural conversation flow\n    conversation_vad = VADParams(stop_secs=0.8)\n    await task.queue_frame(VADParamsUpdateFrame(params=conversation_vad))\npython theme={null}\nfrom pipecat.pipeline.pipeline import Pipeline\nfrom pipecat.processors.ivr.ivr_navigator import IVRNavigator\n\npipeline = Pipeline([\n    transport.input(),\n    stt,\n    context_aggregator.user(),\n    ivr_navigator,    # Add in place of LLM\n    tts,\n    transport.output(),\n    context_aggregator.assistant()\n])\n```",
+  "code_samples": [
+    {
+      "code": "## Integration Examples\n\n### Basic Pipeline Integration",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Integration Examples",
+      "id": "integration-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Pipeline Integration",
+      "id": "basic-pipeline-integration"
+    }
+  ],
+  "url": "llms-txt#switch-to-conversation-optimized-timing",
+  "links": []
+}

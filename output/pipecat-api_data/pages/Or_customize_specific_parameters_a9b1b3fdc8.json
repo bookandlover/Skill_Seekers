@@ -1,0 +1,8 @@
+{
+  "title": "Or customize specific parameters",
+  "content": "params = PipelineParams(\n    allow_interruptions=True,\n    audio_in_sample_rate=16000,\n    enable_metrics=True\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#or-customize-specific-parameters",
+  "links": []
+}

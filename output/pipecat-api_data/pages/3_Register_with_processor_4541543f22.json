@@ -1,0 +1,33 @@
+{
+  "title": "3. Register with processor",
+  "content": "rtvi.register_service(voice_service)\npython theme={null}\nRTVIServiceOption(\n    name=\"temperature\",\n    type=\"number\",  # number, string, bool, array, object\n    handler=handle_temperature\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Option Types\n\nServices support multiple data types for configuration:",
+      "language": "unknown"
+    },
+    {
+      "code": "Option handlers receive:\n\n* The processor instance\n* The service name\n* The option configuration with new value\n\n## Actions\n\nActions are server-side functions that clients can trigger with arguments.\n\n### Registering Actions",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Option Types",
+      "id": "option-types"
+    },
+    {
+      "level": "h2",
+      "text": "Actions",
+      "id": "actions"
+    },
+    {
+      "level": "h3",
+      "text": "Registering Actions",
+      "id": "registering-actions"
+    }
+  ],
+  "url": "llms-txt#3.-register-with-processor",
+  "links": []
+}

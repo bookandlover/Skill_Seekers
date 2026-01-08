@@ -1,0 +1,39 @@
+{
+  "title": "Gemini Live",
+  "content": "Source: https://docs.pipecat.ai/server/services/s2s/gemini-live\n\nA real-time, multimodal conversational AI service powered by Google's Gemini\n\n`GeminiLiveLLMService` enables natural, real-time conversations with Google's Gemini model. It provides built-in audio transcription, voice activity detection, and context management for creating interactive AI experiences with multimodal capabilities including audio, video, and text processing.\n\n<Tip>\n  Want to start building? Check out our [Gemini Live\n  Guide](/guides/features/gemini-live).\n</Tip>\n\n<CardGroup>\n  <Card title=\"Gemini Live API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.google.gemini_live.llm.html\">\n    Pipecat's API methods for Gemini Live integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/26b-gemini-live-function-calling.py\">\n    Complete Gemini Live function calling example\n  </Card>\n\n<Card title=\"Gemini Documentation\" icon=\"book\" href=\"https://ai.google.dev/gemini-api/docs/live\">\n    Official Google Gemini Live API documentation\n  </Card>\n\n<Card title=\"Gemini Live Model Card\" icon=\"book\" href=\"https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-live\">\n    Gemini Live available models\n  </Card>\n</CardGroup>\n\nTo use Gemini Live services, install the required dependencies:\n\nBefore using Gemini Live services, you need:\n\n1. **Google Account**: Set up at [Google AI Studio](https://aistudio.google.com/)\n2. **API Key**: Generate a Gemini API key from AI Studio\n3. **Model Access**: Ensure access to Gemini Live models\n4. **Multimodal Configuration**: Set up audio, video, and text modalities\n\n### Required Environment Variables\n\n* `GOOGLE_API_KEY`: Your Google Gemini API key for authentication\n\n* **Multimodal Processing**: Handle audio, video, and text inputs simultaneously\n* **Real-time Streaming**: Low-latency audio and video processing\n* **Voice Activity Detection**: Automatic speech detection and turn management\n* **Function Calling**: Advanced tool integration and API calling capabilities\n* **Context Management**: Intelligent conversation history and system instruction handling",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Google AI Setup",
+      "id": "google-ai-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h3",
+      "text": "Key Features",
+      "id": "key-features"
+    }
+  ],
+  "url": "llms-txt#gemini-live",
+  "links": []
+}

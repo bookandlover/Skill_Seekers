@@ -1,0 +1,8 @@
+{
+  "title": "Apply filter to downstream frames only",
+  "content": "text_length_filter = FunctionFilter(\n    filter=long_text_filter,\n    direction=FrameDirection.DOWNSTREAM\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#apply-filter-to-downstream-frames-only",
+  "links": []
+}

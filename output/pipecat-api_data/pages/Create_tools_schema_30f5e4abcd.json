@@ -1,0 +1,8 @@
+{
+  "title": "Create tools schema",
+  "content": "tools = ToolsSchema(standard_tools=[weather_function])",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-tools-schema",
+  "links": []
+}

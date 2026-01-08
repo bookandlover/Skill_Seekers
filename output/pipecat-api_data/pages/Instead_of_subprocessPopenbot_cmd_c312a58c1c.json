@@ -1,0 +1,19 @@
+{
+  "title": "Instead of subprocess.Popen(bot_cmd)",
+  "content": "response = await httpx.post(\n    f\"https://api.pipecat.daily.co/v1/public/{agent_id}/start\",\n    headers={\"Authorization\": f\"Bearer {pipecat_api_key}\"},\n    json={\n        \"createDailyRoom\": True,\n        \"dailyRoomProperties\": {\n            \"sip\": {\"sip_mode\": \"dial-in\", \"num_endpoints\": 1}\n        },\n        \"body\": {\n            \"room_url\": room_url,\n            \"token\": token,\n            \"call_sid\": call_sid,  # For dial-in\n            \"sip_endpoint\": sip_endpoint,\n            # Or for dial-out:\n            # \"target_number\": target_number,\n            # \"sip_uri\": sip_uri\n        }\n    }\n)\n```\n\nThe room information and call parameters are passed in the `body` field, which your Pipecat Cloud bot receives as arguments.\n\n### Self-Hosted Production Deployment\n\nFor self-hosted production deployment, ensure your servers are:\n\n* Publicly accessible with HTTPS\n* Able to handle concurrent webhook requests\n* Properly configured with both Twilio and Daily API credentials\n\n* Explore the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot) for full implementations\n* Learn about [Daily PSTN integration](./daily-pstn) for direct phone number provisioning\n* Check out [Twilio WebSocket integration](./twilio-websockets) for simpler telephony workflows",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Self-Hosted Production Deployment",
+      "id": "self-hosted-production-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#instead-of-subprocess.popen(bot_cmd)",
+  "links": []
+}

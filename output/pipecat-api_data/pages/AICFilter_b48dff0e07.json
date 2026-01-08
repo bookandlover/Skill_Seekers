@@ -1,0 +1,57 @@
+{
+  "title": "AICFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/audio/aic-filter\n\nSpeech improvement using ai-coustics\n\n`AICFilter` is an audio processor that improves users speech by reducing background noise and improving speech clarity overall. It inherits from `BaseAudioFilter` and processes audio frames to improve audio quality.\n\nTo use AIC, you need a license key. Get started at [ai-coustics.com](https://ai-coustics.com/pipecat).\n\nThe AIC filter requires additional dependencies:\n\n## Constructor Parameters\n\n<ParamField type=\"str\">\n  AIC license key\n</ParamField>\n\n<ParamField type=\"int\">\n  Model\n</ParamField>\n\n<ParamField type=\"float\">\n  Enhancement level\n</ParamField>\n\n<ParamField type=\"float\">\n  Voice gain\n</ParamField>\n\n<ParamField type=\"bool\">\n  Enable noise gate\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Specific control frame to toggle filtering on/off\n\n* Requires ai-coustics license key\n* Supports real-time audio processing\n* Handles PCM\\_16 audio format\n* Thread-safe for pipeline processing\n* Can be dynamically enabled/disabled\n* Maintains audio quality while improving speech, including noise reduction\n* Efficient processing for low latency",
+  "code_samples": [
+    {
+      "code": "## Constructor Parameters\n\n<ParamField type=\"str\">\n  AIC license key\n</ParamField>\n\n<ParamField type=\"int\">\n  Model\n</ParamField>\n\n<ParamField type=\"float\">\n  Enhancement level\n</ParamField>\n\n<ParamField type=\"float\">\n  Voice gain\n</ParamField>\n\n<ParamField type=\"bool\">\n  Enable noise gate\n</ParamField>\n\n## Input Frames\n\n<ParamField type=\"Frame\">\n  Specific control frame to toggle filtering on/off",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n## Usage Example",
+      "language": "unknown"
+    },
+    {
+      "code": "## Audio Flow",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Input Frames",
+      "id": "input-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    },
+    {
+      "level": "h2",
+      "text": "Audio Flow",
+      "id": "audio-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#aicfilter",
+  "links": []
+}

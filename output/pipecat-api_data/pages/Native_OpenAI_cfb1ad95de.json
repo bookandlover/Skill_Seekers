@@ -1,0 +1,8 @@
+{
+  "title": "Native OpenAI",
+  "content": "llm = OpenAILLMService(api_key=os.getenv(\"OPENAI_API_KEY\"))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#native-openai",
+  "links": []
+}

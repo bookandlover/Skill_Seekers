@@ -1,0 +1,19 @@
+{
+  "title": "Override registry settings for one-time builds",
+  "content": "pipecat cloud docker build-push --registry custom --registry-url my-registry.com --username myuser\nshell theme={null}",
+  "code_samples": [
+    {
+      "code": "### Skip Latest Tag",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Skip Latest Tag",
+      "id": "skip-latest-tag"
+    }
+  ],
+  "url": "llms-txt#override-registry-settings-for-one-time-builds",
+  "links": []
+}

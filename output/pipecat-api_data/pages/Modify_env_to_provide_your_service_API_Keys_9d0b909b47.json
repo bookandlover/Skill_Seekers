@@ -1,0 +1,52 @@
+{
+  "title": "Modify .env to provide your service API Keys",
+  "content": "bash theme={null}\nmodal serve app.py\nbash theme={null}\nmodal deploy app.py\nbash theme={null}\nhttps://{your-workspace}--pipecat-modal-fastapi-app.modal.run\n```\n\nYou'll need this URL for the client's `app.js` configuration mentioned in its README.\n\n## Launch your bots on Modal\n\n### Option 1: Direct Link\n\nSimply click on the URL displayed after running the server or deploy step to launch an agent and be redirected to a Daily room to talk with the launched bot. This will use the OpenAI pipeline.\n\n### Option 2: Connect via an RTVI Client\n\nFollow the instructions provided in the [client folder's README](https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/modal-example/client/javascript) for building and running a custom client that connects to your Modal endpoint. The provided client includes a dropdown for choosing which bot pipeline to run.\n\n## Navigating your LLM, server, and Pipecat logs\n\nOn your [Modal dashboard](https://modal.com/apps), you should have two Apps listed under Live Apps:\n\n1. `example-vllm-openai-compatible`: This App contains the containers and logs used to run your self-hosted LLM. There will be just one App Function listed: `serve`. Click on this function to view logs for your LLM.\n2. `pipecat-modal`: This App contains the containers and logs used to run your `connect` endpoints and Pipecat pipelines. It will list two App Functions:\n   1. `fastapi_app`: This function is running the endpoints that your client will interact with and initiate starting a new pipeline (`/`, `/connect`, `/status`). Click on this function to see logs for each endpoint hit.\n   2. `bot_runner`: This function handles launching and running a bot pipeline. Click on this function to get a list of all pipeline runs and access each run's logs.\n\n## Modal & Pipecat Tips\n\n* In most other Pipecat examples, we use `Popen` to launch the pipeline process from the `/connect` endpoint. In this example, we use a Modal function instead. This allows us to run the pipelines using a separately defined Modal image as well as run each pipeline in an isolated container.\n* For the FastAPI and most common Pipecat Pipeline containers, a default `debian_slim` CPU-only should be all that's required to run. GPU containers are needed for self-hosted services.\n* To minimize cold starts of the pipeline and reduce latency for users, set `min_containers=1` on the Modal Function that launches the pipeline to ensure at least one warm instance of your function is always available.\n\n<Card title=\"Explore Modal's LLM Examples\" icon=\"layer-group\" href=\"https://modal.com/docs/examples/vllm_inference\">\n  For next steps on running a self-hosted LLM and reducing latency, check out\n  all of Modal's LLM examples\n</Card>",
+  "code_samples": [
+    {
+      "code": "<Info>\n  Alternatively, you can configure your Modal app to use\n  [secrets](https://modal.com/docs/guide/secrets).\n</Info>\n\n2. Update the `modal_url` in `server/src/bot_vllm.py` to point to the URL you received from the self-serve LLM deployment in the previous step.\n\n3. From within the `server` directory, test the app locally:",
+      "language": "unknown"
+    },
+    {
+      "code": "4. Deploy to production:",
+      "language": "unknown"
+    },
+    {
+      "code": "5. Note the endpoint URL produced from this deployment. It will look like:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Launch your bots on Modal",
+      "id": "launch-your-bots-on-modal"
+    },
+    {
+      "level": "h3",
+      "text": "Option 1: Direct Link",
+      "id": "option-1:-direct-link"
+    },
+    {
+      "level": "h3",
+      "text": "Option 2: Connect via an RTVI Client",
+      "id": "option-2:-connect-via-an-rtvi-client"
+    },
+    {
+      "level": "h2",
+      "text": "Navigating your LLM, server, and Pipecat logs",
+      "id": "navigating-your-llm,-server,-and-pipecat-logs"
+    },
+    {
+      "level": "h2",
+      "text": "Modal & Pipecat Tips",
+      "id": "modal-&-pipecat-tips"
+    },
+    {
+      "level": "h2",
+      "text": "Next steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#modify-.env-to-provide-your-service-api-keys",
+  "links": []
+}

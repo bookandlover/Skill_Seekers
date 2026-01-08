@@ -1,0 +1,19 @@
+{
+  "title": "For advanced context manipulation:",
+  "content": "@ivr_navigator.event_handler(\"on_conversation_detected\")\nasync def handle_conversation(processor, conversation_history):\n    # conversation_history contains preserved context\n    # Add additional context as needed\n    enhanced_context = [\n        {\"role\": \"system\", \"content\": \"You are a customer service representative.\"},\n        *conversation_history,\n        {\"role\": \"assistant\", \"content\": \"How can I help you today?\"}\n    ]\n\nawait task.queue_frame(LLMMessagesUpdateFrame(messages=enhanced_context, run_llm=True))\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### VAD Parameter Management",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "VAD Parameter Management",
+      "id": "vad-parameter-management"
+    }
+  ],
+  "url": "llms-txt#for-advanced-context-manipulation:",
+  "links": []
+}

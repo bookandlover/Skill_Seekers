@@ -1,0 +1,33 @@
+{
+  "title": "Start Datadog Agent (move pre-app script to expected place where it'll be invoked by Pipecat Cloud base image)",
+  "content": "COPY --chmod=755 ./pre-app.sh /app/\nyaml theme={null}\nlogs_enabled: true\nyaml theme={null}",
+  "code_samples": [
+    {
+      "code": "## Enabling logging\n\n### Enable logging in `datadog.yaml`\n\nEnsure the following is present in your [`datadog.yaml`](#create-datadog-yaml):",
+      "language": "unknown"
+    },
+    {
+      "code": "### Create `python.d/conf.yaml`\n\nConfigure log collection for your agent:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Enabling logging",
+      "id": "enabling-logging"
+    },
+    {
+      "level": "h3",
+      "text": "Enable logging in `datadog.yaml`",
+      "id": "enable-logging-in-`datadog.yaml`"
+    },
+    {
+      "level": "h3",
+      "text": "Create `python.d/conf.yaml`",
+      "id": "create-`python.d/conf.yaml`"
+    }
+  ],
+  "url": "llms-txt#start-datadog-agent-(move-pre-app-script-to-expected-place-where-it'll-be-invoked-by-pipecat-cloud-base-image)",
+  "links": []
+}

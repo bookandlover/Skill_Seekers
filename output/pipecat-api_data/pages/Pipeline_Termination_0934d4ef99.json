@@ -1,0 +1,14 @@
+{
+  "title": "Pipeline Termination",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/pipeline-termination\n\nLearn how to properly terminate Pipecat pipelines for clean shutdown and resource management\n\n**Pipeline termination** ensures your voice AI applications shut down cleanly without resource leaks or hanging processes. Understanding the different termination methods helps you handle various scenarios from natural conversation endings to unexpected disconnections.\n\n## Pipeline Integration\n\nPipeline termination works through the same frame-based system as other pipeline operations:\n\n```python theme={null}\npipeline = Pipeline([\n    transport.input(),\n    stt,\n    context_aggregator.user(),\n    llm,\n    tts,\n    transport.output(),\n    context_aggregator.assistant(),\n])",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Pipeline Integration",
+      "id": "pipeline-integration"
+    }
+  ],
+  "url": "llms-txt#pipeline-termination",
+  "links": []
+}

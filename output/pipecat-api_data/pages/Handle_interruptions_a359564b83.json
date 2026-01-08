@@ -1,0 +1,19 @@
+{
+  "title": "Handle interruptions",
+  "content": "await processor.interrupt_bot()\npython theme={null}\nfrom pipecat.processors.frameworks.rtvi import RTVIServerMessageFrame",
+  "code_samples": [
+    {
+      "code": "## Custom Messaging\n\nSend custom messages from server to client:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Custom Messaging",
+      "id": "custom-messaging"
+    }
+  ],
+  "url": "llms-txt#handle-interruptions",
+  "links": []
+}

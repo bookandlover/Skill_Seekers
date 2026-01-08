@@ -1,0 +1,118 @@
+{
+  "title": "organizations",
+  "content": "Source: https://docs.pipecat.ai/cli/cloud/organizations\n\nOrganization and API key management commands\n\nThe `organizations` command group helps you manage your Pipecat Cloud organizations and API keys. You can list and select organizations, as well as create, list, and manage API keys for use with the platform.\n\n<Note>\n  Organization and user management is not available via the CLI. Please use the\n  [Pipecat Cloud Dashboard](https://pipecat.daily.co) to manage organizations\n  and users.\n</Note>\n\nLists all organizations that your account has access to, highlighting the currently active one used for CLI operations.\n\nChanges your active organization for CLI operations.\n\nThis command either presents an interactive selection menu or directly sets a specified organization as your default. The selection is stored in your local configuration file (defaults to `~/.config/pipecatcloud/pipecatcloud.toml`) and used for all subsequent CLI commands.\n\n<ParamField type=\"string\">\n  Bypass prompt by directly specifying a namespace / organization string.\n</ParamField>\n\nThe `keys` sub-commands manage API keys for authenticating with Pipecat Cloud services.\n\nLists all API keys for the current organization.\n\n<ParamField type=\"string\">\n  Organization ID to list keys for. If not provided, the default organization\n  will be used.\n</ParamField>\n\nCreate a new public API key for account / organization. Command will prompt the user to enter\na human-readable name for the key.\n\n<ParamField type=\"string\">\n  Organization ID to create key for. If not provided, the default organization\n  will be used.\n</ParamField>\n\nDelete an API key from your organization. Command will prompt the user to select which key they wish to delete.\n\n<ParamField type=\"string\">\n  Organization ID to delete key for. If not provided, the default organization\n  will be used.\n</ParamField>\n\nSets a specific API key as your default for CLI operations.\n\nThe selected key is stored in the local configuration file (defaults to `~/.config/pipecatcloud/pipecatcloud.toml`) and will be used for all subsequent requests to the Pipecat Cloud API.\n\nPlease note that the key must be associated with the same user account or organization as you are making requests to.\n\nIf the public key is revoked or deleted via the dashboard, the user will need to re-run this command to select a new key.\n\n<ParamField type=\"string\">\n  Organization ID to select default key from. If not provided, the default\n  organization will be used.\n</ParamField>\n\nThe `properties` sub-commands manage organization properties such as default region settings.\n\nLists all current property values for your organization.\n\n<ParamField type=\"string\">\n  Organization ID to list properties for. If not provided, the default\n  organization will be used.\n</ParamField>\n\n### properties schema\n\nShows available properties with detailed metadata including type information, current values, default values, and available values.\n\n<ParamField type=\"string\">\n  Organization ID to show properties schema for. If not provided, the default\n  organization will be used.\n</ParamField>\n\nUpdates a specific organization property.\n\n<ParamField type=\"string\">\n  Name of the property to set (e.g., `defaultRegion`)\n</ParamField>\n\n<ParamField type=\"string\">\n  Value to set for the property\n</ParamField>\n\n<ParamField type=\"string\">\n  Organization ID to update property for. If not provided, the default\n  organization will be used.\n</ParamField>\n\nConvenience command to get or set the default region for your organization.\n\n<ParamField type=\"string\">\n  Region to set as default. If omitted, displays the current default region and\n  available regions.\n</ParamField>\n\n<ParamField type=\"string\">\n  Organization ID to configure. If not provided, the default organization will\n  be used.\n</ParamField>\n\nView current default region:\n\n<Card title=\"More about organizations\" icon=\"people-group\" href=\"/deployment/pipecat-cloud/fundamentals/accounts-and-organizations\">\n  Managing your account and collaborating on agents as part of a team\n</Card>",
+  "code_samples": [
+    {
+      "code": "## select\n\nChanges your active organization for CLI operations.\n\nThis command either presents an interactive selection menu or directly sets a specified organization as your default. The selection is stored in your local configuration file (defaults to `~/.config/pipecatcloud/pipecatcloud.toml`) and used for all subsequent CLI commands.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Bypass prompt by directly specifying a namespace / organization string.\n</ParamField>\n\n## keys\n\nThe `keys` sub-commands manage API keys for authenticating with Pipecat Cloud services.\n\n### keys list\n\nLists all API keys for the current organization.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to list keys for. If not provided, the default organization\n  will be used.\n</ParamField>\n\n### keys create\n\nCreate a new public API key for account / organization. Command will prompt the user to enter\na human-readable name for the key.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to create key for. If not provided, the default organization\n  will be used.\n</ParamField>\n\n### keys delete\n\nDelete an API key from your organization. Command will prompt the user to select which key they wish to delete.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to delete key for. If not provided, the default organization\n  will be used.\n</ParamField>\n\n### keys use\n\nSets a specific API key as your default for CLI operations.\n\nThe selected key is stored in the local configuration file (defaults to `~/.config/pipecatcloud/pipecatcloud.toml`) and will be used for all subsequent requests to the Pipecat Cloud API.\n\nPlease note that the key must be associated with the same user account or organization as you are making requests to.\n\nIf the public key is revoked or deleted via the dashboard, the user will need to re-run this command to select a new key.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to select default key from. If not provided, the default\n  organization will be used.\n</ParamField>\n\n## properties\n\nThe `properties` sub-commands manage organization properties such as default region settings.\n\n### properties list\n\nLists all current property values for your organization.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to list properties for. If not provided, the default\n  organization will be used.\n</ParamField>\n\n### properties schema\n\nShows available properties with detailed metadata including type information, current values, default values, and available values.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to show properties schema for. If not provided, the default\n  organization will be used.\n</ParamField>\n\n### properties set\n\nUpdates a specific organization property.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Name of the property to set (e.g., `defaultRegion`)\n</ParamField>\n\n<ParamField type=\"string\">\n  Value to set for the property\n</ParamField>\n\n**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to update property for. If not provided, the default\n  organization will be used.\n</ParamField>\n\n**Example:**",
+      "language": "unknown"
+    },
+    {
+      "code": "## default-region\n\nConvenience command to get or set the default region for your organization.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Region to set as default. If omitted, displays the current default region and\n  available regions.\n</ParamField>\n\n**Options:**\n\n<ParamField type=\"string\">\n  Organization ID to configure. If not provided, the default organization will\n  be used.\n</ParamField>\n\n**Examples:**\n\nView current default region:",
+      "language": "unknown"
+    },
+    {
+      "code": "Set default region:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "list",
+      "id": "list"
+    },
+    {
+      "level": "h2",
+      "text": "select",
+      "id": "select"
+    },
+    {
+      "level": "h2",
+      "text": "keys",
+      "id": "keys"
+    },
+    {
+      "level": "h3",
+      "text": "keys list",
+      "id": "keys-list"
+    },
+    {
+      "level": "h3",
+      "text": "keys create",
+      "id": "keys-create"
+    },
+    {
+      "level": "h3",
+      "text": "keys delete",
+      "id": "keys-delete"
+    },
+    {
+      "level": "h3",
+      "text": "keys use",
+      "id": "keys-use"
+    },
+    {
+      "level": "h2",
+      "text": "properties",
+      "id": "properties"
+    },
+    {
+      "level": "h3",
+      "text": "properties list",
+      "id": "properties-list"
+    },
+    {
+      "level": "h3",
+      "text": "properties schema",
+      "id": "properties-schema"
+    },
+    {
+      "level": "h3",
+      "text": "properties set",
+      "id": "properties-set"
+    },
+    {
+      "level": "h2",
+      "text": "default-region",
+      "id": "default-region"
+    }
+  ],
+  "url": "llms-txt#organizations",
+  "links": []
+}

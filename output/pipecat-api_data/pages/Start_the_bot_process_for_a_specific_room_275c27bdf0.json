@@ -1,0 +1,115 @@
+{
+  "title": "Start the bot process for a specific room",
+  "content": "bot_file = \"bot-gemini.py\"\nproc = subprocess.Popen([f\"python3 -m {bot_file} -u {room_url} -t {token}\"])\nbot_procs[proc.pid] = (proc, room_url)\npython server/bot-gemini.py theme={null}\ntransport = DailyTransport(\n    room_url,\n    token,\n    \"Chatbot\",\n    DailyParams(\n        audio_in_enabled=True,        # Enable audio input\n        audio_out_enabled=True,       # Enable audio output\n        video_out_enabled=True,      # Enable video output\n        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.5)),\n    ),\n)\npython server/bot-gemini.py theme={null}\nllm = GeminiLiveLLMService(\n    api_key=os.getenv(\"GEMINI_API_KEY\"),\n    voice_id=\"Puck\",                     # Choose your bot's voice\n    params=InputParams(temperature=0.7)  # Set model input params\n)\npython server/bot-gemini.py theme={null}\nmessages = [{\n    \"role\": \"user\",\n    \"content\": \"\"\"You are Chatbot, a friendly, helpful robot.\n                 Keep responses brief and avoid special characters\n                 since output will be converted to audio.\"\"\"\n}]\n\ncontext = LLMContext(messages)\ncontext_aggregator = LLMContextAggregatorPair(context)\npython server/bot-gemini.py theme={null}\npipeline = Pipeline([\n    transport.input(),             # Receive media\n    rtvi,                          # Client UI events\n    context_aggregator.user(),     # Process user context\n    llm,                           # Gemini processing\n    ta,                            # Animation (talking/quiet states)\n    transport.output(),            # Send media\n    context_aggregator.assistant() # Process bot context\n])\n\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        allow_interruptions=True,\n        enable_metrics=True,\n        enable_usage_metrics=True,\n    ),\n    observers=[RTVIObserver(rtvi)],\n)\ntypescript examples/react/src/providers/PipecatProvider.tsx theme={null}\nconst client = new PipecatClient({\n  transport: new DailyTransport(),\n  enableMic: true, // Enable audio input\n  enableCam: false, // Disable video input\n  enableScreenShare: false, // Disable screen sharing\n});\nclient.startBotAndConnect({\n  endpoint: \"http://localhost:7860/connect\", // Your bot connection endpoint\n});\ntsx theme={null}\nfunction App() {\n  return (\n    <PipecatClientProvider client={client}>\n      <div className=\"app\">\n        <PipecatClientVideo participant=\"bot\" /> {/* Bot's video feed */}\n        <PipecatClientAudio /> {/* Audio input/output */}\n      </div>\n    </PipecatClientProvider>\n  );\n}\ntypescript theme={null}\n// Listen for transcription events\nuseRTVIClientEvent(RTVIEvent.UserTranscript, (data: TranscriptData) => {\n  if (data.final) {\n    console.log(`User said: ${data.text}`);\n  }\n});\n\n// Listen for bot responses\nuseRTVIClientEvent(RTVIEvent.BotOutput, (data: BotOutputData) => {\n  if (data.aggregated_by === \"sentence\") {\n    console.log(`Bot responded: ${data.text}`);\n  }\n});\ntsx theme={null}\nfunction ChatApp() {\n  return (\n    <PipecatClientProvider client={client}>\n      <div className=\"app\">\n        {/* Connection UI */}\n        <StatusDisplay />\n        <ConnectButton />\n\n{/* Media Components */}\n        <BotVideo />\n        <PipecatClientAudio />\n\n{/* Debug/Transcript Display */}\n        <DebugDisplay />\n      </div>\n    </PipecatClientProvider>\n  );\n}\nbash theme={null}\npython server/server.py\nbash theme={null}\ncd examples/react\nnpm install\nnpm run dev\n```\n\n### 3. Testing the Connection\n\n1. Open `http://localhost:5173` in your browser\n2. Click \"Connect\" to join a room\n3. Allow microphone access when prompted\n4. Start talking with your AI assistant\n\n<Warning>\n  Troubleshooting:\n\n* Check that all API keys are properly configured in .env\n  * Grant your browser access to your microphone, so it can receive your audio input\n  * Verify WebRTC ports aren't blocked by firewalls\n</Warning>\n\nNow that you have a working chatbot, consider these enhancements:\n\n* Add custom avatar animations\n* Implement [function calling](/guides/learn/function-calling) for external integrations\n* Add support for multiple languages\n* Enhance error recovery and reconnection logic\n\n<CardGroup>\n  <Card title=\"Foundational Example\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/26a-gemini-live-transcription.py\">\n    A basic implementation demonstrating core Gemini Live features and transcription capabilities\n  </Card>\n\n<Card title=\"Simple Chatbot\" icon=\"robot\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot\">\n    A complete client/server implementation showing how to build a Pipecat JS or React client that connects to a Gemini Live Pipecat bot\n  </Card>\n</CardGroup>\n\n* [Gemini Live API Reference](/server/services/s2s/gemini-live)\n* [React Client SDK Documentation](/client/react/introduction)",
+  "code_samples": [
+    {
+      "code": "#### Connection Endpoints\n\nThe server provides two ways to connect:\n\n<CardGroup>\n  <Card title=\"Browser Access (/)\" icon=\"browser\">\n    Creates a room, starts a bot, and redirects the browser to the Daily meeting\n    URL. Perfect for quick testing and development.\n  </Card>\n\n  <Card title=\"RTVI Client (/connect)\" icon=\"plug\">\n    Creates a room, starts a bot, and returns connection credentials. Used by\n    RTVI clients for custom implementations.\n  </Card>\n</CardGroup>\n\n### Bot Implementation (bot-gemini.py)\n\nThe bot implementation connects all the pieces: Daily transport, Gemini service, conversation context, and processors.\n\nLet's break down each component:\n\n#### Transport Setup\n\nFirst, we configure the Daily transport, which handles WebRTC communication between the client and server.",
+      "language": "unknown"
+    },
+    {
+      "code": "<Info>\n  Gemini Live audio requirements:\n\n  * Input: 16 kHz sample rate\n  * Output: 24 kHz sample rate\n</Info>\n\n#### Gemini Service Configuration\n\nNext, we initialize the Gemini service which will provide speech-to-speech inference and communication:",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Conversation Context\n\nWe give our bot its personality and initial instructions:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  The context aggregator automatically maintains conversation history, helping\n  the bot remember previous interactions.\n</Note>\n\n#### Processor Setup\n\nWe initialize two additional processors in our pipeline to handle different aspects of the interaction:\n\n<CardGroup>\n  <Card title=\"RTVI Processors\" icon=\"message-bot\">\n    `RTVIProcessor`: Handles all client communication events including transcriptions,\n    speaking states, and performance metrics\n  </Card>\n\n  <Card title=\"Animation\" icon=\"robot\">\n    `TalkingAnimation`: Controls the bot's visual state, switching between\n    static and animated frames based on speaking status\n  </Card>\n</CardGroup>\n\n<Info>\n  [Learn more](/server/frameworks/rtvi/introduction) about the RTVI framework\n  and available processors.\n</Info>\n\n#### Pipeline Assembly\n\nFinally, we bring everything together in a pipeline:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Tip>\n  The order of processors is crucial! For example, the RTVI processor should be\n  early in the pipeline to capture all relevant events.\n\n  The `RTVIObserver` monitors the entire pipeline and automatically collects relevant events to send to the client.\n</Tip>\n\n## Client Implementation\n\nOur React client uses the [Pipecat React SDK](/client/react/introduction) to communicate with the bot. Let's explore how the client connects and interacts with our Pipecat server.\n\n### Connection Setup\n\nThe client needs to connect to our bot server using the same transport type (Daily WebRTC) that we configured on the server:",
+      "language": "unknown"
+    },
+    {
+      "code": "The connection configuration must match your server:\n\n* `DailyTransport`: Matches the WebRTC transport used in `bot-gemini.py`\n* `connect` endpoint: Matches the `/connect` route in `server.py`\n* Media settings: Controls which devices are enabled on join\n\n### Media Handling\n\nPipecat's React components handle all the complex media stream management for you:",
+      "language": "unknown"
+    },
+    {
+      "code": "The `PipecatClientProvider` is the root component for providing Pipecat client context to your application. By wrapping your `PipecatClientAudio` and `PipecatClientVideo` components in this provider, they can access the client instance and receive and process the streams received from the Pipecat server.\n\n### Real-time Events\n\nThe RTVI processors we configured in the pipeline emit events that we can handle in our client:",
+      "language": "unknown"
+    },
+    {
+      "code": "<CardGroup>\n  <Card title=\"Available Events\" icon=\"bell\">\n    * Speaking state changes\n    * Transcription updates\n    * Bot responses\n    * Connection status\n    * Performance metrics\n  </Card>\n\n  <Card title=\"Event Usage\" icon=\"code\">\n    Use these events to:\n\n    * Show speaking indicators\n    * Display transcripts\n    * Update UI state\n    * Monitor performance\n  </Card>\n</CardGroup>\n\n<Tip>\n  Optionally, uses callbacks to handle events in your application. [Learn\n  more](/client/js/api-reference/callbacks#callbacks) in the Pipecat client\n  docs.\n</Tip>\n\n### Complete Example\n\nHere's a basic client implementation with connection status and transcription display:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  Check out the [example\n  repository](https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot)\n  for a complete client implementation with styling and error handling.\n</Note>\n\n## Running the Application\n\nFrom the `simple-chatbot` directory, start the server and client to test the chatbot:\n\n### 1. Start the Server\n\nIn one terminal:",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. Start the Client\n\nIn another terminal:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Bot Implementation (bot-gemini.py)",
+      "id": "bot-implementation-(bot-gemini.py)"
+    },
+    {
+      "level": "h2",
+      "text": "Client Implementation",
+      "id": "client-implementation"
+    },
+    {
+      "level": "h3",
+      "text": "Connection Setup",
+      "id": "connection-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Media Handling",
+      "id": "media-handling"
+    },
+    {
+      "level": "h3",
+      "text": "Real-time Events",
+      "id": "real-time-events"
+    },
+    {
+      "level": "h3",
+      "text": "Complete Example",
+      "id": "complete-example"
+    },
+    {
+      "level": "h2",
+      "text": "Running the Application",
+      "id": "running-the-application"
+    },
+    {
+      "level": "h3",
+      "text": "1. Start the Server",
+      "id": "1.-start-the-server"
+    },
+    {
+      "level": "h3",
+      "text": "2. Start the Client",
+      "id": "2.-start-the-client"
+    },
+    {
+      "level": "h3",
+      "text": "3. Testing the Connection",
+      "id": "3.-testing-the-connection"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    },
+    {
+      "level": "h3",
+      "text": "Examples",
+      "id": "examples"
+    },
+    {
+      "level": "h3",
+      "text": "Learn More",
+      "id": "learn-more"
+    }
+  ],
+  "url": "llms-txt#start-the-bot-process-for-a-specific-room",
+  "links": []
+}

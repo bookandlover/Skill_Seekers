@@ -1,0 +1,44 @@
+{
+  "title": "WhatsAppTransport",
+  "content": "Source: https://docs.pipecat.ai/server/services/transport/whatsapp\n\nReal-time voice communication through WhatsApp Business API using WebRTC\n\nWhatsAppTransport enables real-time voice conversations between WhatsApp users and your Pipecat bot through the WhatsApp Business API. When users call your WhatsApp Business number, the transport handles webhook events, establishes WebRTC connections, and manages the voice call lifecycle.\n\nThe transport integrates with Meta's WhatsApp Cloud API to receive incoming calls, process WebRTC signaling, and maintain call state throughout the conversation.\n\n<CardGroup>\n  <Card title=\"WhatsApp API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.whatsapp.api.html\">\n    API methods for Pipecat's WhatsApp Cloud API integration\n  </Card>\n\n<Card title=\"WhatsApp Client Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.whatsapp.client.html\">\n    Pipecat's Client for handling webhooks and WebRTC connections\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/whatsapp\">\n    Complete WhatsApp voice bot example\n  </Card>\n\n<Card title=\"WhatsApp Business API Docs\" icon=\"book\" href=\"https://developers.facebook.com/docs/whatsapp/cloud-api/calling/\">\n    Meta's official WhatsApp calling documentation\n  </Card>\n</CardGroup>\n\nTo use WhatsAppTransport, install the required dependencies:\n\n### WhatsApp Business API Setup\n\nBefore using WhatsAppTransport, you need:\n\n1. **WhatsApp Business API Account**: Set up through [Meta Developer Console](https://developers.facebook.com/apps)\n2. **Phone Number Configuration**: Enable voice calling capability for your business number\n3. **Webhook Configuration**: Configure webhook endpoint to receive call events\n4. **Access Tokens**: Generate API access token and phone number ID\n\n<Tip>\n  For development, Meta provides free test phone numbers valid for 90 days.\n  Production use requires business verification.\n</Tip>\n\n### Required Environment Variables\n\n* `WHATSAPP_TOKEN`: WhatsApp Business API access token\n* `WHATSAPP_PHONE_NUMBER_ID`: Your business phone number ID\n* `WHATSAPP_WEBHOOK_VERIFICATION_TOKEN`: Token for webhook verification\n\n* **Incoming Call Handling**: Automatically accepts WhatsApp voice calls\n* **WebRTC Integration**: Establishes peer-to-peer audio connections\n* **Webhook Processing**: Handles Meta's webhook events for call lifecycle\n* **Call Management**: Supports call acceptance, rejection, and termination\n* **Real-time Audio**: Bidirectional audio streaming for natural conversations\n\nWhatsAppTransport requires a webhook server to handle incoming calls and a bot implementation to process the conversations. The transport works with `SmallWebRTCTransport` under the hood for WebRTC connectivity.\n\nSee the [complete example](https://github.com/pipecat-ai/pipecat-examples/tree/main/whatsapp) for a full implementation including:\n\n* FastAPI webhook server\n* WhatsApp client configuration\n* Bot integration with Pipecat pipeline\n* Environment setup and deployment",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "WhatsApp Business API Setup",
+      "id": "whatsapp-business-api-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h2",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#whatsapptransport",
+  "links": []
+}

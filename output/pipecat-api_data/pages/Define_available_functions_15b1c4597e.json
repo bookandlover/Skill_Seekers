@@ -1,0 +1,8 @@
+{
+  "title": "Define available functions",
+  "content": "weather_function = FunctionSchema(\n    name=\"get_current_weather\",\n    description=\"Get the current weather\",\n    properties={\n        \"location\": {\n            \"type\": \"string\",\n            \"description\": \"The city and state, e.g. San Francisco, CA\",\n        },\n        \"format\": {\n            \"type\": \"string\",\n            \"enum\": [\"celsius\", \"fahrenheit\"],\n            \"description\": \"The temperature unit to use.\",\n        },\n    },\n    required=[\"location\", \"format\"],\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#define-available-functions",
+  "links": []
+}

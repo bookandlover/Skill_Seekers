@@ -1,0 +1,66 @@
+{
+  "title": "Debug Log Observer",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/observers/debug-observer\n\nComprehensive frame logging with configurable filtering in Pipecat\n\nThe `DebugLogObserver` provides detailed logging of frame activity in your Pipecat pipeline, with full visibility into frame content and flexible filtering options.\n\n* Log all frame types and their content\n* Filter by specific frame types\n* Filter by source or destination components\n* Automatic formatting of frame fields\n* Special handling for complex data structures\n\nLog all frames passing through the pipeline:\n\n### Filter by Frame Types\n\nLog only specific frame types:\n\n### Advanced Source/Destination Filtering\n\nFilter frames based on their type and source/destination:\n\nThe observer logs each frame with its complete details:\n\n## Configuration Options\n\n| Parameter        | Type                                                                                   | Description                                                     |\n| ---------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------- |\n| `frame_types`    | `Tuple[Type[Frame], ...]` or `Dict[Type[Frame], Optional[Tuple[Type, FrameEndpoint]]]` | Frame types to log, with optional source/destination filtering  |\n| `exclude_fields` | `Set[str]`                                                                             | Field names to exclude from logging (defaults to binary fields) |\n\n## FrameEndpoint Enum\n\nThe `FrameEndpoint` enum is used for source/destination filtering:\n\n* `FrameEndpoint.SOURCE`: Filter by source component\n* `FrameEndpoint.DESTINATION`: Filter by destination component",
+  "code_samples": [
+    {
+      "code": "### Filter by Frame Types\n\nLog only specific frame types:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Advanced Source/Destination Filtering\n\nFilter frames based on their type and source/destination:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Log Output Format\n\nThe observer logs each frame with its complete details:",
+      "language": "unknown"
+    },
+    {
+      "code": "For example:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h3",
+      "text": "Log All Frames",
+      "id": "log-all-frames"
+    },
+    {
+      "level": "h3",
+      "text": "Filter by Frame Types",
+      "id": "filter-by-frame-types"
+    },
+    {
+      "level": "h3",
+      "text": "Advanced Source/Destination Filtering",
+      "id": "advanced-source/destination-filtering"
+    },
+    {
+      "level": "h2",
+      "text": "Log Output Format",
+      "id": "log-output-format"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    },
+    {
+      "level": "h2",
+      "text": "FrameEndpoint Enum",
+      "id": "frameendpoint-enum"
+    }
+  ],
+  "url": "llms-txt#debug-log-observer",
+  "links": []
+}

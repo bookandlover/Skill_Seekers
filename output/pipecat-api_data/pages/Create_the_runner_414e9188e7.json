@@ -1,0 +1,8 @@
+{
+  "title": "Create the runner",
+  "content": "runner = PipelineRunner(handle_sigint=False)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-the-runner",
+  "links": []
+}

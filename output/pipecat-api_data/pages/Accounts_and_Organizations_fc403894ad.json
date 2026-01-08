@@ -1,0 +1,79 @@
+{
+  "title": "Accounts and Organizations",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/accounts-and-organizations\n\nManaging your account and collaborating on agents as part of a team\n\nPipecat Cloud accounts are issued a personal workspace where you can deploy agents independently.\nUser workspaces are unique and isolated from one another, making them unsuitable for collaboration.\n\nBefore you can issue any commands via the CLI, you must authenticate with your Pipecat Cloud account.\n\nThis command will open a browser window and prompt you to authenticate with your Pipecat Cloud account.\n\nYou can verify a login was successful by running the `whoami` command:\n\nYou can sign out of your account by running the following:\n\nAccess tokens are stored locally on your device at `~/.config/pipecatcloud/pipecatcloud.toml`. You can override the default location by setting the `PIPECAT_CONFIG_PATH` environment variable.\nIf you need to revoke access to your account, please sign out of the Pipecat Cloud dashboard to invalidate your access token.\n\nWorking as part of a team requires creating an organization. Organizations are multi-tenant workspaces that enable collaboration on deployments.\n\n* Billing and integrations are managed at the organization level.\n* Agents and secrets are shared across the organization, with varying roles and privileges.\n* Organizations have dedicated access tokens for initializing agent instances.\n\n<Info>\n  During the beta phase, deployments cannot be shared or moved between\n  organizations or user accounts. If you plan to collaborate with others, we\n  recommend creating a new organization.\n</Info>\n\n### Creating organizations\n\nOrganization creation must be done via the [Pipecat Cloud dashboard<Icon icon=\"arrow-up-right-from-square\" />](https://pipecat.daily.co/).\n\n### Inviting accounts to your organization\n\nWhile in beta you must know the account name of a given Pipecat Cloud user in order to invite them.\nWe will add support for inviting users via email in the future.\n\nYou can obtain your account name by running `pipecat cloud auth whoami`.\n\n### Working with organizations\n\nYou can get a list of available organizations that your account is a member of by running the following:\n\nYou can switch to a different organization by running the following:\n\nSwitching organizations will target all CLI commands to the selected organization. For example, `pipecat cloud deploy` will issue the deployment request to your select organization.\n\nAlternatively, you issue commands with the optional `--org` flag, for example:\n\nPipecat Cloud requires using an API key for some CLI commands or interfacing via the REST API.\n\nAPI keys are issued at the user workspace and organization level.\n\nYou can create up to 5 private and 5 public API keys for different agents / purposes.\n\nUsed to authenticate with private REST API endpoints. Private API keys\nare typically used for administrative tasks and should not be shared or used by end-user applications.\n\nExamples of where you may want to use private API keys include:\n\n* Managing organizations and users via the REST API\n* Server-to-server deployment scripts\n* GitHub actions\n\nYou should not share your private API key with anyone.\n\nPublic API keys are suitable for CLI usage for commands that could be invoked by end-user actions on the platform.\n\nExamples of where you may want to use public API keys include:\n\n* [Starting an agent instance](./active-sessions) (via the CLI or REST API)\n* Server-to-server end-user applications\n* Client-side while developing / iterating\n\nPublic API keys allow starting new agent processes, so while they are generally safe to share, you should still be cautious to avoid\nmalicious use (i.e. triggering your account rate limit.) We recommend keeping your public API key server-side and not sharing it in public repositories.\n\n### Managing API keys\n\nYou can create, cycle, revoke or delete API keys via the [Pipecat Cloud dashboard <Icon icon=\"arrow-up-right-from-square\" />](https://pipecat.daily.co) and CLI.",
+  "code_samples": [
+    {
+      "code": "This command will open a browser window and prompt you to authenticate with your Pipecat Cloud account.\n\nYou can verify a login was successful by running the `whoami` command:",
+      "language": "unknown"
+    },
+    {
+      "code": "You can sign out of your account by running the following:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Credentials**\n\nAccess tokens are stored locally on your device at `~/.config/pipecatcloud/pipecatcloud.toml`. You can override the default location by setting the `PIPECAT_CONFIG_PATH` environment variable.\nIf you need to revoke access to your account, please sign out of the Pipecat Cloud dashboard to invalidate your access token.\n\n## Organizations\n\nWorking as part of a team requires creating an organization. Organizations are multi-tenant workspaces that enable collaboration on deployments.\n\n* Billing and integrations are managed at the organization level.\n* Agents and secrets are shared across the organization, with varying roles and privileges.\n* Organizations have dedicated access tokens for initializing agent instances.\n\n<Info>\n  During the beta phase, deployments cannot be shared or moved between\n  organizations or user accounts. If you plan to collaborate with others, we\n  recommend creating a new organization.\n</Info>\n\n### Creating organizations\n\nOrganization creation must be done via the [Pipecat Cloud dashboard<Icon icon=\"arrow-up-right-from-square\" />](https://pipecat.daily.co/).\n\n### Inviting accounts to your organization\n\nWhile in beta you must know the account name of a given Pipecat Cloud user in order to invite them.\nWe will add support for inviting users via email in the future.\n\nYou can obtain your account name by running `pipecat cloud auth whoami`.\n\n### Working with organizations\n\nYou can get a list of available organizations that your account is a member of by running the following:",
+      "language": "unknown"
+    },
+    {
+      "code": "You can switch to a different organization by running the following:",
+      "language": "unknown"
+    },
+    {
+      "code": "Switching organizations will target all CLI commands to the selected organization. For example, `pipecat cloud deploy` will issue the deployment request to your select organization.\n\nAlternatively, you issue commands with the optional `--org` flag, for example:",
+      "language": "unknown"
+    },
+    {
+      "code": "## API keys\n\nPipecat Cloud requires using an API key for some CLI commands or interfacing via the REST API.\n\nAPI keys are issued at the user workspace and organization level.\n\nYou can create up to 5 private and 5 public API keys for different agents / purposes.\n\n### Private API keys\n\nUsed to authenticate with private REST API endpoints. Private API keys\nare typically used for administrative tasks and should not be shared or used by end-user applications.\n\nExamples of where you may want to use private API keys include:\n\n* Managing organizations and users via the REST API\n* Server-to-server deployment scripts\n* GitHub actions\n\nYou should not share your private API key with anyone.\n\n### Public API keys\n\nPublic API keys are suitable for CLI usage for commands that could be invoked by end-user actions on the platform.\n\nExamples of where you may want to use public API keys include:\n\n* [Starting an agent instance](./active-sessions) (via the CLI or REST API)\n* Server-to-server end-user applications\n* Client-side while developing / iterating\n\nPublic API keys allow starting new agent processes, so while they are generally safe to share, you should still be cautious to avoid\nmalicious use (i.e. triggering your account rate limit.) We recommend keeping your public API key server-side and not sharing it in public repositories.\n\n### Managing API keys\n\nYou can create, cycle, revoke or delete API keys via the [Pipecat Cloud dashboard <Icon icon=\"arrow-up-right-from-square\" />](https://pipecat.daily.co) and CLI.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Authentication",
+      "id": "authentication"
+    },
+    {
+      "level": "h2",
+      "text": "Organizations",
+      "id": "organizations"
+    },
+    {
+      "level": "h3",
+      "text": "Creating organizations",
+      "id": "creating-organizations"
+    },
+    {
+      "level": "h3",
+      "text": "Inviting accounts to your organization",
+      "id": "inviting-accounts-to-your-organization"
+    },
+    {
+      "level": "h3",
+      "text": "Working with organizations",
+      "id": "working-with-organizations"
+    },
+    {
+      "level": "h2",
+      "text": "API keys",
+      "id": "api-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Private API keys",
+      "id": "private-api-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Public API keys",
+      "id": "public-api-keys"
+    },
+    {
+      "level": "h3",
+      "text": "Managing API keys",
+      "id": "managing-api-keys"
+    }
+  ],
+  "url": "llms-txt#accounts-and-organizations",
+  "links": []
+}

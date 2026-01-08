@@ -1,0 +1,8 @@
+{
+  "title": "Create a null filter that blocks all non-system frames",
+  "content": "blocker = NullFilter()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-a-null-filter-that-blocks-all-non-system-frames",
+  "links": []
+}

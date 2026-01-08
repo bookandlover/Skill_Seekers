@@ -1,0 +1,19 @@
+{
+  "title": "ESP32 compatibility mode",
+  "content": "python bot.py -t webrtc --esp32 --host 192.168.1.100\nbash theme={null}\npython bot.py -t daily",
+  "code_samples": [
+    {
+      "code": "**Runner Arguments**: `SmallWebRTCRunnerArguments`\n\n* `webrtc_connection`: Pre-configured WebRTC peer connection\n\n### Daily (`-t daily`)\n\nIntegration with Daily for production video conferencing with rooms, participant management, and Pipecat client compatibility.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Daily (`-t daily`)",
+      "id": "daily-(`-t-daily`)"
+    }
+  ],
+  "url": "llms-txt#esp32-compatibility-mode",
+  "links": []
+}

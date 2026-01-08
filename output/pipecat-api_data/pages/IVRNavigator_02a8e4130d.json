@@ -1,0 +1,118 @@
+{
+  "title": "IVRNavigator",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/extensions/ivr\n\nAI-powered Interactive Voice Response system navigation with automatic classification and goal-oriented decision making\n\nThe `IVRNavigator` is a pipeline component that provides intelligent navigation of IVR phone systems. It combines LLM-based decision making with DTMF tone generation to automatically traverse phone menus toward specified goals. The navigator includes automatic classification between IVR systems and human conversations, enabling flexible call handling scenarios.\n\n<CardGroup>\n  <Card title=\"IVR Navigator Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.extensions.ivr.ivr_navigator.html\">\n    Complete API documentation and method details\n  </Card>\n</CardGroup>\n\n<ParamField type=\"LLMService\">\n  The LLM service instance used for text generation and navigation decision\n  making.\n</ParamField>\n\n<ParamField type=\"str\">\n  The navigation goal that will be integrated with the base IVR navigation\n  instructions. This should clearly describe what you want to accomplish (e.g.,\n  \"Navigate to billing support to discuss account charges\").\n</ParamField>\n\n<ParamField type=\"Optional[VADParams]\">\n  Voice Activity Detection parameters optimized for IVR navigation. The default\n  2.0 second stop time allows the system to hear complete menu options before\n  responding, improving navigation success rates.\n</ParamField>\n\n## Navigation Commands\n\nThe IVRNavigator processes several XML-tagged commands from LLM responses:\n\nValid DTMF values: `0-9`, `*`, `#`\n\n### IVR Status Commands\n\n### Mode Classification\n\nThe navigator supports two primary event handlers for different interaction scenarios.\n\n### on\\_conversation\\_detected\n\nTriggered when the system classifies incoming audio as a human conversation rather than an IVR system.\n\n* `processor`: The IVRProcessor instance\n* `conversation_history`: List of message dictionaries from previous context (excluding system messages)\n\n### on\\_ivr\\_status\\_changed\n\nTriggered when IVR navigation status changes during the navigation process.\n\n* `processor`: The IVRProcessor instance\n* `status`: IVRStatus enum value (`DETECTED`, `COMPLETED`, `STUCK`)\n\n## IVRStatus Enumeration\n\nThe IVRNavigator includes sophisticated built-in prompts that handle classification and navigation logic automatically.\n\n### Classification Prompt\n\nThe navigator starts with an automatic classification system that distinguishes between:\n\n**IVR System Indicators:**\n\n* Menu options (\"Press 1 for billing\", \"Press 2 for support\")\n* Automated instructions (\"Please enter your account number\")\n* System prompts (\"Thank you for calling \\[company]\")\n* Hold messages (\"Please continue to hold\")\n\n**Human Conversation Indicators:**\n\n* Personal greetings (\"Hello, this is Sarah\")\n* Interactive responses (\"Who am I speaking with?\")\n* Natural speech patterns and conversational flow\n* Direct engagement (\"I can help with that\")\n\n### Navigation Prompt\n\nOnce IVR is detected, the system uses your provided goal with comprehensive navigation instructions that include:\n\n* **Decision making logic** for menu option selection\n* **DTMF sequence handling** for data entry (dates, account numbers, phone numbers)\n* **Verbal response generation** for conversational prompts\n* **Completion detection** for successful navigation\n* **Stuck state recognition** for error scenarios\n* **Wait state management** for incomplete transcriptions\n\n### Context Preservation\n\nThe navigator automatically preserves conversation context when switching between modes:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "### Parameters\n\n<ParamField type=\"LLMService\">\n  The LLM service instance used for text generation and navigation decision\n  making.\n</ParamField>\n\n<ParamField type=\"str\">\n  The navigation goal that will be integrated with the base IVR navigation\n  instructions. This should clearly describe what you want to accomplish (e.g.,\n  \"Navigate to billing support to discuss account charges\").\n</ParamField>\n\n<ParamField type=\"Optional[VADParams]\">\n  Voice Activity Detection parameters optimized for IVR navigation. The default\n  2.0 second stop time allows the system to hear complete menu options before\n  responding, improving navigation success rates.\n</ParamField>\n\n## Navigation Commands\n\nThe IVRNavigator processes several XML-tagged commands from LLM responses:\n\n### DTMF Commands",
+      "language": "unknown"
+    },
+    {
+      "code": "Valid DTMF values: `0-9`, `*`, `#`\n\n### IVR Status Commands",
+      "language": "unknown"
+    },
+    {
+      "code": "### Mode Classification",
+      "language": "unknown"
+    },
+    {
+      "code": "## Event Handlers\n\nThe navigator supports two primary event handlers for different interaction scenarios.\n\n### on\\_conversation\\_detected\n\nTriggered when the system classifies incoming audio as a human conversation rather than an IVR system.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Parameters:**\n\n* `processor`: The IVRProcessor instance\n* `conversation_history`: List of message dictionaries from previous context (excluding system messages)\n\n### on\\_ivr\\_status\\_changed\n\nTriggered when IVR navigation status changes during the navigation process.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Parameters:**\n\n* `processor`: The IVRProcessor instance\n* `status`: IVRStatus enum value (`DETECTED`, `COMPLETED`, `STUCK`)\n\n## IVRStatus Enumeration",
+      "language": "unknown"
+    },
+    {
+      "code": "## Built-in Prompts\n\nThe IVRNavigator includes sophisticated built-in prompts that handle classification and navigation logic automatically.\n\n### Classification Prompt\n\nThe navigator starts with an automatic classification system that distinguishes between:\n\n**IVR System Indicators:**\n\n* Menu options (\"Press 1 for billing\", \"Press 2 for support\")\n* Automated instructions (\"Please enter your account number\")\n* System prompts (\"Thank you for calling \\[company]\")\n* Hold messages (\"Please continue to hold\")\n\n**Human Conversation Indicators:**\n\n* Personal greetings (\"Hello, this is Sarah\")\n* Interactive responses (\"Who am I speaking with?\")\n* Natural speech patterns and conversational flow\n* Direct engagement (\"I can help with that\")\n\n### Navigation Prompt\n\nOnce IVR is detected, the system uses your provided goal with comprehensive navigation instructions that include:\n\n* **Decision making logic** for menu option selection\n* **DTMF sequence handling** for data entry (dates, account numbers, phone numbers)\n* **Verbal response generation** for conversational prompts\n* **Completion detection** for successful navigation\n* **Stuck state recognition** for error scenarios\n* **Wait state management** for incomplete transcriptions\n\n## Advanced Usage\n\n### Context Preservation\n\nThe navigator automatically preserves conversation context when switching between modes:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h3",
+      "text": "Parameters",
+      "id": "parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Navigation Commands",
+      "id": "navigation-commands"
+    },
+    {
+      "level": "h3",
+      "text": "DTMF Commands",
+      "id": "dtmf-commands"
+    },
+    {
+      "level": "h3",
+      "text": "IVR Status Commands",
+      "id": "ivr-status-commands"
+    },
+    {
+      "level": "h3",
+      "text": "Mode Classification",
+      "id": "mode-classification"
+    },
+    {
+      "level": "h2",
+      "text": "Event Handlers",
+      "id": "event-handlers"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_conversation\\_detected",
+      "id": "on\\_conversation\\_detected"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_ivr\\_status\\_changed",
+      "id": "on\\_ivr\\_status\\_changed"
+    },
+    {
+      "level": "h2",
+      "text": "IVRStatus Enumeration",
+      "id": "ivrstatus-enumeration"
+    },
+    {
+      "level": "h2",
+      "text": "Built-in Prompts",
+      "id": "built-in-prompts"
+    },
+    {
+      "level": "h3",
+      "text": "Classification Prompt",
+      "id": "classification-prompt"
+    },
+    {
+      "level": "h3",
+      "text": "Navigation Prompt",
+      "id": "navigation-prompt"
+    },
+    {
+      "level": "h2",
+      "text": "Advanced Usage",
+      "id": "advanced-usage"
+    },
+    {
+      "level": "h3",
+      "text": "Context Preservation",
+      "id": "context-preservation"
+    }
+  ],
+  "url": "llms-txt#ivrnavigator",
+  "links": []
+}

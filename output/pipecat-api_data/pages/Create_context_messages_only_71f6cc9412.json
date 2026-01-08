@@ -1,0 +1,8 @@
+{
+  "title": "Create context (messages only)",
+  "content": "context = LLMContext(messages)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-context-(messages-only)",
+  "links": []
+}

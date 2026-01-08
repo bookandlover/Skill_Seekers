@@ -1,0 +1,8 @@
+{
+  "title": "Step 1: Initialize OpenTelemetry with your chosen exporter",
+  "content": "exporter = OTLPSpanExporter(\n    endpoint=\"http://localhost:4317\",  # Jaeger or other collector endpoint\n    insecure=True,\n)\n\nsetup_tracing(\n    service_name=\"my-voice-app\",\n    exporter=exporter,\n    console_export=False,  # Set to True for debug output\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#step-1:-initialize-opentelemetry-with-your-chosen-exporter",
+  "links": []
+}

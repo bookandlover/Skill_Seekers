@@ -1,0 +1,8 @@
+{
+  "title": "Auto-scaling configuration",
+  "content": "[scaling]\nmin_agents = 1\nmax_agents = 20",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#auto-scaling-configuration",
+  "links": []
+}

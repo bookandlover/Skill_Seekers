@@ -1,0 +1,34 @@
+{
+  "title": "Container Registry Overview",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/overview\n\nDeploy Pipecat Cloud agents from private container registries\n\nWhen deploying agents to Pipecat Cloud, you can use images from both public and private container registries. While public images work out of the box, private images from any registry (including Docker Hub) require authentication setup.\n\n## Public vs Private Images\n\n**Public images** from any registry, including Docker Hub, work with Pipecat Cloud without additional configuration. However, **we strongly recommend using private images** for better data privacy and security when deploying production agents.\n\nFor **Docker Hub specifically**, even when using public images, we recommend setting up image pull secrets due to Docker Hub's low rate limits for unauthenticated pulls. See our [Image pull secrets guide](../../fundamentals/secrets#image-pull-secrets) for setup instructions.\n\n## Private Registry Setup\n\nFor **private images** from any registry (including private Docker Hub repositories), you'll need to configure image pull secrets for authentication.\n\n### Docker Hub Private Images\n\nFor private Docker Hub repositories, see the [Image pull secrets section](../../fundamentals/secrets#image-pull-secrets) in our Secrets guide for complete setup instructions.\n\n### Other Private Registries\n\nFor other private registry providers, choose your platform below for detailed setup instructions:\n\n<CardGroup>\n  <Card title=\"Google Cloud Artifact Registry\" icon=\"google\" href=\"./gcp-artifact-registry\">\n    Complete setup guide for GCP Artifact Registry, including service account\n    configuration and authentication.\n  </Card>\n\n<Card title=\"Amazon ECR\" icon=\"aws\" href=\"./aws-ecr\">\n    Detailed AWS ECR integration with automatic token refresh setup for\n    continuous deployment.\n  </Card>\n</CardGroup>\n\nAll private registry integrations follow a similar pattern:\n\n1. **Authenticate Docker** with your registry locally\n2. **Create image credentials** in Pipecat Cloud using the CLI\n3. **Reference credentials** in your deployment configuration\n4. **Deploy your agent** using the private image",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Public vs Private Images",
+      "id": "public-vs-private-images"
+    },
+    {
+      "level": "h2",
+      "text": "Private Registry Setup",
+      "id": "private-registry-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Docker Hub Private Images",
+      "id": "docker-hub-private-images"
+    },
+    {
+      "level": "h3",
+      "text": "Other Private Registries",
+      "id": "other-private-registries"
+    },
+    {
+      "level": "h2",
+      "text": "General Process",
+      "id": "general-process"
+    }
+  ],
+  "url": "llms-txt#container-registry-overview",
+  "links": []
+}

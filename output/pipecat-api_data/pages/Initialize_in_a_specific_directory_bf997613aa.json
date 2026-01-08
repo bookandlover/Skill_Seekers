@@ -1,0 +1,19 @@
+{
+  "title": "Initialize in a specific directory",
+  "content": "pipecat init --output my-bot\n\nmybot/\n├── server/                 # Python bot server\n│   ├── bot.py              # Main bot implementation\n│   ├── pyproject.toml      # Python dependencies\n│   ├── .env.example        # Environment variables template\n│   ├── Dockerfile          # Container image (if cloud enabled)\n│   └── pcc-deploy.toml     # Deployment config (if cloud enabled)\n├── client/                 # Web client (if generated)\n│   ├── src/\n│   ├── package.json\n│   └── ...\n├── .gitignore\n└── README.md               # Project setup instructions\n```",
+  "code_samples": [
+    {
+      "code": "## Generated Project Structure",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Generated Project Structure",
+      "id": "generated-project-structure"
+    }
+  ],
+  "url": "llms-txt#initialize-in-a-specific-directory",
+  "links": []
+}

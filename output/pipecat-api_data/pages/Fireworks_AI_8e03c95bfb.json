@@ -1,0 +1,34 @@
+{
+  "title": "Fireworks AI",
+  "content": "Source: https://docs.pipecat.ai/server/services/llm/fireworks\n\nLLM service implementation using Fireworks AI's API with OpenAI-compatible interface\n\n`FireworksLLMService` provides access to Fireworks AI's language models through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management with optimized inference infrastructure.\n\n<CardGroup>\n  <Card title=\"Fireworks LLM API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.fireworks.llm.html\">\n    Pipecat's API methods for Fireworks AI integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14i-function-calling-fireworks.py\">\n    Complete example with function calling\n  </Card>\n\n<Card title=\"Fireworks Documentation\" icon=\"book\" href=\"https://docs.fireworks.ai/api-reference/post-chatcompletions\">\n    Official Fireworks AI API documentation and features\n  </Card>\n\n<Card title=\"Fireworks Platform\" icon=\"microphone\" href=\"https://fireworks.ai/\">\n    Access models and manage API keys\n  </Card>\n</CardGroup>\n\nTo use Fireworks AI services, install the required dependency:\n\n### Fireworks AI Account Setup\n\nBefore using Fireworks AI LLM services, you need:\n\n1. **Fireworks Account**: Sign up at [Fireworks AI](https://fireworks.ai/)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Model Selection**: Choose from available open-source and proprietary models\n\n### Required Environment Variables\n\n* `FIREWORKS_API_KEY`: Your Fireworks AI API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Fireworks AI Account Setup",
+      "id": "fireworks-ai-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#fireworks-ai",
+  "links": []
+}

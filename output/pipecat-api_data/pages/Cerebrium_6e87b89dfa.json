@@ -1,0 +1,61 @@
+{
+  "title": "Cerebrium",
+  "content": "Source: https://docs.pipecat.ai/deployment/platforms/cerebrium\n\nDeploy Pipecat applications to Cerebrium\n\n[Cerebrium](https://www.cerebrium.ai) is a serverless Infrastructure platform that makes it easy for companies to build, deploy and scale AI applications.\nCerebrium offers both CPUs and GPUs (H100s, A100s etc) with extremely low cold start times allowing us to create highly performant applications in the most cost efficient manner.\n\n### Install the Cerebrium CLI\n\nTo get started, let us run the following commands:\n\n1. Run `pip install cerebrium` to install the Python package.\n2. Run `cerebrium login` to authenticate yourself.\n\nIf you don't have a Cerebrium account, you can create one and get started with \\$30 in free credits.\n\n### Create a Cerebrium project\n\n1. Create a new Cerebrium project:\n\n2. This will create two key files:\n\n* `main.py` - Your application entrypoint\n* `cerebrium.toml` - Configuration for build and environment settings\n\nUpdate your `cerebrium.toml` with the necessary configuration:\n\nIn order for our application to work, we need to copy our API keys from the various platforms. Navigate to the Secrets section in your Cerebrium dashboard to store your API keys:\n\n* `OPENAI_API_KEY` - We use OpenAI For the LLM. You can get your API key from [here](https://platform.openai.com/api-keys)\n* `DAILY_TOKEN` - For WebRTC communication. You can get your token from [here](https://dashboard.daily.co/developers)\n* `CARTERSIA_API_KEY` - For text-to-speech services. You can get your API key from [here](https://play.cartesia.ai/keys)\n\nWe access these secrets in our code as if they are normal ENV vars. For the above, You can swap in any LLM or TTS service you wish to use.\n\nWe create a basic pipeline setup in our `main.py` that combines our LLM, TTS and Daily WebRTC transport layer.\n\nFirst, in our main function, we initialize the daily transport layer to receive/send the audio/video data from the Daily room we will connect to. You can see we pass the room\\_url we would like to join as well as a token to authenticate us programmatically joining. We also set our VAD stop seconds which is the amount of time we wait for a pause before our bot will respond - in this example, we set it to 600 milliseconds.\n\nNext we connect to our LLM (OpenAI) as well as our TTS model (Cartesia). By setting 'transcription\\_enabled=true' we are using the STT from Daily itself. This is where the Pipecat framework helps convert audio data to text and vice versa.\n\nWe then put this all together as a PipelineTask which is what Pipecat runs all together. The make up of a task is completely customizable and has support for Image and Vision use cases. Lastly, we have some event handlers for when a user joins/leaves the room.\n\nDeploy your application to Cerebrium:\n\nYou will then see that an endpoint is created for your bot at `POST \\<BASE_URL\\>/main` that you can call with your room\\_url and token. Let us test it.\n\n## Future Considerations\n\nSince Cerebrium supports both CPU and GPU workloads if you would like to lower the latency of your application then the best would be to get model weights from various providers and run them locally.\nYou can do this for:\n\n* LLM: Run any OpenSource model using a framework such as vLLM\n* TTS: Both PlayHt and Deepgram offer TTS models that can be run locally\n* STT: Deepgram offers a local model that can be run locally\n\nIf you implement all three models locally, you should have much better performance. We have been able to get \\~300ms voice-to-voice responses.\n\n* [Fastest voice agent](https://docs.cerebrium.ai/v4/examples/realtime-voice-agents): Local only implementation\n* [RAG voice agent](https://www.cerebrium.ai/blog/creating-a-realtime-rag-voice-agent): Create a voice agent that can do RAG using Cerebrium + OpenAI + Pinecone\n* [Twilio voice agent](https://docs.cerebrium.ai/v4/examples/twilio-voice-agent): Create a voice agent that can receive phone calls via Twilio\n* [OpenAI Realtime API implementation](https://www.cerebrium.ai/blog/an-alternative-to-openai-realtime-api-for-voice-capabilities): Create a voice agent that can receive phone calls via OpenAI Realtime API",
+  "code_samples": [
+    {
+      "code": "2. This will create two key files:\n\n* `main.py` - Your application entrypoint\n* `cerebrium.toml` - Configuration for build and environment settings\n\nUpdate your `cerebrium.toml` with the necessary configuration:",
+      "language": "unknown"
+    },
+    {
+      "code": "In order for our application to work, we need to copy our API keys from the various platforms. Navigate to the Secrets section in your Cerebrium dashboard to store your API keys:\n\n* `OPENAI_API_KEY` - We use OpenAI For the LLM. You can get your API key from [here](https://platform.openai.com/api-keys)\n* `DAILY_TOKEN` - For WebRTC communication. You can get your token from [here](https://dashboard.daily.co/developers)\n* `CARTERSIA_API_KEY` - For text-to-speech services. You can get your API key from [here](https://play.cartesia.ai/keys)\n\nWe access these secrets in our code as if they are normal ENV vars. For the above, You can swap in any LLM or TTS service you wish to use.\n\n### Agent setup\n\nWe create a basic pipeline setup in our `main.py` that combines our LLM, TTS and Daily WebRTC transport layer.",
+      "language": "unknown"
+    },
+    {
+      "code": "First, in our main function, we initialize the daily transport layer to receive/send the audio/video data from the Daily room we will connect to. You can see we pass the room\\_url we would like to join as well as a token to authenticate us programmatically joining. We also set our VAD stop seconds which is the amount of time we wait for a pause before our bot will respond - in this example, we set it to 600 milliseconds.\n\nNext we connect to our LLM (OpenAI) as well as our TTS model (Cartesia). By setting 'transcription\\_enabled=true' we are using the STT from Daily itself. This is where the Pipecat framework helps convert audio data to text and vice versa.\n\nWe then put this all together as a PipelineTask which is what Pipecat runs all together. The make up of a task is completely customizable and has support for Image and Vision use cases. Lastly, we have some event handlers for when a user joins/leaves the room.\n\n### Deploy bot\n\nDeploy your application to Cerebrium:",
+      "language": "unknown"
+    },
+    {
+      "code": "You will then see that an endpoint is created for your bot at `POST \\<BASE_URL\\>/main` that you can call with your room\\_url and token. Let us test it.\n\n### Test it out",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Install the Cerebrium CLI",
+      "id": "install-the-cerebrium-cli"
+    },
+    {
+      "level": "h3",
+      "text": "Create a Cerebrium project",
+      "id": "create-a-cerebrium-project"
+    },
+    {
+      "level": "h3",
+      "text": "Agent setup",
+      "id": "agent-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Deploy bot",
+      "id": "deploy-bot"
+    },
+    {
+      "level": "h3",
+      "text": "Test it out",
+      "id": "test-it-out"
+    },
+    {
+      "level": "h2",
+      "text": "Future Considerations",
+      "id": "future-considerations"
+    },
+    {
+      "level": "h2",
+      "text": "Examples",
+      "id": "examples"
+    }
+  ],
+  "url": "llms-txt#cerebrium",
+  "links": []
+}

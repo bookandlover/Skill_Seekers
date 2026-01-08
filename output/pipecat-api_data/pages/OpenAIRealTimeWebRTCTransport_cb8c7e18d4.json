@@ -1,0 +1,54 @@
+{
+  "title": "OpenAIRealTimeWebRTCTransport",
+  "content": "Source: https://docs.pipecat.ai/client/js/transports/openai-webrtc\n\nThe `OpenAIRealTimeWebRTCTransport` is a fully functional [Pipecat `Transport`](/client/js/transports/transport). It provides a framework for implementing real-time communication directly with the [OpenAI Realtime API using WebRTC](https://platform.openai.com/docs/guides/realtime-webrtc) voice-to-voice service. It handles media device management, audio/video streams, and state management for the connection.\n\n<Note>\n  Transports of this type are designed primarily for development and testing\n  purposes. For production applications, you will need to build a server\n  component with a server-friendly transport, like the\n  [DailyTransport](./daily), to securely handle API keys.\n</Note>\n\n### Constructor Options\n\nBelow is the transport's type definition for the OpenAI Session configuration you need to pass in to the `create()` method. See the [OpenAI Realtime API documentation](https://platform.openai.com/docs/api-reference/realtime-client-events/session/update) for more details on each of the options and their defaults.\n\n### TransportConnectionParams\n\nThe `OpenAIRealTimeWebRTCTransport` does not take connection parameters. It connects directly to the OpenAI Realtime API using the API key provided as part of the initial configuration.\n\nThe transport implements the various [`PipecatClient` event handlers](/client/js/api-reference/callbacks). Check out the docs or samples for more info.\n\n<CardGroup>\n  <Card title=\"Demo\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-client-web-transports/tree/main/examples/directToLLMTransports\">\n    OpenAI Realtime Basic Demo\n  </Card>\n\n<Card title=\"Source\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat-client-web-transports/tree/main/transports/openai-realtime-webrtc-transport\">\n    `OpenAIRealTimeWebRTCTransport`\n  </Card>\n</CardGroup>\n\n<Card title=\"Package\" icon=\"browser\" href=\"https://www.npmjs.com/package/@pipecat-ai/openai-realtime-webrtc-transport\">\n  `@pipecat-ai/openai-realtime-webrtc-transport`\n</Card>",
+  "code_samples": [
+    {
+      "code": "## API Reference\n\n### Constructor Options\n\nBelow is the transport's type definition for the OpenAI Session configuration you need to pass in to the `create()` method. See the [OpenAI Realtime API documentation](https://platform.openai.com/docs/api-reference/realtime-client-events/session/update) for more details on each of the options and their defaults.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Setup",
+      "id": "basic-setup"
+    },
+    {
+      "level": "h2",
+      "text": "API Reference",
+      "id": "api-reference"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Options",
+      "id": "constructor-options"
+    },
+    {
+      "level": "h3",
+      "text": "TransportConnectionParams",
+      "id": "transportconnectionparams"
+    },
+    {
+      "level": "h3",
+      "text": "Events",
+      "id": "events"
+    },
+    {
+      "level": "h2",
+      "text": "More Information",
+      "id": "more-information"
+    }
+  ],
+  "url": "llms-txt#openairealtimewebrtctransport",
+  "links": []
+}

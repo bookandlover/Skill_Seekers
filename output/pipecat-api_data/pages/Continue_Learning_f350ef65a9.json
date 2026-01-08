@@ -1,0 +1,44 @@
+{
+  "title": "Continue Learning",
+  "content": "Source: https://docs.pipecat.ai/getting-started/next-steps\n\nContinue your Pipecat journey\n\nNow that you've run your first Pipecat bot, here's how to continue learning and build your own applications.\n\n<CardGroup>\n  <Card title=\"Learn Core Concepts\" icon=\"book-open\" href=\"/guides/learn/overview\">\n    Understand pipelines, processors, transports, and how to build custom AI\n    applications from the ground up.\n  </Card>\n\n<Card title=\"Explore Examples\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples\">\n    Dive into complete examples including multimodal bots, creative\n    applications, and enterprise integrations.\n  </Card>\n</CardGroup>\n\nChoose your path based on what you want to accomplish:\n\n### 🚀 Build a Production Application\n\nReady to create your own bot? Use the CLI to scaffold a project tailored to your needs.\n\n<Card title=\"Build Your Next Bot\" icon=\"wand-magic-sparkles\" href=\"/getting-started/build-your-next-bot\">\n  Scaffold phone or web/mobile projects with the Pipecat CLI\n</Card>\n\n### 🧠 Understand How Pipecat Works\n\nMaster the fundamentals to build custom solutions and debug effectively.\n\n<CardGroup>\n  <Card title=\"Core Concepts\" icon=\"book-open\" href=\"/guides/learn/overview\">\n    Learn about pipelines, processors, transports, and context management\n  </Card>\n\n<Card title=\"Common Features\" icon=\"puzzle-piece\" href=\"/guides/fundamentals/custom-frame-processor\">\n    Function calling, audio recording, transcripts, and custom processors\n  </Card>\n</CardGroup>\n\nExplore real-world examples and recipes for common use cases.\n\n<CardGroup>\n  <Card title=\"Browse Examples\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples\">\n    30+ production-ready examples including multimodal bots and games\n  </Card>\n\n<Card title=\"Recipes\" icon=\"book-open\" href=\"/recipes\">\n    Common patterns and solutions for specific use cases\n  </Card>\n</CardGroup>\n\n### 🚀 Deploy to Production\n\nScale your bot with managed hosting or self-hosted infrastructure.\n\n<Card title=\"Deployment Options\" icon=\"rocket\" href=\"/deployment/overview\">\n  Compare Pipecat Cloud, Fly.io, Modal, and other platforms\n</Card>\n\n<CardGroup>\n  <Card title=\"Discord Community\" icon=\"discord\" href=\"https://discord.gg/pipecat\">\n    Get support and share projects with other developers\n  </Card>\n\n<Card title=\"GitHub Issues\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat/issues\">\n    Report bugs or request features\n  </Card>\n</CardGroup>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Choose Your Path",
+      "id": "choose-your-path"
+    },
+    {
+      "level": "h2",
+      "text": "What's Your Goal?",
+      "id": "what's-your-goal?"
+    },
+    {
+      "level": "h3",
+      "text": "🚀 Build a Production Application",
+      "id": "🚀-build-a-production-application"
+    },
+    {
+      "level": "h3",
+      "text": "🧠 Understand How Pipecat Works",
+      "id": "🧠-understand-how-pipecat-works"
+    },
+    {
+      "level": "h3",
+      "text": "💡 Get Inspired",
+      "id": "💡-get-inspired"
+    },
+    {
+      "level": "h3",
+      "text": "🚀 Deploy to Production",
+      "id": "🚀-deploy-to-production"
+    },
+    {
+      "level": "h2",
+      "text": "Need Help?",
+      "id": "need-help?"
+    }
+  ],
+  "url": "llms-txt#continue-learning",
+  "links": []
+}

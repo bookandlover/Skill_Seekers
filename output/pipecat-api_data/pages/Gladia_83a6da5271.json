@@ -1,0 +1,34 @@
+{
+  "title": "Gladia",
+  "content": "Source: https://docs.pipecat.ai/server/services/stt/gladia\n\nSpeech-to-text service implementation using Gladia's API\n\n`GladiaSTTService` provides real-time speech recognition using Gladia's WebSocket API with support for 99+ languages, custom vocabulary, translation, sentiment analysis, and advanced audio processing features for comprehensive transcription.\n\n<CardGroup>\n  <Card title=\"Gladia STT API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.gladia.html\">\n    Pipecat's API methods for Gladia STT integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07j-interruptible-gladia.py\">\n    Complete example with interruption handling\n  </Card>\n\n<Card title=\"Gladia Documentation\" icon=\"book\" href=\"https://docs.gladia.io/api-reference/live-flow\">\n    Official Gladia documentation and features\n  </Card>\n\n<Card title=\"Gladia Platform\" icon=\"microphone\" href=\"https://www.gladia.io/\">\n    Access multilingual transcription and API keys\n  </Card>\n</CardGroup>\n\nTo use Gladia services, install the required dependency:\n\n### Gladia Account Setup\n\nBefore using Gladia STT services, you need:\n\n1. **Gladia Account**: Sign up at [Gladia](https://www.gladia.io/)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Region Selection**: Choose your preferred region (EU-West or US-West)\n\n### Required Environment Variables\n\n* `GLADIA_API_KEY`: Your Gladia API key for authentication\n* `GLADIA_REGION`: Your preferred region (optional, defaults to \"eu-west\")",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Gladia Account Setup",
+      "id": "gladia-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#gladia",
+  "links": []
+}

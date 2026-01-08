@@ -1,0 +1,8 @@
+{
+  "title": "Graceful shutdown on client disconnect",
+  "content": "@transport.event_handler(\"on_client_disconnected\")\nasync def on_client_disconnected(transport, client):\n    logger.info(\"Client disconnected - stopping pipeline\")\n    await task.cancel()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#graceful-shutdown-on-client-disconnect",
+  "links": []
+}

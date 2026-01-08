@@ -1,0 +1,19 @@
+{
+  "title": "Prioritize word count, then volume (hypothetical future strategy)",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        allow_interruptions=True,\n        interruption_strategies=[\n            MinWordsInterruptionStrategy(min_words=2),        # Check first\n            # VolumeInterruptionStrategy(min_volume=0.8),     # Your custom strategy\n        ]\n    )\n)\n```\n\n## Behavior Comparison\n\n| Scenario                                      | Without Strategy         | With MinWordsInterruptionStrategy(min\\_words=3) |\n| --------------------------------------------- | ------------------------ | ----------------------------------------------- |\n| User says \"okay\" while bot speaks             | ✅ Interrupts immediately | ❌ Ignored (only 1 word)                         |\n| User says \"yes that's right\" while bot speaks | ✅ Interrupts immediately | ✅ Interrupts (3 words)                          |\n| User speaks while bot is silent               | ✅ Processed immediately  | ✅ Processed immediately                         |\n\n* Interruption strategies only affect behavior when the bot is actively speaking\n* When the bot is not speaking, user input is processed immediately regardless of strategy configuration\n* The `allow_interruptions` parameter must be `True` for interruption strategies to work\n* User speech that doesn't meet interruption criteria is discarded, not queued\n* Strategies are evaluated in order - first match wins\n* Both audio and text data are automatically fed to strategies based on their implementation\n* Word counting uses simple whitespace splitting for word boundaries",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Behavior Comparison",
+      "id": "behavior-comparison"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#prioritize-word-count,-then-volume-(hypothetical-future-strategy)",
+  "links": []
+}

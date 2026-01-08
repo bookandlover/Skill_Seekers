@@ -1,0 +1,49 @@
+{
+  "title": "DailyTransport",
+  "content": "Source: https://docs.pipecat.ai/server/services/transport/daily\n\nWebRTC transport implementation using Daily for real-time audio/video communication\n\n`DailyTransport` provides real-time audio and video communication using Daily's hosted WebRTC platform. It handles bidirectional media streams, participant management, transcription, recording, and telephony features without requiring your own WebRTC infrastructure. Daily manages all the complexity of WebRTC connections, NAT traversal, and global media routing.\n\n<CardGroup>\n  <Card title=\"DailyTransport API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.daily.transport.html\">\n    Transport methods and configuration options\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/04a-transports-daily.py\">\n    Complete Daily transport voice agent example\n  </Card>\n\n<Card title=\"Daily API Documentation\" icon=\"book\" href=\"https://docs.daily.co/reference/rest-api\">\n    Official Daily REST API and platform documentation\n  </Card>\n\n<Card title=\"Daily Dashboard\" icon=\"external-link\" href=\"https://dashboard.daily.co/u/signup?pipecat=true\">\n    Sign up for Daily API access and room management\n  </Card>\n</CardGroup>\n\nTo use `DailyTransport`, install the required dependencies:\n\n### Daily Account Setup\n\nBefore using DailyTransport, you need:\n\n1. **Daily Account**: Sign up at [Daily Dashboard](https://dashboard.daily.co/u/signup?pipecat=true)\n2. **API Key**: Generate a Daily API key from your dashboard\n3. **Room Creation**: Daily rooms must be created before connecting (see Usage section)\n\n### Required Environment Variables\n\n* `DAILY_API_KEY`: Your Daily API key for room creation and management\n\n* **Hosted WebRTC**: No infrastructure setup required - Daily handles all WebRTC complexity\n* **Multi-participant Support**: Handle multiple participants with individual audio/video tracks\n* **Built-in Transcription**: Real-time speech-to-text with Deepgram integration\n* **Telephony Integration**: \\[Dial-in/dial-out support for phone numbers via [SIP](/guides/telephony/twilio-daily-sip)/[PSTN](/guides/telephony/daily-pstn)\n* **Recording & Streaming**: Built-in call recording and live streaming capabilities\n* **Global Infrastructure**: Daily's edge network ensures low latency worldwide\n* **Advanced Controls**: Participant management, permissions, and media routing\n\nDailyTransport connects your Pipecat bot to Daily rooms where it can communicate with participants through audio, video, and data channels. Rooms must be created using the Daily API before your bot can join.\n\nThe transport integrates with Pipecat's pipeline to process participant audio through your STT, LLM, and TTS services, then send responses back to participants.\n\nSee the [complete example](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/04a-transports-daily.py) for a full implementation including:\n\n* Daily room creation and token management\n* Transport configuration with transcription and VAD\n* Pipeline integration with participant event handling\n* Advanced features like recording and dial-out\n\n## Additional Resources\n\n* [Daily REST Helper Utility](/server/utilities/daily/rest-helper)\n* [Pipecat Development Runner's Transport Utilities](/server/utilities/runner/transport-utils)\n* [Client SDK Integration](/client/js/transports/daily)",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Daily Account Setup",
+      "id": "daily-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h2",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h2",
+      "text": "Additional Resources",
+      "id": "additional-resources"
+    }
+  ],
+  "url": "llms-txt#dailytransport",
+  "links": []
+}

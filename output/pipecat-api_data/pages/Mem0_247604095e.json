@@ -1,0 +1,44 @@
+{
+  "title": "Mem0",
+  "content": "Source: https://docs.pipecat.ai/server/services/memory/mem0\n\nLong-term conversation memory service powered by Mem0\n\n`Mem0MemoryService` provides long-term memory capabilities for conversational agents by integrating with Mem0's API. It automatically stores conversation history and retrieves relevant past context based on the current conversation, enhancing LLM responses with persistent memory across sessions.\n\n<CardGroup>\n  <Card title=\"Mem0 Memory API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.mem0.memory.html\">\n    Pipecat's API methods for Mem0 memory integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/37-mem0.py\">\n    Browse examples using Mem0 memory\n  </Card>\n\n<Card title=\"Mem0 Documentation\" icon=\"book\" href=\"https://docs.mem0.ai/\">\n    Official Mem0 API documentation and guides\n  </Card>\n\n<Card title=\"Mem0 Platform\" icon=\"microphone\" href=\"https://mem0.ai\">\n    Access memory services and manage API keys\n  </Card>\n</CardGroup>\n\nTo use Mem0 memory services, install the required dependencies:\n\n### Mem0 Account Setup\n\nBefore using Mem0 memory services, you need:\n\n1. **Mem0 Account**: Sign up at [Mem0 Platform](https://mem0.ai)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Host Configuration**: Set up your Mem0 host endpoint\n4. **User Management**: Configure user IDs for memory association\n\n### Required Environment Variables\n\n* `MEM0_API_KEY`: Your Mem0 API key for authentication\n\n### Configuration Options\n\n* **User ID**: Unique identifier for associating memories with specific users\n* **Agent ID**: Identifier for the agent using the memory service\n* **Run ID**: Identifier for specific conversation sessions\n* **Memory Retrieval**: Configure how past context is retrieved and used\n\n* **Persistent Memory**: Long-term conversation history across sessions\n* **Context Retrieval**: Automatic retrieval of relevant past conversations\n* **User Association**: Memory tied to specific users for personalization\n* **Session Management**: Track conversations across different runs and agents",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Mem0 Account Setup",
+      "id": "mem0-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    },
+    {
+      "level": "h3",
+      "text": "Key Features",
+      "id": "key-features"
+    }
+  ],
+  "url": "llms-txt#mem0",
+  "links": []
+}

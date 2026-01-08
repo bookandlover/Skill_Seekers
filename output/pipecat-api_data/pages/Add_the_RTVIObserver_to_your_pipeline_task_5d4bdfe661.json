@@ -1,0 +1,8 @@
+{
+  "title": "Add the RTVIObserver to your pipeline task",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        allow_interruptions=True,\n        enable_metrics=True,\n    ),\n    observers=[RTVIObserver(rtvi)],\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-the-rtviobserver-to-your-pipeline-task",
+  "links": []
+}

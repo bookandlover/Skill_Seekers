@@ -1,0 +1,39 @@
+{
+  "title": "This will start the pipeline and begin processing frames",
+  "content": "await runner.run(task)\npython theme={null}\nasync def bot(runner_args: RunnerArguments):\n    \"\"\"Main bot entry point.\"\"\"\n\n# Configure transport parameters for different environments\n    transport_params = {\n        \"daily\": lambda: DailyParams(\n            audio_in_enabled=True,\n            audio_out_enabled=True,\n            vad_analyzer=SileroVADAnalyzer(),\n        ),\n        \"webrtc\": lambda: TransportParams(\n            audio_in_enabled=True,\n            audio_out_enabled=True,\n            vad_analyzer=SileroVADAnalyzer(),\n        ),\n    }\n\ntransport = await create_transport(runner_args, transport_params)\n    await run_bot(transport, runner_args)\n\nif __name__ == \"__main__\":\n    from pipecat.runner.run import main\n    main()\n```\n\nThis runner automatically handles WebRTC connection setup and management, making it easy to get started with minimal configuration. The same code works for both local development and production deployment.\n\n<Tip>\n  **Production ready**: This bot pattern is fully compatible with Pipecat Cloud,\n  meaning you can deploy your bot without any code changes.\n</Tip>\n\n* **Browser permissions**: Make sure to allow microphone access when prompted by your browser.\n* **Connection issues**: If the WebRTC connection fails, first try a different browser. If that fails, make sure you don't have a VPN or firewall rules blocking traffic. WebRTC uses UDP to communicate.\n* **Audio issues**: Check that your microphone and speakers are working and not muted.\n\nCongratulations! You've built and deployed your first Pipecat bot. Here's what to do next based on your goals:\n\n### 🚀 Ready to Build Your Own Application?\n\nThe quickstart gave you a working example, but the Pipecat CLI helps you scaffold production-ready projects with your choice of platform (phone vs web/mobile), transport providers, and AI services—all tailored to your specific use case.\n\n<Card title=\"Build Your Next Bot\" icon=\"rocket\" href=\"/getting-started/build-your-next-bot\">\n  Use the CLI to scaffold phone or web/mobile projects customized for your needs\n</Card>\n\n### 🧠 Want to Understand How It Works?\n\nDive deeper into Pipecat's architecture and learn how to build custom solutions.\n\n<CardGroup>\n  <Card title=\"Learn Core Concepts\" icon=\"book-open\" href=\"/guides/learn/overview\">\n    Master pipelines, processors, transports, and context management\n  </Card>\n\n<Card title=\"Browse Examples\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples\">\n    30+ production-ready examples for inspiration\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "The runner manages the pipeline's execution lifecycle. Note that `handle_sigint=False` because the main runner handles system signals.\n\n### Bot Entry Point\n\nThe quickstart uses Pipecat's runner system:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Bot Entry Point",
+      "id": "bot-entry-point"
+    },
+    {
+      "level": "h2",
+      "text": "Troubleshooting",
+      "id": "troubleshooting"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    },
+    {
+      "level": "h3",
+      "text": "🚀 Ready to Build Your Own Application?",
+      "id": "🚀-ready-to-build-your-own-application?"
+    },
+    {
+      "level": "h3",
+      "text": "🧠 Want to Understand How It Works?",
+      "id": "🧠-want-to-understand-how-it-works?"
+    }
+  ],
+  "url": "llms-txt#this-will-start-the-pipeline-and-begin-processing-frames",
+  "links": []
+}

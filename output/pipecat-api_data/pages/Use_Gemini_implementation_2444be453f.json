@@ -1,0 +1,23 @@
+{
+  "title": "Use Gemini implementation",
+  "content": "BOT_IMPLEMENTATION=gemini\npython server/server.py theme={null}\nasync def create_room_and_token():\n    \"\"\"Create a Daily room and generate access credentials.\"\"\"\n    room = await daily_helpers[\"rest\"].create_room(DailyRoomParams())\n    token = await daily_helpers[\"rest\"].get_token(room.url)\n    return room.url, token\npython server/server.py theme={null}",
+  "code_samples": [
+    {
+      "code": "### Server Setup (server.py)\n\n`server.py` is a FastAPI server that creates the meeting room where clients and bots interact, manages bot instances, and handles client connections. It's the orchestrator that brings everything on the server-side together.\n\n#### Creating Meeting Room\n\nThe server uses Daily's API via a [REST API helper](/server/utilities/daily/rest-helper#create-room) to create rooms where clients and bots can meet. Each room is a secure space for audio/video communication:",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Managing Bot Instances\n\nWhen a client connects, the server starts a new bot instance configured specifically for that room. It keeps track of running bots and ensures there's only one bot per room:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Server Setup (server.py)",
+      "id": "server-setup-(server.py)"
+    }
+  ],
+  "url": "llms-txt#use-gemini-implementation",
+  "links": []
+}

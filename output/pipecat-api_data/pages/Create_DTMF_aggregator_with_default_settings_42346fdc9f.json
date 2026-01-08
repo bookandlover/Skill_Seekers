@@ -1,0 +1,8 @@
+{
+  "title": "Create DTMF aggregator with default settings",
+  "content": "dtmf_aggregator = DTMFAggregator()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-dtmf-aggregator-with-default-settings",
+  "links": []
+}

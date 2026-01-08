@@ -1,0 +1,118 @@
+{
+  "title": "Quickstart",
+  "content": "Source: https://docs.pipecat.ai/getting-started/quickstart\n\nRun your first Pipecat bot in under 5 minutes\n\nThis quickstart guide will help you build and deploy your first Pipecat voice AI bot. You'll create a simple conversational agent that you can talk to in real-time, then deploy it to production on Pipecat Cloud.\n\n**Two steps**: Local Development (5 min) → Production Deployment (5 min)\n\n## Step 1: Local Development\n\n* Python 3.10 or later\n* [uv](https://docs.astral.sh/uv/getting-started/installation/) package manager installed\n\n**AI Service API Keys**\n\nThis quickstart uses three AI services working together in a pipeline. You'll need API keys from each service:\n\n<CardGroup>\n  <Card title=\"Deepgram (STT)\" icon=\"microphone\" href=\"https://console.deepgram.com/signup\">\n    Create an account and generate your API key for real-time\n    speech recognition.\n  </Card>\n\n<Card title=\"OpenAI (LLM)\" icon=\"brain\" href=\"https://auth.openai.com/create-account\">\n    Create an account and generate an API key for intelligent conversation\n    responses.\n  </Card>\n\n<Card title=\"Cartesia (TTS)\" icon=\"volume-high\" href=\"https://play.cartesia.ai/sign-up\">\n    Sign up and generate your API key for natural voice\n    synthesis.\n  </Card>\n</CardGroup>\n\nHave these API keys ready. You'll add them to your environment file in the next section.\n\n1. Clone the quickstart repository\n\n2. Configure your API keys\n\nCreate your environment file:\n\nOpen the `.env` file in your text editor and add your API keys:\n\n3. Set up virtual environment and install dependencies\n\n### Run your bot locally\n\nNow you're ready to run your bot! Start it with\n\nYou should see output similar to this:\n\nOpen [http://localhost:7860/client](http://localhost:7860/client) in your browser and click **Connect** to start talking to your bot.\n\n<Note>\n  **First run note**: The initial startup may take \\~20 seconds as Pipecat\n  downloads required models and imports. Subsequent runs will be much faster.\n</Note>\n\n🎉 **Success!** Your bot is running locally. Now let's deploy it to production so others can use it.\n\n## Step 2: Deploy to Production\n\nTransform your local bot into a production-ready service. Pipecat Cloud handles scaling, monitoring, and global deployment.\n\n1. Sign up for Pipecat Cloud\n\n[Create your Pipecat Cloud account](https://pipecat.daily.co/sign-up) to deploy and manage your bots.\n\n* **Install [Docker](https://www.docker.com/)** on your system\n* **Create a [Docker Hub](https://hub.docker.com/) account**\n* **Login to Docker Hub:**\n\nThe Pipecat CLI is already installed with your quickstart project.\n\nLog in to Pipecat Cloud using the CLI to get started:\n\nYou'll be presented with a link that you can click to authenticate your client.\n\n### Configure your deployment\n\nThe `pcc-deploy.toml` file tells Pipecat Cloud how to run your bot. **Update the image field** with your Docker Hub username:\n\n**Understanding the configuration:**\n\n* `agent_name`: Your bot's name in Pipecat Cloud\n* `image`: The Docker image to deploy (format: `username/image:version`)\n* `secret_set`: Where your API keys are stored securely\n* `min_agents`: Number of bot instances to keep ready (1 = instant start)\n\n<Tip>\n  [Set up\n  `image_credentials`](/deployment/pipecat-cloud/fundamentals/secrets#image-pull-secrets)\n  in your TOML file for authenticated image pulls.\n</Tip>\n\n### Configure secrets\n\nUpload your API keys to Pipecat Cloud's secure storage:\n\nThis creates a secret set called `quickstart-secrets` (matching your TOML file) and uploads all your API keys from `.env`.\n\n1. Build and push your Docker image\n\nThis builds your Docker image and pushes it to Docker Hub based on the `image` information in your `pcc-deploy.toml` file.\n\n2. Deploy to Pipecat Cloud\n\n### Connect to your agent\n\n1. Open your [Pipecat Cloud dashboard](https://pipecat.daily.co/)\n2. Select your `quickstart` agent → **Sandbox**\n3. Allow microphone access and click **Connect**\n\n🎉 **Your bot is now live in production!**\n\n<Card title=\"Ready to scale?\" icon=\"rocket\" href=\"/deployment/pipecat-cloud/introduction\">\n  Explore advanced Pipecat Cloud features like scaling, monitoring, secrets\n  management, and production best practices.\n</Card>\n\n## Understanding the Quickstart Bot\n\nWhen you speak to your bot, here's the real-time pipeline that processes your conversation:\n\n1. **Audio Capture**: Your browser captures microphone audio and sends it via WebRTC\n2. **Voice Activity Detection**: Silero VAD detects when you start and stop speaking\n3. **Speech Recognition**: Deepgram converts your speech to text in real-time\n4. **Language Processing**: OpenAI's GPT model generates an intelligent response\n5. **Speech Synthesis**: Cartesia converts the response text back to natural speech\n6. **Audio Playback**: The generated audio streams back to your browser\n\nEach step happens with minimal latency, typically completing the full round-trip in under one second.\n\nYour bot uses three AI services, each configured with API keys from your `.env` file:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "2. Configure your API keys\n\nCreate your environment file:",
+      "language": "unknown"
+    },
+    {
+      "code": "Open the `.env` file in your text editor and add your API keys:",
+      "language": "unknown"
+    },
+    {
+      "code": "3. Set up virtual environment and install dependencies",
+      "language": "unknown"
+    },
+    {
+      "code": "### Run your bot locally\n\nNow you're ready to run your bot! Start it with",
+      "language": "unknown"
+    },
+    {
+      "code": "You should see output similar to this:",
+      "language": "unknown"
+    },
+    {
+      "code": "Open [http://localhost:7860/client](http://localhost:7860/client) in your browser and click **Connect** to start talking to your bot.\n\n<Note>\n  **First run note**: The initial startup may take \\~20 seconds as Pipecat\n  downloads required models and imports. Subsequent runs will be much faster.\n</Note>\n\n🎉 **Success!** Your bot is running locally. Now let's deploy it to production so others can use it.\n\n***\n\n## Step 2: Deploy to Production\n\nTransform your local bot into a production-ready service. Pipecat Cloud handles scaling, monitoring, and global deployment.\n\n### Prerequisites\n\n1. Sign up for Pipecat Cloud\n\n[Create your Pipecat Cloud account](https://pipecat.daily.co/sign-up) to deploy and manage your bots.\n\n2. Set up Docker\n\n* **Install [Docker](https://www.docker.com/)** on your system\n* **Create a [Docker Hub](https://hub.docker.com/) account**\n* **Login to Docker Hub:**",
+      "language": "unknown"
+    },
+    {
+      "code": "3. Pipecat CLI\n\nThe Pipecat CLI is already installed with your quickstart project.\n\nLog in to Pipecat Cloud using the CLI to get started:",
+      "language": "unknown"
+    },
+    {
+      "code": "You'll be presented with a link that you can click to authenticate your client.\n\n### Configure your deployment\n\nThe `pcc-deploy.toml` file tells Pipecat Cloud how to run your bot. **Update the image field** with your Docker Hub username:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Understanding the configuration:**\n\n* `agent_name`: Your bot's name in Pipecat Cloud\n* `image`: The Docker image to deploy (format: `username/image:version`)\n* `secret_set`: Where your API keys are stored securely\n* `min_agents`: Number of bot instances to keep ready (1 = instant start)\n\n<Tip>\n  [Set up\n  `image_credentials`](/deployment/pipecat-cloud/fundamentals/secrets#image-pull-secrets)\n  in your TOML file for authenticated image pulls.\n</Tip>\n\n### Configure secrets\n\nUpload your API keys to Pipecat Cloud's secure storage:",
+      "language": "unknown"
+    },
+    {
+      "code": "This creates a secret set called `quickstart-secrets` (matching your TOML file) and uploads all your API keys from `.env`.\n\n### Build and deploy\n\n1. Build and push your Docker image",
+      "language": "unknown"
+    },
+    {
+      "code": "This builds your Docker image and pushes it to Docker Hub based on the `image` information in your `pcc-deploy.toml` file.\n\n2. Deploy to Pipecat Cloud",
+      "language": "unknown"
+    },
+    {
+      "code": "### Connect to your agent\n\n1. Open your [Pipecat Cloud dashboard](https://pipecat.daily.co/)\n2. Select your `quickstart` agent → **Sandbox**\n3. Allow microphone access and click **Connect**\n\n🎉 **Your bot is now live in production!**\n\n<Card title=\"Ready to scale?\" icon=\"rocket\" href=\"/deployment/pipecat-cloud/introduction\">\n  Explore advanced Pipecat Cloud features like scaling, monitoring, secrets\n  management, and production best practices.\n</Card>\n\n***\n\n## Understanding the Quickstart Bot\n\nWhen you speak to your bot, here's the real-time pipeline that processes your conversation:\n\n1. **Audio Capture**: Your browser captures microphone audio and sends it via WebRTC\n2. **Voice Activity Detection**: Silero VAD detects when you start and stop speaking\n3. **Speech Recognition**: Deepgram converts your speech to text in real-time\n4. **Language Processing**: OpenAI's GPT model generates an intelligent response\n5. **Speech Synthesis**: Cartesia converts the response text back to natural speech\n6. **Audio Playback**: The generated audio streams back to your browser\n\nEach step happens with minimal latency, typically completing the full round-trip in under one second.\n\n### AI Services\n\nYour bot uses three AI services, each configured with API keys from your `.env` file:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Step 1: Local Development",
+      "id": "step-1:-local-development"
+    },
+    {
+      "level": "h3",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Setup",
+      "id": "setup"
+    },
+    {
+      "level": "h3",
+      "text": "Run your bot locally",
+      "id": "run-your-bot-locally"
+    },
+    {
+      "level": "h2",
+      "text": "Step 2: Deploy to Production",
+      "id": "step-2:-deploy-to-production"
+    },
+    {
+      "level": "h3",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Configure your deployment",
+      "id": "configure-your-deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Configure secrets",
+      "id": "configure-secrets"
+    },
+    {
+      "level": "h3",
+      "text": "Build and deploy",
+      "id": "build-and-deploy"
+    },
+    {
+      "level": "h3",
+      "text": "Connect to your agent",
+      "id": "connect-to-your-agent"
+    },
+    {
+      "level": "h2",
+      "text": "Understanding the Quickstart Bot",
+      "id": "understanding-the-quickstart-bot"
+    },
+    {
+      "level": "h3",
+      "text": "AI Services",
+      "id": "ai-services"
+    }
+  ],
+  "url": "llms-txt#quickstart",
+  "links": []
+}

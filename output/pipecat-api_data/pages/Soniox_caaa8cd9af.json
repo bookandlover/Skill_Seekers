@@ -1,0 +1,34 @@
+{
+  "title": "Soniox",
+  "content": "Source: https://docs.pipecat.ai/server/services/stt/soniox\n\nSpeech-to-text service implementation using Soniox's WebSocket API\n\n`SonioxSTTService` provides real-time speech-to-text transcription using Soniox's WebSocket API with support for over 60 languages, custom context, multiple languages in the same conversation, and advanced features for accurate multilingual transcription.\n\n<CardGroup>\n  <Card title=\"Soniox STT API Reference\" icon=\"code\" href=\"https://pipecat-docs.readthedocs.io/en/latest/api/pipecat.services.soniox.stt.html\">\n    Pipecat's API methods for Soniox STT integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07aa-interruptible-soniox.py\">\n    Complete example with interruption handling\n  </Card>\n\n<Card title=\"Soniox Documentation\" icon=\"book\" href=\"https://soniox.com/docs/speech-to-text/get-started\">\n    Official Soniox documentation and features\n  </Card>\n\n<Card title=\"Soniox Console\" icon=\"microphone\" href=\"https://console.soniox.com/\">\n    Access multilingual models and API keys\n  </Card>\n</CardGroup>\n\nTo use Soniox services, install the required dependencies:\n\n### Soniox Account Setup\n\nBefore using Soniox STT services, you need:\n\n1. **Soniox Account**: Sign up at [Soniox Console](https://console.soniox.com/)\n2. **API Key**: Generate an API key from your console dashboard\n3. **Language Selection**: Choose from 60+ supported languages and models\n\n### Required Environment Variables\n\n* `SONIOX_API_KEY`: Your Soniox API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Soniox Account Setup",
+      "id": "soniox-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#soniox",
+  "links": []
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Enable interruptions for natural flow",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        allow_interruptions=True, # Default is True\n    ),\n)\n```\n\n### Performance Considerations\n\n* **Use local VAD**: 150-200ms faster than remote VAD services\n* **Tune for your use case**: Test with real audio conditions\n* **Monitor CPU usage**: VAD adds minimal overhead but monitor in production\n* **Consider turn detection**: Improves conversation quality but adds complexity\n\n* **VAD detects speech activity** but turn detection understands conversation context\n* **Configuration affects user experience** - tune parameters for your specific use case\n* **System frames coordinate behavior** - enable interruptions and natural turn-taking\n* **Local processing is faster** - Silero VAD provides low-latency speech detection\n* **Turn detection improves quality** - but requires careful VAD configuration\n\nNow that you understand how speech input is detected and processed, let's explore how that audio gets converted to text through speech recognition.\n\n<Card title=\"Speech to Text\" icon=\"arrow-right\" href=\"/guides/learn/speech-to-text\">\n  Learn how to configure speech recognition in your voice AI pipeline\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Performance Considerations",
+      "id": "performance-considerations"
+    },
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#enable-interruptions-for-natural-flow",
+  "links": []
+}

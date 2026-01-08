@@ -1,0 +1,63 @@
+{
+  "title": "WhatsApp Business Calling API",
+  "content": "Source: https://docs.pipecat.ai/guides/features/whatsapp\n\nLearn how to receive WhatsApp voice calls in your Pipecat application\n\nThis guide explains how to integrate WhatsApp Business voice calling into your Pipecat application using the **WhatsApp Cloud API** and **SmallWebRTC**. Once configured, your Pipecat bot will be able to receive and handle real-time voice calls directly from WhatsApp users.\n\n### WhatsApp Business Setup\n\nBefore proceeding, ensure you have completed the following steps:\n\n1. **Facebook Account** — Create one at [facebook.com](https://facebook.com)\n2. **Facebook Developer Account** — Register at [developers.facebook.com](https://developers.facebook.com)\n3. **WhatsApp Business App** — Create a new app via [Meta for Developers](https://developers.facebook.com/apps)\n4. **Phone Number** — Add and verify a WhatsApp Business phone number\n5. **Business Verification** — Required for production environments\n6. **Webhook Configuration** — You’ll need a public webhook URL to receive call events\n\n> **Note**: Voice calling is only available for WhatsApp Business API numbers with calling capability enabled.\n\n* [WhatsApp Cloud API Getting Started](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started/)\n* [Voice Calling API Documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/calling/)\n* [Webhook Setup](https://developers.facebook.com/docs/whatsapp/webhooks/)\n\n## WhatsApp Configuration\n\n> **Note**: For these settings you must be logged into your **Meta Developer Console** and inside your **App**.\n\n### 1. Enable Voice Calls\n\nTo enable voice calls for your number:\n\n* Go to **WhatsApp** → **Configuration → Phone Numbers → Manage Phone Numbers**\n* Select your WhatsApp number\n* Under the **Calls** tab, enable **“Allow voice calls”**\n* Save the configuration\n\n> For development, Meta provides a **free test number** valid for **90 days**.\n\n### 2. Configure Webhook\n\nSet up your webhook to receive **WhatsApp call events**.\n\n1. In the **Meta Developer Console**, go to\n   **WhatsApp → Configuration → Webhooks**\n2. **Set your callback URL** — this is where WhatsApp will send incoming call notifications.\n\n#### For local development\n\n* Make sure your local Pipecat server is running (e.g. `http://localhost:7860`).\n   * Use **ngrok** (or a similar tunneling tool) to expose your local server:\n     \n   * Copy the generated HTTPS URL and set your webhook to:\n     `https://YOUR_NGROK_DOMAIN/whatsapp`\n   * ✅ **Important:** Always include the `/whatsapp` path at the end of your webhook URL.\n\n#### For Pipecat Cloud\n\n* Ensure your Pipecat agent is already **deployed and running**.\n   * Use the following format for your webhook URL:\n     \n   * ✅ **Important:** Always include the `/whatsapp` path at the end of your webhook URL.\n3. **Enter your Verify Token**\n   * For **local development**, set the environment variable\n     `WHATSAPP_WEBHOOK_VERIFICATION_TOKEN` to match the verify token you enter in Meta.\n   * For **Pipecat Cloud**, set the verify token to your **public API key**.\n4. Click **Verify and Save** to confirm your webhook setup.\n5. Under **Webhook Fields**, enable the following event type:\n   * `calls` → *(required to receive voice call events)*\n\n### 3. Configure Access Token\n\n1. Go to **WhatsApp → API Setup**\n2. Click **Generate Access Token**\n3. Use the generated token as your `WHATSAPP_TOKEN` environment variable (or secret)\n4. Note your **Phone Number ID** and configure it as `PHONE_NUMBER_ID`\n\n> This will create a temporary access token, which usually expires in less than 02 hours.\n\n> To create a permanent access token, you can follow [this document](https://developers.facebook.com/blog/post/2022/12/05/auth-tokens/) from Meta.\n\n### 4. Configure App secret\n\n1. Go to **App settings → Basic**\n2. Click to show your **App secret**\n3. Use the app secret as your `WHATSAPP_APP_SECRET` environment variable (or secret)\n\n> This secret is used to verify that the webhooks you receive are actually from WhatsApp.\n\n## Pipecat Integration\n\nWhatsApp works with any bot using `SmallWebRTCTransport`.\n\nAll you need to do is configure WhatsApp as described above and provide the correct environment variables when starting your Pipecat bot.\n\nMake sure your `.env` file includes:\n\n```bash theme={null}\nWHATSAPP_TOKEN=\nWHATSAPP_PHONE_NUMBER_ID=\nWHATSAPP_APP_SECRET=",
+  "code_samples": [
+    {
+      "code": "* Copy the generated HTTPS URL and set your webhook to:\n     `https://YOUR_NGROK_DOMAIN/whatsapp`\n   * ✅ **Important:** Always include the `/whatsapp` path at the end of your webhook URL.\n\n   #### For Pipecat Cloud\n\n   * Ensure your Pipecat agent is already **deployed and running**.\n   * Use the following format for your webhook URL:",
+      "language": "unknown"
+    },
+    {
+      "code": "* ✅ **Important:** Always include the `/whatsapp` path at the end of your webhook URL.\n3. **Enter your Verify Token**\n   * For **local development**, set the environment variable\n     `WHATSAPP_WEBHOOK_VERIFICATION_TOKEN` to match the verify token you enter in Meta.\n   * For **Pipecat Cloud**, set the verify token to your **public API key**.\n4. Click **Verify and Save** to confirm your webhook setup.\n5. Under **Webhook Fields**, enable the following event type:\n   * `calls` → *(required to receive voice call events)*\n\n### 3. Configure Access Token\n\n1. Go to **WhatsApp → API Setup**\n2. Click **Generate Access Token**\n3. Use the generated token as your `WHATSAPP_TOKEN` environment variable (or secret)\n4. Note your **Phone Number ID** and configure it as `PHONE_NUMBER_ID`\n\n> This will create a temporary access token, which usually expires in less than 02 hours.\n\n> To create a permanent access token, you can follow [this document](https://developers.facebook.com/blog/post/2022/12/05/auth-tokens/) from Meta.\n\n### 4. Configure App secret\n\n1. Go to **App settings → Basic**\n2. Click to show your **App secret**\n3. Use the app secret as your `WHATSAPP_APP_SECRET` environment variable (or secret)\n\n> This secret is used to verify that the webhooks you receive are actually from WhatsApp.\n\n## Pipecat Integration\n\nWhatsApp works with any bot using `SmallWebRTCTransport`.\n\nAll you need to do is configure WhatsApp as described above and provide the correct environment variables when starting your Pipecat bot.\n\nMake sure your `.env` file includes:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "WhatsApp Business Setup",
+      "id": "whatsapp-business-setup"
+    },
+    {
+      "level": "h2",
+      "text": "WhatsApp Configuration",
+      "id": "whatsapp-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "1. Enable Voice Calls",
+      "id": "1.-enable-voice-calls"
+    },
+    {
+      "level": "h3",
+      "text": "2. Configure Webhook",
+      "id": "2.-configure-webhook"
+    },
+    {
+      "level": "h3",
+      "text": "3. Configure Access Token",
+      "id": "3.-configure-access-token"
+    },
+    {
+      "level": "h3",
+      "text": "4. Configure App secret",
+      "id": "4.-configure-app-secret"
+    },
+    {
+      "level": "h2",
+      "text": "Pipecat Integration",
+      "id": "pipecat-integration"
+    }
+  ],
+  "url": "llms-txt#whatsapp-business-calling-api",
+  "links": []
+}

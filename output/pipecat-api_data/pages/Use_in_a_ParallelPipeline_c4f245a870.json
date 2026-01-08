@@ -1,0 +1,8 @@
+{
+  "title": "Use in a ParallelPipeline",
+  "content": "pipeline = Pipeline([\n    transport.input(),\n    ParallelPipeline(\n        # Branch 1: LLM for bot responses\n        [\n            llm,\n            tts,\n            producer,  # Capture TTS audio here\n        ],\n        # Branch 2: Audio processing branch\n        [\n            consumer,  # Receive TTS audio here\n            llm, # Speech-to-Speech LLM (audio in)\n        ]\n    ),\n    transport.output(),\n])\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#use-in-a-parallelpipeline",
+  "links": []
+}

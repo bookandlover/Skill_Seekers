@@ -1,0 +1,39 @@
+{
+  "title": "Session Management",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/sessions\n\nManaging agent sessions with the Pipecat Cloud Python SDK\n\nThe session management classes allow you to start and interact with agent sessions.\n\nThe `Session` class is the primary way to start and interact with agent sessions.\n\n### Constructor Parameters\n\n<ParamField type=\"string\">\n  Name of the deployed agent to interact with.\n</ParamField>\n\n<ParamField type=\"string\">\n  Public API key for authentication.\n</ParamField>\n\n<ParamField type=\"SessionParams\">\n  Optional parameters to configure the session.\n</ParamField>\n\n<ResponseField name=\"start()\" type=\"async\">\n  Starts a new session with the specified agent.\n\nA dictionary containing session information. If `use_daily` is True, includes `dailyRoom` URL and `dailyToken`.\n\n`AgentStartError`: If the session fails to start due to missing API key, agent not found, agent not ready, or capacity limits.\n</ResponseField>\n\nThe `SessionParams` class allows you to configure a session.\n\n<ParamField type=\"Dict[str, Any]\">\n  Optional dictionary of data to pass to the agent. Must be JSON-serializable.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  If True, creates a Daily WebRTC room for the session, enabling voice\n  interaction.\n</ParamField>\n\n<ParamField type=\"Dict[str, Any]\">\n  Optional dictionary of properties to configure the Daily room. Only used when\n  `use_daily=True`.\n\nSee [Daily API\n  documentation](https://docs.daily.co/reference/rest-api/rooms/config) for\n  available properties.\n</ParamField>",
+  "code_samples": [
+    {
+      "code": "### Constructor Parameters\n\n<ParamField type=\"string\">\n  Name of the deployed agent to interact with.\n</ParamField>\n\n<ParamField type=\"string\">\n  Public API key for authentication.\n</ParamField>\n\n<ParamField type=\"SessionParams\">\n  Optional parameters to configure the session.\n</ParamField>\n\n### Methods\n\n<ResponseField name=\"start()\" type=\"async\">\n  Starts a new session with the specified agent.\n\n  **Returns**\n\n  A dictionary containing session information. If `use_daily` is True, includes `dailyRoom` URL and `dailyToken`.\n\n  **Raises**\n\n  `AgentStartError`: If the session fails to start due to missing API key, agent not found, agent not ready, or capacity limits.\n</ResponseField>\n\n## SessionParams\n\nThe `SessionParams` class allows you to configure a session.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Session",
+      "id": "session"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Methods",
+      "id": "methods"
+    },
+    {
+      "level": "h2",
+      "text": "SessionParams",
+      "id": "sessionparams"
+    },
+    {
+      "level": "h3",
+      "text": "Parameters",
+      "id": "parameters"
+    }
+  ],
+  "url": "llms-txt#session-management",
+  "links": []
+}

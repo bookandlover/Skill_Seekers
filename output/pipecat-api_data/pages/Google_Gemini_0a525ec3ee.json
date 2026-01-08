@@ -1,0 +1,34 @@
+{
+  "title": "Google Gemini",
+  "content": "Source: https://docs.pipecat.ai/server/services/llm/gemini\n\nLarge Language Model service implementation using Google's Gemini API\n\n`GoogleLLMService` provides integration with Google's Gemini models, supporting streaming responses, function calling, and multimodal inputs. It includes specialized context handling for Google's message format while maintaining compatibility with OpenAI-style contexts.\n\n<CardGroup>\n  <Card title=\"Gemini LLM API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.google.llm.html\">\n    Pipecat's API methods for Google Gemini integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14e-function-calling-google.py\">\n    Complete example with function calling\n  </Card>\n\n<Card title=\"Gemini Documentation\" icon=\"book\" href=\"https://ai.google.dev/gemini-api/docs\">\n    Official Google Gemini API documentation and features\n  </Card>\n\n<Card title=\"Google AI Studio\" icon=\"microphone\" href=\"https://aistudio.google.com/\">\n    Access Gemini models and manage API keys\n  </Card>\n</CardGroup>\n\nTo use Google Gemini services, install the required dependencies:\n\n### Google Gemini Setup\n\nBefore using Google Gemini LLM services, you need:\n\n1. **Google Account**: Sign up at [Google AI Studio](https://aistudio.google.com/)\n2. **API Key**: Generate a Gemini API key from AI Studio\n3. **Model Selection**: Choose from available Gemini models (Gemini 1.5 Pro, Flash, etc.)\n\n### Required Environment Variables\n\n* `GOOGLE_API_KEY`: Your Google Gemini API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Google Gemini Setup",
+      "id": "google-gemini-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#google-gemini",
+  "links": []
+}

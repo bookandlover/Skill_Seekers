@@ -1,0 +1,59 @@
+{
+  "title": "Overview of Pipecat",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/overview\n\nLearn the foundational concepts of Pipecat's architecture for building voice AI agents\n\nThis comprehensive guide will teach you how to build real-time voice AI agents with Pipecat. By the end, you'll be equipped with the knowledge to create custom applications—from simple voice assistants to complex multimodal bots that can see, hear, and speak.\n\n<Info>\n  **Prerequisites**: Basic Python knowledge is recommended. The guide takes\n  approximately 45-60 minutes to complete, with hands-on examples throughout.\n</Info>\n\n## Why Voice AI is Challenging\n\nBuilding responsive voice AI applications involves coordinating multiple AI services in real-time:\n\n* **Speech recognition** must transcribe audio as users speak\n* **Language models** need to process context and generate responses\n* **Speech synthesis** has to convert text back to natural audio\n* **Network transports** must handle streaming audio with minimal delay\n\nDoing this manually means managing complex timing, buffering, error handling, and service coordination. Most developers end up rebuilding the same orchestration logic repeatedly.\n\n## Pipecat's Solution\n\nPipecat solves this orchestration problem with a **pipeline architecture** that handles the complexity for you. Instead of managing individual API calls and timing, you define a flow of processing steps that work together automatically.\n\nHere's what makes Pipecat different:\n\n<CardGroup>\n  <Card title=\"Ultra-Low Latency\" icon=\"bolt\">\n    Typical voice interactions complete in 500-800ms for natural conversations\n  </Card>\n\n<Card title=\"Modular Design\" icon=\"puzzle-piece\">\n    Swap AI providers, add features, or customize behavior without rewriting\n    code\n  </Card>\n\n<Card title=\"Real-time Processing\" icon=\"clock\">\n    Stream processing eliminates waiting for complete responses at each step\n  </Card>\n\n<Card title=\"Production Ready\" icon=\"shield-check\">\n    Built-in error handling, logging, and scaling considerations\n  </Card>\n</CardGroup>\n\n## Core Architecture Concepts\n\nBefore diving into how voice AI works, let's understand Pipecat's three foundational concepts:\n\nThink of frames as **data packages** moving through your application. Each frame contains a specific type of information:\n\n* Audio data from a microphone\n* Transcribed text from speech recognition\n* Generated responses from an LLM\n* Synthesized audio for playback\n\nFrame processors are **specialized workers** that handle specific tasks:\n\n* A speech-to-text processor converts audio frames into text frames\n* An LLM processor takes text frames and produces response frames\n* A text-to-speech processor converts response frames into audio frames\n\nPipelines **connect processors together**, creating a path for frames to flow through your application. They handle the orchestration automatically.\n\n## Voice AI Processing Flow\n\nNow let's see how these concepts work together in a typical voice AI interaction:\n\n<Steps>\n  <Step title=\"Audio Input\">\n    User speaks → Transport receives streaming audio → Creates audio frames\n  </Step>\n\n<Step title=\"Speech Recognition\">\n    STT processor receives audio frames → Transcribes speech in real-time →\n    Outputs text frames\n  </Step>\n\n<Step title=\"Context Management\">\n    Context processor aggregates text frames with conversation history → Creates\n    formatted input for LLM\n  </Step>\n\n<Step title=\"Language Processing\">\n    LLM processor receives context → Generates streaming response → Outputs text\n    frames\n  </Step>\n\n<Step title=\"Speech Synthesis\">\n    TTS processor receives text frames → Converts to speech → Outputs audio\n    frames\n  </Step>\n\n<Step title=\"Audio Output\">\n    Transport receives audio frames → Streams to user's device → User hears\n    response\n  </Step>\n</Steps>\n\nThe key insight: **everything happens in parallel**. While the LLM is generating later parts of a response, earlier parts are already being converted to speech and played back to the user.\n\n## Pipeline Architecture\n\nHere's how this flow translates into a Pipecat pipeline:\n\n<Frame>\n  <img alt=\"Pipecat Pipeline Architecture\" />\n</Frame>\n\nEach processor in the pipeline:\n\n1. Receives specific frame types as input\n2. Performs its specialized task (transcription, language processing, etc.)\n3. Outputs new frames for the next processor\n4. Passes through frames it doesn't handle\n\n<Info>\n  While frames can flow upstream or downstream, most data flows downstream as\n  shown above. We'll discuss pushing frames in later sections.\n</Info>\n\nIn the following sections, we'll explore each component of this pipeline in detail:\n\n* How to initialize sessions and connect users\n* Configuring different transport options (Daily, WebRTC, Twilio, etc.)\n* Setting up speech recognition and synthesis services\n* Managing conversation context and LLM integration\n* Handling the complete pipeline lifecycle\n* Building custom processors for your specific needs\n\nEach section includes practical examples and configuration options to help you build production-ready voice AI applications.\n\n<Card title=\"Ready to Start Building?\" icon=\"arrow-right\" href=\"/guides/learn/session-initialization\">\n  Let's begin with session initialization to connect users to your voice AI\n  agent\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What You'll Learn",
+      "id": "what-you'll-learn"
+    },
+    {
+      "level": "h2",
+      "text": "Why Voice AI is Challenging",
+      "id": "why-voice-ai-is-challenging"
+    },
+    {
+      "level": "h2",
+      "text": "Pipecat's Solution",
+      "id": "pipecat's-solution"
+    },
+    {
+      "level": "h2",
+      "text": "Core Architecture Concepts",
+      "id": "core-architecture-concepts"
+    },
+    {
+      "level": "h3",
+      "text": "Frames",
+      "id": "frames"
+    },
+    {
+      "level": "h3",
+      "text": "Frame Processors",
+      "id": "frame-processors"
+    },
+    {
+      "level": "h3",
+      "text": "Pipelines",
+      "id": "pipelines"
+    },
+    {
+      "level": "h2",
+      "text": "Voice AI Processing Flow",
+      "id": "voice-ai-processing-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Pipeline Architecture",
+      "id": "pipeline-architecture"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#overview-of-pipecat",
+  "links": []
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Scaling",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/scaling\n\nProduction-ready agent deployment and scaling strategies\n\nAgentic applications demand near-instant agent availability to maintain user engagement and responsiveness. Pipecat Cloud manages the complexity of scaling these agent deployments in production environments, providing granular controls for compute resources and cost optimization.\n\nAn instance represents a single unit of compute that runs your agent.\n\nInstance costs are determined by:\n\n* [Active session](./active-sessions) runtime duration\n* Warm instance maintenance time\n* The compute profile specified in your deployment\n\nPipecat Cloud automatically provisions and manages agent instances to handle active sessions, ensuring that your deployment can scale to meet demand\nwithin the limits of your deployment configuration.\n\nMaking a deployment to Pipecat Cloud creates a managed pool of agent instances that:\n\n* Routes requests to available agent instances\n* Scales based on demand within configured limits\n* Maintains optimal performance through auto-scaling\n\n<Frame>\n  <img />\n</Frame>\n\nDevelopers can configure the upper and lower limit of a deployment's instance pool, providing a cost-effective way to handle varying loads.\n\n* Maintains specified number of warm agent instances to serve incoming requests\n* Immediately ready to become active, reducing cold starts\n* Defaults to `0` if unspecified\n\n<Frame>\n  <img />\n</Frame>\n\nDevelopers specify a `min-agents` configuration to determines the number of agent instances that should be kept warm in their deployment pool. A warm instance is kept running and can immediately be used to serve an active session.\n\nMaintaining a minimum number of agent instances is important to keep agent start times fast and reduce [cold starts](./scaling#cold-starts).\n\n```shell theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Core concepts",
+      "id": "core-concepts"
+    },
+    {
+      "level": "h3",
+      "text": "Instances",
+      "id": "instances"
+    },
+    {
+      "level": "h3",
+      "text": "Instance pool",
+      "id": "instance-pool"
+    },
+    {
+      "level": "h3",
+      "text": "Minimum agents",
+      "id": "minimum-agents"
+    }
+  ],
+  "url": "llms-txt#scaling",
+  "links": []
+}

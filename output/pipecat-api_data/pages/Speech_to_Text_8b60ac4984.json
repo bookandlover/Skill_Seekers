@@ -1,0 +1,49 @@
+{
+  "title": "Speech to Text",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/speech-to-text\n\nLearn how to configure speech recognition to convert user audio into text in your Pipecat pipeline\n\n**Speech to Text (STT)** services are responsible for converting user audio into text transcriptions. They receive audio input from users and provide real-time transcriptions that your bot can process and respond to.\n\n## Pipeline Placement\n\nSTT processors must be positioned correctly in your pipeline to receive and process audio frames:\n\n**Placement requirements:**\n\n* **After `transport.input()`**: STT needs `InputAudioRawFrame`s from the transport\n* **Before context processing**: Transcriptions must be available for context aggregation\n* **Before LLM processing**: Text must be ready for language model input\n\nPipecat provides two types of STT services based on how they process audio:\n\n### 1. STTService (Streaming)\n\n* Establishes a WebSocket connection to the STT provider\n* Continuously streams audio for real-time transcription\n* Lower latency due to persistent connection\n\n### 2. SegmentedSTTService (HTTP-based)\n\n* Uses local VAD (Voice Activity Detection) to chunk speech\n* Sends audio segments to STT service as wav files\n* Higher latency due to segmentation and HTTP POST requests\n\n<Note>\n  STT services are modular and can be swapped out with no additional overhead.\n  You can easily switch between streaming and segmented services based on your\n  needs.\n</Note>\n\n## Supported STT Services\n\nPipecat supports a wide range of STT providers to fit different needs and budgets:\n\n<Card title=\"Supported STT Services\" icon=\"list\" href=\"/server/services/supported-services#speech-to-text\">\n  View the complete list of supported speech-to-text providers\n</Card>\n\nPopular options include:\n\n<CardGroup>\n  <Card title=\"Deepgram\" icon=\"microphone\" href=\"/server/services/stt/deepgram\">\n    Fast, accurate streaming STT with excellent real-time performance\n  </Card>\n\n<Card title=\"Speechmatics\" icon=\"waveform\" href=\"/server/services/stt/speechmatics\">\n    Advanced speech recognition with strong accent and dialect handling\n  </Card>\n\n<Card title=\"AssemblyAI\" icon=\"brain\" href=\"/server/services/stt/assemblyai\">\n    AI-powered transcription with speaker diarization and sentiment analysis\n  </Card>\n\n<Card title=\"Gladia\" icon=\"sparkles\" href=\"/server/services/stt/gladia\">\n    High-performance STT with multilingual support and custom models\n  </Card>\n\n<Card title=\"Azure Speech\" icon=\"microsoft\" href=\"/server/services/stt/azure\">\n    Microsoft's enterprise-grade STT service with extensive language support\n  </Card>\n\n<Card title=\"Google Speech-to-Text\" icon=\"google\" href=\"/server/services/stt/google\">\n    Reliable transcription with strong language model integration\n  </Card>\n</CardGroup>\n\n### Service-Specific Configuration\n\nEach STT service has its own customization options. Refer to specific service documentation for details:\n\n<Card title=\"Individual STT Services\" icon=\"screwdriver-wrench\" href=\"/server/services/supported-services#speech-to-text\">\n  Explore configuration options for each supported STT provider\n</Card>\n\nFor example, let's look at configuring the **DeepgramSTTService** using the `LiveOptions` class:\n\n```python theme={null}\nfrom deepgram import LiveOptions\nfrom pipecat.services.deepgram.stt import DeepgramSTTService\nfrom pipecat.transcriptions.language import Language",
+  "code_samples": [
+    {
+      "code": "**Placement requirements:**\n\n* **After `transport.input()`**: STT needs `InputAudioRawFrame`s from the transport\n* **Before context processing**: Transcriptions must be available for context aggregation\n* **Before LLM processing**: Text must be ready for language model input\n\n## STT Service Types\n\nPipecat provides two types of STT services based on how they process audio:\n\n### 1. STTService (Streaming)\n\n**How it works:**\n\n* Establishes a WebSocket connection to the STT provider\n* Continuously streams audio for real-time transcription\n* Lower latency due to persistent connection\n\n### 2. SegmentedSTTService (HTTP-based)\n\n**How it works:**\n\n* Uses local VAD (Voice Activity Detection) to chunk speech\n* Sends audio segments to STT service as wav files\n* Higher latency due to segmentation and HTTP POST requests\n\n<Note>\n  STT services are modular and can be swapped out with no additional overhead.\n  You can easily switch between streaming and segmented services based on your\n  needs.\n</Note>\n\n## Supported STT Services\n\nPipecat supports a wide range of STT providers to fit different needs and budgets:\n\n<Card title=\"Supported STT Services\" icon=\"list\" href=\"/server/services/supported-services#speech-to-text\">\n  View the complete list of supported speech-to-text providers\n</Card>\n\nPopular options include:\n\n<CardGroup>\n  <Card title=\"Deepgram\" icon=\"microphone\" href=\"/server/services/stt/deepgram\">\n    Fast, accurate streaming STT with excellent real-time performance\n  </Card>\n\n  <Card title=\"Speechmatics\" icon=\"waveform\" href=\"/server/services/stt/speechmatics\">\n    Advanced speech recognition with strong accent and dialect handling\n  </Card>\n\n  <Card title=\"AssemblyAI\" icon=\"brain\" href=\"/server/services/stt/assemblyai\">\n    AI-powered transcription with speaker diarization and sentiment analysis\n  </Card>\n\n  <Card title=\"Gladia\" icon=\"sparkles\" href=\"/server/services/stt/gladia\">\n    High-performance STT with multilingual support and custom models\n  </Card>\n\n  <Card title=\"Azure Speech\" icon=\"microsoft\" href=\"/server/services/stt/azure\">\n    Microsoft's enterprise-grade STT service with extensive language support\n  </Card>\n\n  <Card title=\"Google Speech-to-Text\" icon=\"google\" href=\"/server/services/stt/google\">\n    Reliable transcription with strong language model integration\n  </Card>\n</CardGroup>\n\n## STT Configuration\n\n### Service-Specific Configuration\n\nEach STT service has its own customization options. Refer to specific service documentation for details:\n\n<Card title=\"Individual STT Services\" icon=\"screwdriver-wrench\" href=\"/server/services/supported-services#speech-to-text\">\n  Explore configuration options for each supported STT provider\n</Card>\n\nFor example, let's look at configuring the **DeepgramSTTService** using the `LiveOptions` class:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Pipeline Placement",
+      "id": "pipeline-placement"
+    },
+    {
+      "level": "h2",
+      "text": "STT Service Types",
+      "id": "stt-service-types"
+    },
+    {
+      "level": "h3",
+      "text": "1. STTService (Streaming)",
+      "id": "1.-sttservice-(streaming)"
+    },
+    {
+      "level": "h3",
+      "text": "2. SegmentedSTTService (HTTP-based)",
+      "id": "2.-segmentedsttservice-(http-based)"
+    },
+    {
+      "level": "h2",
+      "text": "Supported STT Services",
+      "id": "supported-stt-services"
+    },
+    {
+      "level": "h2",
+      "text": "STT Configuration",
+      "id": "stt-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Service-Specific Configuration",
+      "id": "service-specific-configuration"
+    }
+  ],
+  "url": "llms-txt#speech-to-text",
+  "links": []
+}

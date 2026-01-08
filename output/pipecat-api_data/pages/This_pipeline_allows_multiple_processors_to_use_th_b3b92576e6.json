@@ -1,0 +1,47 @@
+{
+  "title": "This pipeline allows multiple processors to use the same audio",
+  "content": "pipeline = Pipeline([\n    transport.input(),          # Creates InputAudioRawFrame\n    stt,                        # Uses audio → creates TranscriptionFrame\n    # ...                       # Other processors can use the same audio\n    tts,                        # Uses various text frames → creates TTSAudioRawFrame\n    transport.output(),         # Uses TTSAudioRawFrame → sends audio to user\n    audio_buffer_processor,     # Also uses the same user and assistant audio for recording\n])\npython theme={null}\npipeline = Pipeline([\n    transport.input(),\n    stt,\n    context_aggregator.user(),\n    llm,\n    ParallelPipeline([\n        # English branch\n        [FunctionFilter(english_filter), english_tts],\n        # Spanish branch\n        [FunctionFilter(spanish_filter), spanish_tts],\n    ]),\n    transport.output(),\n    context_aggregator.assistant(),\n])\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        enable_metrics=True,\n        enable_usage_metrics=True,\n        audio_in_sample_rate=8000,\n        audio_out_sample_rate=8000,\n    ),\n    observers=[RTVIObserver(rtvi)],\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "This design allows multiple processors to operate on the same data stream without interfering with each other.\n\n### Parallel Processing Patterns\n\nUse `ParallelPipeline` to create branches where each branch receives all upstream frames. Frames are collected and pushed individually from each branch:",
+      "language": "unknown"
+    },
+    {
+      "code": "In this example:\n\n* Both TTS branches receive all LLM output\n* Each branch can filter and process frames independently\n* Results from both branches flow to `transport.output()`\n\nParallelPipelines are traditionally paired with filters or gates to control which frames go where, allowing for complex conditional logic.\n\n### Frame Queuing and Processing\n\nFrame processors have internal queues that ensure ordered processing:\n\n* **SystemFrames bypass queues** for immediate processing (interruptions, errors)\n* **DataFrames and ControlFrames are queued** and processed in order\n* **Queuing is managed automatically** by the pipeline infrastructure\n* **Order is guaranteed** even across complex pipeline structures\n\n<Note>\n  Learn more about frame flow patterns in the [Custom Frame Processor\n  Guide](/guides/fundamentals/custom-frame-processor).\n</Note>\n\n## Pipeline Execution\n\n### Creating a Pipeline Task\n\nWrap your pipeline in a `PipelineTask` to configure execution parameters:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Running the Pipeline\n\nUse `PipelineRunner` to execute your pipeline task:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Parallel Processing Patterns",
+      "id": "parallel-processing-patterns"
+    },
+    {
+      "level": "h3",
+      "text": "Frame Queuing and Processing",
+      "id": "frame-queuing-and-processing"
+    },
+    {
+      "level": "h2",
+      "text": "Pipeline Execution",
+      "id": "pipeline-execution"
+    },
+    {
+      "level": "h3",
+      "text": "Creating a Pipeline Task",
+      "id": "creating-a-pipeline-task"
+    },
+    {
+      "level": "h3",
+      "text": "Running the Pipeline",
+      "id": "running-the-pipeline"
+    }
+  ],
+  "url": "llms-txt#this-pipeline-allows-multiple-processors-to-use-the-same-audio",
+  "links": []
+}

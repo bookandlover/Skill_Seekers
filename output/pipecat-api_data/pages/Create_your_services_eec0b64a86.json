@@ -1,0 +1,8 @@
+{
+  "title": "Create your services",
+  "content": "stt = DeepgramSTTService(api_key=os.getenv(\"DEEPGRAM_API_KEY\"))\nllm = OpenAILLMService(api_key=os.getenv(\"OPENAI_API_KEY\"))\ntts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n    voice_id=\"your-voice-id\"\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-your-services",
+  "links": []
+}

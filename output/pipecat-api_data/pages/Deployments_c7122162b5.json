@@ -1,0 +1,82 @@
+{
+  "title": "Deployments",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/deploy\n\nServing your agent via Pipecat Cloud\n\nOnce you've built an agent image, it's time to deploy it to Pipecat Cloud.\n\n## Deploying an agent\n\nDeploying agents to Pipecat Cloud requires first building and pushing your image to a container registry, such as [Docker Hub](https://hub.docker.com/).\n\nUse the Pipecat CLI to build and push your Docker image:\n\nThis command reads your `pcc-deploy.toml` configuration to automatically build, tag, and push your image to the configured registry.\n\nOnce your agent image is pushed, deploy it to Pipecat Cloud:\n\nAgents can be deployed to a specific region, which can be used to reduce latency and meet data residency requirements. You can deploy to a specific region by using the `--region` flag. This command will instruct Pipecat Cloud to create a new deployment from your image. Agents deploy to `us-west` by default, but you can specify a different region:\n\n<Info>\n  Agent names are globally unique across all regions. For multi-region\n  deployments, deploy uniquely named agents to each target region (e.g.,\n  `my-agent-us-west`, `my-agent-us-east`).\n</Info>\n\nOnce the deployment completes, you will be able to run your agent on-demand.\n\nFor a complete list of deployment configuration options, see the [CLI deploy reference](/cli/cloud/deploy).\n\n<Note>\n  Using a private container registry? See our [Container Registry\n  guides](../guides/container-registries/overview) for setup instructions for\n  GCP Artifact Registry, AWS ECR, and other private registries.\n</Note>\n\nYou will be asked to confirm your deployment configuration before proceeding.\n\n### Deployment status\n\nOnce complete, Pipecat Cloud will return the status of your deployment or any errors that occurred during the deployment process.\n\n### Using pcc-deploy.toml\n\nTo support shareable deployment configurations, you can create a `pcc-deploy.toml` file in the root of your project (adjacent to where you run your CLI commands.)\n\nThe CLI will automatically detect this file and use it to populate the deployment configuration. Any CLI arguments you provide will override the values in the `pcc-deploy.toml` file.\n\nAn example `pcc-deploy.toml` file might look like this:\n\n<Tip>\n  For a complete reference of all configuration options, see the [deploy command\n  documentation](/cli/cloud/deploy#configuration-file-pcc-deploytoml).\n</Tip>\n\nAgent profiles determine the CPU and memory resources allocated to your deployed agents. Choose the profile that best matches your agent's requirements:\n\n* **`agent-1x`** (default): 0.5 vCPU and 1 GB of memory. Best for voice agents.\n* **`agent-2x`**: 1 vCPU and 2 GB of memory. Well suited for voice and video agents or voice agents requiring extra processing.\n* **`agent-3x`**: 1.5 vCPU and 3 GB of memory. Best for voice and video agents requiring extra processing or multiple video inputs.\n\nYou can specify the agent profile in your deployment:\n\n**Via pcc-deploy.toml:**\n\n<Note>\n  Agent profiles affect resource allocation and impact your usage costs. Choose\n  the smallest profile that meets your agent's performance requirements.\n</Note>\n\n### Checking status of a deployment\n\nYou can check the status of a deployment using the CLI:\n\nIf a deployment was successful and ready to be started, you should see a `ready` status.\n\n## Modifying a deployment\n\nAgents are referenced as a mutable manifest in Pipecat Cloud.\nPushing a new image or configuration to the same agent name will update your agent manifest and be used for any new requests.\n\nThis command will update the `my-first-agent` deployment to use the new image and set the minimum number of instances to 2.\n\nTo avoid interruption of any active sessions, any running agent instances will continue on the old image until the session concludes.\n\nIdle agent instances in your agent pool will be replaced with the new configuration according to the Pipecat Cloud auto-scaling strategy.\nNew agent requests may, therefore, start with prior deployment configuration if updates are not fully propagated. This ensures on-demand availability\nremains consistent and avoids potential cold starts.\n\n### Failed deployments\n\nIf a deployment fails (i.e. fails to enter a `ready` state), requests will be routed to any prior deployments in a ready state.\n\nThis ensures that your agent remains available to end-users even when a deployment fails.\n\n## Delete a deployment\n\n<Warning>\n  This action is irreversible and will remove all data related to the agent from\n  Pipecat Cloud.\n</Warning>\n\nIf you no longer need a deployment, you can delete it using the `delete` command:\n\nAny running agent instances will continue to run until they conclude or are stopped.",
+  "code_samples": [
+    {
+      "code": "This command reads your `pcc-deploy.toml` configuration to automatically build, tag, and push your image to the configured registry.\n\nOnce your agent image is pushed, deploy it to Pipecat Cloud:",
+      "language": "unknown"
+    },
+    {
+      "code": "Agents can be deployed to a specific region, which can be used to reduce latency and meet data residency requirements. You can deploy to a specific region by using the `--region` flag. This command will instruct Pipecat Cloud to create a new deployment from your image. Agents deploy to `us-west` by default, but you can specify a different region:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Info>\n  Agent names are globally unique across all regions. For multi-region\n  deployments, deploy uniquely named agents to each target region (e.g.,\n  `my-agent-us-west`, `my-agent-us-east`).\n</Info>\n\nOnce the deployment completes, you will be able to run your agent on-demand.\n\nFor a complete list of deployment configuration options, see the [CLI deploy reference](/cli/cloud/deploy).\n\n<Note>\n  Using a private container registry? See our [Container Registry\n  guides](../guides/container-registries/overview) for setup instructions for\n  GCP Artifact Registry, AWS ECR, and other private registries.\n</Note>\n\nYou will be asked to confirm your deployment configuration before proceeding.\n\n### Deployment status\n\nOnce complete, Pipecat Cloud will return the status of your deployment or any errors that occurred during the deployment process.\n\n### Using pcc-deploy.toml\n\nTo support shareable deployment configurations, you can create a `pcc-deploy.toml` file in the root of your project (adjacent to where you run your CLI commands.)\n\nThe CLI will automatically detect this file and use it to populate the deployment configuration. Any CLI arguments you provide will override the values in the `pcc-deploy.toml` file.\n\nAn example `pcc-deploy.toml` file might look like this:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Tip>\n  For a complete reference of all configuration options, see the [deploy command\n  documentation](/cli/cloud/deploy#configuration-file-pcc-deploytoml).\n</Tip>\n\n### Agent Profiles\n\nAgent profiles determine the CPU and memory resources allocated to your deployed agents. Choose the profile that best matches your agent's requirements:\n\n* **`agent-1x`** (default): 0.5 vCPU and 1 GB of memory. Best for voice agents.\n* **`agent-2x`**: 1 vCPU and 2 GB of memory. Well suited for voice and video agents or voice agents requiring extra processing.\n* **`agent-3x`**: 1.5 vCPU and 3 GB of memory. Best for voice and video agents requiring extra processing or multiple video inputs.\n\nYou can specify the agent profile in your deployment:\n\n**Via CLI:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Via pcc-deploy.toml:**",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  Agent profiles affect resource allocation and impact your usage costs. Choose\n  the smallest profile that meets your agent's performance requirements.\n</Note>\n\n### Checking status of a deployment\n\nYou can check the status of a deployment using the CLI:",
+      "language": "unknown"
+    },
+    {
+      "code": "If a deployment was successful and ready to be started, you should see a `ready` status.\n\n## Modifying a deployment\n\nAgents are referenced as a mutable manifest in Pipecat Cloud.\nPushing a new image or configuration to the same agent name will update your agent manifest and be used for any new requests.",
+      "language": "unknown"
+    },
+    {
+      "code": "This command will update the `my-first-agent` deployment to use the new image and set the minimum number of instances to 2.\n\nTo avoid interruption of any active sessions, any running agent instances will continue on the old image until the session concludes.\n\nIdle agent instances in your agent pool will be replaced with the new configuration according to the Pipecat Cloud auto-scaling strategy.\nNew agent requests may, therefore, start with prior deployment configuration if updates are not fully propagated. This ensures on-demand availability\nremains consistent and avoids potential cold starts.\n\n### Failed deployments\n\nIf a deployment fails (i.e. fails to enter a `ready` state), requests will be routed to any prior deployments in a ready state.\n\nThis ensures that your agent remains available to end-users even when a deployment fails.\n\n## Delete a deployment\n\n<Warning>\n  This action is irreversible and will remove all data related to the agent from\n  Pipecat Cloud.\n</Warning>\n\nIf you no longer need a deployment, you can delete it using the `delete` command:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Deploying an agent",
+      "id": "deploying-an-agent"
+    },
+    {
+      "level": "h3",
+      "text": "Deployment status",
+      "id": "deployment-status"
+    },
+    {
+      "level": "h3",
+      "text": "Using pcc-deploy.toml",
+      "id": "using-pcc-deploy.toml"
+    },
+    {
+      "level": "h3",
+      "text": "Agent Profiles",
+      "id": "agent-profiles"
+    },
+    {
+      "level": "h3",
+      "text": "Checking status of a deployment",
+      "id": "checking-status-of-a-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Modifying a deployment",
+      "id": "modifying-a-deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Failed deployments",
+      "id": "failed-deployments"
+    },
+    {
+      "level": "h2",
+      "text": "Delete a deployment",
+      "id": "delete-a-deployment"
+    }
+  ],
+  "url": "llms-txt#deployments",
+  "links": []
+}

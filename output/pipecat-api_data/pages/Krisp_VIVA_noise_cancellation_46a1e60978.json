@@ -1,0 +1,71 @@
+{
+  "title": "Krisp VIVA Noise Cancellation",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-viva\n\nEliminate background noise and voices for more reliable agent interactions using Krisp's VIVA noise cancellation model\n\nVoice agents are vulnerable to background noise, especially other voices that trigger false interruptions. When this happens, your bot stops mid-sentence unnecessarily, creating a poor user experience. Pipecat Cloud's Krisp integration processes incoming audio to remove ambient noise and background voices before they reach your agent, resulting in cleaner audio input with fewer false interruptions and better transcription.\n\n<Info>\n  Krisp processes the audio before it reaches your agent's speech recognition\n  and VAD systems, helping to ensure that only the intended user's voice\n  triggers interruptions.\n</Info>\n\n## Enabling Krisp VIVA\n\nEnabling Krisp VIVA with Pipecat Cloud involves the following steps:\n\n### 1. Use the Pipecat Base Image\n\nKrisp VIVA dependencies are pre-installed in the official Pipecat base image. You don't need to add any Krisp VIVA-related packages to your `requirements.txt` file or `pyproject.toml` file.\n\n<Note>\n  Krisp VIVA support is available in the `dailyco/pipecat-base` image starting\n  with version `0.1.8`.\n</Note>\n\n### 2. Add the KrispVivaFilter() to Your Transport\n\nIn your bot code, import and add the `KrispVivaFilter()` to your transport:\n\n### 3. Enable Krisp VIVA in Your Deployment\n\nYou can enable Krisp VIVA when deploying your agent through:\n\n<Tabs>\n  <Tab title=\"Config File\">\n    In your `pcc-deploy.toml`:\n\n<Tab title=\"CLI\">\n    \n  </Tab>\n\n<Tab title=\"REST API\">\n    When creating or updating an agent via the REST API, include the `krispViva` parameter:\n\nTo update an existing agent:\n\nSee the [REST API reference](/deployment/pipecat-cloud/rest-reference/endpoint/agent-create) for more details.\n  </Tab>\n\n<Tab title=\"Dashboard\">\n    In the Pipecat Cloud dashboard:\n\n1. Navigate to your agent\n    2. Go to Settings > Agent Configuration\n    3. Select your desired model from the dropdown\n    4. Save your changes which will automatically deploy your agent with the selected model\n  </Tab>\n</Tabs>\n\nSupported values are:\n\n* `tel`: Supports up to 16kHz audio\n* `pro`: Supports up to 32kHz audio\n\n<Tip>\n  By default, Pipecat processes input audio at 16kHz, making the `tel` value\n  appropriate for most use cases.\n</Tip>\n\n## Testing Your Integration\n\nTo verify Krisp is working:\n\n1. Deploy your agent with Krisp enabled\n2. Connect to your agent in an environment with background noise; try turning on a TV or podcast\n3. Observe whether background noises and voices affect your agent's behavior\n\nKrisp processing is billed based on active session minutes:\n\n| Usage Tier                     | Price               |\n| ------------------------------ | ------------------- |\n| First 10,000 minutes per month | Free                |\n| Additional minutes             | \\$0.0015 per minute |\n\n<Note>\n  For agents deployed with Krisp enabled, active session minutes count as Krisp\n  usage, accruing towards your monthly bill.\n</Note>\n\nKrisp cannot be used in local development environments, as it requires a proprietary SDK and model which can only be distributed on Pipecat Cloud. When running locally be sure to not import the KrispFilter module and don't apply it to your transport.\n\nIf you're experiencing issues with Krisp noise cancellation:\n\n* Verify Krisp VIVA is enabled in your deployment configuration\n* Confirm you've added the `KrispVivaFilter()` to your transport configuration\n* Check your logs for any Krisp-related error messages\n* Confirm that you have **not** added any Krisp-related dependencies to your `requirements.txt` or `pyproject.toml` files, as they are not needed and may cause conflicts.",
+  "code_samples": [
+    {
+      "code": "### 3. Enable Krisp VIVA in Your Deployment\n\nYou can enable Krisp VIVA when deploying your agent through:\n\n<Tabs>\n  <Tab title=\"Config File\">\n    In your `pcc-deploy.toml`:",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"CLI\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"REST API\">\n    When creating or updating an agent via the REST API, include the `krispViva` parameter:",
+      "language": "unknown"
+    },
+    {
+      "code": "To update an existing agent:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Enabling Krisp VIVA",
+      "id": "enabling-krisp-viva"
+    },
+    {
+      "level": "h3",
+      "text": "1. Use the Pipecat Base Image",
+      "id": "1.-use-the-pipecat-base-image"
+    },
+    {
+      "level": "h3",
+      "text": "2. Add the KrispVivaFilter() to Your Transport",
+      "id": "2.-add-the-krispvivafilter()-to-your-transport"
+    },
+    {
+      "level": "h3",
+      "text": "3. Enable Krisp VIVA in Your Deployment",
+      "id": "3.-enable-krisp-viva-in-your-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Testing Your Integration",
+      "id": "testing-your-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Pricing",
+      "id": "pricing"
+    },
+    {
+      "level": "h2",
+      "text": "Local Development",
+      "id": "local-development"
+    },
+    {
+      "level": "h2",
+      "text": "Troubleshooting",
+      "id": "troubleshooting"
+    }
+  ],
+  "url": "llms-txt#krisp-viva-noise-cancellation",
+  "links": []
+}

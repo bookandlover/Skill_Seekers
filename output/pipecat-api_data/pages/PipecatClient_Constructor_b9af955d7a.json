@@ -1,0 +1,43 @@
+{
+  "title": "PipecatClient Constructor",
+  "content": "Source: https://docs.pipecat.ai/client/js/api-reference/client-constructor\n\nSetting up the PipecatClient\n\n`PipecatClient` is the primary component for building the client-side portion of a client-bot interaction. It is designed to work with various transport layers, such as WebRTC, WebSockets, or HTTP, allowing you to pick and choose the communication layer that best suits your application while maintaining a consistent API.\n\n<Note>\n  When initializing the `PipecatClient`, you must provide a transport instance to the constructor for your chosen protocol or provider. See [Transport](/client/js/transports) for more information. For the purpose of this guide, we'll demonstrate using the [Daily WebRTC transport](/client/js/transports/daily).\n</Note>\n\n<ParamField type=\"Class<Transport>\">\n  An instance of the `Transport` type you will use to connect to your bot service (`PipecatClient.connect()`). Transports implement the underlying device management, connectivity, media transmission, and state logic that manage the lifecycle of your session.\n\n<Note>\n    As a best practice, we recommend you construct the transport inline in the client constructor, as opposed to holding a reference to it. Access to the transport is typically unnecessary. For advanced use cases that do require access to the transport, we recommend doing so via the `PipecatClient.transport` property, which provides some additional safeguards.\n  </Note>\n\n<ParamField type=\"RTVIEventCallbacks\">\n  Map of callback functions. See [callbacks](./callbacks).\n</ParamField>\n\n### Media Initialization\n\n<ParamField type=\"boolean\">\n  Enable user's local microphone device.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Enable user's local webcam device. Note: Not all transports support video. Setting this value in that case will have no effect.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Enable user's local screen share. Note: Not all transports support screen sharing. Setting this value in that case will have no effect.\n</ParamField>",
+  "code_samples": [
+    {
+      "code": "`PipecatClient` is the primary component for building the client-side portion of a client-bot interaction. It is designed to work with various transport layers, such as WebRTC, WebSockets, or HTTP, allowing you to pick and choose the communication layer that best suits your application while maintaining a consistent API.\n\n<Note>\n  When initializing the `PipecatClient`, you must provide a transport instance to the constructor for your chosen protocol or provider. See [Transport](/client/js/transports) for more information. For the purpose of this guide, we'll demonstrate using the [Daily WebRTC transport](/client/js/transports/daily).\n</Note>\n\n## Example",
+      "language": "unknown"
+    },
+    {
+      "code": "***\n\n## API reference\n\n### transport\n\n<ParamField type=\"Class<Transport>\">\n  An instance of the `Transport` type you will use to connect to your bot service (`PipecatClient.connect()`). Transports implement the underlying device management, connectivity, media transmission, and state logic that manage the lifecycle of your session.\n\n  <Note>\n    As a best practice, we recommend you construct the transport inline in the client constructor, as opposed to holding a reference to it. Access to the transport is typically unnecessary. For advanced use cases that do require access to the transport, we recommend doing so via the `PipecatClient.transport` property, which provides some additional safeguards.\n  </Note>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Example",
+      "id": "example"
+    },
+    {
+      "level": "h2",
+      "text": "API reference",
+      "id": "api-reference"
+    },
+    {
+      "level": "h3",
+      "text": "transport",
+      "id": "transport"
+    },
+    {
+      "level": "h3",
+      "text": "callbacks",
+      "id": "callbacks"
+    },
+    {
+      "level": "h3",
+      "text": "Media Initialization",
+      "id": "media-initialization"
+    }
+  ],
+  "url": "llms-txt#pipecatclient-constructor",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "When creating the outbound call, include custom parameters",
+  "content": "twiml = f\"\"\"\n<Response>\n  <Connect>\n    <Stream url=\"wss://your-server.com/ws\">\n      <Parameter name=\"campaign_id\" value=\"summer_sale\" />\n      <Parameter name=\"customer_id\" value=\"{customer_id}\" />\n      <Parameter name=\"call_type\" value=\"outbound\" />\n    </Stream>\n  </Connect>\n</Response>\n\"\"\"",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#when-creating-the-outbound-call,-include-custom-parameters",
+  "links": []
+}

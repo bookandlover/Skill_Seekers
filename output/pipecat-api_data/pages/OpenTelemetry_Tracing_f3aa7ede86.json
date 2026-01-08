@@ -1,0 +1,33 @@
+{
+  "title": "OpenTelemetry Tracing",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/opentelemetry\n\nMonitor and analyze your Pipecat conversational pipelines using OpenTelemetry\n\nPipecat includes built-in support for OpenTelemetry tracing, allowing you to gain deep visibility into your voice applications. Tracing helps you:\n\n* Track latency and performance across your conversation pipeline\n* Monitor service health and identify bottlenecks\n* Visualize conversation turns and service dependencies\n* Collect usage metrics and operational analytics\n\nTo use OpenTelemetry tracing with Pipecat, install the tracing dependencies:\n\n<Tip>\n  For local development and testing, we recommend using Jaeger as a trace collector.\n  You can run it with Docker:\n\nThen access the UI at [http://localhost:16686](http://localhost:16686)\n</Tip>\n\nEnabling tracing in your Pipecat application requires two steps:\n\n1. **Initialize the OpenTelemetry SDK** with your preferred exporter\n2. **Enable tracing in your PipelineTask**\n\n```python theme={null}\nimport os\nfrom opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter\nfrom pipecat.utils.tracing.setup import setup_tracing\nfrom pipecat.pipeline.task import PipelineTask, PipelineParams",
+  "code_samples": [
+    {
+      "code": "<Tip>\n  For local development and testing, we recommend using Jaeger as a trace collector.\n  You can run it with Docker:",
+      "language": "unknown"
+    },
+    {
+      "code": "Then access the UI at [http://localhost:16686](http://localhost:16686)\n</Tip>\n\n## Basic Setup\n\nEnabling tracing in your Pipecat application requires two steps:\n\n1. **Initialize the OpenTelemetry SDK** with your preferred exporter\n2. **Enable tracing in your PipelineTask**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Setup",
+      "id": "basic-setup"
+    }
+  ],
+  "url": "llms-txt#opentelemetry-tracing",
+  "links": []
+}

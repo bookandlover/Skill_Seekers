@@ -1,0 +1,19 @@
+{
+  "title": "Create context aggregator instance",
+  "content": "context_aggregator = LLMContextAggregatorPair(context)\npython theme={null}\nfrom pipecat.adapters.schemas.function_schema import FunctionSchema\nfrom pipecat.adapters.schemas.tools_schema import ToolsSchema",
+  "code_samples": [
+    {
+      "code": "**About LLMContext:**\n\n`LLMContext` is Pipecat's universal context container that stores conversation messages, tool definitions, and tool choice settings. It uses an OpenAI-compatible format that works across all LLM services through automatic adapter translation.\n\nKey properties:\n\n* **`messages`**: List of conversation messages (system, user, assistant, tool)\n* **`tools`**: Optional `ToolsSchema` defining available functions\n* **`tool_choice`**: Optional strategy for tool selection\n\n### 2. Context with Function Calling\n\nContext can also include tools (function definitions) that the LLM can call during conversations:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "2. Context with Function Calling",
+      "id": "2.-context-with-function-calling"
+    }
+  ],
+  "url": "llms-txt#create-context-aggregator-instance",
+  "links": []
+}

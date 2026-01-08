@@ -1,0 +1,19 @@
+{
+  "title": "Create AI Services",
+  "content": "stt = DeepgramSTTService(api_key=os.getenv(\"DEEPGRAM_API_KEY\"))\ntts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n    voice_id=\"71a7ad14-091c-4e8e-a314-022ece01c121\",\n)\nllm = OpenAILLMService(api_key=os.getenv(\"OPENAI_API_KEY\"))\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Pipecat supports many different AI services. You can swap out Deepgram for Azure Speech, OpenAI for Anthropic, or Cartesia for ElevenLabs without changing the rest of your code.\n\nSee the [supported services documentation](/server/services/supported-services) for all available options.\n\n### Context and Messages\n\nYour bot maintains conversation history using a context object, enabling multi-turn interactions where the bot remembers what was said earlier.\n\nThe context is initialized with a system message that defines the bot's personality:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Context and Messages",
+      "id": "context-and-messages"
+    }
+  ],
+  "url": "llms-txt#create-ai-services",
+  "links": []
+}

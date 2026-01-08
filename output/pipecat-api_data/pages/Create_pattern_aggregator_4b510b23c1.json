@@ -1,0 +1,8 @@
+{
+  "title": "Create pattern aggregator",
+  "content": "pattern_aggregator = PatternPairAggregator()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-pattern-aggregator",
+  "links": []
+}

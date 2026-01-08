@@ -1,0 +1,44 @@
+{
+  "title": "SmallWebRTCTransport",
+  "content": "Source: https://docs.pipecat.ai/server/services/transport/small-webrtc\n\nA lightweight WebRTC transport for peer-to-peer audio and video communication in Pipecat\n\n`SmallWebRTCTransport` enables peer-to-peer (\"serverless\") WebRTC connections between clients and your Pipecat application. It implements bidirectional audio, video and data channels using WebRTC for real-time communication. This transport is open source and self-contained, with no dependencies on any other infrastructure.\n\n<Tip>\n  For detailed notes on how to decide between using the SmallWebRTCTransport or\n  other WebRTC transports like the DailyTransport, see [this\n  post](https://www.daily.co/blog/you-dont-need-a-webrtc-server-for-your-voice-agents/).\n</Tip>\n\n<CardGroup>\n  <Card title=\"SmallWebRTC Transport API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.smallwebrtc.transport.html\">\n    Transport methods and configuration options\n  </Card>\n\n<Card title=\"SmallWebRTC Connection API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.smallwebrtc.connection.html\">\n    Connection management and signaling methods\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/p2p-webrtc/pipecat-cloud\">\n    Complete peer-to-peer voice agent example\n  </Card>\n\n<Card title=\"WebRTC Documentation\" icon=\"book\" href=\"https://webrtc.org/getting-started/overview\">\n    Official WebRTC protocol documentation\n  </Card>\n</CardGroup>\n\nTo use SmallWebRTCTransport, install the required dependencies:\n\n### WebRTC Application Setup\n\nBefore using SmallWebRTCTransport, you need:\n\n1. **Signaling Server**: Implement WebRTC offer/answer exchange (required)\n2. **Client Implementation**: Set up WebRTC client for browser or application use\n3. **ICE Configuration**: Configure STUN/TURN servers for NAT traversal (optional for local networks)\n4. **Development Runner**: Use Pipecat's development runner for quick setup (recommended)\n\n<Tip>\n  No API keys are required since this is a peer-to-peer transport\n  implementation. For production deployments across different networks, you may\n  need to configure STUN/TURN servers for NAT traversal.\n</Tip>\n\n### Configuration Options\n\n* **Development Runner**: Automatic server infrastructure and web interface (recommended)\n* **Manual Implementation**: Custom signaling server for advanced use cases\n* **ICE Servers**: STUN/TURN configuration for network traversal\n* **Media Configuration**: Audio/video parameters and format handling\n\n* **Serverless Architecture**: Direct peer-to-peer connections with no intermediate servers\n* **Production Ready**: Heavily tested and used in Pipecat examples\n* **Bidirectional Media**: Full-duplex audio and video streaming\n* **Data Channels**: Application messaging and signaling support\n* **Development Tools**: Built-in development runner with web interface\n\nSmallWebRTCTransport requires both a signaling server for WebRTC handshake and your Pipecat bot implementation. The easiest approach is using Pipecat's development runner which handles all server infrastructure automatically.\n\nSee the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/p2p-webrtc) for full implementations including:\n\n* Development runner setup with automatic web interface\n* Manual signaling server implementation\n* WebRTC client integration\n* ICE server configuration for production deployment",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "WebRTC Application Setup",
+      "id": "webrtc-application-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    },
+    {
+      "level": "h3",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#smallwebrtctransport",
+  "links": []
+}

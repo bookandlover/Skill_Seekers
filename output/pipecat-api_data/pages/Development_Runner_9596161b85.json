@@ -1,0 +1,44 @@
+{
+  "title": "Development Runner",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/runner/guide\n\nUnified runner for building voice AI bots with Daily, WebRTC, and telephony transports\n\nThe Pipecat development runner provides a unified way to run voice AI bots across multiple transport types. It handles infrastructure setup - creating Daily rooms, managing WebRTC connections, and routing telephony calls.\n\nA runner in Pipecat refers to a \"bot runner\", an HTTP service that provides a gateway for spawning bots on-demand. It's the component that enables your bot to run by providing it with server infrastructure and connection details like rooms and tokens.\n\nA bot runner typically creates transport sessions (like Daily WebRTC rooms), generates authentication tokens for both bots and users, spawns new bot processes when users request sessions, and manages bot lifecycle and cleanup. Think of it as the bridge between incoming user connections and your bot logic.\n\n## How the Development Runner Works\n\nThe development runner operates as a FastAPI web server that automatically discovers and executes your bot code. When you start the runner, it creates the necessary web endpoints and infrastructure for your chosen transport type.\n\n* **WebRTC connections**: It serves a built-in web interface where users can connect directly as well as an endpoint to create new WebRTC sessions\n* **Daily integration**: It provides endpoints that create new rooms and tokens and redirect users to join them\n* **Telephony providers**: For Twilio, it sets up webhook endpoints that handle incoming calls and establish WebSocket connections for audio streaming\n\nThe runner automatically detects which transport type you're using and configures the appropriate infrastructure. It then discovers your bot function and spawns new instances whenever users connect. This means you can focus on writing your bot logic while the runner handles all the server infrastructure, connection management, and transport-specific details.\n\nYour bot code receives runner arguments that contain everything it needs, including Daily room URLs and tokens, WebRTC connections, or WebSocket streams for telephony. The runner abstracts away the complexity of managing these different connection types, providing a unified interface for building bots that work across multiple platforms.\n\n## Pipecat Cloud Ready\n\nThe bot runner is designed to be cloud-ready, meaning that you can run the same bot code locally and deployed to Pipecat Cloud without any modifications. It automatically handles the differences in transport setup, providing you with the flexibility to test locally using a free transport, like SmallWebRTCTransport, but run in production using Daily or telephony transports.\n\n## Building with the Runner\n\nNow let's build a practical example to see how this works. The key insight is that your bot code is structured into two parts: the core bot logic that works with any transport, and the entry point that creates the appropriate transport based on the runner arguments.\n\nHere's the basic structure:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "## What is a Runner?\n\nA runner in Pipecat refers to a \"bot runner\", an HTTP service that provides a gateway for spawning bots on-demand. It's the component that enables your bot to run by providing it with server infrastructure and connection details like rooms and tokens.\n\nA bot runner typically creates transport sessions (like Daily WebRTC rooms), generates authentication tokens for both bots and users, spawns new bot processes when users request sessions, and manages bot lifecycle and cleanup. Think of it as the bridge between incoming user connections and your bot logic.\n\n## How the Development Runner Works\n\nThe development runner operates as a FastAPI web server that automatically discovers and executes your bot code. When you start the runner, it creates the necessary web endpoints and infrastructure for your chosen transport type.\n\n* **WebRTC connections**: It serves a built-in web interface where users can connect directly as well as an endpoint to create new WebRTC sessions\n* **Daily integration**: It provides endpoints that create new rooms and tokens and redirect users to join them\n* **Telephony providers**: For Twilio, it sets up webhook endpoints that handle incoming calls and establish WebSocket connections for audio streaming\n\nThe runner automatically detects which transport type you're using and configures the appropriate infrastructure. It then discovers your bot function and spawns new instances whenever users connect. This means you can focus on writing your bot logic while the runner handles all the server infrastructure, connection management, and transport-specific details.\n\nYour bot code receives runner arguments that contain everything it needs, including Daily room URLs and tokens, WebRTC connections, or WebSocket streams for telephony. The runner abstracts away the complexity of managing these different connection types, providing a unified interface for building bots that work across multiple platforms.\n\n## Pipecat Cloud Ready\n\nThe bot runner is designed to be cloud-ready, meaning that you can run the same bot code locally and deployed to Pipecat Cloud without any modifications. It automatically handles the differences in transport setup, providing you with the flexibility to test locally using a free transport, like SmallWebRTCTransport, but run in production using Daily or telephony transports.\n\n## Building with the Runner\n\nNow let's build a practical example to see how this works. The key insight is that your bot code is structured into two parts: the core bot logic that works with any transport, and the entry point that creates the appropriate transport based on the runner arguments.\n\nHere's the basic structure:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "What is a Runner?",
+      "id": "what-is-a-runner?"
+    },
+    {
+      "level": "h2",
+      "text": "How the Development Runner Works",
+      "id": "how-the-development-runner-works"
+    },
+    {
+      "level": "h2",
+      "text": "Pipecat Cloud Ready",
+      "id": "pipecat-cloud-ready"
+    },
+    {
+      "level": "h2",
+      "text": "Building with the Runner",
+      "id": "building-with-the-runner"
+    }
+  ],
+  "url": "llms-txt#development-runner",
+  "links": []
+}

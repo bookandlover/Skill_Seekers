@@ -1,0 +1,24 @@
+{
+  "title": "AWS ECR",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/aws-ecr\n\nDeploy Pipecat Cloud agents using Amazon Elastic Container Registry\n\nIf you're using AWS ECR with private repositories for Pipecat Cloud deployments, you'll need to configure image pull secrets to authenticate with your registry. **ECR tokens expire every 12 hours**, so you'll also need to set up automatic token refresh.\n\n## Authenticate Docker\n\nFirst, authenticate Docker with ECR:\n\n## Configure Image Pull Secrets\n\nUse the Pipecat Cloud REST API to store your ECR registry credentials:",
+  "code_samples": [
+    {
+      "code": "## Configure Image Pull Secrets\n\nUse the Pipecat Cloud REST API to store your ECR registry credentials:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Authenticate Docker",
+      "id": "authenticate-docker"
+    },
+    {
+      "level": "h2",
+      "text": "Configure Image Pull Secrets",
+      "id": "configure-image-pull-secrets"
+    }
+  ],
+  "url": "llms-txt#aws-ecr",
+  "links": []
+}

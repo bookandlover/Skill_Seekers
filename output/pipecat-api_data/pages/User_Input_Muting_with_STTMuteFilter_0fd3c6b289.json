@@ -1,0 +1,39 @@
+{
+  "title": "User Input Muting with STTMuteFilter",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/user-input-muting\n\nLearn how to control when user speech is processed in your conversational bot\n\nIn conversational applications, there are moments when you don't want to process user speech, such as during bot introductions or while executing function calls. Pipecat's `STTMuteFilter` lets you selectively \"mute\" user input based on different conversation states.\n\n## When to Use STTMuteFilter\n\nCommon scenarios for muting user input include:\n\n* **During introductions**: Prevent the bot from being interrupted during its initial greeting\n* **While processing functions**: Block input while the bot is retrieving external data\n* **During bot speech**: Reduce false transcriptions while the bot is speaking\n* **For guided conversations**: Create more structured interactions with clear turn-taking\n\nThe `STTMuteFilter` works by blocking specific user-related frames from flowing through your pipeline. When muted, it filters:\n\n* Voice activity detection (VAD) events\n* Interruption signals\n* Raw audio input frames\n* Transcription frames\n\nThis prevents the Speech-to-Text service from receiving and processing the user's speech during muted periods.\n\n<Note>\n  The filter must be placed between your STT service and context aggregator in\n  the pipeline to work correctly.\n</Note>\n\nThe `STTMuteFilter` supports several strategies for determining when to mute user input:\n\n<CardGroup>\n  <Card title=\"FIRST_SPEECH\" icon=\"microphone-slash\">\n    Mute only during the bot's first speech utterance. Useful for introductions\n    when you want the bot to complete its greeting before the user can speak.\n  </Card>\n\n<Card title=\"MUTE_UNTIL_FIRST_BOT_COMPLETE\" icon=\"hourglass-half\">\n    Start muted and remain muted until the first bot utterance completes.\n    Ensures the bot's initial instructions are fully delivered.\n  </Card>\n\n<Card title=\"FUNCTION_CALL\" icon=\"gear\">\n    Mute during function calls. Prevents users from speaking while the bot is\n    processing external data requests.\n  </Card>\n\n<Card title=\"ALWAYS\" icon=\"volume-xmark\">\n    Mute whenever the bot is speaking. Creates a strict turn-taking conversation\n    pattern.\n  </Card>\n\n<Card title=\"CUSTOM\" icon=\"sliders\">\n    Use custom logic via callback to determine when to mute. Provides maximum\n    flexibility for complex muting rules.\n  </Card>\n</CardGroup>\n\n<Warning>\n  The `FIRST_SPEECH` and `MUTE_UNTIL_FIRST_BOT_COMPLETE` strategies should not\n  be used together as they handle the first bot speech differently.\n</Warning>\n\n## Basic Implementation\n\n### Step 1: Configure the Filter\n\nFirst, create a configuration for the `STTMuteFilter`:\n\n```python theme={null}\nfrom pipecat.processors.filters.stt_mute_filter import STTMuteConfig, STTMuteFilter, STTMuteStrategy",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "When to Use STTMuteFilter",
+      "id": "when-to-use-sttmutefilter"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Mute Strategies",
+      "id": "mute-strategies"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Implementation",
+      "id": "basic-implementation"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Configure the Filter",
+      "id": "step-1:-configure-the-filter"
+    }
+  ],
+  "url": "llms-txt#user-input-muting-with-sttmutefilter",
+  "links": []
+}

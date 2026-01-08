@@ -1,0 +1,63 @@
+{
+  "title": "Speech Input & Turn Detection",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/speech-input\n\nLearn how Pipecat detects when users start and stop speaking, and manages conversation turns\n\nUnderstanding how your bot detects and processes user speech is crucial for creating natural conversations. Pipecat provides sophisticated Voice Activity Detection (VAD) and turn detection to handle the complex timing of real-time conversations.\n\nSpeech input processing involves three key components:\n\n* **VAD Analyzer**: Detects when users start and stop speaking\n* **Turn Analyzer**: Determines when users have finished their turn\n* **Speech Events**: System frames that coordinate pipeline behavior\n\nThese components work together to create natural conversation flow and enable interruptions.\n\n## Voice Activity Detection (VAD)\n\nVAD is responsible for detecting when a user starts and stops speaking. Pipecat uses the [Silero VAD](https://github.com/snakers4/silero-vad), an open-source model that runs locally on CPU with minimal overhead.\n\n**Performance characteristics:**\n\n* Processes 30+ms audio chunks in less than 1ms\n* Runs on a single CPU thread\n* Minimal system resource impact\n\n### VAD Configuration\n\nVAD is configured through `VADParams` in your transport setup:\n\n**`start_secs` (default: 0.2)**\n\n* How long a user must speak before VAD confirms speech has started\n* Lower values = more responsive, but may trigger on brief sounds\n* Higher values = less sensitive, but may miss quick utterances, like \"yes\", \"no\", or \"ok\"\n\n**`stop_secs` (default: 0.8)**\n\n* How much silence must be detected before confirming speech has stopped\n* Critical for turn-taking behavior\n* Modified automatically when using turn detection\n\n**`confidence` and `min_volume`**\n\n* Generally work well with defaults\n* Only adjust after extensive testing with your specific audio conditions\n\n<Warning>\n  Changing confidence and min\\_volume requires careful profiling to ensure\n  optimal performance across different audio environments and use cases.\n</Warning>\n\n### Beyond Simple VAD\n\nWhile VAD detects speech vs. silence, it can't understand linguistic context. Humans use grammar, tone, pace, and semantic cues to determine conversation turns. Pipecat's turn detection brings this sophistication to voice AI.\n\nPipecat integrates with the [smart-turn model](https://github.com/pipecat-ai/smart-turn), an open-source native audio turn detection model:\n\n**Smart Turn v3 features:**\n\n* Support for 23 languages\n* Runs on CPU (no GPU required)\n* Community-driven development\n* BSD 2-clause license (truly open)\n\n### VAD + Turn Detection Integration\n\nWhen using turn detection, VAD and turn analyzer work together:\n\n1. **VAD detects speech segments** with low `stop_secs` (recommended: 0.2)\n2. **Turn model analyzes audio** to determine if turn is complete or incomplete\n3. **VAD behavior adjusts** based on turn model results:\n   * **Complete**: Normal VAD stop behavior\n   * **Incomplete**: Extends waiting time (default: 3.0 seconds)\n\n**Recommended VAD configuration with turn detection:**\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "### Key Parameters\n\n**`start_secs` (default: 0.2)**\n\n* How long a user must speak before VAD confirms speech has started\n* Lower values = more responsive, but may trigger on brief sounds\n* Higher values = less sensitive, but may miss quick utterances, like \"yes\", \"no\", or \"ok\"\n\n**`stop_secs` (default: 0.8)**\n\n* How much silence must be detected before confirming speech has stopped\n* Critical for turn-taking behavior\n* Modified automatically when using turn detection\n\n**`confidence` and `min_volume`**\n\n* Generally work well with defaults\n* Only adjust after extensive testing with your specific audio conditions\n\n<Warning>\n  Changing confidence and min\\_volume requires careful profiling to ensure\n  optimal performance across different audio environments and use cases.\n</Warning>\n\n## Turn Detection\n\n### Beyond Simple VAD\n\nWhile VAD detects speech vs. silence, it can't understand linguistic context. Humans use grammar, tone, pace, and semantic cues to determine conversation turns. Pipecat's turn detection brings this sophistication to voice AI.\n\n### smart-turn Model\n\nPipecat integrates with the [smart-turn model](https://github.com/pipecat-ai/smart-turn), an open-source native audio turn detection model:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Smart Turn v3 features:**\n\n* Support for 23 languages\n* Runs on CPU (no GPU required)\n* Community-driven development\n* BSD 2-clause license (truly open)\n\n### VAD + Turn Detection Integration\n\nWhen using turn detection, VAD and turn analyzer work together:\n\n1. **VAD detects speech segments** with low `stop_secs` (recommended: 0.2)\n2. **Turn model analyzes audio** to determine if turn is complete or incomplete\n3. **VAD behavior adjusts** based on turn model results:\n   * **Complete**: Normal VAD stop behavior\n   * **Incomplete**: Extends waiting time (default: 3.0 seconds)\n\n**Recommended VAD configuration with turn detection:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Voice Activity Detection (VAD)",
+      "id": "voice-activity-detection-(vad)"
+    },
+    {
+      "level": "h3",
+      "text": "What VAD Does",
+      "id": "what-vad-does"
+    },
+    {
+      "level": "h3",
+      "text": "VAD Configuration",
+      "id": "vad-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Key Parameters",
+      "id": "key-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Turn Detection",
+      "id": "turn-detection"
+    },
+    {
+      "level": "h3",
+      "text": "Beyond Simple VAD",
+      "id": "beyond-simple-vad"
+    },
+    {
+      "level": "h3",
+      "text": "smart-turn Model",
+      "id": "smart-turn-model"
+    },
+    {
+      "level": "h3",
+      "text": "VAD + Turn Detection Integration",
+      "id": "vad-+-turn-detection-integration"
+    }
+  ],
+  "url": "llms-txt#speech-input-&-turn-detection",
+  "links": []
+}

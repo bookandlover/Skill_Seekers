@@ -1,0 +1,8 @@
+{
+  "title": "Generate agent token for your bot",
+  "content": "agent_token = generate_token_with_agent(\"my-room\", \"Pipecat Bot\", api_key, api_secret)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#generate-agent-token-for-your-bot",
+  "links": []
+}

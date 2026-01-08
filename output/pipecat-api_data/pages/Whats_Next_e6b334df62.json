@@ -1,0 +1,24 @@
+{
+  "title": "What's Next",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/whats-next\n\nContinue your Pipecat journey with advanced features, examples, and production deployment\n\n## You've Mastered Voice AI Pipelines! 🎉\n\nCongratulations! You've learned how to build complete voice AI applications with Pipecat. You're now well on your way to understanding pipelines, processors, transports, and all the components needed to create sophisticated conversational AI.\n\n<CardGroup>\n  <Card title=\"Explore Examples\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples\">\n    **Production-ready applications** - Dive into 30+ complete examples including\n    multimodal bots, creative applications, and enterprise integrations.\n  </Card>\n\n<Card title=\"Advanced Guides\" icon=\"book-open\" href=\"/guides/fundamentals/custom-frame-processor\">\n    **Master advanced features** - Explore specialized topics like telephony,\n    deployment, custom processors, and production optimization.\n  </Card>\n</CardGroup>\n\n## 💬 Join the Community\n\nGet involved with the Pipecat community to share your projects, get support, and contribute to the ecosystem:\n\n* **[Discord Community](https://discord.gg/pipecat)**: Get support, share projects, and connect with other developers\n* **[GitHub](https://github.com/pipecat-ai/pipecat)**: Contribute to the project and report issues\n* **[Examples Repository](https://github.com/pipecat-ai/pipecat-examples)**: Community-contributed applications",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "You've Mastered Voice AI Pipelines! 🎉",
+      "id": "you've-mastered-voice-ai-pipelines!-🎉"
+    },
+    {
+      "level": "h2",
+      "text": "Choose Your Path",
+      "id": "choose-your-path"
+    },
+    {
+      "level": "h2",
+      "text": "💬 Join the Community",
+      "id": "💬-join-the-community"
+    }
+  ],
+  "url": "llms-txt#what's-next",
+  "links": []
+}

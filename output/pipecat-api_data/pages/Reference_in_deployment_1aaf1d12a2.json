@@ -1,0 +1,34 @@
+{
+  "title": "Reference in deployment",
+  "content": "pipecat cloud deploy my-agent my-image:latest --secret-set my-agent-secrets\nbash theme={null}",
+  "code_samples": [
+    {
+      "code": "<Info>\n  Secrets are encrypted at rest and in transit, then securely injected as\n  environment variables in your agent's runtime.\n</Info>\n\n<Warning>\n  When you update or rotate API keys in a secret set, you must redeploy your\n  agent to apply these changes. Updated secrets are not automatically propagated\n  to running deployments.\n</Warning>\n\n### Is my agent code secure during development?\n\nYour local development environment and version control security are your responsibility. We recommend:\n\n* Using private repositories\n* Implementing branch protection\n* Scanning code for security issues\n* Never committing secrets or credentials\n\n## Deployment Security\n\n### How do I secure my agent container?\n\nFollow these container security best practices:\n\n1. Start with our [official base image](https://github.com/daily-co/pipecat-cloud-images/tree/main/pipecat-base) for a pre-hardened configuration\n2. Include only necessary components to reduce attack surface\n3. Keep dependencies updated to patch vulnerabilities\n4. Use container scanning tools before deployment\n\n### Are my private container images secure?\n\nIf you use private container registries, Pipecat Cloud supports secure image pulls:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Is my agent code secure during development?",
+      "id": "is-my-agent-code-secure-during-development?"
+    },
+    {
+      "level": "h2",
+      "text": "Deployment Security",
+      "id": "deployment-security"
+    },
+    {
+      "level": "h3",
+      "text": "How do I secure my agent container?",
+      "id": "how-do-i-secure-my-agent-container?"
+    },
+    {
+      "level": "h3",
+      "text": "Are my private container images secure?",
+      "id": "are-my-private-container-images-secure?"
+    }
+  ],
+  "url": "llms-txt#reference-in-deployment",
+  "links": []
+}

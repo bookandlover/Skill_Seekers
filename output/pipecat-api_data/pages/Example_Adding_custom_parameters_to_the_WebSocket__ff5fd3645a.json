@@ -1,0 +1,23 @@
+{
+  "title": "Example: Adding custom parameters to the WebSocket URL",
+  "content": "xml = f\"\"\"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Response>\n  <Stream bidirectional=\"true\" keepCallAlive=\"true\" contentType=\"audio/x-mulaw;rate=8000\">\n    wss://your-server.com/ws?user_id={user_id}&amp;session_type=support&amp;campaign_id=summer_sale\n  </Stream>\n</Response>\"\"\"\npython bot.py theme={null}\nfrom pipecat.runner.utils import parse_telephony_websocket\n\nasync def run_bot(websocket: WebSocket):\n    # Parse Plivo WebSocket data\n    transport_type, call_data = await parse_telephony_websocket(websocket)\n\n# Extract call information\n    stream_id = call_data[\"stream_id\"]\n    call_id = call_data[\"call_id\"]  # Plivo's CallUUID\npython bot.py theme={null}",
+  "code_samples": [
+    {
+      "code": "These parameters are accessible in your server code and can be used to customize your bot's behavior based on the specific call context.\n\n<Card title=\"Complete Server Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/plivo-chatbot/inbound/server.py\">\n  See the full FastAPI server code with XML generation and WebSocket handling\n</Card>\n\n### Configure your Pipecat bot for dial-in\n\nYour bot receives the WebSocket connection and parses the call data to extract call information. The key components are:\n\n**WebSocket Parsing**: Pipecat's built-in parser extracts call data from Plivo's WebSocket messages:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Transport Creation**: Configure the WebSocket transport with Plivo serialization:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Configure your Pipecat bot for dial-in",
+      "id": "configure-your-pipecat-bot-for-dial-in"
+    }
+  ],
+  "url": "llms-txt#example:-adding-custom-parameters-to-the-websocket-url",
+  "links": []
+}

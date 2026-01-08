@@ -1,0 +1,8 @@
+{
+  "title": "Initialize tracing if enabled",
+  "content": "if os.getenv(\"ENABLE_TRACING\"):\n    # Create the exporter\n    otlp_exporter = OTLPSpanExporter(\n        endpoint=os.getenv(\"OTEL_EXPORTER_OTLP_ENDPOINT\", \"http://localhost:4317\"),\n        insecure=True,\n    )\n\n# Set up tracing with the exporter\n    setup_tracing(\n        service_name=\"pipecat-demo\",\n        exporter=otlp_exporter,\n        console_export=bool(os.getenv(\"OTEL_CONSOLE_EXPORT\")),\n    )",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-tracing-if-enabled",
+  "links": []
+}

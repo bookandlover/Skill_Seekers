@@ -1,0 +1,53 @@
+{
+  "title": "Daily WebRTC",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/daily-webrtc\n\nUsing Daily as a WebRTC transport for your Pipecat Cloud agents\n\n[Daily](https://www.daily.co) is a WebRTC platform that provides real-time voice and video capabilities to connect users with voice agents.\n\nPipecat Cloud offers a first-class integration with Daily, making it straightforward to deploy WebRTC-enabled agents without managing complex infrastructure yourself.\n\n## Using an Integrated Daily API Key\n\nWhen you create a Pipecat Cloud account, you're automatically provisioned with a Daily API key that's fully integrated with the platform.\n\nThe integrated Daily API key provides:\n\n* **Zero configuration**: No need to separately sign up for Daily or manage API keys\n* **Free voice minutes**: Voice minutes for one human participant and one agent are free when using your Pipecat Cloud-provisioned Daily key\n* **Simplified deployment**: Create Daily rooms and launch agents with a single command\n* **Built-in compatibility**: All Pipecat base images work with Daily out of the box\n\n<Info>\n  While 1:1 voice minutes are included, additional Daily features like\n  recording, transcription, and PSTN/SIP connections are billed according to\n  [Daily's standard pricing](https://www.daily.co/pricing).\n</Info>\n\n## Using Daily with Pipecat Cloud Agents\n\n### Starting an Agent with Daily Transport\n\nWhen starting a Pipecat Cloud agent, you can specify Daily as the transport using the `--use-daily` flag with the CLI or setting the appropriate parameters in the SDK or REST API calls.\n\n<Tabs>\n  <Tab title=\"CLI\">\n\nThis command creates a Daily room and provides a URL you can open in your browser to interact with your agent using voice.\n  </Tab>\n\n<Tab title=\"Python SDK\">\n    \n  </Tab>\n\n<Tab title=\"REST API\">\n\nThe response includes `dailyRoom` (URL) and `dailyToken` fields that can be used to join the call.\n  </Tab>\n</Tabs>\n\n### Using Your Own Daily API Key\n\nWhile Pipecat Cloud provides a Daily API key with included 1:1 voice minutes, you can optionally use your own Daily API key if you have specific requirements. When using your own key, all usage will be billed according to your Daily account's pricing plan rather than being included with your Pipecat Cloud subscription.\n\n## WebRTC vs. WebSockets for Voice AI\n\nWhen building voice AI applications, choosing the right transport technology is crucial:\n\n* **WebRTC** is purpose-built for real-time audio and video communication between browsers and devices:\n\n* Optimized for real-time media streaming over unpredictable networks\n  * Uses UDP protocol, prioritizing speed over guaranteed packet delivery\n  * Provides built-in echo cancellation and noise suppression\n  * Intelligently adapts bitrate based on changing network conditions\n  * Handles NAT traversal for connections across different networks\n  * Includes device management for cameras and microphones\n\n* **WebSockets** work well for server-to-server communication because:\n  * They operate in controlled network environments with stable connections\n  * When server-to-server latency is low, packet retransmission doesn't add substantial delay\n  * Server environments don't need device access or media quality enhancements\n  * They're simpler to implement for pure data transmission\n  * Many server platforms have built-in WebSocket support\n\n<Info>\n  For browser or mobile app voice applications, WebRTC delivers superior\n  performance across varying network conditions. For more details, see [How to\n  Talk to an LLM with Your\n  Voice](https://www.daily.co/blog/how-to-talk-to-an-llm-with-your-voice/#webrtc).\n</Info>\n\nWhen connecting to telephony systems like Twilio or implementing server-to-server communication where network conditions are controlled and reliable, WebSockets remain an appropriate choice. However, for any user-facing voice or video application, WebRTC offers significant advantages in quality and reliability.\n\nWhen you start an agent with Daily integration:\n\n1. Pipecat Cloud creates a Daily room using your API key (either the provisioned one or your custom key)\n2. A URL and access token is generated, creating a means to access the Daily room\n3. The agent is started and configured to join the Daily room\n4. Your code (in `bot.py`) receives the room URL and token as parameters\n5. The Pipecat framework automatically connects to the Daily room using these parameters\n\nThe basic flow is handled for you, allowing you to focus on building your agent's conversation logic rather than WebRTC infrastructure.\n\n<CardGroup>\n  <Card title=\"Daily WebRTC docs\" icon=\"globe\" href=\"https://docs.daily.co\">\n    Explore Daily's complete documentation for additional features\n  </Card>\n\n<Card title=\"DailyTransport Pipecat Docs\" icon=\"puzzle-piece\" href=\"/server/services/transport/daily\">\n    Explore Pipecat's DailyTransport documentation\n  </Card>\n\n<Card title=\"Pipecat Examples\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples\">\n    View example Pipecat projects using Daily WebRTC\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "This command creates a Daily room and provides a URL you can open in your browser to interact with your agent using voice.\n  </Tab>\n\n  <Tab title=\"Python SDK\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"REST API\">",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Using an Integrated Daily API Key",
+      "id": "using-an-integrated-daily-api-key"
+    },
+    {
+      "level": "h2",
+      "text": "Using Daily with Pipecat Cloud Agents",
+      "id": "using-daily-with-pipecat-cloud-agents"
+    },
+    {
+      "level": "h3",
+      "text": "Starting an Agent with Daily Transport",
+      "id": "starting-an-agent-with-daily-transport"
+    },
+    {
+      "level": "h3",
+      "text": "Using Your Own Daily API Key",
+      "id": "using-your-own-daily-api-key"
+    },
+    {
+      "level": "h2",
+      "text": "WebRTC vs. WebSockets for Voice AI",
+      "id": "webrtc-vs.-websockets-for-voice-ai"
+    },
+    {
+      "level": "h2",
+      "text": "How it Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#daily-webrtc",
+  "links": []
+}

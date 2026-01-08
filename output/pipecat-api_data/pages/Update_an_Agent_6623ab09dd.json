@@ -1,0 +1,8 @@
+{
+  "title": "Update an Agent",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-update\n\nPOST /agents/{agentName}\nUpdate an existing agent's configuration or deploy a new version.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#update-an-agent",
+  "links": []
+}

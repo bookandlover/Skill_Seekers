@@ -1,0 +1,29 @@
+{
+  "title": "SDK Introduction",
+  "content": "Source: https://docs.pipecat.ai/client/react/introduction\n\nBuild React applications with Pipecat's React client library\n\nThe Pipecat React SDK provides React-specific components and hooks for building voice and multimodal AI applications. It wraps the core JavaScript SDK functionality in an idiomatic React interface that handles:\n\n* React context for client state management\n* Components for audio and video rendering\n* Hooks for accessing client functionality\n* Media device management\n* Event handling through hooks\n\nInstall the SDK, core client, and a transport implementation (e.g. Daily for WebRTC):\n\nHere's a simple example using Daily as the transport layer:\n\n<CardGroup>\n  <Card title=\"Components\" icon=\"puzzle-piece\" href=\"/client/react/components\">\n    Ready-to-use components for audio, video, and visualization\n  </Card>\n\n<Card title=\"Hooks\" icon=\"code\" href=\"/client/react/hooks\">\n    React hooks for accessing client functionality\n  </Card>\n</CardGroup>\n\nThe Pipecat React SDK builds on top of the [JavaScript SDK](/client/js/introduction) to provide an idiomatic React interface while maintaining compatibility with the RTVI standard.",
+  "code_samples": [
+    {
+      "code": "## Example\n\nHere's a simple example using Daily as the transport layer:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Example",
+      "id": "example"
+    },
+    {
+      "level": "h2",
+      "text": "Explore the SDK",
+      "id": "explore-the-sdk"
+    }
+  ],
+  "url": "llms-txt#sdk-introduction",
+  "links": []
+}

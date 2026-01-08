@@ -1,0 +1,8 @@
+{
+  "title": "Create filter that notifies when certain wake phrases are detected",
+  "content": "async def wake_phrase_filter(frame):\n    if isinstance(frame, TranscriptionFrame):\n        return \"hey assistant\" in frame.text.lower()\n    return False",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-filter-that-notifies-when-certain-wake-phrases-are-detected",
+  "links": []
+}

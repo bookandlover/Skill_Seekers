@@ -1,0 +1,8 @@
+{
+  "title": "List of require env vars our bot requires",
+  "content": "REQUIRED_ENV_VARS = [\n    'DAILY_API_KEY',\n    'OPENAI_API_KEY',\n    'ELEVENLABS_API_KEY',\n    'ELEVENLABS_VOICE_ID']\n\ndaily_rest_helper = DailyRESTHelper(\n    os.getenv(\"DAILY_API_KEY\", \"\"),\n    os.getenv(\"DAILY_API_URL\", 'https://api.daily.co/v1'))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#list-of-require-env-vars-our-bot-requires",
+  "links": []
+}

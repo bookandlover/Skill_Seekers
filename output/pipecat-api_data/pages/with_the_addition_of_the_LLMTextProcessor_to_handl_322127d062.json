@@ -1,0 +1,8 @@
+{
+  "title": "with the addition of the LLMTextProcessor to handle special text segments.",
+  "content": "pipeline = Pipeline(\n    [\n        transport.input(),\n        rtvi,\n        stt,\n        transcript_processor.user(),\n        context_aggregator.user(),\n        llm,\n        llm_text_processor,\n        tts,\n        transport.output(),\n        transcript_processor.assistant(),\n        context_aggregator.assistant(),\n    ]\n)\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#with-the-addition-of-the-llmtextprocessor-to-handle-special-text-segments.",
+  "links": []
+}

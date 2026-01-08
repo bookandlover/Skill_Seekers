@@ -1,0 +1,44 @@
+{
+  "title": "LLM Inference",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/llm\n\nLearn how to configure language models to generate intelligent responses in your voice AI pipeline\n\n**LLM services** are responsible for chat completions and tool calling based on the provided context (conversation history). The LLM responds by streaming tokens via `LLMTextFrame`s, which are used by subsequent processors to create audio output for the bot.\n\n## Pipeline Placement\n\nThe LLM instance should be placed after the user context aggregator and before any downstream services that depend on the LLM's output stream:\n\n* **Input**: Receives `LLMContextFrame` containing conversation history\n* **Processing**:\n  * Analyzes context and generates streaming response\n  * Handles function calls if tools are available\n  * Tracks token usage for metrics\n* **Output**:\n  * Denotes the start of the streaming response by pushing an `LLMFullResponseStartFrame`\n  * Streams `LLMTextFrame`s containing response tokens to downstream processors (enables real-time TTS processing)\n  * Ends with an `LLMFullResponseEndFrame` to mark the completion of the response\n* **Function calls:**\n  * `FunctionCallsStartedFrame`: Indicates function execution beginning\n  * `FunctionCallInProgressFrame`: Indicates a function is currently executing\n  * `FunctionCallResultFrame`: Contains results from executed functions\n\n## Supported LLM Services\n\nPipecat supports a wide range of LLM providers to fit different needs, performance requirements, and budgets:\n\nMost LLM services are built on the OpenAI chat completion specification for compatibility:\n\n<CardGroup>\n  <Card title=\"OpenAI\" icon=\"openai\">\n    GPT models with the original chat completion API\n  </Card>\n\n<Card title=\"Anthropic\" icon=\"anthropic\">\n    Claude models with advanced reasoning capabilities\n  </Card>\n\n<Card title=\"Google Gemini\" icon=\"google\">\n    Multimodal capabilities with competitive performance\n  </Card>\n\n<Card title=\"AWS Bedrock\" icon=\"aws\">\n    Enterprise-grade hosting for various foundation models\n  </Card>\n</CardGroup>\n\n**Compatible APIs**: Any OpenAI-spec compatible service can be used via the `base_url` parameter.\n\n### Speech-to-Speech Models\n\nFor lower latency, some providers offer direct speech-to-speech models:\n\n* **OpenAI Realtime**: Direct speech input/output with GPT models\n* **Gemini Live**: Real-time speech conversations with Gemini\n* **AWS Nova Sonic**: Speech-optimized models on Bedrock\n\nFor a complete list of supported LLM services, see the Supported Services page:\n\n<Card title=\"Supported LLM Services\" icon=\"list\" href=\"/server/services/supported-services#large-language-models\">\n  View the complete list of supported language model providers\n</Card>\n\n## LLM Service Architecture\n\n### BaseOpenAILLMService\n\nMany LLM services use the OpenAI chat completion specification. Pipecat provides a `BaseOpenAILLMService` that most providers extend, enabling easy switching between compatible services:\n\n```python theme={null}\nfrom pipecat.services.openai.llm import OpenAILLMService",
+  "code_samples": [
+    {
+      "code": "**Frame flow:**\n\n* **Input**: Receives `LLMContextFrame` containing conversation history\n* **Processing**:\n  * Analyzes context and generates streaming response\n  * Handles function calls if tools are available\n  * Tracks token usage for metrics\n* **Output**:\n  * Denotes the start of the streaming response by pushing an `LLMFullResponseStartFrame`\n  * Streams `LLMTextFrame`s containing response tokens to downstream processors (enables real-time TTS processing)\n  * Ends with an `LLMFullResponseEndFrame` to mark the completion of the response\n* **Function calls:**\n  * `FunctionCallsStartedFrame`: Indicates function execution beginning\n  * `FunctionCallInProgressFrame`: Indicates a function is currently executing\n  * `FunctionCallResultFrame`: Contains results from executed functions\n\n## Supported LLM Services\n\nPipecat supports a wide range of LLM providers to fit different needs, performance requirements, and budgets:\n\n### Text-Based LLMs\n\nMost LLM services are built on the OpenAI chat completion specification for compatibility:\n\n<CardGroup>\n  <Card title=\"OpenAI\" icon=\"openai\">\n    GPT models with the original chat completion API\n  </Card>\n\n  <Card title=\"Anthropic\" icon=\"anthropic\">\n    Claude models with advanced reasoning capabilities\n  </Card>\n\n  <Card title=\"Google Gemini\" icon=\"google\">\n    Multimodal capabilities with competitive performance\n  </Card>\n\n  <Card title=\"AWS Bedrock\" icon=\"aws\">\n    Enterprise-grade hosting for various foundation models\n  </Card>\n</CardGroup>\n\n**Compatible APIs**: Any OpenAI-spec compatible service can be used via the `base_url` parameter.\n\n### Speech-to-Speech Models\n\nFor lower latency, some providers offer direct speech-to-speech models:\n\n* **OpenAI Realtime**: Direct speech input/output with GPT models\n* **Gemini Live**: Real-time speech conversations with Gemini\n* **AWS Nova Sonic**: Speech-optimized models on Bedrock\n\nFor a complete list of supported LLM services, see the Supported Services page:\n\n<Card title=\"Supported LLM Services\" icon=\"list\" href=\"/server/services/supported-services#large-language-models\">\n  View the complete list of supported language model providers\n</Card>\n\n## LLM Service Architecture\n\n### BaseOpenAILLMService\n\nMany LLM services use the OpenAI chat completion specification. Pipecat provides a `BaseOpenAILLMService` that most providers extend, enabling easy switching between compatible services:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Pipeline Placement",
+      "id": "pipeline-placement"
+    },
+    {
+      "level": "h2",
+      "text": "Supported LLM Services",
+      "id": "supported-llm-services"
+    },
+    {
+      "level": "h3",
+      "text": "Text-Based LLMs",
+      "id": "text-based-llms"
+    },
+    {
+      "level": "h3",
+      "text": "Speech-to-Speech Models",
+      "id": "speech-to-speech-models"
+    },
+    {
+      "level": "h2",
+      "text": "LLM Service Architecture",
+      "id": "llm-service-architecture"
+    },
+    {
+      "level": "h3",
+      "text": "BaseOpenAILLMService",
+      "id": "baseopenaillmservice"
+    }
+  ],
+  "url": "llms-txt#llm-inference",
+  "links": []
+}

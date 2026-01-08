@@ -1,0 +1,8 @@
+{
+  "title": "API Reference",
+  "content": "Source: https://docs.pipecat.ai/client/react-native/api-reference\n\nAPI reference for the Pipecat React Native SDK\n\n<Note>\n  The Pipecat React Native SDK leverages the Pipecat JavaScript SDK for seamless integration with React Native applications.\n  For detailed information, please reference to the [Javascript SDK docs](/client/js/api-reference/client-constructor).\n\n**Just ensure you use the appropriate transport layer for React Native.**\n</Note>",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#api-reference",
+  "links": []
+}

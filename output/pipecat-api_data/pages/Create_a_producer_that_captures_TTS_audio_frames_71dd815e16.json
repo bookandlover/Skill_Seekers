@@ -1,0 +1,8 @@
+{
+  "title": "Create a producer that captures TTS audio frames",
+  "content": "async def is_tts_audio(frame: Frame) -> bool:\n    return isinstance(frame, TTSAudioRawFrame)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-a-producer-that-captures-tts-audio-frames",
+  "links": []
+}

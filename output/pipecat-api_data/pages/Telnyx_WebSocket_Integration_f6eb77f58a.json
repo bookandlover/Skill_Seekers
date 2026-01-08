@@ -1,0 +1,62 @@
+{
+  "title": "Telnyx WebSocket Integration",
+  "content": "Source: https://docs.pipecat.ai/guides/telephony/telnyx-websockets\n\nComplete guide to using Telnyx Media Streaming with Pipecat for dial-in and dial-out functionality\n\n## Things you'll need\n\n* An active [Telnyx](https://telnyx.com) account with API credentials\n* One or more Telnyx provisioned phone numbers\n* A public-facing server or tunneling service like [ngrok](https://ngrok.com/) (for dial-out only)\n* API keys for speech-to-text, text-to-speech, and LLM services\n\n<CardGroup>\n  <Card title=\"Telnyx Dial-in Example\" icon=\"phone-arrow-down-left\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/telnyx-chatbot/inbound\">\n    Complete dial-in implementation using Telnyx Media Streaming over WebSocket\n  </Card>\n\n<Card title=\"Telnyx Dial-out Example\" icon=\"phone-arrow-up-right\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/telnyx-chatbot/outbound\">\n    Outbound calling using Telnyx Media Streaming with WebSocket transport\n  </Card>\n</CardGroup>\n\n## Phone Number Setup\n\nYou'll need Telnyx phone numbers for both dial-in and dial-out functionality:\n\n* Visit [telnyx.com](https://telnyx.com) and purchase phone numbers\n* Ensure your numbers support Voice capabilities\n* Configure TeXML applications for dial-in numbers (covered below)\n\nConfigure your environment variables for Telnyx and AI services:\n\nDial-in allows users to call your Telnyx number and connect to your Pipecat bot via WebSocket Media Streaming. Unlike Twilio, Telnyx automatically provides caller information (to/from numbers) in the WebSocket messages, so no custom server is needed for basic dial-in functionality.\n\nHere's the sequence of events when someone calls your Telnyx number:\n\n1. **Telnyx receives an incoming call** to your phone number\n2. **Telnyx executes your TeXML application** which establishes a WebSocket connection\n3. **Telnyx opens a WebSocket** to your server with real-time audio and call metadata\n4. **Your bot processes the audio** using the Pipecat pipeline\n5. **The bot responds with audio** sent back to Telnyx over WebSocket\n6. **Telnyx plays the audio** to the caller in real-time\n\n### Set up your TeXML application\n\nTelnyx uses TeXML (Telnyx Extensible Markup Language) to control call flow. For dial-in, you create a TeXML application that establishes a WebSocket connection directly to your bot:\n\nThe `bidirectionalMode=\"rtp\"` parameter enables real-time audio streaming in both directions.\n\n### Personalizing Your Bot with Caller Information\n\nTelnyx automatically includes caller information (to/from numbers) in the WebSocket messages. You can use the caller's phone number to:\n\n* Look up customer information in your database\n* Personalize greetings and responses based on caller identity\n* Route calls to different bot behaviors (e.g., VIP handling, support vs sales)\n* Implement custom business logic based on the caller\n\nThe example bot demonstrates how to extract caller information from Telnyx's WebSocket messages and use it to personalize the conversation.\n\n### Configure your Pipecat bot for dial-in\n\nYour bot receives the WebSocket connection and automatically gets call information from Telnyx's WebSocket messages. The key components are:\n\n**WebSocket Parsing**: Pipecat's built-in parser extracts call data from Telnyx's WebSocket messages:\n\n**Transport Creation**: Configure the WebSocket transport with Telnyx serialization:\n\n```python bot.py theme={null}",
+  "code_samples": [
+    {
+      "code": "## Dial-in\n\nDial-in allows users to call your Telnyx number and connect to your Pipecat bot via WebSocket Media Streaming. Unlike Twilio, Telnyx automatically provides caller information (to/from numbers) in the WebSocket messages, so no custom server is needed for basic dial-in functionality.\n\n### How It Works\n\nHere's the sequence of events when someone calls your Telnyx number:\n\n1. **Telnyx receives an incoming call** to your phone number\n2. **Telnyx executes your TeXML application** which establishes a WebSocket connection\n3. **Telnyx opens a WebSocket** to your server with real-time audio and call metadata\n4. **Your bot processes the audio** using the Pipecat pipeline\n5. **The bot responds with audio** sent back to Telnyx over WebSocket\n6. **Telnyx plays the audio** to the caller in real-time\n\n### Set up your TeXML application\n\nTelnyx uses TeXML (Telnyx Extensible Markup Language) to control call flow. For dial-in, you create a TeXML application that establishes a WebSocket connection directly to your bot:",
+      "language": "unknown"
+    },
+    {
+      "code": "The `bidirectionalMode=\"rtp\"` parameter enables real-time audio streaming in both directions.\n\n### Personalizing Your Bot with Caller Information\n\nTelnyx automatically includes caller information (to/from numbers) in the WebSocket messages. You can use the caller's phone number to:\n\n* Look up customer information in your database\n* Personalize greetings and responses based on caller identity\n* Route calls to different bot behaviors (e.g., VIP handling, support vs sales)\n* Implement custom business logic based on the caller\n\nThe example bot demonstrates how to extract caller information from Telnyx's WebSocket messages and use it to personalize the conversation.\n\n### Configure your Pipecat bot for dial-in\n\nYour bot receives the WebSocket connection and automatically gets call information from Telnyx's WebSocket messages. The key components are:\n\n**WebSocket Parsing**: Pipecat's built-in parser extracts call data from Telnyx's WebSocket messages:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Transport Creation**: Configure the WebSocket transport with Telnyx serialization:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Things you'll need",
+      "id": "things-you'll-need"
+    },
+    {
+      "level": "h2",
+      "text": "Phone Number Setup",
+      "id": "phone-number-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Environment Setup",
+      "id": "environment-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Dial-in",
+      "id": "dial-in"
+    },
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Set up your TeXML application",
+      "id": "set-up-your-texml-application"
+    },
+    {
+      "level": "h3",
+      "text": "Personalizing Your Bot with Caller Information",
+      "id": "personalizing-your-bot-with-caller-information"
+    },
+    {
+      "level": "h3",
+      "text": "Configure your Pipecat bot for dial-in",
+      "id": "configure-your-pipecat-bot-for-dial-in"
+    }
+  ],
+  "url": "llms-txt#telnyx-websocket-integration",
+  "links": []
+}

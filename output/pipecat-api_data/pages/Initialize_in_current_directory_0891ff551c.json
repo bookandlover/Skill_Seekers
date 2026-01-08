@@ -1,0 +1,19 @@
+{
+  "title": "Initialize in current directory",
+  "content": "pipecat init\nshell theme={null}",
+  "code_samples": [
+    {
+      "code": "### Specify Output Directory",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Specify Output Directory",
+      "id": "specify-output-directory"
+    }
+  ],
+  "url": "llms-txt#initialize-in-current-directory",
+  "links": []
+}

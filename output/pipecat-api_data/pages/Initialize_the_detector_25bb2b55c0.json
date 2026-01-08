@@ -1,0 +1,56 @@
+{
+  "title": "Initialize the detector",
+  "content": "voicemail_detector = VoicemailDetector(\n    llm=classifier_llm,\n    voicemail_response_delay=2.0  # Default: 2 seconds\n)\npython theme={null}\npipeline = Pipeline([\n    transport.input(),\n    stt,\n    voicemail_detector.detector(),    # Between STT and user context aggregator\n    context_aggregator.user(),\n    llm,\n    tts,\n    voicemail_detector.gate(),        # Immediately after TTS service\n    transport.output(),\n    context_aggregator.assistant(),\n])\npython theme={null}\n@voicemail_detector.event_handler(\"on_voicemail_detected\")\nasync def handle_voicemail(processor):\n    logger.info(\"Voicemail detected! Leaving a message...\")\n\n# Leave a voicemail message\n    await processor.push_frame(\n        TTSSpeakFrame(\"Hello, this is Jamie calling about your appointment. Please call me back at 555-0123.\")\n    )\n\n# Optionally end the call after leaving the message\n    await processor.push_frame(EndTaskFrame(), FrameDirection.UPSTREAM)\npython theme={null}\ncustom_prompt = \"\"\"\nYour custom classification logic here.\nConsider factors like business hours, call patterns, etc.\n\"\"\" + VoicemailDetector.CLASSIFIER_RESPONSE_INSTRUCTION\n\nvoicemail_detector = VoicemailDetector(\n    llm=classifier_llm,\n    custom_system_prompt=custom_prompt\n)\npython theme={null}\nvoicemail_detector = VoicemailDetector(\n    llm=classifier_llm,\n    voicemail_response_delay=3.0  # Wait 3 seconds instead of default 2\n)\n```\n\n* Voicemail greetings have finished playing\n* The response occurs during the recording period\n* Proper timing for different voicemail system behaviors",
+  "code_samples": [
+    {
+      "code": "<Note>\n  The VoicemailDetector works with two LLMs: your main conversation LLM (which\n  must be text-based) and the classifier LLM (which can be either text-based or\n  realtime with a `text` output modality). Realtime LLMs are not compatible for\n  the main conversation LLM due to output control requirements.\n</Note>\n\n### 2. Configure the Pipeline\n\nThe VoicemailDetector requires two components in your pipeline:\n\n* `detector()`: between STT and user context aggregator\n* `gate()`: immediately after TTS service",
+      "language": "unknown"
+    },
+    {
+      "code": "### 3. Handle Voicemail Events\n\nWhen a voicemail is detected, the `on_voicemail_detected` event is triggered. In your event handler, you have access to `processor`, which is a FrameProcessor instance, allowing you to push frames to the pipeline. For example, you may want to have the bot output a pre-canned message and then end the call.",
+      "language": "unknown"
+    },
+    {
+      "code": "## Detecting a Conversation\n\nWhen a conversation is detected, no additional processing is required by the VoicemailDetector. Once the VoicemailDetector classifies the call as a conversation, the TTSGate will be flushed, allowing the conversation to continue.\n\n## Configuration Options\n\n### Custom System Prompt\n\nFor specialized use cases, you can provide a custom classification prompt. The prompt must instruct the LLM to respond with exactly \"CONVERSATION\" or \"VOICEMAIL\":",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  The `CLASSIFIER_RESPONSE_INSTRUCTION` constant contains the required response\n  format: `'Respond with ONLY \"CONVERSATION\" if a person answered, or\n      \"VOICEMAIL\" if it\\'s voicemail/recording.'`\n</Note>\n\nFor most use cases, the default classifier prompt will work effectively. If you need to customize the behavior, reference the built-in prompt as a starting point and modify from there.\n\n### Response Timing\n\nThe `voicemail_response_delay` parameter controls how long to wait after the user stops speaking before triggering the voicemail event:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "2. Configure the Pipeline",
+      "id": "2.-configure-the-pipeline"
+    },
+    {
+      "level": "h3",
+      "text": "3. Handle Voicemail Events",
+      "id": "3.-handle-voicemail-events"
+    },
+    {
+      "level": "h2",
+      "text": "Detecting a Conversation",
+      "id": "detecting-a-conversation"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    },
+    {
+      "level": "h3",
+      "text": "Custom System Prompt",
+      "id": "custom-system-prompt"
+    },
+    {
+      "level": "h3",
+      "text": "Response Timing",
+      "id": "response-timing"
+    }
+  ],
+  "url": "llms-txt#initialize-the-detector",
+  "links": []
+}

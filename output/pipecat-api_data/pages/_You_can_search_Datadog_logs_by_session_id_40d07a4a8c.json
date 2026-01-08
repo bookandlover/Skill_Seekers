@@ -1,0 +1,24 @@
+{
+  "title": "- You can search Datadog logs by session_id",
+  "content": "def datadog_format(record):\n    format_string_safe_message = (\n        json.dumps(record[\"message\"]).replace(\"{\", \"{{\").replace(\"}\", \"}}\")\n    )\n    session_id = record[\"extra\"].get(\"session_id\", \"\")\n    return (\n        \"{{\"\n        '\"timestamp\":\"{time:YYYY-MM-DD HH:mm:ss.SSS}\",'\n        '\"levelname\":\"{level}\",'\n        '\"name\":\"{name}\",'\n        '\"function\":\"{function}\",'\n        '\"line\":{line},'\n        f'\"message\":{format_string_safe_message},'\n        f'\"session_id\": \"{session_id}\"'\n        \"}}\\n\"\n    )\n\nasync def bot(args: DailySessionArguments):\n    # Add Datadog-specific sink\n    logger.add(\n        \"/var/log/<my-agent-name>/datadog.log\", # Use same path as in python.d/conf.yaml\n        rotation=\"10 MB\",\n        retention=\"7 days\",\n        format=datadog_format,\n    )\n    # ...\nyaml theme={null}",
+  "code_samples": [
+    {
+      "code": "## Enabling traces\n\n### Enable traces in `datadog.yaml`\n\nEnsure `apm_config.enabled` is NOT set to `false` in your [`datadog.yaml`](#create-datadog-yaml):",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Enabling traces",
+      "id": "enabling-traces"
+    },
+    {
+      "level": "h3",
+      "text": "Enable traces in `datadog.yaml`",
+      "id": "enable-traces-in-`datadog.yaml`"
+    }
+  ],
+  "url": "llms-txt#--you-can-search-datadog-logs-by-session_id",
+  "links": []
+}

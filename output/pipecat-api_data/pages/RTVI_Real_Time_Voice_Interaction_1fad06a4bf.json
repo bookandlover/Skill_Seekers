@@ -1,0 +1,19 @@
+{
+  "title": "RTVI (Real-Time Voice Interaction)",
+  "content": "Source: https://docs.pipecat.ai/server/frameworks/rtvi/introduction\n\nBuild real-time voice and multimodal applications with Pipecat’s RTVI protocol\n\nPipecat's RTVI (Real-Time Voice Interaction) protocol provides a standardized communication layer between clients and servers for building real-time voice and multimodal applications. It handles the synchronization of user and bot interactions, transcriptions, LLM processing, and text-to-speech delivery.\n\nThis page provides an overview of RTVI from the server's perspective and how to use it in your bot applications.\n\n<Card title=\"RTVI Protocol\" icon=\"left-right\" href=\"/client/rtvi-standard\">\n  A complete specification of the RTVI protocol for client-server communication.\n</Card>\n\nRTVI operates with two primary components, both of which are required for full functionality:\n\n1. [**RTVIProcessor**](./rtvi-processor) - A frame processor residing in the pipeline that serves as the entry point for sending and receiving messages to/from the client.\n\n2. [**RTVIObserver**](./rtvi-observer) - An observer that monitors pipeline events and translates them into client-compatible messages, handling:\n   * Speaking state changes\n   * Transcription updates\n   * LLM responses\n   * TTS events\n   * Performance metrics\n\nHere's how to set up RTVI in your Pipecat application:\n\n```python theme={null}\nfrom pipecat.processors.frameworks.rtvi import RTVIObserver, RTVIProcessor",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Architecture",
+      "id": "architecture"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Example",
+      "id": "basic-example"
+    }
+  ],
+  "url": "llms-txt#rtvi-(real-time-voice-interaction)",
+  "links": []
+}

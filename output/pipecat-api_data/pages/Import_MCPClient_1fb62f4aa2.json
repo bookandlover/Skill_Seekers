@@ -1,0 +1,8 @@
+{
+  "title": "Import MCPClient",
+  "content": "...\nfrom pipecat.services.mcp_service import MCPClient\n...",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#import-mcpclient",
+  "links": []
+}

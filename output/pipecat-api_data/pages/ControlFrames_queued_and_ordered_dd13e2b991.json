@@ -1,0 +1,19 @@
+{
+  "title": "ControlFrames (queued and ordered)",
+  "content": "EndFrame                   # Pipeline shutdown\nTTSStartedFrame            # TTS response boundaries\nLLMFullResponseStartFrame  # LLM response boundaries\npython theme={null}\nfrom pipecat.frames.frames import EndFrame, TTSSpeakFrame",
+  "code_samples": [
+    {
+      "code": "### Frame Processing Order\n\n**Frames are processed in guaranteed order**, even across ParallelPipelines. This enables reliable sequencing. For example, you can push two frames in order and the order will be respected. Additionally, the corresponding processing will finish before allowing the next frame to be processed. Let's look at an example where we push two frames—`TTSSpeakFrame` and `EndFrame`—in order to say goodbye then end the pipeline:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Frame Processing Order",
+      "id": "frame-processing-order"
+    }
+  ],
+  "url": "llms-txt#controlframes-(queued-and-ordered)",
+  "links": []
+}

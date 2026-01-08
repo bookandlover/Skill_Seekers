@@ -1,0 +1,149 @@
+{
+  "title": "Step 2: Enable tracing in your PipelineTask",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        enable_metrics=True,                              # Required for some service metrics\n    ),\n    enable_tracing=True,                                  # Enable tracing for this task\n    enable_turn_tracking=True,                            # Enable turn tracking for this task\n    conversation_id=\"customer-123\",                       # Optional - will auto-generate if not provided\n    additional_span_attributes={\"session.id\": \"abc-123\"} # Optional - additional attributes to attach to the otel span\n)\n\nConversation (conversation)\n├── turn\n│   ├── stt\n│   ├── llm\n│   └── tts\n└── turn\n    ├── stt\n    ├── llm\n    └── tts\n    turn...\n\nConversation (conversation)\n├── turn\n│   ├── llm_setup (session configuration)\n│   ├── stt (user input)\n│   ├── llm_response (complete response with usage)\n│   └── llm_tool_call/llm_tool_result (for function calls)\n└── turn\n    ├── stt (user input)\n    └── llm_response (complete response)\n    turn...\npython theme={null}\nfrom opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter\n\nexporter = OTLPSpanExporter(\n    endpoint=\"http://localhost:4317\",  # Your collector endpoint\n    insecure=True,  # Use False for TLS connections\n)\npython theme={null}\nfrom opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter\n\nexporter = OTLPSpanExporter(\n    # Configure with environment variables:\n    # OTEL_EXPORTER_OTLP_ENDPOINT\n    # OTEL_EXPORTER_OTLP_HEADERS\n)\npython theme={null}\nsetup_tracing(\n    service_name=\"my-voice-app\",\n    exporter=otlp_exporter,\n    console_export=True,  # Prints traces to stdout\n)\npython theme={null}\nimport os\nfrom dotenv import load_dotenv\nfrom opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter\n\nfrom pipecat.pipeline.pipeline import Pipeline\nfrom pipecat.pipeline.task import PipelineParams, PipelineTask\nfrom pipecat.services.deepgram.stt import DeepgramSTTService\nfrom pipecat.services.openai.llm import OpenAILLMService\nfrom pipecat.services.cartesia.tts import CartesiaTTSService\nfrom pipecat.utils.tracing.setup import setup_tracing",
+  "code_samples": [
+    {
+      "code": "<Info>\n  For complete working examples, see our sample implementations:\n\n  * [Jaeger Tracing Example](https://github.com/pipecat-ai/pipecat-examples/tree/main/open-telemetry/jaeger) - Uses gRPC exporter with Jaeger\n  * [Langfuse Tracing Example](https://github.com/pipecat-ai/pipecat-examples/tree/main/open-telemetry/langfuse) - Uses HTTP exporter with Langfuse for LLM-focused observability\n</Info>\n\n## Trace Structure\n\nPipecat organizes traces hierarchically, following the natural structure of conversations:",
+      "language": "unknown"
+    },
+    {
+      "code": "For real-time multimodal services like Gemini Live and OpenAI Realtime, the structure adapts to their specific patterns:",
+      "language": "unknown"
+    },
+    {
+      "code": "This hierarchical structure makes it easy to:\n\n* Track the full lifecycle of a conversation\n* Measure latency for individual turns\n* Identify which services are contributing to delays\n* Compare performance across different conversations\n\n## Exporter Options\n\nPipecat supports any OpenTelemetry-compatible exporter. Common options include:\n\n### OTLP Exporter (for Jaeger, Grafana, etc.)",
+      "language": "unknown"
+    },
+    {
+      "code": "### HTTP OTLP Exporter (for Langfuse, etc.)",
+      "language": "unknown"
+    },
+    {
+      "code": "See our [Langfuse example](https://github.com/pipecat-ai/pipecat-examples/tree/main/open-telemetry/langfuse) for details on configuring this exporter.\n\n### Console Exporter (for debugging)\n\nThe console exporter can be enabled alongside any other exporter by setting `console_export=True`:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Cloud Provider Exporters\n\nMany cloud providers offer OpenTelemetry-compatible observability services:\n\n* **AWS X-Ray**\n* **Google Cloud Trace**\n* **Azure Monitor**\n* **Datadog APM**\n\nCheck the OpenTelemetry documentation for specific exporter configurations: [OpenTelemetry Vendors](https://opentelemetry.io/ecosystem/vendors/)\n\n## Span Attributes\n\nPipecat enriches spans with detailed attributes about service operations:\n\n### TTS Service Spans\n\n* `gen_ai.system`: Service provider (e.g., \"cartesia\")\n* `gen_ai.request.model`: Model ID/name\n* `voice_id`: Voice identifier\n* `text`: The text being synthesized\n* `metrics.character_count`: Number of characters in the text\n* `metrics.ttfb`: Time to first byte in seconds\n* `settings.*`: Service-specific configuration parameters\n\n### STT Service Spans\n\n* `gen_ai.system`: Service provider (e.g., \"deepgram\")\n* `gen_ai.request.model`: Model ID/name\n* `transcript`: The transcribed text\n* `is_final`: Whether the transcription is final\n* `language`: Detected or configured language\n* `vad_enabled`: Whether voice activity detection is enabled\n* `metrics.ttfb`: Time to first byte in seconds\n* `settings.*`: Service-specific configuration parameters\n\n### LLM Service Spans\n\n* `gen_ai.system`: Service provider (e.g., \"openai\", \"gcp.gemini\")\n* `gen_ai.request.model`: Model ID/name\n* `gen_ai.operation.name`: Operation type (e.g., \"chat\")\n* `stream`: Whether streaming is enabled\n* `input`: JSON-serialized input messages\n* `output`: Complete response text\n* `tools`: JSON-serialized tools configuration\n* `tools.count`: Number of tools available\n* `tools.names`: Comma-separated tool names\n* `system`: System message content\n* `gen_ai.usage.input_tokens`: Number of prompt tokens\n* `gen_ai.usage.output_tokens`: Number of completion tokens\n* `metrics.ttfb`: Time to first byte in seconds\n* `gen_ai.request.*`: Standard parameters (temperature, max\\_tokens, etc.)\n\n### Multimodal Service Spans (Gemini Live & OpenAI Realtime)\n\n#### Setup Spans\n\n* `gen_ai.system`: \"gcp.gemini\" or \"openai\"\n* `gen_ai.request.model`: Model identifier\n* `tools.count`: Number of available tools\n* `tools.definitions`: JSON-serialized tool schemas\n* `system_instruction`: System prompt (truncated)\n* `session.*`: Session configuration parameters\n\n#### Request Spans (OpenAI Realtime)\n\n* `input`: JSON-serialized context messages being sent\n* `gen_ai.operation.name`: \"llm\\_request\"\n\n#### Response Spans\n\n* `output`: Complete assistant response text\n* `output_modality`: \"TEXT\" or \"AUDIO\" (Gemini Live)\n* `gen_ai.usage.input_tokens`: Prompt tokens used\n* `gen_ai.usage.output_tokens`: Completion tokens generated\n* `function_calls.count`: Number of function calls made\n* `function_calls.names`: Comma-separated function names\n* `metrics.ttfb`: Time to first response in seconds\n\n#### Tool Call/Result Spans (Gemini Live)\n\n* `tool.function_name`: Name of the function being called\n* `tool.call_id`: Unique identifier for the call\n* `tool.arguments`: Function arguments (truncated)\n* `tool.result`: Function execution result (truncated)\n* `tool.result_status`: \"completed\", \"error\", or \"parse\\_error\"\n\n### Turn Spans\n\n* `turn.number`: Sequential turn number\n* `turn.type`: Type of turn (e.g., \"conversation\")\n* `turn.duration_seconds`: Duration of the turn\n* `turn.was_interrupted`: Whether the turn was interrupted\n* `conversation.id`: ID of the parent conversation\n\n### Conversation Spans\n\n* `conversation.id`: Unique identifier for the conversation\n* `conversation.type`: Type of conversation (e.g., \"voice\")\n\n## Usage Metrics\n\nPipecat's tracing implementation automatically captures usage metrics for LLM and TTS services:\n\n### LLM Token Usage\n\nToken usage is captured in LLM spans as:\n\n* `gen_ai.usage.input_tokens`\n* `gen_ai.usage.output_tokens`\n\n### TTS Character Count\n\nCharacter count is captured in TTS spans as:\n\n* `metrics.character_count`\n\n## Performance Metrics\n\nPipecat traces capture key performance metrics for each service:\n\n### Time To First Byte (TTFB)\n\nThe time it takes for a service to produce its first response:\n\n* `metrics.ttfb` (in seconds)\n\n### Processing Duration\n\nThe total time spent processing in each service is captured in the span duration.\n\n## Configuration Options\n\n### PipelineTask Parameters\n\n<ParamField type=\"bool\">\n  Enable or disable tracing for the pipeline\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to enable turn tracking.\n</ParamField>\n\n<ParamField type=\"Optional[str]\">\n  Custom ID for the conversation. If not provided, a UUID will be generated\n</ParamField>\n\n<ParamField type=\"Optional[dict]\">\n  Any additional attributes to add to top-level OpenTelemetry conversation span.\n</ParamField>\n\n### setup\\_tracing() Parameters\n\n<ParamField type=\"str\">\n  Name of the service for traces\n</ParamField>\n\n<ParamField type=\"Optional[SpanExporter]\">\n  A pre-configured OpenTelemetry span exporter instance\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to also export traces to console (useful for debugging)\n</ParamField>\n\n## Example\n\nHere's a complete example showing OpenTelemetry tracing setup with Jaeger:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Trace Structure",
+      "id": "trace-structure"
+    },
+    {
+      "level": "h2",
+      "text": "Exporter Options",
+      "id": "exporter-options"
+    },
+    {
+      "level": "h3",
+      "text": "OTLP Exporter (for Jaeger, Grafana, etc.)",
+      "id": "otlp-exporter-(for-jaeger,-grafana,-etc.)"
+    },
+    {
+      "level": "h3",
+      "text": "HTTP OTLP Exporter (for Langfuse, etc.)",
+      "id": "http-otlp-exporter-(for-langfuse,-etc.)"
+    },
+    {
+      "level": "h3",
+      "text": "Console Exporter (for debugging)",
+      "id": "console-exporter-(for-debugging)"
+    },
+    {
+      "level": "h3",
+      "text": "Cloud Provider Exporters",
+      "id": "cloud-provider-exporters"
+    },
+    {
+      "level": "h2",
+      "text": "Span Attributes",
+      "id": "span-attributes"
+    },
+    {
+      "level": "h3",
+      "text": "TTS Service Spans",
+      "id": "tts-service-spans"
+    },
+    {
+      "level": "h3",
+      "text": "STT Service Spans",
+      "id": "stt-service-spans"
+    },
+    {
+      "level": "h3",
+      "text": "LLM Service Spans",
+      "id": "llm-service-spans"
+    },
+    {
+      "level": "h3",
+      "text": "Multimodal Service Spans (Gemini Live & OpenAI Realtime)",
+      "id": "multimodal-service-spans-(gemini-live-&-openai-realtime)"
+    },
+    {
+      "level": "h3",
+      "text": "Turn Spans",
+      "id": "turn-spans"
+    },
+    {
+      "level": "h3",
+      "text": "Conversation Spans",
+      "id": "conversation-spans"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Metrics",
+      "id": "usage-metrics"
+    },
+    {
+      "level": "h3",
+      "text": "LLM Token Usage",
+      "id": "llm-token-usage"
+    },
+    {
+      "level": "h3",
+      "text": "TTS Character Count",
+      "id": "tts-character-count"
+    },
+    {
+      "level": "h2",
+      "text": "Performance Metrics",
+      "id": "performance-metrics"
+    },
+    {
+      "level": "h3",
+      "text": "Time To First Byte (TTFB)",
+      "id": "time-to-first-byte-(ttfb)"
+    },
+    {
+      "level": "h3",
+      "text": "Processing Duration",
+      "id": "processing-duration"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    },
+    {
+      "level": "h3",
+      "text": "PipelineTask Parameters",
+      "id": "pipelinetask-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "setup\\_tracing() Parameters",
+      "id": "setup\\_tracing()-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Example",
+      "id": "example"
+    }
+  ],
+  "url": "llms-txt#step-2:-enable-tracing-in-your-pipelinetask",
+  "links": []
+}

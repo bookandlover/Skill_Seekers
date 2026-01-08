@@ -1,0 +1,63 @@
+{
+  "title": "Interruption Strategies",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/interruption-strategies\n\nConfigure when users can interrupt the bot to prevent unwanted interruptions from brief affirmations\n\nInterruption strategies allow you to control when users can interrupt the bot during speech. By default, any user speech immediately interrupts the bot, but this can be problematic when users engage in backchanneling—brief vocal responses like \"yeah\", \"okay\", or \"mm-hmm\" that indicate they're listening without intending to interrupt.\n\nWith interruption strategies, you can require users to meet specific criteria (such as speaking a minimum number of words or reaching a certain audio volume) before their speech will interrupt the bot, creating a more natural conversation flow.\n\n<Tip>\n  Want to try it out? Check out the [interruption strategies foundational\n  demo](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/42-interruption-config.py)\n</Tip>\n\nInterruption strategies are configured via the `interruption_strategies` parameter in `PipelineParams`. When specified, the normal immediate interruption behavior is replaced with conditional interruption based on your criteria.\n\n<ParamField type=\"List[BaseInterruptionStrategy]\">\n  List of interruption strategies to apply. When multiple strategies are\n  provided, the first one that evaluates to true will trigger the interruption.\n  If empty, normal interruption behavior applies.\n</ParamField>\n\n## Base Strategy Interface\n\nAll interruption strategies inherit from `BaseInterruptionStrategy`, which provides a common interface for evaluating interruption conditions.\n\n<ParamField type=\"async method\">\n  Appends audio data to the strategy for analysis. Not all strategies handle\n  audio.\n</ParamField>\n\n<ParamField type=\"async method\">\n  Appends text to the strategy for analysis. Not all strategies handle text.\n</ParamField>\n\n<ParamField type=\"async method\">\n  Called when the user stops speaking to determine if interruption should occur\n  based on accumulated audio and/or text.\n</ParamField>\n\n<ParamField type=\"async method\">\n  Resets accumulated text and/or audio data.\n</ParamField>\n\n## Available Strategies\n\n### MinWordsInterruptionStrategy\n\nRequires users to speak a minimum number of words before interrupting the bot.\n\n<ParamField type=\"int\">\n  Minimum number of words the user must speak to interrupt the bot. Must be\n  greater than 0.\n</ParamField>\n\nWhen interruption strategies are configured:\n\n1. **Bot not speaking**: User speech interrupts immediately (normal behavior)\n2. **Bot speaking**: User speech and audio are collected and fed to strategies\n3. **User stops speaking**: Strategies are evaluated in order\n4. **First match wins**: The first strategy that returns `True` triggers interruption\n5. **No matches**: User speech is discarded\n\nThe system automatically handles both audio and text input:\n\n* Audio frames (`InputAudioRawFrame`) are fed to `append_audio()`\n* Transcription text is fed to `append_text()`\n* Strategies can use either or both data types\n\n### Basic Word Count Interruption\n\nRequire users to speak at least 3 words to interrupt the bot:\n\n### Multiple Strategies with Priority\n\nStrategies are evaluated in order, with the first match triggering interruption:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "## How It Works\n\nWhen interruption strategies are configured:\n\n1. **Bot not speaking**: User speech interrupts immediately (normal behavior)\n2. **Bot speaking**: User speech and audio are collected and fed to strategies\n3. **User stops speaking**: Strategies are evaluated in order\n4. **First match wins**: The first strategy that returns `True` triggers interruption\n5. **No matches**: User speech is discarded\n\nThe system automatically handles both audio and text input:\n\n* Audio frames (`InputAudioRawFrame`) are fed to `append_audio()`\n* Transcription text is fed to `append_text()`\n* Strategies can use either or both data types\n\n## Usage Examples\n\n### Basic Word Count Interruption\n\nRequire users to speak at least 3 words to interrupt the bot:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Multiple Strategies with Priority\n\nStrategies are evaluated in order, with the first match triggering interruption:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Base Strategy Interface",
+      "id": "base-strategy-interface"
+    },
+    {
+      "level": "h2",
+      "text": "Available Strategies",
+      "id": "available-strategies"
+    },
+    {
+      "level": "h3",
+      "text": "MinWordsInterruptionStrategy",
+      "id": "minwordsinterruptionstrategy"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Word Count Interruption",
+      "id": "basic-word-count-interruption"
+    },
+    {
+      "level": "h3",
+      "text": "Multiple Strategies with Priority",
+      "id": "multiple-strategies-with-priority"
+    }
+  ],
+  "url": "llms-txt#interruption-strategies",
+  "links": []
+}

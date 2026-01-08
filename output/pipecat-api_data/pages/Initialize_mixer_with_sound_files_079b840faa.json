@@ -1,0 +1,8 @@
+{
+  "title": "Initialize mixer with sound files",
+  "content": "mixer = SoundfileMixer(\n    sound_files={\"office\": \"office_ambience.wav\"},\n    default_sound=\"office\",\n    volume=2.0,\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-mixer-with-sound-files",
+  "links": []
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Build and tag locally without pushing",
+  "content": "pipecat cloud docker build-push --no-push\nshell theme={null}",
+  "code_samples": [
+    {
+      "code": "### Different Registry",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Different Registry",
+      "id": "different-registry"
+    }
+  ],
+  "url": "llms-txt#build-and-tag-locally-without-pushing",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Handle client connection",
+  "content": "@rtvi.event_handler(\"on_client_ready\")\nasync def on_client_ready(rtvi):\n    # Signal bot is ready to receive messages\n    await rtvi.set_bot_ready()\n    # Initialize the conversation\n    await task.queue_frames([LLMRunFrame()])",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#handle-client-connection",
+  "links": []
+}

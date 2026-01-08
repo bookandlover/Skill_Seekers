@@ -1,0 +1,42 @@
+{
+  "title": "POST http://localhost:7860/daily-dialin-webhook",
+  "content": "json theme={null}\n{\n  \"From\": \"+15551234567\",\n  \"To\": \"+15559876543\",\n  \"callId\": \"uuid-call-id\",\n  \"callDomain\": \"uuid-call-domain\",\n  \"sipHeaders\": {}\n}\npython theme={null}\nfrom pipecat.runner.types import DailyDialinRequest, RunnerArguments\nfrom pipecat.transports.daily.transport import DailyDialinSettings, DailyParams, DailyTransport\n\nasync def bot(runner_args: RunnerArguments):\n    # Parse the dial-in request from the runner\n    request = DailyDialinRequest.model_validate(runner_args.body)\n\n# Configure Daily transport with dial-in settings\n    daily_dialin_settings = DailyDialinSettings(\n        call_id=request.dialin_settings.call_id,\n        call_domain=request.dialin_settings.call_domain,\n    )\n\ntransport = DailyTransport(\n        runner_args.room_url,\n        runner_args.token,\n        \"Daily PSTN Dial-in Bot\",\n        params=DailyParams(\n            api_key=request.daily_api_key,\n            api_url=request.daily_api_url,\n            dialin_settings=daily_dialin_settings,\n            audio_in_enabled=True,\n            audio_out_enabled=True,\n        ),\n    )\n\n# Log caller information if available\n    if request.dialin_settings.From:\n        print(f\"Handling call from: {request.dialin_settings.From}\")\n\n# Your bot logic here\n    await run_bot(transport)\nbash theme={null}",
+  "code_samples": [
+    {
+      "code": "### How It Works\n\nWhen a phone call dials into your Daily phone number:\n\n1. **Daily sends a webhook** to your configured endpoint with call details\n2. **The runner creates a SIP-enabled room** with appropriate configuration\n3. **Your bot is spawned** with dial-in context in `runner_args.body`\n4. **The call is connected** to the room where your bot is waiting\n\n### Webhook Payload\n\nDaily sends the following data to the `/daily-dialin-webhook` endpoint:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Accessing Dial-In Data in Your Bot\n\nThe dial-in webhook data is passed to your bot through `DailyRunnerArguments.body`. You need to parse it and configure the Daily transport with dial-in settings:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Configuring Daily Phone Numbers\n\nTo test dial-in locally, you need to:\n\n1. **Configure a Daily phone number** in your Daily dashboard\n2. **Set the webhook URL** to your public endpoint (e.g., via ngrok)\n3. **Ensure `DAILY_API_KEY` is set** in your environment",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Webhook Payload",
+      "id": "webhook-payload"
+    },
+    {
+      "level": "h3",
+      "text": "Accessing Dial-In Data in Your Bot",
+      "id": "accessing-dial-in-data-in-your-bot"
+    },
+    {
+      "level": "h3",
+      "text": "Configuring Daily Phone Numbers",
+      "id": "configuring-daily-phone-numbers"
+    }
+  ],
+  "url": "llms-txt#post-http://localhost:7860/daily-dialin-webhook",
+  "links": []
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Video",
+  "content": "Video services enable you to build an avatar where audio and video are synchronized.\n\n| Service                                           | Repository                                                                       | Maintainer(s)                         |\n| ------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------- |\n| [Beyond Presence](https://www.beyondpresence.ai/) | [https://github.com/bey-dev/pipecat-bey](https://github.com/bey-dev/pipecat-bey) | [bey-dev](https://github.com/bey-dev) |\n\n## Telephony Serializers\n\nSerializers convert between frames and media streams, enabling real-time communication over a websocket.\n\n| Service                         | Repository | Maintainer(s) |\n| ------------------------------- | ---------- | ------------- |\n| *No community integrations yet* |            |               |\n\nImage generation services receive text inputs and output images.\n\n| Service                         | Repository | Maintainer(s) |\n| ------------------------------- | ---------- | ------------- |\n| *No community integrations yet* |            |               |\n\nVision services receive a streaming video input and output text describing the video input.\n\n| Service                         | Repository | Maintainer(s) |\n| ------------------------------- | ---------- | ------------- |\n| *No community integrations yet* |            |               |",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Telephony Serializers",
+      "id": "telephony-serializers"
+    },
+    {
+      "level": "h2",
+      "text": "Image Generation",
+      "id": "image-generation"
+    },
+    {
+      "level": "h2",
+      "text": "Vision",
+      "id": "vision"
+    }
+  ],
+  "url": "llms-txt#video",
+  "links": []
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Turn Tracking Observer",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/observers/turn-tracking-observer\n\nTrack conversation turns and events in your Pipecat pipeline\n\nThe `TurnTrackingObserver` monitors and tracks conversational turns in your Pipecat pipeline, providing events when turns start and end. It intelligently identifies when a user-bot interaction cycle begins and completes.\n\nA turn represents a complete user-bot interaction cycle:\n\n1. **Start**: When the user starts speaking (or pipeline starts for first turn)\n2. **Processing**: User speaks, bot processes and responds\n3. **End**: After the bot finishes speaking and either:\n   * The user starts speaking again\n   * A timeout period elapses with no further activity\n\nThe observer emits two main events:\n\n* **`on_turn_started`**: When a new turn begins\n  * Parameters: `turn_number` (int)\n* **`on_turn_ended`**: When a turn completes\n  * Parameters: `turn_number` (int), `duration` (float, in seconds), `was_interrupted` (bool)\n\nThe observer is automatically created when you initialize a `PipelineTask` with `enable_turn_tracking=True` (which is the default):\n\n```python theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(allow_interruptions=True),\n    # Turn tracking is enabled by default\n)",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Turn Lifecycle",
+      "id": "turn-lifecycle"
+    },
+    {
+      "level": "h2",
+      "text": "Events",
+      "id": "events"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#turn-tracking-observer",
+  "links": []
+}

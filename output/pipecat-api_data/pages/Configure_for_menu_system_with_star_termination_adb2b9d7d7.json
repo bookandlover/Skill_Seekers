@@ -1,0 +1,8 @@
+{
+  "title": "Configure for menu system with star termination",
+  "content": "menu_dtmf = DTMFAggregator(\n    timeout=5.0,                    # Longer timeout for menu selection\n    termination_digit=KeypadEntry.STAR,  # Use * to confirm selection\n    prefix=\"Menu selection: \"       # Clear prefix for LLM\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#configure-for-menu-system-with-star-termination",
+  "links": []
+}

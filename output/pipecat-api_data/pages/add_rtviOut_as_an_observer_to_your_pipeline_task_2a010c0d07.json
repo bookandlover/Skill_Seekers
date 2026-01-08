@@ -1,0 +1,24 @@
+{
+  "title": "add rtviOut as an observer to your pipeline task",
+  "content": "mermaid theme={null}\nflowchart TD\n  A[New Text] --> B[Add to Buffer]\n  B --> C{Start & End Patterns Found?}\n    C --> |Yes| C1[Call Handlers]\n    C1 --> D{Pattern Action?}\n      D --> E{{AGGREGATE}}\n        E --> E1[Reset buffer with trailing text]\n        E1 --> E2[RETURN contents as Aggregation with specified type]\n      D --> F{{REMOVE}}\n        F --> F1[Remove pattern from buffer]\n        F1 --> S{End of Sentence?}\n      D --> G{{KEEP}}\n        G --> S\n    C --> |No| H{Start Pattern Found?}\n      H --> |No| S\n      H --> |Yes| I{Pattern Action == AGGREGATE?}\n        I --> |Yes| I1[Reset buffer to pattern start]\n        I1 --> I2[RETURN prior buffer as Aggregation of type 'sentence']\n    S --> |Yes| S1[return Aggregation of type 'sentence']\n    S --> | No| S2[return None]\n```\n\n* Patterns are processed in the order they appear in the text\n* Handlers are called when complete patterns are found\n* Patterns can span multiple sentences of text, but be aware that encoding many \"reasoning\" tokens may slow down the LLM response",
+  "code_samples": [
+    {
+      "code": "## How It Works",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#add-rtviout-as-an-observer-to-your-pipeline-task",
+  "links": []
+}

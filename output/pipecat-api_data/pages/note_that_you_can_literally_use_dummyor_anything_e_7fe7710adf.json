@@ -1,0 +1,8 @@
+{
+  "title": "(note that you can literally use \"dummy\"—or anything else—as the API key)",
+  "content": "RUN apt-get -y update; apt-get -y install curl\nRUN DD_API_KEY=dummy \\\n    DD_INSTALL_ONLY=true \\\n    bash -c \"$(curl -L https://install.datadoghq.com/scripts/install_script_agent7.sh)\"",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#(note-that-you-can-literally-use-\"dummy\"—or-anything-else—as-the-api-key)",
+  "links": []
+}

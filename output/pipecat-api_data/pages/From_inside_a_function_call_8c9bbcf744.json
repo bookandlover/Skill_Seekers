@@ -1,0 +1,47 @@
+{
+  "title": "From inside a function call",
+  "content": "from pipecat.frames.frames import EndTaskFrame, TTSSpeakFrame\nfrom pipecat.processors.frame_processor import FrameDirection\n\nasync def end_conversation(params: FunctionCallParams):\n    await params.llm.push_frame(TTSSpeakFrame(\"Have a nice day!\"))\n\n# Signal that the task should end after processing this frame\n    await params.llm.push_frame(EndTaskFrame(), FrameDirection.UPSTREAM)\npython theme={null}\n@transport.event_handler(\"on_client_disconnected\")\nasync def on_client_disconnected(transport, client):\n    logger.info(\"Client disconnected - terminating pipeline\")\n    await task.cancel()\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n    ),\n    # Configure idle detection timeout\n    cancel_on_idle_timeout=True, # Default is True\n    idle_timeout_seconds=600,  # Default is 300 seconds\n    idle_timeout_frames=(BotSpeakingFrame,), # Default is (BotSpeakingFrame, LLMFullResponseEndFrame)\n)\npython theme={null}\n@transport.event_handler(\"on_client_connected\")\nasync def on_client_connected(transport, client):\n    logger.info(\"Client connected - starting conversation\")\n    await task.queue_frames([LLMRunFrame()])\n\n@transport.event_handler(\"on_client_disconnected\")\nasync def on_client_disconnected(transport, client):\n    logger.info(\"Client disconnected - immediate termination\")\n    await task.cancel()",
+  "code_samples": [
+    {
+      "code": "**How graceful termination works:**\n\n1. `EndFrame` is queued and processes after any pending frames (like goodbye messages)\n2. All processors shutdown when they receive the `EndFrame`\n3. Once the `EndFrame` reaches the end of the pipeline, shutdown is complete\n4. Resources are cleaned up and the process terminates\n\n<Tip>\n  Graceful termination allows your bot to say goodbye and complete any final\n  actions before terminating.\n</Tip>\n\n### 2. Immediate Termination\n\nImmediate termination cancels the pipeline without waiting for pending frames to complete. This is appropriate when the user is no longer active in the conversation.\n\n**When to use:**\n\n* User disconnections (browser closed, call ended)\n* Error conditions requiring immediate shutdown\n* When completing the conversation is no longer necessary\n\n**Implementation:**\n\nUse event handlers to detect disconnections and trigger cancellation:",
+      "language": "unknown"
+    },
+    {
+      "code": "**How immediate termination works:**\n\n1. An event triggers the cancellation (like client disconnection)\n2. `task.cancel()` pushes a `CancelFrame` downstream from the PipelineTask\n3. `CancelFrame`s are `SystemFrame`s and bypass queues for immediate processing\n4. Processors handle the `CancelFrame` and shut down immediately\n5. Any pending frames are discarded during shutdown\n\n<Warning>\n  Immediate termination will discard any pending frames in the pipeline. Use\n  this approach when completing the conversation is no longer necessary.\n</Warning>\n\n## Automatic Termination\n\n### Pipeline Idle Detection\n\nPipecat includes automatic idle detection to prevent hanging pipelines. This feature monitors activity and can automatically cancel tasks when no meaningful bot interactions occur for an extended period.\n\n**How it works:**\n\n* Monitors pipeline activity for meaningful bot interactions\n* Automatically triggers termination after configured idle timeout\n* Serves as a safety net for anomalous behavior or forgotten sessions\n\n**Configuration:**",
+      "language": "unknown"
+    },
+    {
+      "code": "You can further configure the idle detection behavior. To learn more, refer to the Pipeline Idle Detection documentation:\n\n<Card title=\"Pipeline Idle Detection\" icon=\"clock\" href=\"/server/pipeline/pipeline-idle-detection\">\n  Learn how to configure and customize idle detection for your use case\n</Card>\n\n<Note>\n  Pipeline Idle Detection is enabled by default and helps prevent resources from\n  being wasted on inactive conversations.\n</Note>\n\n## Implementation Patterns\n\n### Event-Driven Termination\n\nConnect termination to transport events for automatic cleanup:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "2. Immediate Termination",
+      "id": "2.-immediate-termination"
+    },
+    {
+      "level": "h2",
+      "text": "Automatic Termination",
+      "id": "automatic-termination"
+    },
+    {
+      "level": "h3",
+      "text": "Pipeline Idle Detection",
+      "id": "pipeline-idle-detection"
+    },
+    {
+      "level": "h2",
+      "text": "Implementation Patterns",
+      "id": "implementation-patterns"
+    },
+    {
+      "level": "h3",
+      "text": "Event-Driven Termination",
+      "id": "event-driven-termination"
+    }
+  ],
+  "url": "llms-txt#from-inside-a-function-call",
+  "links": []
+}

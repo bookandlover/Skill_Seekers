@@ -1,0 +1,14 @@
+{
+  "title": "Control mixer at runtime",
+  "content": "await task.queue_frame(MixerUpdateSettingsFrame({\"volume\": 0.5}))\nawait task.queue_frame(MixerEnableFrame(False))  # Disable mixing\nawait task.queue_frame(MixerEnableFrame(True))   # Enable mixing\n```\n\n* Supports any audio format that soundfile can read\n* Automatically resamples audio files to match output sample rate\n* Files must be mono (single channel)\n* Thread-safe for pipeline processing\n* Can dynamically switch between multiple sound files\n* Volume can be adjusted in real-time\n* Mixing can be enabled/disabled on demand",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#control-mixer-at-runtime",
+  "links": []
+}

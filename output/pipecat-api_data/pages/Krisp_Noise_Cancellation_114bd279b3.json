@@ -1,0 +1,67 @@
+{
+  "title": "Krisp Noise Cancellation",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-noise-cancellation\n\nEliminate background noise and voices for more reliable agent interactions\n\n<Warning>\n  The `KrispFilter` is deprecated and will be removed in a future version.\n  Please use the `KrispVivaFilter`, which is the latest model from Krisp. See\n  the [Krisp VIVA guide](/deployment/pipecat-cloud/guides/krisp-viva) for more\n  information.\n</Warning>\n\nVoice agents are vulnerable to background noise, especially other voices that trigger false interruptions. When this happens, your bot stops mid-sentence unnecessarily, creating a poor user experience. Pipecat Cloud's Krisp integration processes incoming audio to remove ambient noise and background voices before they reach your agent, resulting in cleaner audio input with fewer false interruptions and better transcription.\n\n<Info>\n  Krisp processes the audio before it reaches your agent's speech recognition\n  and VAD systems, helping to ensure that only the intended user's voice\n  triggers interruptions.\n</Info>\n\nEnabling Krisp with Pipecat Cloud involves the following steps:\n\n### 1. Use the Pipecat Base Image\n\nKrisp dependencies are pre-installed in the official Pipecat base image. You don't need to add any Krisp-related packages to your `requirements.txt` file.\n\n<Note>\n  Krisp support is available in the `dailyco/pipecat-base` image starting with\n  version `0.0.6`.\n</Note>\n\n### 2. Add the Krisp Filter to Your Transport\n\nIn your bot code, import and add the `KrispFilter` to your transport:\n\n### 3. Enable Krisp in Your Deployment\n\nYou can enable Krisp when deploying your agent through:\n\n<Tabs>\n  <Tab title=\"CLI\">\n    \n  </Tab>\n\n<Tab title=\"Config File\">\n    In your `pcc-deploy.toml`:\n\n<Tab title=\"Dashboard\">\n    In the Pipecat Cloud dashboard:\n\n1. Navigate to your agent\n    2. Go to Settings > Agent Configuration\n    3. Toggle \"Krisp Noise Cancellation\" on\n    4. Save your changes\n  </Tab>\n</Tabs>\n\n<Check>\n  Once configured, your agent will process incoming audio through Krisp's noise\n  cancellation.\n</Check>\n\n## Testing Your Integration\n\nTo verify Krisp is working:\n\n1. Deploy your agent with Krisp enabled\n2. Connect to your agent in an environment with background noise; try turning on a TV or podcast\n3. Observe whether background noises and voices affect your agent's behavior\n\nKrisp processing is billed based on active session minutes:\n\n| Usage Tier                      | Price               |\n| ------------------------------- | ------------------- |\n| First 100,000 minutes per month | Free                |\n| Additional minutes              | \\$0.0002 per minute |\n\n<Note>\n  For agents deployed with Krisp enabled, active session minutes count as Krisp\n  usage, accruing towards your monthly bill.\n</Note>\n\nKrisp cannot be used in local development environments, as it requires a proprietary SDK and model which can only be distributed on Pipecat Cloud. When running locally be sure to not import the KrispFilter module and don't apply it to your transport.\n\nIf you're experiencing issues with Krisp noise cancellation:\n\n* Verify `enable_krisp` is set to `true` in your deployment configuration\n* Confirm you've added the `KrispFilter()` to your transport configuration\n* Check your logs for any Krisp-related error messages\n* Confirm that you have not added any Krisp-related dependencies to your `requirements.txt` file, as they are not needed and may cause conflicts.",
+  "code_samples": [
+    {
+      "code": "### 3. Enable Krisp in Your Deployment\n\nYou can enable Krisp when deploying your agent through:\n\n<Tabs>\n  <Tab title=\"CLI\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"Config File\">\n    In your `pcc-deploy.toml`:",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"Dashboard\">\n    In the Pipecat Cloud dashboard:\n\n    1. Navigate to your agent\n    2. Go to Settings > Agent Configuration\n    3. Toggle \"Krisp Noise Cancellation\" on\n    4. Save your changes\n  </Tab>\n</Tabs>\n\n<Check>\n  Once configured, your agent will process incoming audio through Krisp's noise\n  cancellation.\n</Check>\n\n## Testing Your Integration\n\nTo verify Krisp is working:\n\n1. Deploy your agent with Krisp enabled\n2. Connect to your agent in an environment with background noise; try turning on a TV or podcast\n3. Observe whether background noises and voices affect your agent's behavior\n\n## Pricing\n\nKrisp processing is billed based on active session minutes:\n\n| Usage Tier                      | Price               |\n| ------------------------------- | ------------------- |\n| First 100,000 minutes per month | Free                |\n| Additional minutes              | \\$0.0002 per minute |\n\n<Note>\n  For agents deployed with Krisp enabled, active session minutes count as Krisp\n  usage, accruing towards your monthly bill.\n</Note>\n\n## Local Development\n\nKrisp cannot be used in local development environments, as it requires a proprietary SDK and model which can only be distributed on Pipecat Cloud. When running locally be sure to not import the KrispFilter module and don't apply it to your transport.\n\n## Troubleshooting\n\nIf you're experiencing issues with Krisp noise cancellation:\n\n* Verify `enable_krisp` is set to `true` in your deployment configuration\n* Confirm you've added the `KrispFilter()` to your transport configuration\n* Check your logs for any Krisp-related error messages\n* Confirm that you have not added any Krisp-related dependencies to your `requirements.txt` file, as they are not needed and may cause conflicts.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Enabling Krisp",
+      "id": "enabling-krisp"
+    },
+    {
+      "level": "h3",
+      "text": "1. Use the Pipecat Base Image",
+      "id": "1.-use-the-pipecat-base-image"
+    },
+    {
+      "level": "h3",
+      "text": "2. Add the Krisp Filter to Your Transport",
+      "id": "2.-add-the-krisp-filter-to-your-transport"
+    },
+    {
+      "level": "h3",
+      "text": "3. Enable Krisp in Your Deployment",
+      "id": "3.-enable-krisp-in-your-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Testing Your Integration",
+      "id": "testing-your-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Pricing",
+      "id": "pricing"
+    },
+    {
+      "level": "h2",
+      "text": "Local Development",
+      "id": "local-development"
+    },
+    {
+      "level": "h2",
+      "text": "Troubleshooting",
+      "id": "troubleshooting"
+    }
+  ],
+  "url": "llms-txt#krisp-noise-cancellation",
+  "links": []
+}

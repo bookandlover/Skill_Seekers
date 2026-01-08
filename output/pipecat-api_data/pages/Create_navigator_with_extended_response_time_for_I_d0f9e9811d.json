@@ -1,0 +1,48 @@
+{
+  "title": "Create navigator with extended response time for IVR systems",
+  "content": "ivr_vad_params = VADParams(stop_secs=2.0)  # Longer wait for IVR menus\n\nivr_navigator = IVRNavigator(\n    llm=your_llm_service,\n    ivr_prompt=ivr_goal,\n    ivr_vad_params=ivr_vad_params\n)\npython theme={null}\nfrom pipecat.frames.frames import LLMMessagesUpdateFrame\nfrom pipecat.extensions.ivr.ivr_navigator import IVRStatus\n\n@ivr_navigator.event_handler(\"on_conversation_detected\")\nasync def on_conversation_detected(processor, conversation_history):\n    \"\"\"Handle when a human conversation is detected instead of IVR\"\"\"\n    logger.info(\"Human conversation detected\")\n\n# Set up conversation context\n    messages = [\n        {\"role\": \"system\", \"content\": \"You are a customer service representative.\"}\n    ]\n    if conversation_history:\n        messages.extend(conversation_history)\n\nawait task.queue_frame(LLMMessagesUpdateFrame(messages=messages, run_llm=True))\n\n@ivr_navigator.event_handler(\"on_ivr_status_changed\")\nasync def on_ivr_status_changed(processor, status):\n    \"\"\"Handle IVR navigation status changes\"\"\"\n    if status == IVRStatus.COMPLETED:\n        logger.info(\"IVR navigation completed successfully\")\n        # Your success handling logic here\n\nelif status == IVRStatus.STUCK:\n        logger.warning(\"IVR navigation got stuck\")\n        # Your error handling logic here\n        await handle_navigation_failure()\npython theme={null}\nfrom pipecat.pipeline.pipeline import Pipeline\n\npipeline = Pipeline([\n    transport.input(),\n    stt_service,\n    ivr_navigator,  # Add the navigator to your pipeline\n    tts_service,\n    transport.output()\n])\n```\n\n## VAD Parameter Optimization\n\nThe IVRNavigator automatically optimizes Voice Activity Detection (VAD) parameters for different scenarios:\n\n### IVR Navigation Mode\n\n* **Default**: `stop_secs=2.0`\n* **Purpose**: Allows time to hear complete menu options before responding\n* **Result**: Higher navigation success rates\n\n### Conversation Mode\n\n* **Recommended**: `stop_secs=0.8`\n* **Purpose**: Enables natural conversation flow with quick responses\n* **Implementation**: Push `VADParamsUpdateFrame` when transitioning to conversation\n\n<CardGroup>\n  <Card title=\"Pipeline Termination\" icon=\"stop\" href=\"/guides/learn/pipeline-termination\">\n    Learn how to properly terminate pipelines when IVR navigation completes\n  </Card>\n\n<Card title=\"Pipecat Flows\" icon=\"flow\" href=\"/guides/features/pipecat-flows\">\n    Integrate structured conversation flows after successful IVR navigation\n  </Card>\n</CardGroup>\n\nThe IVRNavigator provides a powerful foundation for automating phone system interactions, allowing your bots to handle the complex task of menu navigation while you focus on the core conversation logic.",
+  "code_samples": [
+    {
+      "code": "### Step 2: Set Up Event Handlers",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 3: Add to Pipeline\n\nAdd the IVR Navigator to your pipeline in the place where you would normally add the LLM. The IVR Navigator contains your LLM and will perform the same functions as an LLM would, but in addition it will navigate the IVR system.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Step 2: Set Up Event Handlers",
+      "id": "step-2:-set-up-event-handlers"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Add to Pipeline",
+      "id": "step-3:-add-to-pipeline"
+    },
+    {
+      "level": "h2",
+      "text": "VAD Parameter Optimization",
+      "id": "vad-parameter-optimization"
+    },
+    {
+      "level": "h3",
+      "text": "IVR Navigation Mode",
+      "id": "ivr-navigation-mode"
+    },
+    {
+      "level": "h3",
+      "text": "Conversation Mode",
+      "id": "conversation-mode"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#create-navigator-with-extended-response-time-for-ivr-systems",
+  "links": []
+}

@@ -1,0 +1,13 @@
+{
+  "title": "DO this instead",
+  "content": "import os\napi_key = os.environ.get(\"SERVICE_API_KEY\")  # Use environment variables\nbash theme={null}",
+  "code_samples": [
+    {
+      "code": "During local development, use environment files (`.env`) and ensure they're in your `.gitignore`.\n\nFor deployment, use Pipecat Cloud's secrets management:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#do-this-instead",
+  "links": []
+}

@@ -1,0 +1,46 @@
+{
+  "title": "Daily PSTN Dial-in",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/daily-dial-in\n\nUsing Daily's Transport to receive calls from external SIP Addresses and PSTN numbers\n\nWhen someone calls your Daily phone number, the call is placed on hold and triggers a webhook to initialize your Pipecat bot.\n\n### Option 1: Automatic Webhook (Recommended)\n\nLet Pipecat Cloud handle the webhook automatically.\n\n**Using the Dashboard:**\n\n1. Go to **Settings > Telephony** in Pipecat Cloud\n2. Select your phone number\n3. Choose your deployed agent\n4. Save\n\n**Using the REST API:**\n\n### Option 2: Custom Webhook Server\n\nHost your own webhook server for custom logic (e.g., CRM integration, advanced routing, caller-based customization).\n\n<CardGroup>\n  <Card title=\"FastAPI Webhook Server\" icon=\"server\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/pipecat-cloud-daily-pstn-server/fastapi-webhook-server\">\n    Python webhook server example\n  </Card>\n\n<Card title=\"Next.js Webhook Server\" icon=\"js\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/pipecat-cloud-daily-pstn-server/nextjs-webhook-server\">\n    JavaScript webhook server example\n  </Card>\n</CardGroup>\n\n**Webhook payload from Daily:**\n\n**Forward to Pipecat Cloud:**\n\nConfigure your bot to handle dial-in calls:\n\n**Personalize with caller info:**\n\n```python theme={null}\ncaller_phone = request.dialin_settings.From\ncustomer = await get_customer_by_phone(caller_phone)",
+  "code_samples": [
+    {
+      "code": "### Option 2: Custom Webhook Server\n\nHost your own webhook server for custom logic (e.g., CRM integration, advanced routing, caller-based customization).\n\n<CardGroup>\n  <Card title=\"FastAPI Webhook Server\" icon=\"server\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/pipecat-cloud-daily-pstn-server/fastapi-webhook-server\">\n    Python webhook server example\n  </Card>\n\n  <Card title=\"Next.js Webhook Server\" icon=\"js\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/pipecat-cloud-daily-pstn-server/nextjs-webhook-server\">\n    JavaScript webhook server example\n  </Card>\n</CardGroup>\n\n**Webhook payload from Daily:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Forward to Pipecat Cloud:**",
+      "language": "unknown"
+    },
+    {
+      "code": "## Bot Configuration\n\nConfigure your bot to handle dial-in calls:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Personalize with caller info:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Setup Options",
+      "id": "setup-options"
+    },
+    {
+      "level": "h3",
+      "text": "Option 1: Automatic Webhook (Recommended)",
+      "id": "option-1:-automatic-webhook-(recommended)"
+    },
+    {
+      "level": "h3",
+      "text": "Option 2: Custom Webhook Server",
+      "id": "option-2:-custom-webhook-server"
+    },
+    {
+      "level": "h2",
+      "text": "Bot Configuration",
+      "id": "bot-configuration"
+    }
+  ],
+  "url": "llms-txt#daily-pstn-dial-in",
+  "links": []
+}

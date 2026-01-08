@@ -1,0 +1,8 @@
+{
+  "title": "------------ Configuration ------------",
+  "content": "MAX_SESSION_TIME = 5 * 60  # 5 minutes",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#-------------configuration-------------",
+  "links": []
+}

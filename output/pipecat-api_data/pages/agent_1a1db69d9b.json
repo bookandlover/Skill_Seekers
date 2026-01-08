@@ -1,0 +1,78 @@
+{
+  "title": "agent",
+  "content": "Source: https://docs.pipecat.ai/cli/cloud/agent\n\nManage agent deployments\n\nThe `agent` command provides sub-commands for managing your deployed agents. These commands allow you to view status, start agents, see logs, and manage deployments.\n\nStart a deployed agent instance, creating an active session.\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n<ParamField type=\"string\">\n  Public API key to authenticate the agent deployment. Will default to any key\n  set in your config.\n\nFor more information, see [API keys](/deployment/pipecat-cloud/fundamentals/accounts-and-organizations#api-keys).\n</ParamField>\n\n<ParamField type=\"string\">\n  Stringified JSON object to pass to the agent deployment. This data will be\n  available to the agent as a `data` parameter in your `bot()` method.\n\nMore information [here](/deployment/pipecat-cloud/fundamentals/active-sessions#running-an-agent).\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Skip summary confirmation before issuing start request.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Create a Daily WebRTC session for the agent.\n</ParamField>\n\n<ParamField type=\"string\">\n  Stringified JSON object with Daily room properties to customize the WebRTC\n  session. Only used when `--use-daily` is set to true.\n\nSee [Daily API\n  documentation](https://docs.daily.co/reference/rest-api/rooms/config) for\n  available properties.\n</ParamField>\n\n<ParamField type=\"str\">\n  Organization to start the agent for. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\nStop an active agent session and clean up its resources.\n\n<ParamField type=\"string\">\n  Name of the agent. Must not contain spaces.\n</ParamField>\n\n<ParamField type=\"string\">\n  ID of the session to stop.\n</ParamField>\n\n<ParamField type=\"string\">\n  Organization which the agent belongs to. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Bypass prompt for confirmation before stopping the session.\n</ParamField>\n\nShows the current status of an agent deployment, including health and conditions.\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\nLists deployment history for an agent, including image versions and timestamps.\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\nDisplays combined logs from all agent instances, useful for debugging issues.\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n<ParamField type=\"string\">\n  Filter logs by severity: `ALL`, `DEBUG`, `INFO`, `WARNING`, `ERROR`,\n  `CRITICAL`.\n</ParamField>\n\n<ParamField type=\"int\">\n  Limit the number of log lines to display.\n</ParamField>\n\n<ParamField type=\"str\">\n  Filter results for specific agent deployment ID (obtainable from `pipecat\n      cloud agent deployments [agent-name]`).\n</ParamField>\n\n<ParamField type=\"str\">\n  Filter results for specific session ID (obtainable from `pipecat cloud agent\n      sessions [agent-name]`).\n</ParamField>\n\nLists all agents in an organization with their details.\n\n<ParamField type=\"string\">\n  Organization to list agents for. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n<ParamField type=\"string\">\n  Filter agents by region. Only agents deployed in the specified region will be\n  shown. If not provided, agents from all regions are listed.\n</ParamField>\n\nLists active sessions for a specified agent. When there are no active sessions, it suggests how to start a new session.\n\n<ParamField type=\"string\">\n  Name of the agent to list active sessions for.\n</ParamField>\n\n<ParamField type=\"string\">\n  Organization to list sessions for. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\nDeletes an agent deployment. This will prevent starting new agents and remove all associated data.\n\n<Warning>This action is irreversible. All data will be lost.</Warning>\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n<ParamField type=\"string\">\n  Do not prompt for confirmation before deleting the agent.\n</ParamField>",
+  "code_samples": [
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n**Options:**\n\n<ParamField type=\"string\">\n  Public API key to authenticate the agent deployment. Will default to any key\n  set in your config.\n\n  For more information, see [API keys](/deployment/pipecat-cloud/fundamentals/accounts-and-organizations#api-keys).\n</ParamField>\n\n<ParamField type=\"string\">\n  Stringified JSON object to pass to the agent deployment. This data will be\n  available to the agent as a `data` parameter in your `bot()` method.\n\n  More information [here](/deployment/pipecat-cloud/fundamentals/active-sessions#running-an-agent).\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Skip summary confirmation before issuing start request.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Create a Daily WebRTC session for the agent.\n</ParamField>\n\n<ParamField type=\"string\">\n  Stringified JSON object with Daily room properties to customize the WebRTC\n  session. Only used when `--use-daily` is set to true.\n\n  See [Daily API\n  documentation](https://docs.daily.co/reference/rest-api/rooms/config) for\n  available properties.\n</ParamField>\n\n<ParamField type=\"str\">\n  Organization to start the agent for. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n## stop\n\nStop an active agent session and clean up its resources.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Name of the agent. Must not contain spaces.\n</ParamField>\n\n**Options:**\n\n<ParamField type=\"string\">\n  ID of the session to stop.\n</ParamField>\n\n<ParamField type=\"string\">\n  Organization which the agent belongs to. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Bypass prompt for confirmation before stopping the session.\n</ParamField>\n\n## status\n\nShows the current status of an agent deployment, including health and conditions.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n## deployments\n\nLists deployment history for an agent, including image versions and timestamps.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n## logs\n\nDisplays combined logs from all agent instances, useful for debugging issues.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Unique string identifier for the agent deployment. Must not contain spaces.\n</ParamField>\n\n**Options:**\n\n<ParamField type=\"string\">\n  Filter logs by severity: `ALL`, `DEBUG`, `INFO`, `WARNING`, `ERROR`,\n  `CRITICAL`.\n</ParamField>\n\n<ParamField type=\"int\">\n  Limit the number of log lines to display.\n</ParamField>\n\n<ParamField type=\"str\">\n  Filter results for specific agent deployment ID (obtainable from `pipecat\n      cloud agent deployments [agent-name]`).\n</ParamField>\n\n<ParamField type=\"str\">\n  Filter results for specific session ID (obtainable from `pipecat cloud agent\n      sessions [agent-name]`).\n</ParamField>\n\n## list\n\nLists all agents in an organization with their details.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Organization to list agents for. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n<ParamField type=\"string\">\n  Filter agents by region. Only agents deployed in the specified region will be\n  shown. If not provided, agents from all regions are listed.\n</ParamField>\n\n## sessions\n\nLists active sessions for a specified agent. When there are no active sessions, it suggests how to start a new session.\n\n**Usage:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Name of the agent to list active sessions for.\n</ParamField>\n\n**Options:**\n\n<ParamField type=\"string\">\n  Organization to list sessions for. If not provided, uses the current\n  organization from your configuration.\n</ParamField>\n\n## delete\n\nDeletes an agent deployment. This will prevent starting new agents and remove all associated data.\n\n<Warning>This action is irreversible. All data will be lost.</Warning>\n\n**Usage:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "start",
+      "id": "start"
+    },
+    {
+      "level": "h2",
+      "text": "stop",
+      "id": "stop"
+    },
+    {
+      "level": "h2",
+      "text": "status",
+      "id": "status"
+    },
+    {
+      "level": "h2",
+      "text": "deployments",
+      "id": "deployments"
+    },
+    {
+      "level": "h2",
+      "text": "logs",
+      "id": "logs"
+    },
+    {
+      "level": "h2",
+      "text": "list",
+      "id": "list"
+    },
+    {
+      "level": "h2",
+      "text": "sessions",
+      "id": "sessions"
+    },
+    {
+      "level": "h2",
+      "text": "delete",
+      "id": "delete"
+    }
+  ],
+  "url": "llms-txt#agent",
+  "links": []
+}

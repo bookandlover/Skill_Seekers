@@ -1,0 +1,14 @@
+{
+  "title": "...",
+  "content": "ffmpeg -f concat -safe 0 -i filelist.txt -c copy final_recording.wav\n```\n\n**Automation Considerations:**\n\n* Use sequence numbers in chunk filenames for proper ordering\n* Include metadata (sample rate, channels, duration) with each chunk\n* Implement retry logic for failed uploads\n* Consider using cloud functions/lambdas for automatic post-processing\n\n<CardGroup>\n  <Card title=\"Try the Audio Recording Example\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/34-audio-recording.py\">\n    Explore a complete working example that demonstrates how to record and save\n    both composite and track-level audio with Pipecat.\n  </Card>\n\n<Card title=\"AudioBufferProcessor Reference\" icon=\"book\" href=\"/server/utilities/audio/audio-buffer-processor\">\n    Read the complete API reference documentation for advanced configuration\n    options and event handlers.\n  </Card>\n</CardGroup>\n\nConsider implementing audio recording in your application for quality assurance, training data collection, or creating conversation archives. The recorded audio can be stored locally, uploaded to cloud storage, or processed in real-time for further analysis.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#...",
+  "links": []
+}

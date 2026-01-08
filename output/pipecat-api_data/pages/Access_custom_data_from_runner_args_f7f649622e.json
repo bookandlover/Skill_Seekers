@@ -1,0 +1,8 @@
+{
+  "title": "Access custom data from runner args",
+  "content": "body_data = runner_args.body or {}\nuser_name = body_data.get(\"user\", {}).get(\"firstName\", \"there\")",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#access-custom-data-from-runner-args",
+  "links": []
+}

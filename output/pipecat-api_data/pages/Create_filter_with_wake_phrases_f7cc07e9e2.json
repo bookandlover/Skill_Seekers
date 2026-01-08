@@ -1,0 +1,8 @@
+{
+  "title": "Create filter with wake phrases",
+  "content": "wake_filter = WakeCheckFilter(\n    wake_phrases=[\"hey assistant\", \"ok computer\", \"listen up\"],\n    keepalive_timeout=5.0  # Stay awake for 5 seconds after each transcription\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-filter-with-wake-phrases",
+  "links": []
+}

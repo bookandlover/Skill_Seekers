@@ -1,0 +1,29 @@
+{
+  "title": "Configure with one or more strategies",
+  "content": "stt_mute_processor = STTMuteFilter(\n    config=STTMuteConfig(\n        strategies={\n            STTMuteStrategy.MUTE_UNTIL_FIRST_BOT_COMPLETE,\n            STTMuteStrategy.FUNCTION_CALL,\n        }\n    ),\n)\npython theme={null}\npipeline = Pipeline(\n    [\n        transport.input(),           # Transport user input\n        stt,                         # Speech-to-text service\n        stt_mute_processor,          # Add between STT and context aggregator\n        context_aggregator.user(),   # User responses\n        llm,                         # LLM\n        tts,                         # Text-to-speech\n        transport.output(),          # Transport bot output\n        context_aggregator.assistant(),  # Assistant spoken responses\n    ]\n)\n```\n\n* **Place the filter correctly**: Always position `STTMuteFilter` between the STT service and context aggregator\n* **Choose strategies wisely**: Select the minimal set of strategies needed for your use case\n* **Test user experience**: Excessive muting can frustrate users; balance control with usability\n* **Consider feedback**: Provide visual cues when the user is muted to improve the experience\n\n<CardGroup>\n  <Card title=\"Try the STTMuteFilter Example\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/24-stt-mute-filter.py\">\n    Explore a complete working example that demonstrates how to use\n    STTMuteFilter to control user input during bot speech and function calls.\n  </Card>\n\n<Card title=\"STTMuteFilter Reference\" icon=\"book\" href=\"/server/utilities/filters/stt-mute\">\n    Read the complete API reference documentation for advanced configuration\n    options and muting strategies.\n  </Card>\n</CardGroup>\n\nExperiment with different muting strategies to find the right balance for your application. For advanced scenarios, try implementing custom muting logic based on specific conversation states or content.",
+  "code_samples": [
+    {
+      "code": "### Step 2: Add to Your Pipeline\n\nPlace the filter between the STT service and context aggregator:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Step 2: Add to Your Pipeline",
+      "id": "step-2:-add-to-your-pipeline"
+    },
+    {
+      "level": "h2",
+      "text": "Best Practices",
+      "id": "best-practices"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#configure-with-one-or-more-strategies",
+  "links": []
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Build Your Next Bot",
+  "content": "Source: https://docs.pipecat.ai/getting-started/build-your-next-bot\n\nScaffold a new Pipecat project with the CLI\n\nReady to build your own bot? The Pipecat CLI scaffolds complete projects tailored to your platform and use case.\n\n<Note>\n  **New to Pipecat?** We recommend completing the\n  [Quickstart](/getting-started/quickstart) first to understand Pipecat basics\n  before scaffolding your own project.\n</Note>\n\n## Install the Pipecat CLI\n\nInstall the CLI globally using [uv](https://docs.astral.sh/uv/) or [pipx](https://pipx.pypa.io/):\n\n```bash theme={null}\nuv tool install pipecat-ai-cli",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Install the Pipecat CLI",
+      "id": "install-the-pipecat-cli"
+    }
+  ],
+  "url": "llms-txt#build-your-next-bot",
+  "links": []
+}

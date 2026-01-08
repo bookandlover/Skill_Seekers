@@ -1,0 +1,50 @@
+{
+  "title": "POST http://localhost:7860/start",
+  "content": "json theme={null}\n{\n  \"createDailyRoom\": true,\n  \"dailyRoomProperties\": {\n    \"start_video_off\": true,\n    \"start_audio_off\": false\n  },\n  \"body\": {\n    \"custom_data\": \"your_value\",\n    \"user_id\": \"user123\"\n  }\n}\njson theme={null}\n{\n  \"dailyRoom\": \"https://domain.daily.co/room-name\",\n  \"dailyToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...\"\n}\npython theme={null}\nasync def bot(runner_args: DailyRunnerArguments):\n    # Access custom data from the /start request\n    custom_data = runner_args.body.get(\"custom_data\")\n    user_id = runner_args.body.get(\"user_id\")\n\nprint(f\"Bot started for user: {user_id}\")\n    print(f\"Custom data: {custom_data}\")\n\n# Your bot logic here\n    transport = DailyTransport(runner_args.room_url, runner_args.token, \"Bot\")\n    await run_bot(transport)\njavascript theme={null}\nimport { PipecatClient } from \"@pipecat-ai/client-js\";\nimport { DailyTransport } from \"@pipecat-ai/daily-transport\";\n\nconst client = new PipecatClient({\n  transport: new DailyTransport(),\n  enableMic: true,\n  enableCam: false,\n});\n\n// Start a session with custom data\nawait client.connect({ endpoint: \"http://localhost:7860/start\" });\nbash theme={null}\npython bot.py -t daily --dialin",
+  "code_samples": [
+    {
+      "code": "**Request Format:**",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>`dailyRoomProperties` are not yet handled by the runner.</Note>\n\n**Response Format:**",
+      "language": "unknown"
+    },
+    {
+      "code": "### Accessing Request Data in Your Bot\n\nThe `body` field from the `/start` request is passed to your bot through `DailyRunnerArguments.body`:",
+      "language": "unknown"
+    },
+    {
+      "code": "### RTVI Client Example\n\nYou can use RTVI client libraries to connect to your local development runner:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Info>\n  The `/start` endpoint is only available for Daily transports (`-t daily`).\n  WebRTC and telephony transports use different connection methods.\n</Info>\n\n## Daily Dial-In Webhook\n\nThe development runner can handle Daily PSTN dial-in webhooks when started with the `--dialin` flag. This allows you to test phone call integrations locally before deploying to production.\n\n### Enabling Dial-In Support",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Accessing Request Data in Your Bot",
+      "id": "accessing-request-data-in-your-bot"
+    },
+    {
+      "level": "h3",
+      "text": "RTVI Client Example",
+      "id": "rtvi-client-example"
+    },
+    {
+      "level": "h2",
+      "text": "Daily Dial-In Webhook",
+      "id": "daily-dial-in-webhook"
+    },
+    {
+      "level": "h3",
+      "text": "Enabling Dial-In Support",
+      "id": "enabling-dial-in-support"
+    }
+  ],
+  "url": "llms-txt#post-http://localhost:7860/start",
+  "links": []
+}

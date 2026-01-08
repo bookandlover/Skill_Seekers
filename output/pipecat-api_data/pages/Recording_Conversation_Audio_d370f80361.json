@@ -1,0 +1,44 @@
+{
+  "title": "Recording Conversation Audio",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/recording-audio\n\nLearn how to record and save audio from conversations between users and your bot\n\nRecording audio from conversations provides valuable data for analysis, debugging, and quality control. You have two options for how to record with Pipecat:\n\n### Option 1: Record using your transport service provider\n\nRecord without writing custom code by using your [transport](/server/services/supported-services#transports) provider's recording capabilities. In addition to saving you development time, some providers offer unique recording capabilities.\n\n<Info>Refer to your service provider's documentation to learn more.</Info>\n\n### Option 2: Create your own recording pipeline\n\nPipecat's `AudioBufferProcessor` makes it easy to capture high-quality audio recordings of both the user and bot during interactions. Opt for this approach if you want more control over your recording.\n\nThis guide focuses on how to recording using the `AudioBufferProcessor`, including high-level guidance for how to set up post-processing jobs for longer recordings.\n\n## How the AudioBufferProcessor Works\n\nThe `AudioBufferProcessor` captures audio by:\n\n1. Collecting audio frames from both the user (input) and bot (output)\n2. Emitting events with recorded audio data\n3. Providing options for composite or separate track recordings\n\n<Note>\n  Add the processor to your pipeline after the `transport.output()` to capture\n  both the user audio and the bot audio as it's spoken.\n</Note>\n\n## Audio Recording Options\n\nThe `AudioBufferProcessor` offers several configuration options:\n\n* **Composite recording**: Combined audio from both user and bot\n* **Track-level recording**: Separate audio files for user and bot\n* **Turn-based recording**: Individual audio clips for each speaking turn\n* **Mono or stereo output**: Single channel mixing or two-channel separation\n\n## Basic Implementation\n\n### Step 1: Create an Audio Buffer Processor\n\nInitialize the audio buffer processor with your desired configuration:\n\n```python theme={null}\nfrom pipecat.processors.audio.audio_buffer_processor import AudioBufferProcessor",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h3",
+      "text": "Option 1: Record using your transport service provider",
+      "id": "option-1:-record-using-your-transport-service-provider"
+    },
+    {
+      "level": "h3",
+      "text": "Option 2: Create your own recording pipeline",
+      "id": "option-2:-create-your-own-recording-pipeline"
+    },
+    {
+      "level": "h2",
+      "text": "How the AudioBufferProcessor Works",
+      "id": "how-the-audiobufferprocessor-works"
+    },
+    {
+      "level": "h2",
+      "text": "Audio Recording Options",
+      "id": "audio-recording-options"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Implementation",
+      "id": "basic-implementation"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Create an Audio Buffer Processor",
+      "id": "step-1:-create-an-audio-buffer-processor"
+    }
+  ],
+  "url": "llms-txt#recording-conversation-audio",
+  "links": []
+}

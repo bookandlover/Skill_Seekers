@@ -1,0 +1,8 @@
+{
+  "title": "Responsive VAD with turn detection",
+  "content": "vad_params = VADParams(\n    start_secs=0.2,\n    stop_secs=0.2 if using_turn_detection else 0.8,\n)\n\nsmart_turn_analyzer = LocalSmartTurnAnalyzerV3()\n\ntransport = YourTransport(\n    params=TransportParams(\n        vad_analyzer=SileroVADAnalyzer(params=vad_params),\n        turn_analyzer=smart_turn_analyzer if using_smart_turn_detection else None,\n    ),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#responsive-vad-with-turn-detection",
+  "links": []
+}

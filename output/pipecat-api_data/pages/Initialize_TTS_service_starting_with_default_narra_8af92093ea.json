@@ -1,0 +1,8 @@
+{
+  "title": "Initialize TTS service, starting with default narrator voice",
+  "content": "tts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n    voice_id=VOICE_IDS[\"narrator\"],\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-tts-service,-starting-with-default-narrator-voice",
+  "links": []
+}

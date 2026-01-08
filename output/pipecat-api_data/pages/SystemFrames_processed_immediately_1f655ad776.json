@@ -1,0 +1,8 @@
+{
+  "title": "SystemFrames (processed immediately)",
+  "content": "InputAudioRawFrame         # User audio input\nUserStartedSpeakingFrame   # Speech detection events\nStartInterruptionFrame     # Interruption control\nErrorFrame                 # Error notifications",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#systemframes-(processed-immediately)",
+  "links": []
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Add it as a regular observer",
+  "content": "task = PipelineTask(\n    pipeline,\n    observers=[custom_turn_tracker],\n    # Disable the default one if adding your own\n    enable_turn_tracking=False,\n)\n```\n\nThe observer automatically detects interruptions when the user starts speaking while the bot is still speaking. In this case:\n\n* The current turn is marked as interrupted (`was_interrupted=True`)\n* A new turn begins immediately\n\nThe observer monitors specific frame types to track conversation flow:\n\n* **StartFrame**: Initiates the first turn\n* **UserStartedSpeakingFrame**: Starts user speech or triggers a new turn\n* **BotStartedSpeakingFrame**: Marks bot speech beginning\n* **BotStoppedSpeakingFrame**: Starts the turn end timeout\n\nAfter a bot stops speaking, the observer waits for the configured timeout period. If no further bot speech occurs, the turn ends; otherwise, it continues as part of the same turn.\n\n* **Analytics**: Measure turn durations, interruption rates, and conversation flow\n* **Logging**: Record turn-based logs for diagnostics and analysis\n* **Visualization**: Show turn-based conversation timelines in UIs\n* **Tracing**: Group spans and metrics by conversation turns",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Interruptions",
+      "id": "interruptions"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Use Cases",
+      "id": "use-cases"
+    }
+  ],
+  "url": "llms-txt#add-it-as-a-regular-observer",
+  "links": []
+}

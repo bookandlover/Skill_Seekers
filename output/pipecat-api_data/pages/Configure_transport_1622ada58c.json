@@ -1,0 +1,52 @@
+{
+  "title": "Configure transport",
+  "content": "transport = FastAPIWebsocketTransport(\n    websocket=websocket,\n    params=FastAPIWebsocketParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        add_wav_header=False,\n        vad_analyzer=SileroVADAnalyzer(),\n        serializer=serializer,\n    ),\n)\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        audio_in_sample_rate=8000,\n        audio_out_sample_rate=8000,\n        allow_interruptions=True,\n    ),\n)\npython theme={null}\nserializer = PlivoFrameSerializer(\n    stream_id=stream_id,\n    call_id=call_id,\n    auth_id=os.getenv(\"PLIVO_AUTH_ID\"),\n    auth_token=os.getenv(\"PLIVO_AUTH_TOKEN\"),  # Enables auto-termination\n)\nshell theme={null}\npython server.py\nngrok http 8000",
+  "code_samples": [
+    {
+      "code": "<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/plivo-chatbot/outbound/bot.py\">\n  See the full bot.py with outbound call handling and call information usage\n</Card>\n\n### Run the Example\n\nTo test dial-out functionality:\n\n1. **Start your server**: Run your FastAPI server\n2. **Trigger a call**: Make an API request to start an outbound call\n3. **Answer your phone**: The bot will call the specified number\n4. **Talk to your bot**: Have a conversation with your AI agent\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/plivo-chatbot/outbound\">\n  See the full README with step-by-step setup, API usage, and outbound call\n  configuration\n</Card>\n\n## Key Features\n\n### Audio Format and Sample Rate\n\nPlivo Media Streaming uses 8kHz mono audio with μ-law encoding. Configure your pipeline accordingly:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Automatic Call Termination\n\nWhen you provide Plivo credentials to the `PlivoFrameSerializer`, it automatically ends calls when your pipeline ends:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Deployment\n\n### Local Development\n\nUse [ngrok](https://ngrok.com/) to expose your local server for testing:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Run the Example",
+      "id": "run-the-example"
+    },
+    {
+      "level": "h2",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h3",
+      "text": "Audio Format and Sample Rate",
+      "id": "audio-format-and-sample-rate"
+    },
+    {
+      "level": "h3",
+      "text": "Automatic Call Termination",
+      "id": "automatic-call-termination"
+    },
+    {
+      "level": "h2",
+      "text": "Deployment",
+      "id": "deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Local Development",
+      "id": "local-development"
+    }
+  ],
+  "url": "llms-txt#configure-transport",
+  "links": []
+}

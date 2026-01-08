@@ -1,0 +1,19 @@
+{
+  "title": "https://your-subdomain.ngrok.io/daily-dialin-webhook",
+  "content": "<Note>\n  The `--dialin` flag requires the Daily transport (`-t daily`) and a valid\n  `DAILY_API_KEY` environment variable.\n</Note>\n\n| Transport     | Command                                             | Access                                                       | Environment Variables                               |\n| ------------- | --------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------- |\n| WebRTC        | `python bot.py`                                     | [http://localhost:7860/client](http://localhost:7860/client) | None                                                |\n| Daily         | `python bot.py -t daily`                            | [http://localhost:7860](http://localhost:7860)               | `DAILY_API_KEY`, `DAILY_SAMPLE_ROOM_URL` (Optional) |\n| Daily Direct  | `python bot.py -d`                                  | Direct connection                                            | `DAILY_API_KEY`, `DAILY_SAMPLE_ROOM_URL` (Optional) |\n| Daily Dial-In | `python bot.py -t daily --dialin`                   | Phone calls via Daily PSTN                                   | `DAILY_API_KEY` (Required)                          |\n| Twilio        | `python bot.py -t twilio -x proxy.ngrok.io`         | Phone calls                                                  | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`           |\n| Telnyx        | `python bot.py -t telnyx -x proxy.ngrok.io`         | Phone calls                                                  | `TELNYX_API_KEY`                                    |\n| Plivo         | `python bot.py -t plivo -x proxy.ngrok.io`          | Phone calls                                                  | `PLIVO_AUTH_ID`, `PLIVO_AUTH_TOKEN`                 |\n| Exotel        | `python bot.py -t exotel`                           | Phone calls                                                  | None                                                |\n| ESP32 WebRTC  | `python bot.py -t webrtc --esp32 --host <ESP32_IP>` | ESP32 WebRTC connection                                      | None                                                |\n\nFor practical examples of using the development runner with different transports, check out the following:\n\n<Card title=\"Runner Examples\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/runner-examples\">\n  Explore the examples for different ways to use the development runner with\n  various transports.\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Quick Reference",
+      "id": "quick-reference"
+    },
+    {
+      "level": "h2",
+      "text": "Examples",
+      "id": "examples"
+    }
+  ],
+  "url": "llms-txt#https://your-subdomain.ngrok.io/daily-dialin-webhook",
+  "links": []
+}

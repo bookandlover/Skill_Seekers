@@ -1,0 +1,8 @@
+{
+  "title": "Include the RTVIProcessor in your pipeline",
+  "content": "pipeline = Pipeline(\n    [\n        transport.input(),\n        rtvi,\n        stt,\n        context_aggregator.user(),\n        llm,\n        tts,\n        transport.output(),\n        context_aggregator.assistant(),\n    ]\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#include-the-rtviprocessor-in-your-pipeline",
+  "links": []
+}

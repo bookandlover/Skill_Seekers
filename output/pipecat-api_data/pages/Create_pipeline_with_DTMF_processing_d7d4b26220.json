@@ -1,0 +1,19 @@
+{
+  "title": "Create pipeline with DTMF processing",
+  "content": "pipeline = Pipeline([\n    transport.input(),      # Websocket input from Twilio\n    dtmf_aggregator,       # Process DTMF before STT\n    stt,                   # Speech-to-text service\n    context_aggregator.user(),\n    llm,                   # LLM processes both voice and DTMF\n    tts,                   # Text-to-speech\n    transport.output(),\n    context_aggregator.assistant(),\n])\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Custom Configuration for Menu Systems",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Custom Configuration for Menu Systems",
+      "id": "custom-configuration-for-menu-systems"
+    }
+  ],
+  "url": "llms-txt#create-pipeline-with-dtmf-processing",
+  "links": []
+}

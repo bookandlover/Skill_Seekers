@@ -1,0 +1,49 @@
+{
+  "title": "SileroVADAnalyzer",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/audio/silero-vad-analyzer\n\nVoice Activity Detection analyzer using the Silero VAD ONNX model\n\n`SileroVADAnalyzer` is a Voice Activity Detection (VAD) analyzer that uses the Silero VAD ONNX model to detect speech in audio streams. It provides high-accuracy speech detection with efficient processing using ONNX runtime.\n\nThe Silero VAD analyzer requires additional dependencies:\n\n## Constructor Parameters\n\n<ParamField type=\"int\">\n  Audio sample rate in Hz. Must be either 8000 or 16000.\n</ParamField>\n\n<ParamField type=\"VADParams\">\n  Voice Activity Detection parameters object\n\n<Expandable title=\"properties\">\n    <ParamField type=\"float\">\n      Confidence threshold for speech detection. Higher values make detection more strict. Must be between 0 and 1.\n    </ParamField>\n\n<ParamField type=\"float\">\n      Time in seconds that speech must be detected before transitioning to SPEAKING state.\n    </ParamField>\n\n<ParamField type=\"float\">\n      Time in seconds of silence required before transitioning back to QUIET state.\n    </ParamField>\n\n<ParamField type=\"float\">\n      Minimum audio volume threshold for speech detection. Must be between 0 and 1.\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n### Sample Rate Requirements\n\nThe analyzer supports two sample rates:\n\n* 8000 Hz (256 samples per frame)\n* 16000 Hz (512 samples per frame)\n\n* Uses ONNX runtime for efficient inference\n* Automatically resets model state every 5 seconds to manage memory\n* Runs on CPU by default for consistent performance\n* Includes built-in model file\n\n* High-accuracy speech detection\n* Efficient ONNX-based processing\n* Automatic memory management\n* Thread-safe for pipeline processing\n* Built-in model file included\n* CPU-optimized inference\n* Supports 8kHz and 16kHz audio",
+  "code_samples": [
+    {
+      "code": "## Constructor Parameters\n\n<ParamField type=\"int\">\n  Audio sample rate in Hz. Must be either 8000 or 16000.\n</ParamField>\n\n<ParamField type=\"VADParams\">\n  Voice Activity Detection parameters object\n\n  <Expandable title=\"properties\">\n    <ParamField type=\"float\">\n      Confidence threshold for speech detection. Higher values make detection more strict. Must be between 0 and 1.\n    </ParamField>\n\n    <ParamField type=\"float\">\n      Time in seconds that speech must be detected before transitioning to SPEAKING state.\n    </ParamField>\n\n    <ParamField type=\"float\">\n      Time in seconds of silence required before transitioning back to QUIET state.\n    </ParamField>\n\n    <ParamField type=\"float\">\n      Minimum audio volume threshold for speech detection. Must be between 0 and 1.\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n## Usage Example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    },
+    {
+      "level": "h2",
+      "text": "Technical Details",
+      "id": "technical-details"
+    },
+    {
+      "level": "h3",
+      "text": "Sample Rate Requirements",
+      "id": "sample-rate-requirements"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#silerovadanalyzer",
+  "links": []
+}

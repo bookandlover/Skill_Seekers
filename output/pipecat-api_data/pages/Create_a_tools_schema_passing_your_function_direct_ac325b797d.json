@@ -1,0 +1,8 @@
+{
+  "title": "Create a tools schema, passing your function directly to it",
+  "content": "tools = ToolsSchema(standard_tools=[get_current_weather])",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-a-tools-schema,-passing-your-function-directly-to-it",
+  "links": []
+}

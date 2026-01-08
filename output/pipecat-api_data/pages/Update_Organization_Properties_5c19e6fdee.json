@@ -1,0 +1,8 @@
+{
+  "title": "Update Organization Properties",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/properties-update\n\nPATCH /properties\nUpdate configurable properties for your organization, such as the default deployment region.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#update-organization-properties",
+  "links": []
+}

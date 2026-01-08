@@ -1,0 +1,24 @@
+{
+  "title": "Use the ngrok URL in your Plivo XML Application",
+  "content": "### Pipecat Cloud Deployment\n\nFor production deployment without managing your own infrastructure, use Pipecat Cloud:\n\n<Card title=\"Plivo WebSocket on Pipecat Cloud\" icon=\"cloud\" href=\"/deployment/pipecat-cloud/guides/telephony/plivo-websocket\">\n  Deploy Plivo WebSocket bots with automatic scaling and managed infrastructure\n</Card>\n\n### Self-Hosted Production Deployment\n\nFor fully self-hosted production deployment, ensure your servers are:\n\n* Publicly accessible with HTTPS\n* Able to handle concurrent WebSocket connections\n* Properly configured with Plivo API credentials\n* Implementing proper error handling and logging\n\n* Explore the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/plivo-chatbot) for full implementations\n* Learn about [Daily + Twilio SIP integration](./twilio-daily-sip) for advanced telephony scenarios\n* Check out [Daily PSTN integration](./daily-pstn) for direct phone number provisioning",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Pipecat Cloud Deployment",
+      "id": "pipecat-cloud-deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Self-Hosted Production Deployment",
+      "id": "self-hosted-production-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#use-the-ngrok-url-in-your-plivo-xml-application",
+  "links": []
+}

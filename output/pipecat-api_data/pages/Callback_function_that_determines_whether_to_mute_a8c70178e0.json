@@ -1,0 +1,8 @@
+{
+  "title": "Callback function that determines whether to mute",
+  "content": "async def session_state_mute_logic(stt_filter: STTMuteFilter) -> bool:\n    # Return True to mute, False otherwise\n    # This is called when the bot is speaking\n    return session_state.session_ending",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#callback-function-that-determines-whether-to-mute",
+  "links": []
+}

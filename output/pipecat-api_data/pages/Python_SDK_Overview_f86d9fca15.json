@@ -1,0 +1,29 @@
+{
+  "title": "Python SDK Overview",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/overview\n\nIntroduction to the Pipecat Cloud Python SDK\n\nThe Pipecat Cloud Python SDK provides a programmatic interface for managing and interacting with your agents. It allows you to start and manage agent sessions, handle different session types, and respond to various error conditions.\n\nInstall the SDK using pip:\n\nThe SDK contains several main components:\n\n* [**Session Management**](./sessions) - Start and interact with agent sessions\n* [**Session Arguments**](./session-arguments) - Types of arguments received by `bot()` entry points\n* [**Error Handling**](./exceptions) - Exception classes for handling different error scenarios\n\nHere's a simple example to get started:\n\n```python theme={null}\nimport asyncio\n\nfrom pipecatcloud.exception import AgentStartError\nfrom pipecatcloud.session import Session, SessionParams\n\nasync def main():\n    try:\n        # Create session object\n        session = Session(\n            agent_name=\"my-first-agent\",\n            api_key=API_KEY,  # Replace with your actual API key\n            params=SessionParams(\n                use_daily=True,  # Optional: Creates a Daily room\n                daily_room_properties={\"start_video_off\": False},\n                data={\"key\": \"value\"},\n            ),\n        )\n\n# Start the session\n        response = await session.start()\n\n# Get Daily room URL\n        daily_url = f\"{response['dailyRoom']}?t={response['dailyToken']}\"\n        print(f\"Join Daily room: {daily_url}\")\n\nexcept AgentStartError as e:\n        print(f\"Error starting agent: {e}\")\n    except Exception as e:\n        print(f\"Unexpected error: {e}\")",
+  "code_samples": [
+    {
+      "code": "## Key Components\n\nThe SDK contains several main components:\n\n* [**Session Management**](./sessions) - Start and interact with agent sessions\n* [**Session Arguments**](./session-arguments) - Types of arguments received by `bot()` entry points\n* [**Error Handling**](./exceptions) - Exception classes for handling different error scenarios\n\n## Quick Start\n\nHere's a simple example to get started:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Key Components",
+      "id": "key-components"
+    },
+    {
+      "level": "h2",
+      "text": "Quick Start",
+      "id": "quick-start"
+    }
+  ],
+  "url": "llms-txt#python-sdk-overview",
+  "links": []
+}

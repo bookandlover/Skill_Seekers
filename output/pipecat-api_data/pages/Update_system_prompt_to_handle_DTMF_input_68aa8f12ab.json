@@ -1,0 +1,34 @@
+{
+  "title": "Update system prompt to handle DTMF input",
+  "content": "messages = [\n    {\n        \"role\": \"system\",\n        \"content\": \"\"\"You are a phone menu assistant.\n\nWhen you receive input starting with \"Menu selection:\", this represents\nbutton presses on the phone keypad:\n- Single digits (1-9): Menu options\n- 0: Often \"speak to operator\"\n- *: Confirmation or \"go back\"\n- #: Usually \"repeat menu\"\n\nRespond appropriately to both voice and keypad input.\"\"\"\n    }\n]\nmermaid theme={null}\ngraph TD\n    A[Twilio WebSocket] --> B[TwilioFrameSerializer]\n    B --> C[DTMFAggregator]\n    C --> D[STT Service]\n    C --> E[TranscriptionFrame]\n    E --> F[LLM Context Aggregator]\n    D --> F\n    F --> G[LLM Service]\n```\n\nThe aggregator gracefully handles:\n\n* Invalid DTMF digits (logged and ignored)\n* Pipeline interruptions (flushes pending sequences)\n* Rapid key presses (buffers efficiently)\n* Mixed voice and DTMF input (processes independently)\n\n1. **System Prompt Design**: Train your LLM to recognize and respond to DTMF prefixed input\n2. **Timeout Configuration**: Use shorter timeouts (1-2s) for rapid entry, longer (3-5s) for menu selection\n3. **Termination Strategy**: Use `#` for confirmation, `*` for cancel/back operations\n4. **Pipeline Placement**: Always place before the user context aggregator to ensure proper frame ordering",
+  "code_samples": [
+    {
+      "code": "## Sequence Examples\n\n| User Input         | Aggregation Trigger    | Output TranscriptionFrame |\n| ------------------ | ---------------------- | ------------------------- |\n| `1`, `2`, `3`, `#` | Termination digit      | `\"DTMF: 123#\"`            |\n| `*`, `0`           | 2-second timeout       | `\"DTMF: *0\"`              |\n| `5`, interruption  | StartInterruptionFrame | `\"DTMF: 5\"`               |\n| `9`, `9`, EndFrame | Pipeline shutdown      | `\"DTMF: 99\"`              |\n\n## Frame Flow",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Sequence Examples",
+      "id": "sequence-examples"
+    },
+    {
+      "level": "h2",
+      "text": "Frame Flow",
+      "id": "frame-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Error Handling",
+      "id": "error-handling"
+    },
+    {
+      "level": "h2",
+      "text": "Best Practices",
+      "id": "best-practices"
+    }
+  ],
+  "url": "llms-txt#update-system-prompt-to-handle-dtmf-input",
+  "links": []
+}

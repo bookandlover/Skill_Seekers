@@ -1,0 +1,29 @@
+{
+  "title": "Frame Serializer Overview",
+  "content": "Source: https://docs.pipecat.ai/server/services/serializers/introduction\n\nOverview of frame serializers for converting between Pipecat frames and external protocols\n\nFrame serializers are components that convert between Pipecat's internal frame format and external protocols or formats. They're essential when integrating with third-party services or APIs that have their own message formats.\n\n## Core Responsibilities\n\n1. **Serialization**: Converting Pipecat frames to external formats or protocols\n2. **Deserialization**: Converting external messages to Pipecat frames\n3. **Protocol-specific behaviors**: Managing unique aspects of each integration\n\n## Available Serializers\n\nPipecat includes serializers for popular voice and communications platforms:\n\n<CardGroup>\n  <Card title=\"Exotel Serializer\" icon=\"phone\" href=\"/server/services/serializers/exotel\">\n    For integrating with Exotel WebSocket media streaming\n  </Card>\n\n<Card title=\"Plivo Serializer\" icon=\"phone\" href=\"/server/services/serializers/plivo\">\n    For integrating with Telnyx WebSocket media streaming\n  </Card>\n\n<Card title=\"Telnyx Serializer\" icon=\"phone\" href=\"/server/services/serializers/telnyx\">\n    For integrating with Telnyx WebSocket media streaming\n  </Card>\n\n<Card title=\"Twilio Serializer\" icon=\"phone\" href=\"/server/services/serializers/twilio\">\n    For integrating with Twilio Media Streams WebSocket protocol\n  </Card>\n</CardGroup>\n\n## Custom Serializers\n\nYou can create custom serializers by implementing the `FrameSerializer` base class:",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Core Responsibilities",
+      "id": "core-responsibilities"
+    },
+    {
+      "level": "h2",
+      "text": "Available Serializers",
+      "id": "available-serializers"
+    },
+    {
+      "level": "h2",
+      "text": "Custom Serializers",
+      "id": "custom-serializers"
+    }
+  ],
+  "url": "llms-txt#frame-serializer-overview",
+  "links": []
+}

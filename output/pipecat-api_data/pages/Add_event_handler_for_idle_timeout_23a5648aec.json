@@ -1,0 +1,8 @@
+{
+  "title": "Add event handler for idle timeout",
+  "content": "@task.event_handler(\"on_idle_timeout\")\nasync def on_idle_timeout(task):\n    logger.info(\"Conversation has been idle for 3 minutes\")\n\n# Add a farewell message\n    await task.queue_frame(TTSSpeakFrame(\"I haven't heard from you in a while. Goodbye!\"))\n\n# Then end the conversation gracefully\n    await task.stop_when_done()\n\nrunner = PipelineRunner()\n\nawait runner.run(task)\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-event-handler-for-idle-timeout",
+  "links": []
+}

@@ -1,0 +1,54 @@
+{
+  "title": "DTMFAggregator",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/dtmf-aggregator\n\nAggregates DTMF (phone keypad) input into meaningful sequences for LLM processing\n\n`DTMFAggregator` processes incoming DTMF (Dual-Tone Multi-Frequency) frames from phone keypad input and aggregates them into complete sequences that can be understood by LLM services. It buffers individual digit presses and flushes them as transcription frames when a termination digit is pressed, a timeout occurs, or an interruption happens.\n\nThis aggregator is essential for telephony applications where users interact via phone keypad buttons, converting raw DTMF input into structured text that LLMs can process alongside voice transcriptions.\n\n<ParamField type=\"float\">\n  Idle timeout in seconds before flushing the aggregated digits\n</ParamField>\n\n<ParamField type=\"KeypadEntry\">\n  Digit that triggers immediate flush of the aggregation\n</ParamField>\n\n<ParamField type=\"str\">\n  Prefix added to DTMF sequence in the output transcription\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Contains a single keypad button press with a KeypadEntry value\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Flushes any pending aggregation when user interruption begins\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Flushes pending aggregation and stops the aggregation task\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Contains the aggregated DTMF sequence as text with the configured prefix\n</ParamField>\n\nAll input frames are passed through downstream, including the original `InputDTMFFrame` instances.\n\nThe aggregator processes these standard phone keypad entries:\n\n| KeypadEntry           | Value         | Description       |\n| --------------------- | ------------- | ----------------- |\n| `ZERO` through `NINE` | `\"0\"` - `\"9\"` | Numeric digits    |\n| `STAR`                | `\"*\"`         | Star/asterisk key |\n| `POUND`               | `\"#\"`         | Pound/hash key    |\n\n## Aggregation Behavior\n\nThe aggregator flushes (emits a TranscriptionFrame) when:\n\n1. **Termination digit**: The configured termination digit is pressed (default: `#`)\n2. **Timeout**: No new digits received within the timeout period (default: 2 seconds)\n3. **Interruption**: A `StartInterruptionFrame` is received\n4. **Pipeline end**: An `EndFrame` is received\n\n### Basic Telephony Integration\n\n```python theme={null}\nfrom pipecat.processors.aggregators.dtmf_aggregator import DTMFAggregator\nfrom pipecat.serializers.twilio import TwilioFrameSerializer",
+  "code_samples": [
+    {
+      "code": "<ParamField type=\"float\">\n  Idle timeout in seconds before flushing the aggregated digits\n</ParamField>\n\n<ParamField type=\"KeypadEntry\">\n  Digit that triggers immediate flush of the aggregation\n</ParamField>\n\n<ParamField type=\"str\">\n  Prefix added to DTMF sequence in the output transcription\n</ParamField>\n\n## Input Frames\n\n<ParamField type=\"Frame\">\n  Contains a single keypad button press with a KeypadEntry value\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Flushes any pending aggregation when user interruption begins\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Flushes pending aggregation and stops the aggregation task\n</ParamField>\n\n## Output Frames\n\n<ParamField type=\"Frame\">\n  Contains the aggregated DTMF sequence as text with the configured prefix\n</ParamField>\n\nAll input frames are passed through downstream, including the original `InputDTMFFrame` instances.\n\n## Keypad Entries\n\nThe aggregator processes these standard phone keypad entries:\n\n| KeypadEntry           | Value         | Description       |\n| --------------------- | ------------- | ----------------- |\n| `ZERO` through `NINE` | `\"0\"` - `\"9\"` | Numeric digits    |\n| `STAR`                | `\"*\"`         | Star/asterisk key |\n| `POUND`               | `\"#\"`         | Pound/hash key    |\n\n## Aggregation Behavior\n\nThe aggregator flushes (emits a TranscriptionFrame) when:\n\n1. **Termination digit**: The configured termination digit is pressed (default: `#`)\n2. **Timeout**: No new digits received within the timeout period (default: 2 seconds)\n3. **Interruption**: A `StartInterruptionFrame` is received\n4. **Pipeline end**: An `EndFrame` is received\n\n## Usage Examples\n\n### Basic Telephony Integration",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h2",
+      "text": "Input Frames",
+      "id": "input-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Output Frames",
+      "id": "output-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Keypad Entries",
+      "id": "keypad-entries"
+    },
+    {
+      "level": "h2",
+      "text": "Aggregation Behavior",
+      "id": "aggregation-behavior"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Telephony Integration",
+      "id": "basic-telephony-integration"
+    }
+  ],
+  "url": "llms-txt#dtmfaggregator",
+  "links": []
+}

@@ -1,0 +1,33 @@
+{
+  "title": "Custom configuration",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(allow_interruptions=True),\n    idle_timeout_secs=600,  # 10 minute timeout\n    idle_timeout_frames=(BotSpeakingFrame,),  # Only monitor bot speaking\n    cancel_on_idle_timeout=False,  # Don't auto-cancel, just notify\n)\npython theme={null}\n@task.event_handler(\"on_idle_timeout\")\nasync def on_idle_timeout(task):\n    logger.info(\"Pipeline has been idle for too long\")\n    # Perform any custom cleanup or logging\n    # Note: If cancel_on_idle_timeout=True, the pipeline will be cancelled after this handler runs\npython theme={null}\nfrom pipecat.frames.frames import BotSpeakingFrame, LLMFullResponseEndFrame, TTSSpeakFrame\nfrom pipecat.pipeline.runner import PipelineRunner\nfrom pipecat.pipeline.task import PipelineParams, PipelineTask",
+  "code_samples": [
+    {
+      "code": "## Configuration Parameters\n\n<ParamField type=\"Optional[float]\">\n  Timeout in seconds before considering the pipeline idle. Set to `None` to\n  disable idle detection.\n</ParamField>\n\n<ParamField type=\"Tuple[Type[Frame], ...]\">\n  Frame types that should prevent the pipeline from being considered idle.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to automatically cancel the pipeline task when idle timeout is\n  reached.\n</ParamField>\n\n## Handling Idle Timeouts\n\nYou can respond to idle timeout events by adding an event handler:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Example Implementation\n\nHere's a complete example showing how to configure idle detection with custom handling:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Configuration Parameters",
+      "id": "configuration-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Handling Idle Timeouts",
+      "id": "handling-idle-timeouts"
+    },
+    {
+      "level": "h2",
+      "text": "Example Implementation",
+      "id": "example-implementation"
+    }
+  ],
+  "url": "llms-txt#custom-configuration",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Add to transport",
+  "content": "transport = DailyTransport(\n    room_url,\n    token,\n    \"Audio Bot\",\n    DailyParams(\n        audio_out_enabled=True,\n        audio_out_mixer=mixer,\n    ),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-to-transport",
+  "links": []
+}

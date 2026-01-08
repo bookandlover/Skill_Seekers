@@ -1,0 +1,13 @@
+{
+  "title": "From outside the pipeline",
+  "content": "from pipecat.frames.frames import EndFrame, TTSSpeakFrame\n\nawait task.queue_frame(EndFrame())\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Push an `EndTaskFrame` upstream from inside your pipeline:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#from-outside-the-pipeline",
+  "links": []
+}

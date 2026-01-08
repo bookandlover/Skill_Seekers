@@ -1,0 +1,8 @@
+{
+  "title": "Use config file but override the region",
+  "content": "pipecat cloud deploy --region eu-central",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#use-config-file-but-override-the-region",
+  "links": []
+}

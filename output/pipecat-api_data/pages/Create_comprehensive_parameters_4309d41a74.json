@@ -1,0 +1,8 @@
+{
+  "title": "Create comprehensive parameters",
+  "content": "params = PipelineParams(\n    allow_interruptions=True,\n    audio_in_sample_rate=8000,\n    audio_out_sample_rate=8000,\n    enable_heartbeats=True,\n    enable_metrics=True,\n    enable_usage_metrics=True,\n    heartbeats_period_secs=1.0,\n    report_only_initial_ttfb=False,\n    start_metadata={\n        \"conversation_id\": \"conv-123\",\n        \"session_data\": {\n            \"user_id\": \"user-456\",\n            \"start_time\": \"2023-10-25T14:30:00Z\"\n        }\n    }\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-comprehensive-parameters",
+  "links": []
+}

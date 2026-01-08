@@ -1,0 +1,89 @@
+{
+  "title": "Error Handling",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/exceptions\n\nManaging errors with the Pipecat Cloud Python SDK\n\nThe Pipecat Cloud SDK defines several exception classes to help you handle different error conditions.\n\n## Base Exception Class\n\nBase class for all Pipecat Cloud exceptions.\n\nRaised when an agent fails to start.\n\n<ParamField type=\"string\">\n  Error message with details about the failure.\n</ParamField>\n\n<ParamField type=\"string\">\n  Error code that can be used for conditional handling of different error types.\n</ParamField>\n\n### AgentNotHealthyError\n\nRaised when attempting to interact with an agent that is not in a ready state.\n\n<ParamField type=\"string\">\n  Error message with details about the agent's status.\n</ParamField>\n\n<ParamField type=\"string\">\n  Error code identifying the specific issue with the agent.\n</ParamField>\n\n## Authentication Errors\n\nRaised when authentication fails or token has expired.\n\n<ParamField type=\"string\">\n  Message explaining the authentication failure.\n</ParamField>\n\n## Configuration Errors\n\nRaised when there are issues with configuration storage or retrieval.\n\n<ParamField type=\"string\">\n  Message explaining the configuration issue.\n</ParamField>\n\nRaised when the configuration file is malformed.\n\nRaised when an invalid operation is attempted.",
+  "code_samples": [
+    {
+      "code": "## Session Errors\n\n### AgentStartError\n\nRaised when an agent fails to start.",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Properties\n\n<ParamField type=\"string\">\n  Error message with details about the failure.\n</ParamField>\n\n<ParamField type=\"string\">\n  Error code that can be used for conditional handling of different error types.\n</ParamField>\n\n### AgentNotHealthyError\n\nRaised when attempting to interact with an agent that is not in a ready state.",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Properties\n\n<ParamField type=\"string\">\n  Error message with details about the agent's status.\n</ParamField>\n\n<ParamField type=\"string\">\n  Error code identifying the specific issue with the agent.\n</ParamField>\n\n## Authentication Errors\n\n### AuthError\n\nRaised when authentication fails or token has expired.",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Properties\n\n<ParamField type=\"string\">\n  Message explaining the authentication failure.\n</ParamField>\n\n## Configuration Errors\n\n### ConfigError\n\nRaised when there are issues with configuration storage or retrieval.",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Properties\n\n<ParamField type=\"string\">\n  Message explaining the configuration issue.\n</ParamField>\n\n### ConfigFileError\n\nRaised when the configuration file is malformed.",
+      "language": "unknown"
+    },
+    {
+      "code": "### InvalidError\n\nRaised when an invalid operation is attempted.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Base Exception Class",
+      "id": "base-exception-class"
+    },
+    {
+      "level": "h3",
+      "text": "Error",
+      "id": "error"
+    },
+    {
+      "level": "h2",
+      "text": "Session Errors",
+      "id": "session-errors"
+    },
+    {
+      "level": "h3",
+      "text": "AgentStartError",
+      "id": "agentstarterror"
+    },
+    {
+      "level": "h3",
+      "text": "AgentNotHealthyError",
+      "id": "agentnothealthyerror"
+    },
+    {
+      "level": "h2",
+      "text": "Authentication Errors",
+      "id": "authentication-errors"
+    },
+    {
+      "level": "h3",
+      "text": "AuthError",
+      "id": "autherror"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration Errors",
+      "id": "configuration-errors"
+    },
+    {
+      "level": "h3",
+      "text": "ConfigError",
+      "id": "configerror"
+    },
+    {
+      "level": "h3",
+      "text": "ConfigFileError",
+      "id": "configfileerror"
+    },
+    {
+      "level": "h3",
+      "text": "InvalidError",
+      "id": "invaliderror"
+    }
+  ],
+  "url": "llms-txt#error-handling",
+  "links": []
+}

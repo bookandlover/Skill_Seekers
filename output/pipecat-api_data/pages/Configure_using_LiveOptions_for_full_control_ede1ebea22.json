@@ -1,0 +1,60 @@
+{
+  "title": "Configure using LiveOptions for full control",
+  "content": "live_options = LiveOptions(\n    model=\"nova-2\",\n    language=Language.EN_US,\n    interim_results=True,        # Enable interim transcripts\n    smart_format=True,           # Enable punctuation and formatting\n    punctuate=True,              # Add punctuation\n    profanity_filter=True,       # Filter profanity\n    vad_events=False,            # Use pipeline VAD instead\n)\n\nstt = DeepgramSTTService(\n    api_key=os.getenv(\"DEEPGRAM_API_KEY\"),\n    live_options=live_options,\n)\npython theme={null}\nstt = YourSTTService(\n    # Service-specific options...\n    audio_passthrough=True,      # Pass audio frames downstream (recommended)\n    sample_rate=16000,           # Audio sample rate (better set in PipelineParams)\n)\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        audio_in_sample_rate=16000,   # All input processors use this rate\n        audio_out_sample_rate=24000,  # All output processors use this rate\n    ),\n)\npython theme={null}\nstt = DeepgramSTTService(\n    api_key=os.getenv(\"DEEPGRAM_API_KEY\"),\n    live_options=LiveOptions(\n      interim_results=True,\n    )\n)\npython theme={null}\nstt = DeepgramSTTService(\n    api_key=os.getenv(\"DEEPGRAM_API_KEY\"),\n    live_options=LiveOptions(\n        smart_format=True,     # Adds punctuation and capitalization\n        profanity_filter=True, # Optional content filtering\n    )\n)\npython theme={null}\nfrom pipecat.audio.vad.silero import SileroVADAnalyzer",
+  "code_samples": [
+    {
+      "code": "### STTService Base Class Configuration\n\nAll STT services inherit from the STTService base class. The base class has base configuration options which are set with smart defaults:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Key options:**\n\n* **`audio_passthrough=True`**: Allows audio frames to continue downstream to other processors (like audio recording)\n* **`sample_rate`**: Audio sampling rate - best practice is to **set the `audio_in_sample_rate` in `PipelineParams` for consistency**\n\n<Warning>\n  Setting `audio_passthrough=False` will stop audio frames from being passed\n  downstream, which may break audio recording or other audio-dependent\n  processors.\n</Warning>\n\n### Pipeline-Level Audio Configuration\n\nInstead of setting sample rates on individual services, configure them pipeline-wide:",
+      "language": "unknown"
+    },
+    {
+      "code": "This ensures all audio processors use consistent sample rates without manual configuration.\n\n<Tip>\n  Always set audio sample rates in `PipelineParams` to avoid mismatches between\n  different audio processors. This simplifies configuration and ensures\n  consistent audio quality across your pipeline.\n</Tip>\n\n## Best Practices\n\n### Enable Interim Results\n\nWhen available, enable interim transcripts for better user experience:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Benefits:**\n\n* Notifies context aggregation that more text is coming\n* Prevents premature LLM completions\n* Enables interruption detection\n* Improves conversation flow\n\n### Enable Punctuation and Formatting\n\nUse smart formatting when available:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Benefits:**\n\n* Professional-looking transcripts\n* Better LLM comprehension\n* Eliminates post-processing needs\n* Improved context understanding\n\n### Use Local VAD\n\nWhile many STT services provide Voice Activity Detection, use Pipecat's local Silero VAD for better performance:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "STTService Base Class Configuration",
+      "id": "sttservice-base-class-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Pipeline-Level Audio Configuration",
+      "id": "pipeline-level-audio-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Best Practices",
+      "id": "best-practices"
+    },
+    {
+      "level": "h3",
+      "text": "Enable Interim Results",
+      "id": "enable-interim-results"
+    },
+    {
+      "level": "h3",
+      "text": "Enable Punctuation and Formatting",
+      "id": "enable-punctuation-and-formatting"
+    },
+    {
+      "level": "h3",
+      "text": "Use Local VAD",
+      "id": "use-local-vad"
+    }
+  ],
+  "url": "llms-txt#configure-using-liveoptions-for-full-control",
+  "links": []
+}

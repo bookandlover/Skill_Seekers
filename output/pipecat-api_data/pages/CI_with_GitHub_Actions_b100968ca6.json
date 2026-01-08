@@ -1,0 +1,62 @@
+{
+  "title": "CI with GitHub Actions",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/ci-with-github-actions\n\nAutomate image builds and deploys for continuous integration\n\nAutomate your Pipecat Cloud deployment workflow using GitHub Actions. This guide shows you how to automatically build and deploy your agent whenever you push changes to your main branch.\n\nBefore setting up your GitHub Actions workflow, ensure you have:\n\n* A Pipecat Cloud account with an API token\n* A Docker Hub account (or another container registry)\n* An image pull secret configured in Pipecat Cloud\n* A secret set configured for your agent\n\n## Configure GitHub Secrets\n\nAdd the following secrets to your GitHub repository settings (Settings → Secrets and variables → Actions):\n\n* `DOCKERHUB_USERNAME`: Your Docker Hub username\n* `DOCKERHUB_TOKEN`: Your Docker Hub access token\n* `PCC_API_KEY`: Your Pipecat Cloud private API token\n\n<Note>\n  For Docker Hub access tokens, create a personal access token from your Docker\n  Hub account settings rather than using your password.\n</Note>\n\n## Basic Workflow Configuration\n\nCreate a file at `.github/workflows/deploy.yml` in your repository:\n\n1. Trigger on every push to the `main` branch\n2. Build your Docker image for `linux/arm64` platform\n3. Push the image with both `latest` and date-based tags\n4. Deploy the new image to Pipecat Cloud\n\n## Image Tagging Strategy\n\nThe example workflow creates two tags for each build:\n\n* `latest`: Always points to the most recent build\n* Date-based (e.g., `2025-10-30`): Specific version tied to the build date\n\n<Warning>\n  Avoid pushing multiple builds to the same image tag. Pipecat Cloud instances\n  may cache older versions of an image tag, which can cause running agents to\n  use outdated code even after redeployment. Use unique tags (like date-based or\n  commit SHA tags) for each build.\n</Warning>\n\nIf you deploy more frequently than once per day, consider using commit SHA-based tags instead:\n\nThen update the deployment step to use `${{ github.sha }}` as the tag.\n\n## Monorepo Configuration\n\nIf your agent code lives in a subdirectory (e.g., `/server`, like code generated from the Pipecat CLI), modify the workflow to set the working directory and build context:\n\nThe `paths` filter ensures the workflow only runs when files in the `server/` directory change, preventing unnecessary builds.\n\n## Platform Considerations\n\nPipecat Cloud requires images built for the `linux/arm64` platform. The workflow uses QEMU to enable ARM64 builds on GitHub's x64 runners.\n\n<Note>\n  As of October 2025, GitHub still does not provide ARM runners for private\n  repositories. The workflow uses QEMU emulation, which can significantly\n  increase build times. If you have a public repository or when GitHub makes ARM\n  runners available, you can remove the QEMU setup step and use native ARM\n  runners for faster builds.\n</Note>\n\nTo use native ARM runners when available:\n\n## Customizing Deployment Configuration\n\nThe deployment step in the workflow configures your agent using the Pipecat Cloud REST API. You can customize the following parameters:\n\n* `image`: The Docker image tag to deploy\n* `imagePullSecretSet`: Reference to your image pull credentials (replace `my-image-pull-secret` with your actual secret name)\n* `secretSet`: Reference to your environment secrets (replace `my-secret-set` with your actual secret set name)\n* `enableKrisp`: Enable or disable Krisp noise suppression\n* `autoScaling.minAgents`: Minimum number of agent instances to maintain\n* `autoScaling.maxAgents`: Maximum number of agent instances allowed\n\n<Tip>\n  Adjust the `minAgents` and `maxAgents` values based on your expected traffic\n  patterns. See our [Capacity Planning guide](./capacity-planning) for guidance\n  on optimizing these settings.\n</Tip>\n\n<CardGroup>\n  <Card title=\"Secrets Management\" icon=\"key\" href=\"../fundamentals/secrets\">\n    Learn how to securely manage image pull secrets and environment variables.\n  </Card>\n\n<Card title=\"Scaling Configuration\" icon=\"chart-line\" href=\"../fundamentals/scaling\">\n    Configure auto-scaling to handle varying traffic loads.\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "This workflow will:\n\n1. Trigger on every push to the `main` branch\n2. Build your Docker image for `linux/arm64` platform\n3. Push the image with both `latest` and date-based tags\n4. Deploy the new image to Pipecat Cloud\n\n## Image Tagging Strategy\n\nThe example workflow creates two tags for each build:\n\n* `latest`: Always points to the most recent build\n* Date-based (e.g., `2025-10-30`): Specific version tied to the build date\n\n<Warning>\n  Avoid pushing multiple builds to the same image tag. Pipecat Cloud instances\n  may cache older versions of an image tag, which can cause running agents to\n  use outdated code even after redeployment. Use unique tags (like date-based or\n  commit SHA tags) for each build.\n</Warning>\n\nIf you deploy more frequently than once per day, consider using commit SHA-based tags instead:",
+      "language": "unknown"
+    },
+    {
+      "code": "Then update the deployment step to use `${{ github.sha }}` as the tag.\n\n## Monorepo Configuration\n\nIf your agent code lives in a subdirectory (e.g., `/server`, like code generated from the Pipecat CLI), modify the workflow to set the working directory and build context:",
+      "language": "unknown"
+    },
+    {
+      "code": "The `paths` filter ensures the workflow only runs when files in the `server/` directory change, preventing unnecessary builds.\n\n## Platform Considerations\n\nPipecat Cloud requires images built for the `linux/arm64` platform. The workflow uses QEMU to enable ARM64 builds on GitHub's x64 runners.\n\n<Note>\n  As of October 2025, GitHub still does not provide ARM runners for private\n  repositories. The workflow uses QEMU emulation, which can significantly\n  increase build times. If you have a public repository or when GitHub makes ARM\n  runners available, you can remove the QEMU setup step and use native ARM\n  runners for faster builds.\n</Note>\n\nTo use native ARM runners when available:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Configure GitHub Secrets",
+      "id": "configure-github-secrets"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Workflow Configuration",
+      "id": "basic-workflow-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Image Tagging Strategy",
+      "id": "image-tagging-strategy"
+    },
+    {
+      "level": "h2",
+      "text": "Monorepo Configuration",
+      "id": "monorepo-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Platform Considerations",
+      "id": "platform-considerations"
+    },
+    {
+      "level": "h2",
+      "text": "Customizing Deployment Configuration",
+      "id": "customizing-deployment-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#ci-with-github-actions",
+  "links": []
+}

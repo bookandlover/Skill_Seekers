@@ -1,0 +1,61 @@
+{
+  "title": "docker",
+  "content": "Source: https://docs.pipecat.ai/cli/cloud/docker\n\nBuild and push Docker images for agent deployments\n\nThe `docker` command provides utilities for building, tagging, and pushing Docker images to container registries. This command automatically parses registry information from your deployment configuration and supports both Docker Hub and custom registries.\n\nBuild, tag, and push a Docker image for your agent deployment. This command reads configuration from your `pcc-deploy.toml` file to automatically determine registry settings, image names, and versions.\n\n<ParamField type=\"string\">\n  Name of the agent to build image for. If not provided, uses the `agent_name`\n  from your `pcc-deploy.toml` file.\n</ParamField>\n\n**Registry Configuration:**\n\n<ParamField type=\"string\">\n  Registry type to push to. Supported values: `dockerhub`, `custom`. When not\n  specified, automatically detected from the `image` field in your\n  `pcc-deploy.toml` file.\n</ParamField>\n\n<ParamField type=\"string\">\n  Registry username for authentication. When not specified, automatically parsed\n  from the `image` field in your `pcc-deploy.toml` file (e.g., `myusername` from\n  `myusername/app:1.0`).\n</ParamField>\n\n<ParamField type=\"string\">\n  Custom registry URL (required for custom registries). When not specified,\n  automatically parsed from the `image` field for custom registries (e.g.,\n  `gcr.io` from `gcr.io/project/app:1.0`).\n</ParamField>\n\n**Build Configuration:**\n\n<ParamField type=\"string\">\n  Version tag for the image. When not specified, automatically extracted from\n  the `image` field in your `pcc-deploy.toml` file (e.g., `1.0` from\n  `myusername/app:1.0`).\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Build and tag only, do not push to registry. Useful for local testing or when\n  you want to push manually later.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Do not tag the image as `latest`. By default, images are tagged with both the\n  specified version and `latest`.\n</ParamField>\n\nThe `docker build-push` command reads configuration from your `pcc-deploy.toml` file to minimize required command-line arguments. Here's how different registry setups work:\n\n### Docker Hub (Default)\n\nFor Docker Hub repositories, the minimal configuration is:\n\nThis automatically configures:\n\n* Registry: `dockerhub`\n* Username: `myusername`\n* Agent name: `my-agent`\n* Version: `1.0`\n\nFor custom registries like Google Container Registry, AWS ECR, or private registries:\n\nThis automatically configures:\n\n* Registry: `custom`\n* Registry URL: `gcr.io`\n* Username/Project: `my-project`\n* Agent name: `my-agent`\n* Version: `1.0`\n\n### Docker Configuration Section\n\nFor advanced configuration, add a `[docker]` section:\n\nAvailable `[docker]` options:\n\n<ParamField type=\"boolean\">\n  Whether to automatically tag the image as `latest` in addition to the\n  specified version.\n</ParamField>\n\n### Basic Usage (Recommended)\n\nWith a properly configured `pcc-deploy.toml`:\n\n```shell theme={null}",
+  "code_samples": [
+    {
+      "code": "**Arguments:**\n\n<ParamField type=\"string\">\n  Name of the agent to build image for. If not provided, uses the `agent_name`\n  from your `pcc-deploy.toml` file.\n</ParamField>\n\n**Registry Configuration:**\n\n<ParamField type=\"string\">\n  Registry type to push to. Supported values: `dockerhub`, `custom`. When not\n  specified, automatically detected from the `image` field in your\n  `pcc-deploy.toml` file.\n</ParamField>\n\n<ParamField type=\"string\">\n  Registry username for authentication. When not specified, automatically parsed\n  from the `image` field in your `pcc-deploy.toml` file (e.g., `myusername` from\n  `myusername/app:1.0`).\n</ParamField>\n\n<ParamField type=\"string\">\n  Custom registry URL (required for custom registries). When not specified,\n  automatically parsed from the `image` field for custom registries (e.g.,\n  `gcr.io` from `gcr.io/project/app:1.0`).\n</ParamField>\n\n**Build Configuration:**\n\n<ParamField type=\"string\">\n  Version tag for the image. When not specified, automatically extracted from\n  the `image` field in your `pcc-deploy.toml` file (e.g., `1.0` from\n  `myusername/app:1.0`).\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Build and tag only, do not push to registry. Useful for local testing or when\n  you want to push manually later.\n</ParamField>\n\n<ParamField type=\"boolean\">\n  Do not tag the image as `latest`. By default, images are tagged with both the\n  specified version and `latest`.\n</ParamField>\n\n## Configuration\n\nThe `docker build-push` command reads configuration from your `pcc-deploy.toml` file to minimize required command-line arguments. Here's how different registry setups work:\n\n### Docker Hub (Default)\n\nFor Docker Hub repositories, the minimal configuration is:",
+      "language": "unknown"
+    },
+    {
+      "code": "This automatically configures:\n\n* Registry: `dockerhub`\n* Username: `myusername`\n* Agent name: `my-agent`\n* Version: `1.0`\n\n### Custom Registry\n\nFor custom registries like Google Container Registry, AWS ECR, or private registries:",
+      "language": "unknown"
+    },
+    {
+      "code": "This automatically configures:\n\n* Registry: `custom`\n* Registry URL: `gcr.io`\n* Username/Project: `my-project`\n* Agent name: `my-agent`\n* Version: `1.0`\n\n### Docker Configuration Section\n\nFor advanced configuration, add a `[docker]` section:",
+      "language": "unknown"
+    },
+    {
+      "code": "Available `[docker]` options:\n\n<ParamField type=\"boolean\">\n  Whether to automatically tag the image as `latest` in addition to the\n  specified version.\n</ParamField>\n\n## Examples\n\n### Basic Usage (Recommended)\n\nWith a properly configured `pcc-deploy.toml`:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "build-push",
+      "id": "build-push"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Docker Hub (Default)",
+      "id": "docker-hub-(default)"
+    },
+    {
+      "level": "h3",
+      "text": "Custom Registry",
+      "id": "custom-registry"
+    },
+    {
+      "level": "h3",
+      "text": "Docker Configuration Section",
+      "id": "docker-configuration-section"
+    },
+    {
+      "level": "h2",
+      "text": "Examples",
+      "id": "examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Usage (Recommended)",
+      "id": "basic-usage-(recommended)"
+    }
+  ],
+  "url": "llms-txt#docker",
+  "links": []
+}

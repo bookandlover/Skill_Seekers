@@ -1,0 +1,19 @@
+{
+  "title": "Create a PipelineTask to manage the pipeline execution",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        enable_metrics=True,\n        enable_usage_metrics=True,\n    ),\n    observers=[RTVIObserver(rtvi)],\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "The task handles pipeline execution, collects metrics, and manages RTVI events through [observers](/server/utilities/observers/observer-pattern).\n\n### Event Handlers\n\nEvent handlers manage the bot's lifecycle and user interactions:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Event Handlers",
+      "id": "event-handlers"
+    }
+  ],
+  "url": "llms-txt#create-a-pipelinetask-to-manage-the-pipeline-execution",
+  "links": []
+}

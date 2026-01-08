@@ -1,0 +1,8 @@
+{
+  "title": "Basic token generation",
+  "content": "token = await helper.get_token(\n    room_url=\"https://your-domain.daily.co/my-room\",\n    expiry_time=1800,  # 30 minutes\n    owner=True,\n    eject_at_token_exp=True\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#basic-token-generation",
+  "links": []
+}

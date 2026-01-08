@@ -1,0 +1,8 @@
+{
+  "title": "Create switcher with both services",
+  "content": "tts_switcher = ServiceSwitcher(\n    services=[elevenlabs, cartesia],\n    strategy_type=ServiceSwitcherStrategyManual\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-switcher-with-both-services",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "1. Define handler function",
+  "content": "async def handle_print_message(processor, service, arguments):\n    message = arguments.get(\"message\", \"Default message\")\n    logger.info(f\"Print action triggered with message: {message}\")\n    return True",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#1.-define-handler-function",
+  "links": []
+}

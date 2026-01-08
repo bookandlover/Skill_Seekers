@@ -1,0 +1,8 @@
+{
+  "title": "Prepare file system for the Datadog Agent to use for Unix Sockets",
+  "content": "RUN mkdir -p /var/run/datadog/\nRUN chown dd-agent:dd-agent /var/run/datadog/",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#prepare-file-system-for-the-datadog-agent-to-use-for-unix-sockets",
+  "links": []
+}

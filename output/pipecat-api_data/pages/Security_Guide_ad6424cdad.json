@@ -1,0 +1,34 @@
+{
+  "title": "Security Guide",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/security/security-and-compliance\n\nSecuring your agents on Pipecat Cloud\n\nThis guide addresses security considerations throughout your journey with Pipecat Cloud, from account creation to running production agents. Each section focuses on practical security measures you can take and explains how Pipecat Cloud protects your agents.\n\n## Account & Organization Security\n\n### How do I secure access to my Pipecat Cloud account?\n\nPipecat Cloud implements different authentication mechanisms depending on how you interact with the platform:\n\n| Interface | Authentication Method          | Security Notes                              |\n| --------- | ------------------------------ | ------------------------------------------- |\n| Dashboard | Email + OTP                    | Two-factor authentication by default        |\n| CLI       | JWT via Clerk                  | Token-based auth with automatic expiration  |\n| REST API  | Bearer token (public API keys) | Scoped to specific organizations and agents |\n\n<Tip>\n  For CLI usage, we recommend running `pipecat cloud auth login` regularly to\n  refresh your credentials.\n</Tip>\n\n### How do I manage access for my team?\n\nOrganizations provide a secure way to collaborate with team members:\n\n* Create separate organizations for different teams or environments\n* Invite members with appropriate permission levels\n* Use organization-specific API keys for automation\n\nEach organization has its own isolated environment with separate resources, agents, and secrets.\n\n## Development Security\n\n### How do I keep API keys and secrets secure during development?\n\nNever include sensitive credentials in your agent code or images:\n\n```python theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Account & Organization Security",
+      "id": "account-&-organization-security"
+    },
+    {
+      "level": "h3",
+      "text": "How do I secure access to my Pipecat Cloud account?",
+      "id": "how-do-i-secure-access-to-my-pipecat-cloud-account?"
+    },
+    {
+      "level": "h3",
+      "text": "How do I manage access for my team?",
+      "id": "how-do-i-manage-access-for-my-team?"
+    },
+    {
+      "level": "h2",
+      "text": "Development Security",
+      "id": "development-security"
+    },
+    {
+      "level": "h3",
+      "text": "How do I keep API keys and secrets secure during development?",
+      "id": "how-do-i-keep-api-keys-and-secrets-secure-during-development?"
+    }
+  ],
+  "url": "llms-txt#security-guide",
+  "links": []
+}

@@ -1,0 +1,38 @@
+{
+  "title": "Then run with public proxy",
+  "content": "python bot.py -t twilio -x yourproxy.ngrok.io\nbash theme={null}\npython bot.py [OPTIONS]\n\nOptions:\n  --host TEXT          Server host address (default: localhost)\n  --port INTEGER       Server port (default: 7860)\n  -t, --transport      Transport type: daily, webrtc, twilio, telnyx, plivo, exotel (default: webrtc)\n  -x, --proxy TEXT     Public proxy hostname for telephony webhooks (required for telephony)\n  --esp32              Enable SDP munging for ESP32 WebRTC compatibility\n  -d, --direct         Connect directly to Daily room for testing (automatically sets transport to daily)\n  --dialin             Enable Daily PSTN dial-in webhook handling (requires Daily transport)\n  -v, --verbose        Increase logging verbosity\npython theme={null}\nfrom pipecat.runner.utils import create_transport",
+  "code_samples": [
+    {
+      "code": "**Environment Variables**:\n\n* Twilio: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`\n* Telnyx: `TELNYX_API_KEY`\n* Plivo: `PLIVO_AUTH_ID`, `PLIVO_AUTH_TOKEN`\n* Exotel: None required (no hang-up functionality available)\n\nEnvironment variables are optional, but when provided will attempt to hang up the call when the session ends.\n\n**Runner Arguments**: `WebSocketRunnerArguments`\n\n* `websocket`: WebSocket connection for audio streaming\n\nThe runner automatically detects the telephony provider from incoming WebSocket messages and configures the appropriate serializers and audio settings. Your bot receives a pre-configured FastAPI WebSocket connection ready for telephony audio streaming.\n\n## Command Line Options\n\nThe development runner accepts several command-line arguments to customize its behavior:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Key Arguments\n\n**`--transport` / `-t`**: Determines which transport infrastructure to set up\n\n* `webrtc`: Local WebRTC with browser interface\n* `daily`: Daily.co integration with room management\n* `twilio`, `telnyx`, `plivo`, `exotel`: Telephony provider integration\n\n**`--proxy` / `-x`**: Required for most telephony transports (Twilio, Telnyx, Plivo). This should be a publicly accessible hostname (like `yourbot.ngrok.io`) that can receive webhooks from telephony providers. The runner automatically strips protocol prefixes (http\\://, https\\://) if provided. Not required for Exotel, which uses direct WebSocket connections.\n\n**`--direct` / `-d`**: Special mode for Daily that bypasses the web server and connects your bot directly to a Daily room. Useful for quick testing but not recommended for production use.\n\n**`--dialin`**: Enables the `/daily-dialin-webhook` endpoint for handling Daily PSTN dial-in calls. Only works with Daily transport (`-t daily`). This endpoint receives webhook data from Daily when a phone call dials into your configured phone number, creates a SIP-enabled room, and spawns your bot.\n\n**`--esp32`**: Enables SDP (Session Description Protocol) modifications needed for ESP32 WebRTC compatibility. Must be used with a specific IP address via `--host`.\n\n### Environment Variables\n\nDifferent transports require different environment variables:\n\n**Daily**:\n\n* `DAILY_API_KEY`: Daily API key for creating rooms and tokens (required for dial-in)\n* `DAILY_SAMPLE_ROOM_URL` (Optional): Existing room URL to use\n* `DAILY_API_URL` (Optional): Daily API URL (defaults to [https://api.daily.co/v1](https://api.daily.co/v1))\n\n**Telephony**:\n\n* `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`: Twilio credentials\n* `PLIVO_AUTH_ID`, `PLIVO_AUTH_TOKEN`: Plivo credentials\n* `TELNYX_API_KEY`: Telnyx API key\n\nThe runner automatically uses these environment variables when creating transport sessions and authentication tokens.\n\n## Simplifying with the Transport Utility\n\nWhile the manual approach gives you full control, the `create_transport` utility provides a much cleaner way to handle multiple transports. Instead of writing conditional logic for each transport type, you define transport configurations upfront and let the utility handle the selection:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Command Line Options",
+      "id": "command-line-options"
+    },
+    {
+      "level": "h3",
+      "text": "Key Arguments",
+      "id": "key-arguments"
+    },
+    {
+      "level": "h3",
+      "text": "Environment Variables",
+      "id": "environment-variables"
+    },
+    {
+      "level": "h2",
+      "text": "Simplifying with the Transport Utility",
+      "id": "simplifying-with-the-transport-utility"
+    }
+  ],
+  "url": "llms-txt#then-run-with-public-proxy",
+  "links": []
+}

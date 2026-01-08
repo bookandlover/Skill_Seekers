@@ -1,0 +1,38 @@
+{
+  "title": "Starting Sessions",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/active-sessions\n\nServing user requests with active sessions.\n\nOnce you have made a successful deployment, you can start on-demand sessions to begin interacting with your agent.\n\nAn active session is a running instance of your agent code that connects with you or your end-users.\nSessions are created in response to a request and scaled up or down based on your deployment configuration (see [Scaling](./scaling)).\n\n<Info>\n  You must have an active billing account to start sessions. Usage is billed for\n  the duration of each session, please refer to\n  [pricing](https://www.daily.co/pricing/pipecat-cloud) for more information.\n</Info>\n\nStarting active sessions can be achieved programmatically via the REST API and Python library or directly via the CLI.\n\nRequests to start an agent requires passing a [public API key](./accounts-and-organizations#api-keys). Keys are used to ensure that only authorized users or apps can start sessions and can be cycled or revoked at any time.\n\n### Development pattern\n\nA typical application will start a session in response to a user request (via a web UI, mobile app, phone call or other client). Pipecat Cloud takes care of your session infrastructure and scaling, so you can focus on building your application logic.\n\n1. Provide a secure endpoint to receive requests that keeps your API key secret\n\n2. Pass any required data to the agent when starting a session (such as pipeline configuration, transport session data, etc.)\n\n3. Handle any errors that may occur during the start process\n\nThe Pipecat Cloud REST API provides an endpoint to start a session with your agent over HTTP:\n\nThe Pipecat Cloud Python library (`pip install pipecatcloud`) provides helper methods to start a session with your agent:\n\n```python theme={null}\nimport asyncio\n\nfrom pipecatcloud.exception import AgentStartError\nfrom pipecatcloud.session import Session, SessionParams\n\nasync def main():\n    try:\n        # Create session object\n        session = Session(\n            agent_name=\"my-first-agent\",\n            api_key=API_KEY,  # Replace with your actual API key\n            params=SessionParams(\n                use_daily=True,  # Optional: Creates a Daily room\n                daily_room_properties={\"start_video_off\": False},\n                data={\"key\": \"value\"},\n            ),\n        )\n\n# Start the session\n        response = await session.start()\n\n# Get Daily room URL\n        daily_url = f\"{response['dailyRoom']}?t={response['dailyToken']}\"\n        print(f\"Join Daily room: {daily_url}\")\n\nexcept AgentStartError as e:\n        print(f\"Error starting agent: {e}\")\n    except Exception as e:\n        print(f\"Unexpected error: {e}\")",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n### Using Python\n\nThe Pipecat Cloud Python library (`pip install pipecatcloud`) provides helper methods to start a session with your agent:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Running an agent",
+      "id": "running-an-agent"
+    },
+    {
+      "level": "h3",
+      "text": "Development pattern",
+      "id": "development-pattern"
+    },
+    {
+      "level": "h3",
+      "text": "Using REST",
+      "id": "using-rest"
+    },
+    {
+      "level": "h3",
+      "text": "Using Python",
+      "id": "using-python"
+    }
+  ],
+  "url": "llms-txt#starting-sessions",
+  "links": []
+}

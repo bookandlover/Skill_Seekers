@@ -1,0 +1,14 @@
+{
+  "title": "Context Management",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/context-management\n\nA guide to working with Pipecat's Context and Context Aggregators\n\n## What is Context in Pipecat?\n\nIn Pipecat, **context** refers to the conversation history that the LLM uses to generate responses. The context consists of a list of alternating user/assistant messages that represents the collective history of the entire conversation.\n\n```python theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What is Context in Pipecat?",
+      "id": "what-is-context-in-pipecat?"
+    }
+  ],
+  "url": "llms-txt#context-management",
+  "links": []
+}

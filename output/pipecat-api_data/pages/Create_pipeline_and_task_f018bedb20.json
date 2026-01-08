@@ -1,0 +1,8 @@
+{
+  "title": "Create pipeline and task",
+  "content": "pipeline = Pipeline([...])\ntask = PipelineTask(\n    pipeline,\n    params=params,\n    observers=[FileObserver(\"pipeline_logs.jsonl\")]\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-pipeline-and-task",
+  "links": []
+}

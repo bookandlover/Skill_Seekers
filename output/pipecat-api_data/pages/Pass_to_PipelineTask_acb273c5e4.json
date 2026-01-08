@@ -1,0 +1,52 @@
+{
+  "title": "Pass to PipelineTask",
+  "content": "pipeline = Pipeline([...])\ntask = PipelineTask(pipeline, params=params)\npython theme={null}\nparams = PipelineParams(\n    audio_in_sample_rate=8000,   # Lower quality input audio\n    audio_out_sample_rate=8000  # High quality output audio\n)\npython theme={null}\nparams = PipelineParams(\n    enable_heartbeats=True,\n    heartbeats_period_secs=2.0,  # Send heartbeats every 2 seconds\n    enable_metrics=True\n)\npython theme={null}\nfrom pipecat.frames.frames import TTSSpeakFrame\nfrom pipecat.observers.file_observer import FileObserver\nfrom pipecat.pipeline.task import PipelineParams, PipelineTask\nfrom pipecat.pipeline.runner import PipelineRunner",
+  "code_samples": [
+    {
+      "code": "## Available Parameters\n\n<ParamField type=\"bool\">\n  Whether to allow pipeline interruptions. When enabled, a user's speech will\n  immediately interrupt the bot's response.\n</ParamField>\n\n<ParamField type=\"int\">\n  Input audio sample rate in Hz.\n\n  <Info>\n    Setting the `audio_in_sample_rate` as a `PipelineParam` sets the input sample\n    rate for all corresponding services in the pipeline.\n  </Info>\n</ParamField>\n\n<ParamField type=\"int\">\n  Output audio sample rate in Hz.\n\n  <Info>\n    Setting the `audio_out_sample_rate` as a `PipelineParam` sets the output\n    sample rate for all corresponding services in the pipeline.\n  </Info>\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to enable heartbeat monitoring to detect pipeline stalls. See\n  [Heartbeats](/server/pipeline/heartbeats) for details.\n</ParamField>\n\n<ParamField type=\"float\">\n  Period between heartbeats in seconds (when heartbeats are enabled).\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to enable metrics collection for pipeline performance.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to enable usage metrics tracking.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to report only initial time to first byte metric.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to send initial empty metrics frame at pipeline start.\n</ParamField>\n\n<ParamField type=\"Dict[str, Any]\">\n  Additional metadata to include in the StartFrame.\n</ParamField>\n\n## Common Configurations\n\n### Audio Processing Configuration\n\nYou can set the audio input and output sample rates in the `PipelineParams` to set the sample rate for all input and output services in the pipeline. This acts as a convenience to avoid setting the sample rate for each service individually. Note, if services are set individually, they will supersede the values set in `PipelineParams`.",
+      "language": "unknown"
+    },
+    {
+      "code": "### Performance Monitoring Configuration\n\nPipeline heartbeats provide a way to monitor the health of your pipeline by sending periodic heartbeat frames through the system. When enabled, the pipeline will send heartbeat frames every second and monitor their progress through the pipeline.",
+      "language": "unknown"
+    },
+    {
+      "code": "## How Parameters Are Used\n\nThe parameters you set in `PipelineParams` are passed to various components of the pipeline:\n\n1. **StartFrame**: Many parameters are included in the StartFrame that initializes the pipeline\n2. **Metrics Collection**: Metrics settings configure what performance data is gathered\n3. **Heartbeat Monitoring**: Controls the pipeline's health monitoring system\n4. **Audio Processing**: Sample rates affect how audio is processed throughout the pipeline\n\n## Complete Example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Available Parameters",
+      "id": "available-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Common Configurations",
+      "id": "common-configurations"
+    },
+    {
+      "level": "h3",
+      "text": "Audio Processing Configuration",
+      "id": "audio-processing-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Performance Monitoring Configuration",
+      "id": "performance-monitoring-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "How Parameters Are Used",
+      "id": "how-parameters-are-used"
+    },
+    {
+      "level": "h2",
+      "text": "Complete Example",
+      "id": "complete-example"
+    }
+  ],
+  "url": "llms-txt#pass-to-pipelinetask",
+  "links": []
+}

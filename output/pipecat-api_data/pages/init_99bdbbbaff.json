@@ -1,0 +1,29 @@
+{
+  "title": "init",
+  "content": "Source: https://docs.pipecat.ai/cli/init\n\nScaffold a new Pipecat project with an interactive setup wizard\n\nCreate a new Pipecat project interactively with guided setup for bot type, transport, AI services, and deployment options.\n\n<ParamField type=\"string\">\n  Output directory where files will be saved. Defaults to current directory.\n</ParamField>\n\nThe CLI guides you through selecting:\n\n* **Bot type and client framework** - Phone, web (Next.js, Vite, Vanilla JS), or mobile\n* **Transport provider** - Daily, Twilio, Telnyx, Plivo, Exotel\n* **Pipeline mode** - Cascade or Realtime\n* **AI services** - STT, LLM, and TTS providers\n* **Optional features** - Additional capabilities for your bot\n* **Deployment target** - Local development or Pipecat Cloud\n\n```shell theme={null}",
+  "code_samples": [
+    {
+      "code": "**Options:**\n\n<ParamField type=\"string\">\n  Output directory where files will be saved. Defaults to current directory.\n</ParamField>\n\n## Interactive Setup\n\nThe CLI guides you through selecting:\n\n* **Bot type and client framework** - Phone, web (Next.js, Vite, Vanilla JS), or mobile\n* **Transport provider** - Daily, Twilio, Telnyx, Plivo, Exotel\n* **Pipeline mode** - Cascade or Realtime\n* **AI services** - STT, LLM, and TTS providers\n* **Optional features** - Additional capabilities for your bot\n* **Deployment target** - Local development or Pipecat Cloud\n\n## Examples\n\n### Basic Usage",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Interactive Setup",
+      "id": "interactive-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Examples",
+      "id": "examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Usage",
+      "id": "basic-usage"
+    }
+  ],
+  "url": "llms-txt#init",
+  "links": []
+}

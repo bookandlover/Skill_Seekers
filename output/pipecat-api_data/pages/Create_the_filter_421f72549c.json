@@ -1,0 +1,8 @@
+{
+  "title": "Create the filter",
+  "content": "md_filter = MarkdownTextFilter()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-the-filter",
+  "links": []
+}

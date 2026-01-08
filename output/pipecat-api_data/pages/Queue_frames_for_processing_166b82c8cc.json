@@ -1,0 +1,8 @@
+{
+  "title": "Queue frames for processing",
+  "content": "await task.queue_frame(TTSSpeakFrame(\"Hello, how can I help you today?\"))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#queue-frames-for-processing",
+  "links": []
+}

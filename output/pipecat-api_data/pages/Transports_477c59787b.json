@@ -1,0 +1,58 @@
+{
+  "title": "Transports",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/transports\n\nLearn about the different ways users can connect to your Pipecat voice AI bot\n\n**Transports** are the communication layer between users and your Pipecat bot. They handle receiving and sending audio, video, and data, serving as the media interface that enables real-time interaction.\n\n## Available Transport Types\n\nPipecat supports multiple transport types to fit different use cases and deployment scenarios:\n\n<CardGroup>\n  <Card title=\"DailyTransport\" icon=\"microphone\" href=\"/server/services/transport/daily\">\n    WebRTC-based transport using Daily's infrastructure for video calls and\n    conferencing\n  </Card>\n\n<Card title=\"FastAPIWebsocketTransport\" icon=\"plug\" href=\"/server/services/transport/fastapi-websocket\">\n    WebSocket transport for telephony providers and custom WebSocket connections\n  </Card>\n\n<Card title=\"LiveKitTransport\" icon=\"microphone\" href=\"/server/services/transport/livekit\">\n    WebRTC transport using LiveKit's real-time communication platform\n  </Card>\n\n<Card title=\"SmallWebRTCTransport\" icon=\"link\" href=\"/server/services/transport/small-webrtc\">\n    Direct peer-to-peer WebRTC connections without cloud infrastructure\n  </Card>\n\n<Card title=\"TavusTransport\" icon=\"camera\" href=\"/server/services/transport/tavus\">\n    Specialized transport for Tavus video generation and streaming\n  </Card>\n\n<Card title=\"WebsocketTransport\" icon=\"globe\" href=\"/server/services/transport/websocket-server\">\n    General-purpose WebSocket transport for custom implementations\n  </Card>\n</CardGroup>\n\n## Pipeline Integration\n\nTransports provide two key components for your pipeline: `input()` and `output()` methods. These methods define how the transport interacts with the pipeline:\n\n### Transport Input and Output\n\n**Key points about transport placement:**\n\n* **`transport.input()`** typically goes first in the pipeline to receive user input\n* **`transport.output()`** doesn't always go last - you may want processors after it\n* **Post-output processing** enables synchronized actions like:\n  * Recording with word-level accuracy\n  * Displaying subtitles synchronized to audio\n  * Capturing context information precisely timed to output\n\n## Transport Modularity\n\nTransports are modular components in your Pipeline, allowing you to flexibly change how users connect to your bot depending on the context. This modularity enables you to:\n\n* **Switch environments easily**: Use P2P WebRTC for development, Daily for production\n* **Support multiple connection types**: Same bot logic works across different transports\n* **Optimize for use case**: Choose the best transport for your specific requirements\n\n## Transport Configuration\n\nAll transports are configured using `TransportParams`, which provides common settings across transport types:\n\n<Note>\n  Each transport may have its own specialized parameters class that extends\n  TransportParams with transport-specific options. Check the individual\n  transport documentation for details.\n</Note>\n\n<Card title=\"TransportParams Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.base_transport.html#pipecat.transports.base_transport.TransportParams\">\n  Complete reference for all transport configuration options\n</Card>\n\n## Telephony Integration\n\nTelephony services (phone calls) use WebSocket connections with specialized serialization:\n\n### Supported Telephony Providers\n\n<CardGroup>\n  <Card title=\"Twilio\" href=\"/server/services/serializers/twilio\">\n    Media Streams over WebSocket with TwilioFrameSerializer\n  </Card>\n\n<Card title=\"Telnyx\" href=\"/server/services/serializers/telnyx\">\n    Real-time media streaming with TelnyxFrameSerializer\n  </Card>\n\n<Card title=\"Plivo\" href=\"/server/services/serializers/plivo\">\n    Voice streaming API with PlivoFrameSerializer\n  </Card>\n\n<Card title=\"Exotel\" href=\"/server/services/serializers/exotel\">\n    Voice streaming integration with ExotelFrameSerializer\n  </Card>\n</CardGroup>\n\n### Telephony Transport Setup\n\nTelephony requires a `FrameSerializer` to handle provider-specific message formats:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "**Key points about transport placement:**\n\n* **`transport.input()`** typically goes first in the pipeline to receive user input\n* **`transport.output()`** doesn't always go last - you may want processors after it\n* **Post-output processing** enables synchronized actions like:\n  * Recording with word-level accuracy\n  * Displaying subtitles synchronized to audio\n  * Capturing context information precisely timed to output\n\n## Transport Modularity\n\nTransports are modular components in your Pipeline, allowing you to flexibly change how users connect to your bot depending on the context. This modularity enables you to:\n\n* **Switch environments easily**: Use P2P WebRTC for development, Daily for production\n* **Support multiple connection types**: Same bot logic works across different transports\n* **Optimize for use case**: Choose the best transport for your specific requirements\n\n## Transport Configuration\n\nAll transports are configured using `TransportParams`, which provides common settings across transport types:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  Each transport may have its own specialized parameters class that extends\n  TransportParams with transport-specific options. Check the individual\n  transport documentation for details.\n</Note>\n\n<Card title=\"TransportParams Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.base_transport.html#pipecat.transports.base_transport.TransportParams\">\n  Complete reference for all transport configuration options\n</Card>\n\n## Telephony Integration\n\nTelephony services (phone calls) use WebSocket connections with specialized serialization:\n\n### Supported Telephony Providers\n\n<CardGroup>\n  <Card title=\"Twilio\" href=\"/server/services/serializers/twilio\">\n    Media Streams over WebSocket with TwilioFrameSerializer\n  </Card>\n\n  <Card title=\"Telnyx\" href=\"/server/services/serializers/telnyx\">\n    Real-time media streaming with TelnyxFrameSerializer\n  </Card>\n\n  <Card title=\"Plivo\" href=\"/server/services/serializers/plivo\">\n    Voice streaming API with PlivoFrameSerializer\n  </Card>\n\n  <Card title=\"Exotel\" href=\"/server/services/serializers/exotel\">\n    Voice streaming integration with ExotelFrameSerializer\n  </Card>\n</CardGroup>\n\n### Telephony Transport Setup\n\nTelephony requires a `FrameSerializer` to handle provider-specific message formats:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Available Transport Types",
+      "id": "available-transport-types"
+    },
+    {
+      "level": "h2",
+      "text": "Pipeline Integration",
+      "id": "pipeline-integration"
+    },
+    {
+      "level": "h3",
+      "text": "Transport Input and Output",
+      "id": "transport-input-and-output"
+    },
+    {
+      "level": "h2",
+      "text": "Transport Modularity",
+      "id": "transport-modularity"
+    },
+    {
+      "level": "h2",
+      "text": "Transport Configuration",
+      "id": "transport-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Telephony Integration",
+      "id": "telephony-integration"
+    },
+    {
+      "level": "h3",
+      "text": "Supported Telephony Providers",
+      "id": "supported-telephony-providers"
+    },
+    {
+      "level": "h3",
+      "text": "Telephony Transport Setup",
+      "id": "telephony-transport-setup"
+    }
+  ],
+  "url": "llms-txt#transports",
+  "links": []
+}

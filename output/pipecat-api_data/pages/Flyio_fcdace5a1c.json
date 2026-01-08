@@ -1,0 +1,81 @@
+{
+  "title": "Fly.io",
+  "content": "Source: https://docs.pipecat.ai/deployment/platforms/fly\n\nDeploy Pipecat bots to Fly.io machines\n\nLet's explore how we can use [fly.io](https://fly.io/) to make our app scalable for production by spawning our Pipecat bots on virtual machines with their own resources.\n\nWe mentioned [before](../pattern) that you would ideally containerize the `bot_runner.py` web service and the `bot.py` separately. To keep this example simple, we'll use the same container image for both services.\n\n<Frame>\n  <img alt=\"Fly.io Pipecat deployment\" />\n</Frame>\n\n### Install the Fly CLI\n\nYou can find instructions for creating and setting up your fly account [here](https://fly.io/docs/getting-started/).\n\n## Creating the Pipecat project\n\n<Note>\n  We have created a template project\n  [here](https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/flyio-example)\n  which you can clone. Since we're targeting production use-cases, this example\n  uses Daily (WebRTC) as a transport, but you can configure your bot however you\n  like.\n</Note>\n\n### Adding a fly.toml\n\nAdd a `fly.toml` to the root of your project directory. Here is a basic example:\n\nFor apps with lots of users, consider what resources your HTTP service will require to meet load. We'll define our `bot.py` resources later, so you can set and scale these as you like (`fly scale ...`)\n\n### Environment setup\n\nOur bot requires some API keys and configuration, so create a `.env` in your project root:\n\nOf course, the exact keys you need will depend on which services you are using within your `bot.py`.\n\n<Warning>\n  **Important:** your `FLY_APP_NAME` should match the name of your fly instance,\n  such as that declared in your fly.toml.\n</Warning>\n\nThe `.env` will allow us to test in local development, but is not included in the deployment. You'll need to set them as Fly app secrets, which you can do via the Fly dashboard or cli.\n\n`fly secrets set ...`\n\n## Containerize our app\n\nOur Fly deployment will need a container image; let's create a simple `Dockerfile` in the root of the project:\n\n<Note>You can use any base image as long as Python is available</Note>\n\nOur container does the following:\n\n* Opens port `7860` to serve our `bot_runner.py` FastAPI service.\n* Downloads the necessary python dependencies.\n* Download / cache the model dependencies the `bot.py` requires.\n* Runs the `bot_runner.py` and listens for web requests.\n\n### What models are we downloading?\n\nTo support voice activity detection, we're using Silero VAD. Whilst the filesize is not huge, having each new machine download the Silero model at runtime will impact bootup time. Instead, we include the model as part of the Docker image so it's cached and available.\n\nYou could, of course, also attach a network volume to each instance if you plan to include larger files as part of your deployment and don't want to bloat the size of your image.\n\n## Launching new machines in `bot_runner.py`\n\nWhen a user starts a session with our Pipecat bot, we want to launch a new machine on fly.io with it's own system resources.\n\nLet's grab the bot\\_runner.py from the example repo [here](https://github.com/pipecat-ai/pipecat/blob/jpt/deployment-examples/examples/deployment/flyio-example/bot_runner.py).\n\nThis runner differs from others in the Pipecat repo; we've added a new method that sends a REST request to Fly to provision a new machine for the session.\n\nThis method is invoked as part of the `/start_bot` endpoint:\n\nWe want to make sure the machine started ok before returning any data to the user. Fly launches machines pretty fast, but will timeout if things take longer than they should. Depending on your transport method, you may want to optimistically return a response to the user, so they can join the room and poll for the status of their bot.\n\n## Launch the Fly project\n\nGetting your bot on Fly is as simple as:\n\n`fly launch` or `fly launch --org orgname` if you're part of a team.\n\nThis will step you through some configuration, and build and deploy your Docker image.\n\nBe sure to configure your app secrets with the necessary environment variables once the deployment has complete.\n\nAssuming all goes well, you can update with any changes with `fly deploy`.\n\nStart a new bot instance by sending a `POST` request to `https://your-fly-url.fly.dev/start_bot`. All being well, this will return a room URL and token.\n\nA nice feature of Fly is the ability to monitor your machines (with live logs) via their dashboard:\n\n[https://fly.io/apps/YOUR-APP\\_NAME/machines](https://fly.io/apps/YOUR-APP_NAME/machines)\n\nThis is really helpful for monitoring the status of your spawned machine, and debugging if things do not work as expected.\n\n<Note>\n  This example is configured to expire after 5 minutes. The bot process is also\n  configured to exit after the user leaves the room. This is a good way to\n  ensure we don't have any hanging VMs, although you'll likely need to configure\n  this behaviour this to meet your own needs.\n\nYou'll also notice that we set `restart policy` to `no`. This prevents the machine attempting to restart after the session has concluded and the process exits.\n</Note>\n\n## Important considerations\n\nThis example does little in the way of load balancing or app security. Indeed, a user can spawn a new machine on your account simply by sending a `POST` request to the `bot_runner.py`. Be sure to configure a maximum number of instances, or authenticate requests to avoid costs getting out of control.\n\nWe also deployed our `bot.py` on a machine with the same image as our `bot_runner.py`. To optimize container file sizes and increase security, consider individual images that only deploy resources they require.",
+  "code_samples": [
+    {
+      "code": "For apps with lots of users, consider what resources your HTTP service will require to meet load. We'll define our `bot.py` resources later, so you can set and scale these as you like (`fly scale ...`)\n\n### Environment setup\n\nOur bot requires some API keys and configuration, so create a `.env` in your project root:",
+      "language": "unknown"
+    },
+    {
+      "code": "Of course, the exact keys you need will depend on which services you are using within your `bot.py`.\n\n<Warning>\n  **Important:** your `FLY_APP_NAME` should match the name of your fly instance,\n  such as that declared in your fly.toml.\n</Warning>\n\nThe `.env` will allow us to test in local development, but is not included in the deployment. You'll need to set them as Fly app secrets, which you can do via the Fly dashboard or cli.\n\n`fly secrets set ...`\n\n## Containerize our app\n\nOur Fly deployment will need a container image; let's create a simple `Dockerfile` in the root of the project:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n<Note>You can use any base image as long as Python is available</Note>\n\nOur container does the following:\n\n* Opens port `7860` to serve our `bot_runner.py` FastAPI service.\n* Downloads the necessary python dependencies.\n* Download / cache the model dependencies the `bot.py` requires.\n* Runs the `bot_runner.py` and listens for web requests.\n\n### What models are we downloading?\n\nTo support voice activity detection, we're using Silero VAD. Whilst the filesize is not huge, having each new machine download the Silero model at runtime will impact bootup time. Instead, we include the model as part of the Docker image so it's cached and available.\n\nYou could, of course, also attach a network volume to each instance if you plan to include larger files as part of your deployment and don't want to bloat the size of your image.\n\n## Launching new machines in `bot_runner.py`\n\nWhen a user starts a session with our Pipecat bot, we want to launch a new machine on fly.io with it's own system resources.\n\nLet's grab the bot\\_runner.py from the example repo [here](https://github.com/pipecat-ai/pipecat/blob/jpt/deployment-examples/examples/deployment/flyio-example/bot_runner.py).\n\nThis runner differs from others in the Pipecat repo; we've added a new method that sends a REST request to Fly to provision a new machine for the session.\n\nThis method is invoked as part of the `/start_bot` endpoint:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Project setup",
+      "id": "project-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Install the Fly CLI",
+      "id": "install-the-fly-cli"
+    },
+    {
+      "level": "h2",
+      "text": "Creating the Pipecat project",
+      "id": "creating-the-pipecat-project"
+    },
+    {
+      "level": "h3",
+      "text": "Adding a fly.toml",
+      "id": "adding-a-fly.toml"
+    },
+    {
+      "level": "h3",
+      "text": "Environment setup",
+      "id": "environment-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Containerize our app",
+      "id": "containerize-our-app"
+    },
+    {
+      "level": "h3",
+      "text": "What models are we downloading?",
+      "id": "what-models-are-we-downloading?"
+    },
+    {
+      "level": "h2",
+      "text": "Launching new machines in `bot_runner.py`",
+      "id": "launching-new-machines-in-`bot_runner.py`"
+    },
+    {
+      "level": "h2",
+      "text": "Launch the Fly project",
+      "id": "launch-the-fly-project"
+    },
+    {
+      "level": "h3",
+      "text": "Test it out",
+      "id": "test-it-out"
+    },
+    {
+      "level": "h2",
+      "text": "Important considerations",
+      "id": "important-considerations"
+    }
+  ],
+  "url": "llms-txt#fly.io",
+  "links": []
+}

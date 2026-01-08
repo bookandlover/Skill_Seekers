@@ -1,0 +1,298 @@
+# Pipecat
+
+## Docs
+
+- [agent](https://docs.pipecat.ai/cli/cloud/agent.md): Manage agent deployments
+- [auth](https://docs.pipecat.ai/cli/cloud/auth.md): Authentication and authorization commands
+- [deploy](https://docs.pipecat.ai/cli/cloud/deploy.md): Create or modify an agent deployment
+- [docker](https://docs.pipecat.ai/cli/cloud/docker.md): Build and push Docker images for agent deployments
+- [organizations](https://docs.pipecat.ai/cli/cloud/organizations.md): Organization and API key management commands
+- [regions](https://docs.pipecat.ai/cli/cloud/regions.md): View available deployment regions
+- [secrets](https://docs.pipecat.ai/cli/cloud/secrets.md): Secret sets and secret management commands
+- [init](https://docs.pipecat.ai/cli/init.md): Scaffold a new Pipecat project with an interactive setup wizard
+- [CLI Overview](https://docs.pipecat.ai/cli/overview.md): Command-line tool for scaffolding, deploying, and monitoring Pipecat bots
+- [tail](https://docs.pipecat.ai/cli/tail.md): A terminal dashboard for monitoring Pipecat sessions in real-time
+- [API Reference](https://docs.pipecat.ai/client/android/api-reference.md)
+- [SDK Introduction](https://docs.pipecat.ai/client/android/introduction.md): Build Android applications with Pipecat's Kotlin client library
+- [RTVIClient Migration Guide for Android](https://docs.pipecat.ai/client/android/migration-guide.md): A Guide to migrating from RTVIClient to PipecatClient for Android
+- [Daily WebRTC Transport](https://docs.pipecat.ai/client/android/transports/daily.md): WebRTC implementation for Android using Daily
+- [Gemini Live Websocket Transport](https://docs.pipecat.ai/client/android/transports/gemini-websocket.md): Websocket implementation for Android using Gemini
+- [OpenAI Realtime WebRTC Transport](https://docs.pipecat.ai/client/android/transports/openai-webrtc.md): WebRTC implementation for Android using OpenAI
+- [Small WebRTC Transport](https://docs.pipecat.ai/client/android/transports/small-webrtc.md): WebRTC implementation for Android
+- [SDK Introduction](https://docs.pipecat.ai/client/c++/introduction.md): Build native applications with Pipecat’s C++ client library
+- [Daily WebRTC Transport](https://docs.pipecat.ai/client/c++/transport.md): WebRTC implementation for C++ using Daily
+- [Client SDKs](https://docs.pipecat.ai/client/introduction.md): Client libraries for building real-time AI applications with Pipecat
+- [API Reference](https://docs.pipecat.ai/client/ios/api-reference.md)
+- [SDK Introduction](https://docs.pipecat.ai/client/ios/introduction.md): Build iOS applications with Pipecat’s Swift client library
+- [RTVIClient Migration Guide for IOS](https://docs.pipecat.ai/client/ios/migration-guide.md): A Guide to migrating from RTVIClient to PipecatClient for iOS
+- [Daily WebRTC Transport](https://docs.pipecat.ai/client/ios/transports/daily.md): WebRTC implementation for iOS using Daily
+- [Gemini Live Websocket Transport](https://docs.pipecat.ai/client/ios/transports/gemini-websocket.md): Websocket implementation for iOS using Gemini
+- [OpenAIRealTimeWebRTCTransport](https://docs.pipecat.ai/client/ios/transports/openai-webrtc.md)
+- [SmallWebRTCTransport](https://docs.pipecat.ai/client/ios/transports/small-webrtc.md): A lightweight WebRTC transport for peer-to-peer connections with Pipecat for iOS
+- [Callbacks and events](https://docs.pipecat.ai/client/js/api-reference/callbacks.md)
+- [PipecatClient Constructor](https://docs.pipecat.ai/client/js/api-reference/client-constructor.md): Setting up the PipecatClient
+- [Client Methods](https://docs.pipecat.ai/client/js/api-reference/client-methods.md)
+- [Errors](https://docs.pipecat.ai/client/js/api-reference/errors.md)
+- [Custom Messaging](https://docs.pipecat.ai/client/js/api-reference/messages.md)
+- [SDK Introduction](https://docs.pipecat.ai/client/js/introduction.md): Build web applications with Pipecat’s JavaScript client library
+- [RTVIClient Migration Guide for JavaScript](https://docs.pipecat.ai/client/js/migration-guide.md): A Guide to migrating from a JavaScript RTVIClient to PipecatClient
+- [Daily WebRTC Transport](https://docs.pipecat.ai/client/js/transports/daily.md)
+- [GeminiLiveWebSocketTransport](https://docs.pipecat.ai/client/js/transports/gemini.md)
+- [OpenAIRealTimeWebRTCTransport](https://docs.pipecat.ai/client/js/transports/openai-webrtc.md)
+- [SmallWebRTCTransport](https://docs.pipecat.ai/client/js/transports/small-webrtc.md): A lightweight WebRTC transport for peer-to-peer connections with Pipecat
+- [Transport Overview](https://docs.pipecat.ai/client/js/transports/transport.md)
+- [WebSocketTransport](https://docs.pipecat.ai/client/js/transports/websocket.md): A lightweight transport for WebSocket based connections with Pipecat
+- [RTVIClient Migration Guide](https://docs.pipecat.ai/client/migration-guide.md): A Guide to migrating from RTVIClient to PipecatClient
+- [API Reference](https://docs.pipecat.ai/client/react-native/api-reference.md): API reference for the Pipecat React Native SDK
+- [SDK Introduction](https://docs.pipecat.ai/client/react-native/introduction.md): Build React Native applications with Pipecat's React Native client library
+- [RTVIClient Migration Guide for React Native](https://docs.pipecat.ai/client/react-native/migration-guide.md): A Guide to migrating from a React Native RTVIClient to PipecatClient
+- [Daily WebRTC Transport](https://docs.pipecat.ai/client/react-native/transports/daily.md)
+- [SmallWebRTCTransport](https://docs.pipecat.ai/client/react-native/transports/small-webrtc.md): A lightweight WebRTC transport for peer-to-peer connections with Pipecat
+- [Components](https://docs.pipecat.ai/client/react/components.md): Ready-to-use React components for Pipecat applications
+- [Hooks](https://docs.pipecat.ai/client/react/hooks.md): React hooks for accessing Pipecat client functionality
+- [SDK Introduction](https://docs.pipecat.ai/client/react/introduction.md): Build React applications with Pipecat's React client library
+- [RTVIClient Migration Guide for React](https://docs.pipecat.ai/client/react/migration-guide.md): A Guide to migrating from an RTVIClient to PipecatClient in React
+- [The RTVI Standard](https://docs.pipecat.ai/client/rtvi-standard.md): An overview of the RTVI standard and its key features
+- [Overview](https://docs.pipecat.ai/deployment/overview.md): How to deploy your Pipecat bot online
+- [Deployment pattern](https://docs.pipecat.ai/deployment/pattern.md): Basic deployment pattern for Pipecat bots
+- [Accounts and Organizations](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/accounts-and-organizations.md): Managing your account and collaborating on agents as part of a team
+- [Starting Sessions](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/active-sessions.md): Serving user requests with active sessions.
+- [Agent Images](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/agent-images.md): How to containerize your agent project
+- [Deployments](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/deploy.md): Serving your agent via Pipecat Cloud
+- [Troubleshooting](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/error-codes.md): Common issues and solutions when deploying agents to Pipecat Cloud
+- [Logging and Observability](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/logging.md): Obtaining logs and metrics from your agents and sessions
+- [Scaling](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/scaling.md): Production-ready agent deployment and scaling strategies
+- [Secrets](https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/secrets.md): Providing your agent with sensitive information
+- [Capacity Planning](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/capacity-planning.md): Optimize your agent deployments to minimize cold starts
+- [CI with GitHub Actions](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/ci-with-github-actions.md): Automate image builds and deploys for continuous integration
+- [AWS ECR](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/aws-ecr.md): Deploy Pipecat Cloud agents using Amazon Elastic Container Registry
+- [GCP Artifact Registry](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/gcp-artifact-registry.md): Deploy Pipecat Cloud agents using Google Cloud Artifact Registry
+- [Container Registry Overview](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/overview.md): Deploy Pipecat Cloud agents from private container registries
+- [Daily WebRTC](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/daily-webrtc.md): Using Daily as a WebRTC transport for your Pipecat Cloud agents
+- [Krisp Noise Cancellation](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-noise-cancellation.md): Eliminate background noise and voices for more reliable agent interactions
+- [Krisp VIVA Noise Cancellation](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-viva.md): Eliminate background noise and voices for more reliable agent interactions using Krisp's VIVA noise cancellation model
+- [Managed API Keys](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/managed-api-keys.md): Using managed API keys for your Pipecat Cloud agents
+- [Regions](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/regions.md): Deploy agents to geographic regions for optimal performance and compliance
+- [Smart Turn Detection](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/smart-turn.md): Advanced conversational turn detection
+- [Daily PSTN Dial-in](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/daily-dial-in.md): Using Daily's Transport to receive calls from external SIP Addresses and PSTN numbers
+- [Daily PSTN Dial-out](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/daily-dial-out.md): Using Daily’s Transport to make calls to external SIP Addresses and PSTN numbers
+- [Exotel Websocket Transport](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/exotel-websocket.md): Using Exotel's WebSocket Transport for your Pipecat Cloud agents
+- [Plivo Websocket Transport](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/plivo-websocket.md): Using Plivo's WebSocket Transport for your Pipecat Cloud agents
+- [Telnyx Websocket Transport](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/telnyx-websocket.md): Using Telnyx's WebSocket Transport for your Pipecat Cloud agents
+- [Twilio Websocket Transport](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/twilio-websocket.md): Using Twilio's WebSocket Transport for your Pipecat Cloud agents
+- [Using Datadog](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/using-datadog.md): How to add Datadog logging, traces, and custom metrics to your Pipecat Cloud agents
+- [WhatsApp Business Calling API](https://docs.pipecat.ai/deployment/pipecat-cloud/guides/whatsapp.md): Learn how to receive WhatsApp voice calls in your Pipecat Cloud application
+- [Introduction](https://docs.pipecat.ai/deployment/pipecat-cloud/introduction.md): Deploy your AI agents to production at scale
+- [Create an Agent](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-create.md): Create a new agent with a container image and configuration settings.
+- [Delete an Agent](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-delete.md): Permanently delete an agent and its associated resources.
+- [Retrieve Agent Logs](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-get-logs.md): Get execution logs for an agent with filtering and pagination options.
+- [Retrieve Agent Sessions](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-get-sessions.md): Get sessions for an agent with filtering and pagination options.
+- [List All Agents](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-list-all.md): Retrieve a list of all agents in your organization with their status and configuration.
+- [Get Agent Details](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-list-one.md): Retrieve detailed information about a specific agent including its deployment status.
+- [Update an Agent](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-update.md): Update an existing agent's configuration or deploy a new version.
+- [Get Organization Properties](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/properties-get.md): Retrieve current values of configurable properties for your organization.
+- [Update Organization Properties](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/properties-update.md): Update configurable properties for your organization, such as the default deployment region.
+- [List Regions](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/regions-list.md): Retrieve a list of all available regions for deploying agents and storing secrets.
+- [Create or Update Secrets](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-create-update.md): Create or update a secret set and its values
+- [Delete Entire Secret Set](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-delete-secret-set.md): Delete an entire secret set by its name. This operation removes the secret set and all associated key-value pairs.
+- [Delete Specific Secret From Set](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-delete-specific-secret.md): Delete a specific secret from a set by its key. This operation removes the key-value pair from the specified secret set.
+- [List All Secret Sets](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-list-all.md): Retrieve a list of all secret sets in your organization with their name and secret type.
+- [Get Secret Set Details](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-list-one.md): Retrieve key and value pairs for a specific secret set.
+- [Start an Agent session](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/start.md): Start a new session with a deployed agent.
+- [Stop an Agent session](https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/stop.md): Stop a running agent session and clean up its resources.
+- [Examples](https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/examples.md): Common usage patterns for the Pipecat Cloud Python SDK
+- [Error Handling](https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/exceptions.md): Managing errors with the Pipecat Cloud Python SDK
+- [Python SDK Overview](https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/overview.md): Introduction to the Pipecat Cloud Python SDK
+- [Session Arguments](https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/session-arguments.md): Understanding the arguments received by bot entry points
+- [Session Management](https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/sessions.md): Managing agent sessions with the Pipecat Cloud Python SDK
+- [HIPAA](https://docs.pipecat.ai/deployment/pipecat-cloud/security/hipaa.md): HIPAA compliance for Pipecat Cloud
+- [Security Guide](https://docs.pipecat.ai/deployment/pipecat-cloud/security/security-and-compliance.md): Securing your agents on Pipecat Cloud
+- [Cerebrium](https://docs.pipecat.ai/deployment/platforms/cerebrium.md): Deploy Pipecat applications to Cerebrium
+- [Fly.io](https://docs.pipecat.ai/deployment/platforms/fly.md): Deploy Pipecat bots to Fly.io machines
+- [Modal](https://docs.pipecat.ai/deployment/platforms/modal.md): Deploy Pipecat applications to Modal
+- [Pipecat Cloud](https://docs.pipecat.ai/deployment/platforms/pipecat-cloud.md): Deploy Pipecat agents with managed infrastructure
+- [Examples](https://docs.pipecat.ai/examples.md): Complete applications and quickstart demos to accelerate your Pipecat development
+- [Build Your Next Bot](https://docs.pipecat.ai/getting-started/build-your-next-bot.md): Scaffold a new Pipecat project with the CLI
+- [Ecosystem](https://docs.pipecat.ai/getting-started/ecosystem.md): Client SDKs, tools, and AI services in the Pipecat ecosystem
+- [Introduction](https://docs.pipecat.ai/getting-started/introduction.md): Learn about Pipecat and how to get started.
+- [Continue Learning](https://docs.pipecat.ai/getting-started/next-steps.md): Continue your Pipecat journey
+- [Quickstart](https://docs.pipecat.ai/getting-started/quickstart.md): Run your first Pipecat bot in under 5 minutes
+- [Building with Gemini Live](https://docs.pipecat.ai/guides/features/gemini-live.md): Create a real-time AI chatbot using Gemini Live and Pipecat
+- [Noise cancellation with Krisp](https://docs.pipecat.ai/guides/features/krisp.md): Learn how to integrate Krisp noise cancellation into your Pipecat application
+- [Noise cancellation with Krisp VIVA](https://docs.pipecat.ai/guides/features/krisp-viva.md): Learn how to integrate Krisp's VIVA noise cancellation model into your Pipecat application
+- [Building With OpenAI Audio Models and APIs](https://docs.pipecat.ai/guides/features/openai-audio-models-and-apis.md): Create voice agents with OpenAI audio models and Pipecat
+- [Pipecat Flows](https://docs.pipecat.ai/guides/features/pipecat-flows.md): Learn how to create structured conversations using Pipecat's flow system
+- [WhatsApp Business Calling API](https://docs.pipecat.ai/guides/features/whatsapp.md): Learn how to receive WhatsApp voice calls in your Pipecat application
+- [Custom FrameProcessor](https://docs.pipecat.ai/guides/fundamentals/custom-frame-processor.md): Learn how to write your own custom FrameProcessor
+- [Detecting Idle Users](https://docs.pipecat.ai/guides/fundamentals/detecting-user-idle.md): Learn how to detect and respond when users are inactive in conversations
+- [IVR Navigation](https://docs.pipecat.ai/guides/fundamentals/ivr.md): Automatically navigate phone system menus using AI-powered decision making
+- [Metrics](https://docs.pipecat.ai/guides/fundamentals/metrics.md): Learn how to monitor performance and LLM/TTS usage with Pipecat.
+- [Recording Conversation Audio](https://docs.pipecat.ai/guides/fundamentals/recording-audio.md): Learn how to record and save audio from conversations between users and your bot
+- [Saving Conversation Transcripts](https://docs.pipecat.ai/guides/fundamentals/saving-transcripts.md): Learn how to collect and save conversation transcripts between users and your bot
+- [User Input Muting with STTMuteFilter](https://docs.pipecat.ai/guides/fundamentals/user-input-muting.md): Learn how to control when user speech is processed in your conversational bot
+- [Voicemail Detection](https://docs.pipecat.ai/guides/fundamentals/voicemail.md): Automatically classify outbound calls as conversation or voicemail and respond appropriately
+- [Context Management](https://docs.pipecat.ai/guides/learn/context-management.md): A guide to working with Pipecat's Context and Context Aggregators
+- [Function Calling](https://docs.pipecat.ai/guides/learn/function-calling.md): Enable LLMs to interact with external services and APIs in your voice AI pipeline
+- [LLM Inference](https://docs.pipecat.ai/guides/learn/llm.md): Learn how to configure language models to generate intelligent responses in your voice AI pipeline
+- [Overview of Pipecat](https://docs.pipecat.ai/guides/learn/overview.md): Learn the foundational concepts of Pipecat's architecture for building voice AI agents
+- [Pipeline & Frame Processing](https://docs.pipecat.ai/guides/learn/pipeline.md): Learn how Pipecat's pipeline architecture orchestrates frame processing for voice AI applications
+- [Pipeline Termination](https://docs.pipecat.ai/guides/learn/pipeline-termination.md): Learn how to properly terminate Pipecat pipelines for clean shutdown and resource management
+- [Session Initialization](https://docs.pipecat.ai/guides/learn/session-initialization.md): Learn how to set up connections between users and your Pipecat voice AI bot
+- [Speech Input & Turn Detection](https://docs.pipecat.ai/guides/learn/speech-input.md): Learn how Pipecat detects when users start and stop speaking, and manages conversation turns
+- [Speech to Text](https://docs.pipecat.ai/guides/learn/speech-to-text.md): Learn how to configure speech recognition to convert user audio into text in your Pipecat pipeline
+- [Text to Speech](https://docs.pipecat.ai/guides/learn/text-to-speech.md): Learn how to configure speech synthesis to convert text into natural-sounding audio in your voice AI pipeline
+- [Transports](https://docs.pipecat.ai/guides/learn/transports.md): Learn about the different ways users can connect to your Pipecat voice AI bot
+- [What's Next](https://docs.pipecat.ai/guides/learn/whats-next.md): Continue your Pipecat journey with advanced features, examples, and production deployment
+- [Daily Phone Numbers](https://docs.pipecat.ai/guides/telephony/daily-phone-numbers.md): Purchase and manage phone numbers for Daily's PSTN services
+- [Daily PSTN](https://docs.pipecat.ai/guides/telephony/daily-pstn.md): Complete guide to Daily's PSTN capabilities including dial-in, dial-out, and call transfers
+- [Exotel WebSocket Integration](https://docs.pipecat.ai/guides/telephony/exotel-websockets.md): Complete guide to using Exotel Voice Streaming with Pipecat for dial-in and dial-out functionality
+- [Overview](https://docs.pipecat.ai/guides/telephony/overview.md): How to call your bots (or have them call you)
+- [Plivo WebSocket Integration](https://docs.pipecat.ai/guides/telephony/plivo-websockets.md): Complete guide to using Plivo Media Streaming with Pipecat for dial-in and dial-out functionality
+- [Telnyx WebSocket Integration](https://docs.pipecat.ai/guides/telephony/telnyx-websockets.md): Complete guide to using Telnyx Media Streaming with Pipecat for dial-in and dial-out functionality
+- [Daily + Twilio SIP](https://docs.pipecat.ai/guides/telephony/twilio-daily-sip.md): Complete guide to using Daily's WebRTC transport with Twilio's SIP services for dial-in and dial-out
+- [Twilio WebSocket Integration](https://docs.pipecat.ai/guides/telephony/twilio-websockets.md): Complete guide to using Twilio Media Streams with Pipecat for dial-in and dial-out functionality
+- [Recipes](https://docs.pipecat.ai/recipes.md): Code snippets and techniques to enhance your Pipecat applications
+- [Pipecat Flows](https://docs.pipecat.ai/server/frameworks/flows/pipecat-flows.md): Reference docs for Pipecat’s conversation flow system
+- [RTVI (Real-Time Voice Interaction)](https://docs.pipecat.ai/server/frameworks/rtvi/introduction.md): Build real-time voice and multimodal applications with Pipecat’s RTVI protocol
+- [RTVI Observer](https://docs.pipecat.ai/server/frameworks/rtvi/rtvi-observer.md): Converting pipeline frames to RTVI protocol messages
+- [RTVIProcessor](https://docs.pipecat.ai/server/frameworks/rtvi/rtvi-processor.md): Core coordinator for RTVI protocol communication
+- [Server API Reference](https://docs.pipecat.ai/server/introduction.md): Complete reference for Pipecat’s Python server APIs and services
+- [Reference docs](https://docs.pipecat.ai/server/links/server-reference.md)
+- [Pipeline Heartbeats](https://docs.pipecat.ai/server/pipeline/heartbeats.md): Monitor pipeline health with heartbeat frames
+- [ParallelPipeline](https://docs.pipecat.ai/server/pipeline/parallel-pipeline.md): Run multiple pipeline branches in parallel, with synchronized inputs and outputs for complex flows
+- [Pipeline Idle Detection](https://docs.pipecat.ai/server/pipeline/pipeline-idle-detection.md): Automatically detect and handle idle pipelines with no bot activity
+- [PipelineParams](https://docs.pipecat.ai/server/pipeline/pipeline-params.md): Configure pipeline execution with PipelineParams
+- [PipelineTask](https://docs.pipecat.ai/server/pipeline/pipeline-task.md): Manage pipeline execution and lifecycle with PipelineTask
+- [Sentry Metrics](https://docs.pipecat.ai/server/services/analytics/sentry.md): Performance monitoring integration with Sentry for Pipecat frame processors
+- [Community Integrations](https://docs.pipecat.ai/server/services/community-integrations.md): Community-maintained service integrations for Pipecat
+- [fal](https://docs.pipecat.ai/server/services/image-generation/fal.md): Image generation service implementation using fal's fast SDXL models
+- [Google Imagen](https://docs.pipecat.ai/server/services/image-generation/google-imagen.md): Image generation service implementation using Google's Imagen models
+- [OpenAI Image Generation](https://docs.pipecat.ai/server/services/image-generation/openai.md): Image generation service implementation using OpenAI's DALL-E models
+- [Anthropic](https://docs.pipecat.ai/server/services/llm/anthropic.md): Large Language Model service implementation using Anthropic's Claude API
+- [AWS Bedrock](https://docs.pipecat.ai/server/services/llm/aws.md): Large Language Model service implementation using Amazon Bedrock API
+- [Azure](https://docs.pipecat.ai/server/services/llm/azure.md): Large Language Model service implementation using Azure OpenAI API
+- [Cerebras](https://docs.pipecat.ai/server/services/llm/cerebras.md): LLM service implementation using Cerebras's API with OpenAI-compatible interface
+- [DeepSeek](https://docs.pipecat.ai/server/services/llm/deepseek.md): LLM service implementation using DeepSeek's API with OpenAI-compatible interface
+- [Fireworks AI](https://docs.pipecat.ai/server/services/llm/fireworks.md): LLM service implementation using Fireworks AI's API with OpenAI-compatible interface
+- [Google Gemini](https://docs.pipecat.ai/server/services/llm/gemini.md): Large Language Model service implementation using Google's Gemini API
+- [Google Vertex AI](https://docs.pipecat.ai/server/services/llm/google-vertex.md): LLM service implementation using Google's Vertex AI with OpenAI-compatible interface
+- [Grok](https://docs.pipecat.ai/server/services/llm/grok.md): LLM service implementation using Grok's API with OpenAI-compatible interface
+- [Groq](https://docs.pipecat.ai/server/services/llm/groq.md): LLM service implementation using Groq's API with OpenAI-compatible interface
+- [NVIDIA NIM](https://docs.pipecat.ai/server/services/llm/nim.md): LLM service implementation using NVIDIA's NIM (NVIDIA Inference Microservice) API with OpenAI-compatible interface
+- [Ollama](https://docs.pipecat.ai/server/services/llm/ollama.md): LLM service implementation using Ollama with OpenAI-compatible interface
+- [OpenAI](https://docs.pipecat.ai/server/services/llm/openai.md): Large Language Model services using OpenAI's chat completion API
+- [OpenPipe](https://docs.pipecat.ai/server/services/llm/openpipe.md): LLM service implementation using OpenPipe for LLM request logging and fine-tuning
+- [OpenRouter](https://docs.pipecat.ai/server/services/llm/openrouter.md): LLM service implementation using OpenRouter's API with OpenAI-compatible interface
+- [Perplexity](https://docs.pipecat.ai/server/services/llm/perplexity.md): LLM service implementation using Perplexity's API with OpenAI-compatible interface
+- [Qwen](https://docs.pipecat.ai/server/services/llm/qwen.md): LLM service implementation using Alibaba Cloud's Qwen models through an OpenAI-compatible interface
+- [SambaNova](https://docs.pipecat.ai/server/services/llm/sambanova.md): LLM service implementation using SambaNova's API with OpenAI-compatible interface
+- [Together AI](https://docs.pipecat.ai/server/services/llm/together.md): LLM service implementation using Together AI's API with OpenAI-compatible interface
+- [Mem0](https://docs.pipecat.ai/server/services/memory/mem0.md): Long-term conversation memory service powered by Mem0
+- [AWS Nova Sonic](https://docs.pipecat.ai/server/services/s2s/aws.md): Real-time speech-to-speech service implementation using AWS Nova Sonic
+- [Gemini Live](https://docs.pipecat.ai/server/services/s2s/gemini-live.md): A real-time, multimodal conversational AI service powered by Google's Gemini
+- [Gemini Live Vertex AI](https://docs.pipecat.ai/server/services/s2s/gemini-live-vertex.md): A real-time, multimodal conversational AI service powered by Google's Gemini via Vertex AI
+- [OpenAI Realtime](https://docs.pipecat.ai/server/services/s2s/openai.md): Real-time speech-to-speech service implementation using OpenAI's Realtime API
+- [ExotelFrameSerializer](https://docs.pipecat.ai/server/services/serializers/exotel.md): Serializer for Exotel WebSocket media streaming protocol
+- [Frame Serializer Overview](https://docs.pipecat.ai/server/services/serializers/introduction.md): Overview of frame serializers for converting between Pipecat frames and external protocols
+- [PlivoFrameSerializer](https://docs.pipecat.ai/server/services/serializers/plivo.md): Serializer for Plivo Audio Streaming WebSocket protocol
+- [TelnyxFrameSerializer](https://docs.pipecat.ai/server/services/serializers/telnyx.md): Serializer for Telnyx WebSocket media streaming protocol
+- [TwilioFrameSerializer](https://docs.pipecat.ai/server/services/serializers/twilio.md): Serializer for Twilio Media Streams WebSocket protocol
+- [AssemblyAI](https://docs.pipecat.ai/server/services/stt/assemblyai.md): Speech-to-text service implementation using AssemblyAI's real-time transcription API
+- [AWS Transcribe](https://docs.pipecat.ai/server/services/stt/aws.md): Speech-to-text service implementation using Amazon Transcribe's real-time transcription API
+- [Azure](https://docs.pipecat.ai/server/services/stt/azure.md): Speech-to-text service using Azure Cognitive Services Speech SDK
+- [Cartesia](https://docs.pipecat.ai/server/services/stt/cartesia.md): Speech-to-text service implementation using Cartesia's real-time transcription API
+- [Deepgram](https://docs.pipecat.ai/server/services/stt/deepgram.md): Speech-to-text service implementations using Deepgram's real-time transcription and Flux APIs
+- [ElevenLabs](https://docs.pipecat.ai/server/services/stt/elevenlabs.md): Speech-to-text service implementation using ElevenLabs' file-based transcription API
+- [Fal (Wizper)](https://docs.pipecat.ai/server/services/stt/fal.md): Speech-to-text service implementation using Fal's Wizper API
+- [Gladia](https://docs.pipecat.ai/server/services/stt/gladia.md): Speech-to-text service implementation using Gladia's API
+- [Google](https://docs.pipecat.ai/server/services/stt/google.md): Speech-to-text service implementation using Google Cloud's Speech-to-Text V2 API
+- [Groq (Whisper)](https://docs.pipecat.ai/server/services/stt/groq.md): Speech-to-text service implementation using Groq's Whisper API
+- [OpenAI](https://docs.pipecat.ai/server/services/stt/openai.md): Speech-to-text service implementation using OpenAI's Speech-to-Text APIs
+- [NVIDIA Riva](https://docs.pipecat.ai/server/services/stt/riva.md): Speech-to-text service implementation using NVIDIA Riva
+- [SambaNova (Whisper)](https://docs.pipecat.ai/server/services/stt/sambanova.md): Speech-to-text service implementation using SambaNova's Whisper API
+- [Sarvam](https://docs.pipecat.ai/server/services/stt/sarvam.md): Speech-to-text service implementation using Sarvam AI's WebSocket-based streaming API
+- [Soniox](https://docs.pipecat.ai/server/services/stt/soniox.md): Speech-to-text service implementation using Soniox's WebSocket API
+- [Speechmatics](https://docs.pipecat.ai/server/services/stt/speechmatics.md): Speech-to-text service implementation using Speechmatics' real-time transcription STT API
+- [Ultravox](https://docs.pipecat.ai/server/services/stt/ultravox.md): Speech-to-text service implementation using a locally-loaded Ultravox multimodal model
+- [Whisper](https://docs.pipecat.ai/server/services/stt/whisper.md): Speech-to-text service implementation using locally-downloaded Whisper models
+- [Supported Services](https://docs.pipecat.ai/server/services/supported-services.md): AI services integrated with Pipecat and their setup requirements
+- [DailyTransport](https://docs.pipecat.ai/server/services/transport/daily.md): WebRTC transport implementation using Daily for real-time audio/video communication
+- [FastAPIWebsocketTransport](https://docs.pipecat.ai/server/services/transport/fastapi-websocket.md): WebSocket transport implementation for FastAPI web applications with telephony integration
+- [LiveKitTransport](https://docs.pipecat.ai/server/services/transport/livekit.md): WebRTC transport implementation using LiveKit for real-time audio communication
+- [SmallWebRTCTransport](https://docs.pipecat.ai/server/services/transport/small-webrtc.md): A lightweight WebRTC transport for peer-to-peer audio and video communication in Pipecat
+- [TavusTransport](https://docs.pipecat.ai/server/services/transport/tavus.md): Conversational AI applications with Tavus avatars using real-time audio/video streaming
+- [WebSocket Transports](https://docs.pipecat.ai/server/services/transport/websocket-server.md): WebSocket transport implementations for real-time client-server communication
+- [WhatsAppTransport](https://docs.pipecat.ai/server/services/transport/whatsapp.md): Real-time voice communication through WhatsApp Business API using WebRTC
+- [Async](https://docs.pipecat.ai/server/services/tts/asyncai.md): Text-to-speech services using Async's WebSocket and HTTP APIs
+- [AWS Polly](https://docs.pipecat.ai/server/services/tts/aws.md): Text-to-speech service using Amazon Polly
+- [Azure](https://docs.pipecat.ai/server/services/tts/azure.md): Text-to-speech service using Azure Cognitive Services Speech SDK
+- [Cartesia](https://docs.pipecat.ai/server/services/tts/cartesia.md): Text-to-speech services using Cartesia’s WebSocket and HTTP APIs
+- [Deepgram](https://docs.pipecat.ai/server/services/tts/deepgram.md): Text-to-speech service implementation using Deepgram's Aura API
+- [ElevenLabs](https://docs.pipecat.ai/server/services/tts/elevenlabs.md): Text-to-speech service using ElevenLab's streaming API with word-level timing
+- [Fish Audio](https://docs.pipecat.ai/server/services/tts/fish.md): Real-time text-to-speech service using Fish Audio's WebSocket API
+- [Google](https://docs.pipecat.ai/server/services/tts/google.md): Text-to-speech service using Google's Cloud Text-to-Speech API
+- [Groq](https://docs.pipecat.ai/server/services/tts/groq.md): Text-to-speech service implementation using Groq's TTS API
+- [Inworld](https://docs.pipecat.ai/server/services/tts/inworld.md): Text-to-speech service using Inworld AI's TTS APIs
+- [LMNT](https://docs.pipecat.ai/server/services/tts/lmnt.md): Text-to-speech service implementation using LMNT's streaming API
+- [MiniMax](https://docs.pipecat.ai/server/services/tts/minimax.md): Text-to-speech service implementation using MiniMax T2A API
+- [Neuphonic](https://docs.pipecat.ai/server/services/tts/neuphonic.md): Text-to-speech service implementation using Neuphonic's API
+- [OpenAI](https://docs.pipecat.ai/server/services/tts/openai.md): Text-to-speech service using OpenAI's TTS API
+- [Piper](https://docs.pipecat.ai/server/services/tts/piper.md): Text-to-speech service implementation using the Piper TTS server
+- [PlayHT](https://docs.pipecat.ai/server/services/tts/playht.md): Text-to-speech services using PlayHT's WebSocket and HTTP APIs
+- [Rime](https://docs.pipecat.ai/server/services/tts/rime.md): Text-to-speech service implementations using Rime AI
+- [NVIDIA Riva](https://docs.pipecat.ai/server/services/tts/riva.md): Text-to-speech service implementation using NVIDIA Riva
+- [Sarvam AI](https://docs.pipecat.ai/server/services/tts/sarvam.md): Text-to-speech service implementation using Sarvam AI's TTS API
+- [Speechmatics](https://docs.pipecat.ai/server/services/tts/speechmatics.md): Text-to-speech service using Speechmatics TTS API
+- [XTTS](https://docs.pipecat.ai/server/services/tts/xtts.md): Text-to-speech service implementation using Coqui's XTTS streaming server
+- [HeyGen](https://docs.pipecat.ai/server/services/video/heygen.md): AI avatar video generation service for creating interactive conversational avatars
+- [Simli](https://docs.pipecat.ai/server/services/video/simli.md): Real-time AI avatar video generation service using WebRTC streaming
+- [Tavus](https://docs.pipecat.ai/server/services/video/tavus.md): AI avatar video generation service for creating realistic talking avatars
+- [Moondream](https://docs.pipecat.ai/server/services/vision/moondream.md): Vision service implementation using Moondream for local image analysis and question answering
+- [AICFilter](https://docs.pipecat.ai/server/utilities/audio/aic-filter.md): Speech improvement using ai-coustics
+- [AudioBufferProcessor](https://docs.pipecat.ai/server/utilities/audio/audio-buffer-processor.md): Process and buffer audio frames from conversations with flexible event handling
+- [KoalaFilter](https://docs.pipecat.ai/server/utilities/audio/koala-filter.md): Audio noise reduction filter using Koala AI technology from Picovoice
+- [KrispFilter](https://docs.pipecat.ai/server/utilities/audio/krisp-filter.md): Audio noise reduction filter using Krisp AI technology
+- [KrispVivaFilter](https://docs.pipecat.ai/server/utilities/audio/krisp-viva-filter.md): Audio noise reduction filter using Krisp VIVA model
+- [SileroVADAnalyzer](https://docs.pipecat.ai/server/utilities/audio/silero-vad-analyzer.md): Voice Activity Detection analyzer using the Silero VAD ONNX model
+- [SoundfileMixer](https://docs.pipecat.ai/server/utilities/audio/soundfile-mixer.md): Audio mixer for combining real-time audio with sound files
+- [DailyRESTHelper](https://docs.pipecat.ai/server/utilities/daily/rest-helper.md): Classes and methods for interacting with the Daily API to manage rooms and tokens
+- [DTMFAggregator](https://docs.pipecat.ai/server/utilities/dtmf-aggregator.md): Aggregates DTMF (phone keypad) input into meaningful sequences for LLM processing
+- [IVRNavigator](https://docs.pipecat.ai/server/utilities/extensions/ivr.md): AI-powered Interactive Voice Response system navigation with automatic classification and goal-oriented decision making
+- [VoicemailDetector](https://docs.pipecat.ai/server/utilities/extensions/voicemail.md): Technical implementation details and architecture for voicemail detection
+- [FrameFilter](https://docs.pipecat.ai/server/utilities/filters/frame-filter.md): Processor that selectively passes through only specified frame types
+- [FunctionFilter](https://docs.pipecat.ai/server/utilities/filters/function-filter.md): Processor that filters frames using a custom filter function
+- [IdentityFilter](https://docs.pipecat.ai/server/utilities/filters/identify-filter.md): Processor that passes all frames through without modification
+- [NullFilter](https://docs.pipecat.ai/server/utilities/filters/null-filter.md): Processor that blocks all frames except system frames
+- [STTMuteFilter](https://docs.pipecat.ai/server/utilities/filters/stt-mute.md): Processor for controlling STT muting and interruption handling during bot speech and function calls
+- [WakeCheckFilter](https://docs.pipecat.ai/server/utilities/filters/wake-check-filter.md): Processor that passes frames only after detecting wake phrases in transcriptions
+- [WakeNotifierFilter](https://docs.pipecat.ai/server/utilities/filters/wake-notifier-filter.md): Processor that triggers a notifier when specified frame types pass a custom filter
+- [LLMTextProcessor](https://docs.pipecat.ai/server/utilities/frame/llm-text-processor.md): A processor for aggregating LLMTextFrames into logical units before passing them to downstream services
+- [Producer & Consumer Processors](https://docs.pipecat.ai/server/utilities/frame/producer-consumer.md): Route frames between different parts of a pipeline, allowing selective frame sharing across parallel branches or within complex pipelines
+- [Interruption Strategies](https://docs.pipecat.ai/server/utilities/interruption-strategies.md): Configure when users can interrupt the bot to prevent unwanted interruptions from brief affirmations
+- [MCPClient](https://docs.pipecat.ai/server/utilities/mcp/mcp.md): Service to connect to MCP (Model Context Protocol) servers
+- [Debug Log Observer](https://docs.pipecat.ai/server/utilities/observers/debug-observer.md): Comprehensive frame logging with configurable filtering in Pipecat
+- [LLM Log Observer](https://docs.pipecat.ai/server/utilities/observers/llm-observer.md): Logging LLM activity in Pipecat
+- [Observer Pattern](https://docs.pipecat.ai/server/utilities/observers/observer-pattern.md): Understanding and implementing observers in Pipecat
+- [Transcription Log Observer](https://docs.pipecat.ai/server/utilities/observers/transcription-observer.md): Logging speech-to-text transcription activity in Pipecat
+- [Turn Tracking Observer](https://docs.pipecat.ai/server/utilities/observers/turn-tracking-observer.md): Track conversation turns and events in your Pipecat pipeline
+- [User-Bot Latency Observer](https://docs.pipecat.ai/server/utilities/observers/user-bot-latency-observer.md): Measure response time between user speech and bot responses in Pipecat
+- [OpenTelemetry Tracing](https://docs.pipecat.ai/server/utilities/opentelemetry.md): Monitor and analyze your Pipecat conversational pipelines using OpenTelemetry
+- [Development Runner](https://docs.pipecat.ai/server/utilities/runner/guide.md): Unified runner for building voice AI bots with Daily, WebRTC, and telephony transports
+- [Transport Utilities](https://docs.pipecat.ai/server/utilities/runner/transport-utils.md): Configuration and helper utilities for Daily, LiveKit, telephony, and WebRTC transports
+- [LLMSwitcher](https://docs.pipecat.ai/server/utilities/service-switchers/llm-switcher.md): Dynamically switch between different LLM services with support for ad-hoc inference and unified function registration
+- [ServiceSwitcher](https://docs.pipecat.ai/server/utilities/service-switchers/service-switcher.md): Dynamically switch between different service instances at runtime using configurable strategies
+- [Fal Smart Turn](https://docs.pipecat.ai/server/utilities/smart-turn/fal-smart-turn.md): Cloud-hosted Smart Turn detection using Fal.ai
+- [Smart Turn Overview](https://docs.pipecat.ai/server/utilities/smart-turn/smart-turn-overview.md): Advanced conversational turn detection powered by the smart-turn model
+- [MarkdownTextFilter](https://docs.pipecat.ai/server/utilities/text/markdown-text-filter.md): Converts Markdown-formatted text to TTS-friendly plain text while preserving structure
+- [Text Aggregators and Filters](https://docs.pipecat.ai/server/utilities/text/overview.md): An overview of text aggregators and filters available in the server utilities
+- [PatternPairAggregator](https://docs.pipecat.ai/server/utilities/text/pattern-pair-aggregator.md): Text aggregator that identifies and processes content between pattern pairs in streaming text
+- [TranscriptProcessor](https://docs.pipecat.ai/server/utilities/transcript-processor.md): Factory for creating and managing conversation transcript processors with shared event handling
+- [UserIdleProcessor](https://docs.pipecat.ai/server/utilities/user-idle-processor.md): A processor that monitors user inactivity and triggers callbacks after specified timeout periods
+
+
+## Optional
+
+- [Pipecat Events](https://pipecat.ai/events)
+- [Community](https://discord.gg/pipecat)
+- [GitHub](https://github.com/pipecat-ai/pipecat)
+- [Changelog](https://github.com/pipecat-ai/pipecat/blob/main/CHANGELOG.md)

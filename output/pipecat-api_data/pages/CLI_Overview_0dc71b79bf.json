@@ -1,0 +1,19 @@
+{
+  "title": "CLI Overview",
+  "content": "Source: https://docs.pipecat.ai/cli/overview\n\nCommand-line tool for scaffolding, deploying, and monitoring Pipecat bots\n\n<CardGroup>\n  <Card title=\"Scaffold Projects\" icon=\"wand-magic-sparkles\" href=\"/cli/init\">\n    Create new phone or web/mobile bots with interactive setup\n  </Card>\n\n<Card title=\"Deploy to Cloud\" icon=\"rocket\" href=\"/cli/cloud/auth\">\n    Push your bots to production with one command\n  </Card>\n\n<Card title=\"Monitor Live Bots\" icon=\"chart-line\" href=\"/cli/tail\">\n    Watch real-time logs, conversations, and metrics\n  </Card>\n</CardGroup>\n\n* Python 3.10 or later\n\nInstall the CLI globally using [uv](https://docs.astral.sh/uv/) (recommended) or [pipx](https://pipx.pypa.io/):\n\n```bash theme={null}\nuv tool install pipecat-ai-cli",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Requirements",
+      "id": "requirements"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    }
+  ],
+  "url": "llms-txt#cli-overview",
+  "links": []
+}

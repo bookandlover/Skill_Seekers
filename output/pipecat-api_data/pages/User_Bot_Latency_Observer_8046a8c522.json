@@ -1,0 +1,58 @@
+{
+  "title": "User-Bot Latency Observer",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/observers/user-bot-latency-observer\n\nMeasure response time between user speech and bot responses in Pipecat\n\nThe `UserBotLatencyLogObserver` measures the time between when a user stops speaking and when the bot starts responding, providing metrics for conversational AI performance optimization.\n\n* Tracks user speech start/stop timing\n* Measures bot response latency\n* Calculates statistics: average, minimum, maximum\n* Provides real-time latency logging\n* Automatically resets between conversation turns\n\n### Basic Latency Monitoring\n\nAdd latency monitoring to your pipeline:\n\nThe observer tracks conversation flow through these key events:\n\n1. **User starts speaking** → Resets latency tracking\n2. **User stops speaking** → Records timestamp\n3. **Bot starts speaking** → Calculates and logs latency\n4. **Pipeline ends** → Reports session latency statistics\n\n### Real-time Latency Logs\n\nDuring conversation, each response latency is logged:\n\nWhen the pipeline ends, comprehensive statistics are reported:\n\n* Only measures speech-to-speech latency (not text processing time)\n* Requires proper frame sequencing to work accurately",
+  "code_samples": [
+    {
+      "code": "## How It Works\n\nThe observer tracks conversation flow through these key events:\n\n1. **User starts speaking** → Resets latency tracking\n2. **User stops speaking** → Records timestamp\n3. **Bot starts speaking** → Calculates and logs latency\n4. **Pipeline ends** → Reports session latency statistics\n\n## Log Output\n\n### Real-time Latency Logs\n\nDuring conversation, each response latency is logged:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Final Statistics\n\nWhen the pipeline ends, comprehensive statistics are reported:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Latency Monitoring",
+      "id": "basic-latency-monitoring"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Log Output",
+      "id": "log-output"
+    },
+    {
+      "level": "h3",
+      "text": "Real-time Latency Logs",
+      "id": "real-time-latency-logs"
+    },
+    {
+      "level": "h3",
+      "text": "Final Statistics",
+      "id": "final-statistics"
+    },
+    {
+      "level": "h2",
+      "text": "Limitations",
+      "id": "limitations"
+    }
+  ],
+  "url": "llms-txt#user-bot-latency-observer",
+  "links": []
+}

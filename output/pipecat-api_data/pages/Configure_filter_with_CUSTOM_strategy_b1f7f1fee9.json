@@ -1,0 +1,8 @@
+{
+  "title": "Configure filter with CUSTOM strategy",
+  "content": "stt_mute_filter = STTMuteFilter(\n    config=STTMuteConfig(\n        strategies={STTMuteStrategy.CUSTOM},\n        should_mute_callback=session_state_mute_logic\n    )\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#configure-filter-with-custom-strategy",
+  "links": []
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Daily PSTN Dial-out",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/daily-dial-out\n\nUsing Daily’s Transport to make calls to external SIP Addresses and PSTN numbers\n\nTo initiate outbound calls, you first need to configure your Daily rooms to allow dial-out by setting `enable_dialout` in `dailyRoomProperties`. Then, include the target phone number(s) in the request `body` of `{service}/start`.\n\nIn this example, we use the `dialout_settings` array to pass one or more phone numbers for the bot to dial. Each object in the array must include a `phoneNumber` and can optionally specify a `callerId` to control the outbound caller ID.\n\n<Info>\n  If no `callerId` is provided, a random phone number will be used to make the\n  call. To specify the caller ID, use the [phone number's\n  `id`](/guides/telephony/daily-phone-numbers#list-all-purchased-phone-numbers)\n  as the `callerId`.\n</Info>\n\n<Info>\n  The API\\_KEY here is Pipcat Cloud's [public API\n  key](../../fundamentals/accounts-and-organizations#api-keys), typically begins\n  with \"pk\\_...\"\n</Info>\n\nThe bot should begin dialing out as soon as the call state transitions to the `joined` state.\n\nUnlike dial-in scenarios where the bot typically speaks first, dial-out calls may require the bot to wait for the remote user to speak. In these cases, you can start listening for the remote user when the `on_dialout_answered` event fires.\n\nThis is also a good point to initiate voicemail detection—for example, by analyzing the remote user's audio to determine if the call has reached a voicemail.\n\n### Examples of `dialout_settings`\n\nHere are various configurations you can use in the `dialout_settings` array:\n\nAfter configuring your dial-out functionality, you can implement a Pipecat bot to handle the call interactions:\n\n<Card title=\"Dial-in/Dial-out Bot Example\" icon=\"phone\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-out\">\n  Complete example of a Pipecat bot implementation that handles both incoming\n  (dial-in) and outgoing (dial-out) calls with voicemail detection\n</Card>",
+  "code_samples": [
+    {
+      "code": "<Info>\n  The API\\_KEY here is Pipcat Cloud's [public API\n  key](../../fundamentals/accounts-and-organizations#api-keys), typically begins\n  with \"pk\\_...\"\n</Info>\n\nThe bot should begin dialing out as soon as the call state transitions to the `joined` state.\n\nUnlike dial-in scenarios where the bot typically speaks first, dial-out calls may require the bot to wait for the remote user to speak. In these cases, you can start listening for the remote user when the `on_dialout_answered` event fires.\n\nThis is also a good point to initiate voicemail detection—for example, by analyzing the remote user's audio to determine if the call has reached a voicemail.",
+      "language": "unknown"
+    },
+    {
+      "code": "### Examples of `dialout_settings`\n\nHere are various configurations you can use in the `dialout_settings` array:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Examples of `dialout_settings`",
+      "id": "examples-of-`dialout_settings`"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#daily-pstn-dial-out",
+  "links": []
+}

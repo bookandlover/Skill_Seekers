@@ -1,0 +1,36 @@
+{
+  "title": "Use directly in NodeConfig",
+  "content": "node_config = {\n    \"functions\": [record_favorite_color]\n}\npython theme={null}\n\"pre_actions\": [\n    {\n        \"type\": \"tts_say\",\n        \"text\": \"Please hold while I process your request...\"\n    }\n]\npython theme={null}\n\"post_actions\": [\n    {\n        \"type\": \"end_conversation\",\n        \"text\": \"Thank you for your time!\"\n    }\n]\npython theme={null}\n\"post_actions\": [\n    {\n        \"type\": \"function\",\n        \"handler\": end_conversation_handler\n    }\n]\npython theme={null}\nfrom pipecat_flows import ContextStrategy, ContextStrategyConfig",
+  "code_samples": [
+    {
+      "code": "This approach eliminates the need for separate `FlowsFunctionSchema` definitions while maintaining the same functionality.\n\n### Actions\n\nActions allow you to execute custom functionality at specific points in your conversation flow, giving you precise control over timing and sequencing.\n\n#### Action Types\n\n* `pre_actions` execute immediately when transitioning to a new node, *before* the LLM inference begins.\n* `post_actions` execute after the LLM inference completes and any TTS has finished speaking.\n\n#### Built-in Actions\n\nPipecat Flows includes several ready-to-use actions for common scenarios:\n\n* **`tts_say`**: Speak a phrase immediately (useful for \"please wait\" messages)",
+      "language": "unknown"
+    },
+    {
+      "code": "* **`end_conversation`**: Gracefully terminate the conversation",
+      "language": "unknown"
+    },
+    {
+      "code": "* **`function`**: Execute a custom function at the specified timing",
+      "language": "unknown"
+    },
+    {
+      "code": "#### Custom Actions\n\nYou can define your own actions to handle specific business logic or integrations. In most cases, consider using a **function action** first, as it executes at the expected time in the pipeline.\n\nCustom actions give you complete flexibility to execute any functionality your application needs, but require careful timing considerations.\n\n#### Action Timing\n\nThe execution order ensures predictable behavior:\n\n1. **Pre-actions** run first upon node entry (in the order they are defined)\n2. **LLM inference** processes the node's messages and functions\n3. **TTS** speaks the LLM's response\n4. **Post-actions** run after TTS completes (in the order they are defined)\n\nThis timing guarantees that actions execute in the correct sequence, such as ensuring the bot finishes speaking before ending the conversation. Note that custom actions may not follow this predictable timing, which is another reason to prefer function actions when possible.\n\n### Context Strategy\n\nFlows provides three built-in ways to manage conversation context as you move between nodes:\n\n#### Strategy Types\n\n1. **APPEND** (Default): New node messages are added to the existing context, preserving the full conversation history. The context grows as the conversation progresses.\n\n2. **RESET**: The context is cleared and replaced with only the new node's messages. Useful when previous conversation history is no longer relevant or to reduce context window size.\n\n3. **RESET\\_WITH\\_SUMMARY**: The context is cleared but includes an AI-generated summary of the previous conversation along with the new node's messages. Helps reduce context size while preserving key information.\n\n#### When to Use Each Strategy\n\n* Use **APPEND** when full conversation history is important for context\n* Use **RESET** when starting a new topic or when previous context might confuse the current task\n* Use **RESET\\_WITH\\_SUMMARY** for long conversations where you need to preserve key points but reduce context size\n\n#### Configuration Examples\n\nContext strategies can be defined globally in the FlowManager constructor:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Actions",
+      "id": "actions"
+    },
+    {
+      "level": "h3",
+      "text": "Context Strategy",
+      "id": "context-strategy"
+    }
+  ],
+  "url": "llms-txt#use-directly-in-nodeconfig",
+  "links": []
+}

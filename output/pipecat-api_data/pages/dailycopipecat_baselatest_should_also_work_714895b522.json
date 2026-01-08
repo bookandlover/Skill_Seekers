@@ -1,0 +1,32 @@
+{
+  "title": "dailyco/pipecat-base:latest should also work",
+  "content": "FROM dailyco/pipecat-base:0.0.7\nbash theme={null}\nDD_API_KEY=<your-datadog-api-key>\nbash theme={null}\npipecat cloud secrets set <your-agent-secrets> --file .env\nyaml theme={null}\nsite: <your-datadog-site> # e.g. us5.datadoghq.com\nhostname: pipecat.daily.co # (or whatever would be useful for you to see in the Datadog dashboards)",
+  "code_samples": [
+    {
+      "code": "## Add Datadog API key as a secret\n\nIf you're using keeping your secrets in an `.env` file [as recommended](../fundamentals/secrets), add your Datadog API key to that file:",
+      "language": "unknown"
+    },
+    {
+      "code": "Then update your secret set from that file:",
+      "language": "unknown"
+    },
+    {
+      "code": "See [Secrets](../fundamentals/secrets) for more details.\n\n## Create `datadog.yaml`\n\nThis file contains the Datadog Agent configuration.\n\nThe configuration shown below assumes you want all Datadog features covered in this guide (logging, traces, and custom metrics).",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Add Datadog API key as a secret",
+      "id": "add-datadog-api-key-as-a-secret"
+    },
+    {
+      "level": "h2",
+      "text": "Create `datadog.yaml`",
+      "id": "create-`datadog.yaml`"
+    }
+  ],
+  "url": "llms-txt#dailyco/pipecat-base:latest-should-also-work",
+  "links": []
+}

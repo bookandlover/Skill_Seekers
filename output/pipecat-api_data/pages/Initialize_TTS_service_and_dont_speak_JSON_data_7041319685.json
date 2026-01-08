@@ -1,0 +1,8 @@
+{
+  "title": "Initialize TTS service, and don't speak JSON data",
+  "content": "tts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n    skip_aggregator_types=[\"json\"],\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-tts-service,-and-don't-speak-json-data",
+  "links": []
+}

@@ -1,0 +1,24 @@
+{
+  "title": "In another component, wait for the notification",
+  "content": "async def handle_wake_event():\n    await wake_event.wait()\n    print(\"Wake phrase detected!\")\nmermaid theme={null}\ngraph TD\n    A[Input Frame] --> B[WakeNotifierFilter]\n    B --> C{Matching Type?}\n    C -->|Yes| D{Filter Function}\n    D -->|Returns True| E[Notify]\n    D -->|Returns False| F[Pass Through]\n    C -->|No| F\n    E --> F\n```\n\n* Acts as a transparent pass-through for all frames\n* Can trigger external events without modifying pipeline flow\n* Useful for signaling between pipeline components\n* Can monitor for multiple frame types simultaneously\n* Uses async filter function for complex conditions\n* Functions as a \"listener\" that doesn't affect the data stream\n* Can be used for logging, analytics, or coordinating external systems",
+  "code_samples": [
+    {
+      "code": "## Frame Flow",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Frame Flow",
+      "id": "frame-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#in-another-component,-wait-for-the-notification",
+  "links": []
+}

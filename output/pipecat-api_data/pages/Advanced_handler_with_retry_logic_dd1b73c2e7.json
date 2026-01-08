@@ -1,0 +1,38 @@
+{
+  "title": "Advanced handler with retry logic",
+  "content": "async def handle_user_idle(processor, retry_count):\n    if retry_count == 1:\n        # First attempt - gentle reminder\n        await processor.push_frame(TTSSpeakFrame(\"Are you still there?\"))\n        return True  # Continue monitoring\n    elif retry_count == 2:\n        # Second attempt - more direct prompt\n        await processor.push_frame(TTSSpeakFrame(\"Would you like to continue our conversation?\"))\n        return True  # Continue monitoring\n    else:\n        # Third attempt - end conversation\n        await processor.push_frame(TTSSpeakFrame(\"I'll leave you for now. Have a nice day!\"))\n        await processor.push_frame(EndFrame(), FrameDirection.UPSTREAM)\n        return False  # Stop monitoring\npython theme={null}\nfrom pipecat.processors.user_idle_processor import UserIdleProcessor\n\nuser_idle = UserIdleProcessor(\n    callback=handle_user_idle,  # Your callback function\n    timeout=5.0,               # Seconds of inactivity before triggering\n)\npython theme={null}\npipeline = Pipeline(\n    [\n        transport.input(),\n        stt,                         # Speech-to-text\n        user_idle,                   # Add idle detection here\n        context_aggregator.user(),\n        llm,\n        tts,\n        transport.output(),\n        context_aggregator.assistant(),\n    ]\n)\n```\n\n* **Set appropriate timeouts**: Shorter timeouts (5-10 seconds) work well for voice conversations\n* **Use escalating responses**: Start with gentle reminders and gradually become more direct\n* **Limit retry attempts**: After 2-3 unsuccessful attempts, consider [ending the conversation](/guides/learn/pipeline-termination) gracefully by pushing an `EndFrame`\n\n<CardGroup>\n  <Card title=\"Try the User Idle Example\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/17-detect-user-idle.py\">\n    Explore a complete working example that demonstrates how to detect and\n    respond to user inactivity in Pipecat.\n  </Card>\n\n<Card title=\"UserIdleProcessor Reference\" icon=\"book\" href=\"/server/utilities/user-idle-processor\">\n    Read the complete API reference documentation for advanced configuration\n    options and callback patterns.\n  </Card>\n</CardGroup>\n\nImplementing idle user detection improves the conversational experience by ensuring your bot can handle periods of user inactivity gracefully, either by prompting for re-engagement or politely ending the conversation when appropriate.",
+  "code_samples": [
+    {
+      "code": "### Step 2: Create the Idle Processor\n\nInitialize the processor with your callback and desired timeout:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 3: Add to Your Pipeline\n\nPlace the processor after speech detection but before context handling:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Step 2: Create the Idle Processor",
+      "id": "step-2:-create-the-idle-processor"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Add to Your Pipeline",
+      "id": "step-3:-add-to-your-pipeline"
+    },
+    {
+      "level": "h2",
+      "text": "Best Practices",
+      "id": "best-practices"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#advanced-handler-with-retry-logic",
+  "links": []
+}

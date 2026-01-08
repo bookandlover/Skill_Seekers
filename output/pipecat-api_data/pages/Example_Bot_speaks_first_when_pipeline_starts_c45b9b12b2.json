@@ -1,0 +1,13 @@
+{
+  "title": "Example: Bot speaks first when pipeline starts",
+  "content": "@transport.event_handler(\"on_client_connected\")\nasync def on_client_connected(transport, client):\n    # Trigger a response\n    await task.queue_frames([LLMRunFrame()])\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#example:-bot-speaks-first-when-pipeline-starts",
+  "links": []
+}

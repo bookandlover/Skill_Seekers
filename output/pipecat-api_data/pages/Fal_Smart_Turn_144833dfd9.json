@@ -1,0 +1,63 @@
+{
+  "title": "Fal Smart Turn",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/smart-turn/fal-smart-turn\n\nCloud-hosted Smart Turn detection using Fal.ai\n\n`FalSmartTurnAnalyzer` provides an easy way to use Smart Turn detection via Fal.ai's cloud infrastructure. This implementation requires minimal setup - just an API key - and offers scalable inference without having to manage your own servers.\n\n* A Fal.ai account and API key (get one at [Fal.ai](https://fal.ai))\n* Internet connectivity for making API calls\n\n### Constructor Parameters\n\n<ParamField type=\"Optional[str]\">\n  Your Fal.ai API key for authentication (required unless using a custom\n  deployment)\n</ParamField>\n\n<ParamField type=\"str\">\n  URL endpoint for the Smart Turn API (defaults to the official Fal deployment)\n</ParamField>\n\n<ParamField type=\"aiohttp.ClientSession\">\n  An aiohttp client session for making HTTP requests\n</ParamField>\n\n<ParamField type=\"Optional[int]\">\n  Audio sample rate (will be set by the transport if not provided)\n</ParamField>\n\n<ParamField type=\"SmartTurnParams\">\n  Configuration parameters for turn detection. See\n  [SmartTurnParams](/server/utilities/smart-turn/smart-turn-overview#configuration)\n  for details.\n</ParamField>\n\nYou can also deploy the Smart Turn model yourself on Fal.ai and point to your custom deployment:\n\n## Performance Considerations\n\n* **Latency**: While Fal provides global infrastructure, there will be network latency compared to local inference\n* **Reliability**: Depends on network connectivity and Fal.ai service availability\n* **Scalability**: Handles scaling automatically based on your usage\n\n* Fal handles the model hosting, scaling, and infrastructure management\n* The session timeout is controlled by the `stop_secs` parameter\n* For high-throughput applications, consider deploying your own inference service",
+  "code_samples": [
+    {
+      "code": "## Requirements\n\n* A Fal.ai account and API key (get one at [Fal.ai](https://fal.ai))\n* Internet connectivity for making API calls\n\n## Configuration\n\n### Constructor Parameters\n\n<ParamField type=\"Optional[str]\">\n  Your Fal.ai API key for authentication (required unless using a custom\n  deployment)\n</ParamField>\n\n<ParamField type=\"str\">\n  URL endpoint for the Smart Turn API (defaults to the official Fal deployment)\n</ParamField>\n\n<ParamField type=\"aiohttp.ClientSession\">\n  An aiohttp client session for making HTTP requests\n</ParamField>\n\n<ParamField type=\"Optional[int]\">\n  Audio sample rate (will be set by the transport if not provided)\n</ParamField>\n\n<ParamField type=\"SmartTurnParams\">\n  Configuration parameters for turn detection. See\n  [SmartTurnParams](/server/utilities/smart-turn/smart-turn-overview#configuration)\n  for details.\n</ParamField>\n\n## Example",
+      "language": "unknown"
+    },
+    {
+      "code": "## Custom Deployment\n\nYou can also deploy the Smart Turn model yourself on Fal.ai and point to your custom deployment:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Requirements",
+      "id": "requirements"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Example",
+      "id": "example"
+    },
+    {
+      "level": "h2",
+      "text": "Custom Deployment",
+      "id": "custom-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Performance Considerations",
+      "id": "performance-considerations"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#fal-smart-turn",
+  "links": []
+}

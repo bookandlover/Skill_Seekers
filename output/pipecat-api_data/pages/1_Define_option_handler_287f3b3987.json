@@ -1,0 +1,8 @@
+{
+  "title": "1. Define option handler",
+  "content": "async def handle_voice_option(processor, service, option):\n    voice_id = option.value\n    # Apply configuration change\n    logger.info(f\"Voice ID updated to: {voice_id}\")",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#1.-define-option-handler",
+  "links": []
+}

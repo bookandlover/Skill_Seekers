@@ -1,0 +1,8 @@
+{
+  "title": "Standard functions",
+  "content": "weather_function = FunctionSchema(\n    name=\"get_current_weather\",\n    description=\"Get the current weather\",\n    properties={\"location\": {\"type\": \"string\"}},\n    required=[\"location\"]\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#standard-functions",
+  "links": []
+}

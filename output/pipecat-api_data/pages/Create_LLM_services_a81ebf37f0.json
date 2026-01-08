@@ -1,0 +1,8 @@
+{
+  "title": "Create LLM services",
+  "content": "openai = OpenAILLMService(api_key=os.getenv(\"OPENAI_API_KEY\"))\ngemini = GoogleLLMService(api_key=os.getenv(\"GOOGLE_API_KEY\"))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-llm-services",
+  "links": []
+}

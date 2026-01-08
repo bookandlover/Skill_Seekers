@@ -1,0 +1,74 @@
+{
+  "title": "Create the pipeline",
+  "content": "pipeline = Pipeline([\n    transport.input(),               # Input from the transport\n    stt,                             # STT processing\n    context_aggregator.user(),       # User context aggregation\n    llm,                             # LLM processing\n    tts,                             # TTS processing\n    transport.output(),              # Output to the transport\n    context_aggregator.assistant(),  # Assistant context aggregation\n])\npython theme={null}\n@dataclass\nclass FunctionCallParams:\n    function_name: str                          # Name of the called function\n    tool_call_id: str                           # Unique identifier for this call\n    arguments: Mapping[str, Any]                # Arguments from the LLM\n    llm: LLMService                             # Reference to the LLM service\n    context: LLMContext                         # Current conversation context\n    result_callback: FunctionCallResultCallback # Return results here\npython theme={null}\nasync def example_function_handler(params: FunctionCallParams):\n    # Access function details\n    print(f\"Called function: {params.function_name}\")\n    print(f\"Call ID: {params.tool_call_id}\")\n\n# Extract arguments\n    location = params.arguments[\"location\"]\n\n# Access LLM context for conversation history\n    messages = params.context.messages\n\n# Use LLM service for additional operations\n    await params.llm.push_frame(TTSSpeakFrame(\"Looking up weather data...\"))\n\n# Return results\n    await params.result_callback({\"conditions\": \"nice\", \"temperature\": \"75\"})\npython Non-Direct Function theme={null}\n  async def fetch_weather_from_api(params: FunctionCallParams):\n      try:\n          # Extract arguments\n          location = params.arguments.get(\"location\")\n          format_type = params.arguments.get(\"format\", \"celsius\")\n\n# Call external API\n          api_result = await weather_api.get_weather(location, format_type)\n\n# Return formatted result\n          await params.result_callback({\n              \"location\": location,\n              \"temperature\": api_result[\"temp\"],\n              \"conditions\": api_result[\"conditions\"],\n              \"unit\": format_type\n          })\n      except Exception as e:\n          # Handle errors\n          await params.result_callback({\n              \"error\": f\"Failed to get weather: {str(e)}\"\n          })\n  python Direct Function theme={null}\n  async def get_current_weather(params: FunctionCallParams, location: str, format: str):\n      \"\"\"Get the current weather.\n\nArgs:\n          location: The city and state, e.g. \"San Francisco, CA\".\n          format: The temperature unit to use. Must be either \"celsius\" or \"fahrenheit\".\n      \"\"\"\n      try:\n          # Call external API\n          api_result = await weather_api.get_weather(location, format)\n\n# Return formatted result\n          await params.result_callback({\n              \"location\": location,\n              \"temperature\": api_result[\"temp\"],\n              \"conditions\": api_result[\"conditions\"],\n              \"unit\": format\n          })\n      except Exception as e:\n          # Handle errors\n          await params.result_callback({\n              \"error\": f\"Failed to get weather: {str(e)}\"\n          })\n  python theme={null}\n@dataclass\nclass FunctionCallResultProperties:\n    run_llm: Optional[bool] = None                 # Whether to run LLM after this result\n    on_context_updated: Optional[Callable] = None  # Callback when context is updated\npython theme={null}\nfrom pipecat.frames.frames import FunctionCallResultProperties\nfrom pipecat.services.llm_service import FunctionCallParams\n\nasync def fetch_weather_from_api(params: FunctionCallParams):\n    # Fetch weather data\n    weather_data = {\"conditions\": \"sunny\", \"temperature\": \"75\"}\n\n# Don't run LLM after this function call\n    properties = FunctionCallResultProperties(run_llm=False)\n\nawait params.result_callback(weather_data, properties=properties)\n\nasync def query_database(params: FunctionCallParams):\n    # Query database\n    results = await db.query(params.arguments[\"query\"])\n\nasync def on_update():\n        await notify_system(\"Database query complete\")\n\n# Run LLM after function call and notify when context is updated\n    properties = FunctionCallResultProperties(\n        run_llm=True,\n        on_context_updated=on_update\n    )\n\nawait params.result_callback(results, properties=properties)\n```\n\n* **Function calling extends LLM capabilities** beyond training data to real-time information\n* **Context integration is automatic** - function calls and results are stored in conversation history\n* **Multiple definition approaches** - use standard schema for portability, direct functions for simplicity\n* **Pipeline integration is seamless** - functions work within your existing voice AI architecture\n* **Advanced control available** - fine-tune LLM execution and monitor function call lifecycle\n\nNow that you understand function calling, let's explore how to configure text-to-speech services to convert your LLM's responses (including function call results) into natural-sounding speech.\n\n<Card title=\"Text to Speech\" icon=\"arrow-right\" href=\"/guides/learn/text-to-speech\">\n  Learn how to configure speech synthesis in your voice AI pipeline\n</Card>",
+  "code_samples": [
+    {
+      "code": "## Function Handler Details\n\n### FunctionCallParams\n\nEvery function handler receives a `FunctionCallParams` object containing all the information needed for execution:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Using the parameters:**",
+      "language": "unknown"
+    },
+    {
+      "code": "See the [API reference](https://reference-server.pipecat.ai/en/latest/api/pipecat.services.llm_service.html#pipecat.services.llm_service.FunctionCallParams) for complete details.\n\n### Handler Structure\n\nYour function handler should:\n\n1. Receive necessary arguments, either:\n   * From `params.arguments`\n   * Directly from function arguments, if using [direct functions](#using-direct-functions-shorthand)\n2. Process data or call external services\n3. Return results via `params.result_callback(result)`\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n## Controlling Function Call Behavior (Advanced)\n\nWhen returning results from a function handler, you can control how the LLM processes those results using a `FunctionCallResultProperties` object passed to the result callback.\n\n### Properties\n\n`FunctionCallResultProperties` provides fine-grained control over LLM execution:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Property options:**\n\n* **`run_llm=True`**: Run LLM after function call (default behavior)\n* **`run_llm=False`**: Don't run LLM after function call (useful for chained calls)\n* **`on_context_updated`**: Async callback executed after the function result is added to context\n\n<Tip>\n  Skip LLM execution (`run_llm=False`) when you have back-to-back function\n  calls. If you skip a completion, you must manually trigger one from the\n  context aggregator.\n</Tip>\n\nSee the [API reference](https://reference-server.pipecat.ai/en/latest/api/pipecat.frames.frames.html#pipecat.frames.frames.FunctionCallResultProperties) for complete details.\n\n### Example Usage",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Function Handler Details",
+      "id": "function-handler-details"
+    },
+    {
+      "level": "h3",
+      "text": "FunctionCallParams",
+      "id": "functioncallparams"
+    },
+    {
+      "level": "h3",
+      "text": "Handler Structure",
+      "id": "handler-structure"
+    },
+    {
+      "level": "h2",
+      "text": "Controlling Function Call Behavior (Advanced)",
+      "id": "controlling-function-call-behavior-(advanced)"
+    },
+    {
+      "level": "h3",
+      "text": "Properties",
+      "id": "properties"
+    },
+    {
+      "level": "h3",
+      "text": "Example Usage",
+      "id": "example-usage"
+    },
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#create-the-pipeline",
+  "links": []
+}

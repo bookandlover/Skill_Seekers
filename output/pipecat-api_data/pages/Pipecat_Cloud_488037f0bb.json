@@ -1,0 +1,8 @@
+{
+  "title": "Pipecat Cloud",
+  "content": "Source: https://docs.pipecat.ai/deployment/platforms/pipecat-cloud\n\nDeploy Pipecat agents with managed infrastructure\n\n[Pipecat Cloud](https://pipecat.daily.co) is a managed platform for hosting and scaling Pipecat agents in production.\n\n<Card title=\"Get Started with Pipecat Cloud\" icon=\"cloud\" href=\"../pipecat-cloud/introduction\">\n  Visit the complete Pipecat Cloud documentation to deploy your first agent\n</Card>",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#pipecat-cloud",
+  "links": []
+}

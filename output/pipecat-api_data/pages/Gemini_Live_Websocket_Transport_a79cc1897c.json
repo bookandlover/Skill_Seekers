@@ -1,0 +1,29 @@
+{
+  "title": "Gemini Live Websocket Transport",
+  "content": "Source: https://docs.pipecat.ai/client/ios/transports/gemini-websocket\n\nWebsocket implementation for iOS using Gemini\n\nThe Gemini Live Websocket transport implementation enables real-time audio communication with the Gemini Multimodal Live service, using a direct websocket connection.\n\n<Note>\n  Transports of this type are designed primarily for development and testing\n  purposes. For production applications, you will need to build a server\n  component with a server-friendly transport, like the\n  [DailyTransport](./daily), to securely handle API keys.\n</Note>\n\nAdd the Gemini transport package to your project:\n\n<CardGroup>\n  <Card title=\"Demo\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-client-ios-gemini-live-websocket-demo\">\n    Simple Chatbot Gemini Demo\n  </Card>\n\n<Card title=\"Source\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat-client-ios-gemini-live-websocket\">\n    iOS Gemini Live WebSocket\n  </Card>\n</CardGroup>\n\n<Card title=\"Pipecat iOS Client Reference\" icon=\"book-open\" href=\"https://docs-ios.pipecat.ai/PipecatClientIOSGeminiLiveWebSocket/documentation/pipecatclientiosgeminilivewebsocket\">\n  Complete API documentation for the Gemini transport implementation\n</Card>",
+  "code_samples": [
+    {
+      "code": "## Usage\n\nCreate a client:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h2",
+      "text": "API Reference",
+      "id": "api-reference"
+    }
+  ],
+  "url": "llms-txt#gemini-live-websocket-transport",
+  "links": []
+}

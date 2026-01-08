@@ -1,0 +1,19 @@
+{
+  "title": "cat /var/log/datadog/agent.log",
+  "content": "dockerfile theme={null}",
+  "code_samples": [
+    {
+      "code": "<Warning>\n  You may see `Starting Datadog Agent: datadog-agent failed!` in your logs,\n  triggered by `service datadog-agent start`. You can safely ignore this! As\n  long as `service datadog-agent status` and `service datadog-agent-trace\n      status` indicate that both of those services end up running, then we should\n  have no trouble sending logs, traces, and custom metrics to Datadog.\n</Warning>\n\n## Update `Dockerfile` with the Datadog Agent\n\nThe snippet shown below assumes you want all Datadog features covered in this guide (logging, traces, and custom metrics).",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Update `Dockerfile` with the Datadog Agent",
+      "id": "update-`dockerfile`-with-the-datadog-agent"
+    }
+  ],
+  "url": "llms-txt#cat-/var/log/datadog/agent.log",
+  "links": []
+}

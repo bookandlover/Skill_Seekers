@@ -1,0 +1,8 @@
+{
+  "title": "Configure task with custom idle settings",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(allow_interruptions=True),\n    idle_timeout_secs=180,  # 3 minutes\n    cancel_on_idle_timeout=False  # Don't auto-cancel\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#configure-task-with-custom-idle-settings",
+  "links": []
+}

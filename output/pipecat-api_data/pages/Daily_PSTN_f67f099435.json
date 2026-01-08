@@ -1,0 +1,147 @@
+{
+  "title": "Daily PSTN",
+  "content": "Source: https://docs.pipecat.ai/guides/telephony/daily-pstn\n\nComplete guide to Daily's PSTN capabilities including dial-in, dial-out, and call transfers\n\n## Things you'll need\n\n* An active [Daily](https://www.daily.co) developer account with API key\n* At least one phone number purchased through Daily (covered below)\n* For local development: ngrok to expose your bot to the Internet\n\n<CardGroup>\n  <Card title=\"Dial-in Example\" icon=\"phone-arrow-down-left\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-in\">\n    Complete dial-in implementation with the Pipecat development runner\n  </Card>\n\n<Card title=\"Dial-out Example\" icon=\"phone-arrow-up-right\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-out\">\n    Outbound calling with Daily PSTN integration\n  </Card>\n\n<Card title=\"Cold Transfer Example\" icon=\"arrow-right-arrow-left\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-cold-transfer\">\n    Cold transfer implementation for advanced call routing\n  </Card>\n</CardGroup>\n\n## Phone Number Management\n\nBefore setting up dial-in or dial-out, you'll need to purchase phone numbers through Daily.\n\n<Card title=\"Daily Phone Numbers Guide\" icon=\"phone\" href=\"./daily-phone-numbers\">\n  Complete guide to searching, purchasing, and managing phone numbers with\n  Daily's REST API\n</Card>\n\nDial-in allows users to call your phone number and connect directly to your Pipecat bot.\n\nHere's the sequence of events when someone calls your Daily phone number:\n\n1. **Daily receives an incoming call** to your phone number\n2. **Daily calls your webhook endpoint**\n3. **The webhook creates a Daily room** with SIP configuration\n4. **The webhook starts your bot** with the room details and caller information\n5. **The caller is put on hold** with music\n6. **The bot joins the Daily room** and signals readiness\n7. **Daily forwards the call** to the Daily room\n8. **The caller and bot are connected** for the conversation\n\n### Local Development\n\nThe Pipecat development runner provides built-in webhook handling for Daily PSTN dial-in, eliminating the need for a separate webhook server.\n\n#### 1. Run your bot with dial-in support\n\nThis starts a FastAPI server on port 7860 with a `/daily-dialin-webhook` endpoint.\n\n#### 2. Expose your bot to the internet\n\nCopy the ngrok URL (e.g., `https://abc123.ngrok.io`).\n\n<Tip>Use `ngrok http 7860 --subdomain your-subdomain` for a reusable URL.</Tip>\n\n#### 3. Configure your Daily phone number\n\nSet your phone number's `room_creation_api` webhook to:\n\n<Card title=\"Daily Dial-in Config API\" icon=\"link\" href=\"https://docs.daily.co/reference/rest-api/domainDialinConfig\">\n  Instructions for configuring the webhook URL for your phone number\n</Card>\n\n<Warning>\n  Ensure your `DAILY_API_KEY` has the phone number associated with it. This is\n  required for the `pinlessCallUpdate` API call that connects the caller to the\n  room.\n</Warning>\n\n### Configure your Pipecat bot for dial-in\n\nThe bot receives dial-in information through `RunnerArguments` containing:\n\n* `room_url`: Daily room URL for the call\n* `token`: Daily room token for authentication\n* `body`: Contains `DailyDialinRequest` with call details\n\n<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-pstn-dial-in/bot.py\">\n  See the full bot.py with argument handling, transport setup, and pipeline\n  configuration\n</Card>\n\n### Customize Your Bot with Caller Information\n\nUse the caller's phone number to personalize the conversation:\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-in\">\n  See the full README with step-by-step setup, environment variables, and\n  troubleshooting tips\n</Card>\n\nDial-out allows your bot to initiate calls to phone numbers. Unlike dial-in, your bot starts the call rather than waiting for incoming calls.\n\n<Warning>\n  You must contact Daily to enable dial-out for your account. Submit a support\n  request\n  [here](https://docs.google.com/forms/d/1EHy2wsX20a2HjljAsJkyPqvATIM4WCvm7JzYKypGYis/edit).\n</Warning>\n\nHere's the sequence of events for dial-out calls:\n\n1. **Your application triggers a dial-out** (via API call or user action)\n2. **Server creates a Daily room** with dial-out capabilities enabled\n3. **Bot joins the Daily room** and sets up the pipeline\n4. **Bot initiates the dial-out call** to the target phone number\n5. **Daily connects the call** to the phone number\n6. **The recipient answers** and is connected to your bot\n7. **The bot handles the conversation** with the called party\n\n### Set up your server for dial-out\n\nThe dial-out server is simpler than dial-in since you're initiating calls rather than receiving webhooks. Your server needs to:\n\n1. **Create Daily rooms** with dial-out enabled\n2. **Start bot processes** with the target phone number\n3. **Handle API requests** to trigger outbound calls\n\n<Card title=\"Complete Server Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-pstn-dial-out/server.py\">\n  See the full FastAPI server code with room creation and dial-out triggering\n</Card>\n\n### Configure your Pipecat bot for dial-out\n\nThe dial-out bot receives the target phone number and creates a transport without dial-in settings:\n\n**Bot Entry Point**: The `bot()` method receives `RunnerArguments` containing:\n\n* `room_url`: Daily room URL for the call\n* `token`: Daily room token for authentication\n* `phone_number`: Target phone number to call\n\n**Transport Creation**: These arguments are used to configure the `DailyTransport`:\n\n<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-pstn-dial-out/bot.py\">\n  See the full bot.py with dial-out configuration and pipeline setup\n</Card>\n\nTo test dial-out functionality:\n\n1. **Start your server**: Run your FastAPI server\n2. **Trigger a call**: Make an API request to start a dial-out call\n3. **Answer your phone**: The bot will call the specified number\n4. **Talk to your bot**: Have a conversation with your AI agent\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-out\">\n  See the full README with step-by-step setup, API usage, and configuration\n  details\n</Card>\n\nDaily supports cold transfers, allowing you to transfer an active call to another phone number. The bot can initiate a transfer and then leave the call, connecting the caller directly to the transfer destination.\n\n### How Call Transfers Work\n\n1. **Bot receives transfer request** (via function call or user input)\n2. **Bot informs the caller** about the transfer\n3. **Bot initiates SIP call transfer** to the destination number\n4. **Daily connects the transfer** to the destination\n5. **Bot leaves the call** (cold transfer)\n6. **Caller and destination** continue the conversation\n\n### Implementing Call Transfers\n\nCall transfers are typically implemented as LLM function calls that your bot can invoke:\n\n### Handling Transfer Events\n\nYour bot should handle transfer-related events to manage the call flow:\n\n<Card title=\"Complete Transfer Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-cold-transfer\">\n  See the full call transfer example with LLM function calls, event handling,\n  and error management\n</Card>\n\nFor production deployment without managing your own infrastructure, use Pipecat Cloud. Pipecat Cloud handles all webhook infrastructure, room creation, and bot scaling automatically.\n\n<CardGroup>\n  <Card title=\"Daily Dial-in on Pipecat Cloud\" icon=\"phone-arrow-down-left\" href=\"/deployment/pipecat-cloud/guides/telephony/daily-dial-in\">\n    Complete guide for deploying dial-in bots with automatic webhook handling\n  </Card>\n\n<Card title=\"Daily Dial-out on Pipecat Cloud\" icon=\"phone-arrow-up-right\" href=\"/deployment/pipecat-cloud/guides/telephony/daily-dial-out\">\n    Complete guide for deploying dial-out bots with caller ID management\n  </Card>\n</CardGroup>\n\n### Self-Hosted Deployment\n\nFor self-hosted production deployment, ensure your servers are:\n\n* Publicly accessible with HTTPS\n* Able to handle concurrent requests\n* Properly configured with your Daily API credentials\n\n* Explore the [complete examples](https://github.com/pipecat-ai/pipecat/tree/main/examples) for full implementations\n* Learn about [Daily's SIP integration](./twilio-daily-sip) for more advanced telephony scenarios\n* Check out [Daily's REST API documentation](https://docs.daily.co/reference) for additional configuration options",
+  "code_samples": [
+    {
+      "code": "This starts a FastAPI server on port 7860 with a `/daily-dialin-webhook` endpoint.\n\n#### 2. Expose your bot to the internet",
+      "language": "unknown"
+    },
+    {
+      "code": "Copy the ngrok URL (e.g., `https://abc123.ngrok.io`).\n\n<Tip>Use `ngrok http 7860 --subdomain your-subdomain` for a reusable URL.</Tip>\n\n#### 3. Configure your Daily phone number\n\nSet your phone number's `room_creation_api` webhook to:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Card title=\"Daily Dial-in Config API\" icon=\"link\" href=\"https://docs.daily.co/reference/rest-api/domainDialinConfig\">\n  Instructions for configuring the webhook URL for your phone number\n</Card>",
+      "language": "unknown"
+    },
+    {
+      "code": "<Warning>\n  Ensure your `DAILY_API_KEY` has the phone number associated with it. This is\n  required for the `pinlessCallUpdate` API call that connects the caller to the\n  room.\n</Warning>\n\n### Configure your Pipecat bot for dial-in\n\nThe bot receives dial-in information through `RunnerArguments` containing:\n\n* `room_url`: Daily room URL for the call\n* `token`: Daily room token for authentication\n* `body`: Contains `DailyDialinRequest` with call details\n\n**Bot Entry Point**:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-pstn-dial-in/bot.py\">\n  See the full bot.py with argument handling, transport setup, and pipeline\n  configuration\n</Card>\n\n### Customize Your Bot with Caller Information\n\nUse the caller's phone number to personalize the conversation:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Run the Example\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-in\">\n  See the full README with step-by-step setup, environment variables, and\n  troubleshooting tips\n</Card>\n\n## Dial-out\n\nDial-out allows your bot to initiate calls to phone numbers. Unlike dial-in, your bot starts the call rather than waiting for incoming calls.\n\n<Warning>\n  You must contact Daily to enable dial-out for your account. Submit a support\n  request\n  [here](https://docs.google.com/forms/d/1EHy2wsX20a2HjljAsJkyPqvATIM4WCvm7JzYKypGYis/edit).\n</Warning>\n\n### How It Works\n\nHere's the sequence of events for dial-out calls:\n\n1. **Your application triggers a dial-out** (via API call or user action)\n2. **Server creates a Daily room** with dial-out capabilities enabled\n3. **Bot joins the Daily room** and sets up the pipeline\n4. **Bot initiates the dial-out call** to the target phone number\n5. **Daily connects the call** to the phone number\n6. **The recipient answers** and is connected to your bot\n7. **The bot handles the conversation** with the called party\n\n### Set up your server for dial-out\n\nThe dial-out server is simpler than dial-in since you're initiating calls rather than receiving webhooks. Your server needs to:\n\n1. **Create Daily rooms** with dial-out enabled\n2. **Start bot processes** with the target phone number\n3. **Handle API requests** to trigger outbound calls\n\n<Card title=\"Complete Server Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-pstn-dial-out/server.py\">\n  See the full FastAPI server code with room creation and dial-out triggering\n</Card>\n\n### Configure your Pipecat bot for dial-out\n\nThe dial-out bot receives the target phone number and creates a transport without dial-in settings:\n\n**Bot Entry Point**: The `bot()` method receives `RunnerArguments` containing:\n\n* `room_url`: Daily room URL for the call\n* `token`: Daily room token for authentication\n* `phone_number`: Target phone number to call\n\n**Transport Creation**: These arguments are used to configure the `DailyTransport`:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-pstn-dial-out/bot.py\">\n  See the full bot.py with dial-out configuration and pipeline setup\n</Card>\n\n### Run the Example\n\nTo test dial-out functionality:\n\n1. **Start your server**: Run your FastAPI server\n2. **Trigger a call**: Make an API request to start a dial-out call\n3. **Answer your phone**: The bot will call the specified number\n4. **Talk to your bot**: Have a conversation with your AI agent\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-out\">\n  See the full README with step-by-step setup, API usage, and configuration\n  details\n</Card>\n\n## Call Transfers\n\nDaily supports cold transfers, allowing you to transfer an active call to another phone number. The bot can initiate a transfer and then leave the call, connecting the caller directly to the transfer destination.\n\n### How Call Transfers Work\n\n1. **Bot receives transfer request** (via function call or user input)\n2. **Bot informs the caller** about the transfer\n3. **Bot initiates SIP call transfer** to the destination number\n4. **Daily connects the transfer** to the destination\n5. **Bot leaves the call** (cold transfer)\n6. **Caller and destination** continue the conversation\n\n### Implementing Call Transfers\n\nCall transfers are typically implemented as LLM function calls that your bot can invoke:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Handling Transfer Events\n\nYour bot should handle transfer-related events to manage the call flow:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Things you'll need",
+      "id": "things-you'll-need"
+    },
+    {
+      "level": "h2",
+      "text": "Phone Number Management",
+      "id": "phone-number-management"
+    },
+    {
+      "level": "h2",
+      "text": "Dial-in",
+      "id": "dial-in"
+    },
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Local Development",
+      "id": "local-development"
+    },
+    {
+      "level": "h3",
+      "text": "Configure your Pipecat bot for dial-in",
+      "id": "configure-your-pipecat-bot-for-dial-in"
+    },
+    {
+      "level": "h3",
+      "text": "Customize Your Bot with Caller Information",
+      "id": "customize-your-bot-with-caller-information"
+    },
+    {
+      "level": "h3",
+      "text": "Run the Example",
+      "id": "run-the-example"
+    },
+    {
+      "level": "h2",
+      "text": "Dial-out",
+      "id": "dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Set up your server for dial-out",
+      "id": "set-up-your-server-for-dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "Configure your Pipecat bot for dial-out",
+      "id": "configure-your-pipecat-bot-for-dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "Run the Example",
+      "id": "run-the-example"
+    },
+    {
+      "level": "h2",
+      "text": "Call Transfers",
+      "id": "call-transfers"
+    },
+    {
+      "level": "h3",
+      "text": "How Call Transfers Work",
+      "id": "how-call-transfers-work"
+    },
+    {
+      "level": "h3",
+      "text": "Implementing Call Transfers",
+      "id": "implementing-call-transfers"
+    },
+    {
+      "level": "h3",
+      "text": "Handling Transfer Events",
+      "id": "handling-transfer-events"
+    },
+    {
+      "level": "h2",
+      "text": "Deployment",
+      "id": "deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Pipecat Cloud",
+      "id": "pipecat-cloud"
+    },
+    {
+      "level": "h3",
+      "text": "Self-Hosted Deployment",
+      "id": "self-hosted-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#daily-pstn",
+  "links": []
+}

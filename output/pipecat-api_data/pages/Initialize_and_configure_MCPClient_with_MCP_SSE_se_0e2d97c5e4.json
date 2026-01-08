@@ -1,0 +1,8 @@
+{
+  "title": "Initialize and configure MCPClient with MCP SSE server url",
+  "content": "mcp = MCPClient(server_params=\"https://your.mcp.server/sse\")",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-and-configure-mcpclient-with-mcp-sse-server-url",
+  "links": []
+}

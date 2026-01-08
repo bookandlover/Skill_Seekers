@@ -1,0 +1,69 @@
+{
+  "title": "Hooks",
+  "content": "Source: https://docs.pipecat.ai/client/react/hooks\n\nReact hooks for accessing Pipecat client functionality\n\nThe Pipecat React SDK provides hooks for accessing client functionality, managing media devices, and handling events.\n\nProvides access to the `PipecatClient` instance originally passed to `PipecatClientProvider`.\n\n## useRTVIClientEvent\n\nAllows subscribing to RTVI client events. It is advised to wrap handlers with `useCallback`.\n\n<ParamField type=\"RTVIEvent\" />\n\n<ParamField type=\"function\" />\n\n## usePipecatClientMediaDevices\n\nManage and list available media devices.\n\n## usePipecatClientMediaTrack\n\nAccess audio and video tracks.\n\n<ParamField type=\"'audio' | 'video'\" />\n\n<ParamField type=\"'bot' | 'local'\" />\n\n## usePipecatClientTransportState\n\nReturns the current transport state.\n\n## usePipecatClientCamControl\n\nControls the local participant's camera state.\n\n## usePipecatClientMicControl\n\nControls the local participant's microphone state.",
+  "code_samples": [
+    {
+      "code": "## useRTVIClientEvent\n\nAllows subscribing to RTVI client events. It is advised to wrap handlers with `useCallback`.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments**\n\n<ParamField type=\"RTVIEvent\" />\n\n<ParamField type=\"function\" />\n\n## usePipecatClientMediaDevices\n\nManage and list available media devices.",
+      "language": "unknown"
+    },
+    {
+      "code": "## usePipecatClientMediaTrack\n\nAccess audio and video tracks.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Arguments**\n\n<ParamField type=\"'audio' | 'video'\" />\n\n<ParamField type=\"'bot' | 'local'\" />\n\n## usePipecatClientTransportState\n\nReturns the current transport state.",
+      "language": "unknown"
+    },
+    {
+      "code": "## usePipecatClientCamControl\n\nControls the local participant's camera state.",
+      "language": "unknown"
+    },
+    {
+      "code": "## usePipecatClientMicControl\n\nControls the local participant's microphone state.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "usePipecatClient",
+      "id": "usepipecatclient"
+    },
+    {
+      "level": "h2",
+      "text": "useRTVIClientEvent",
+      "id": "usertviclientevent"
+    },
+    {
+      "level": "h2",
+      "text": "usePipecatClientMediaDevices",
+      "id": "usepipecatclientmediadevices"
+    },
+    {
+      "level": "h2",
+      "text": "usePipecatClientMediaTrack",
+      "id": "usepipecatclientmediatrack"
+    },
+    {
+      "level": "h2",
+      "text": "usePipecatClientTransportState",
+      "id": "usepipecatclienttransportstate"
+    },
+    {
+      "level": "h2",
+      "text": "usePipecatClientCamControl",
+      "id": "usepipecatclientcamcontrol"
+    },
+    {
+      "level": "h2",
+      "text": "usePipecatClientMicControl",
+      "id": "usepipecatclientmiccontrol"
+    }
+  ],
+  "url": "llms-txt#hooks",
+  "links": []
+}

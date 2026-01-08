@@ -1,0 +1,19 @@
+{
+  "title": "Use the ngrok URL as your Twilio webhook",
+  "content": "",
+  "code_samples": [
+    {
+      "code": "### Pipecat Cloud Deployment\n\nFor production deployment on Pipecat Cloud, your webhook server calls the `/{agent}/start` endpoint instead of spawning local bot processes:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Pipecat Cloud Deployment",
+      "id": "pipecat-cloud-deployment"
+    }
+  ],
+  "url": "llms-txt#use-the-ngrok-url-as-your-twilio-webhook",
+  "links": []
+}

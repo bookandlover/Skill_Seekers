@@ -1,0 +1,44 @@
+{
+  "title": "LiveKitTransport",
+  "content": "Source: https://docs.pipecat.ai/server/services/transport/livekit\n\nWebRTC transport implementation using LiveKit for real-time audio communication\n\n`LiveKitTransport` provides real-time audio communication capabilities using LiveKit's open-source WebRTC platform. It supports bidirectional audio streaming, data messaging, participant management, and room event handling for conversational AI applications with the flexibility of self-hosted or cloud infrastructure.\n\n<CardGroup>\n  <Card title=\"LiveKitTransport API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.livekit.transport.html\">\n    Pipecat's API methods for LiveKit integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/04b-transports-livekit.py\">\n    Complete LiveKit voice agent example\n  </Card>\n\n<Card title=\"LiveKit Documentation\" icon=\"book\" href=\"https://docs.livekit.io/reference/\">\n    Official LiveKit API documentation and guides\n  </Card>\n\n<Card title=\"LiveKit Cloud\" icon=\"external-link\" href=\"https://cloud.livekit.io/login\">\n    Sign up for hosted LiveKit service\n  </Card>\n</CardGroup>\n\nTo use LiveKitTransport, install the required dependencies:\n\nBefore using LiveKitTransport, you need:\n\n1. **LiveKit Server**: Set up self-hosted or use [LiveKit Cloud](https://cloud.livekit.io/)\n2. **API Credentials**: Generate API key and secret from your LiveKit project\n3. **Room Management**: Create rooms using LiveKit API or SDK\n4. **Access Tokens**: Generate JWT tokens for room authentication\n\n### Required Environment Variables\n\n* `LIVEKIT_API_KEY`: Your LiveKit API key for authentication\n* `LIVEKIT_API_SECRET`: Your LiveKit API secret for token generation\n* `LIVEKIT_URL`: Your LiveKit server URL (wss\\://your-domain.livekit.cloud)\n\n* **Open Source**: Self-hosted or cloud-hosted WebRTC infrastructure\n* **Multi-participant Support**: Handle multiple participants in rooms\n* **Data Channels**: Real-time messaging alongside audio streams\n* **Room Management**: Dynamic participant and room lifecycle management\n* **Flexible Deployment**: Self-hosted or managed cloud options\n\nLiveKitTransport connects your Pipecat bot to LiveKit rooms where it can communicate with participants through audio and data channels. The transport handles room joining, participant events, and media streaming automatically.\n\nSee the [complete example](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/04b-transports-livekit.py) for a full implementation including:\n\n* LiveKit room creation and token generation\n* Transport configuration with participant management\n* Pipeline integration with audio processing\n* Event handling for room lifecycle management",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "LiveKit Setup",
+      "id": "livekit-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h3",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#livekittransport",
+  "links": []
+}

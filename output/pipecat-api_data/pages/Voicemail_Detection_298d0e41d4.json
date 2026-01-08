@@ -1,0 +1,29 @@
+{
+  "title": "Voicemail Detection",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/voicemail\n\nAutomatically classify outbound calls as conversation or voicemail and respond appropriately\n\nThe VoicemailDetector classifies incoming communication as either live conversation or voicemail systems. This module is built primarily for voice AI bots that perform outbound calling, enabling them to respond appropriately based on whether a human answered or the call went to voicemail.\n\nThe detector is optimized for fast conversation response times, where TTS output is generated immediately but held in a gate until the classification decision is made. This ensures minimal latency for live conversations while preventing inappropriate responses to voicemail systems.\n\nThe VoicemailDetector uses a parallel pipeline architecture to perform real-time classification without interrupting conversation flow. It analyzes the initial response from the called party and determines whether it's a human greeting or an automated voicemail system.\n\n* **Real-time classification** - Determines conversation vs voicemail as soon as audio is received\n* **TTS gating** - Holds generated audio until classification is complete\n* **Event-driven** - Triggers custom handlers when voicemail is detected\n* **Configurable timing** - Adjustable delay for voicemail response timing\n\n### 1. Initialize the Detector\n\n```python theme={null}\nfrom pipecat.extensions.voicemail.voicemail_detector import VoicemailDetector\nfrom pipecat.services.openai.llm import OpenAILLMService",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Setup",
+      "id": "basic-setup"
+    },
+    {
+      "level": "h3",
+      "text": "1. Initialize the Detector",
+      "id": "1.-initialize-the-detector"
+    }
+  ],
+  "url": "llms-txt#voicemail-detection",
+  "links": []
+}

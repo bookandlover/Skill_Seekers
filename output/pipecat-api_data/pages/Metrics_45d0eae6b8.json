@@ -1,0 +1,55 @@
+{
+  "title": "Metrics",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/metrics\n\nLearn how to monitor performance and LLM/TTS usage with Pipecat.\n\nWhen developing real-time, multimodal AI applications, monitoring two key\nfactors is crucial: performance (latency) and LLM/TTS usage. Performance impacts\nuser experience, while usage can affect operational costs. Pipecat offers\nbuilt-in metrics for both, which can be enabled with straightforward\nconfiguration options.\n\n## Enabling performance metrics\n\nSet `enable_metrics=True` in `PipelineParams` when creating a task:\n\nOnce enabled, Pipecat logs the following metrics:\n\n| Metric          | Description                                     |\n| --------------- | ----------------------------------------------- |\n| TTFB            | Time To First Byte in seconds                   |\n| Processing Time | Time taken by the service to respond in seconds |\n\n### Limiting TTFB responses\n\nIf you only want the **first** TTFB measurement for each service, you can\noptionally pass `report_only_initial_ttfb=True` in `PipelineParams`:\n\n> **Note:** `enable_metrics=True` is required for this setting to have an\n> effect.\n\n## Enabling LLM/TTS Usage Metrics\n\nSet `enable_usage_metrics=True` in PipelineParams when creating a task:\n\nPipecat will log the following as applicable:\n\n| Metric    | Description                                 |\n| --------- | ------------------------------------------- |\n| LLM Usage | Number of prompt and completion tokens used |\n| TTS Usage | Number of characters processed              |\n\n> **Note:** Usage metrics are recorded per interaction and do not represent\n> running totals.\n\n## Capturing Metrics Data\n\nWhen metrics are enabled, Pipecat will emit a `MetricsFrame` for each interaction. The `MetricsFrame` contains:\n\n* TTFB data\n* Processing time\n* Token usage for LLMs\n* Character usage for TTS\n* Smart Turn prediction data\n\nYou can access the metrics data by either adding a custom [FrameProcessor](/guides/fundamentals/custom-frame-processor) to your pipeline or adding an [observer](/server/utilities/observers/observer-pattern) to monitor `MetricsFrame`s.\n\n### Example: Using a Custom FrameProcessor\n\nCreate a custom FrameProcessor to handle metrics data. Here's an example Metrics Processor that can be added to your pipeline after the TTS processor.",
+  "code_samples": [
+    {
+      "code": "Once enabled, Pipecat logs the following metrics:\n\n| Metric          | Description                                     |\n| --------------- | ----------------------------------------------- |\n| TTFB            | Time To First Byte in seconds                   |\n| Processing Time | Time taken by the service to respond in seconds |",
+      "language": "unknown"
+    },
+    {
+      "code": "### Limiting TTFB responses\n\nIf you only want the **first** TTFB measurement for each service, you can\noptionally pass `report_only_initial_ttfb=True` in `PipelineParams`:",
+      "language": "unknown"
+    },
+    {
+      "code": "> **Note:** `enable_metrics=True` is required for this setting to have an\n> effect.\n\n## Enabling LLM/TTS Usage Metrics\n\nSet `enable_usage_metrics=True` in PipelineParams when creating a task:",
+      "language": "unknown"
+    },
+    {
+      "code": "Pipecat will log the following as applicable:\n\n| Metric    | Description                                 |\n| --------- | ------------------------------------------- |\n| LLM Usage | Number of prompt and completion tokens used |\n| TTS Usage | Number of characters processed              |",
+      "language": "unknown"
+    },
+    {
+      "code": "> **Note:** Usage metrics are recorded per interaction and do not represent\n> running totals.\n\n## Capturing Metrics Data\n\nWhen metrics are enabled, Pipecat will emit a `MetricsFrame` for each interaction. The `MetricsFrame` contains:\n\n* TTFB data\n* Processing time\n* Token usage for LLMs\n* Character usage for TTS\n* Smart Turn prediction data\n\nYou can access the metrics data by either adding a custom [FrameProcessor](/guides/fundamentals/custom-frame-processor) to your pipeline or adding an [observer](/server/utilities/observers/observer-pattern) to monitor `MetricsFrame`s.\n\n### Example: Using a Custom FrameProcessor\n\nCreate a custom FrameProcessor to handle metrics data. Here's an example Metrics Processor that can be added to your pipeline after the TTS processor.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Enabling performance metrics",
+      "id": "enabling-performance-metrics"
+    },
+    {
+      "level": "h3",
+      "text": "Limiting TTFB responses",
+      "id": "limiting-ttfb-responses"
+    },
+    {
+      "level": "h2",
+      "text": "Enabling LLM/TTS Usage Metrics",
+      "id": "enabling-llm/tts-usage-metrics"
+    },
+    {
+      "level": "h2",
+      "text": "Capturing Metrics Data",
+      "id": "capturing-metrics-data"
+    },
+    {
+      "level": "h3",
+      "text": "Example: Using a Custom FrameProcessor",
+      "id": "example:-using-a-custom-frameprocessor"
+    }
+  ],
+  "url": "llms-txt#metrics",
+  "links": []
+}

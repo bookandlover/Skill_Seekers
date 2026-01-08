@@ -1,0 +1,8 @@
+{
+  "title": "Access custom parameters",
+  "content": "custom_params = call_data[\"body\"]\ncampaign_id = custom_params.get(\"campaign_id\")\ncustomer_id = custom_params.get(\"customer_id\")",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#access-custom-parameters",
+  "links": []
+}

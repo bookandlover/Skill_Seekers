@@ -1,0 +1,8 @@
+{
+  "title": "Start an Agent session",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/start\n\nPOST /{agentName}/start\nStart a new session with a deployed agent.\n\nThis endpoint starts a new instance of a deployed agent. You can optionally create a Daily room for the service to connect to.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#start-an-agent-session",
+  "links": []
+}

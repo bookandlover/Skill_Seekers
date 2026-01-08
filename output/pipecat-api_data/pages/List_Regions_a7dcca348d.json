@@ -1,0 +1,8 @@
+{
+  "title": "List Regions",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/regions-list\n\nGET /regions\nRetrieve a list of all available regions for deploying agents and storing secrets.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#list-regions",
+  "links": []
+}

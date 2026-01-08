@@ -1,0 +1,39 @@
+{
+  "title": "VoicemailDetector",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/extensions/voicemail\n\nTechnical implementation details and architecture for voicemail detection\n\nThis document provides technical implementation details for the VoicemailDetector, including its parallel pipeline architecture and performance considerations for production use.\n\n<CardGroup>\n  <Card title=\"API Reference\" icon=\"book\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.extensions.voicemail.voicemail_detector.html\">\n    Complete API documentation for all VoicemailDetector classes and methods\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/44-voicemail-detection.py\">\n    Working example showing VoicemailDetector integration in a complete pipeline\n  </Card>\n</CardGroup>\n\nThe VoicemailDetector uses a parallel pipeline architecture with two processing branches:\n\n* **Conversation Branch**: Handles normal conversation flow and can be blocked when voicemail is detected to prevent the main LLM from processing additional input.\n\n* **Classification Branch**: Contains the LLM classifier and decision logic. This branch closes after making a classification decision to prevent unnecessary LLM calls.\n\nThe system coordinates between branches using a notification system and gates that control frame flow based on classification decisions. TTS frames are buffered during classification and either released (for conversations) or cleared (for voicemail) based on the decision.\n\n## Performance Considerations\n\nThe VoicemailDetector works with two separate LLMs in your pipeline:\n\n**Conversation LLM (main pipeline):**\n\n* Must be text-based for compatibility with the VoicemailDetector's gating system\n* Realtime LLMs are not compatible as they don't allow the required level of output control\n* This is the LLM that handles normal conversation after classification\n\n**Classifier LLM (VoicemailDetector parameter):**\n\n* Can be either text-based or realtime LLMs\n* For realtime LLMs: Set output modality to `text` to ensure text-based responses\n* Must be able to output \"CONVERSATION\" or \"VOICEMAIL\" keywords for classification\n* Recommended models: OpenAILLMService with `gpt-4o`, GoogleLLMService with `gemini-2.0-flash`\n\nThe two LLMs operate independently. You can use a realtime LLM for classification (with text output) while using a text-based LLM for conversation, or use text-based LLMs for both.\n\nThe `voicemail_response_delay` parameter should be tuned based on your target voicemail systems. The default value of 2 seconds is a good starting point, but you may need to adjust it based on your target voicemail systems.\n\n**Classification not working:**\n\n* Confirm both `detector()` and `gate()` are correctly placed in pipeline\n* Check that STT service is producing text input for classification\n* Ensure the LLM is a text-based LLM\n\n* Adjust `voicemail_response_delay` based on observed voicemail greeting patterns\n* Monitor classification speed; slow LLM responses affect conversation latency\n\n**Audio playback issues:**\n\n* Ensure `gate()` is placed immediately after TTS service\n* Verify TTS frames are being generated before classification completes\n\n**Custom prompt validation:**\nThe system validates custom prompts and warns if they're missing required response keywords (\"CONVERSATION\" and \"VOICEMAIL\"). Include the `CLASSIFIER_RESPONSE_INSTRUCTION` constant to ensure proper functionality.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Architecture",
+      "id": "architecture"
+    },
+    {
+      "level": "h2",
+      "text": "Performance Considerations",
+      "id": "performance-considerations"
+    },
+    {
+      "level": "h3",
+      "text": "LLM Selection",
+      "id": "llm-selection"
+    },
+    {
+      "level": "h3",
+      "text": "Response Timing",
+      "id": "response-timing"
+    },
+    {
+      "level": "h2",
+      "text": "Common Issues",
+      "id": "common-issues"
+    }
+  ],
+  "url": "llms-txt#voicemaildetector",
+  "links": []
+}

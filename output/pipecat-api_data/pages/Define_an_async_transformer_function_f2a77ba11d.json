@@ -1,0 +1,8 @@
+{
+  "title": "Define an async transformer function",
+  "content": "async def tts_to_input_audio_transformer(frame: Frame) -> Frame:\n    if isinstance(frame, TTSAudioRawFrame):\n        # Convert TTS audio to input audio format\n        return InputAudioRawFrame(\n            audio=frame.audio,\n            sample_rate=frame.sample_rate,\n            num_channels=frame.num_channels\n        )\n    return frame\n\nproducer = ProducerProcessor(\n    filter=is_tts_audio,\n    transformer=tts_to_input_audio_transformer\n    passthrough=True  # Keep these frames in original pipeline\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#define-an-async-transformer-function",
+  "links": []
+}

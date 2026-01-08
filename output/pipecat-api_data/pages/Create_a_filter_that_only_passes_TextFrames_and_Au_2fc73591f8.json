@@ -1,0 +1,8 @@
+{
+  "title": "Create a filter that only passes TextFrames and AudioRawFrames",
+  "content": "text_and_audio_filter = FrameFilter(\n    types=(TextFrame, AudioRawFrame)\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-a-filter-that-only-passes-textframes-and-audiorawframes",
+  "links": []
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Access SIP endpoint if available",
+  "content": "if properties.sip_endpoint:\n    print(f\"SIP endpoint: {properties.sip_endpoint}\")\npython theme={null}\nimport time\nfrom pipecat.transports.services.helpers.daily_rest import (\n    DailyRoomParams,\n    DailyRoomProperties,\n)\n\nparams = DailyRoomParams(\n    name=\"team-meeting\",\n    privacy=\"private\",\n    properties=DailyRoomProperties(\n        enable_chat=True,\n        exp=time.time() + 7200  # 2 hours from now\n    )\n)\npython theme={null}\nfrom pipecat.transports.services.helpers.daily_rest import (\n    DailyRoomObject,\n    DailyRoomProperties,\n)",
+  "code_samples": [
+    {
+      "code": "### DailyRoomParams\n\nParameters for creating a new Daily room.\n\n<ResponseField name=\"name\" type=\"string\">\n  Room name (if not provided, one will be generated)\n</ResponseField>\n\n<ResponseField name=\"privacy\" type=\"string\">\n  Room privacy setting (\"private\" or \"public\")\n</ResponseField>\n\n<ResponseField name=\"properties\" type=\"DailyRoomProperties\">\n  Room configuration properties\n</ResponseField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### DailyRoomObject\n\nResponse object representing a Daily room.\n\n<ResponseField name=\"id\" type=\"string\">\n  Unique room identifier\n</ResponseField>\n\n<ResponseField name=\"name\" type=\"string\">\n  Room name\n</ResponseField>\n\n<ResponseField name=\"api_created\" type=\"boolean\">\n  Whether the room was created via API\n</ResponseField>\n\n<ResponseField name=\"privacy\" type=\"string\">\n  Room privacy setting\n</ResponseField>\n\n<ResponseField name=\"url\" type=\"string\">\n  Complete room URL\n</ResponseField>\n\n<ResponseField name=\"created_at\" type=\"string\">\n  Room creation timestamp in ISO 8601 format\n</ResponseField>\n\n<ResponseField name=\"config\" type=\"DailyRoomProperties\">\n  Room configuration\n</ResponseField>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "DailyRoomParams",
+      "id": "dailyroomparams"
+    },
+    {
+      "level": "h3",
+      "text": "DailyRoomObject",
+      "id": "dailyroomobject"
+    }
+  ],
+  "url": "llms-txt#access-sip-endpoint-if-available",
+  "links": []
+}

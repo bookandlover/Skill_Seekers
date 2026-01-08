@@ -1,0 +1,8 @@
+{
+  "title": "Text-to-Speech service",
+  "content": "tts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#text-to-speech-service",
+  "links": []
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Logging and Observability",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/logging\n\nObtaining logs and metrics from your agents and sessions\n\n<Warning>\n  This section of the documentation is currently work in progress. Please check\n  back soon for updates.\n</Warning>\n\nAgent logs are available via both the CLI and Dashboard. You can view logs for a specific agent by running the following command:\n\nThis command accept various filters to help you narrow down the logs you are looking for. For example, you can filter logs by severity level:\n\nWe recommend using the `loguru` library for logging within your agent. This will ensure any logging within your agent associated to the session it is running in.\n\nIf you are handling logging manually, you can obtain the active session ID from the `PipecatRunnerArguments` object (or subclass alternative) passed to your `bot()` method:\n\n<Note>\n  See [the Session Arguments reference](../sdk-reference/session-arguments) for\n  more additional SessionArgument types.\n</Note>",
+  "code_samples": [
+    {
+      "code": "This command accept various filters to help you narrow down the logs you are looking for. For example, you can filter logs by severity level:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Session logging\n\nWe recommend using the `loguru` library for logging within your agent. This will ensure any logging within your agent associated to the session it is running in.",
+      "language": "unknown"
+    },
+    {
+      "code": "If you are handling logging manually, you can obtain the active session ID from the `PipecatRunnerArguments` object (or subclass alternative) passed to your `bot()` method:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Agent logs",
+      "id": "agent-logs"
+    },
+    {
+      "level": "h3",
+      "text": "Session logging",
+      "id": "session-logging"
+    }
+  ],
+  "url": "llms-txt#logging-and-observability",
+  "links": []
+}

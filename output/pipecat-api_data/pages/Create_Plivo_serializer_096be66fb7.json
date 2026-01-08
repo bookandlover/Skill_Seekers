@@ -1,0 +1,8 @@
+{
+  "title": "Create Plivo serializer",
+  "content": "serializer = PlivoFrameSerializer(\n    stream_id=stream_id,\n    call_id=call_id,\n    auth_id=os.getenv(\"PLIVO_AUTH_ID\"),\n    auth_token=os.getenv(\"PLIVO_AUTH_TOKEN\"),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-plivo-serializer",
+  "links": []
+}

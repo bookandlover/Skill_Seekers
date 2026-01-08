@@ -1,0 +1,19 @@
+{
+  "title": "Use with TTS service",
+  "content": "tts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n    voice_id=\"voice_id_here\",\n    text_filter=md_filter\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Custom Configuration",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Custom Configuration",
+      "id": "custom-configuration"
+    }
+  ],
+  "url": "llms-txt#use-with-tts-service",
+  "links": []
+}

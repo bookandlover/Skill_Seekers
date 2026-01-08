@@ -1,0 +1,24 @@
+{
+  "title": "Define transport configurations using factory functions",
+  "content": "transport_params = {\n    \"daily\": lambda: DailyParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        vad_analyzer=SileroVADAnalyzer(),\n    ),\n    \"webrtc\": lambda: TransportParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        vad_analyzer=SileroVADAnalyzer(),\n    ),\n    \"twilio\": lambda: FastAPIWebsocketParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        vad_analyzer=SileroVADAnalyzer(),\n        # add_wav_header and serializer handled automatically\n    ),\n}\n\nasync def bot(runner_args):\n    \"\"\"Simplified bot entry point using the transport utility.\"\"\"\n    transport = await create_transport(runner_args, transport_params)\n    await run_bot(transport)\nbash theme={null}",
+  "code_samples": [
+    {
+      "code": "The utility automatically:\n\n* Detects the telephony provider from WebSocket messages\n* Configures the appropriate serializer (Twilio, Telnyx, Plivo, or Exotel)\n* Sets up authentication using environment variables\n* Handles WebRTC and Daily transport creation\n\nNow your bot supports all six transport types with just two lines of code in the bot() function.\n\n## RTVI Integration\n\nThe development runner provides RTVI (Real-Time Voice Interface) compatible endpoints for the Pipecat client SDKs. This allows you to use the Pipecat client libraries locally during development as well as when deployed to Pipecat Cloud.\n\n### The `/start` Endpoint\n\nFor Daily transports, the runner automatically creates a `/start` POST endpoint that:\n\n1. **Creates Daily rooms and tokens** using your `DAILY_API_KEY`\n2. **Spawns bot instances** with request `body` data\n3. **Returns connection details** in RTVI-compatible format",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "RTVI Integration",
+      "id": "rtvi-integration"
+    },
+    {
+      "level": "h3",
+      "text": "The `/start` Endpoint",
+      "id": "the-`/start`-endpoint"
+    }
+  ],
+  "url": "llms-txt#define-transport-configurations-using-factory-functions",
+  "links": []
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Capacity Planning",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/capacity-planning\n\nOptimize your agent deployments to minimize cold starts\n\nBy default, Pipecat Cloud auto-scales your agent to help minimize the likelihood that your agents experience a cold start. For many applications, you can simply set the `--min-agents` parameter to 1 in order to avoid scaling from zero and let Pipecat Cloud handle the rest.\n\nHowever, for applications where traffic can fluctuate, you may need to plan for additional warm capacity to ensure your agents are always ready to respond immediately. For those cases, this guide will help you understand how warm capacity works in Pipecat Cloud, when you need to plan to use reserves, and how you can optimize your plan for both performance and cost.\n\nBefore discussing capacity planning, it's important to understand the different types of agent instances in Pipecat Cloud:\n\n* **Active Agents**: Agent instances currently running and handling user sessions.\n* **Idle Agents**: When you start an active agent, Pipecat Cloud automatically provisions an additional idle agent to help with scaling. These take approximately 30 seconds to become available, though this time may vary based on system load and image size. You are not charged for these idle agents.\n* **Reserved Agents**: Agent instances maintained according to your `--min-agents` deployment setting, ensuring immediate availability regardless of current traffic.\n\n## Understanding Warm Capacity\n\nYour \"warm capacity\" represents agent instances that are immediately available to handle new sessions without a cold start. Pipecat Cloud automatically manages this based on:\n\n1. Your configured **reserved agents** (`min-agents`)\n2. Your current **active sessions**\n3. Automatically provisioned **idle agents**\n\nThe system ensures you always have the following warm capacity available:\n\n* When **Reserved > Active**: Your warm capacity equals the number of **Reserved Agents**\n* When **Active ≥ Reserved**: Your warm capacity equals the number of **Active Agents** (through automatically provisioned idle agents)\n\nTo illustrate the point, here are a few scenarios showing how warm capacity works:\n\n| Reserved | Active | Warm Capacity |\n| -------- | ------ | ------------- |\n| 10       | 1      | 10            |\n| 10       | 10     | 10            |\n| 1        | 10     | 10            |\n\n* Reserved agents provide a guaranteed minimum warm capacity\n* As active sessions increase beyond your reserved count, your warm capacity grows to match through automatically provisioned idle agents\n\nWhen an active session ends, the agent instance behavior is governed by a cooldown period:\n\n* The agent instance remains available in your warm capacity pool for a 5-minute cooldown period\n* During this time, it can immediately serve another request without any cold start\n* After the 5-minute cooldown expires, if the agent instance hasn't been used, it will be terminated\n* This cooldown provides a buffer in your warm capacity pool, helping to smooth transitions between traffic peaks\n\n## Planning for Traffic Patterns\n\nTo determine the optimal reserved instance count for your deployment, consider:\n\n1. **Peak Concurrent Sessions**: How many simultaneous sessions do you expect during peak periods?\n\n2. **Growth Rate**: How quickly do new sessions start during peak periods?\n\n* If new sessions start faster than the \\~30 second warm-up time for auto-scaled agent instances, you'll need more reserved capacity\n\n3. **Cold Start Tolerance**: How important is immediate response for your use case?\n\n<Tip>\n  Completely avoiding cold starts may not be practical for all applications. We\n  strongly recommend considering longer or variable start up times when building\n  your application. For phone use cases, consider a hold message or for web\n  apps, consider a waiting UX or message.\n</Tip>\n\n## Cost-Efficient Scaling Strategies\n\n* **Development/Testing**: Use `min-agents: 0` to minimize costs during development\n* **Production Voice AI**: Set `min-agents` to cover your baseline traffic to avoid cold starts\n* **Time-Based Scaling**: Consider modifying your reserved count for known high-traffic periods\n* **Monitoring**: Regularly review your warm capacity utilization to optimize your configuration\n\n<Info>A cold start typically takes around 10 seconds.</Info>\n\n## Calculating Optimal Reserved Agents\n\nFor production deployments where immediate response is essential, you can calculate your optimal reserved agent count using a growth rate approach:\n\n* **Baseline Sessions**: Minimum concurrent sessions you typically maintain\n* **CPS (Calls Per Second)**: Your expected session growth rate during peak periods\n* **Idle Creation Delay**: Time for new idle agents to become available (\\~30 seconds)\n\nThis formula addresses the fundamental challenge: \"Can our warm capacity creation keep pace with our call growth rate?\" By reserving capacity based on your growth rate and the idle creation delay, you ensure sufficient capacity is available during the critical period before auto-scaling can catch up.\n\n### Growth Rate Examples\n\nHere's how the formula works with different growth rates:\n\n| Scenario      | Baseline | CPS                | Idle Creation Delay | Calculation       | Optimal Reserved |\n| ------------- | -------- | ------------------ | ------------------- | ----------------- | ---------------- |\n| High volume   | 10       | 1.0 (1 call/sec)   | 30s                 | MAX(10, 1.0 × 30) | 30               |\n| Medium volume | 10       | 0.5 (1 call/2sec)  | 30s                 | MAX(10, 0.5 × 30) | 15               |\n| Low volume    | 10       | 0.1 (1 call/10sec) | 30s                 | MAX(10, 0.1 × 30) | 10               |\n\n### Call Center Example\n\nConsider a voice AI call center that:\n\n* Normally handles 10 concurrent calls (baseline)\n* During promotions, receives new calls at a rate of 1 call per second\n* Has a 30-second idle creation delay\n\nApplying our formula:\n\nWith 30 reserved agents:\n\n* You can handle the growth rate of 1 call per second for the full 30 seconds until new idle agents start becoming available\n* This prevents any cold starts during the critical catch-up period\n* Auto-scaling will create additional idle agents to handle continued growth\n\n### Understanding the Growth Rate Approach\n\nThis approach works because:\n\n1. When your call volume starts increasing, you immediately begin consuming your warm capacity\n2. At the same time, each new active call triggers the creation of a new idle agent\n3. However, these new idle agents take \\~30 seconds to become available\n4. Your reserved capacity must be sufficient to handle all calls during this 30-second \"catch-up period\"\n\n### Trading Cost for Performance\n\nThe formula provides a starting point, which you can adjust based on your specific needs:\n\n* **Cost-sensitive**: Use a lower reserved count and accept some cold starts during traffic spikes\n* **Performance-sensitive**: Use the calculated reserved count to ensure zero cold starts\n* **Hybrid approach**: Monitor your actual traffic patterns and adjust based on real-world performance\n\n<Tip>\n  For most production voice AI applications, we recommend using at least the\n  calculated optimal reserved agent count during business hours or peak usage\n  periods, and then scaling down during off-hours to optimize costs.\n</Tip>\n\n## Summary and Next Steps\n\nProper capacity planning ensures your agents are always ready to respond immediately, providing the best possible user experience while optimizing costs:\n\n1. **Understand your traffic patterns**: Baseline sessions, peak sessions, and growth rate\n2. **Calculate your optimal reserved agents**: Use the formula to determine the right level of warm capacity\n3. **Monitor and adjust**: Refine your capacity planning based on real-world performance and costs\n\n<CardGroup>\n  <Card title=\"Explore Scaling Options\" icon=\"server\" href=\"../fundamentals/scaling\">\n    Learn more about scaling configuration options and deployment strategies.\n  </Card>\n\n<Card title=\"Deploy Your Agent\" icon=\"rocket\" href=\"../fundamentals/deploy\">\n    Apply your capacity planning knowledge to your agent deployment.\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "Optimal Reserved = MAX(Baseline Sessions, CPS × Idle Creation Delay)",
+      "language": "unknown"
+    },
+    {
+      "code": "Optimal Reserved = MAX(10, 1 × 30)\n                 = MAX(10, 30)\n                 = 30",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Agent Types",
+      "id": "agent-types"
+    },
+    {
+      "level": "h2",
+      "text": "Understanding Warm Capacity",
+      "id": "understanding-warm-capacity"
+    },
+    {
+      "level": "h2",
+      "text": "Agent Cooldown",
+      "id": "agent-cooldown"
+    },
+    {
+      "level": "h2",
+      "text": "Planning for Traffic Patterns",
+      "id": "planning-for-traffic-patterns"
+    },
+    {
+      "level": "h2",
+      "text": "Cost-Efficient Scaling Strategies",
+      "id": "cost-efficient-scaling-strategies"
+    },
+    {
+      "level": "h2",
+      "text": "Calculating Optimal Reserved Agents",
+      "id": "calculating-optimal-reserved-agents"
+    },
+    {
+      "level": "h3",
+      "text": "Growth Rate Examples",
+      "id": "growth-rate-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Call Center Example",
+      "id": "call-center-example"
+    },
+    {
+      "level": "h3",
+      "text": "Understanding the Growth Rate Approach",
+      "id": "understanding-the-growth-rate-approach"
+    },
+    {
+      "level": "h3",
+      "text": "Trading Cost for Performance",
+      "id": "trading-cost-for-performance"
+    },
+    {
+      "level": "h2",
+      "text": "Summary and Next Steps",
+      "id": "summary-and-next-steps"
+    }
+  ],
+  "url": "llms-txt#capacity-planning",
+  "links": []
+}

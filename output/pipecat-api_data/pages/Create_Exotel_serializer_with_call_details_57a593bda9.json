@@ -1,0 +1,8 @@
+{
+  "title": "Create Exotel serializer with call details",
+  "content": "serializer = ExotelFrameSerializer(\n    stream_id=stream_id,\n    call_id=call_id,\n    account_sid=account_sid,\n    api_key=os.getenv(\"EXOTEL_API_KEY\"),\n    api_token=os.getenv(\"EXOTEL_API_TOKEN\"),\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-exotel-serializer-with-call-details",
+  "links": []
+}

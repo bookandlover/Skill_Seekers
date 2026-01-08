@@ -1,0 +1,34 @@
+{
+  "title": "Capture participant's screen",
+  "content": "await maybe_capture_participant_screen(transport, client, framerate=15)\npython theme={null}\nimport aiohttp\nfrom pipecat.runner.daily import configure\nfrom pipecat.runner.utils import parse_telephony_websocket\nfrom pipecat.transports.daily.transport import DailyTransport, DailyParams\n\nasync def create_custom_bot_session(transport_type: str):\n    if transport_type == \"daily\":\n        async with aiohttp.ClientSession() as session:\n            room_config = await configure(session)\n\nroom_url = room_config.room_url\n            token = room_config.token\n\nreturn DailyTransport(room_url, token, \"Custom Bot\", DailyParams())\n\nelif transport_type == \"telephony\":\n        # Handle custom telephony setup\n        transport_type, call_data = await parse_telephony_websocket(websocket)\n        # Configure based on detected provider...\n```\n\nThese utilities provide the building blocks for any transport configuration scenario while maintaining the same reliability and functionality as the development runner.",
+  "code_samples": [
+    {
+      "code": "These functions safely handle transport detection and only execute if the transport supports the operation.\n\n## When to Use These Utilities\n\n### Automatic Usage (Most Common)\n\nThe development runner and `create_transport` utility handle these automatically. Most users won't need to call these functions directly.\n\n### Manual Usage (Advanced)\n\nUse these utilities directly when:\n\n**Custom deployment infrastructure**: Building your own bot runner or deployment system\n\n**Advanced transport configuration**: Need specific room settings, token permissions, or custom authentication\n\n**Non-runner scenarios**: Integrating Pipecat transports into existing applications\n\n**Testing and debugging**: Need to create rooms/tokens independently for testing\n\n### Integration Example\n\nHere's how you might use these utilities in a custom deployment:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "When to Use These Utilities",
+      "id": "when-to-use-these-utilities"
+    },
+    {
+      "level": "h3",
+      "text": "Automatic Usage (Most Common)",
+      "id": "automatic-usage-(most-common)"
+    },
+    {
+      "level": "h3",
+      "text": "Manual Usage (Advanced)",
+      "id": "manual-usage-(advanced)"
+    },
+    {
+      "level": "h3",
+      "text": "Integration Example",
+      "id": "integration-example"
+    }
+  ],
+  "url": "llms-txt#capture-participant's-screen",
+  "links": []
+}

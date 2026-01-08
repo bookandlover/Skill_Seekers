@@ -1,0 +1,8 @@
+{
+  "title": "Remove the hard-coded example room URL",
+  "content": "DAILY_SAMPLE_ROOM_URL=",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#remove-the-hard-coded-example-room-url",
+  "links": []
+}

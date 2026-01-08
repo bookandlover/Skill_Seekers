@@ -1,0 +1,19 @@
+{
+  "title": "Use a different version than what's in pcc-deploy.toml",
+  "content": "pipecat cloud docker build-push --version 2.0\nshell theme={null}",
+  "code_samples": [
+    {
+      "code": "### Build Only",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Build Only",
+      "id": "build-only"
+    }
+  ],
+  "url": "llms-txt#use-a-different-version-than-what's-in-pcc-deploy.toml",
+  "links": []
+}

@@ -1,0 +1,62 @@
+{
+  "title": "KrispFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/audio/krisp-filter\n\nAudio noise reduction filter using Krisp AI technology\n\n<Warning>\n  The `KrispFilter` is deprecated and will be removed in a future version.\n  Please use the `KrispVivaFilter`, which is the latest model from Krisp. See\n  the [Krisp VIVA guide](/server/utilities/audio/krisp-viva-filter) for more\n  information.\n</Warning>\n\n`KrispFilter` is an audio processor that reduces background noise in real-time audio streams using Krisp AI technology. It inherits from `BaseAudioFilter` and processes audio frames to improve audio quality by removing unwanted noise.\n\nTo use Krisp, you need a Krisp SDK license. Get started at [Krisp.ai](https://krisp.ai/developers/).\n\n<Tip>\n  Looking for help getting started with Krisp and Pipecat? Checkout our [Krisp\n  noise cancellation guide](/guides/features/krisp).\n</Tip>\n\nThe Krisp filter requires additional dependencies:\n\n## Environment Variables\n\nYou need to provide the path to the Krisp model. This can either be done by setting the `KRISP_MODEL_PATH` environment variable or by setting the `model_path` in the constructor.\n\n## Constructor Parameters\n\n<ParamField type=\"str\">\n  Audio sample type format\n</ParamField>\n\n<ParamField type=\"int\">\n  Number of audio channels\n</ParamField>\n\n<ParamField type=\"str\">\n  Path to the Krisp model file.\n\nYou can set the `model_path` directly. Alternatively, you can set the `KRISP_MODEL_PATH` environment variable to the model file path.\n</ParamField>\n\n<ParamField type=\"Frame\">\n  Specific control frame to toggle filtering on/off\n\n* Requires Krisp SDK and model file to be available\n* Supports real-time audio processing\n* Supports additional features like background voice removal\n* Handles PCM\\_16 audio format\n* Thread-safe for pipeline processing\n* Can be dynamically enabled/disabled\n* Maintains audio quality while reducing noise\n* Efficient processing for low latency",
+  "code_samples": [
+    {
+      "code": "## Environment Variables\n\nYou need to provide the path to the Krisp model. This can either be done by setting the `KRISP_MODEL_PATH` environment variable or by setting the `model_path` in the constructor.\n\n## Constructor Parameters\n\n<ParamField type=\"str\">\n  Audio sample type format\n</ParamField>\n\n<ParamField type=\"int\">\n  Number of audio channels\n</ParamField>\n\n<ParamField type=\"str\">\n  Path to the Krisp model file.\n\n  You can set the `model_path` directly. Alternatively, you can set the `KRISP_MODEL_PATH` environment variable to the model file path.\n</ParamField>\n\n## Input Frames\n\n<ParamField type=\"Frame\">\n  Specific control frame to toggle filtering on/off",
+      "language": "unknown"
+    },
+    {
+      "code": "</ParamField>\n\n## Usage Example",
+      "language": "unknown"
+    },
+    {
+      "code": "## Audio Flow",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Environment Variables",
+      "id": "environment-variables"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Input Frames",
+      "id": "input-frames"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    },
+    {
+      "level": "h2",
+      "text": "Audio Flow",
+      "id": "audio-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#krispfilter",
+  "links": []
+}

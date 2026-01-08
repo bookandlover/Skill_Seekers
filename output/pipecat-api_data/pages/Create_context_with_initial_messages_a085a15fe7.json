@@ -1,0 +1,8 @@
+{
+  "title": "Create context with initial messages",
+  "content": "messages = [\n    {\"role\": \"system\", \"content\": \"You are a helpful voice assistant.\"}\n]",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-context-with-initial-messages",
+  "links": []
+}

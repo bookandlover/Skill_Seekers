@@ -1,0 +1,8 @@
+{
+  "title": "Get ECR login token",
+  "content": "ECR_TOKEN=$(aws ecr get-login-password --region <region>)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#get-ecr-login-token",
+  "links": []
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Custom FrameProcessor",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/custom-frame-processor\n\nLearn how to write your own custom FrameProcessor\n\nPipecat's architecture is made up of a Pipeline, FrameProcessors, and Frames. See the [Core Concepts](/guides/learn/pipeline) for a full review. From that architecture, recall that FrameProcessors are the workers in the pipeline that receive frames and complete actions based on the frames received.\n\nPipecat comes with many FrameProcessors built in. These consist of services, like `OpenAILLMService` or `CartesiaTTSService`, utilities, like `UserIdleProcessor`, and other things. Largely, you can build most of your application with these built-in FrameProcessors, but commonly, your application code may require custom frame processing logic. For example, you may want to perform an action as a result of a frame that's pushed in the pipeline.\n\n## Example: MetricsFrame logger\n\nThis custom FrameProcessor format and logs MetricsFrames:\n\nThis frame processor looks for `MetricsFrames`. When it sees one, it formats the data and logs it.\n\nIt uses this `format_metrics` function:\n\n<Note>\n  See this [working\n  example](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/08-custom-frame-processor.py)\n  using the `MetricsFrameLogger` FrameProcessor\n</Note>\n\n````python theme={null}",
+  "code_samples": [
+    {
+      "code": "This frame processor looks for `MetricsFrames`. When it sees one, it formats the data and logs it.\n\nIt uses this `format_metrics` function:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  See this [working\n  example](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/08-custom-frame-processor.py)\n  using the `MetricsFrameLogger` FrameProcessor\n</Note>\n\n## Add to a Pipeline",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Example: MetricsFrame logger",
+      "id": "example:-metricsframe-logger"
+    },
+    {
+      "level": "h2",
+      "text": "Add to a Pipeline",
+      "id": "add-to-a-pipeline"
+    }
+  ],
+  "url": "llms-txt#custom-frameprocessor",
+  "links": []
+}

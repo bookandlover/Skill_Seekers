@@ -1,0 +1,19 @@
+{
+  "title": "Change voice speed during conversation",
+  "content": "await task.queue_frames([\n    TTSUpdateSettingsFrame({\"speed\": \"fast\"}),\n    TTSSpeakFrame(\"I'm speaking faster now!\")\n])\n```\n\n* **Pipeline placement matters** - TTS must come after LLM, before transport output\n* **Service types differ** - WebSocket services provide lower latency than HTTP\n* **Text processing affects quality** - use aggregation and filters for better results\n* **Word timestamps enable precision** - better interruption handling and context accuracy\n* **Configuration impacts performance** - balance quality, latency, and bandwidth needs\n* **Services are modular** - easily swap providers without changing pipeline code\n\nYou've now learned how to build a complete voice AI pipeline! Let's explore some additional topics to enhance your implementation.\n\n<Card title=\"Pipeline Termination\" icon=\"arrow-right\" href=\"/guides/learn/pipeline-termination\">\n  Learn how to terminate your voice AI pipeline at the end of a conversation\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#change-voice-speed-during-conversation",
+  "links": []
+}

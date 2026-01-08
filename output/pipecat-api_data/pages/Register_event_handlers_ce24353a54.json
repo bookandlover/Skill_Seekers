@@ -1,0 +1,19 @@
+{
+  "title": "Register event handlers",
+  "content": "@turn_observer.event_handler(\"on_turn_started\")\nasync def on_turn_started(observer, turn_number):\n    logger.info(f\"Turn {turn_number} started\")\n\n@turn_observer.event_handler(\"on_turn_ended\")\nasync def on_turn_ended(observer, turn_number, duration, was_interrupted):\n    status = \"interrupted\" if was_interrupted else \"completed\"\n    logger.info(f\"Turn {turn_number} {status} in {duration:.2f}s\")\npython theme={null}\nfrom pipecat.observers.turn_tracking_observer import TurnTrackingObserver",
+  "code_samples": [
+    {
+      "code": "## Configuration\n\nYou can configure the observer's behavior when creating a `PipelineTask`:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    }
+  ],
+  "url": "llms-txt#register-event-handlers",
+  "links": []
+}

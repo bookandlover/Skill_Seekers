@@ -1,0 +1,34 @@
+{
+  "title": "Async",
+  "content": "Source: https://docs.pipecat.ai/server/services/tts/asyncai\n\nText-to-speech services using Async's WebSocket and HTTP APIs\n\nAsync provides high-quality text-to-speech synthesis with two service implementations: `AsyncAITTSService` (WebSocket-based) for real-time streaming with interruption support, and `AsyncAIHttpTTSService` (HTTP-based) for simpler synthesis. `AsyncAITTSService` is recommended for interactive applications requiring low latency.\n\n<CardGroup>\n  <Card title=\"AsyncAI TTS API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.asyncai.tts.html\">\n    Pipecat's API methods for AsyncAI TTS integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07ac-interruptible-asyncai.py\">\n    Complete example with WebSocket streaming\n  </Card>\n\n<Card title=\"Async Documentation\" icon=\"book\" href=\"https://docs.async.ai/\">\n    Official Async API documentation\n  </Card>\n\n<Card title=\"Voice Models\" icon=\"microphone\" href=\"https://async.ai/\">\n    Explore available voice models and features\n  </Card>\n</CardGroup>\n\nTo use Async services, install the required dependencies:\n\n### Async Account Setup\n\nBefore using Async TTS services, you need:\n\n1. **Async Account**: Sign up at [Async](https://async.ai)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Voice Selection**: Choose from available voice models\n\n### Required Environment Variables\n\n* `ASYNCAI_API_KEY`: Your Async API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Async Account Setup",
+      "id": "async-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#async",
+  "links": []
+}

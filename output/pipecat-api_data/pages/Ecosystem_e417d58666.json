@@ -1,0 +1,44 @@
+{
+  "title": "Ecosystem",
+  "content": "Source: https://docs.pipecat.ai/getting-started/ecosystem\n\nClient SDKs, tools, and AI services in the Pipecat ecosystem\n\nPipecat provides a complete ecosystem of client SDKs, developer tools, and AI service integrations to build voice and multimodal applications for any platform.\n\nThe client SDKs connect users to your bot via mobile or web applications. They handle real-time audio transport (using Daily WebRTC, SmallWebRTC, etc.) and provide built-in messaging and events to build responsive voice AI interfaces—tracking when your bot is speaking, what it's saying, and more.\n\nBuild client applications for any platform with our official SDKs:\n\n<CardGroup>\n  <Card title=\"JavaScript\" icon=\"JS\" href=\"/client/js/introduction\">\n    Build web applications with vanilla JavaScript\n  </Card>\n\n<Card title=\"React\" icon=\"react\" href=\"/client/react/introduction\">\n    Create React applications with hooks and components\n  </Card>\n\n<Card title=\"React Native\" icon=\"react\" href=\"/client/react-native/introduction\">\n    Build mobile apps with React Native\n  </Card>\n\n<Card title=\"Swift\" icon=\"swift\" href=\"/client/ios/introduction\">\n    Native iOS applications\n  </Card>\n\n<Card title=\"Kotlin\" icon=\"android\" href=\"/client/android/introduction\">\n    Native Android applications\n  </Card>\n\n<Card title=\"C++\" icon=\"C\" href=\"/client/c++/introduction\">\n    High-performance native applications\n  </Card>\n</CardGroup>\n\n## Tools & Frameworks\n\nCommand-line tool for scaffolding new projects, deploying to Pipecat Cloud, and monitoring live sessions.\n\n<Card title=\"CLI Overview\" icon=\"terminal\" href=\"/cli/overview\">\n  Learn about scaffolding, deployment, and monitoring commands\n</Card>\n\nA conversation and context management library designed to help you handle complex, structured conversations with state management.\n\n<Card title=\"Pipecat Flows\" icon=\"diagram-project\" href=\"https://github.com/pipecat-ai/pipecat-flows\">\n  Build structured conversation flows\n</Card>\n\nPre-built React components and custom hooks that accelerate building voice AI applications on top of the JavaScript and React SDKs.\n\n<Card title=\"Voice UI Kit\" icon=\"palette\" href=\"https://github.com/pipecat-ai/voice-ui-kit\">\n  Ready-to-use components for voice interfaces\n</Card>\n\nA terminal dashboard for monitoring your Pipecat sessions in real-time with logs, conversations, metrics, and audio levels.\n\n<Card title=\"Tail\" icon=\"chart-line\" href=\"https://github.com/pipecat-ai/tail\">\n  Real-time monitoring dashboard\n</Card>\n\nPipecat is a modular system where you can plug in different AI services without changing your code. This flexibility is one of Pipecat's core strengths—swap Deepgram for Azure Speech, OpenAI for Anthropic, or Cartesia for ElevenLabs with minimal changes.\n\nThe framework integrates with 70+ services across:\n\n* **Speech-to-Text (STT)** - Deepgram, Azure, Google, Whisper, and more\n* **Language Models (LLM)** - OpenAI, Anthropic, Gemini, Groq, and more\n* **Text-to-Speech (TTS)** - Cartesia, ElevenLabs, Azure, Google, and more\n* **Vision** - Image and video analysis capabilities\n* **Transports** - WebRTC, WebSockets, telephony providers\n* **And more** - Image generation, memory systems, analytics\n\n<Card title=\"View All Services\" icon=\"grid\" href=\"/server/services/supported-services\">\n  Browse the complete list of 70+ supported AI services\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Client SDKs",
+      "id": "client-sdks"
+    },
+    {
+      "level": "h2",
+      "text": "Tools & Frameworks",
+      "id": "tools-&-frameworks"
+    },
+    {
+      "level": "h3",
+      "text": "Pipecat CLI",
+      "id": "pipecat-cli"
+    },
+    {
+      "level": "h3",
+      "text": "Pipecat Flows",
+      "id": "pipecat-flows"
+    },
+    {
+      "level": "h3",
+      "text": "Voice UI Kit",
+      "id": "voice-ui-kit"
+    },
+    {
+      "level": "h3",
+      "text": "Tail",
+      "id": "tail"
+    },
+    {
+      "level": "h2",
+      "text": "AI Services",
+      "id": "ai-services"
+    }
+  ],
+  "url": "llms-txt#ecosystem",
+  "links": []
+}

@@ -1,0 +1,53 @@
+{
+  "title": "Transport Utilities",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/runner/transport-utils\n\nConfiguration and helper utilities for Daily, LiveKit, telephony, and WebRTC transports\n\nPipecat provides several utility modules for configuring transports and handling transport-specific operations. While the [development runner](/server/utilities/runner/guide) handles most of these automatically, these utilities are useful for custom setups, advanced configurations, or when building your own deployment infrastructure.\n\n## Daily Configuration\n\nThe Daily utilities handle room creation, token generation, and authentication setup for Daily integration. They support both standard video/audio rooms and SIP-enabled rooms for telephony integration.\n\n### Basic Configuration\n\nUse `configure()` for simple room and token setup:\n\nThe `configure()` function returns a `DailyRoomConfig` object with:\n\n* `room_url`: The Daily room URL for joining\n* `token`: Authentication token for the bot\n* `sip_endpoint`: SIP endpoint URI (None for standard rooms)\n\n* Uses `DAILY_SAMPLE_ROOM_URL` environment variable if set, otherwise creates a new room\n* Creates rooms with 2-hour expiration and automatic ejection by default\n* Generates an authentication token with 2-hour expiration using `DAILY_API_KEY`\n\n### Environment Variables\n\n* `DAILY_API_KEY`: Daily API key for creating rooms and tokens\n\n* `DAILY_SAMPLE_ROOM_URL`: Use an existing room instead of creating one\n* `DAILY_API_URL`: Override Daily API endpoint (defaults to [https://api.daily.co/v1](https://api.daily.co/v1))\n\n### Room and Token Management\n\nWhen no `DAILY_SAMPLE_ROOM_URL` is provided, rooms are created automatically with:\n\n* 2-hour expiration from creation time\n* Automatic participant ejection when the room expires\n* Unique names using UUID prefixes (e.g. `pipecat-uuid`)\n\n<Note>\n  Expired rooms are automatically cleaned up by Daily, so you don't need to\n  manage them manually.\n</Note>\n\nTokens are generated with 2-hour expiration and include necessary permissions for bot participation. The utilities handle all the Daily REST API interactions automatically.\n\n### SIP Configuration\n\nDaily utilities support SIP-enabled rooms for telephony integration. When SIP parameters are provided, the function creates rooms with telephony capabilities:\n\n* `sip_caller_phone`: Phone number or identifier for SIP display name (enables SIP mode)\n* `sip_enable_video`: Whether video is enabled for SIP calls (default: False)\n* `sip_num_endpoints`: Number of allowed SIP endpoints (default: 1)\n* `sip_codecs`: Audio/video codecs to support (optional, uses Daily defaults if not specified)\n\n<Note>\n  SIP-enabled rooms cannot use existing room URLs from `DAILY_SAMPLE_ROOM_URL`.\n  They always create new temporary rooms with SIP configuration.\n</Note>\n\n### Backward Compatibility\n\nThe `configure()` function supports tuple unpacking:\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "The `configure()` function returns a `DailyRoomConfig` object with:\n\n* `room_url`: The Daily room URL for joining\n* `token`: Authentication token for the bot\n* `sip_endpoint`: SIP endpoint URI (None for standard rooms)\n\nThis function:\n\n* Uses `DAILY_SAMPLE_ROOM_URL` environment variable if set, otherwise creates a new room\n* Creates rooms with 2-hour expiration and automatic ejection by default\n* Generates an authentication token with 2-hour expiration using `DAILY_API_KEY`\n\n### Environment Variables\n\n**Required**:\n\n* `DAILY_API_KEY`: Daily API key for creating rooms and tokens\n\n**Optional**:\n\n* `DAILY_SAMPLE_ROOM_URL`: Use an existing room instead of creating one\n* `DAILY_API_URL`: Override Daily API endpoint (defaults to [https://api.daily.co/v1](https://api.daily.co/v1))\n\n### Room and Token Management\n\nWhen no `DAILY_SAMPLE_ROOM_URL` is provided, rooms are created automatically with:\n\n* 2-hour expiration from creation time\n* Automatic participant ejection when the room expires\n* Unique names using UUID prefixes (e.g. `pipecat-uuid`)\n\n<Note>\n  Expired rooms are automatically cleaned up by Daily, so you don't need to\n  manage them manually.\n</Note>\n\nTokens are generated with 2-hour expiration and include necessary permissions for bot participation. The utilities handle all the Daily REST API interactions automatically.\n\n### SIP Configuration\n\nDaily utilities support SIP-enabled rooms for telephony integration. When SIP parameters are provided, the function creates rooms with telephony capabilities:",
+      "language": "unknown"
+    },
+    {
+      "code": "**SIP Parameters**:\n\n* `sip_caller_phone`: Phone number or identifier for SIP display name (enables SIP mode)\n* `sip_enable_video`: Whether video is enabled for SIP calls (default: False)\n* `sip_num_endpoints`: Number of allowed SIP endpoints (default: 1)\n* `sip_codecs`: Audio/video codecs to support (optional, uses Daily defaults if not specified)\n\n<Note>\n  SIP-enabled rooms cannot use existing room URLs from `DAILY_SAMPLE_ROOM_URL`.\n  They always create new temporary rooms with SIP configuration.\n</Note>\n\n### Backward Compatibility\n\nThe `configure()` function supports tuple unpacking:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Daily Configuration",
+      "id": "daily-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Configuration",
+      "id": "basic-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Environment Variables",
+      "id": "environment-variables"
+    },
+    {
+      "level": "h3",
+      "text": "Room and Token Management",
+      "id": "room-and-token-management"
+    },
+    {
+      "level": "h3",
+      "text": "SIP Configuration",
+      "id": "sip-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Backward Compatibility",
+      "id": "backward-compatibility"
+    }
+  ],
+  "url": "llms-txt#transport-utilities",
+  "links": []
+}

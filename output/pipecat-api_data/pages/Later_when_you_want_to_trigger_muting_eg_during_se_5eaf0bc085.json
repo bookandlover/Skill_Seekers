@@ -1,0 +1,33 @@
+{
+  "title": "Later, when you want to trigger muting (e.g., during session timeout):",
+  "content": "async def handle_session_timeout():\n    # Update state that will be checked by the callback\n    session_state.session_ending = True\n\n# Send goodbye message\n    goodbye_message = \"Thank you for using our service. This session is now ending.\"\n    await pipeline.push_frame(TTSSpeakFrame(text=goodbye_message))\n\n# The system will automatically mute during this message because:\n    # 1. Bot starts speaking, triggering the callback\n    # 2. Callback returns True (session_ending is True)\n    # 3. When bot stops speaking, unmuting happens automatically\npython theme={null}\nasync def custom_mute_logic(processor: STTMuteFilter) -> bool:\n    # Example: Mute during business hours only\n    current_hour = datetime.now().hour\n    return 9 <= current_hour < 17\n\nstt_mute_filter = STTMuteFilter(\n    config=STTMuteConfig(\n        strategies={\n            STTMuteStrategy.FUNCTION_CALL,       # Mute during function calls\n            STTMuteStrategy.CUSTOM,              # And during business hours\n            STTMuteStrategy.MUTE_UNTIL_FIRST_BOT_COMPLETE  # And until first bot speech completes\n        },\n        should_mute_callback=custom_mute_logic\n    )\n)\nmermaid theme={null}\ngraph TD\n    A[Transport Input] --> B[STTMuteFilter]\n    B --> C[STT Service]\n    B -- \"Suppressed when muted\" --> D[VAD-related Frames]\n    B -- \"STTMuteFrame\" --> C\n```\n\n* Combines STT muting and interruption control into a single concept\n* Muting prevents both transcription and interruptions\n* Multiple strategies can be active simultaneously\n* CUSTOM strategy callback is only invoked when the bot is speaking\n* Unmuting happens automatically when bot speech ends (if no other strategy requires muting)\n* Placed between the STT service and context aggregator in pipeline\n* Maintains conversation flow during bot speech and function calls\n* Efficient state tracking for minimal overhead",
+  "code_samples": [
+    {
+      "code": "### Combining Multiple Strategies",
+      "language": "unknown"
+    },
+    {
+      "code": "### Frame Flow",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Combining Multiple Strategies",
+      "id": "combining-multiple-strategies"
+    },
+    {
+      "level": "h3",
+      "text": "Frame Flow",
+      "id": "frame-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#later,-when-you-want-to-trigger-muting-(e.g.,-during-session-timeout):",
+  "links": []
+}

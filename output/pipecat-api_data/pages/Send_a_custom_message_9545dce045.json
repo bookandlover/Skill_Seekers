@@ -1,0 +1,8 @@
+{
+  "title": "Send a custom message",
+  "content": "frame = RTVIServerMessageFrame(\n    data={\n        \"type\": \"custom-event\",\n        \"payload\": {\"key\": \"value\"}\n    }\n)\nawait rtvi.push_frame(frame)\n```\n\nThe client receives these messages through the `onServerMessage` callback or `serverMessage` event.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#send-a-custom-message",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Create LLM service",
+  "content": "llm = OpenAILLMService(api_key=os.getenv(\"OPENAI_API_KEY\"))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-llm-service",
+  "links": []
+}

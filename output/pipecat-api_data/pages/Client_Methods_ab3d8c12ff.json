@@ -1,0 +1,290 @@
+{
+  "title": "Client Methods",
+  "content": "Source: https://docs.pipecat.ai/client/js/api-reference/client-methods\n\nThe Pipecat JavaScript client provides a comprehensive set of methods for managing bot interactions and media handling. These core methods are documented below.\n\n## Session connectivity\n\n`async startBot(startBotParams: APIEndpoint): Promise<TransportConnectionParams | unknown>`\n\nThis method hits your server endpoint to start the bot and optionally obtain the connection parameters needed for `connect()` to connect the `Transport`. It returns a Promise that resolves with the response from the server.\n\n<ParamField type=\"APIEndpoint\">\n  The `APIEndpoint` object should have the following shape:\n\n<Expandable title=\"APIEndpoint\">\n    <ParamField type=\"string\">\n      The URL of the endpoint to connect to. This should be a valid REST endpoint.\n    </ParamField>\n\n<ParamField type=\"Headers\">\n      Optional headers to include in the request to the endpoint. This can be used to pass authentication tokens or other necessary headers.\n    </ParamField>\n\n<ParamField type=\"object\">\n      Optional request data to include in the request to the endpoint. This can be used to pass additional data to your server-side endpoint. Oftentimes, this is used to pass the initial prompt or other configuration data to initialize the bot.\n    </ParamField>\n\n<ParamField type=\"number\">\n      Optional timeout in milliseconds for the request to the endpoint.\n    </ParamField>\n  </Expandable>\n</ParamField>\n\nDuring the `startBot()` process, the transport state will transition through the states: \"authenticating\" and \"authenticated\".\n\n`async connect(connectParams): Promise<BotReadyData>`\n\nThis method initiates the connection process, optionally passing parameters that your transport class requires to establish a connection or an endpoint to your server for obtaining those parameters.\n\n<ParamField type=\"TransportConnectionParams\">\n  An object containing the `TransportConnectionParams` your Transport expects.\n\nCheck your transport class documentation for the expected shape of `TransportConnectionParams`. For example, the DailyTransport expects a `url` and `token`.\n\n<Warning>\n    In 1.2.0 we deprecated support for passing a `ConnectionEndpoint` object directly to `connect()`. Instead, you should use the `startBot()` or `startBotAndConnect()` methods to fetch connection parameters from your server endpoint and then pass those parameters directly to `connect()`.\n  </Warning>\n</ParamField>\n\nThis method can be try / catched to handle errors at startup:\n\nDuring the connection process, the transport state will transition through the following states: \"connecting\", \"connected\", \"ready\".\n\n<Note>\n  Calling `connect()` asynchronously will resolve when the bot and client signal that they are ready. See [messages and events](./messages). If you want to call `connect()` without `await`, you can use the `onBotReady` callback or `BotReady` event to know when you can interact with the bot.\n</Note>\n\n<Warning>\n  Attempting to call `connect()` when the transport is already in a 'connected' or 'ready' state will throw an error. You should [disconnect](#disconnect) from a session first before attempting to connect again.\n</Warning>\n\n### startBotAndConnect()\n\n`async startBotAndConnect(startBotParams: APIEndpoint): Promise<BotReadyData>`\n\nThis method combines the functionality of `startBot()` and `connect()`. It first starts the bot by hitting your server endpoint and then connects the transport passing the response from the endpoint to the transport as connection parameters.\n\nIt's equivalent to: `pcClient.startBot(...).then((resp) => pcClient.connect(resp))`.\n\n`async disconnect(): Promise<void>`\n\nDisconnects from the active session. The transport state will transition to \"disconnecting\" and then \"disconnected\".\n\nIt is common practice for bots to exit and cleanup when the client disconnects.\n\n`disconnectBot(): void`\n\nTriggers the bot to disconnect from the session, leaving the client connected.\n\nCustom messaging between the client and the bot. This is useful for sending data to the bot, triggering specific actions, reacting to server events, or querying the server.\n\nFor more, see: [messages and events](./messages).\n\n### sendClientMessage()\n\n`sendClientMessage(msgType: string, data?: unknown): void`\n\nSends a custom message to the bot and does not expect a response. This is useful for sending data to the bot or triggering specific actions.\n\n<ParamField type=\"string\">\n  A string identifying the message.\n</ParamField>\n\n<ParamField type=\"unknown\">\n  Optional data to send with the message. This can be any JSON-serializable object.\n</ParamField>\n\n### sendClientRequest()\n\n`async sendClientRequest(msgType: string, data: unknown, timeout?: number): Promise<unknown>`\n\nSends a custom request to the bot and expects a response. This is useful for querying the server or triggering specific actions that require a response. The method returns a Promise that resolves with the data from response.\n\n<ParamField type=\"string\">\n  A string identifying the message.\n</ParamField>\n\n<ParamField type=\"unknown\">\n  Optional data to send with the message. This can be any JSON-serializable object.\n</ParamField>\n\n<ParamField type=\"number\">\n  Optional timeout in milliseconds for the request. If the request does not receive a response within this time, it will reject with an RTVIMessage of type `'error-response'`.\n</ParamField>\n\n`async initDevices(): Promise<void>`\n\nInitializes the media device selection machinery, based on `enableCam`/`enableMic` selections and defaults (i.e. turns on the local cam/mic). This method can be called before `connect()` to test and switch between camera and microphone sources.\n\n`async getAllMics(): Promise<MediaDeviceInfo[]>`\n\nReturns a list of available microphones in the form of [`MediaDeviceInfo[]`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo).\n\n`async getAllCams(): Promise<MediaDeviceInfo[]>`\n\nReturns a list of available cameras in the form of [`MediaDeviceInfo[]`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo).\n\n`async getAllSpeakers(): Promise<MediaDeviceInfo[]>`\n\nReturns a list of available speakers in the form of [`MediaDeviceInfo[]`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo).\n\n`selectedMic: MediaDeviceInfo | {}`\n\nThe currently selected microphone, represented as a `MediaDeviceInfo` object. If no microphone is selected, it returns an empty object.\n\n`selectedCam: MediaDeviceInfo | {}`\n\nThe currently selected camera, represented as a `MediaDeviceInfo` object. If no camera is selected, it returns an empty object.\n\n`selectedSpeaker: MediaDeviceInfo | {}`\n\nThe currently selected speaker, represented as a `MediaDeviceInfo` object. If no speaker is selected, it returns an empty object.\n\n`updateMic(micId: string): void`\n\nSwitches to the microphone identified by the provided `micId`, which should match a `deviceId` in the list returned from [`getAllMics()`](#getAllMics).\n\n<ParamField type=\"string\">\n  deviceId\n</ParamField>\n\n`updateCam(camId: string): void`\n\nSwitches to the camera identified by the provided `camId`, which should match a `deviceId` in the list returned from [`getAllCams()`](#getAllCams).\n\n<ParamField type=\"string\">\n  deviceId\n</ParamField>\n\n`updateSpeaker(speakerId: string): void`\n\nSwitches to the speaker identified by the provided `speakerId`, which should match a `deviceId` in the list returned from [`getAllSpeakers()`](#getAllSpeakers).\n\n<ParamField type=\"string\">\n  deviceId\n</ParamField>\n\n### enableMic(enable: boolean)\n\n`enableMic(enable: boolean): void`\n\nTurn on or off (unmute or mute) the client mic input.\n\n<ParamField type=\"boolean\">\n  A boolean indicating whether to enable (`true`) or disable (`false`) the microphone.\n</ParamField>\n\n### enableCam(enable: boolean)\n\n`enableCam(enable: boolean): void`\n\nTurn on or off the client cam input.\n\n<ParamField type=\"boolean\">\n  A boolean indicating whether to enable (`true`) or disable (`false`) the camera.\n</ParamField>\n\n### enableScreenShare(enable: boolean)\n\n`enableScreenShare(enable: boolean): void`\n\nStart a screen share from the client's device.\n\n<ParamField type=\"boolean\">\n  A boolean indicating whether to enable (`true`) or disable (`false`) screen sharing.\n</ParamField>\n\n`isMicEnabled: boolean`\n\nAn accessor to determine if the client's microphone is enabled.\n\n`isCamEnabled: boolean`\n\nAn accessor to determine if the client's camera is enabled.\n\nAn accessor to determine if the client is sharing their screen.\n\n## Tracks (audio and video)\n\nReturns a `Tracks` object with available `MediaStreamTrack` objects for both the client and the bot.\n\n## Advanced LLM Interactions\n\n`async sendText(content: string, options?: SendTextOptions = {}): void`\n\nA method to append text to the user's context. This is useful for providing text input as an alternative to audio input for the user.\n\n<ParamField type=\"string\">\n  The text content to send to the bot.\n</ParamField>\n\n<ParamField type=\"SendTextOptions\">\n  An optional set of options for how the bot should handle the text input.\n\n<Expandable title=\"SendTextOptions\">\n    <ParamField type=\"boolean\">\n      Whether to immediately run the bot with the updated context. If `false`, the context will be updated but the bot will not be run until the next message or action that triggers the bot to run (like the user speaking).\n    </ParamField>\n\n<ParamField type=\"boolean\">\n      Whether the bot should respond with audio. If `true`, the bot's response will be processed by TTS and be spoken. If `false`, the bot will bypass the TTS and respond with text only.\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n### appendToContext()\n\n`async appendToContext(context: LLMContextMessage): boolean`\n\n<Warning>\n  In 0.0.4, we deprecated `appendToContext` in favor of `send-text` to close a security vulnerability as well as lay the groundwork for proper support of passing other types of context, like images and files.\n</Warning>\n\nA method to append data to the bot's context. This is useful for providing additional information or context to the bot during the conversation.\n\n<ParamField type=\"LLMContextMessage\">\n  The context to append. This should be an object with the following shape:\n\n<Expandable title=\"LLMContextMessage\">\n    <ParamField type=\"string\">\n      The role to append the context to. Currently only \"user\" or \"assistant\" are supported.\n    </ParamField>\n\n<ParamField type=\"unknown\">\n      The content to append to the context. This can be any JSON-serializable object.\n    </ParamField>\n\n<ParamField type=\"boolean\">\n      Whether to immediately run the bot with the updated context. If `false`, the context will be updated but the bot will not be run until the next message or action that triggers the bot to run (like the user speaking).\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n### registerFunctionCallHandler()\n\n`registerFunctionCallHandler(functionName: string, callback: FunctionCallCallback): void`\n\nRegisters a function call handler that will be called when the bot requests a function call. This is useful for when the server-side function handler needs information from the client to execute the function call or when the client needs to perform some action based on the running of function call.\n\n<ParamField type=\"string\">\n  The name of the function to handle. This should match the function name in the bot's context.\n</ParamField>\n\n<ParamField type=\"FunctionCallCallback\">\n  `type FunctionCallCallback = (fn: FunctionCallParams) => Promise<LLMFunctionCallResult | void>`\n\nThe callback function to call when the bot sends a function call request. This function should accept the following parameters:\n\n<Expandable title=\"FunctionCallParams\">\n    <ParamField type=\"string\">\n      The name of the function being called. It should always match the name you registered the handler under.\n    </ParamField>\n\n<ParamField type=\"Record<string, unknown>\">\n      The arguments passed to the function call. This is a key-value object where the keys are the argument names and the values are the argument values.\n    </ParamField>\n  </Expandable>\n\nThe callback should return a Promise that resolves with the result of the function call or void if no result is needed. If returning a result, it should be a `string` or `Record<string, unknown>`.\n</ParamField>\n\n`transport: Transport`\n\nA safe accessor for the transport instance used by the client. This is useful for accessing transport-specific methods or properties that are not exposed directly on the client.\n\n`setLogLevel(level: LogLevel): void`\n\nSets the log level for the client. This is useful for debugging and controlling the verbosity of logs. The log levels are defined in the `LogLevel` enum:\n\nBy default, the log level is set to `LogLevel.DEBUG`.\n\n## Transport Compatibility",
+  "code_samples": [
+    {
+      "code": "### connect()\n\n`async connect(connectParams): Promise<BotReadyData>`\n\nThis method initiates the connection process, optionally passing parameters that your transport class requires to establish a connection or an endpoint to your server for obtaining those parameters.\n\n<ParamField type=\"TransportConnectionParams\">\n  An object containing the `TransportConnectionParams` your Transport expects.\n\n  Check your transport class documentation for the expected shape of `TransportConnectionParams`. For example, the DailyTransport expects a `url` and `token`.\n\n  <Warning>\n    In 1.2.0 we deprecated support for passing a `ConnectionEndpoint` object directly to `connect()`. Instead, you should use the `startBot()` or `startBotAndConnect()` methods to fetch connection parameters from your server endpoint and then pass those parameters directly to `connect()`.\n  </Warning>\n</ParamField>\n\nThis method can be try / catched to handle errors at startup:",
+      "language": "unknown"
+    },
+    {
+      "code": "During the connection process, the transport state will transition through the following states: \"connecting\", \"connected\", \"ready\".\n\n<Note>\n  Calling `connect()` asynchronously will resolve when the bot and client signal that they are ready. See [messages and events](./messages). If you want to call `connect()` without `await`, you can use the `onBotReady` callback or `BotReady` event to know when you can interact with the bot.\n</Note>\n\n<Warning>\n  Attempting to call `connect()` when the transport is already in a 'connected' or 'ready' state will throw an error. You should [disconnect](#disconnect) from a session first before attempting to connect again.\n</Warning>\n\n### startBotAndConnect()\n\n`async startBotAndConnect(startBotParams: APIEndpoint): Promise<BotReadyData>`\n\nThis method combines the functionality of `startBot()` and `connect()`. It first starts the bot by hitting your server endpoint and then connects the transport passing the response from the endpoint to the transport as connection parameters.",
+      "language": "unknown"
+    },
+    {
+      "code": "It's equivalent to: `pcClient.startBot(...).then((resp) => pcClient.connect(resp))`.\n\n### disconnect()\n\n`async disconnect(): Promise<void>`\n\nDisconnects from the active session. The transport state will transition to \"disconnecting\" and then \"disconnected\".\n\nIt is common practice for bots to exit and cleanup when the client disconnects.",
+      "language": "unknown"
+    },
+    {
+      "code": "### disconnectBot()\n\n`disconnectBot(): void`\n\nTriggers the bot to disconnect from the session, leaving the client connected.",
+      "language": "unknown"
+    },
+    {
+      "code": "## Messages\n\nCustom messaging between the client and the bot. This is useful for sending data to the bot, triggering specific actions, reacting to server events, or querying the server.\n\nFor more, see: [messages and events](./messages).\n\n### sendClientMessage()\n\n`sendClientMessage(msgType: string, data?: unknown): void`\n\nSends a custom message to the bot and does not expect a response. This is useful for sending data to the bot or triggering specific actions.\n\n<ParamField type=\"string\">\n  A string identifying the message.\n</ParamField>\n\n<ParamField type=\"unknown\">\n  Optional data to send with the message. This can be any JSON-serializable object.\n</ParamField>\n\n### sendClientRequest()\n\n`async sendClientRequest(msgType: string, data: unknown, timeout?: number): Promise<unknown>`\n\nSends a custom request to the bot and expects a response. This is useful for querying the server or triggering specific actions that require a response. The method returns a Promise that resolves with the data from response.\n\n<ParamField type=\"string\">\n  A string identifying the message.\n</ParamField>\n\n<ParamField type=\"unknown\">\n  Optional data to send with the message. This can be any JSON-serializable object.\n</ParamField>\n\n<ParamField type=\"number\">\n  Optional timeout in milliseconds for the request. If the request does not receive a response within this time, it will reject with an RTVIMessage of type `'error-response'`.\n</ParamField>\n\n## Devices\n\n### initDevices()\n\n`async initDevices(): Promise<void>`\n\nInitializes the media device selection machinery, based on `enableCam`/`enableMic` selections and defaults (i.e. turns on the local cam/mic). This method can be called before `connect()` to test and switch between camera and microphone sources.",
+      "language": "unknown"
+    },
+    {
+      "code": "### getAllMics()\n\n`async getAllMics(): Promise<MediaDeviceInfo[]>`\n\nReturns a list of available microphones in the form of [`MediaDeviceInfo[]`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo).",
+      "language": "unknown"
+    },
+    {
+      "code": "### getAllCams()\n\n`async getAllCams(): Promise<MediaDeviceInfo[]>`\n\nReturns a list of available cameras in the form of [`MediaDeviceInfo[]`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo).",
+      "language": "unknown"
+    },
+    {
+      "code": "### getAllSpeakers()\n\n`async getAllSpeakers(): Promise<MediaDeviceInfo[]>`\n\nReturns a list of available speakers in the form of [`MediaDeviceInfo[]`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo).",
+      "language": "unknown"
+    },
+    {
+      "code": "### selectedMic\n\n`selectedMic: MediaDeviceInfo | {}`\n\nThe currently selected microphone, represented as a `MediaDeviceInfo` object. If no microphone is selected, it returns an empty object.",
+      "language": "unknown"
+    },
+    {
+      "code": "### selectedCam\n\n`selectedCam: MediaDeviceInfo | {}`\n\nThe currently selected camera, represented as a `MediaDeviceInfo` object. If no camera is selected, it returns an empty object.",
+      "language": "unknown"
+    },
+    {
+      "code": "### selectedSpeaker\n\n`selectedSpeaker: MediaDeviceInfo | {}`\n\nThe currently selected speaker, represented as a `MediaDeviceInfo` object. If no speaker is selected, it returns an empty object.",
+      "language": "unknown"
+    },
+    {
+      "code": "### updateMic()\n\n`updateMic(micId: string): void`\n\nSwitches to the microphone identified by the provided `micId`, which should match a `deviceId` in the list returned from [`getAllMics()`](#getAllMics).\n\n<ParamField type=\"string\">\n  deviceId\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### updateCam()\n\n`updateCam(camId: string): void`\n\nSwitches to the camera identified by the provided `camId`, which should match a `deviceId` in the list returned from [`getAllCams()`](#getAllCams).\n\n<ParamField type=\"string\">\n  deviceId\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### updateSpeaker()\n\n`updateSpeaker(speakerId: string): void`\n\nSwitches to the speaker identified by the provided `speakerId`, which should match a `deviceId` in the list returned from [`getAllSpeakers()`](#getAllSpeakers).\n\n<ParamField type=\"string\">\n  deviceId\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### enableMic(enable: boolean)\n\n`enableMic(enable: boolean): void`\n\nTurn on or off (unmute or mute) the client mic input.\n\n<ParamField type=\"boolean\">\n  A boolean indicating whether to enable (`true`) or disable (`false`) the microphone.\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### enableCam(enable: boolean)\n\n`enableCam(enable: boolean): void`\n\nTurn on or off the client cam input.\n\n<ParamField type=\"boolean\">\n  A boolean indicating whether to enable (`true`) or disable (`false`) the camera.\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### enableScreenShare(enable: boolean)\n\n`enableScreenShare(enable: boolean): void`\n\nStart a screen share from the client's device.\n\n<ParamField type=\"boolean\">\n  A boolean indicating whether to enable (`true`) or disable (`false`) screen sharing.\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### isMicEnabled\n\n`isMicEnabled: boolean`\n\nAn accessor to determine if the client's microphone is enabled.",
+      "language": "unknown"
+    },
+    {
+      "code": "### isCamEnabled\n\n`isCamEnabled: boolean`\n\nAn accessor to determine if the client's camera is enabled.",
+      "language": "unknown"
+    },
+    {
+      "code": "### isSharingScreen\n\nAn accessor to determine if the client is sharing their screen.",
+      "language": "unknown"
+    },
+    {
+      "code": "## Tracks (audio and video)\n\n### tracks()\n\n`tracks(): Tracks`\n\nReturns a `Tracks` object with available `MediaStreamTrack` objects for both the client and the bot.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Tracks Type**",
+      "language": "unknown"
+    },
+    {
+      "code": "## Advanced LLM Interactions\n\n### sendText()\n\n`async sendText(content: string, options?: SendTextOptions = {}): void`\n\nA method to append text to the user's context. This is useful for providing text input as an alternative to audio input for the user.\n\n<ParamField type=\"string\">\n  The text content to send to the bot.\n</ParamField>\n\n<ParamField type=\"SendTextOptions\">\n  An optional set of options for how the bot should handle the text input.\n\n  <Expandable title=\"SendTextOptions\">\n    <ParamField type=\"boolean\">\n      Whether to immediately run the bot with the updated context. If `false`, the context will be updated but the bot will not be run until the next message or action that triggers the bot to run (like the user speaking).\n    </ParamField>\n\n    <ParamField type=\"boolean\">\n      Whether the bot should respond with audio. If `true`, the bot's response will be processed by TTS and be spoken. If `false`, the bot will bypass the TTS and respond with text only.\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n### appendToContext()\n\n`async appendToContext(context: LLMContextMessage): boolean`\n\n<Warning>\n  In 0.0.4, we deprecated `appendToContext` in favor of `send-text` to close a security vulnerability as well as lay the groundwork for proper support of passing other types of context, like images and files.\n</Warning>\n\nA method to append data to the bot's context. This is useful for providing additional information or context to the bot during the conversation.\n\n<ParamField type=\"LLMContextMessage\">\n  The context to append. This should be an object with the following shape:\n\n  <Expandable title=\"LLMContextMessage\">\n    <ParamField type=\"string\">\n      The role to append the context to. Currently only \"user\" or \"assistant\" are supported.\n    </ParamField>\n\n    <ParamField type=\"unknown\">\n      The content to append to the context. This can be any JSON-serializable object.\n    </ParamField>\n\n    <ParamField type=\"boolean\">\n      Whether to immediately run the bot with the updated context. If `false`, the context will be updated but the bot will not be run until the next message or action that triggers the bot to run (like the user speaking).\n    </ParamField>\n  </Expandable>\n</ParamField>\n\n### registerFunctionCallHandler()\n\n`registerFunctionCallHandler(functionName: string, callback: FunctionCallCallback): void`\n\nRegisters a function call handler that will be called when the bot requests a function call. This is useful for when the server-side function handler needs information from the client to execute the function call or when the client needs to perform some action based on the running of function call.\n\n<ParamField type=\"string\">\n  The name of the function to handle. This should match the function name in the bot's context.\n</ParamField>\n\n<ParamField type=\"FunctionCallCallback\">\n  `type FunctionCallCallback = (fn: FunctionCallParams) => Promise<LLMFunctionCallResult | void>`\n\n  The callback function to call when the bot sends a function call request. This function should accept the following parameters:\n\n  <Expandable title=\"FunctionCallParams\">\n    <ParamField type=\"string\">\n      The name of the function being called. It should always match the name you registered the handler under.\n    </ParamField>\n\n    <ParamField type=\"Record<string, unknown>\">\n      The arguments passed to the function call. This is a key-value object where the keys are the argument names and the values are the argument values.\n    </ParamField>\n  </Expandable>\n\n  The callback should return a Promise that resolves with the result of the function call or void if no result is needed. If returning a result, it should be a `string` or `Record<string, unknown>`.\n</ParamField>\n\n## Other\n\n### transport\n\n`transport: Transport`\n\nA safe accessor for the transport instance used by the client. This is useful for accessing transport-specific methods or properties that are not exposed directly on the client.",
+      "language": "unknown"
+    },
+    {
+      "code": "### setLogLevel()\n\n`setLogLevel(level: LogLevel): void`\n\nSets the log level for the client. This is useful for debugging and controlling the verbosity of logs. The log levels are defined in the `LogLevel` enum:",
+      "language": "unknown"
+    },
+    {
+      "code": "By default, the log level is set to `LogLevel.DEBUG`.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Session connectivity",
+      "id": "session-connectivity"
+    },
+    {
+      "level": "h3",
+      "text": "startBot()",
+      "id": "startbot()"
+    },
+    {
+      "level": "h3",
+      "text": "connect()",
+      "id": "connect()"
+    },
+    {
+      "level": "h3",
+      "text": "startBotAndConnect()",
+      "id": "startbotandconnect()"
+    },
+    {
+      "level": "h3",
+      "text": "disconnect()",
+      "id": "disconnect()"
+    },
+    {
+      "level": "h3",
+      "text": "disconnectBot()",
+      "id": "disconnectbot()"
+    },
+    {
+      "level": "h2",
+      "text": "Messages",
+      "id": "messages"
+    },
+    {
+      "level": "h3",
+      "text": "sendClientMessage()",
+      "id": "sendclientmessage()"
+    },
+    {
+      "level": "h3",
+      "text": "sendClientRequest()",
+      "id": "sendclientrequest()"
+    },
+    {
+      "level": "h2",
+      "text": "Devices",
+      "id": "devices"
+    },
+    {
+      "level": "h3",
+      "text": "initDevices()",
+      "id": "initdevices()"
+    },
+    {
+      "level": "h3",
+      "text": "getAllMics()",
+      "id": "getallmics()"
+    },
+    {
+      "level": "h3",
+      "text": "getAllCams()",
+      "id": "getallcams()"
+    },
+    {
+      "level": "h3",
+      "text": "getAllSpeakers()",
+      "id": "getallspeakers()"
+    },
+    {
+      "level": "h3",
+      "text": "selectedMic",
+      "id": "selectedmic"
+    },
+    {
+      "level": "h3",
+      "text": "selectedCam",
+      "id": "selectedcam"
+    },
+    {
+      "level": "h3",
+      "text": "selectedSpeaker",
+      "id": "selectedspeaker"
+    },
+    {
+      "level": "h3",
+      "text": "updateMic()",
+      "id": "updatemic()"
+    },
+    {
+      "level": "h3",
+      "text": "updateCam()",
+      "id": "updatecam()"
+    },
+    {
+      "level": "h3",
+      "text": "updateSpeaker()",
+      "id": "updatespeaker()"
+    },
+    {
+      "level": "h3",
+      "text": "enableMic(enable: boolean)",
+      "id": "enablemic(enable:-boolean)"
+    },
+    {
+      "level": "h3",
+      "text": "enableCam(enable: boolean)",
+      "id": "enablecam(enable:-boolean)"
+    },
+    {
+      "level": "h3",
+      "text": "enableScreenShare(enable: boolean)",
+      "id": "enablescreenshare(enable:-boolean)"
+    },
+    {
+      "level": "h3",
+      "text": "isMicEnabled",
+      "id": "ismicenabled"
+    },
+    {
+      "level": "h3",
+      "text": "isCamEnabled",
+      "id": "iscamenabled"
+    },
+    {
+      "level": "h3",
+      "text": "isSharingScreen",
+      "id": "issharingscreen"
+    },
+    {
+      "level": "h2",
+      "text": "Tracks (audio and video)",
+      "id": "tracks-(audio-and-video)"
+    },
+    {
+      "level": "h3",
+      "text": "tracks()",
+      "id": "tracks()"
+    },
+    {
+      "level": "h2",
+      "text": "Advanced LLM Interactions",
+      "id": "advanced-llm-interactions"
+    },
+    {
+      "level": "h3",
+      "text": "sendText()",
+      "id": "sendtext()"
+    },
+    {
+      "level": "h3",
+      "text": "appendToContext()",
+      "id": "appendtocontext()"
+    },
+    {
+      "level": "h3",
+      "text": "registerFunctionCallHandler()",
+      "id": "registerfunctioncallhandler()"
+    },
+    {
+      "level": "h2",
+      "text": "Other",
+      "id": "other"
+    },
+    {
+      "level": "h3",
+      "text": "transport",
+      "id": "transport"
+    },
+    {
+      "level": "h3",
+      "text": "setLogLevel()",
+      "id": "setloglevel()"
+    },
+    {
+      "level": "h2",
+      "text": "Transport Compatibility",
+      "id": "transport-compatibility"
+    }
+  ],
+  "url": "llms-txt#client-methods",
+  "links": []
+}

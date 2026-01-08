@@ -1,0 +1,8 @@
+{
+  "title": "Install and activate a virtual env",
+  "content": "python -m venv venv\nsource venv/bin/activate # or OS equivalent\n\npip install -r requirements.txt\n\npython bot_runner.py --host localhost --reload\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#install-and-activate-a-virtual-env",
+  "links": []
+}

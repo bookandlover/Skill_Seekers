@@ -1,0 +1,70 @@
+{
+  "title": "Building with Gemini Live",
+  "content": "Source: https://docs.pipecat.ai/guides/features/gemini-live\n\nCreate a real-time AI chatbot using Gemini Live and Pipecat\n\n<Tip>\n  **Gemini x Pipecat Hackathon 2025**\n\nFor the most up to date getting started information, check out the [Hackathon guide](https://docs.google.com/document/d/1B89fAVXQwPrLuy8-hee2h3WSndx5CM_Vve-LOZXZkL0/edit?tab=t.0#heading=h.naqf3pekw46) for starter projects.\n\nTo learn the basics, check out the following starter projects:\n\n* Twilio phone bot: [pcc-gemini-twilio](https://github.com/daily-co/pcc-gemini-twilio)\n  * Web + screensharing bot: [pcc-gemini-screen-voice-ui-kit](https://github.com/daily-co/pcc-gemini-screen-voice-ui-kit)\n</Tip>\n\nThis guide will walk you through building a real-time AI chatbot using Gemini Live and Pipecat. We'll create a complete application with a Pipecat server and a Pipecat React client that enables natural conversations with an AI assistant.\n\n<Frame>\n  <img alt=\"Pipecat + Gemini Live\" />\n</Frame>\n\n<CardGroup>\n  <Card title=\"API Reference\" icon=\"book\" href=\"/server/services/s2s/gemini-live\">\n    Gemini Live API documentation\n  </Card>\n\n<Card title=\"Example Code\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot\">\n    Find the complete client and server code in Github\n  </Card>\n\n<Card title=\"Client SDK\" icon=\"react\" href=\"/client/react/introduction\">\n    Pipecat React SDK documentation\n  </Card>\n</CardGroup>\n\nIn this guide, you'll create:\n\n* A FastAPI server that manages bot instances\n* A Gemini-powered conversational AI bot\n* A React client with real-time audio/video\n* A complete pipeline for speech-to-speech interaction\n\nBefore we dive into implementation, let's cover some important concepts that will help you understand how Pipecat and Gemini work together.\n\n### Understanding Pipelines\n\nAt the heart of Pipecat is the pipeline system. A pipeline is a sequence of processors that handle different aspects of the conversation flow. Think of it like an assembly line where each station (processor) performs a specific task.\n\nFor our chatbot, the pipeline looks like this:\n\nEach processor in the pipeline handles a specific task:\n\n<CardGroup>\n  <Card title=\"Transport\" icon=\"arrow-right-arrow-left\">\n    `transport.input()` and `transport.output()` handle media streaming with\n    Daily\n  </Card>\n\n<Card title=\"Context\" icon=\"brain\">\n    `context_aggregator` maintains conversation history for natural dialogue\n  </Card>\n\n<Card title=\"Speech Processing\" icon=\"waveform-lines\">\n    `rtvi_user_transcription` and `rtvi_bot_transcription` handle speech-to-text\n  </Card>\n\n<Card title=\"Animation\" icon=\"robot\">\n    `talking_animation` controls the bot's visual state based on speaking\n    activity\n  </Card>\n</CardGroup>\n\n<Note>\n  The order of processors matters! Data flows through the pipeline in sequence,\n  so each processor should receive the data it needs from previous processors.\n\nLearn more about the [Core Concepts](/guides/learn/overview) to Pipecat server.\n</Note>\n\n### Gemini Integration\n\nThe `GeminiLiveLLMService` is a speech-to-speech LLM service that interfaces with the Gemini Live API.\n\n* Real-time speech-to-speech conversation\n* Context management\n* Voice activity detection\n* Tool use\n\n<Note>\n  Pipecat manages two types of connections:\n\n1. A WebRTC connection between the Pipecat client and server for reliable audio/video streaming\n  2. A WebSocket connection between the Pipecat server and Gemini for real-time AI processing\n\nThis architecture ensures stable media streaming while maintaining responsive AI interactions.\n</Note>\n\nBefore we begin, you'll need:\n\n* Python 3.10 or higher\n* Node.js 16 or higher\n* A [Daily API key](https://dashboard.daily.co/u/signup?pipecat=1)\n* A Google API key with Gemini Live access\n* Clone the Pipecat repo:\n\n## Server Implementation\n\nLet's start by setting up the server components. Our server will handle bot management, room creation, and client connections.\n\n### Environment Setup\n\n1. Navigate to the simple-chatbot's server directory:\n\n2. Set up a python virtual environment:\n\n3. Install requirements:\n\n4. Copy env.example to .env and make a few changes:",
+  "code_samples": [
+    {
+      "code": "### Processors\n\nEach processor in the pipeline handles a specific task:\n\n<CardGroup>\n  <Card title=\"Transport\" icon=\"arrow-right-arrow-left\">\n    `transport.input()` and `transport.output()` handle media streaming with\n    Daily\n  </Card>\n\n  <Card title=\"Context\" icon=\"brain\">\n    `context_aggregator` maintains conversation history for natural dialogue\n  </Card>\n\n  <Card title=\"Speech Processing\" icon=\"waveform-lines\">\n    `rtvi_user_transcription` and `rtvi_bot_transcription` handle speech-to-text\n  </Card>\n\n  <Card title=\"Animation\" icon=\"robot\">\n    `talking_animation` controls the bot's visual state based on speaking\n    activity\n  </Card>\n</CardGroup>\n\n<Note>\n  The order of processors matters! Data flows through the pipeline in sequence,\n  so each processor should receive the data it needs from previous processors.\n\n  Learn more about the [Core Concepts](/guides/learn/overview) to Pipecat server.\n</Note>\n\n### Gemini Integration\n\nThe `GeminiLiveLLMService` is a speech-to-speech LLM service that interfaces with the Gemini Live API.\n\nIt provides:\n\n* Real-time speech-to-speech conversation\n* Context management\n* Voice activity detection\n* Tool use\n\n<Note>\n  Pipecat manages two types of connections:\n\n  1. A WebRTC connection between the Pipecat client and server for reliable audio/video streaming\n  2. A WebSocket connection between the Pipecat server and Gemini for real-time AI processing\n\n  This architecture ensures stable media streaming while maintaining responsive AI interactions.\n</Note>\n\n## Prerequisites\n\nBefore we begin, you'll need:\n\n* Python 3.10 or higher\n* Node.js 16 or higher\n* A [Daily API key](https://dashboard.daily.co/u/signup?pipecat=1)\n* A Google API key with Gemini Live access\n* Clone the Pipecat repo:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Server Implementation\n\nLet's start by setting up the server components. Our server will handle bot management, room creation, and client connections.\n\n### Environment Setup\n\n1. Navigate to the simple-chatbot's server directory:",
+      "language": "unknown"
+    },
+    {
+      "code": "2. Set up a python virtual environment:",
+      "language": "unknown"
+    },
+    {
+      "code": "3. Install requirements:",
+      "language": "unknown"
+    },
+    {
+      "code": "4. Copy env.example to .env and make a few changes:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What We'll Build",
+      "id": "what-we'll-build"
+    },
+    {
+      "level": "h2",
+      "text": "Key Concepts",
+      "id": "key-concepts"
+    },
+    {
+      "level": "h3",
+      "text": "Understanding Pipelines",
+      "id": "understanding-pipelines"
+    },
+    {
+      "level": "h3",
+      "text": "Processors",
+      "id": "processors"
+    },
+    {
+      "level": "h3",
+      "text": "Gemini Integration",
+      "id": "gemini-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Server Implementation",
+      "id": "server-implementation"
+    },
+    {
+      "level": "h3",
+      "text": "Environment Setup",
+      "id": "environment-setup"
+    }
+  ],
+  "url": "llms-txt#building-with-gemini-live",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Initialize the LLM context with your function schemas",
+  "content": "context = LLMContext(\n    messages=[{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}],\n    tools=tools\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-the-llm-context-with-your-function-schemas",
+  "links": []
+}

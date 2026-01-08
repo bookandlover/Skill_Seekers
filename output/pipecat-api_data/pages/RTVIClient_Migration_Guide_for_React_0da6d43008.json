@@ -1,0 +1,94 @@
+{
+  "title": "RTVIClient Migration Guide for React",
+  "content": "Source: https://docs.pipecat.ai/client/react/migration-guide\n\nA Guide to migrating from an RTVIClient to PipecatClient in React\n\nThis guide covers migrating from RTVIClient to the new `PipecatClient` in a React application. The new client introduces simplified configuration and improved client-server messaging. For an overview of the changes, see the top-level [RTVIClient Migration Guide](/client/migration-guide).\n\n### 1. Package and Class Names\n\n### 2. React Components and Hooks\n\n### 3. Client and Transport Configuration\n\n### 4. Connection Method\n\nPreviously, `connect()` was called on the client instance without parameters. Now, you provide connection parameters directly to the `connect()` method. This allows for more flexibility and customization of the connection process. For ease of use, we've also introduced a `startBot()` and `startBotAndConnect()` method where you can provide an API endpoint that returns the connection parameters.\n\nThere are three options for connecting now. For migration purposes, you are likely to use option 3 (`startBotAndConnect()`):\n\n1. **Direct Connection**: Provide the connection details directly to `connect()`.\n\n2. **Using startBot()**: Fetch connection details from an API endpoint and pass them to `connect()`.\n\n3. **Using startBotAndConnect()**: Fetch connection details and connect in one step.\n\n### 5. Function Call Handling\n\n1. **Configuration Structure**: Connection parameters are now passed to connect() instead of constructor\n2. **Helper System**: Removed in favor of direct `PipecatClient` member functions or client-server messaging.\n3. **Component Names**: All React components renamed from RTVI prefix to Pipecat prefix\n4. **Hook Names**: All React hooks renamed from useRTVI prefix to usePipecat prefix\n\n1. Update package imports to use new names\n2. Move connection configuration from constructor to startBot()/startBotAndConnect()/connect() methods\n3. Replace any helper classes with corresponding `PipecatClient` methods or custom messaging\n4. Update React component and hook names\n5. Update any TypeScript types referencing old names",
+  "code_samples": [
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. React Components and Hooks\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 3. Client and Transport Configuration\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 4. Connection Method\n\nPreviously, `connect()` was called on the client instance without parameters. Now, you provide connection parameters directly to the `connect()` method. This allows for more flexibility and customization of the connection process. For ease of use, we've also introduced a `startBot()` and `startBotAndConnect()` method where you can provide an API endpoint that returns the connection parameters.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**\n\nThere are three options for connecting now. For migration purposes, you are likely to use option 3 (`startBotAndConnect()`):\n\n1. **Direct Connection**: Provide the connection details directly to `connect()`.",
+      "language": "unknown"
+    },
+    {
+      "code": "2. **Using startBot()**: Fetch connection details from an API endpoint and pass them to `connect()`.",
+      "language": "unknown"
+    },
+    {
+      "code": "3. **Using startBotAndConnect()**: Fetch connection details and connect in one step.",
+      "language": "unknown"
+    },
+    {
+      "code": "### 5. Function Call Handling\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Key Changes",
+      "id": "key-changes"
+    },
+    {
+      "level": "h3",
+      "text": "1. Package and Class Names",
+      "id": "1.-package-and-class-names"
+    },
+    {
+      "level": "h3",
+      "text": "2. React Components and Hooks",
+      "id": "2.-react-components-and-hooks"
+    },
+    {
+      "level": "h3",
+      "text": "3. Client and Transport Configuration",
+      "id": "3.-client-and-transport-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "4. Connection Method",
+      "id": "4.-connection-method"
+    },
+    {
+      "level": "h3",
+      "text": "5. Function Call Handling",
+      "id": "5.-function-call-handling"
+    },
+    {
+      "level": "h2",
+      "text": "Breaking Changes",
+      "id": "breaking-changes"
+    },
+    {
+      "level": "h2",
+      "text": "Migration Steps",
+      "id": "migration-steps"
+    }
+  ],
+  "url": "llms-txt#rtviclient-migration-guide-for-react",
+  "links": []
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Troubleshooting",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/error-codes\n\nCommon issues and solutions when deploying agents to Pipecat Cloud\n\n> Attempt to start agent without public api key.\n\nEnsure you have provided a valid public API key when starting an agent. [Learn more](./accounts-and-organizations#api-keys) about creating and managing API keys.\n\n> Billing credentials not set. Please set billing credentials via the Pipecat Cloud dashboard.\n\nIn order to deploy or start an agent on Pipecat Cloud, you must have valid billing credentials set up on the namespace or organization you have specified. You can set up these up via the [Pipecat Cloud dashboard](https://pipecat.daily.co/).\n\n### PCC\\_IMAGE\\_NOT\\_FOUND\n\n> The provided image address or tag could not be found.\n\nCheck your provided image, tag and host address to ensure they are correct.\n\n### PCC\\_IMAGE\\_PULL\\_UNAUTHORIZED\n\n> Unauthorized to pull image at given address.\n\nIf you are using a private repository, ensure you have provided valid credentials to access the repository via [image pull secrets](./secrets#image-pull-secrets).\n\n### PCC\\_IMAGE\\_TOO\\_LARGE\n\n> Image is too large.\n\nEnsure the image you are attempting to pull is not too large. Currently, Pipecat Cloud has no maximum image size limit, but excessively large images may cause issues when deploying agents.\n\n### PCC\\_IMAGE\\_PULL\\_RATE\\_LIMIT\n\n> Remote repository rate limited the pull request.\n\nCheck that your image repository is not rate limiting your pull requests. This can be caused by excessive requests to the repository, or by the repository owner setting rate limits.\n\n### PCC\\_INVALID\\_IMAGE\\_PLATFORM\n\n> Image platform is not supported.\n\nEnsure the image you are attempting to pull is supported by Pipecat Cloud. Currently, Pipecat Cloud only supports images for the `linux/arm64` platform.\n\n### PCC\\_IMAGE\\_PULL\\_UNKNOWN\\_ERROR\n\n> Unknown error occurred when attempting to pull the image.\n\nIf you receive this error, please contact support for further assistance.\n\n### PCC\\_UNKNOWN\\_ERROR\n\n> Unknown error occurred when attempting to start provided image.\n\nIndicates an error in your image that prevent your agent from starting. Typically `pipecat cloud agent logs [AGENT_NAME]` will provide more information on the error.\n\n### PCC-AGENT-AT-CAPACITY\n\n> Service maximum agent instances reached\n\nThis error indicates that the maximum active sessions for your deployment have been reached. You can either increase the maximum active sessions for your deployment (`max-agents`), or place the end-user in a queue until a session becomes available.\n\n## Enabling extra logs\n\nIf you wish to print a summary of the features available in the base image, set the environment variable `PCC_LOG_FEATURES_SUMMARY` to `true`.\nThis will print all the features enabled in the base image that you can use. For example:",
+  "code_samples": [
+    {
+      "code": "2025-10-22 22:04:41.411 | INFO     | feature_manager:log_features_summary:287 - ============================================================\n2025-10-22 22:04:41.411 | INFO     | feature_manager:log_features_summary:288 - Features available in this base image:\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:289 - ============================================================\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:299 - ✅ Daily Transport: ENABLED\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:299 - ✅ Websocket Transport: ENABLED\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:299 - ✅ SmallWebRTC Session Arguments: ENABLED\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:299 - ✅ SmallWebRTC Transport: ENABLED\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:299 - ✅ SmallWebRTC ICE Candidates: ENABLED\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:299 - ✅ WhatsApp Integration: ENABLED\n2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:314 - ============================================================",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Error codes",
+      "id": "error-codes"
+    },
+    {
+      "level": "h3",
+      "text": "PCC-1002",
+      "id": "pcc-1002"
+    },
+    {
+      "level": "h3",
+      "text": "PCC-1004",
+      "id": "pcc-1004"
+    },
+    {
+      "level": "h3",
+      "text": "PCC\\_IMAGE\\_NOT\\_FOUND",
+      "id": "pcc\\_image\\_not\\_found"
+    },
+    {
+      "level": "h3",
+      "text": "PCC\\_IMAGE\\_PULL\\_UNAUTHORIZED",
+      "id": "pcc\\_image\\_pull\\_unauthorized"
+    },
+    {
+      "level": "h3",
+      "text": "PCC\\_IMAGE\\_TOO\\_LARGE",
+      "id": "pcc\\_image\\_too\\_large"
+    },
+    {
+      "level": "h3",
+      "text": "PCC\\_IMAGE\\_PULL\\_RATE\\_LIMIT",
+      "id": "pcc\\_image\\_pull\\_rate\\_limit"
+    },
+    {
+      "level": "h3",
+      "text": "PCC\\_INVALID\\_IMAGE\\_PLATFORM",
+      "id": "pcc\\_invalid\\_image\\_platform"
+    },
+    {
+      "level": "h3",
+      "text": "PCC\\_IMAGE\\_PULL\\_UNKNOWN\\_ERROR",
+      "id": "pcc\\_image\\_pull\\_unknown\\_error"
+    },
+    {
+      "level": "h3",
+      "text": "PCC\\_UNKNOWN\\_ERROR",
+      "id": "pcc\\_unknown\\_error"
+    },
+    {
+      "level": "h3",
+      "text": "PCC-AGENT-AT-CAPACITY",
+      "id": "pcc-agent-at-capacity"
+    },
+    {
+      "level": "h2",
+      "text": "Enabling extra logs",
+      "id": "enabling-extra-logs"
+    }
+  ],
+  "url": "llms-txt#troubleshooting",
+  "links": []
+}

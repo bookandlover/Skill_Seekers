@@ -1,0 +1,19 @@
+{
+  "title": "Enable PSTN dial-in webhook handling",
+  "content": "python bot.py -t daily --dialin\nbash theme={null}",
+  "code_samples": [
+    {
+      "code": "**Runner Arguments**: `DailyRunnerArguments`\n\n* `room_url`: Daily room URL to join\n* `token`: Authentication token for the room\n* `body`: Request data from /start endpoint (dict) or dial-in webhook data\n\n**Available Endpoints**:\n\n* `GET /`: Web interface for creating rooms\n* `POST /start`: RTVI-compatible endpoint for programmatic access\n* `POST /daily-dialin-webhook`: PSTN dial-in webhook handler (requires `--dialin` flag)\n\n### Telephony (`-t twilio|telnyx|plivo|exotel`)\n\nPhone call integration through telephony providers. Requires a public webhook endpoint and provider credentials.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Telephony (`-t twilio|telnyx|plivo|exotel`)",
+      "id": "telephony-(`-t-twilio|telnyx|plivo|exotel`)"
+    }
+  ],
+  "url": "llms-txt#enable-pstn-dial-in-webhook-handling",
+  "links": []
+}

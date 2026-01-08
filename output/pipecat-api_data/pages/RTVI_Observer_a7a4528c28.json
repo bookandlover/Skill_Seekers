@@ -1,0 +1,19 @@
+{
+  "title": "RTVI Observer",
+  "content": "Source: https://docs.pipecat.ai/server/frameworks/rtvi/rtvi-observer\n\nConverting pipeline frames to RTVI protocol messages\n\nThe `RTVIObserver` translates Pipecat's internal pipeline events into standardized RTVI protocol messages. It monitors frame flow through the pipeline and generates corresponding client messages based on event types.\n\nThe `RTVIObserver` primarily serves to convert internal pipeline frames into to client-compatible RTVI messages. It is required for any application using RTVI as the client protocol to ensure proper communication of events such as speech start/stop, user transcript, bot output, metrics, and server messages.\n\n## Adding to a Pipeline\n\nThe observer is attached to a pipeline task along with the RTVI processor:\n\n```python theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Purpose",
+      "id": "purpose"
+    },
+    {
+      "level": "h2",
+      "text": "Adding to a Pipeline",
+      "id": "adding-to-a-pipeline"
+    }
+  ],
+  "url": "llms-txt#rtvi-observer",
+  "links": []
+}

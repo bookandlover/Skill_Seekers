@@ -1,0 +1,72 @@
+{
+  "title": "Text to Speech",
+  "content": "Source: https://docs.pipecat.ai/guides/learn/text-to-speech\n\nLearn how to configure speech synthesis to convert text into natural-sounding audio in your voice AI pipeline\n\n**Text to Speech (TTS)** services are responsible for converting text into natural-sounding speech audio. They receive text input from LLMs and other sources, then generate audio output that users can hear through their connected devices.\n\n## Pipeline Placement\n\nTTS processors must be positioned correctly in your pipeline to receive text and generate audio frames:\n\n**Placement requirements:**\n\n* **After LLM processing**: TTS needs `LLMTextFrame`s from language model responses\n* **Before transport output**: Audio must be generated before sending to user\n* **Before assistant context aggregator**: Ensures spoken text is captured in conversation history\n\n### Frame Processing Flow\n\n**TTS generates speech through two primary mechanisms:**\n\n1. **Streamed LLM tokens** via `LLMTextFrame`s:\n\n* TTS aggregates streaming tokens into complete sentences\n   * Sentences are sent to TTS service for audio generation\n   * Audio bytes stream back and play immediately\n   * End-to-end latency often under 200ms\n\n2. **Direct speech requests** via `TTSSpeakFrame`s:\n   * Bypasses LLM and context aggregators\n   * Immediate audio generation for specific text\n   * Useful for system messages or prompts\n\n* `TTSAudioRawFrame`s: Raw audio data for playback\n* `TTSTextFrame`s: Text that was actually spoken (for context updates)\n* `TTSStartedFrame`/`TTSStoppedFrame`: Speech boundary markers\n\n## Supported TTS Services\n\nPipecat supports a wide range of TTS providers with different capabilities and performance characteristics:\n\n<Card title=\"Supported TTS Services\" icon=\"list\" href=\"/server/services/supported-services#text-to-speech\">\n  View the complete list of supported text-to-speech providers\n</Card>\n\n### Service Categories\n\n**WebSocket-Based Services (Recommended):**\n\n* **Cartesia**: Ultra-low latency with word timestamps\n* **ElevenLabs**: High-quality voices with emotion control\n* **Rime**: Ultra-realistic voices with advanced features\n\n**HTTP-Based Services:**\n\n* **OpenAI TTS**: High-quality synthesis with multiple voices\n* **Azure Speech**: Enterprise-grade with extensive language support\n* **Google Text-to-Speech**: Reliable with WaveNet voices\n\n**Advanced Features:**\n\n* **Word timestamps**: Enable word-level accuracy for context and subtitles\n* **Voice cloning**: Custom voice creation from samples\n* **Emotion control**: Dynamic emotional expression\n* **SSML support**: Fine-grained pronunciation control\n\n<Note>\n  WebSocket services typically provide the lowest latency, while HTTP services\n  may have intermittent higher latency due to their request/response nature.\n</Note>\n\n### Service-Specific Configuration\n\nEach TTS service has its own configuration options. Here's an example with Cartesia:\n\n**Word timestamps:** Services like Cartesia, ElevenLabs, and Rime provide word-level timestamps that enable precise context updates during interruptions and better synchronization with other pipeline components. For example, if an interruption occurs while the bot is speaking, the word timestamps allow you to accurately capture which words were spoken up to that point, enabling better context management and user experience. Additionally, transcription events streamed from server to client can be done in sync with the audio output, allowing for real-time subtitles or captions.\n\n<Card title=\"Individual TTS Services\" icon=\"settings\" href=\"/server/services/supported-services#text-to-speech\">\n  Explore configuration options for each supported TTS provider\n</Card>\n\n### Pipeline-Level Audio Configuration\n\nSet consistent audio settings across your entire pipeline:\n\n<Tip>\n  Set the `audio_out_sample_rate` to match your TTS service's requirements for\n  optimal quality. This is preferred to setting the sample\\_rate directly in the\n  TTS service as the PipelineParam ensures that all output sample\\_rates match.\n</Tip>\n\n## Text Processing and Filtering\n\n### Custom Text Aggregation\n\nBy default, TTS services have a built-in text aggregator that collects streaming text into sentences before passing them to the underlying service. However, you can customize this behavior by inserting an [`LLMTextProcessor`](/server/utilities/frame/llm-text-processor) with a different text aggregator before the TTS in your pipeline. This allows the ability to categorize and structure text into logical units beyond simple sentences, such as code blocks, URLs, or custom tags. You can then configure the TTS to handle these different text types appropriately, such as skipping code blocks or transforming them in a just-in-time manner before speaking.\n\n### Skipping Text Aggregations\n\nTo skip certain text aggregations (e.g., code snippets or URLs) and keep them from being spoken, use a custom text aggregator like [`PatternPairAggregator`](/server/utilities/text/pattern-pair-aggregator) within an [`LLMTextProcessor`](/server/utilities/frame/llm-text-processor), and configure it to identify and handle specific patterns in the text stream. With this, you can then pass any aggregated types you want to skip (like \"code\") to the TTS service's `skip_aggregator_types` parameter.\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "**Placement requirements:**\n\n* **After LLM processing**: TTS needs `LLMTextFrame`s from language model responses\n* **Before transport output**: Audio must be generated before sending to user\n* **Before assistant context aggregator**: Ensures spoken text is captured in conversation history\n\n### Frame Processing Flow\n\n**TTS generates speech through two primary mechanisms:**\n\n1. **Streamed LLM tokens** via `LLMTextFrame`s:\n\n   * TTS aggregates streaming tokens into complete sentences\n   * Sentences are sent to TTS service for audio generation\n   * Audio bytes stream back and play immediately\n   * End-to-end latency often under 200ms\n\n2. **Direct speech requests** via `TTSSpeakFrame`s:\n   * Bypasses LLM and context aggregators\n   * Immediate audio generation for specific text\n   * Useful for system messages or prompts\n\n**Frame output:**\n\n* `TTSAudioRawFrame`s: Raw audio data for playback\n* `TTSTextFrame`s: Text that was actually spoken (for context updates)\n* `TTSStartedFrame`/`TTSStoppedFrame`: Speech boundary markers\n\n## Supported TTS Services\n\nPipecat supports a wide range of TTS providers with different capabilities and performance characteristics:\n\n<Card title=\"Supported TTS Services\" icon=\"list\" href=\"/server/services/supported-services#text-to-speech\">\n  View the complete list of supported text-to-speech providers\n</Card>\n\n### Service Categories\n\n**WebSocket-Based Services (Recommended):**\n\n* **Cartesia**: Ultra-low latency with word timestamps\n* **ElevenLabs**: High-quality voices with emotion control\n* **Rime**: Ultra-realistic voices with advanced features\n\n**HTTP-Based Services:**\n\n* **OpenAI TTS**: High-quality synthesis with multiple voices\n* **Azure Speech**: Enterprise-grade with extensive language support\n* **Google Text-to-Speech**: Reliable with WaveNet voices\n\n**Advanced Features:**\n\n* **Word timestamps**: Enable word-level accuracy for context and subtitles\n* **Voice cloning**: Custom voice creation from samples\n* **Emotion control**: Dynamic emotional expression\n* **SSML support**: Fine-grained pronunciation control\n\n<Note>\n  WebSocket services typically provide the lowest latency, while HTTP services\n  may have intermittent higher latency due to their request/response nature.\n</Note>\n\n## TTS Configuration\n\n### Service-Specific Configuration\n\nEach TTS service has its own configuration options. Here's an example with Cartesia:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Word timestamps:** Services like Cartesia, ElevenLabs, and Rime provide word-level timestamps that enable precise context updates during interruptions and better synchronization with other pipeline components. For example, if an interruption occurs while the bot is speaking, the word timestamps allow you to accurately capture which words were spoken up to that point, enabling better context management and user experience. Additionally, transcription events streamed from server to client can be done in sync with the audio output, allowing for real-time subtitles or captions.\n\n<Card title=\"Individual TTS Services\" icon=\"settings\" href=\"/server/services/supported-services#text-to-speech\">\n  Explore configuration options for each supported TTS provider\n</Card>\n\n### Pipeline-Level Audio Configuration\n\nSet consistent audio settings across your entire pipeline:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Tip>\n  Set the `audio_out_sample_rate` to match your TTS service's requirements for\n  optimal quality. This is preferred to setting the sample\\_rate directly in the\n  TTS service as the PipelineParam ensures that all output sample\\_rates match.\n</Tip>\n\n## Text Processing and Filtering\n\n### Custom Text Aggregation\n\nBy default, TTS services have a built-in text aggregator that collects streaming text into sentences before passing them to the underlying service. However, you can customize this behavior by inserting an [`LLMTextProcessor`](/server/utilities/frame/llm-text-processor) with a different text aggregator before the TTS in your pipeline. This allows the ability to categorize and structure text into logical units beyond simple sentences, such as code blocks, URLs, or custom tags. You can then configure the TTS to handle these different text types appropriately, such as skipping code blocks or transforming them in a just-in-time manner before speaking.\n\n### Skipping Text Aggregations\n\nTo skip certain text aggregations (e.g., code snippets or URLs) and keep them from being spoken, use a custom text aggregator like [`PatternPairAggregator`](/server/utilities/text/pattern-pair-aggregator) within an [`LLMTextProcessor`](/server/utilities/frame/llm-text-processor), and configure it to identify and handle specific patterns in the text stream. With this, you can then pass any aggregated types you want to skip (like \"code\") to the TTS service's `skip_aggregator_types` parameter.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Pipeline Placement",
+      "id": "pipeline-placement"
+    },
+    {
+      "level": "h3",
+      "text": "Frame Processing Flow",
+      "id": "frame-processing-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Supported TTS Services",
+      "id": "supported-tts-services"
+    },
+    {
+      "level": "h3",
+      "text": "Service Categories",
+      "id": "service-categories"
+    },
+    {
+      "level": "h2",
+      "text": "TTS Configuration",
+      "id": "tts-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Service-Specific Configuration",
+      "id": "service-specific-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Pipeline-Level Audio Configuration",
+      "id": "pipeline-level-audio-configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Text Processing and Filtering",
+      "id": "text-processing-and-filtering"
+    },
+    {
+      "level": "h3",
+      "text": "Custom Text Aggregation",
+      "id": "custom-text-aggregation"
+    },
+    {
+      "level": "h3",
+      "text": "Skipping Text Aggregations",
+      "id": "skipping-text-aggregations"
+    }
+  ],
+  "url": "llms-txt#text-to-speech",
+  "links": []
+}

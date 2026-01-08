@@ -1,0 +1,44 @@
+{
+  "title": "MarkdownTextFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/text/markdown-text-filter\n\nConverts Markdown-formatted text to TTS-friendly plain text while preserving structure\n\n`MarkdownTextFilter` transforms Markdown-formatted text into plain text that's suitable for text-to-speech (TTS) systems. It intelligently removes formatting elements while preserving the content structure, including proper spacing and list formatting.\n\nThis filter is especially valuable for LLM-generated content, which often includes Markdown formatting that would sound unnatural if read aloud by a TTS system.\n\n<ParamField type=\"InputParams\">\n  Configuration parameters for the filter\n</ParamField>\n\nConfigure the filter behavior with these options:\n\n<ParamField type=\"bool\">\n  Whether the filter is active (when False, text passes through unchanged)\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to remove code blocks from the output\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to remove Markdown tables from the output\n</ParamField>\n\nThe filter handles these Markdown elements:\n\n* **Basic Formatting**: Removes `*italic*`, `**bold**`, and other formatting markers\n* **Code**: Removes inline code ticks and optionally removes code blocks\n* **Lists**: Preserves numbered lists while removing Markdown formatting\n* **Tables**: Optionally removes Markdown tables\n* **Whitespace**: Carefully preserves meaningful whitespace for natural speech\n* **HTML**: Removes HTML tags and converts entities to their plain text equivalents\n\n### Basic Usage with TTS Service\n\n```python theme={null}\nfrom pipecat.utils.text.markdown_text_filter import MarkdownTextFilter\nfrom pipecat.services.cartesia.tts import CartesiaTTSService",
+  "code_samples": [
+    {
+      "code": "<ParamField type=\"InputParams\">\n  Configuration parameters for the filter\n</ParamField>\n\n### Input Parameters\n\nConfigure the filter behavior with these options:\n\n<ParamField type=\"bool\">\n  Whether the filter is active (when False, text passes through unchanged)\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to remove code blocks from the output\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to remove Markdown tables from the output\n</ParamField>\n\n## Features\n\nThe filter handles these Markdown elements:\n\n* **Basic Formatting**: Removes `*italic*`, `**bold**`, and other formatting markers\n* **Code**: Removes inline code ticks and optionally removes code blocks\n* **Lists**: Preserves numbered lists while removing Markdown formatting\n* **Tables**: Optionally removes Markdown tables\n* **Whitespace**: Carefully preserves meaningful whitespace for natural speech\n* **HTML**: Removes HTML tags and converts entities to their plain text equivalents\n\n## Usage Examples\n\n### Basic Usage with TTS Service",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h3",
+      "text": "Input Parameters",
+      "id": "input-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Features",
+      "id": "features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Usage with TTS Service",
+      "id": "basic-usage-with-tts-service"
+    }
+  ],
+  "url": "llms-txt#markdowntextfilter",
+  "links": []
+}

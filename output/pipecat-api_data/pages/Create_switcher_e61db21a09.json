@@ -1,0 +1,8 @@
+{
+  "title": "Create switcher",
+  "content": "llm_switcher = LLMSwitcher(\n    llms=[openai, gemini],\n    strategy_type=ServiceSwitcherStrategyManual\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-switcher",
+  "links": []
+}

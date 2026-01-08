@@ -1,0 +1,8 @@
+{
+  "title": "Include the below line if you need logging (see \"Enabling Logging\")",
+  "content": "COPY ./python.d /etc/datadog-agent/conf.d/python.d",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#include-the-below-line-if-you-need-logging-(see-\"enabling-logging\")",
+  "links": []
+}

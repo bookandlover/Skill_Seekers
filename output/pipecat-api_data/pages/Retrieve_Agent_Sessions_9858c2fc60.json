@@ -1,0 +1,8 @@
+{
+  "title": "Retrieve Agent Sessions",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-get-sessions\n\nGET /agents/{agentName}/sessions\nGet sessions for an agent with filtering and pagination options.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#retrieve-agent-sessions",
+  "links": []
+}

@@ -1,0 +1,50 @@
+{
+  "title": "----------------- Main -----------------",
+  "content": "@app.post(\"/start_bot\")\nasync def start_bot(request: Request) -> JSONResponse:\n    try:\n        # Grab any data included in the post request\n        data = await request.json()\n    except Exception as e:\n        pass\n\n# Create a new Daily WebRTC room for the session to take place in\n    try:\n        params = DailyRoomParams(\n            properties=DailyRoomProperties()\n        )\n        room: DailyRoomObject = daily_rest_helper.create_room(params=params)\n    except Exception as e:\n        raise HTTPException(\n            status_code=500,\n            detail=f\"Unable to provision room {e}\")\n\n# Give the agent a token to join the session\n    token = daily_rest_helper.get_token(room.url, MAX_SESSION_TIME)\n\n# Return an error if we were unable to create a room or a token\n    if not room or not token:\n        raise HTTPException(\n            status_code=500, detail=f\"Failed to get token for room: {room_url}\")\n\ntry:\n        # Start a new subprocess, passing the room and token to the bot file\n        subprocess.Popen(\n            [f\"python3 -m bot -u {room.url} -t {token}\"],\n            shell=True,\n            bufsize=1,\n            cwd=os.path.dirname(os.path.abspath(__file__)))\n    except Exception as e:\n        raise HTTPException(\n            status_code=500, detail=f\"Failed to start subprocess: {e}\")\n\n# Grab a token for the user to join with\n    user_token = daily_rest_helper.get_token(room.url, MAX_SESSION_TIME)\n\n# Return the room url and user token back to the user\n    return JSONResponse({\n        \"room_url\": room.url,\n        \"token\": user_token,\n    })\n\nif __name__ == \"__main__\":\n    # Check for required environment variables\n    for env_var in REQUIRED_ENV_VARS:\n        if env_var not in os.environ:\n            raise Exception(f\"Missing environment variable: {env_var}.\")\n\nparser = argparse.ArgumentParser(description=\"Pipecat Bot Runner\")\n    parser.add_argument(\"--host\", type=str,\n                        default=os.getenv(\"HOST\", \"0.0.0.0\"), help=\"Host address\")\n    parser.add_argument(\"--port\", type=int,\n                        default=os.getenv(\"PORT\", 7860), help=\"Port number\")\n    parser.add_argument(\"--reload\", action=\"store_true\",\n                        default=False, help=\"Reload code on change\")\n\nconfig = parser.parse_args()\n\ntry:\n        import uvicorn\n\nuvicorn.run(\n            \"bot_runner:app\",\n            host=config.host,\n            port=config.port,\n            reload=config.reload\n        )\n\nexcept KeyboardInterrupt:\n        print(\"Pipecat runner shutting down...\")\n\nshell Dockerfile theme={null}\n  FROM python:3.11-bullseye\n\n# Open port 7860 for http service\n\nENV FAST_API_PORT=7860\n  EXPOSE 7860\n\n# Install Python dependencies\n\nCOPY \\*.py .\n  COPY ./requirements.txt requirements.txt\n  RUN pip3 install --no-cache-dir --upgrade -r requirements.txt\n\nRUN python3 install_deps.py\n\n# Start the FastAPI server\n\nCMD python3 bot_runner.py --port ${FAST_API_PORT}\n\npython install_deps.py theme={null}\n  import torch\n\n# Download (cache) the Silero VAD model\n  torch.hub.load(repo_or_dir='snakers4/silero-vad', model='silero_vad', force_reload=True)\n  shell requirements.txt theme={null}\npipecat-ai[daily,openai,silero]\nfastapi\nuvicorn\npython-dotenv\nshell .env theme={null}\nDAILY_API_KEY=...\nOPENAI_API_KEY=...\nELEVENLABS_API_KEY=...\nELEVENLABS_VOICE_ID=...\nshell theme={null}",
+  "code_samples": [
+    {
+      "code": "### Dockerfile\n\nSince our bot is just using Python, our Dockerfile can be quite simple:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\nThe bot runner and bot `requirements.txt`:",
+      "language": "unknown"
+    },
+    {
+      "code": "And finally, let's create a `.env` file with our service keys",
+      "language": "unknown"
+    },
+    {
+      "code": "***\n\n### How it works\n\nRight now, this runner is spawning `bot.py` as a subprocess. When spawning the process, we pass through the transport room and token as system arguments to our bot, so it knows where to connect.\n\nSubprocesses serve as a great way to test out your bot in the cloud without too much hassle, but depending on the size of the host machine, it will likely not hold up well under load.\n\nWhilst some bots are just simple operators between the transport and third-party AI services (such as OpenAI), others have somewhat CPU-intensive operations, such as running and loading VAD models, so you may find you’re only able to scale this to support up to 5-10 concurrent bots.\n\nScaling your setup would require virtualizing your bot with it's own set of system resources, the process of which depends on your cloud provider.\n\n### Best practices\n\nIn an ideal world, we'd recommend containerizing your bot and bot runner independently so you can deploy each without any unnecessary dependencies or models.\n\nMost cloud providers will offer a way to deploy various images programmatically, which we explore in the various provider examples in these docs.\n\nFor the sake of simplicity defining this pattern, we're just using one container for everything.\n\n### Build and run\n\nWe should now have a project that contains the following files:\n\n* `bot.py`\n* `bot_runner.py`\n* `requirements.txt`\n* `.env`\n* `Dockerfile`\n\nYou can now `docker build ...` and deploy your container. Of course, you can still work with your bot in local development too:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Dockerfile",
+      "id": "dockerfile"
+    },
+    {
+      "level": "h3",
+      "text": "How it works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Best practices",
+      "id": "best-practices"
+    },
+    {
+      "level": "h3",
+      "text": "Build and run",
+      "id": "build-and-run"
+    }
+  ],
+  "url": "llms-txt#------------------main------------------",
+  "links": []
+}

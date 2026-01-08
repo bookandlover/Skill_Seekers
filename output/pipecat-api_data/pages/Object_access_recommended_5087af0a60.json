@@ -1,0 +1,24 @@
+{
+  "title": "Object access (recommended)",
+  "content": "config = await configure(session)\nroom_url = config.room_url\ntoken = config.token\npython theme={null}\nfrom pipecat.runner.livekit import configure\n\nurl, token, room_name = await configure()",
+  "code_samples": [
+    {
+      "code": "## LiveKit Configuration\n\nLiveKit utilities manage authentication tokens, room setup, and agent permissions for LiveKit server integration.\n\n### Basic Configuration\n\nUse `configure()` for standard setup:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "LiveKit Configuration",
+      "id": "livekit-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Basic Configuration",
+      "id": "basic-configuration"
+    }
+  ],
+  "url": "llms-txt#object-access-(recommended)",
+  "links": []
+}

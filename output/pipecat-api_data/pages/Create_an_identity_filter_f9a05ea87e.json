@@ -1,0 +1,8 @@
+{
+  "title": "Create an identity filter",
+  "content": "pass_through = IdentityFilter()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-an-identity-filter",
+  "links": []
+}

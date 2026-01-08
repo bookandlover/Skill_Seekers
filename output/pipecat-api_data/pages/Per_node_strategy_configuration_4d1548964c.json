@@ -1,0 +1,97 @@
+{
+  "title": "Per-node strategy configuration",
+  "content": "node_config = {\n    \"task_messages\": [...],\n    \"functions\": [...],\n    \"context_strategy\": ContextStrategyConfig(\n        strategy=ContextStrategy.RESET_WITH_SUMMARY,\n        summary_prompt=\"Provide a concise summary of the customer's order details and preferences.\"\n    )\n}\npython theme={null}\nNodeConfig(\n    task_messages=[\n        {\n            \"role\": \"system\",\n            \"content\": \"Warmly greet the customer and ask how many people are in their party. This is your only job for now; if the customer asks for something else, politely remind them you can't do it.\",\n        }\n    ],\n    respond_immediately=False,\n    # ... other fields\n)\npython theme={null}\nflow_manager = FlowManager(\n    task=task,                              # PipelineTask\n    llm=llm,                                # LLMService\n    context_aggregator=context_aggregator,  # Context aggregator\n    transport=transport,                    # Transport\n)\npython theme={null}\n@transport.event_handler(\"on_client_connected\")\nasync def on_client_connected(transport, client):\n    logger.info(f\"Client connected\")\n    # Kick off the conversation.\n    await flow_manager.initialize(create_initial_node())\npython theme={null}\nflow_manager = FlowManager(\n    task=task,                              # PipelineTask\n    llm=llm,                                # LLMService\n    context_aggregator=context_aggregator,  # Context aggregator\n    flow_config=flow_config,                # FlowConfig\n)\npython theme={null}\n@transport.event_handler(\"on_first_participant_joined\")\nasync def on_first_participant_joined(transport, participant):\n    await transport.capture_participant_transcription(participant[\"id\"])\n    logger.debug(\"Initializing flow\")\n    await flow_manager.initialize()\npython theme={null}\nasync def record_favorite_color_and_set_next_node(\n    args: FlowArgs, flow_manager: FlowManager\n) -> tuple[str, NodeConfig]:\n    \"\"\"Function handler that records the color then sets the next node.\n\nHere \"record\" means print to the console, but any logic could go here;\n    Write to a database, make an API call, etc.\n    \"\"\"\n    flow_manager.state[\"color\"] = args[\"color\"] # Cross-node state setting\n    print(f\"Your favorite color is: {args['color']}\")\n    return args[\"color\"], create_end_node()\npython theme={null}\nflow_manager = FlowManager(\n    task=task,\n    llm=llm,\n    context_aggregator=context_aggregator,\n    transport=transport,\n    global_functions=[global_function_1, global_function_2], # Cross-node functions\n)\npython theme={null}\ndef create_initial_node() -> NodeConfig:\n    \"\"\"Create the initial node of the flow.\n\nDefine the bot's role and task for the node as well as the function for it to call.\n    The function call includes a handler which provides the function call result to\n    Pipecat and then transitions to the next node.\n    \"\"\"\n    record_favorite_color_func = FlowsFunctionSchema(\n        name=\"record_favorite_color_func\",\n        description=\"Record the color the user said is their favorite.\",\n        required=[\"color\"],\n        handler=record_favorite_color_and_set_next_node,\n        properties={\"color\": {\"type\": \"string\"}},\n    )\n\nreturn {\n        \"name\": \"initial\",\n        \"role_messages\": [\n            {\n                \"role\": \"system\",\n                \"content\": \"You are an inquisitive child. Use very simple language. Ask simple questions. You must ALWAYS use one of the available functions to progress the conversation. Your responses will be converted to audio. Avoid outputting special characters and emojis.\",\n            }\n        ],\n        \"task_messages\": [\n            {\n                \"role\": \"system\",\n                \"content\": \"Say 'Hello world' and ask what is the user's favorite color.\",\n            }\n        ],\n        \"functions\": [record_favorite_color_func],\n    }\n```\n\nFor static flows, you define your entire flow structure upfront using a `FlowConfig`. This follows the same rules as the NodeConfig, but is assembled as a single JSON object that defines the entire state of the program.\n\nNow that you understand the basics of Pipecat Flows, explore the reference docs and more examples:\n\n<CardGroup>\n  <Card title=\"Pipecat Flows Reference\" icon=\"book\" href=\"/server/frameworks/flows/pipecat-flows\">\n    Complete API reference and technical details\n  </Card>\n\n<Card title=\"Pipecat Flows Examples\" icon=\"rocket\" href=\"https://github.com/pipecat-ai/pipecat-flows/tree/main/examples\">\n    Explore more complex examples and use cases\n  </Card>\n</CardGroup>",
+  "code_samples": [
+    {
+      "code": "### Respond Immediately\n\nFor each node in the conversation, you can decide whether the LLM should respond immediately upon entering the node (the default behavior) or whether the LLM should wait for the user to speak first before responding. You do this using the `respond_immediately` field.\n\n<Tip>\n  `respond_immediately=False` may be particularly useful in the very first node,\n  especially in outbound-calling cases where the user has to first answer the\n  phone to trigger the conversation.\n</Tip>",
+      "language": "unknown"
+    },
+    {
+      "code": "<Warning>\n  Keep in mind that if you specify `respond_immediately=False`, the user may not\n  be aware of the conversational task at hand when entering the node (the bot\n  hasn't told them yet). While it's always important to have guardrails in your\n  node messages to keep the conversation on topic, letting the user speak first\n  makes it even more so.\n</Warning>\n\n## Initialization\n\nInitialize your flow by creating a `FlowManager` instance and calling `initialize()` to start the conversation.\n\n### Dynamic Flow\n\nFirst, create the FlowManager:",
+      "language": "unknown"
+    },
+    {
+      "code": "Then, initialize by passing the first `NodeConfig` into the `initialize()` method:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Static Flow\n\nFirst, create the FlowManager:",
+      "language": "unknown"
+    },
+    {
+      "code": "Then initialize:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>For Static Flows, `initialize()` does not take any args.</Note>\n\n## Cross-Node Logic\n\n### State\n\nPipecat Flows supports cross-node state through the `flow_manager.state` dictionary. This persistent storage lets you share data across nodes throughout the entire conversation:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Functions\n\nPipecat Flows supports defining functions that are available across all nodes in your flow. They're defined in the same way as node-specific functions, but are passed into the FlowManager at initialization:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Usage Examples:\n\n### Dynamic Flow (Recommended)\n\nHere's an example that ties together all the concepts we've covered:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Respond Immediately",
+      "id": "respond-immediately"
+    },
+    {
+      "level": "h2",
+      "text": "Initialization",
+      "id": "initialization"
+    },
+    {
+      "level": "h3",
+      "text": "Dynamic Flow",
+      "id": "dynamic-flow"
+    },
+    {
+      "level": "h3",
+      "text": "Static Flow",
+      "id": "static-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Cross-Node Logic",
+      "id": "cross-node-logic"
+    },
+    {
+      "level": "h3",
+      "text": "State",
+      "id": "state"
+    },
+    {
+      "level": "h3",
+      "text": "Functions",
+      "id": "functions"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples:",
+      "id": "usage-examples:"
+    },
+    {
+      "level": "h3",
+      "text": "Dynamic Flow (Recommended)",
+      "id": "dynamic-flow-(recommended)"
+    },
+    {
+      "level": "h3",
+      "text": "Static Flow",
+      "id": "static-flow"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#per-node-strategy-configuration",
+  "links": []
+}

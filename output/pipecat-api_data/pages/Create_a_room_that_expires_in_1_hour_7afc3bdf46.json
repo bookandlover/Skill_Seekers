@@ -1,0 +1,28 @@
+{
+  "title": "Create a room that expires in 1 hour",
+  "content": "params = DailyRoomParams(\n    name=\"my-room\",\n    privacy=\"private\",\n    properties=DailyRoomProperties(\n        exp=time.time() + 3600,\n        enable_chat=True\n    )\n)\nroom = await helper.create_room(params)\nprint(f\"Room URL: {room.url}\")\npython theme={null}\nroom = await helper.get_room_from_url(\"https://your-domain.daily.co/my-room\")\nprint(f\"Room name: {room.name}\")\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "## Get Room From URL\n\nRetrieves room information using a Daily room URL.\n\n<ParamField type=\"string\">\n  The complete Daily room URL\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "## Get Token\n\nGenerates a meeting token for a specific room.\n\n<ParamField type=\"string\">\n  The complete Daily room URL\n</ParamField>\n\n<ParamField type=\"float\">\n  Token expiration time in seconds\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to eject user when token expires\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether the token should have owner privileges (overrides any setting in\n  params)\n</ParamField>\n\n<ParamField type=\"DailyMeetingTokenParams\">\n  Additional token configuration. Note that `room_name`, `exp`,\n  `eject_at_token_exp`, and `is_owner` will be set based on the other function\n  parameters.\n</ParamField>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Get Room From URL",
+      "id": "get-room-from-url"
+    },
+    {
+      "level": "h2",
+      "text": "Get Token",
+      "id": "get-token"
+    }
+  ],
+  "url": "llms-txt#create-a-room-that-expires-in-1-hour",
+  "links": []
+}

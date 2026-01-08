@@ -1,0 +1,14 @@
+{
+  "title": "HACK: here we restart the Datadog Trace Agent specifically, since we know it failed to start above",
+  "content": "service datadog-agent-trace restart || true",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "DEBUGGING",
+      "id": "debugging"
+    }
+  ],
+  "url": "llms-txt#hack:-here-we-restart-the-datadog-trace-agent-specifically,-since-we-know-it-failed-to-start-above",
+  "links": []
+}

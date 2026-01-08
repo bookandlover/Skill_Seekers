@@ -1,0 +1,8 @@
+{
+  "title": "Add pattern for JSON data",
+  "content": "pattern_aggregator.add_pattern(\n    type=\"json\",\n    start_pattern=\"\",\n    action=MatchAction.AGGREGATE\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-pattern-for-json-data",
+  "links": []
+}

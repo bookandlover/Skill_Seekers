@@ -1,0 +1,62 @@
+{
+  "title": "LLMSwitcher",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/service-switchers/llm-switcher\n\nDynamically switch between different LLM services with support for ad-hoc inference and unified function registration\n\n`LLMSwitcher` is a specialized version of `ServiceSwitcher` designed specifically for managing multiple LLM services. Beyond basic service switching, it provides convenient methods for running ad-hoc inferences and registering function handlers across all LLMs simultaneously.\n\nThis is particularly useful when you need to switch between different LLM providers based on task complexity, cost optimization, or specific model capabilities while maintaining a consistent function calling interface.\n\n<ParamField type=\"List[LLMService]\">\n  List of LLM service instances to switch between.\n</ParamField>\n\n<ParamField type=\"Type[ServiceSwitcherStrategy]\">\n  The strategy class to use for switching logic. Pass the class itself, not an\n  instance.\n</ParamField>\n\n<ParamField type=\"List[LLMService]\">\n  The list of LLM services managed by this switcher.\n</ParamField>\n\n<ParamField type=\"Optional[LLMService]\">\n  The currently active LLM service, or None if no LLMs are configured.\n</ParamField>\n\nRun a one-shot inference with the currently active LLM, outside of the normal pipeline flow.\n\n<ParamField type=\"LLMContext\">\n  The LLM context containing conversation history and messages.\n</ParamField>\n\n**Returns**: `Optional[str]` - The LLM's response as a string, or None if no LLM is active.\n\n### register\\_function()\n\nRegister a function handler with all LLMs in the switcher, regardless of which is currently active.\n\n<ParamField type=\"Optional[str]\">\n  The name of the function to handle. Use None for a catch-all handler that\n  processes all function calls.\n</ParamField>\n\n<ParamField type=\"Callable\">\n  The async function handler. Should accept a single `FunctionCallParams`\n  parameter.\n</ParamField>\n\n<ParamField type=\"Optional[Callable]\">\n  Legacy callback function (deprecated). Put initialization code at the top of\n  your handler instead.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to cancel this function call when a user interruption occurs.\n</ParamField>\n\n### Basic LLM Switching\n\n```python theme={null}\nfrom pipecat.pipeline.llm_switcher import LLMSwitcher\nfrom pipecat.pipeline.service_switcher import ServiceSwitcherStrategyManual\nfrom pipecat.services.openai.llm import OpenAILLMService\nfrom pipecat.services.google.llm import GoogleLLMService\nfrom pipecat.frames.frames import ManuallySwitchServiceFrame",
+  "code_samples": [
+    {
+      "code": "<ParamField type=\"List[LLMService]\">\n  List of LLM service instances to switch between.\n</ParamField>\n\n<ParamField type=\"Type[ServiceSwitcherStrategy]\">\n  The strategy class to use for switching logic. Pass the class itself, not an\n  instance.\n</ParamField>\n\n## Properties\n\n<ParamField type=\"List[LLMService]\">\n  The list of LLM services managed by this switcher.\n</ParamField>\n\n<ParamField type=\"Optional[LLMService]\">\n  The currently active LLM service, or None if no LLMs are configured.\n</ParamField>\n\n## Methods\n\n### run\\_inference()\n\nRun a one-shot inference with the currently active LLM, outside of the normal pipeline flow.",
+      "language": "unknown"
+    },
+    {
+      "code": "<ParamField type=\"LLMContext\">\n  The LLM context containing conversation history and messages.\n</ParamField>\n\n**Returns**: `Optional[str]` - The LLM's response as a string, or None if no LLM is active.\n\n### register\\_function()\n\nRegister a function handler with all LLMs in the switcher, regardless of which is currently active.",
+      "language": "unknown"
+    },
+    {
+      "code": "<ParamField type=\"Optional[str]\">\n  The name of the function to handle. Use None for a catch-all handler that\n  processes all function calls.\n</ParamField>\n\n<ParamField type=\"Callable\">\n  The async function handler. Should accept a single `FunctionCallParams`\n  parameter.\n</ParamField>\n\n<ParamField type=\"Optional[Callable]\">\n  Legacy callback function (deprecated). Put initialization code at the top of\n  your handler instead.\n</ParamField>\n\n<ParamField type=\"bool\">\n  Whether to cancel this function call when a user interruption occurs.\n</ParamField>\n\n## Usage Examples\n\n### Basic LLM Switching",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h2",
+      "text": "Properties",
+      "id": "properties"
+    },
+    {
+      "level": "h2",
+      "text": "Methods",
+      "id": "methods"
+    },
+    {
+      "level": "h3",
+      "text": "run\\_inference()",
+      "id": "run\\_inference()"
+    },
+    {
+      "level": "h3",
+      "text": "register\\_function()",
+      "id": "register\\_function()"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Basic LLM Switching",
+      "id": "basic-llm-switching"
+    }
+  ],
+  "url": "llms-txt#llmswitcher",
+  "links": []
+}

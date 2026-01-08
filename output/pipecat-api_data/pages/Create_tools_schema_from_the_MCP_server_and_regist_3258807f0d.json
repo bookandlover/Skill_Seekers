@@ -1,0 +1,8 @@
+{
+  "title": "Create tools schema from the MCP server and register them with llm",
+  "content": "tools = await mcp.register_tools(llm)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-tools-schema-from-the-mcp-server-and-register-them-with-llm",
+  "links": []
+}

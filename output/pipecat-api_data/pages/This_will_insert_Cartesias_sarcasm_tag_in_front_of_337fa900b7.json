@@ -1,0 +1,19 @@
+{
+  "title": "This will insert Cartesia's sarcasm tag in front of any sentence that is just \"whatever\".",
+  "content": "async def maybe_insert_sarcasm(text: str, type: str) -> str:\n    if text.strip(\".!\").lower() == \"whatever\":\n        return CartesiaTTSService.EMOTION_TAG(CartesiaEmotion.SARCASM) + text + CartesiaTTSService.EMOTION_TAG(CartesiaEmotion.NEUTRAL)\n    return text\n\ntts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n    text_transforms=[\n        (\"sentence\", maybe_insert_sarcasm),\n    ],\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### PAUSE\\_TAG(seconds: float) -> str:\n\nA convenience method to create Cartesia's [SSML tag for inserting pauses](https://docs.cartesia.ai/build-with-cartesia/sonic-3/ssml-tags#pauses-and-breaks) in speech.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "PAUSE\\_TAG(seconds: float) -> str:",
+      "id": "pause\\_tag(seconds:-float)-->-str:"
+    }
+  ],
+  "url": "llms-txt#this-will-insert-cartesia's-sarcasm-tag-in-front-of-any-sentence-that-is-just-\"whatever\".",
+  "links": []
+}

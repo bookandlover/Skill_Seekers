@@ -1,0 +1,19 @@
+{
+  "title": "Request-specific error",
+  "content": "await processor._send_error_response(request_id, \"Invalid action arguments\")\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Error categories:\n\n* Configuration errors\n* Action execution errors\n* Function call errors\n* Protocol errors\n* Fatal and non-fatal errors\n\n## Bot Control\n\nManage bot state and handle interruptions:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Bot Control",
+      "id": "bot-control"
+    }
+  ],
+  "url": "llms-txt#request-specific-error",
+  "links": []
+}

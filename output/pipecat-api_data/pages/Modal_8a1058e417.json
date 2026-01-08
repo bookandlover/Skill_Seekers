@@ -1,0 +1,33 @@
+{
+  "title": "Modal",
+  "content": "Source: https://docs.pipecat.ai/deployment/platforms/modal\n\nDeploy Pipecat applications to Modal\n\n[Modal](https://www.modal.com) is well-suited for Pipecat deployments because it handles container orchestration, scaling, and cold starts efficiently. This makes it a good choice for production Pipecat bots that need reliable performance.\n\nThis guide walks through the Modal example included in the Pipecat repository, which follows the same [deployment pattern](../pattern).\n\n<Card title=\"Modal example\" icon=\"github\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/modal-example\">\n  View the complete Modal deployment example in our GitHub repository\n</Card>\n\n<Frame>\n  <img\n    alt=\"Diagram of the deployment architecture of Modal and Pipecat\nexample\"\n  />\n</Frame>\n\n## Install the Modal CLI\n\n<Card title=\"Set up Modal\" icon=\"rocket\" href=\"https://modal.com/docs/guide#getting-started\">\n  Follow Modal's official instructions for creating an account and setting up\n  the CLI\n</Card>\n\n## Deploy a self-serve LLM\n\n1. Deploy Modal's OpenAI-compatible LLM service:\n\n<Info>\n  Refer to Modal's guide and example for [Deploying an OpenAI-compatible LLM\n  service with vLLM](https://modal.com/docs/examples/vllm_inference) for more\n  details.\n</Info>\n\n2. Take note of the endpoint URL from the previous step, which will look like:\n   \n   You'll need this for the `bot_vllm.py` file in the next section.\n\n<Note>\n  The default Modal LLM example uses Llama-3.1 and will shut down after 15\n  minutes of inactivity. Cold starts take 5-10 minutes. To prepare the service,\n  we recommend visiting the `/docs` endpoint (`https://<Modal workspace>--example-vllm-openai-compatible-serve.modal.run/docs`)\n  for your deployed LLM and wait for it to fully load before connecting your client.\n</Note>\n\n## Deploy FastAPI App and Pipecat pipeline to Modal\n\n1. Setup environment variables:\n\n```bash theme={null}\ncd server\ncp env.example .env",
+  "code_samples": [
+    {
+      "code": "<Info>\n  Refer to Modal's guide and example for [Deploying an OpenAI-compatible LLM\n  service with vLLM](https://modal.com/docs/examples/vllm_inference) for more\n  details.\n</Info>\n\n2. Take note of the endpoint URL from the previous step, which will look like:",
+      "language": "unknown"
+    },
+    {
+      "code": "You'll need this for the `bot_vllm.py` file in the next section.\n\n<Note>\n  The default Modal LLM example uses Llama-3.1 and will shut down after 15\n  minutes of inactivity. Cold starts take 5-10 minutes. To prepare the service,\n  we recommend visiting the `/docs` endpoint (`https://<Modal workspace>--example-vllm-openai-compatible-serve.modal.run/docs`)\n  for your deployed LLM and wait for it to fully load before connecting your client.\n</Note>\n\n## Deploy FastAPI App and Pipecat pipeline to Modal\n\n1. Setup environment variables:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Install the Modal CLI",
+      "id": "install-the-modal-cli"
+    },
+    {
+      "level": "h2",
+      "text": "Deploy a self-serve LLM",
+      "id": "deploy-a-self-serve-llm"
+    },
+    {
+      "level": "h2",
+      "text": "Deploy FastAPI App and Pipecat pipeline to Modal",
+      "id": "deploy-fastapi-app-and-pipecat-pipeline-to-modal"
+    }
+  ],
+  "url": "llms-txt#modal",
+  "links": []
+}

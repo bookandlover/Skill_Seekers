@@ -1,0 +1,51 @@
+{
+  "title": "Create audio buffer processor with default settings",
+  "content": "audiobuffer = AudioBufferProcessor(\n    num_channels=1,               # 1 for mono, 2 for stereo (user left, bot right)\n    enable_turn_audio=False,      # Enable per-turn audio recording\n    user_continuous_stream=True,  # User has continuous audio stream\n)\npython theme={null}\npipeline = Pipeline(\n    [\n        transport.input(),\n        stt,\n        context_aggregator.user(),\n        llm,\n        tts,\n        transport.output(),\n        audiobuffer,          # Add after all audio components\n        context_aggregator.assistant(),\n    ]\n)\npython theme={null}\n@transport.event_handler(\"on_client_connected\")\nasync def on_client_connected(transport, client):\n    logger.info(f\"Client connected\")\n    # Important: Start recording explicitly\n    await audiobuffer.start_recording()\n    # Continue with session initialization...\npython theme={null}\n@audiobuffer.event_handler(\"on_audio_data\")\nasync def on_audio_data(buffer, audio, sample_rate, num_channels):\n    # Save or process the composite audio\n    timestamp = datetime.datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    filename = f\"recordings/conversation_{timestamp}.wav\"\n\n# Create the WAV file\n    with wave.open(filename, \"wb\") as wf:\n        wf.setnchannels(num_channels)\n        wf.setsampwidth(2)  # 16-bit audio\n        wf.setframerate(sample_rate)\n        wf.writeframes(audio)\n\nlogger.info(f\"Saved recording to {filename}\")\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Step 2: Add to Your Pipeline\n\nPlace the processor in your pipeline after all audio-producing components:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Step 3: Start Recording\n\nExplicitly start recording when needed, typically when a session begins:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Warning>\n  You must call `start_recording()` explicitly to begin capturing audio. The\n  processor won't record automatically when initialized.\n</Warning>\n\n### Step 4: Handle Audio Data\n\nRegister an event handler to process audio data:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Tip>\n  If recording separate tracks, you can use the `on_track_audio_data` event\n  handler to save user and bot audio separately.\n</Tip>\n\n## Recording Longer Conversations\n\nFor conversations that last a few minutes, it may be sufficient to just buffer the audio in memory. However, for longer sessions, storing audio in memory poses two challenges:\n\n1. **Memory Usage**: Long recordings can consume significant memory, leading to potential crashes or performance issues.\n2. **Conversation Loss**: If the application crashes or the connection drops, you may lose all recorded audio.\n\nInstead, consider using a chunked approach to record audio in manageable segments. This allows you to periodically save audio data to disk or upload it to cloud storage, reducing memory usage and ensuring data persistence.\n\n### Chunked Recording\n\nSet a reasonable `buffer_size` to trigger periodic uploads:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Step 2: Add to Your Pipeline",
+      "id": "step-2:-add-to-your-pipeline"
+    },
+    {
+      "level": "h3",
+      "text": "Step 3: Start Recording",
+      "id": "step-3:-start-recording"
+    },
+    {
+      "level": "h3",
+      "text": "Step 4: Handle Audio Data",
+      "id": "step-4:-handle-audio-data"
+    },
+    {
+      "level": "h2",
+      "text": "Recording Longer Conversations",
+      "id": "recording-longer-conversations"
+    },
+    {
+      "level": "h3",
+      "text": "Chunked Recording",
+      "id": "chunked-recording"
+    }
+  ],
+  "url": "llms-txt#create-audio-buffer-processor-with-default-settings",
+  "links": []
+}

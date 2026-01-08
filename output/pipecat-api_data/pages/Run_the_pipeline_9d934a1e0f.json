@@ -1,0 +1,19 @@
+{
+  "title": "Run the pipeline",
+  "content": "runner = PipelineRunner()\nawait runner.run(task)\n```\n\nIf you're having issues with tracing:\n\n* **No Traces Visible**: Ensure the OpenTelemetry packages are installed and that your collector endpoint is correct\n* **Missing Service Data**: Verify that `enable_metrics=True` is set in PipelineParams\n* **Debugging Tracing**: Enable console export with `console_export=True` to view traces in your logs\n* **Connection Errors**: Check network connectivity to your trace collector\n* **Collector Configuration**: Verify your collector is properly set up to receive traces\n\n* [OpenTelemetry Python Documentation](https://opentelemetry-python.readthedocs.io/)\n* [OpenTelemetry Tracing Specification](https://opentelemetry.io/docs/reference/specification/trace/api/)\n* [Jaeger Documentation](https://www.jaegertracing.io/docs/latest/)\n* [Langfuse OpenTelemetry Documentation](https://langfuse.com/docs/opentelemetry/get-started)",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Troubleshooting",
+      "id": "troubleshooting"
+    },
+    {
+      "level": "h2",
+      "text": "References",
+      "id": "references"
+    }
+  ],
+  "url": "llms-txt#run-the-pipeline",
+  "links": []
+}

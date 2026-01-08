@@ -1,0 +1,48 @@
+{
+  "title": "Session Arguments",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/session-arguments\n\nUnderstanding the arguments received by bot entry points\n\nWhen creating agents with Pipecat Cloud, your `bot()` entry point function receives different types of arguments depending on the session type. These classes represent the structure of those arguments.\n\n## PipecatSessionArguments\n\nStandard Pipecat Cloud agent session arguments, used for basic sessions.\n\n<ParamField type=\"Optional[str]\">\n  The unique identifier for the current session.\n</ParamField>\n\n<ParamField type=\"Any\">\n  The custom data passed to the agent via the session parameters.\n</ParamField>\n\n## DailySessionArguments\n\nArguments for sessions that involve Daily WebRTC rooms for voice/video interaction.\n\n<ParamField type=\"Optional[str]\">\n  The unique identifier for the current session.\n</ParamField>\n\n<ParamField type=\"str\">\n  The URL for the Daily room.\n</ParamField>\n\n<ParamField type=\"str\">\n  The authentication token for the Daily room.\n</ParamField>\n\n<ParamField type=\"Any\">\n  The custom data passed to the agent via the session parameters.\n</ParamField>\n\n## WebSocketSessionArguments\n\nArguments for sessions that use WebSocket connections for real-time communication.\n\n<ParamField type=\"Optional[str]\">\n  The unique identifier for the current session.\n</ParamField>\n\n<ParamField type=\"WebSocket\">\n  The FastAPI WebSocket connection used to communicate with the client.\n</ParamField>",
+  "code_samples": [
+    {
+      "code": "### Properties\n\n<ParamField type=\"Optional[str]\">\n  The unique identifier for the current session.\n</ParamField>\n\n<ParamField type=\"Any\">\n  The custom data passed to the agent via the session parameters.\n</ParamField>\n\n## DailySessionArguments\n\nArguments for sessions that involve Daily WebRTC rooms for voice/video interaction.",
+      "language": "unknown"
+    },
+    {
+      "code": "### Properties\n\n<ParamField type=\"Optional[str]\">\n  The unique identifier for the current session.\n</ParamField>\n\n<ParamField type=\"str\">\n  The URL for the Daily room.\n</ParamField>\n\n<ParamField type=\"str\">\n  The authentication token for the Daily room.\n</ParamField>\n\n<ParamField type=\"Any\">\n  The custom data passed to the agent via the session parameters.\n</ParamField>\n\n## WebSocketSessionArguments\n\nArguments for sessions that use WebSocket connections for real-time communication.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "PipecatSessionArguments",
+      "id": "pipecatsessionarguments"
+    },
+    {
+      "level": "h3",
+      "text": "Properties",
+      "id": "properties"
+    },
+    {
+      "level": "h2",
+      "text": "DailySessionArguments",
+      "id": "dailysessionarguments"
+    },
+    {
+      "level": "h3",
+      "text": "Properties",
+      "id": "properties"
+    },
+    {
+      "level": "h2",
+      "text": "WebSocketSessionArguments",
+      "id": "websocketsessionarguments"
+    },
+    {
+      "level": "h3",
+      "text": "Properties",
+      "id": "properties"
+    }
+  ],
+  "url": "llms-txt#session-arguments",
+  "links": []
+}

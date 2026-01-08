@@ -1,0 +1,24 @@
+{
+  "title": "Pipeline Idle Detection",
+  "content": "Source: https://docs.pipecat.ai/server/pipeline/pipeline-idle-detection\n\nAutomatically detect and handle idle pipelines with no bot activity\n\nPipeline idle detection is a feature that monitors activity in your pipeline and can automatically cancel tasks when no meaningful bot interactions are occurring. This helps prevent pipelines from running indefinitely when a conversation has naturally ended but wasn't properly terminated.\n\nThe system monitors specific \"activity frames\" that indicate the bot is actively engaged in the conversation. By default, these are:\n\n* `BotSpeakingFrame` - When the bot is speaking\n* `LLMFullResponseEndFrame` - When the LLM has completed a response\n\nIf no activity frames are detected within the configured timeout period (5 minutes by default), the system considers the pipeline idle and can automatically terminate it.\n\n<Note>\n  Idle detection only starts after the pipeline has begun processing frames. The\n  idle timer resets whenever an activity frame (as specified in\n  `idle_timeout_frames`) is received.\n</Note>\n\nYou can configure idle detection behavior when creating a `PipelineTask`:\n\n```python theme={null}\nfrom pipecat.pipeline.task import PipelineParams, PipelineTask",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    }
+  ],
+  "url": "llms-txt#pipeline-idle-detection",
+  "links": []
+}

@@ -1,0 +1,76 @@
+{
+  "title": "Use the ngrok URL (e.g., https://a1b2c3.ngrok.io/call) as your webhook",
+  "content": "python bot.py theme={null}\nfrom pipecat.transports.daily import DailyTransport, DailyParams\n\nasync def run_bot(room_url: str, token: str, target_number: str, sip_uri: str):\n    # Create Daily WebRTC transport\n    transport = DailyTransport(\n        room_url,\n        token,\n        \"Voice Bot\",\n        DailyParams(\n            audio_in_enabled=True,\n            audio_out_enabled=True,\n            video_out_enabled=False,\n            vad_analyzer=SileroVADAnalyzer(),\n            transcription_enabled=True,\n        )\n    )\n\n# Initiate the outbound call through Twilio SIP\n    await transport.start_dialout(sip_uri)\n\n# Your bot pipeline setup here...\npython theme={null}\nresp = VoiceResponse()\nresp.play(url=\"https://your-hold-music.mp3\", loop=10)\nreturn str(resp)\npython theme={null}\ncall_already_forwarded = False\n\n@transport.event_handler(\"on_dialin_ready\")\nasync def on_dialin_ready(transport, cdata):\n    nonlocal call_already_forwarded\n    if call_already_forwarded:\n        return\n    # Forward the call...\n    call_already_forwarded = True\nshell theme={null}\npython server.py\nngrok http 8000",
+  "code_samples": [
+    {
+      "code": "<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-twilio-sip-dial-in\">\n  See the full README with step-by-step setup, webhook configuration, and\n  troubleshooting\n</Card>\n\n## Dial-out\n\nDial-out allows your bot to initiate calls through Twilio's SIP infrastructure using Daily's WebRTC transport.\n\n### How It Works\n\nHere's the sequence of events for dial-out calls:\n\n1. **Your application triggers a dial-out** (via API call or user action)\n2. **Server creates a Daily room** with SIP capabilities\n3. **Bot joins the Daily room** and sets up the WebRTC transport\n4. **Bot initiates SIP call** through Twilio to the target number\n5. **Twilio routes the call** to the destination phone number\n6. **The recipient answers** and is connected to your bot via Daily WebRTC\n7. **The bot handles the conversation** with high-quality WebRTC audio\n\n### Set up your server for dial-out\n\nThe dial-out server orchestrates outbound calls by coordinating between your application, Daily's WebRTC transport, and Twilio's SIP infrastructure. When you trigger a dial-out call, your server:\n\n1. **Receives the dial-out request** with target phone number and call parameters\n2. **Creates a Daily room** with SIP capabilities and dial-out enabled\n3. **Spawns a bot process** with the room details and target phone number\n4. **Initiates the SIP call** through Twilio to the destination number\n5. **Manages the connection** between Daily WebRTC and Twilio SIP routing\n6. **Handles call events** like answered, busy, or failed connections\n\nThe server simplifies outbound calling by abstracting the complexity of coordinating between WebRTC transport and SIP telephony, providing high-quality audio through Daily while leveraging Twilio's reliable call routing.\n\n<Card title=\"Complete Server Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-twilio-sip-dial-out/server.py\">\n  See the full FastAPI server code with Daily room creation and SIP dial-out\n  management\n</Card>\n\n### Configure your Pipecat bot for dial-out\n\nThe dial-out bot receives arguments from the server process and uses them to initiate outbound calls through Twilio's SIP infrastructure via Daily's WebRTC transport. The key components are:\n\n**Bot Entry Point**: The bot receives arguments containing:\n\n* `room_url`: Daily room URL for the WebRTC connection\n* `token`: Daily room token for authentication\n* `target_number`: Phone number to call via Twilio SIP\n* `sip_uri`: Twilio SIP URI for routing the outbound call\n\n**Transport Creation**: These arguments are used to configure the `DailyTransport` for dial-out:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Dial-out Flow**: The `start_dialout()` method initiates the call by connecting Daily's WebRTC transport to Twilio's SIP infrastructure. The `sip_uri` parameter contains the Twilio SIP endpoint configured with the target phone number, allowing Daily to route the call through Twilio's telephony network to reach the destination.\n\n<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/phone-chatbot/daily-twilio-sip-dial-out/bot.py\">\n  See the full bot.py with WebRTC transport setup and SIP dial-out configuration\n</Card>\n\n### Run the Example\n\nTo test dial-out functionality:\n\n1. **Start your server**: Run your FastAPI server\n2. **Trigger a call**: Make an API request to start a dial-out call\n3. **Answer your phone**: The bot will call the specified number via Twilio\n4. **Talk to your bot**: Have a conversation with high-quality WebRTC audio\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-twilio-sip-dial-out\">\n  See the full README with step-by-step setup, API usage, and SIP configuration\n</Card>\n\n## Best Practices\n\n### Hold Music for Initialization\n\nAlways respond to Twilio's initial webhook with hold music to give your bot time to initialize:",
+      "language": "unknown"
+    },
+    {
+      "code": "**Avoid using `<Pause>`** - Twilio's pause duration is limited and may not provide enough time for Daily SIP setup.\n\n### Handle Multiple Events\n\nUse a flag to ensure you only forward calls once when handling multiple `on_dialin_ready` events:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Deployment\n\n### Local Development\n\nUse [ngrok](https://ngrok.com/) to expose your local server for testing:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Dial-out",
+      "id": "dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Set up your server for dial-out",
+      "id": "set-up-your-server-for-dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "Configure your Pipecat bot for dial-out",
+      "id": "configure-your-pipecat-bot-for-dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "Run the Example",
+      "id": "run-the-example"
+    },
+    {
+      "level": "h2",
+      "text": "Best Practices",
+      "id": "best-practices"
+    },
+    {
+      "level": "h3",
+      "text": "Hold Music for Initialization",
+      "id": "hold-music-for-initialization"
+    },
+    {
+      "level": "h3",
+      "text": "Handle Multiple Events",
+      "id": "handle-multiple-events"
+    },
+    {
+      "level": "h2",
+      "text": "Deployment",
+      "id": "deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Local Development",
+      "id": "local-development"
+    }
+  ],
+  "url": "llms-txt#use-the-ngrok-url-(e.g.,-https://a1b2c3.ngrok.io/call)-as-your-webhook",
+  "links": []
+}

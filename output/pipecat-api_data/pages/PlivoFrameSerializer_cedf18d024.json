@@ -1,0 +1,44 @@
+{
+  "title": "PlivoFrameSerializer",
+  "content": "Source: https://docs.pipecat.ai/server/services/serializers/plivo\n\nSerializer for Plivo Audio Streaming WebSocket protocol\n\n`PlivoFrameSerializer` enables integration with Plivo's Audio Streaming WebSocket protocol, allowing your Pipecat application to handle phone calls via Plivo's voice services with bidirectional audio conversion, DTMF event handling, and automatic call termination.\n\n<CardGroup>\n  <Card title=\"Plivo Serializer API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.serializers.plivo.html\">\n    Pipecat's API methods for Plivo Audio Streaming integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/plivo-chatbot\">\n    Complete telephony examples with Plivo\n  </Card>\n\n<Card title=\"Plivo Documentation\" icon=\"book\" href=\"https://www.plivo.com/docs/voice/api/stream/\">\n    Official Plivo Audio Streaming documentation\n  </Card>\n\n<Card title=\"Plivo Console\" icon=\"microphone\" href=\"https://console.plivo.com/\">\n    Manage phone numbers and streaming configuration\n  </Card>\n</CardGroup>\n\nThe `PlivoFrameSerializer` does not require any additional dependencies beyond the core Pipecat library:\n\n### Plivo Account Setup\n\nBefore using PlivoFrameSerializer, you need:\n\n1. **Plivo Account**: Sign up at [Plivo Console](https://console.plivo.com/)\n2. **Phone Number**: Purchase a Plivo phone number with voice capabilities\n3. **Audio Streaming**: Configure your phone number for WebSocket streaming\n4. **Webhook Configuration**: Set up webhook endpoints for call handling\n\n### Required Environment Variables\n\n* `PLIVO_AUTH_ID`: Your Plivo Auth ID for authentication\n* `PLIVO_AUTH_TOKEN`: Your Plivo Auth Token for API operations\n\n### Required Configuration\n\n* **Stream ID**: Provided by Plivo during Audio Streaming connection\n* **Call ID**: Required for automatic call termination (optional)\n\n* **Bidirectional Audio**: Convert between Pipecat and Plivo audio formats\n* **DTMF Handling**: Process touch-tone events from callers\n* **Auto Hang-up**: Terminate calls via Plivo's REST API\n* **μ-law Encoding**: Handle Plivo's standard audio encoding format",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Plivo Account Setup",
+      "id": "plivo-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h3",
+      "text": "Required Configuration",
+      "id": "required-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "Key Features",
+      "id": "key-features"
+    }
+  ],
+  "url": "llms-txt#plivoframeserializer",
+  "links": []
+}

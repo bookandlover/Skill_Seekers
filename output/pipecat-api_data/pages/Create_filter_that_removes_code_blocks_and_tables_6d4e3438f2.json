@@ -1,0 +1,24 @@
+{
+  "title": "Create filter that removes code blocks and tables",
+  "content": "md_filter = MarkdownTextFilter(\n    params=MarkdownTextFilter.InputParams(\n        filter_code=True,\n        filter_tables=True\n    )\n)\npython\\ncode\\n``` ` | ` `          |\n| Tables (when enabled)      | `\\|A\\|B\\|\\n\\|--\\|--\\|`   | ` `          |\n| HTML tags                  | `<em>text</em>`          | `text`       |\n| Repeated characters        | `!!!!!!!`                | `!`          |\n\n* Preserves sentence structure and readability\n* Maintains whitespace that affects speech prosody\n* Handles streaming text with partial Markdown elements\n* Efficiently converts HTML entities to plain text characters\n* Smart handling of code blocks and tables with state tracking\n* Integrates directly with TTS services in the Pipecat pipeline",
+  "code_samples": [
+    {
+      "code": "## What Gets Removed\n\n| Markdown Feature           | Example                  | Result       |\n| -------------------------- | ------------------------ | ------------ |\n| Bold                       | `**important**`          | `important`  |\n| Italic                     | `*emphasized*`           | `emphasized` |\n| Headers                    | `## Section`             | `Section`    |\n| Code (inline)              | `` `code` ``             | `code`       |\n| Code blocks (when enabled) | `",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "What Gets Removed",
+      "id": "what-gets-removed"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#create-filter-that-removes-code-blocks-and-tables",
+  "links": []
+}

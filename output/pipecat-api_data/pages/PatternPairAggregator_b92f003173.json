@@ -1,0 +1,71 @@
+{
+  "title": "PatternPairAggregator",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/text/pattern-pair-aggregator\n\nText aggregator that identifies and processes content between pattern pairs in streaming text\n\n`PatternPairAggregator` is a specialized text aggregator that buffers streaming text until it can identify complete pattern pairs (like XML tags, markdown formatting, or custom delimiters). It processes the content between these patterns using a set of pre-defined actions (remove, keep, or aggregate) and returns text outside those patterns at sentence boundaries. The aggregator supports registering callback functions that are invoked when specific pattern pairs are matched, allowing for custom processing when matches occur. Note: These callbacks do not support modifying the text being aggregated; they are intended for side effects like logging or updating state.\n\nThis aggregator is particularly useful for applications like voice switching, structured content processing, and extracting metadata from LLM outputs, ensuring that patterns spanning multiple text chunks are correctly identified or categorizing text based on embedded markers for downstream services and processing to treat different segments appropriately. For example: identifying URL patterns, code blocks, or special formatting in LLM responses that may need special speech handling in the TTS or client-side handling via RTVI.\n\n<Tip>\n  Want to see it in action? Check out the [voice switching\n  demo](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/35-pattern-pair-voice-switching.py) or the [bot output demo](https://github.com/pipecat-ai/pipecat-examples/blob/main/code-helper).\n</Tip>\n\nNo parameters are required for initialization. The aggregator starts with an empty buffer and no registered patterns.\n\nRegisters a new pattern pair to detect in the text.\n\n<ParamField type=\"str\">\n  Unique identifier for this pattern pair that should also represent what the text between the tags represents (e.g., \"voice\", \"xml\", \"credit\\_card\", etc.). This value will be returned as part of both PatternMatch provided to callbacks and the Aggregation object returned from `aggregate()`.\n\n<Warning>\n    This type may not be set to \"sentence\" or \"word\" as those are reserved for standard aggregations.\n  </Warning>\n\n<Tip>\n    Choose descriptive and unique type names to avoid confusion when handling multiple patterns.\n    This type will also be referenced in the TTS for optionally skipping these types or providing custom text transformations before speaking these types. It's also optionally referenced in RTVI for similar purposes of not sending certain types or transforming them before sending to the client.\n  </Tip>\n</ParamField>\n\n<ParamField type=\"str\">\n  Pattern that marks the beginning of content\n</ParamField>\n\n<ParamField type=\"str\">\n  Pattern that marks the end of content\n</ParamField>\n\n<ParamField type=\"MatchAction\">\n  What to do with the matched pattern and its content:\n\n* `MatchAction.REMOVE`: The text along with its delimiters will be removed from the streaming text. Sentence aggregation will continue on as if this text did not exist.\n  * `MatchAction.KEEP`: The delimiters will be removed, but the content between them will be kept. Sentence aggregation will continue on with the internal text included. This is helpful if you want to keep the content but be notified when it occurs via a callback.\n  * `MatchAction.AGGREGATE`: Aggregate the matched pattern and its content as a separate aggregation. The matched content will be returned in an `Aggregation` object with the specified type when the pattern is completed. When the start of this pattern is detected, any buffered text up to that point will be returned as a standard \"sentence\" aggregation.\n</ParamField>\n\n<ResponseField name=\"Returns\">Self for method chaining</ResponseField>\n\n### add\\_pattern\\_pair\n\n<Warning>\n  This method is deprecated. Use `add_pattern` instead.\n</Warning>\n\n### on\\_pattern\\_match\n\nRegisters a handler function to be called when a specific pattern pair is matched.\n\n<ParamField type=\"str\">\n  The pattern pair type to listen for (as defined in `add_pattern`)\n</ParamField>\n\n<ParamField type=\"Callable[[PatternMatch], Awaitable[None]]\">\n  Function to call when the pattern is matched. The function should accept a\n  PatternMatch object.\n</ParamField>\n\n<ResponseField name=\"Returns\">Self for method chaining</ResponseField>\n\n## Pattern Match Object\n\nWhen a pattern is matched, the handler function receives a `PatternMatch` object which is a subclass of the `Aggregation` object. It contains the following fields:\n\n<ResponseField name=\"type\" type=\"str\">\n  The identifier and descriptor of the matched pattern pair. This field is part of the `Aggregation` base class.\n</ResponseField>\n\n<ResponseField name=\"text\" type=\"str\">\n  The text content between the start and end patterns. This field is part of the `Aggregation` base class.\n</ResponseField>\n\n<ResponseField name=\"full_match\" type=\"str\">\n  The complete text including start and end patterns.\n</ResponseField>\n\n### Voice Switching in TTS\n\nThis example demonstrates finding custom `<voice>` tags in streaming text to switch voices dynamically in a TTS service like Cartesia. It removes the tags and the content between them, such that the content is treated as if it does not exist. It will not be spoken by the TTS, it will not be added to the context, and it will not be sent to clients via RTVI. Instead, it simply triggers a voice switch side effect.\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "No parameters are required for initialization. The aggregator starts with an empty buffer and no registered patterns.\n\n## Methods\n\n### add\\_pattern",
+      "language": "unknown"
+    },
+    {
+      "code": "Registers a new pattern pair to detect in the text.\n\n<ParamField type=\"str\">\n  Unique identifier for this pattern pair that should also represent what the text between the tags represents (e.g., \"voice\", \"xml\", \"credit\\_card\", etc.). This value will be returned as part of both PatternMatch provided to callbacks and the Aggregation object returned from `aggregate()`.\n\n  <Warning>\n    This type may not be set to \"sentence\" or \"word\" as those are reserved for standard aggregations.\n  </Warning>\n\n  <Tip>\n    Choose descriptive and unique type names to avoid confusion when handling multiple patterns.\n    This type will also be referenced in the TTS for optionally skipping these types or providing custom text transformations before speaking these types. It's also optionally referenced in RTVI for similar purposes of not sending certain types or transforming them before sending to the client.\n  </Tip>\n</ParamField>\n\n<ParamField type=\"str\">\n  Pattern that marks the beginning of content\n</ParamField>\n\n<ParamField type=\"str\">\n  Pattern that marks the end of content\n</ParamField>\n\n<ParamField type=\"MatchAction\">\n  What to do with the matched pattern and its content:\n\n  * `MatchAction.REMOVE`: The text along with its delimiters will be removed from the streaming text. Sentence aggregation will continue on as if this text did not exist.\n  * `MatchAction.KEEP`: The delimiters will be removed, but the content between them will be kept. Sentence aggregation will continue on with the internal text included. This is helpful if you want to keep the content but be notified when it occurs via a callback.\n  * `MatchAction.AGGREGATE`: Aggregate the matched pattern and its content as a separate aggregation. The matched content will be returned in an `Aggregation` object with the specified type when the pattern is completed. When the start of this pattern is detected, any buffered text up to that point will be returned as a standard \"sentence\" aggregation.\n</ParamField>\n\n<ResponseField name=\"Returns\">Self for method chaining</ResponseField>\n\n### add\\_pattern\\_pair\n\n<Warning>\n  This method is deprecated. Use `add_pattern` instead.\n</Warning>",
+      "language": "unknown"
+    },
+    {
+      "code": "### on\\_pattern\\_match",
+      "language": "unknown"
+    },
+    {
+      "code": "Registers a handler function to be called when a specific pattern pair is matched.\n\n<ParamField type=\"str\">\n  The pattern pair type to listen for (as defined in `add_pattern`)\n</ParamField>\n\n<ParamField type=\"Callable[[PatternMatch], Awaitable[None]]\">\n  Function to call when the pattern is matched. The function should accept a\n  PatternMatch object.\n</ParamField>\n\n<ResponseField name=\"Returns\">Self for method chaining</ResponseField>\n\n## Pattern Match Object\n\nWhen a pattern is matched, the handler function receives a `PatternMatch` object which is a subclass of the `Aggregation` object. It contains the following fields:\n\n<ResponseField name=\"type\" type=\"str\">\n  The identifier and descriptor of the matched pattern pair. This field is part of the `Aggregation` base class.\n</ResponseField>\n\n<ResponseField name=\"text\" type=\"str\">\n  The text content between the start and end patterns. This field is part of the `Aggregation` base class.\n</ResponseField>\n\n<ResponseField name=\"full_match\" type=\"str\">\n  The complete text including start and end patterns.\n</ResponseField>\n\n## Usage Examples\n\n### Voice Switching in TTS\n\nThis example demonstrates finding custom `<voice>` tags in streaming text to switch voices dynamically in a TTS service like Cartesia. It removes the tags and the content between them, such that the content is treated as if it does not exist. It will not be spoken by the TTS, it will not be added to the context, and it will not be sent to clients via RTVI. Instead, it simply triggers a voice switch side effect.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h2",
+      "text": "Methods",
+      "id": "methods"
+    },
+    {
+      "level": "h3",
+      "text": "add\\_pattern",
+      "id": "add\\_pattern"
+    },
+    {
+      "level": "h3",
+      "text": "add\\_pattern\\_pair",
+      "id": "add\\_pattern\\_pair"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_pattern\\_match",
+      "id": "on\\_pattern\\_match"
+    },
+    {
+      "level": "h2",
+      "text": "Pattern Match Object",
+      "id": "pattern-match-object"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Voice Switching in TTS",
+      "id": "voice-switching-in-tts"
+    }
+  ],
+  "url": "llms-txt#patternpairaggregator",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Create filter that only allows TextFrames with more than 10 characters",
+  "content": "async def long_text_filter(frame: Frame) -> bool:\n    if isinstance(frame, TextFrame):\n        return len(frame.text) > 10\n    return False",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-filter-that-only-allows-textframes-with-more-than-10-characters",
+  "links": []
+}

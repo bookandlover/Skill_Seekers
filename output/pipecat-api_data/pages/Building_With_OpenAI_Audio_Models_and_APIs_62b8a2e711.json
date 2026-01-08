@@ -1,0 +1,59 @@
+{
+  "title": "Building With OpenAI Audio Models and APIs",
+  "content": "Source: https://docs.pipecat.ai/guides/features/openai-audio-models-and-apis\n\nCreate voice agents with OpenAI audio models and Pipecat\n\nThis guide provides an overview of the audio capabilities OpenAI offers via their APIs. We'll also link to Pipecat sample code.\n\n## Two Ways To Build Voice-to-voice\n\nYou can build voice-to-voice applications in two ways:\n\n1. The cascaded models approach, using separate models for transcription, the LLM, and voice generation.\n\n<Frame>\n  <img alt=\"OpenAI Cascaded Pipeline\" />\n</Frame>\n\nA cascaded pipeline looks like this, in Pipecat code. Here's a [single-file example that uses a cascaded pipeline](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07g-interruptible-openai.py). (See below for an overview of Pipecat core concepts.)\n\n2. Using a single, speech-to-speech model. This is conceptually much simpler. Though note that most applications also need to implement things like function calling, retrieval-augmented search, context management, and integration with existing systems. So the core pipeline is only part of an app's complexity.\n\n<Frame>\n  <img alt=\"OpenAI S2S Pipeline\" />\n</Frame>\n\nHere's a speech-to-speech pipeline in Pipecat code. And here's a [single-file example that uses the OpenAI Realtime API](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/19-openai-realtime-beta.py).\n\nWhich approach should you choose?\n\n* The cascaded models approach is preferable if you are implementing a complex workflow and need the best possible instruction following performance and function calling reliability. The `gpt-4o` model operating in text-to-text mode has the strongest instruction following and function calling performance.\n* The speech-to-speech approach offers better audio understanding and human-like voice output. If your application is primarily free-form, open-ended conversation, these attributes might be more important than instruction following and function calling performance. Note also that `gpt-4o-audio-preview` and the OpenAI Realtime API are currently beta products.\n\n## OpenAI Audio Models and APIs\n\n### Transcription API\n\n* Models: `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`\n* Pipecat service: `OpenAISTTService` ([reference docs](/server/services/stt/openai))\n* OpenAI endpoint: `/v1/audio/transcriptions` ([docs](https://platform.openai.com/docs/api-reference/audio/createTranscription))\n\n### Chat Completions API\n\n* Models: `gpt-4o`, `gpt-4o-mini`, `gpt-4o-audio-preview`\n* Pipecat service: `OpenAILLMService` ([reference docs](/server/services/llm/openai))\n* OpenAI endpoint: `/v1/chat/completions` ([docs](https://platform.openai.com/docs/api-reference/chat))\n\n* Models: `gpt-4o-realtime-preview`, `gpt-4o-mini-realtime-preview`\n* Pipecat service: `OpenAIRealtimeBetaLLMService` ([reference docs](/server/services/s2s/openai))\n* OpenAI docs ([overview](https://platform.openai.com/docs/guides/realtime))\n\n* Models: `gpt-4o-mini-tts`\n* Pipecat service: `OpenAITTSService` ([reference docs](/server/services/tts/openai))\n* OpenAI endpoint: `/v1/audio/speech` ([docs](https://platform.openai.com/docs/api-reference/audio/createSpeech))\n\n## Sample code and starter kits\n\n*If you have a code example or starter kit you would like this doc to link to, please let us know. We can add examples that help people get started with the OpenAI audio models and APIs.*\n\n### Single-file examples\n\n<CardGroup>\n  <Card title=\"OpenAI STT → LLM → TTS\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07g-interruptible-openai.py\">\n    A complete implementation demonstrating the cascaded approach with OpenAI services\n  </Card>\n\n<Card title=\"OpenAI Realtime API\" icon=\"tower-broadcast\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/19-openai-realtime-beta.py\">\n    A speech-to-speech implementation using OpenAI's Realtime API\n  </Card>\n</CardGroup>\n\n### OpenAI + Twilio + Pipecat Cloud\n\n[This starter kit](https://github.com/daily-co/pcc-openai-twilio/) is a complete telephone voice agent that can talk about the NCAA March Madness basketball tournaments and look up realtime game information using function calls.\n\n<Frame>\n  <img alt=\"OpenAI Twilio\" />\n</Frame>\n\nThe starter kit includes two bot configurations: cascaded model and speech-to-speech. The code can be packaged for deployment to Pipecat Cloud, a commercial platform for Pipecat agent hosting.",
+  "code_samples": [
+    {
+      "code": "2. Using a single, speech-to-speech model. This is conceptually much simpler. Though note that most applications also need to implement things like function calling, retrieval-augmented search, context management, and integration with existing systems. So the core pipeline is only part of an app's complexity.\n\n<Frame>\n  <img alt=\"OpenAI S2S Pipeline\" />\n</Frame>\n\nHere's a speech-to-speech pipeline in Pipecat code. And here's a [single-file example that uses the OpenAI Realtime API](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/19-openai-realtime-beta.py).",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Two Ways To Build Voice-to-voice",
+      "id": "two-ways-to-build-voice-to-voice"
+    },
+    {
+      "level": "h2",
+      "text": "OpenAI Audio Models and APIs",
+      "id": "openai-audio-models-and-apis"
+    },
+    {
+      "level": "h3",
+      "text": "Transcription API",
+      "id": "transcription-api"
+    },
+    {
+      "level": "h3",
+      "text": "Chat Completions API",
+      "id": "chat-completions-api"
+    },
+    {
+      "level": "h3",
+      "text": "Realtime API",
+      "id": "realtime-api"
+    },
+    {
+      "level": "h3",
+      "text": "Speech API",
+      "id": "speech-api"
+    },
+    {
+      "level": "h2",
+      "text": "Sample code and starter kits",
+      "id": "sample-code-and-starter-kits"
+    },
+    {
+      "level": "h3",
+      "text": "Single-file examples",
+      "id": "single-file-examples"
+    },
+    {
+      "level": "h3",
+      "text": "OpenAI + Twilio + Pipecat Cloud",
+      "id": "openai-+-twilio-+-pipecat-cloud"
+    }
+  ],
+  "url": "llms-txt#building-with-openai-audio-models-and-apis",
+  "links": []
+}

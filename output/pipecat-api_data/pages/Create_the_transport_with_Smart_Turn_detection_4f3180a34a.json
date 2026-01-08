@@ -1,0 +1,19 @@
+{
+  "title": "Create the transport with Smart Turn detection",
+  "content": "transport = SmallWebRTCTransport(\n    webrtc_connection=webrtc_connection,\n    params=TransportParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),\n        turn_analyzer=LocalSmartTurnAnalyzerV3(),\n    ),\n)\n```\n\nSmart Turn Detection continuously analyzes audio streams to identify natural turn completion points:\n\n1. **Audio Buffering**: The system continuously buffers audio with timestamps, maintaining a small buffer of pre-speech audio.\n\n2. **VAD Processing**: Voice Activity Detection (using the Silero model) detects when there is a pause in the user's speech.\n\n3. **Smart Turn Analysis**: When VAD detects a pause in speech, the Smart Turn model analyzes the audio from the most recent 8 seconds of the user's turn, and makes a decision about whether the turn is complete or incomplete.\n\nThe system includes a fallback mechanism: if a turn is classified as incomplete but silence continues for longer than `stop_secs`, the turn is automatically marked as complete.\n\n* The model supports 23 languages, see the [source repository](https://github.com/pipecat-ai/smart-turn) for more details\n* You can adjust the `stop_secs` parameter based on your application's needs for responsiveness\n* Smart Turn generally provides a more natural conversational experience but is computationally more intensive than simple VAD\n* `LocalSmartTurnAnalyzerV3` is designed to run on CPU, and inference can be performed on low-cost cloud instances in under 100ms. However, by installing the `onnxruntime-gpu` dependency, you can achieve higher performance by making use of GPU inference.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Notes",
+      "id": "notes"
+    }
+  ],
+  "url": "llms-txt#create-the-transport-with-smart-turn-detection",
+  "links": []
+}

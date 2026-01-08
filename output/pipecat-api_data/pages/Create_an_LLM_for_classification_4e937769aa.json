@@ -1,0 +1,8 @@
+{
+  "title": "Create an LLM for classification",
+  "content": "classifier_llm = OpenAILLMService(api_key=os.getenv(\"OPENAI_API_KEY\"))",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-an-llm-for-classification",
+  "links": []
+}

@@ -1,0 +1,44 @@
+{
+  "title": "FastAPIWebsocketTransport",
+  "content": "Source: https://docs.pipecat.ai/server/services/transport/fastapi-websocket\n\nWebSocket transport implementation for FastAPI web applications with telephony integration\n\n`FastAPIWebsocketTransport` provides WebSocket support for FastAPI web applications, enabling real-time audio communication over WebSocket connections. It's primarily designed for telephony integrations with providers like Twilio, Telnyx, and Plivo, supporting bidirectional audio streams with configurable serializers and voice activity detection.\n\n<Warning>\n  FastAPIWebsocketTransport is best suited for telephony applications and server-side WebSocket integrations.\n\nFor general client/server applications, we recommend using WebRTC-based transports for more robust network and media handling.\n</Warning>\n\n<CardGroup>\n  <Card title=\"FastAPI WebSocket API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.websocket.fastapi.html\">\n    Pipecat's API methods for FastAPI WebSocket integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot\">\n    Complete Twilio telephony integration example\n  </Card>\n\n<Card title=\"FastAPI Documentation\" icon=\"book\" href=\"https://fastapi.tiangolo.com/advanced/websockets/\">\n    Official FastAPI WebSocket documentation\n  </Card>\n\n<Card title=\"Telephony Serializers\" icon=\"settings\" href=\"/server/services/serializers/introduction\">\n    Learn about supported FrameSerializers for telephony providers\n  </Card>\n</CardGroup>\n\nTo use FastAPIWebsocketTransport, install the required dependencies:\n\n### FastAPI Application Setup\n\nBefore using FastAPIWebsocketTransport, you need:\n\n1. **FastAPI Application**: Set up a FastAPI web application\n2. **WebSocket Endpoint**: Configure WebSocket routes for real-time communication\n3. **Telephony Provider**: Set up integration with Twilio, Telnyx, or Plivo\n4. **Frame Serializers**: Configure appropriate serializers for your telephony provider\n\n### Configuration Options\n\n* **Serializer Selection**: Choose frame serializer based on telephony provider\n* **Audio Parameters**: Configure sample rates and audio formats\n* **VAD Integration**: Set up voice activity detection for optimal performance\n* **Connection Management**: Handle WebSocket lifecycle and reconnections\n\n* **Telephony Integration**: Optimized for Twilio, Telnyx, and Plivo WebSocket streams\n* **Frame Serialization**: Built-in support for telephony provider audio formats\n* **FastAPI Integration**: Seamless WebSocket handling within FastAPI applications\n* **Bidirectional Audio**: Real-time audio streaming in both directions\n\nFastAPIWebsocketTransport integrates with your FastAPI application to handle telephony WebSocket connections. It works with telephony frame serializers to process audio streams from phone calls.\n\nSee the [complete example](https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot) for a full implementation including:\n\n* FastAPI WebSocket endpoint configuration\n* Telephony provider integration setup\n* Frame serializer configuration\n* Audio processing pipeline integration",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "FastAPI Application Setup",
+      "id": "fastapi-application-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    },
+    {
+      "level": "h3",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#fastapiwebsockettransport",
+  "links": []
+}

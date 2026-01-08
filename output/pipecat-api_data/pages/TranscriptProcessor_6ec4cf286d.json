@@ -1,0 +1,123 @@
+{
+  "title": "TranscriptProcessor",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/transcript-processor\n\nFactory for creating and managing conversation transcript processors with shared event handling\n\nThe `TranscriptProcessor` is a factory class that creates and manages processors for handling conversation transcripts from both users and assistants. It provides unified access to transcript processors with shared event handling, making it easy to track and respond to conversation updates in real-time.\n\nThe processor normalizes messages from various sources into a consistent `TranscriptionMessage` format and emits events when new messages are added to the conversation.\n\nCreates a new transcript processor factory with no parameters.\n\nGet or create the user transcript processor instance. This processor handles `TranscriptionFrame`s from STT services.\n\n* `**kwargs`: Arguments passed to the `UserTranscriptProcessor` constructor\n\n**Returns:** `UserTranscriptProcessor` instance for processing user messages.\n\nGet or create the assistant transcript processor instance. This processor handles `TTSTextFrame`s from TTS services and aggregates them into complete utterances.\n\n* `**kwargs`: Arguments passed to the `AssistantTranscriptProcessor` constructor\n\n**Returns:** `AssistantTranscriptProcessor` instance for processing assistant messages.\n\nDecorator that registers event handlers for both user and assistant processors.\n\n* `event_name`: Name of the event to handle\n\n**Returns:** Decorator function that registers the handler with both processors.\n\n### on\\_transcript\\_update\n\nTriggered when new messages are added to the conversation transcript.\n\n* `processor`: The specific processor instance that emitted the event (UserTranscriptProcessor or AssistantTranscriptProcessor)\n* `frame`: `TranscriptionUpdateFrame` containing the new messages\n\n### TranscriptionMessage\n\n* `role`: The message sender type (\"user\" or \"assistant\")\n* `content`: The transcribed text content\n* `timestamp`: ISO 8601 timestamp when the message was created\n* `user_id`: Optional user identifier (for user messages only)\n\n### TranscriptionUpdateFrame\n\nFrame containing new transcript messages, emitted by the `on_transcript_update` event.\n\n* `messages`: List of `TranscriptionMessage` objects containing the new transcript content\n\n### UserTranscriptProcessor\n\n* **Input:** `TranscriptionFrame` from STT services\n* **Output:** `TranscriptionMessage` with role \"user\"\n\n### AssistantTranscriptProcessor\n\n* **Input:** `TTSTextFrame` from TTS services\n* **Output:** `TranscriptionMessage` with role \"assistant\"\n\n### Pipeline Placement\n\nPlace the processors at specific positions in your pipeline for accurate transcript collection:\n\n### Event Handler Registration\n\nEvent handlers are automatically applied to both user and assistant processors:\n\n```python theme={null}\ntranscript = TranscriptProcessor()",
+  "code_samples": [
+    {
+      "code": "Creates a new transcript processor factory with no parameters.\n\n## Methods\n\n### user()",
+      "language": "unknown"
+    },
+    {
+      "code": "Get or create the user transcript processor instance. This processor handles `TranscriptionFrame`s from STT services.\n\n**Parameters:**\n\n* `**kwargs`: Arguments passed to the `UserTranscriptProcessor` constructor\n\n**Returns:** `UserTranscriptProcessor` instance for processing user messages.\n\n### assistant()",
+      "language": "unknown"
+    },
+    {
+      "code": "Get or create the assistant transcript processor instance. This processor handles `TTSTextFrame`s from TTS services and aggregates them into complete utterances.\n\n**Parameters:**\n\n* `**kwargs`: Arguments passed to the `AssistantTranscriptProcessor` constructor\n\n**Returns:** `AssistantTranscriptProcessor` instance for processing assistant messages.\n\n### event\\_handler()",
+      "language": "unknown"
+    },
+    {
+      "code": "Decorator that registers event handlers for both user and assistant processors.\n\n**Parameters:**\n\n* `event_name`: Name of the event to handle\n\n**Returns:** Decorator function that registers the handler with both processors.\n\n## Event Handlers\n\n### on\\_transcript\\_update\n\nTriggered when new messages are added to the conversation transcript.",
+      "language": "unknown"
+    },
+    {
+      "code": "**Parameters:**\n\n* `processor`: The specific processor instance that emitted the event (UserTranscriptProcessor or AssistantTranscriptProcessor)\n* `frame`: `TranscriptionUpdateFrame` containing the new messages\n\n## Data Structures\n\n### TranscriptionMessage",
+      "language": "unknown"
+    },
+    {
+      "code": "**Fields:**\n\n* `role`: The message sender type (\"user\" or \"assistant\")\n* `content`: The transcribed text content\n* `timestamp`: ISO 8601 timestamp when the message was created\n* `user_id`: Optional user identifier (for user messages only)\n\n### TranscriptionUpdateFrame\n\nFrame containing new transcript messages, emitted by the `on_transcript_update` event.\n\n**Properties:**\n\n* `messages`: List of `TranscriptionMessage` objects containing the new transcript content\n\n## Frames\n\n### UserTranscriptProcessor\n\n* **Input:** `TranscriptionFrame` from STT services\n* **Output:** `TranscriptionMessage` with role \"user\"\n\n### AssistantTranscriptProcessor\n\n* **Input:** `TTSTextFrame` from TTS services\n* **Output:** `TranscriptionMessage` with role \"assistant\"\n\n## Integration Notes\n\n### Pipeline Placement\n\nPlace the processors at specific positions in your pipeline for accurate transcript collection:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Event Handler Registration\n\nEvent handlers are automatically applied to both user and assistant processors:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h2",
+      "text": "Methods",
+      "id": "methods"
+    },
+    {
+      "level": "h3",
+      "text": "user()",
+      "id": "user()"
+    },
+    {
+      "level": "h3",
+      "text": "assistant()",
+      "id": "assistant()"
+    },
+    {
+      "level": "h3",
+      "text": "event\\_handler()",
+      "id": "event\\_handler()"
+    },
+    {
+      "level": "h2",
+      "text": "Event Handlers",
+      "id": "event-handlers"
+    },
+    {
+      "level": "h3",
+      "text": "on\\_transcript\\_update",
+      "id": "on\\_transcript\\_update"
+    },
+    {
+      "level": "h2",
+      "text": "Data Structures",
+      "id": "data-structures"
+    },
+    {
+      "level": "h3",
+      "text": "TranscriptionMessage",
+      "id": "transcriptionmessage"
+    },
+    {
+      "level": "h3",
+      "text": "TranscriptionUpdateFrame",
+      "id": "transcriptionupdateframe"
+    },
+    {
+      "level": "h2",
+      "text": "Frames",
+      "id": "frames"
+    },
+    {
+      "level": "h3",
+      "text": "UserTranscriptProcessor",
+      "id": "usertranscriptprocessor"
+    },
+    {
+      "level": "h3",
+      "text": "AssistantTranscriptProcessor",
+      "id": "assistanttranscriptprocessor"
+    },
+    {
+      "level": "h2",
+      "text": "Integration Notes",
+      "id": "integration-notes"
+    },
+    {
+      "level": "h3",
+      "text": "Pipeline Placement",
+      "id": "pipeline-placement"
+    },
+    {
+      "level": "h3",
+      "text": "Event Handler Registration",
+      "id": "event-handler-registration"
+    }
+  ],
+  "url": "llms-txt#transcriptprocessor",
+  "links": []
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Perplexity",
+  "content": "Source: https://docs.pipecat.ai/server/services/llm/perplexity\n\nLLM service implementation using Perplexity's API with OpenAI-compatible interface\n\n`PerplexityLLMService` provides access to Perplexity's language models through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses and context management, with special handling for Perplexity's incremental token reporting and built-in internet search capabilities.\n\n<CardGroup>\n  <Card title=\"Perplexity LLM API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.perplexity.llm.html\">\n    Pipecat's API methods for Perplexity integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14n-function-calling-perplexity.py\">\n    Complete example with search capabilities\n  </Card>\n\n<Card title=\"Perplexity Documentation\" icon=\"book\" href=\"https://docs.perplexity.ai/api-reference/chat-completions-post\">\n    Official Perplexity API documentation and features\n  </Card>\n\n<Card title=\"Perplexity Platform\" icon=\"microphone\" href=\"https://www.perplexity.ai/\">\n    Access search-enhanced models and API keys\n  </Card>\n</CardGroup>\n\nTo use Perplexity services, install the required dependencies:\n\n### Perplexity Account Setup\n\nBefore using Perplexity LLM services, you need:\n\n1. **Perplexity Account**: Sign up at [Perplexity](https://www.perplexity.ai/)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Model Selection**: Choose from available models with built-in search capabilities\n\n### Required Environment Variables\n\n* `PERPLEXITY_API_KEY`: Your Perplexity API key for authentication\n\n<Note>\n  Unlike other LLM services, Perplexity does not support function calling.\n  Instead, they offer native internet search built in without requiring special\n  function calls.\n</Note>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Perplexity Account Setup",
+      "id": "perplexity-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#perplexity",
+  "links": []
+}

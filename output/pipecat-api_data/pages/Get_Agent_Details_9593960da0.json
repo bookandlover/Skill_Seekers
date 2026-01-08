@@ -1,0 +1,8 @@
+{
+  "title": "Get Agent Details",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-list-one\n\nGET /agents/{agentName}\nRetrieve detailed information about a specific agent including its deployment status.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#get-agent-details",
+  "links": []
+}

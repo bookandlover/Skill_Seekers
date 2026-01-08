@@ -1,0 +1,44 @@
+{
+  "title": "Configure transport with serializer",
+  "content": "transport = FastAPIWebsocketTransport(\n    websocket=websocket_client,\n    params=FastAPIWebsocketParams(\n        audio_in_enabled=True,\n        audio_out_enabled=True,\n        add_wav_header=False,\n        vad_analyzer=SileroVADAnalyzer(),\n        serializer=serializer,  # Provider-specific serialization\n    ),\n)\npython theme={null}\nasync def bot(runner_args: RunnerArguments):\n    \"\"\"Main bot entry point compatible with Pipecat Cloud.\"\"\"\n\nif isinstance(runner_args, DailyRunnerArguments):\n        from pipecat.transports.daily.transport import DailyParams, DailyTransport\n\ntransport = DailyTransport(\n            runner_args.room_url,\n            runner_args.token,\n            \"Pipecat Bot\",\n            params=DailyParams(\n                audio_in_enabled=True,\n                audio_out_enabled=True,\n                vad_analyzer=SileroVADAnalyzer(),\n            ),\n        )\n\nelif isinstance(runner_args, SmallWebRTCRunnerArguments):\n        from pipecat.transports.base_transport import TransportParams\n        from pipecat.transports.network.small_webrtc import SmallWebRTCTransport\n\ntransport = SmallWebRTCTransport(\n            params=TransportParams(\n                audio_in_enabled=True,\n                audio_out_enabled=True,\n                vad_analyzer=SileroVADAnalyzer(),\n            ),\n            webrtc_connection=runner_args.webrtc_connection,\n        )\n    else:\n        logger.error(f\"Unsupported runner arguments type: {type(runner_args)}\")\n        return\n\nif transport is None:\n        logger.error(\"Failed to create transport\")\n        return\n\nawait run_bot(transport)\n```\n\nThis pattern allows you to run the same bot code across different environments with different connection types.\n\n## WebRTC vs WebSocket Considerations\n\nUnderstanding when to use each connection type is crucial for building effective voice AI applications:\n\n### WebRTC (Recommended for Client Applications)\n\n**Best for:** Browser apps, mobile apps, real-time conversations\n\n* **Low latency**: Optimized for real-time media with minimal delay\n* **Built-in resilience**: Handles packet loss and network variations\n* **Advanced audio processing**: Echo cancellation, noise reduction, automatic gain control\n* **Quality monitoring**: Detailed performance and media quality statistics\n* **Automatic timestamping**: Simplifies interruption and playout logic\n* **Robust reconnection**: Built-in connection management\n\n* Building client-facing applications (web, mobile)\n* Conversational latency is critical\n* Users are on potentially unreliable networks\n* You need built-in audio processing features\n\n### WebSocket (Good for Server-to-Server)\n\n**Best for:** Telephony integration, server-to-server communication, prototyping\n\n**Limitations for real-time media:**\n\n* **TCP-based**: Subject to head-of-line blocking\n* **Network sensitivity**: Less resilient to packet loss and jitter\n* **Manual implementation**: Requires custom logic for reconnection, timestamping\n* **Limited observability**: Harder to monitor connection quality\n\n**Use WebSocket when:**\n\n* Integrating with telephony providers (Twilio, Telnyx, etc.)\n* Building server-to-server connections\n* Prototyping or latency isn't critical\n* Working within existing WebSocket infrastructure\n\n* **Transports are modular** - swap them without changing bot logic\n* **Choose based on use case** - WebRTC for clients, WebSocket for telephony\n* **Configuration is standardized** - TransportParams work across transport types\n* **Pipeline placement matters** - consider what processing happens after output\n* **Development runner helps** - provides patterns for multi-transport bots\n\nNow that you understand how transports connect users to your bot, let's explore how to configure speech recognition to convert user audio into text.\n\n<Card title=\"Speech Input & Turn Detection\" icon=\"arrow-right\" href=\"/guides/learn/speech-input\">\n  Learn how to configure speech recognition in your voice AI pipeline\n</Card>",
+  "code_samples": [
+    {
+      "code": "<Note>\n  The development runner automatically detects and configures the appropriate\n  serializer when using `parse_telephony_websocket()`.\n</Note>\n\n## Conditional Transport Selection\n\nThe development runner provides a pattern for conditionally selecting transports based on the environment:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Conditional Transport Selection",
+      "id": "conditional-transport-selection"
+    },
+    {
+      "level": "h2",
+      "text": "WebRTC vs WebSocket Considerations",
+      "id": "webrtc-vs-websocket-considerations"
+    },
+    {
+      "level": "h3",
+      "text": "WebRTC (Recommended for Client Applications)",
+      "id": "webrtc-(recommended-for-client-applications)"
+    },
+    {
+      "level": "h3",
+      "text": "WebSocket (Good for Server-to-Server)",
+      "id": "websocket-(good-for-server-to-server)"
+    },
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#configure-transport-with-serializer",
+  "links": []
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Push upstream",
+  "content": "await self.push_frame(frame, FrameDirection.UPSTREAM)\n```\n\nMost custom FrameProcessors will push frames downstream, but upstream can be useful for sending control frames or error notifications back up the pipeline.\n\n1. **Always call the parent methods**: Use `super().__init__()` and `await super().process_frame()`\n2. **Forward all frames**: Make sure every frame is pushed through with `await self.push_frame(frame, direction)`\n3. **Handle frames conditionally**: Use `isinstance()` checks to handle specific frame types\n4. **Use proper error handling**: Wrap risky operations in try/catch blocks\n5. **Position carefully in pipeline**: Consider where in the pipeline your processor needs to be to receive the right frames\n\nWith these patterns, you can create powerful custom FrameProcessors that extend Pipecat's capabilities for your specific use case.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Best Practices",
+      "id": "best-practices"
+    }
+  ],
+  "url": "llms-txt#push-upstream",
+  "links": []
+}

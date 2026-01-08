@@ -1,0 +1,49 @@
+{
+  "title": "Whisper",
+  "content": "Source: https://docs.pipecat.ai/server/services/stt/whisper\n\nSpeech-to-text service implementation using locally-downloaded Whisper models\n\n`WhisperSTTService` provides offline speech recognition using OpenAI's Whisper models running locally. Supports multiple model sizes and hardware acceleration options including CPU, CUDA, and Apple Silicon (MLX) for privacy-focused transcription without external API calls.\n\n<CardGroup>\n  <Card title=\"Whisper STT API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.whisper.stt.html\">\n    Pipecat's API methods for Whisper STT integration\n  </Card>\n\n<Card title=\"Standard Whisper Example\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/13-whisper-transcription.py\">\n    Complete example with standard Whisper\n  </Card>\n\n<Card title=\"Whisper Documentation\" icon=\"book\" href=\"https://github.com/openai/whisper\">\n    OpenAI's Whisper research paper and model details\n  </Card>\n\n<Card title=\"MLX Whisper Example\" icon=\"microphone\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/13e-whisper-mlx.py\">\n    Apple Silicon optimized example\n  </Card>\n</CardGroup>\n\nChoose your installation based on your hardware:\n\n### Standard Whisper (CPU/CUDA)\n\n### MLX Whisper (Apple Silicon)\n\n### Local Model Setup\n\nBefore using Whisper STT services, you need:\n\n1. **Model Selection**: Choose appropriate Whisper model size (tiny, base, small, medium, large)\n2. **Hardware Configuration**: Set up CPU, CUDA, or Apple Silicon acceleration\n3. **Storage Space**: Ensure sufficient disk space for model downloads\n\n### Configuration Options\n\n* **Model Size**: Balance between accuracy and performance based on your hardware\n* **Hardware Acceleration**: Configure CUDA for NVIDIA GPUs or MLX for Apple Silicon\n* **Language Support**: Whisper supports 99+ languages out of the box\n\n<Tip>\n  No API keys required - Whisper runs entirely locally for complete privacy.\n</Tip>",
+  "code_samples": [
+    {
+      "code": "### MLX Whisper (Apple Silicon)",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h3",
+      "text": "Standard Whisper (CPU/CUDA)",
+      "id": "standard-whisper-(cpu/cuda)"
+    },
+    {
+      "level": "h3",
+      "text": "MLX Whisper (Apple Silicon)",
+      "id": "mlx-whisper-(apple-silicon)"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Local Model Setup",
+      "id": "local-model-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Configuration Options",
+      "id": "configuration-options"
+    }
+  ],
+  "url": "llms-txt#whisper",
+  "links": []
+}

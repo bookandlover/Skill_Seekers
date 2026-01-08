@@ -1,0 +1,28 @@
+{
+  "title": "Use with LiveKitTransport",
+  "content": "transport = LiveKitTransport(url=url, token=token, room_name=room_name, params=LiveKitParams())\npython theme={null}\nimport argparse\nfrom pipecat.runner.livekit import configure_with_args\n\nparser = argparse.ArgumentParser()\nurl, token, room_name, args = await configure_with_args(parser)\npython theme={null}\nfrom pipecat.runner.livekit import generate_token_with_agent",
+  "code_samples": [
+    {
+      "code": "### Configuration with Arguments\n\nFor command-line integration:",
+      "language": "unknown"
+    },
+    {
+      "code": "Supports these command-line options:\n\n* `-r, --room`: Specify LiveKit room name\n* `-u, --url`: Specify LiveKit server URL\n\n### Token Generation\n\nLiveKit provides two token generation functions:\n\n**`generate_token(room_name, participant_name, api_key, api_secret)`**\nCreates a standard participant token for users or testing.\n\n**`generate_token_with_agent(room_name, participant_name, api_key, api_secret)`**\nCreates an agent token with special permissions. Use this for your bots.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Configuration with Arguments",
+      "id": "configuration-with-arguments"
+    },
+    {
+      "level": "h3",
+      "text": "Token Generation",
+      "id": "token-generation"
+    }
+  ],
+  "url": "llms-txt#use-with-livekittransport",
+  "links": []
+}

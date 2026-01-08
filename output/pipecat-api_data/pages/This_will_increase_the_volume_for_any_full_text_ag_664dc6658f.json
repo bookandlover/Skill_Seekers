@@ -1,0 +1,19 @@
+{
+  "title": "This will increase the volume for any full text aggregation that is in all caps.",
+  "content": "async def maybe_say_it_loud(text: str, type: str) -> str:\n    if text.upper() == text:\n        return f\"{CartesiaTTSService.VOLUME_TAG(2.0)}{text}{CartesiaTTSService.VOLUME_TAG(1.0)}\"\n    return text\n\ntts = CartesiaTTSService(\n    api_key=os.getenv(\"CARTESIA_API_KEY\"),\n    text_transforms=[\n        (\"*\", maybe_say_it_loud), # Apply to all text\n    ],\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### SPEED\\_TAG(speed: float) -> str:\n\nA convenience method to create Cartesia's [SSML speed tag](https://docs.cartesia.ai/build-with-cartesia/sonic-3/ssml-tags#speed) for dynamically adjusting the speech rate in situ.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "SPEED\\_TAG(speed: float) -> str:",
+      "id": "speed\\_tag(speed:-float)-->-str:"
+    }
+  ],
+  "url": "llms-txt#this-will-increase-the-volume-for-any-full-text-aggregation-that-is-in-all-caps.",
+  "links": []
+}

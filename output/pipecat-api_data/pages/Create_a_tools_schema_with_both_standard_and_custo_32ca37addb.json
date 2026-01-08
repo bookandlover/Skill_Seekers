@@ -1,0 +1,32 @@
+{
+  "title": "Create a tools schema with both standard and custom tools",
+  "content": "tools = ToolsSchema(\n    standard_tools=[weather_function],\n    custom_tools={\n        AdapterType.GEMINI: [gemini_search_tool]\n    }\n)\npython Non-Direct Function theme={null}\n  from pipecat.services.llm_service import FunctionCallParams\n\nllm = OpenAILLMService(api_key=\"your-api-key\")\n\n# Main function handler - called to execute the function\n  async def fetch_weather_from_api(params: FunctionCallParams):\n      # Fetch weather data from your API\n      weather_data = {\"conditions\": \"sunny\", \"temperature\": \"75\"}\n      await params.result_callback(weather_data)\n\n# Register the function\n  llm.register_function(\n      \"get_current_weather\",\n      fetch_weather_from_api,\n      cancel_on_interruption=True,  # Cancel if user interrupts (default: True)\n  )\n  python Direct Function theme={null}\n  from pipecat.services.llm_service import FunctionCallParams\n\nllm = OpenAILLMService(api_key=\"your-api-key\")\n\n# Direct function\n  async def get_current_weather(params: FunctionCallParams, location: str, format: str):\n      \"\"\"Get the current weather.\n\nArgs:\n          location: The city and state, e.g. \"San Francisco, CA\".\n          format: The temperature unit to use. Must be either \"celsius\" or \"fahrenheit\".\n      \"\"\"\n      weather_data = {\"conditions\": \"sunny\", \"temperature\": \"75\"}\n      await params.result_callback(weather_data)\n\n# Register direct function\n  llm.register_direct_function(\n      get_current_weather,\n      cancel_on_interruption=False,  # Don't cancel on interruption\n  )\n  python theme={null}",
+  "code_samples": [
+    {
+      "code": "<Tip>\n  See the provider-specific documentation for details on custom tools and their\n  formats.\n</Tip>\n\n### 2. Register Function Handlers\n\nRegister handlers for your functions using one of these [LLM service methods](https://reference-server.pipecat.ai/en/latest/api/pipecat.services.llm_service.html#llm-service):\n\n* `register_function`\n* `register_direct_function`\n\nWhich one you use depends on whether your function is a [\"direct\" function](#using-direct-functions-shorthand).\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n**Key registration options:**\n\n* **`cancel_on_interruption=True`** (default): Function call is cancelled if user interrupts\n* **`cancel_on_interruption=False`**: Function call continues even if user interrupts\n\nUse `cancel_on_interruption=False` for critical operations that should complete even if the user starts speaking. Function calls are async, so you can continue the conversation while the function executes. Once the result returns, the LLM will automatically incorporate it into the conversation context. LLMs vary in terms of how well they incorporate changes to *previous* messages, so you may need to experiment with your LLM provider to see how it handles this.\n\n### 3. Create the Pipeline\n\nInclude your LLM service in your pipeline with the registered functions:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "2. Register Function Handlers",
+      "id": "2.-register-function-handlers"
+    },
+    {
+      "level": "h3",
+      "text": "3. Create the Pipeline",
+      "id": "3.-create-the-pipeline"
+    }
+  ],
+  "url": "llms-txt#create-a-tools-schema-with-both-standard-and-custom-tools",
+  "links": []
+}

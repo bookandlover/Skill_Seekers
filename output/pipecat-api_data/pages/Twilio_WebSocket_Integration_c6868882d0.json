@@ -1,0 +1,94 @@
+{
+  "title": "Twilio WebSocket Integration",
+  "content": "Source: https://docs.pipecat.ai/guides/telephony/twilio-websockets\n\nComplete guide to using Twilio Media Streams with Pipecat for dial-in and dial-out functionality\n\n## Things you'll need\n\n* An active [Twilio](https://www.twilio.com) account with API credentials\n* One or more Twilio provisioned phone numbers\n* A tunneling service like [ngrok](https://ngrok.com/) for local development\n* API keys for speech-to-text, text-to-speech, and LLM services\n\n<CardGroup>\n  <Card title=\"Twilio Dial-in Example\" icon=\"phone-arrow-down-left\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot/inbound\">\n    Complete dial-in implementation using Twilio Media Streams over WebSocket\n  </Card>\n\n<Card title=\"Twilio Dial-out Example\" icon=\"phone-arrow-up-right\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot/outbound\">\n    Outbound calling using Twilio Media Streams with WebSocket transport\n  </Card>\n</CardGroup>\n\n## Phone Number Setup\n\nYou'll need Twilio phone numbers for both dial-in and dial-out functionality:\n\n* Visit [console.twilio.com](https://console.twilio.com) and purchase phone numbers\n* Ensure your numbers support Voice capabilities\n* Configure webhook URLs for dial-in numbers (covered below)\n\nConfigure your environment variables for Twilio and AI services:\n\nDial-in allows users to call your Twilio number and connect to your Pipecat bot via WebSocket Media Streams.\n\nHere's the sequence of events when someone calls your Twilio number:\n\n1. **Twilio sends WebSocket messages**: Twilio processes the associated TwiML Bin and starts a WebSocket stream to your bot (local or Pipecat Cloud)\n2. **Parse the WebSocket messages**: Your bot parses the WebSocket connection messages to set up the corresponding Pipecat transport\n3. **(Optional) Look up the caller**: Optionally, look up the caller using Twilio's REST API to retrieve custom information about the call and personalize your bot's behavior\n4. **Bot starts responding**: Once the pipeline is started, your bot will initiate the conversation\n\n### Setting Up Twilio\n\n#### 1. Create a TwiML Bin\n\nA TwiML Bin tells Twilio how to handle incoming calls. You'll create one that establishes a WebSocket connection to your bot.\n\n1. Go to the [Twilio Console](https://console.twilio.com)\n2. Navigate to **TwiML Bins** → **My TwiML Bins**\n3. Click the **+** to create a new TwiML Bin\n4. Name your bin and add the TwiML:\n\n<Tabs>\n  <Tab title=\"Local Development\">\n\nReplace `your-url.ngrok.io` with your ngrok URL.\n  </Tab>\n\n<Tab title=\"Pipecat Cloud\">\n\n* `AGENT_NAME` with the name of the agent you deployed to Pipecat Cloud\n    * `ORGANIZATION_NAME` with the name of your Pipecat Cloud organization\n  </Tab>\n</Tabs>\n\n#### 2. Assign TwiML Bin to Your Phone Number\n\n1. Navigate to **Phone Numbers** → **Manage** → **Active Numbers**\n2. Click on your Twilio phone number\n3. In the \"Voice Configuration\" section:\n   * Set \"A call comes in\" to **TwiML Bin**\n   * Select the TwiML Bin you created\n4. Click **Save configuration**\n\n### Running the Example\n\nYou'll need two terminal windows to run the example.\n\n1. In your first terminal, start ngrok to expose your local server:\n\n> Tip: Use the `--subdomain` flag for a reusable ngrok URL.\n\n2. In your second terminal, install dependencies:\n\n4. Call your bot by placing a call to the number associated with your bot. The bot will answer and start the conversation.\n\n### Personalizing Your Bot with Caller Information\n\nWhen a call comes in, your bot receives a Call SID from Twilio. You can use this Call SID to fetch caller information from Twilio's REST API, including the caller's phone number. With this information, you can:\n\n* Look up customer information in your database\n* Personalize greetings and responses based on caller identity\n* Route calls to different bot behaviors (e.g., VIP handling, support vs sales)\n* Implement custom business logic based on the caller\n\nThe example bot demonstrates how to fetch caller information asynchronously using `aiohttp` to avoid blocking the event loop, ensuring your bot remains responsive even with multiple concurrent calls.\n\n<Card title=\"Complete Dial-in Example\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot/inbound\">\n  See the full implementation with WebSocket parsing, REST API integration, and\n  caller personalization\n</Card>\n\nDial-out allows your bot to initiate calls to phone numbers using Twilio's outbound calling capabilities with WebSocket Media Streams.\n\nHere's the sequence of events for dial-out calls:\n\n1. **Your application triggers a dial-out** (via API call or user action)\n2. **Server initiates a Twilio call** to the target phone number\n3. **Twilio establishes the call** and opens a WebSocket connection\n4. **Your bot joins the WebSocket** and sets up the pipeline\n5. **The recipient answers** and is connected to your bot\n6. **The bot handles the conversation** with real-time audio streaming\n\n### Set up your server for dial-out\n\nThe dial-out server creates outbound calls and manages WebSocket connections. When you trigger a dial-out call, your server:\n\n1. **Receives the dial-out request** with target phone number and parameters\n2. **Creates a Twilio call** using the REST API with TwiML that establishes WebSocket\n3. **Accepts the WebSocket** connection from Twilio\n4. **Parses call data** including any custom parameters\n5. **Runs the Pipecat bot** with the call information\n\n<Card title=\"Complete Server Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/twilio-chatbot/outbound/server.py\">\n  See the full FastAPI server code with outbound call creation and WebSocket\n  handling\n</Card>\n\n### Configure your Pipecat bot for dial-out\n\nThe dial-out bot configuration is similar to dial-in, but you can pass custom parameters when creating the outbound call:\n\n**Custom Parameters for Dial-out**: Pass information to your bot through TwiML parameters:\n\n```python server.py theme={null}",
+  "code_samples": [
+    {
+      "code": "## Dial-in\n\nDial-in allows users to call your Twilio number and connect to your Pipecat bot via WebSocket Media Streams.\n\n### How It Works\n\nHere's the sequence of events when someone calls your Twilio number:\n\n1. **Twilio sends WebSocket messages**: Twilio processes the associated TwiML Bin and starts a WebSocket stream to your bot (local or Pipecat Cloud)\n2. **Parse the WebSocket messages**: Your bot parses the WebSocket connection messages to set up the corresponding Pipecat transport\n3. **(Optional) Look up the caller**: Optionally, look up the caller using Twilio's REST API to retrieve custom information about the call and personalize your bot's behavior\n4. **Bot starts responding**: Once the pipeline is started, your bot will initiate the conversation\n\n### Setting Up Twilio\n\n#### 1. Create a TwiML Bin\n\nA TwiML Bin tells Twilio how to handle incoming calls. You'll create one that establishes a WebSocket connection to your bot.\n\n1. Go to the [Twilio Console](https://console.twilio.com)\n2. Navigate to **TwiML Bins** → **My TwiML Bins**\n3. Click the **+** to create a new TwiML Bin\n4. Name your bin and add the TwiML:\n\n<Tabs>\n  <Tab title=\"Local Development\">",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace `your-url.ngrok.io` with your ngrok URL.\n  </Tab>\n\n  <Tab title=\"Pipecat Cloud\">",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace:\n\n    * `AGENT_NAME` with the name of the agent you deployed to Pipecat Cloud\n    * `ORGANIZATION_NAME` with the name of your Pipecat Cloud organization\n  </Tab>\n</Tabs>\n\n5. Click **Save**\n\n#### 2. Assign TwiML Bin to Your Phone Number\n\n1. Navigate to **Phone Numbers** → **Manage** → **Active Numbers**\n2. Click on your Twilio phone number\n3. In the \"Voice Configuration\" section:\n   * Set \"A call comes in\" to **TwiML Bin**\n   * Select the TwiML Bin you created\n4. Click **Save configuration**\n\n### Running the Example\n\nYou'll need two terminal windows to run the example.\n\n1. In your first terminal, start ngrok to expose your local server:",
+      "language": "unknown"
+    },
+    {
+      "code": "> Tip: Use the `--subdomain` flag for a reusable ngrok URL.\n\n2. In your second terminal, install dependencies:",
+      "language": "unknown"
+    },
+    {
+      "code": "3. Then run the bot:",
+      "language": "unknown"
+    },
+    {
+      "code": "4. Call your bot by placing a call to the number associated with your bot. The bot will answer and start the conversation.\n\n### Personalizing Your Bot with Caller Information\n\nWhen a call comes in, your bot receives a Call SID from Twilio. You can use this Call SID to fetch caller information from Twilio's REST API, including the caller's phone number. With this information, you can:\n\n* Look up customer information in your database\n* Personalize greetings and responses based on caller identity\n* Route calls to different bot behaviors (e.g., VIP handling, support vs sales)\n* Implement custom business logic based on the caller\n\nThe example bot demonstrates how to fetch caller information asynchronously using `aiohttp` to avoid blocking the event loop, ensuring your bot remains responsive even with multiple concurrent calls.\n\n<Card title=\"Complete Dial-in Example\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot/inbound\">\n  See the full implementation with WebSocket parsing, REST API integration, and\n  caller personalization\n</Card>\n\n## Dial-out\n\nDial-out allows your bot to initiate calls to phone numbers using Twilio's outbound calling capabilities with WebSocket Media Streams.\n\n### How It Works\n\nHere's the sequence of events for dial-out calls:\n\n1. **Your application triggers a dial-out** (via API call or user action)\n2. **Server initiates a Twilio call** to the target phone number\n3. **Twilio establishes the call** and opens a WebSocket connection\n4. **Your bot joins the WebSocket** and sets up the pipeline\n5. **The recipient answers** and is connected to your bot\n6. **The bot handles the conversation** with real-time audio streaming\n\n### Set up your server for dial-out\n\nThe dial-out server creates outbound calls and manages WebSocket connections. When you trigger a dial-out call, your server:\n\n1. **Receives the dial-out request** with target phone number and parameters\n2. **Creates a Twilio call** using the REST API with TwiML that establishes WebSocket\n3. **Accepts the WebSocket** connection from Twilio\n4. **Parses call data** including any custom parameters\n5. **Runs the Pipecat bot** with the call information\n\n<Card title=\"Complete Server Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/twilio-chatbot/outbound/server.py\">\n  See the full FastAPI server code with outbound call creation and WebSocket\n  handling\n</Card>\n\n### Configure your Pipecat bot for dial-out\n\nThe dial-out bot configuration is similar to dial-in, but you can pass custom parameters when creating the outbound call:\n\n**Custom Parameters for Dial-out**: Pass information to your bot through TwiML parameters:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Things you'll need",
+      "id": "things-you'll-need"
+    },
+    {
+      "level": "h2",
+      "text": "Phone Number Setup",
+      "id": "phone-number-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Environment Setup",
+      "id": "environment-setup"
+    },
+    {
+      "level": "h2",
+      "text": "Dial-in",
+      "id": "dial-in"
+    },
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Setting Up Twilio",
+      "id": "setting-up-twilio"
+    },
+    {
+      "level": "h3",
+      "text": "Running the Example",
+      "id": "running-the-example"
+    },
+    {
+      "level": "h3",
+      "text": "Personalizing Your Bot with Caller Information",
+      "id": "personalizing-your-bot-with-caller-information"
+    },
+    {
+      "level": "h2",
+      "text": "Dial-out",
+      "id": "dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h3",
+      "text": "Set up your server for dial-out",
+      "id": "set-up-your-server-for-dial-out"
+    },
+    {
+      "level": "h3",
+      "text": "Configure your Pipecat bot for dial-out",
+      "id": "configure-your-pipecat-bot-for-dial-out"
+    }
+  ],
+  "url": "llms-txt#twilio-websocket-integration",
+  "links": []
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Detecting Idle Users",
+  "content": "Source: https://docs.pipecat.ai/guides/fundamentals/detecting-user-idle\n\nLearn how to detect and respond when users are inactive in conversations\n\nIn conversational applications, it's important to handle situations where users go silent or inactive. Pipecat's `UserIdleProcessor` helps you detect when users haven't spoken for a defined period, allowing your bot to respond appropriately.\n\nThe `UserIdleProcessor` monitors user activity and:\n\n1. Starts tracking after the first interaction (user or bot speaking)\n2. Resets a timer whenever the user speaks\n3. Calls your custom callback function when the user is idle for longer than the timeout period\n4. Provides a retry counter to track consecutive idle periods\n5. Allows you to implement escalating responses or gracefully end the conversation\n\n<Note>\n  The processor uses speech events (not audio frames) to detect activity, so it\n  requires an active speech-to-text service or a transport with built-in speech\n  detection.\n</Note>\n\n## Basic Implementation\n\n### Step 1: Create a Handler Function\n\nFirst, create a callback function that will be triggered when the user is idle:\n\n```python theme={null}",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Basic Implementation",
+      "id": "basic-implementation"
+    },
+    {
+      "level": "h3",
+      "text": "Step 1: Create a Handler Function",
+      "id": "step-1:-create-a-handler-function"
+    }
+  ],
+  "url": "llms-txt#detecting-idle-users",
+  "links": []
+}

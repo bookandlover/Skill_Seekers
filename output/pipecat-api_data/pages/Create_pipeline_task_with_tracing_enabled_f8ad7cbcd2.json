@@ -1,0 +1,8 @@
+{
+  "title": "Create pipeline task with tracing enabled",
+  "content": "task = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        allow_interruptions=True,\n        enable_metrics=True,\n        enable_usage_metrics=True,\n    ),\n    enable_tracing=True,\n    enable_turn_tracking=True,\n    conversation_id=\"customer-123\",                       # Optional - will auto-generate if not provided\n    additional_span_attributes={\"session.id\": \"abc-123\"} # Optional - additional attributes to attach to the otel span\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-pipeline-task-with-tracing-enabled",
+  "links": []
+}

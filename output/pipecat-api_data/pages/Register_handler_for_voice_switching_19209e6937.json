@@ -1,0 +1,8 @@
+{
+  "title": "Register handler for voice switching",
+  "content": "def on_voice_tag(match: PatternMatch):\n    voice_name = match.content.strip().lower()\n    if voice_name in VOICE_IDS:\n        voice_id = VOICE_IDS[voice_name]\n        tts.set_voice(voice_id)\n        logger.info(f\"Switched to {voice_name} voice\")\n\npattern_aggregator.on_pattern_match(\"voice\", on_voice_tag)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#register-handler-for-voice-switching",
+  "links": []
+}

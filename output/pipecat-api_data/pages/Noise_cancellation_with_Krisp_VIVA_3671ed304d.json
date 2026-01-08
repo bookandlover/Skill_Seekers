@@ -1,0 +1,58 @@
+{
+  "title": "Noise cancellation with Krisp VIVA",
+  "content": "Source: https://docs.pipecat.ai/guides/features/krisp-viva\n\nLearn how to integrate Krisp's VIVA noise cancellation model into your Pipecat application\n\nThis guide will walk you through setting up and using Krisp's VIVA noise cancellation models to filter out background noise and voices from the user's audio input audio stream. These models yield clearer audio, meaning fewer false interruptions and better transcription.\n\n<CardGroup>\n  <Card title=\"Krisp VIVA API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.audio.filters.krisp_viva_filter.html\">\n    Pipecat's API reference for Krisp VIVA noise cancellation\n  </Card>\n\n<Card title=\"Krisp VIVA Example\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07p-interruptible-krisp-viva.py\">\n    Complete example with Krisp VIVA noise cancellation\n  </Card>\n</CardGroup>\n\nTo complete this setup, you will need access to a Krisp developers account, where you can download the Python SDK and corresponding VIVA models.\n\n<Tip>\n  Get started on the [Krisp developers website](https://krisp.ai/developers).\n</Tip>\n\n### Download the Python SDK and Models\n\n1. Log in to the [Krisp developer portal](https://sdk.krisp.ai/)\n2. Navigate to the `Server SDK Version` Tab\n3. Find the latest version of the Python SDK:\n   * Download the SDK\n   * Download the Server Side Noise Cancellation models\n\n### Install the Python wheel file\n\n1. First, unzip the SDK files you downloaded in the previous step. In the unzipped folder, you will find a `dist` folder containing the Python wheel file you will need to install.\n2. Install the Python wheel file that corresponds to your platform. For example, a macOS ARM64 platform running Python 3.12 would install the following:\n\n### Set up the environment variable\n\n1. First, unzip the models you downloaded in the first step. The folder contains a number of models. You will want to use either:\n\n* `krisp-viva-pro`: Mobile, Desktop, Browser (WebRTC, up to 32kHz)\n   * `krisp-viva-tel`: Telephony, Cellular, Landline, Mobile, Desktop, Browser (up to 16kHz)\n\nNote: the full model name will be in the format of `krisp-viva-pro-v1.kef`.\n\n2. In your .env file, add a `KRISP_VIVA_MODEL_PATH` environment variable which points to the path to the VIVA model you wish to use.\n\n## Test the integration\n\nYou're ready to test the integration! Try running the [Krisp VIVA foundation example](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07p-interruptible-krisp-viva.py).\n\n<Tip>\n  Learn how to [run foundational\n  examples](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/README.md)\n  in Pipecat.\n</Tip>\n\nThe `KrispVivaFilter()` is the audio filter available in Pipecat that uses the Krisp VIVA noise cancellation model. This filter can be added to any transport via the `audio_in_filter` parameter.\n\nFor example, here's how to add the `KrispVivaFilter()` to a Daily transport:\n\n```python theme={null}\nfrom pipecat.audio.filters.krisp_viva_filter import KrispVivaFilter\nfrom pipecat.transports.daily.transport import DailyParams, DailyTransport",
+  "code_samples": [
+    {
+      "code": "### Set up the environment variable\n\n1. First, unzip the models you downloaded in the first step. The folder contains a number of models. You will want to use either:\n\n   * `krisp-viva-pro`: Mobile, Desktop, Browser (WebRTC, up to 32kHz)\n   * `krisp-viva-tel`: Telephony, Cellular, Landline, Mobile, Desktop, Browser (up to 16kHz)\n\n   Note: the full model name will be in the format of `krisp-viva-pro-v1.kef`.\n\n2. In your .env file, add a `KRISP_VIVA_MODEL_PATH` environment variable which points to the path to the VIVA model you wish to use.",
+      "language": "unknown"
+    },
+    {
+      "code": "## Test the integration\n\nYou're ready to test the integration! Try running the [Krisp VIVA foundation example](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07p-interruptible-krisp-viva.py).\n\n<Tip>\n  Learn how to [run foundational\n  examples](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/README.md)\n  in Pipecat.\n</Tip>\n\n## Usage Example\n\nThe `KrispVivaFilter()` is the audio filter available in Pipecat that uses the Krisp VIVA noise cancellation model. This filter can be added to any transport via the `audio_in_filter` parameter.\n\nFor example, here's how to add the `KrispVivaFilter()` to a Daily transport:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Setup",
+      "id": "setup"
+    },
+    {
+      "level": "h3",
+      "text": "Download the Python SDK and Models",
+      "id": "download-the-python-sdk-and-models"
+    },
+    {
+      "level": "h3",
+      "text": "Install the Python wheel file",
+      "id": "install-the-python-wheel-file"
+    },
+    {
+      "level": "h3",
+      "text": "Set up the environment variable",
+      "id": "set-up-the-environment-variable"
+    },
+    {
+      "level": "h2",
+      "text": "Test the integration",
+      "id": "test-the-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#noise-cancellation-with-krisp-viva",
+  "links": []
+}

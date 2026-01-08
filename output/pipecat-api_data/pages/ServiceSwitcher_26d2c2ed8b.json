@@ -1,0 +1,49 @@
+{
+  "title": "ServiceSwitcher",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/service-switchers/service-switcher\n\nDynamically switch between different service instances at runtime using configurable strategies\n\n`ServiceSwitcher` is a specialized parallel pipeline that enables dynamic switching between multiple service instances at runtime. This is useful when you need to change between different STT providers, TTS providers, or other frame processors based on user preferences, costs, performance requirements, or other runtime conditions.\n\nThe switcher uses a strategy pattern to determine which service is active. Currently, a manual switching strategy is provided, allowing explicit control over which service handles frames at any given time.\n\n`ServiceSwitcher` wraps multiple services in a parallel pipeline where only the active service processes frames. Each service is \"sandwiched\" between two filters that check if it's the currently active service before allowing frames to pass through. When you switch services, the filters update to redirect frame flow to the newly active service.\n\n<ParamField type=\"List[FrameProcessor]\">\n  List of service instances to switch between. Can be any frame processors (STT,\n  TTS, or custom processors).\n</ParamField>\n\n<ParamField type=\"Type[ServiceSwitcherStrategy]\">\n  The strategy class to use for switching logic. Pass the class itself, not an\n  instance.\n</ParamField>\n\n## Switching Strategies\n\n### ServiceSwitcherStrategyManual\n\nThe manual strategy allows explicit control over which service is active by pushing `ManuallySwitchServiceFrame` frames into the pipeline.\n\n**Initial State**: The first service in the list is active by default.\n\n**Switching**: Push a `ManuallySwitchServiceFrame` with the desired service instance.\n\n### Switching Between TTS Services\n\n```python theme={null}\nfrom pipecat.frames.frames import ManuallySwitchServiceFrame\nfrom pipecat.pipeline.service_switcher import ServiceSwitcher, ServiceSwitcherStrategyManual\nfrom pipecat.services.elevenlabs.tts import ElevenLabsTTSService\nfrom pipecat.services.cartesia.tts import CartesiaTTSService",
+  "code_samples": [
+    {
+      "code": "<ParamField type=\"List[FrameProcessor]\">\n  List of service instances to switch between. Can be any frame processors (STT,\n  TTS, or custom processors).\n</ParamField>\n\n<ParamField type=\"Type[ServiceSwitcherStrategy]\">\n  The strategy class to use for switching logic. Pass the class itself, not an\n  instance.\n</ParamField>\n\n## Switching Strategies\n\n### ServiceSwitcherStrategyManual\n\nThe manual strategy allows explicit control over which service is active by pushing `ManuallySwitchServiceFrame` frames into the pipeline.\n\n**Initial State**: The first service in the list is active by default.\n\n**Switching**: Push a `ManuallySwitchServiceFrame` with the desired service instance.\n\n## Usage Examples\n\n### Switching Between TTS Services",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor",
+      "id": "constructor"
+    },
+    {
+      "level": "h2",
+      "text": "Switching Strategies",
+      "id": "switching-strategies"
+    },
+    {
+      "level": "h3",
+      "text": "ServiceSwitcherStrategyManual",
+      "id": "serviceswitcherstrategymanual"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Examples",
+      "id": "usage-examples"
+    },
+    {
+      "level": "h3",
+      "text": "Switching Between TTS Services",
+      "id": "switching-between-tts-services"
+    }
+  ],
+  "url": "llms-txt#serviceswitcher",
+  "links": []
+}

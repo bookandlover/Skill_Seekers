@@ -1,0 +1,56 @@
+{
+  "title": "Your imports",
+  "content": "from pipecat.audio.vad.silero import SileroVADAnalyzer\nfrom pipecat.runner.types import RunnerArguments\nfrom pipecat.transports.base_transport import BaseTransport, TransportParams\nfrom pipecat.transports.network.small_webrtc import SmallWebRTCTransport\n\nasync def run_bot(transport: BaseTransport):\n    \"\"\"Your core bot logic here:\n    - Define services (STT, TTS, LLM)\n    - Initialize messages and context\n    - Create the pipeline\n    - Add event handlers\n    - Run the pipeline\n    \"\"\"\n\n# Your bot logic goes here\n    # Define STT, LLM, TTS...\n    # ...\n    # Run your pipeline\n    await runner.run(task)\n\nasync def bot(runner_args: RunnerArguments):\n    \"\"\"Main bot entry point compatible for local dev and Pipecat Cloud.\"\"\"\n    transport = SmallWebRTCTransport(\n        params=TransportParams(\n            audio_in_enabled=True,\n            audio_out_enabled=True,\n            vad_analyzer=SileroVADAnalyzer(),\n        ),\n        webrtc_connection=runner_args.webrtc_connection,\n    )\n\nawait run_bot(transport)\n\nif __name__ == \"__main__\":\n    from pipecat.runner.run import main\n    main()\npython theme={null}\nfrom pipecat.runner.types import DailyRunnerArguments, RunnerArguments, SmallWebRTCRunnerArguments\n\nasync def bot(runner_args: RunnerArguments):\n    \"\"\"Main bot entry point compatible with Pipecat Cloud.\"\"\"\n\nif isinstance(runner_args, DailyRunnerArguments):\n        from pipecat.transports.daily.transport import DailyParams, DailyTransport\n\ntransport = DailyTransport(\n            runner_args.room_url,\n            runner_args.token,\n            \"Pipecat Bot\",\n            params=DailyParams(\n                audio_in_enabled=True,\n                audio_out_enabled=True,\n                vad_analyzer=SileroVADAnalyzer(),\n            ),\n        )\n\nelif isinstance(runner_args, SmallWebRTCRunnerArguments):\n        from pipecat.transports.base_transport import TransportParams\n        from pipecat.transports.network.small_webrtc import SmallWebRTCTransport\n\ntransport = SmallWebRTCTransport(\n            params=TransportParams(\n                audio_in_enabled=True,\n                audio_out_enabled=True,\n                vad_analyzer=SileroVADAnalyzer(),\n            ),\n            webrtc_connection=runner_args.webrtc_connection,\n        )\n\nelse:\n        logger.error(f\"Unsupported runner arguments type: {type(runner_args)}\")\n        return\n\nif transport is None:\n        logger.error(\"Failed to create transport\")\n        return\n\nawait run_bot(transport)\n\nif __name__ == \"__main__\":\n    from pipecat.runner.run import main\n    main()\nbash theme={null}\npython bot.py -t webrtc  # Uses SmallWebRTCRunnerArguments\npython bot.py -t daily   # Uses DailyRunnerArguments\npython theme={null}\nimport os\n\nasync def bot(runner_args: RunnerArguments):\n    # Check if running in local development environment\n    is_local = os.environ.get(\"ENV\") == \"local\"\n\n# Enable production features only when deployed\n    if not is_local:\n        from pipecat.audio.filters.krisp_filter import KrispFilter\n        krisp_filter = KrispFilter()\n    else:\n        krisp_filter = None\n\ntransport = DailyTransport(\n        runner_args.room_url,\n        runner_args.token,\n        \"Pipecat Bot\",\n        params=DailyParams(\n            audio_in_filter=krisp_filter,  # Krisp filter only in production\n            audio_in_enabled=True,\n            audio_out_enabled=True,\n            vad_analyzer=SileroVADAnalyzer(),\n        ),\n    )\nbash theme={null}\npython bot.py -t webrtc",
+  "code_samples": [
+    {
+      "code": "The `run_bot()` function contains your actual bot logic and is transport-agnostic. The `bot()` function is the entry point that the runner calls - it creates the appropriate transport and passes it to your bot logic. This separation allows the same bot code to work across different transports.\n\nWhen you run this with `python bot.py`, the development runner starts a web server and opens a browser interface at `http://localhost:7860/client`. Each time someone connects, the runner calls your `bot()` function with WebRTC runner arguments.\n\n## Supporting Multiple Transports\n\nTo make your bot work across different platforms, you can detect the transport type from the runner arguments and create the appropriate transport. Here's how to support both Daily and WebRTC:",
+      "language": "unknown"
+    },
+    {
+      "code": "Now you can run your bot with different transports:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Understanding Runner Arguments\n\nRunner arguments are how the runner communicates transport-specific information to your bot. The runner determines which transport to use based on the command-line arguments, then creates the appropriate runner arguments:\n\n* **`DailyRunnerArguments`**: Contains `room_url`, `token` (Optional), `body` (Optional) for joining Daily rooms\n* **`SmallWebRTCRunnerArguments`**: Contains `webrtc_connection` for local WebRTC sessions\n* **`WebSocketRunnerArguments`**: Contains `websocket` for telephony connections\n\nAll runner arguments also include:\n\n* **`handle_sigint`**: Whether the bot should handle SIGINT (Ctrl+C) signals (managed automatically)\n* **`handle_sigterm`**: Whether the bot should handle SIGTERM signals (managed automatically)\n\n<Warning>\n  `handle_sigint` and `handle_sigterm` are development only features and cannot\n  be used when deploying to Pipecat Cloud.\n</Warning>\n\nThe runner handles all the complex setup - creating Daily rooms, generating tokens, establishing WebSocket connections - and provides your bot with everything it needs through these runner arguments.\n\nNotice how we use lazy imports (`from pipecat.transports.daily.transport import ...`) inside the conditional blocks. This ensures that transport-specific dependencies are only required when that transport is actually used, making your bot more portable.\n\n<Info>\n  `RunnerArguments` is the base class for all runner arguments. It provides a\n  common interface for the runner to pass transport-specific information to your\n  bot.\n</Info>\n\n## Environment Detection\n\nWhen building bots that work both locally and in production, you often need to detect the execution environment to enable different features. The development runner sets the `ENV` environment variable to help with this:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Environment Values\n\nThe development runner automatically sets environment variables based on how your bot is running:\n\n* **Local development**: `ENV=local` (set by the development runner)\n* **Production/Cloud deployment**: `ENV` is not set or has a different value\n\nThis allows you to easily customize behavior between development and production environments:\n\n## All Supported Transports\n\nThe development runner supports six transport types, each designed for different use cases:\n\n### WebRTC (`-t webrtc`)\n\nLocal WebRTC connections with a built-in browser interface. Perfect for development and testing.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Supporting Multiple Transports",
+      "id": "supporting-multiple-transports"
+    },
+    {
+      "level": "h3",
+      "text": "Understanding Runner Arguments",
+      "id": "understanding-runner-arguments"
+    },
+    {
+      "level": "h2",
+      "text": "Environment Detection",
+      "id": "environment-detection"
+    },
+    {
+      "level": "h3",
+      "text": "Environment Values",
+      "id": "environment-values"
+    },
+    {
+      "level": "h2",
+      "text": "All Supported Transports",
+      "id": "all-supported-transports"
+    },
+    {
+      "level": "h3",
+      "text": "WebRTC (`-t webrtc`)",
+      "id": "webrtc-(`-t-webrtc`)"
+    }
+  ],
+  "url": "llms-txt#your-imports",
+  "links": []
+}

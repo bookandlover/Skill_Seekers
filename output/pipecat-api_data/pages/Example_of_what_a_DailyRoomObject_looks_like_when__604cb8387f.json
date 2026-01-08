@@ -1,0 +1,42 @@
+{
+  "title": "Example of what a DailyRoomObject looks like when received",
+  "content": "room = DailyRoomObject(\n    id=\"abc123\",\n    name=\"team-meeting\",\n    api_created=True,\n    privacy=\"private\",\n    url=\"https://your-domain.daily.co/team-meeting\",\n    created_at=\"2024-01-20T10:00:00.000Z\",\n    config=DailyRoomProperties(\n        enable_chat=True,\n        exp=1705743600\n    )\n)\npython theme={null}\nfrom pipecat.transports.services.helpers.daily_rest import (\n    DailyMeetingTokenParams,\n    DailyMeetingTokenProperties,\n)\n\ntoken_params = DailyMeetingTokenParams(\n    properties=DailyMeetingTokenProperties(\n        user_name=\"John Doe\",\n        enable_screenshare=True,\n        start_video_off=True,\n        permissions={\"canSend\": [\"video\", \"audio\"]}\n    )\n)\npython theme={null}\nhelper = DailyRESTHelper(\n    daily_api_key=\"your-api-key\",\n    aiohttp_session=session\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### DailyMeetingTokenProperties\n\nProperties for configuring a Daily meeting token.\n\n<ResponseField name=\"room_name\" type=\"string\">\n  The room this token is valid for. If not set, token is valid for all rooms.\n</ResponseField>\n\n<ResponseField name=\"eject_at_token_exp\" type=\"boolean\">\n  Whether to eject user when token expires\n</ResponseField>\n\n<ResponseField name=\"eject_after_elapsed\" type=\"integer\">\n  Eject user after this many seconds\n</ResponseField>\n\n<ResponseField name=\"nbf\" type=\"integer\">\n  \"Not before\" timestamp - users cannot join before this time\n</ResponseField>\n\n<ResponseField name=\"exp\" type=\"integer\">\n  Expiration timestamp - users cannot join after this time\n</ResponseField>\n\n<ResponseField name=\"is_owner\" type=\"boolean\">\n  Whether token grants owner privileges\n</ResponseField>\n\n<ResponseField name=\"user_name\" type=\"string\">\n  User's display name in the meeting\n</ResponseField>\n\n<ResponseField name=\"user_id\" type=\"string\">\n  Unique identifier for the user (36 char limit)\n</ResponseField>\n\n<ResponseField name=\"enable_screenshare\" type=\"boolean\">\n  Whether user can share their screen\n</ResponseField>\n\n<ResponseField name=\"start_video_off\" type=\"boolean\">\n  Whether to join with video off\n</ResponseField>\n\n<ResponseField name=\"start_audio_off\" type=\"boolean\">\n  Whether to join with audio off\n</ResponseField>\n\n<ResponseField name=\"enable_recording\" type=\"string\">\n  Recording settings (\"cloud\", \"local\", or \"raw-tracks\")\n</ResponseField>\n\n<ResponseField name=\"enable_prejoin_ui\" type=\"boolean\">\n  Whether to show prejoin UI\n</ResponseField>\n\n<ResponseField name=\"start_cloud_recording\" type=\"boolean\">\n  Whether to start cloud recording when user joins\n</ResponseField>\n\n<ResponseField name=\"permissions\" type=\"dict\">\n  Initial default permissions for a non-meeting-owner participant\n</ResponseField>\n\n### DailyMeetingTokenParams\n\nParameters for creating a Daily meeting token.\n\n<ResponseField name=\"properties\" type=\"DailyMeetingTokenProperties\">\n  Token configuration properties\n</ResponseField>",
+      "language": "unknown"
+    },
+    {
+      "code": "## Initialize DailyRESTHelper\n\nCreate a new instance of the Daily REST helper.\n\n<ParamField type=\"string\">\n  Your Daily API key\n</ParamField>\n\n<ParamField type=\"string\">\n  The Daily API base URL\n</ParamField>\n\n<ParamField type=\"aiohttp.ClientSession\">\n  An aiohttp client session for making HTTP requests\n</ParamField>",
+      "language": "unknown"
+    },
+    {
+      "code": "## Create Room\n\nCreates a new Daily room with specified parameters.\n\n<ParamField type=\"DailyRoomParams\">\n  Room configuration parameters including name, privacy, and properties\n</ParamField>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "DailyMeetingTokenProperties",
+      "id": "dailymeetingtokenproperties"
+    },
+    {
+      "level": "h3",
+      "text": "DailyMeetingTokenParams",
+      "id": "dailymeetingtokenparams"
+    },
+    {
+      "level": "h2",
+      "text": "Initialize DailyRESTHelper",
+      "id": "initialize-dailyresthelper"
+    },
+    {
+      "level": "h2",
+      "text": "Create Room",
+      "id": "create-room"
+    }
+  ],
+  "url": "llms-txt#example-of-what-a-dailyroomobject-looks-like-when-received",
+  "links": []
+}

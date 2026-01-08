@@ -1,0 +1,8 @@
+{
+  "title": "Initialize and configure MCPClient with server parameters",
+  "content": "mcp = MCPClient(\n        server_params=StdioServerParameters(\n            command=shutil.which(\"npx\"),\n            args=[\"-y\", \"@name/mcp-server-name@latest\"],\n            env={\"ENV_API_KEY\": \"<env_api_key>\"},\n        )\n    )",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#initialize-and-configure-mcpclient-with-server-parameters",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Enable bytecode compilation",
+  "content": "ENV UV_COMPILE_BYTECODE=1",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#enable-bytecode-compilation",
+  "links": []
+}

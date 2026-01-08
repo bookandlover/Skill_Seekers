@@ -1,0 +1,61 @@
+{
+  "title": "Smart Turn Overview",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/smart-turn/smart-turn-overview\n\nAdvanced conversational turn detection powered by the smart-turn model\n\nSmart Turn Detection is an advanced feature in Pipecat that determines when a user has finished speaking and the bot should respond. Unlike basic Voice Activity Detection (VAD) which only detects speech vs. non-speech, Smart Turn Detection uses a machine learning model to recognize natural conversational cues like intonation patterns and linguistic signals.\n\n<CardGroup>\n  <Card title=\"Smart Turn Model\" icon=\"github\" href=\"https://github.com/pipecat-ai/smart-turn\">\n    Open source model for advanced conversational turn detection. Contribute to\n    model training and development.\n  </Card>\n\n<Card title=\"Data Collector\" icon=\"microphone\" href=\"https://turn-training.pipecat.ai/\">\n    Contribute conversational data to improve the smart-turn model\n  </Card>\n\n<Card title=\"Data Classifier\" icon=\"check-circle\" href=\"https://smart-turn-dataset.pipecat.ai/\">\n    Help classify turn completion patterns in conversations\n  </Card>\n</CardGroup>\n\nPipecat provides two implementations of Smart Turn Detection:\n\n1. **LocalSmartTurnAnalyzerV3** - Runs inference locally using ONNX. This method is recommended due to the fast CPU inference times in Smart Turn v3.\n2. **FalSmartTurnAnalyzer** - Uses Fal's hosted smart-turn model for inference.\n\nAll implementations share the same underlying API and parameters, making it easy to switch between them based on your deployment requirements.\n\nThe Smart Turn Detection feature requires additional dependencies depending on which implementation you choose.\n\n**For local inference:**\n\nThe Smart Turn model weights are bundled with Pipecat, so no need to download these separately.\n\n**For Fal's hosted service inference:**\n\n## Integration with Transport\n\nSmart Turn Detection is integrated into your application by setting one of the available turn analyzers as the `turn_analyzer` parameter in your transport configuration:\n\n<Tip>\n  Smart Turn Detection requires VAD to be enabled and works best when the VAD analyzer is set to a short `stop_secs` value. We recommend 0.2 seconds.\n\nAll implementations use the same `SmartTurnParams` class to configure behavior:\n\n<ParamField type=\"float\">\n  Duration of silence in seconds required before triggering a silence-based end\n  of turn\n</ParamField>\n\n<ParamField type=\"float\">\n  Amount of audio (in milliseconds) to include before speech is detected\n</ParamField>\n\n<ParamField type=\"float\">\n  Maximum allowed segment duration in seconds. For segments longer than this\n  value, a rolling window is used.\n</ParamField>\n\nThe `FalSmartTurnAnalyzer` class uses a remote service for turn detection inference.\n\n### Constructor Parameters\n\n<ParamField type=\"str\">\n  The URL of the remote Smart Turn service\n</ParamField>\n\n<ParamField type=\"Optional[int]\">\n  Audio sample rate (will be set by the transport if not provided)\n</ParamField>\n\n<ParamField type=\"SmartTurnParams\">\n  Configuration parameters for turn detection\n</ParamField>\n\n```python theme={null}\nimport os\nfrom pipecat.audio.turn.smart_turn.fal_smart_turn import FalSmartTurnAnalyzer\nfrom pipecat.audio.turn.smart_turn.base_smart_turn import SmartTurnParams\nfrom pipecat.transports.base_transport import TransportParams",
+  "code_samples": [
+    {
+      "code": "The Smart Turn model weights are bundled with Pipecat, so no need to download these separately.\n\n**For Fal's hosted service inference:**",
+      "language": "unknown"
+    },
+    {
+      "code": "## Integration with Transport\n\nSmart Turn Detection is integrated into your application by setting one of the available turn analyzers as the `turn_analyzer` parameter in your transport configuration:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Tip>\n  Smart Turn Detection requires VAD to be enabled and works best when the VAD analyzer is set to a short `stop_secs` value. We recommend 0.2 seconds.",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tip>\n\n## Configuration\n\nAll implementations use the same `SmartTurnParams` class to configure behavior:\n\n<ParamField type=\"float\">\n  Duration of silence in seconds required before triggering a silence-based end\n  of turn\n</ParamField>\n\n<ParamField type=\"float\">\n  Amount of audio (in milliseconds) to include before speech is detected\n</ParamField>\n\n<ParamField type=\"float\">\n  Maximum allowed segment duration in seconds. For segments longer than this\n  value, a rolling window is used.\n</ParamField>\n\n## Remote Smart Turn\n\nThe `FalSmartTurnAnalyzer` class uses a remote service for turn detection inference.\n\n### Constructor Parameters\n\n<ParamField type=\"str\">\n  The URL of the remote Smart Turn service\n</ParamField>\n\n<ParamField type=\"Optional[int]\">\n  Audio sample rate (will be set by the transport if not provided)\n</ParamField>\n\n<ParamField type=\"SmartTurnParams\">\n  Configuration parameters for turn detection\n</ParamField>\n\n### Example",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Integration with Transport",
+      "id": "integration-with-transport"
+    },
+    {
+      "level": "h2",
+      "text": "Configuration",
+      "id": "configuration"
+    },
+    {
+      "level": "h2",
+      "text": "Remote Smart Turn",
+      "id": "remote-smart-turn"
+    },
+    {
+      "level": "h3",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h3",
+      "text": "Example",
+      "id": "example"
+    }
+  ],
+  "url": "llms-txt#smart-turn-overview",
+  "links": []
+}

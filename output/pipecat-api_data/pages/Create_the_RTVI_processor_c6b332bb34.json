@@ -1,0 +1,8 @@
+{
+  "title": "Create the RTVI processor",
+  "content": "rtvi = RTVIProcessor()",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-the-rtvi-processor",
+  "links": []
+}

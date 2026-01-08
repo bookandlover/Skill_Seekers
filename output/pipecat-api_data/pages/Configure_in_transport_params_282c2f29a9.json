@@ -1,0 +1,19 @@
+{
+  "title": "Configure in transport params",
+  "content": "transport = YourTransport(\n    params=TransportParams(\n        vad_analyzer=SileroVADAnalyzer(),  # 150-200ms faster than remote VAD\n    ),\n)\n```\n\n* **150-200ms faster** speech detection (no network round trip)\n* More responsive conversation flow\n* Better interruption handling\n* Reduced latency overall\n\n* **Pipeline placement matters** - STT must come after transport input, before context processing\n* **Service types differ** - streaming services have lower latency than segmented\n* **Services are modular** - easily swap providers without code changes\n* **Best practices improve performance** - use interim results, formatting, and local VAD\n* **Configuration affects quality** - proper setup significantly impacts transcription accuracy\n\nNow that you understand speech recognition, let's explore how to manage conversation context and memory in your voice AI bot.\n\n<Card title=\"Context Management\" icon=\"arrow-right\" href=\"/guides/learn/context-management\">\n  Learn how to handle conversation history and context in your pipeline\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#configure-in-transport-params",
+  "links": []
+}

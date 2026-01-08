@@ -1,0 +1,63 @@
+{
+  "title": "When creating the TeXML for outbound calls, include custom parameters",
+  "content": "texml = f\"\"\"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Response>\n  <Connect>\n    <Stream url=\"wss://your-server.com/ws?campaign_id=summer_sale&user_id={user_id}&priority=high\" bidirectionalMode=\"rtp\"></Stream>\n  </Connect>\n  <Pause length=\"40\"/>\n</Response>\"\"\"\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        audio_in_sample_rate=8000,\n        audio_out_sample_rate=8000,\n        allow_interruptions=True,\n    ),\n)\npython theme={null}\nserializer = TelnyxFrameSerializer(\n    stream_id=stream_id,\n    call_control_id=call_control_id,\n    api_key=os.getenv(\"TELNYX_API_KEY\"),  # Enables auto-termination\n)\n```\n\n### Built-in Call Information\n\nUnlike other providers, Telnyx automatically includes caller information (to/from numbers) in the WebSocket messages, eliminating the need for custom webhook servers in basic dial-in scenarios.\n\n### Pipecat Cloud Deployment\n\nFor production deployment without managing your own infrastructure, use Pipecat Cloud:\n\n<Card title=\"Telnyx WebSocket on Pipecat Cloud\" icon=\"cloud\" href=\"/deployment/pipecat-cloud/guides/telephony/telnyx-websocket\">\n  Deploy Telnyx WebSocket bots with automatic scaling and managed infrastructure\n</Card>\n\n### Self-Hosted Production Deployment\n\nFor fully self-hosted production deployment, ensure your servers are:\n\n* Publicly accessible with HTTPS\n* Able to handle concurrent WebSocket connections\n* Properly configured with Telnyx API credentials\n* Implementing proper error handling and logging\n\n* Explore the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/telnyx-chatbot) for full implementations\n* Learn about [Daily + Twilio SIP integration](./twilio-daily-sip) for advanced telephony scenarios\n* Check out [Daily PSTN integration](./daily-pstn) for direct phone number provisioning",
+  "code_samples": [
+    {
+      "code": "These parameters are accessible in your server code and can be used to customize your bot's behavior based on the specific call context.\n\n<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/telnyx-chatbot/outbound/bot.py\">\n  See the full bot.py with outbound call handling and call information usage\n</Card>\n\n### Run the Example\n\nTo test dial-out functionality:\n\n1. **Start your server**: Run your FastAPI server\n2. **Trigger a call**: Make an API request to start an outbound call\n3. **Answer your phone**: The bot will call the specified number\n4. **Talk to your bot**: Have a conversation with your AI agent\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/telnyx-chatbot/outbound\">\n  See the full README with step-by-step setup, API usage, and outbound call\n  configuration\n</Card>\n\n## Key Features\n\n### Audio Format and Sample Rate\n\nTelnyx Media Streaming uses 8kHz mono audio with 16-bit PCM encoding. Configure your pipeline accordingly:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Automatic Call Termination\n\nWhen you provide Telnyx API credentials to the `TelnyxFrameSerializer`, it automatically ends calls when your pipeline ends:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Run the Example",
+      "id": "run-the-example"
+    },
+    {
+      "level": "h2",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h3",
+      "text": "Audio Format and Sample Rate",
+      "id": "audio-format-and-sample-rate"
+    },
+    {
+      "level": "h3",
+      "text": "Automatic Call Termination",
+      "id": "automatic-call-termination"
+    },
+    {
+      "level": "h3",
+      "text": "Built-in Call Information",
+      "id": "built-in-call-information"
+    },
+    {
+      "level": "h2",
+      "text": "Deployment",
+      "id": "deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Pipecat Cloud Deployment",
+      "id": "pipecat-cloud-deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Self-Hosted Production Deployment",
+      "id": "self-hosted-production-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#when-creating-the-texml-for-outbound-calls,-include-custom-parameters",
+  "links": []
+}

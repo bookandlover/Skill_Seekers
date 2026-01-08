@@ -1,0 +1,14 @@
+{
+  "title": "Use customer data in your system prompt",
+  "content": "<Card title=\"Daily PSTN Dial-in Bot\" icon=\"phone\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-in\">\n  Full implementation with STT, LLM, TTS, and caller personalization\n</Card>",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Complete Example",
+      "id": "complete-example"
+    }
+  ],
+  "url": "llms-txt#use-customer-data-in-your-system-prompt",
+  "links": []
+}

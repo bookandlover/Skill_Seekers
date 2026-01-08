@@ -1,0 +1,13 @@
+{
+  "title": "Create the pipeline with the processors",
+  "content": "pipeline = Pipeline([\n    transport.input(),              # Receive audio from browser\n    rtvi,                           # Protocol for client/server messaging and events\n    stt,                            # Speech-to-text (Deepgram)\n    context_aggregator.user(),      # Add user message to context\n    llm,                            # Language model (OpenAI)\n    tts,                            # Text-to-speech (Cartesia)\n    transport.output(),             # Send audio back to browser\n    context_aggregator.assistant(), # Add bot response to context\n])\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Data flows through the pipeline as \"frames\", objects containing audio, text, or other data types. The ordering is crucial: audio must be transcribed before it can be processed by the LLM, and text must be synthesized before it can be played back.\n\nThe pipeline is managed by a PipelineTask:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [],
+  "url": "llms-txt#create-the-pipeline-with-the-processors",
+  "links": []
+}

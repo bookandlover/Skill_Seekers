@@ -1,0 +1,58 @@
+{
+  "title": "Telnyx Websocket Transport",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/telnyx-websocket\n\nUsing Telnyx's WebSocket Transport for your Pipecat Cloud agents\n\n<Note>\n  This guide covers Pipecat Cloud-specific configuration for Telnyx WebSocket\n  integration. For a complete guide including dial-in, dial-out, custom\n  parameters, and advanced features, see the [Telnyx WebSocket Integration\n  guide](/guides/telephony/telnyx-websockets).\n</Note>\n\nNative support for Telnyx's WebSocket Transport with Pipecat Cloud allows you to connect your AI agents with Telnyx's voice infrastructure. This integration enables your Pipecat bots to handle real phone calls using Telnyx's WebSocket streaming.\n\nPipecat Cloud implements Telnyx's bidirectional [Media Streaming protocol](https://developers.telnyx.com/docs/voice/programmable-voice/media-streaming). While audio streams flow through WebSockets, the call session is controlled by updating the Telnyx Extensible Markup Language (TeXML) associated with each call's unique identifier (`call_control_id`).\n\nWhen Pipecat Cloud receives an incoming WebSocket connection from Telnyx, it processes the `connected` and `start` messages to initialize a new bot instance. All WebSocket messages are forwarded to your bot, including any custom parameters set in your TeXML. This allows your bot to leverage Telnyx's Call Control API for advanced call control - such as recording conversations, transferring to human agents, or implementing complex call flows.\n\n<Frame>\n  <img />\n</Frame>\n\nBefore setting up this integration, ensure you have:\n\n* A Telnyx account with voice capabilities\n* A Pipecat Cloud account with a Telnyx WebSocket-compatible bot\n\nA ready-to-build example of a Telnyx websockets bot with complete source code is available in the [pipecat-examples repo](https://github.com/pipecat-ai/pipecat-examples/tree/main/telnyx-chatbot).\n\n## Pipecat Cloud Configuration\n\n### 1. Get Your Organization Name\n\nRetrieve your Pipecat Cloud organization name using the Pipecat CLI:\n\nThis command will output a list of organizations associated with your account. For example:\n\n### 2. Create a TeXML Application\n\n[Purchase a phone number from Telnyx](https://telnyx.com/resources/purchase-a-phone-number-with-telnyx) if you haven't already, then create a [TeXML Application](https://developers.telnyx.com/docs/voice/programmable-voice/texml-setup) with the following configuration:\n\nReplace the placeholder values:\n\n* `AGENT_NAME` with your deployed bot's name (e.g., `my-first-agent`)\n* `ORGANIZATION_NAME` with your organization name from step 1 (e.g., `three-random-words-randomnumber`)\n\nFor example, if your agent is named \"customer-support\" and your organization is \"industrious-purple-cat-12345\", your serviceHost would be: `customer-support.industrious-purple-cat-12345`\n\n<Note>\n  **Using Regional Endpoints**\n\nIf you deployed your agent to a specific region, use the regional WebSocket endpoint to connect:\n\n`wss://{region}.api.pipecat.daily.co/ws/telnyx?serviceHost=AGENT_NAME.ORGANIZATION_NAME`\n\nFor example, for Europe: `wss://eu-central.api.pipecat.daily.co/ws/telnyx?serviceHost=my-agent.my-org`\n\nLearn more about [regional endpoints](/deployment/pipecat-cloud/guides/regions#regional-websocket-endpoints).\n</Note>\n\n### 3. Assign TeXML Application to Your Phone Number\n\n1. Navigate to Voice → Programmable Voice in your Telnyx dashboard\n2. In the TeXML Applications tab, select the pencil icon for the TeXML Application you created in step 2\n3. In the Numbers tab, select Assign numbers\n4. Select the number you would like to assign the TeXML Application to\n5. Click Save to apply your changes\n\n## Testing Your Integration\n\nTo test your integration, simply dial your Telnyx phone number from any phone. The call will connect to your Pipecat Cloud bot, which will respond according to your bot's configuration.\n\nFor complete implementation details including dial-out, caller personalization, custom parameters, and advanced call control features, see the [Telnyx WebSocket Integration guide](/guides/telephony/telnyx-websockets).",
+  "code_samples": [
+    {
+      "code": "This command will output a list of organizations associated with your account. For example:",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. Create a TeXML Application\n\n[Purchase a phone number from Telnyx](https://telnyx.com/resources/purchase-a-phone-number-with-telnyx) if you haven't already, then create a [TeXML Application](https://developers.telnyx.com/docs/voice/programmable-voice/texml-setup) with the following configuration:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Pipecat Cloud Configuration",
+      "id": "pipecat-cloud-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "1. Get Your Organization Name",
+      "id": "1.-get-your-organization-name"
+    },
+    {
+      "level": "h3",
+      "text": "2. Create a TeXML Application",
+      "id": "2.-create-a-texml-application"
+    },
+    {
+      "level": "h3",
+      "text": "3. Assign TeXML Application to Your Phone Number",
+      "id": "3.-assign-texml-application-to-your-phone-number"
+    },
+    {
+      "level": "h2",
+      "text": "Testing Your Integration",
+      "id": "testing-your-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#telnyx-websocket-transport",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Retrieve Agent Logs",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-get-logs\n\nGET /agents/{agentName}/logs\nGet execution logs for an agent with filtering and pagination options.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#retrieve-agent-logs",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Create the context aggregator to collect the user and assistant context",
+  "content": "context_aggregator = LLMContextAggregatorPair(context)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-the-context-aggregator-to-collect-the-user-and-assistant-context",
+  "links": []
+}

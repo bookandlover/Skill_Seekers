@@ -1,0 +1,81 @@
+{
+  "title": "Telephony (requires ngrok or similar)",
+  "content": "python bot.py -t twilio -x your_domain.ngrok.io\npython theme={null}\n@transport.event_handler(\"on_client_connected\")\nasync def on_client_connected(transport, client):\n    logger.info(\"Client connected - starting conversation\")\n    messages.append({\n        \"role\": \"system\",\n        \"content\": \"Say hello and introduce yourself.\"\n    })\n    await task.queue_frames([LLMRunFrame()])\npython theme={null}\n@rtvi.event_handler(\"on_client_ready\")\nasync def on_client_ready(rtvi):\n    await rtvi.set_bot_ready()  # Confirm readiness to client\n    # Start the conversation\n    await task.queue_frames([LLMRunFrame()])\npython theme={null}\nfrom pipecat.runner.daily import configure\n\n@app.post(\"/start\")\nasync def start_bot(background_tasks: BackgroundTasks):\n    async with aiohttp.ClientSession() as session:\n        room_url, token = await configure(session)\n\n# Start bot instance\n        background_tasks.add_task(run_bot, room_url, token)\n\nreturn {\"room_url\": room_url, \"token\": token}\npython theme={null}\nfrom pipecat.runner.utils import parse_telephony_websocket\n\n@app.websocket(\"/ws\")\nasync def websocket_endpoint(websocket: WebSocket):\n    await websocket.accept()\n\n# Parse provider-specific messages\n    transport_type, call_data = await parse_telephony_websocket(websocket)\n\n# Start bot with parsed data\n    await run_telephony_bot(websocket, transport_type, call_data)\n```\n\n<Tip>\n  Refer to the development runner source code to understand these patterns\n  before building custom runners. It handles many edge cases and provides\n  battle-tested implementations.\n</Tip>\n\n* **Start with the development runner** for fastest development and learning\n* **Understand connection types** to choose the right approach for your use case\n* **Handle startup timing correctly** - immediate start vs. handshake patterns matter\n* **Plan for process isolation** - one bot instance per session is the recommended pattern\n* **Reference the source code** when building custom runners for production\n\nNow that you understand session initialization, let's explore the different transport options and how to configure them for your specific needs.\n\n<Card title=\"Pipeline & Frame Processing\" icon=\"arrow-right\" href=\"/guides/learn/pipeline\">\n  Learn how Pipecat's pipeline architecture orchestrates frame processing for\n  voice AI applications\n</Card>",
+  "code_samples": [
+    {
+      "code": "where `-t` specifies the transport type (e.g., `webrtc`, `daily`, `twilio`) and `-x` is the optional proxy domain for telephony.\n\nThe development runner automatically:\n\n* Creates the FastAPI server\n* Sets up the appropriate endpoints\n* Handles connection management\n* Starts your bot instances\n* Provides a web interface (for WebRTC)\n\n<Tip>\n  Learn more about building with the development runner in the [runner\n  guide](/server/utilities/runner/guide).\n</Tip>\n\n## Connection Types Under the Hood\n\nWhile the development runner handles the complexity, understanding the three connection patterns helps you choose the right approach and debug issues:\n\n### 1. P2P WebRTC Connections\n\n**What happens:**\n\n1. Runner serves a web interface at `http://localhost:7860/client`\n2. When you open the page and connect, browser creates a WebRTC offer\n3. Runner receives the offer, establishes connection, starts your bot\n4. Browser and bot communicate directly via WebRTC\n\n**When to use:** Direct client connections, embedded applications, local development\n\n### 2. Room-Based WebRTC (Daily)\n\n**What happens:**\n\n<Steps>\n  <Step title=\"Room Request\">\n    User visits the client application and clicks to start a session\n  </Step>\n\n  <Step title=\"Room Creation\">\n    Runner calls Daily's API to create a room and tokens using\n    `pipecat.runner.daily.configure()`\n  </Step>\n\n  <Step title=\"Parallel Join\">\n    Both user's browser and your bot join the same Daily room\n  </Step>\n\n  <Step title=\"Media Handshake\">\n    Once media streams are established, browser sends `client_ready` message\n  </Step>\n\n  <Step title=\"Bot Activation\">\n    Your bot receives the event and starts the conversation\n  </Step>\n</Steps>\n\n**When to use:** Video calls, group sessions, production deployments\n\n<Note>\n  Room-based WebRTC can also be used for SIP or PSTN connections, which require\n  different connection patterns. Refer to the [telephony\n  guide](/guides/telephony/overview) for details.\n</Note>\n\n### 3. WebSocket Connections (Telephony)\n\n**What happens:**\n\n1. Telephony provider (Twilio, etc.) receives a phone call\n2. Provider connects to your runner's webhook endpoint\n3. Runner accepts WebSocket connection and parses telephony-specific messages\n4. Your bot starts immediately with the parsed connection data\n\n**When to use:** Phone bots, telephony integrations\n\n## Starting Conversations\n\nHow and when your bot begins talking depends on the connection type:\n\n### Immediate Start (P2P WebRTC, WebSocket)\n\nThese connections are ready immediately, so you can start talking right after connection:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Handshake Required (Client/Server Room-based WebRTC)\n\nFor client/server applications using room-based WebRTC, a handshake ensures both sides are ready and the client won't miss the opening message:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Important>\n  For client/server room-based connections, waiting for `on_client_ready` is\n  crucial - starting too early can cause the client to miss part of the initial\n  message.\n</Important>\n\n## Process Isolation\n\nEach session runs its own dedicated bot instance for:\n\n* **Resource Management**: Dedicated CPU and memory per session\n* **Error Isolation**: One session crash doesn't affect others\n* **Clean Cleanup**: Resources automatically freed when sessions end\n\nThe development runner handles this process management automatically.\n\n## Custom Runners: When You Need More Control\n\nThe development runner works for most cases, but sometimes you need custom behavior - specific authentication, custom endpoints, or integration with existing systems. For these cases, you can create your own FastAPI runner.\n\nThe development runner source code ([available on GitHub](https://github.com/pipecat-ai/pipecat/blob/main/src/pipecat/runner/run.py)) provides excellent examples for:\n\n**Daily Integration Example:**",
+      "language": "unknown"
+    },
+    {
+      "code": "**WebSocket Telephony Example:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Connection Types Under the Hood",
+      "id": "connection-types-under-the-hood"
+    },
+    {
+      "level": "h3",
+      "text": "1. P2P WebRTC Connections",
+      "id": "1.-p2p-webrtc-connections"
+    },
+    {
+      "level": "h3",
+      "text": "2. Room-Based WebRTC (Daily)",
+      "id": "2.-room-based-webrtc-(daily)"
+    },
+    {
+      "level": "h3",
+      "text": "3. WebSocket Connections (Telephony)",
+      "id": "3.-websocket-connections-(telephony)"
+    },
+    {
+      "level": "h2",
+      "text": "Starting Conversations",
+      "id": "starting-conversations"
+    },
+    {
+      "level": "h3",
+      "text": "Immediate Start (P2P WebRTC, WebSocket)",
+      "id": "immediate-start-(p2p-webrtc,-websocket)"
+    },
+    {
+      "level": "h3",
+      "text": "Handshake Required (Client/Server Room-based WebRTC)",
+      "id": "handshake-required-(client/server-room-based-webrtc)"
+    },
+    {
+      "level": "h2",
+      "text": "Process Isolation",
+      "id": "process-isolation"
+    },
+    {
+      "level": "h2",
+      "text": "Custom Runners: When You Need More Control",
+      "id": "custom-runners:-when-you-need-more-control"
+    },
+    {
+      "level": "h2",
+      "text": "Key Takeaways",
+      "id": "key-takeaways"
+    },
+    {
+      "level": "h2",
+      "text": "What's Next",
+      "id": "what's-next"
+    }
+  ],
+  "url": "llms-txt#telephony-(requires-ngrok-or-similar)",
+  "links": []
+}

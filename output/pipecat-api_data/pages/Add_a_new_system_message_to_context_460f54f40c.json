@@ -1,0 +1,28 @@
+{
+  "title": "Add a new system message to context",
+  "content": "new_message = {\"role\": \"system\", \"content\": \"You are now in expert mode.\"}\nawait task.queue_frames([\n    LLMMessagesAppendFrame([new_message], run_llm=True), # Optionally trigger bot response, too\n])\npython theme={null}\ncontext = context_aggregator.user().context\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Retrieving Current Context\n\nThe context aggregator provides a `context` property for getting the current context:",
+      "language": "unknown"
+    },
+    {
+      "code": "## Triggering Bot Responses\n\nYou may want to manually trigger the bot to speak in two scenarios:\n\n1. **Starting a pipeline** where the bot should speak first\n2. **After editing the context** using `LLMMessagesAppendFrame` or `LLMMessagesUpdateFrame`",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Retrieving Current Context",
+      "id": "retrieving-current-context"
+    },
+    {
+      "level": "h2",
+      "text": "Triggering Bot Responses",
+      "id": "triggering-bot-responses"
+    }
+  ],
+  "url": "llms-txt#add-a-new-system-message-to-context",
+  "links": []
+}

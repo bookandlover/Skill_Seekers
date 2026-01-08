@@ -1,0 +1,58 @@
+{
+  "title": "Customize bot behavior for outbound calls",
+  "content": "if campaign_id == \"summer_sale\":\n    greeting = f\"Hi! I'm calling about our summer sale promotion...\"\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        audio_in_sample_rate=8000,\n        audio_out_sample_rate=8000,\n        allow_interruptions=True,\n    ),\n)\npython theme={null}\nserializer = TwilioFrameSerializer(\n    stream_sid=stream_id,\n    call_sid=call_id,\n    account_sid=os.getenv(\"TWILIO_ACCOUNT_SID\"),\n    auth_token=os.getenv(\"TWILIO_AUTH_TOKEN\"),\n)\n```\n\n### Pipecat Cloud Deployment\n\nFor production deployment without managing your own infrastructure, use Pipecat Cloud:\n\n<Card title=\"Twilio WebSocket on Pipecat Cloud\" icon=\"cloud\" href=\"/deployment/pipecat-cloud/guides/telephony/twilio-websocket\">\n  Deploy Twilio WebSocket bots with automatic scaling and managed infrastructure\n</Card>\n\n### Self-Hosted Production Deployment\n\nFor fully self-hosted production deployment, ensure your servers are:\n\n* Publicly accessible with HTTPS\n* Able to handle concurrent WebSocket connections\n* Properly configured with Twilio API credentials\n* Implementing proper error handling and logging\n\n* Explore the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot) for full implementations\n* Learn about [Daily + Twilio SIP integration](./twilio-daily-sip) for advanced telephony scenarios\n* Check out [Daily PSTN integration](./daily-pstn) for direct phone number provisioning",
+  "code_samples": [
+    {
+      "code": "<Card title=\"Complete Bot Implementation\" icon=\"code\" href=\"https://github.com/pipecat-ai/pipecat-examples/blob/main/twilio-chatbot/outbound/bot.py\">\n  See the full bot.py with outbound call handling and parameter usage\n</Card>\n\n### Run the Example\n\nTo test dial-out functionality:\n\n1. **Start your server**: Run your FastAPI server\n2. **Trigger a call**: Make an API request to start an outbound call\n3. **Answer your phone**: The bot will call the specified number\n4. **Talk to your bot**: Have a conversation with your AI agent\n\n<Card title=\"Complete Setup Instructions\" icon=\"book-open\" href=\"https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot/outbound\">\n  See the full README with step-by-step setup, API usage, and outbound call\n  configuration\n</Card>\n\n## Key Features\n\n### Audio Format and Sample Rate\n\nTwilio Media Streams uses 8kHz mono audio with 16-bit PCM encoding. To avoid resampling, set the audio input and output sample rate to 8000 Hz:",
+      "language": "unknown"
+    },
+    {
+      "code": "### Automatic Call Termination\n\nWhen you provide Twilio credentials to the `TwilioFrameSerializer`, it automatically ends calls when your pipeline ends:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Run the Example",
+      "id": "run-the-example"
+    },
+    {
+      "level": "h2",
+      "text": "Key Features",
+      "id": "key-features"
+    },
+    {
+      "level": "h3",
+      "text": "Audio Format and Sample Rate",
+      "id": "audio-format-and-sample-rate"
+    },
+    {
+      "level": "h3",
+      "text": "Automatic Call Termination",
+      "id": "automatic-call-termination"
+    },
+    {
+      "level": "h2",
+      "text": "Deployment",
+      "id": "deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Pipecat Cloud Deployment",
+      "id": "pipecat-cloud-deployment"
+    },
+    {
+      "level": "h3",
+      "text": "Self-Hosted Production Deployment",
+      "id": "self-hosted-production-deployment"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#customize-bot-behavior-for-outbound-calls",
+  "links": []
+}

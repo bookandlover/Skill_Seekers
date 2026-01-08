@@ -1,0 +1,8 @@
+{
+  "title": "Create an Agent",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-create\n\nPOST /agents\nCreate a new agent with a container image and configuration settings.",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#create-an-agent",
+  "links": []
+}

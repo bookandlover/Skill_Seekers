@@ -1,0 +1,24 @@
+{
+  "title": "Transcription Log Observer",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/observers/transcription-observer\n\nLogging speech-to-text transcription activity in Pipecat\n\nThe `TranscriptionLogObserver` logs all speech-to-text transcription activity in your Pipecat pipeline, providing visibility into both final and interim transcription results.\n\n## Frame Types Monitored\n\nThe observer tracks the following frame types (only from STT service):\n\n* **TranscriptionFrame**: Final transcription results\n* **InterimTranscriptionFrame**: In-progress transcription results\n\nThe observer uses consistent formatting with emoji indicators:\n\n* 💬 \\[Source] → TRANSCRIPTION: \\[text] from \\[user\\_id]\n* 💬 \\[Source] → INTERIM TRANSCRIPTION: \\[text] from \\[user\\_id]\n\nAll log entries include timestamps for precise timing analysis.",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Frame Types Monitored",
+      "id": "frame-types-monitored"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    },
+    {
+      "level": "h2",
+      "text": "Log Output Format",
+      "id": "log-output-format"
+    }
+  ],
+  "url": "llms-txt#transcription-log-observer",
+  "links": []
+}

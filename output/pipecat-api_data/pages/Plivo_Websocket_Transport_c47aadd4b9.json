@@ -1,0 +1,80 @@
+{
+  "title": "Plivo Websocket Transport",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/plivo-websocket\n\nUsing Plivo's WebSocket Transport for your Pipecat Cloud agents\n\n<Note>\n  This guide covers Pipecat Cloud-specific configuration for Plivo WebSocket\n  integration. For a complete guide including dial-in, dial-out, and advanced\n  features, see the [Plivo WebSocket Integration\n  guide](/guides/telephony/plivo-websockets).\n</Note>\n\nNative support for Plivo's WebSocket Transport with Pipecat Cloud allows you to connect your AI agents with Plivo's voice infrastructure. This integration enables your Pipecat bots to handle real phone calls using Plivo's WebSocket streaming.\n\nPipecat Cloud implements Plivo's bidirectional [Media Streaming protocol](https://www.plivo.com/docs/voice/guides/stream-audio/). While audio streams flow through WebSockets, the call session is controlled by XML responses that tell Plivo how to handle each call.\n\nWhen Pipecat Cloud receives an incoming WebSocket connection from Plivo, it processes the `start` message to initialize a new bot instance. All WebSocket messages are forwarded to your bot, including call information such as the caller's number and call UUID. This allows your bot to leverage Plivo's Voice API for advanced call control - such as recording conversations, transferring to human agents, or implementing complex call flows.\n\nBefore setting up this integration, ensure you have:\n\n* A Plivo account with voice capabilities\n* A Pipecat Cloud account with a Plivo WebSocket-compatible bot\n* A web server to host XML responses (we'll show you how to set this up)\n\nA ready-to-build example of a Plivo websockets bot with complete source code is available in the [pipecat-examples repo](https://github.com/pipecat-ai/pipecat-examples/tree/main/plivo-chatbot).\n\n## Pipecat Cloud Configuration\n\n### 1. Get Your Organization Name\n\nRetrieve your Pipecat Cloud organization name using the Pipecat CLI:\n\nThis command will output a list of organizations associated with your account. For example:\n\n### 2. Set Up an XML Server\n\nUnlike Twilio's TwiML Bins, Plivo requires a web server to host your XML responses. Create a file called `server.py`:\n\n<Note>\n  **Using Regional Endpoints**\n\nIf you deployed your agent to a specific region, use the regional WebSocket endpoint:\n\n`wss://{region}.api.pipecat.daily.co/ws/plivo?serviceHost=AGENT_NAME.ORGANIZATION_NAME`\n\nFor example, for Europe: `wss://eu-central.api.pipecat.daily.co/ws/plivo?serviceHost=my-agent.my-org`\n\nLearn more about [regional endpoints](/deployment/pipecat-cloud/guides/regions#regional-websocket-endpoints).\n</Note>\n\n### 3. Deploy Your XML Server\n\nInstall dependencies and run your server:\n\nFor local testing, use ngrok to make your server publicly accessible:\n\nThis will give you a public URL like `https://abc123.ngrok.io`.\n\n<Tip>\n  Use the `--subdomain` flag with ngrok to keep your URL consistent across\n  restarts.\n</Tip>\n\nFor production, deploy your XML server to a reliable hosting platform.\n\n### 4. Configure Plivo\n\n[Purchase a phone number from Plivo](https://www.plivo.com/docs/numbers/quickstart/) if you haven't already, then:\n\n1. Navigate to Voice → XML in your Plivo dashboard\n2. Select Add New Application\n3. Enter a name for your application (e.g., \"Pipecat WebSocket\")\n4. Set the **Answer URL** to your server URL with agent and organization parameters:\n   \n   * Replace `AGENT_NAME` with your deployed bot's name (e.g., `my-first-agent`)\n   * Replace `ORGANIZATION_NAME` with your organization name from step 1 (e.g., `three-random-words-randomnumber`)\n5. Set **HTTP Method** to `GET`\n6. Click Create Application\n\n### 5. Assign to Your Phone Number\n\n1. Navigate to Phone Numbers and select your phone number\n2. Select XML Application as the Application Type\n3. Select your XML Application from the Plivo Application dropdown\n4. Click Update to apply your changes\n\n## Testing Your Integration\n\nTo test your integration, simply dial your Plivo phone number from any phone. The call will connect to your Pipecat Cloud bot, which will respond according to your bot's configuration.\n\nFor complete implementation details including dial-out and advanced call control features, see the [Plivo WebSocket Integration guide](/guides/telephony/plivo-websockets).",
+  "code_samples": [
+    {
+      "code": "This command will output a list of organizations associated with your account. For example:",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. Set Up an XML Server\n\nUnlike Twilio's TwiML Bins, Plivo requires a web server to host your XML responses. Create a file called `server.py`:",
+      "language": "unknown"
+    },
+    {
+      "code": "<Note>\n  **Using Regional Endpoints**\n\n  If you deployed your agent to a specific region, use the regional WebSocket endpoint:\n\n  `wss://{region}.api.pipecat.daily.co/ws/plivo?serviceHost=AGENT_NAME.ORGANIZATION_NAME`\n\n  For example, for Europe: `wss://eu-central.api.pipecat.daily.co/ws/plivo?serviceHost=my-agent.my-org`\n\n  Learn more about [regional endpoints](/deployment/pipecat-cloud/guides/regions#regional-websocket-endpoints).\n</Note>\n\n### 3. Deploy Your XML Server\n\nInstall dependencies and run your server:",
+      "language": "unknown"
+    },
+    {
+      "code": "For local testing, use ngrok to make your server publicly accessible:",
+      "language": "unknown"
+    },
+    {
+      "code": "This will give you a public URL like `https://abc123.ngrok.io`.\n\n<Tip>\n  Use the `--subdomain` flag with ngrok to keep your URL consistent across\n  restarts.\n</Tip>\n\nFor production, deploy your XML server to a reliable hosting platform.\n\n### 4. Configure Plivo\n\n[Purchase a phone number from Plivo](https://www.plivo.com/docs/numbers/quickstart/) if you haven't already, then:\n\n1. Navigate to Voice → XML in your Plivo dashboard\n2. Select Add New Application\n3. Enter a name for your application (e.g., \"Pipecat WebSocket\")\n4. Set the **Answer URL** to your server URL with agent and organization parameters:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Pipecat Cloud Configuration",
+      "id": "pipecat-cloud-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "1. Get Your Organization Name",
+      "id": "1.-get-your-organization-name"
+    },
+    {
+      "level": "h3",
+      "text": "2. Set Up an XML Server",
+      "id": "2.-set-up-an-xml-server"
+    },
+    {
+      "level": "h3",
+      "text": "3. Deploy Your XML Server",
+      "id": "3.-deploy-your-xml-server"
+    },
+    {
+      "level": "h3",
+      "text": "4. Configure Plivo",
+      "id": "4.-configure-plivo"
+    },
+    {
+      "level": "h3",
+      "text": "5. Assign to Your Phone Number",
+      "id": "5.-assign-to-your-phone-number"
+    },
+    {
+      "level": "h2",
+      "text": "Testing Your Integration",
+      "id": "testing-your-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#plivo-websocket-transport",
+  "links": []
+}

@@ -1,0 +1,34 @@
+{
+  "title": "IdentityFilter",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/filters/identify-filter\n\nProcessor that passes all frames through without modification\n\n`IdentityFilter` is a simple pass-through processor that forwards all frames without any modification or filtering. It acts as a transparent layer in your pipeline, allowing all frames to flow through unchanged.\n\n<Tip>\n  Check out Observers for an option that delivers similar functionality but\n  doesn't require a processor to reside in the Pipeline.\n</Tip>\n\n## Constructor Parameters\n\nThe `IdentityFilter` constructor accepts no specific parameters beyond those inherited from `FrameProcessor`.\n\nWhen a frame passes through the processor, it is immediately forwarded in the same direction with no changes. This applies to all frame types and both directions (upstream and downstream).\n\nWhile functionally equivalent to having no filter at all, `IdentityFilter` can be useful in several scenarios:\n\n* Testing `ParallelPipeline` configurations to ensure frames aren't duplicated\n* Acting as a placeholder where a more complex filter might be added later\n* Monitoring frame flow in pipelines by adding logging in subclasses\n* Creating a base class for more complex conditional filters\n\n```python theme={null}\nfrom pipecat.processors.filters import IdentityFilter",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Constructor Parameters",
+      "id": "constructor-parameters"
+    },
+    {
+      "level": "h2",
+      "text": "Functionality",
+      "id": "functionality"
+    },
+    {
+      "level": "h2",
+      "text": "Use Cases",
+      "id": "use-cases"
+    },
+    {
+      "level": "h2",
+      "text": "Usage Example",
+      "id": "usage-example"
+    }
+  ],
+  "url": "llms-txt#identityfilter",
+  "links": []
+}

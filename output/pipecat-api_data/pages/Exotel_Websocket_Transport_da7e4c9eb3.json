@@ -1,0 +1,77 @@
+{
+  "title": "Exotel Websocket Transport",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/exotel-websocket\n\nUsing Exotel's WebSocket Transport for your Pipecat Cloud agents\n\n<Note>\n  This guide covers Pipecat Cloud-specific configuration for Exotel WebSocket\n  integration. For a complete guide including dial-in, dial-out, and advanced\n  features, see the [Exotel WebSocket Integration\n  guide](/guides/telephony/exotel-websockets).\n</Note>\n\nNative support for Exotel's WebSocket Transport with Pipecat Cloud allows you to connect your AI agents with Exotel's voice infrastructure. This integration enables your Pipecat bots to handle real phone calls using Exotel's Voice Streaming.\n\nPipecat Cloud implements Exotel's bidirectional voice streaming protocol. While audio streams flow through WebSockets, the call session is controlled through Exotel's App Bazaar configuration and the Voicebot Applet.\n\nWhen Pipecat Cloud receives an incoming WebSocket connection from Exotel, it processes the `Connected` and `Start` messages to initialize a new bot instance. All WebSocket messages are forwarded to your bot, including any custom parameters set in your App Bazaar configuration. This allows your bot to leverage Exotel's API for advanced call control - such as recording conversations, transferring to human agents, or implementing complex call flows.\n\nBefore setting up this integration, ensure you have:\n\n* An Exotel account with voice streaming enabled\n* A Pipecat Cloud account with an Exotel Websockets-compatible bot\n\nA ready-to-build example of an Exotel websockets bot with complete source code is available in the [pipecat-examples repo](https://github.com/pipecat-ai/pipecat-examples/tree/main/exotel-chatbot).\n\n## Pipecat Cloud Configuration\n\n### 1. Purchase and Configure Phone Number\n\n[Purchase a phone number from Exotel](https://my.exotel.com/) if you haven't already:\n\n* Navigate to ExoPhones and purchase a number\n* Complete KYC verification if required\n\n### 2. Enable Voice Streaming\n\nVoice streaming may not be enabled by default on all accounts:\n\n* Contact Exotel support at `hello@exotel.com`\n* Request: \"Enable Voicebot Applet for voice streaming for account \\[Your Account SID]\"\n* Include your use case: \"AI voice bot integration\"\n\n### 3. Get Your Organization Name\n\nRetrieve your Pipecat Cloud organization name using the Pipecat CLI:\n\nThis command will output a list of organizations associated with your account. For example:\n\n### 4. Create App Bazaar Flow\n\n1. Navigate to App Bazaar in your Exotel dashboard\n2. Click \"Create\" to create a new app\n3. Build your call flow:\n\n**Add Voicebot Applet:**\n\n* Drag the \"Voicebot\" applet to your call flow (not \"Stream\" or \"Passthru\")\n* Configure the WebSocket URL:\n\nReplace the placeholder values:\n\n* `AGENT_NAME` with your deployed bot's name (e.g., `customer-support`)\n* `ORGANIZATION_NAME` with your organization name from step 3 (e.g., `three-random-words-randomnumber`)\n\nFor example: `wss://api.pipecat.daily.co/ws/exotel?serviceHost=customer-support.industrious-purple-cat-12345`\n\n<Note>\n  **Using Regional Endpoints**\n\nIf you deployed your agent to a specific region, use the regional WebSocket endpoint:\n\n`wss://{region}.api.pipecat.daily.co/ws/exotel?serviceHost=AGENT_NAME.ORGANIZATION_NAME`\n\nFor example, for Europe: `wss://eu-central.api.pipecat.daily.co/ws/exotel?serviceHost=my-agent.my-org`\n\nLearn more about [regional endpoints](/deployment/pipecat-cloud/guides/regions#regional-websocket-endpoints).\n</Note>\n\n**Add Hangup Applet:**\n\n* Drag a \"Hangup\" applet at the end to properly terminate calls\n\nYour final flow should look like:\n\n### 5. Link Phone Number to App\n\n1. Navigate to \"ExoPhones\" in your dashboard\n2. Find your purchased number and click the edit/pencil icon\n3. Under \"App\", select the custom app you created\n4. Save the configuration\n\n## Testing Your Integration\n\nTo test your integration, simply dial your Exotel phone number from any phone. The call will connect to your Pipecat Cloud bot, which will respond according to your bot's configuration.\n\n## Custom Data Limitations\n\n<Warning>\n  Currently, there are limitations with passing custom data through query\n  parameters in Exotel's WebSocket URLs. While the platform theoretically\n  supports query parameters, they may be stripped during call processing.\n</Warning>\n\nFor complete implementation details including dial-out, caller personalization, and advanced call control features, see the [Exotel WebSocket Integration guide](/guides/telephony/exotel-websockets).",
+  "code_samples": [
+    {
+      "code": "This command will output a list of organizations associated with your account. For example:",
+      "language": "unknown"
+    },
+    {
+      "code": "### 4. Create App Bazaar Flow\n\n1. Navigate to App Bazaar in your Exotel dashboard\n2. Click \"Create\" to create a new app\n3. Build your call flow:\n\n**Add Voicebot Applet:**\n\n* Drag the \"Voicebot\" applet to your call flow (not \"Stream\" or \"Passthru\")\n* Configure the WebSocket URL:",
+      "language": "unknown"
+    },
+    {
+      "code": "Replace the placeholder values:\n\n* `AGENT_NAME` with your deployed bot's name (e.g., `customer-support`)\n* `ORGANIZATION_NAME` with your organization name from step 3 (e.g., `three-random-words-randomnumber`)\n\nFor example: `wss://api.pipecat.daily.co/ws/exotel?serviceHost=customer-support.industrious-purple-cat-12345`\n\n<Note>\n  **Using Regional Endpoints**\n\n  If you deployed your agent to a specific region, use the regional WebSocket endpoint:\n\n  `wss://{region}.api.pipecat.daily.co/ws/exotel?serviceHost=AGENT_NAME.ORGANIZATION_NAME`\n\n  For example, for Europe: `wss://eu-central.api.pipecat.daily.co/ws/exotel?serviceHost=my-agent.my-org`\n\n  Learn more about [regional endpoints](/deployment/pipecat-cloud/guides/regions#regional-websocket-endpoints).\n</Note>\n\n**Add Hangup Applet:**\n\n* Drag a \"Hangup\" applet at the end to properly terminate calls\n\nYour final flow should look like:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How It Works",
+      "id": "how-it-works"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h2",
+      "text": "Pipecat Cloud Configuration",
+      "id": "pipecat-cloud-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "1. Purchase and Configure Phone Number",
+      "id": "1.-purchase-and-configure-phone-number"
+    },
+    {
+      "level": "h3",
+      "text": "2. Enable Voice Streaming",
+      "id": "2.-enable-voice-streaming"
+    },
+    {
+      "level": "h3",
+      "text": "3. Get Your Organization Name",
+      "id": "3.-get-your-organization-name"
+    },
+    {
+      "level": "h3",
+      "text": "4. Create App Bazaar Flow",
+      "id": "4.-create-app-bazaar-flow"
+    },
+    {
+      "level": "h3",
+      "text": "5. Link Phone Number to App",
+      "id": "5.-link-phone-number-to-app"
+    },
+    {
+      "level": "h2",
+      "text": "Testing Your Integration",
+      "id": "testing-your-integration"
+    },
+    {
+      "level": "h2",
+      "text": "Custom Data Limitations",
+      "id": "custom-data-limitations"
+    },
+    {
+      "level": "h2",
+      "text": "Next Steps",
+      "id": "next-steps"
+    }
+  ],
+  "url": "llms-txt#exotel-websocket-transport",
+  "links": []
+}

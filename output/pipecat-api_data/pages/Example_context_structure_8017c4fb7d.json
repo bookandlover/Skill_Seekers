@@ -1,0 +1,29 @@
+{
+  "title": "Example context structure",
+  "content": "messages = [\n    {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n    {\"role\": \"user\", \"content\": \"Hello!\"},\n    {\"role\": \"assistant\", \"content\": \"Hi there! How can I help you?\"},\n    # Context aggregators automatically add new messages here\n]\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Since Pipecat is a real-time voice AI framework, context management happens automatically as the conversation flows, but you can also control it manually when needed.\n\n## How Context Updates During Conversations\n\nContext updates happen automatically as frames flow through your pipeline:\n\n**User Messages:**\n\n1. User speaks → `InputAudioRawFrame` → STT Service → `TranscriptionFrame`\n2. `context_aggregator.user()` receives `TranscriptionFrame` and adds user message to context\n\n**Assistant Messages:**\n\n1. LLM generates response → `LLMTextFrame` → TTS Service → `TTSTextFrame`\n2. `context_aggregator.assistant()` receives `TTSTextFrame` and adds assistant message to context\n\n**Frame types that update context:**\n\n* **`TranscriptionFrame`**: Contains user speech converted to text by STT service\n* **`LLMTextFrame`**: Contains LLM-generated responses\n* **`TTSTextFrame`**: Contains bot responses converted to text by TTS service (represents what was actually spoken)\n\n<Note>\n  The TTS service processes `LLMTextFrame`s but outputs `TTSTextFrame`s, which\n  represent the actual spoken text returned by the TTS provider. This ensures\n  context matches what users actually hear.\n</Note>\n\n## Setting Up Context Management\n\nPipecat includes a context aggregator that creates and manages context for both user and assistant messages:\n\n### 1. Create the Context and Context Aggregator",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "How Context Updates During Conversations",
+      "id": "how-context-updates-during-conversations"
+    },
+    {
+      "level": "h2",
+      "text": "Setting Up Context Management",
+      "id": "setting-up-context-management"
+    },
+    {
+      "level": "h3",
+      "text": "1. Create the Context and Context Aggregator",
+      "id": "1.-create-the-context-and-context-aggregator"
+    }
+  ],
+  "url": "llms-txt#example-context-structure",
+  "links": []
+}

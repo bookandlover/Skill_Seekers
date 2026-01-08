@@ -1,0 +1,72 @@
+{
+  "title": "or from a file",
+  "content": "pipecat cloud agent start my-first-agent --data-file data.json\npython theme={null}\n    # bot.py\n    from pipecat.runner.types import PipecatRunnerArguments\n\nasync def bot(args: PipecatRunnerArguments):\n        # Access the session ID\n        logger.info(f\"Session started with ID: {args.session_id}\")\n        \n        # Access the custom data passed to the session\n        logger.info(f\"Session data: {args.body}\")\n        \n        # ...\n    python theme={null}\n    # bot.py for voice agent\n    from loguru import logger\n    from pipecat.runner.types import DailyRunnerArguments\n\nasync def bot(args: DailyRunnerArguments):\n        \"\"\"Main bot entry point compatible with the FastAPI route handler.\n\nArgs:\n            room_url: The Daily room URL\n            token: The Daily room token\n            body: The configuration object from the request body\n        \"\"\"\n        logger.info(f\"Bot process initialized {args.room_url} {args.token}\")\n        logger.info(f\"Custom data: {args.body}\")\n        logger.info(f\"Session ID: {args.session_id}\")\n\ntry:\n            await main(args.room_url, args.token)\n            logger.info(\"Bot process completed\")\n        except Exception as e:\n            logger.exception(f\"Error in bot process: {str(e)}\")\n            raise\n    python theme={null}\n    # bot.py for WebSocket agent\n    from loguru import logger\n    from pipecat.runner.types import WebSocketRunnerArguments\n\nasync def bot(args: WebSocketRunnerArguments):\n        \"\"\"Main bot entry point for WebSocket connections.\n\nArgs:\n            ws: The WebSocket connection\n        \"\"\"\n        logger.info(\"WebSocket bot process initialized\")\n        logger.info(f\"Custom data: {args.body}\")\n        logger.info(f\"Session ID: {args.session_id}\")\n\ntry:\n            await main(args.websocket)\n            logger.info(\"WebSocket bot process completed\")\n        except Exception as e:\n            logger.exception(f\"Error in WebSocket bot process: {str(e)}\")\n            raise\n    bash REST theme={null}\n  curl --location --request POST 'https://api.pipecat.daily.co/v1/public/{agent_name}/start' \\\n  --header 'Authorization: Bearer PUBLIC_API_KEY' \\\n  --header 'Content-Type: application/json' \\\n  --data-raw '{}'\n\n>> {\n  >>\t\"status\": 429,\n  >>\t\"code\": \"429\",\n  >>\t\"message\": \"Rate limit exceeded. Please try again later\"\n  >> }\n  python Python theme={null}\n  from pipecatcloud import Session, SessionParams\n  from pipecatcloud.exception import AgentStartError\n\ntry:\n      session = Session(\n          agent_name=\"my-first-agent\",\n          api_key=\"pk_...\",\n          params=SessionParams(\n              use_daily=False,\n              data={}\n          )\n      )\n  except AgentStartError as e:\n      # This will catch capacity errors and other start failures\n      print(f\"Error starting agent: {e}\")\n  except Exception as e:\n      print(f\"Unexpected error: {e}\")\n  shell theme={null}\npipecat cloud agent sessions [my-first-agent]\nshell theme={null}\npipecat cloud agent logs [my-first-agent] --session [session-id]\nshell theme={null}\npipecat cloud agent stop my-first-agent --session [session-id]\n```\n\nDeleting an agent deployment will block any new sessions from starting, but will not stop any active sessions. You must stop each session individually.\n\nYou are charged for the duration of each session, see [pricing](https://www.daily.co/pricing/pipecat-cloud).\n\nThe exact duration of session is calculated based on:\n\n* Time spent instantiating the agent\n* Time spent running the agent\n* Time spent tearing down the agent\n\nYou can monitor your usage on your [Dashboard <Icon icon=\"arrow-up-right-from-square\" />](https://pipecat.daily.co).",
+  "code_samples": [
+    {
+      "code": "Data passed to your session can be accessed in your agent code via the `bot()` method, which receives session arguments:\n\n<Tabs>\n  <Tab title=\"Standard Session\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"Daily Voice Session\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n\n  <Tab title=\"WebSocket Session\">",
+      "language": "unknown"
+    },
+    {
+      "code": "</Tab>\n</Tabs>\n\nFor more advanced data requirements, your application should run its own data fetching logic before a session request is made.\n\nIf you require your agent to fetch it's own data, be mindful of any blocking requests that could slow down the start process.\n\n## Agent capacity\n\nDeployments have an upper limit for the number of sessions that can be started concurrently.\nThis helps developers implement cost control and workload management and can be adjusted per deployment.\n\nSee [Scaling](./scaling) for more information.\n\n<Warning>\n  While in beta, the default instance pool capacity is **50 active sessions per\n  deployment**. Please contact us at [help@daily.co](mailto:help@daily.co) or via\n  [Discord](https://discord.gg/dailyco) if you require more capacity.\n</Warning>\n\nDevelopers are responsible for handling capacity errors when starting sessions. When your instance pool is at capacity, the start request will fail with a `429` status and code.\n\nHere is a simple example of how to handle a capacity error:\n\n<CodeGroup>",
+      "language": "unknown"
+    },
+    {
+      "code": "",
+      "language": "unknown"
+    },
+    {
+      "code": "</CodeGroup>\n\n## Logging and monitoring\n\nSession observability can be accessed via the [Dashboard <Icon icon=\"arrow-up-right-from-square\" />](https://pipecat.daily.co) or from the CLI.\n\n### Active sessions\n\nTo view active sessions via the CLI:",
+      "language": "unknown"
+    },
+    {
+      "code": "This command will list all active sessions for the specified agent, alongside a session ID.\n\n### Session logs\n\n<Warning>Session logs are not available in beta.</Warning>\n\nTo view individual session logs, use the following command:",
+      "language": "unknown"
+    },
+    {
+      "code": "For more information, see [Logging and Observability](./logging).\n\n## Stopping sessions\n\n<Warning>Session termination is not available in beta.</Warning>\n\nYou can issue a termination request to stop an active session. This will immediately stop the instance so be aware of disrupting any ongoing user interactions.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Agent capacity",
+      "id": "agent-capacity"
+    },
+    {
+      "level": "h2",
+      "text": "Logging and monitoring",
+      "id": "logging-and-monitoring"
+    },
+    {
+      "level": "h3",
+      "text": "Active sessions",
+      "id": "active-sessions"
+    },
+    {
+      "level": "h3",
+      "text": "Session logs",
+      "id": "session-logs"
+    },
+    {
+      "level": "h2",
+      "text": "Stopping sessions",
+      "id": "stopping-sessions"
+    },
+    {
+      "level": "h2",
+      "text": "Usage",
+      "id": "usage"
+    }
+  ],
+  "url": "llms-txt#or-from-a-file",
+  "links": []
+}

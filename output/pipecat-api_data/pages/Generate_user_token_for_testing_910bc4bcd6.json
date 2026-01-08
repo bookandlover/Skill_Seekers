@@ -1,0 +1,38 @@
+{
+  "title": "Generate user token for testing",
+  "content": "user_token = generate_token(\"my-room\", \"Test User\", api_key, api_secret)\npython theme={null}\nfrom pipecat.runner.utils import parse_telephony_websocket\n\ntransport_type, call_data = await parse_telephony_websocket(websocket)\n\nif transport_type == \"twilio\":\n    stream_id = call_data[\"stream_id\"]\n    call_id = call_data[\"call_id\"]\nelif transport_type == \"telnyx\":\n    stream_id = call_data[\"stream_id\"]\n    call_control_id = call_data[\"call_control_id\"]\n    outbound_encoding = call_data[\"outbound_encoding\"]\nelif transport_type == \"plivo\":\n    stream_id = call_data[\"stream_id\"]\n    call_id = call_data[\"call_id\"]\nelif transport_type == \"exotel\":\n    stream_sid=call_data[\"stream_id\"],\n    call_sid=call_data[\"call_id\"],\npython theme={null}\nfrom pipecat.runner.utils import get_transport_client_id\n\nclient_id = get_transport_client_id(transport, client)",
+  "code_samples": [
+    {
+      "code": "### Environment Variables\n\n**Required**:\n\n* `LIVEKIT_API_KEY`: LiveKit API key\n* `LIVEKIT_API_SECRET`: LiveKit API secret\n* `LIVEKIT_URL`: LiveKit server URL\n* `LIVEKIT_ROOM_NAME`: Default room name\n\nAll environment variables are required for LiveKit to function properly.\n\n## WebSocket and Transport Utilities\n\nThe transport utilities provide helper functions for WebSocket parsing, SDP manipulation, and transport management.\n\n### Telephony WebSocket Parsing\n\nUse `parse_telephony_websocket()` to auto-detect telephony providers and extract call data:",
+      "language": "unknown"
+    },
+    {
+      "code": "The function automatically:\n\n* Reads and parses initial WebSocket messages\n* Detects provider based on message structure\n* Extracts provider-specific call information\n* Returns structured data for transport configuration\n\n### Transport Helper Functions\n\n**Client ID Detection**:",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Environment Variables",
+      "id": "environment-variables"
+    },
+    {
+      "level": "h2",
+      "text": "WebSocket and Transport Utilities",
+      "id": "websocket-and-transport-utilities"
+    },
+    {
+      "level": "h3",
+      "text": "Telephony WebSocket Parsing",
+      "id": "telephony-websocket-parsing"
+    },
+    {
+      "level": "h3",
+      "text": "Transport Helper Functions",
+      "id": "transport-helper-functions"
+    }
+  ],
+  "url": "llms-txt#generate-user-token-for-testing",
+  "links": []
+}

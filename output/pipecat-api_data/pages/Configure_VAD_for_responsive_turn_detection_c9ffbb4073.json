@@ -1,0 +1,43 @@
+{
+  "title": "Configure VAD for responsive turn detection",
+  "content": "vad_params = VADParams(\n    stop_secs=0.2,  # Low value for quick turn model analysis\n)\n\nvad_analyzer = SileroVADAnalyzer(params=vad_params)\npython theme={null}\ntask = PipelineTask(\n    pipeline,\n    params=PipelineParams(\n        allow_interruptions=True,  # Default: True (strongly recommended)\n    ),\n)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "Learn more about the VAD and Turn Analyzers in the server utilities documentation:\n\n<CardGroup>\n  <Card title=\"VAD Documentation\" icon=\"microphone\" href=\"/server/utilities/audio/silero-vad-analyzer\">\n    Complete VAD configuration reference\n  </Card>\n\n  <Card title=\"Turn Detection Guide\" icon=\"comments\" href=\"/server/utilities/smart-turn/smart-turn-overview\">\n    Detailed turn detection implementation guide\n  </Card>\n</CardGroup>\n\n## Speech Events & Pipeline Coordination\n\n### System Frames for Speech Events\n\nWhen VAD detects speech activity, the transport emits system frames that coordinate pipeline behavior:\n\n**When speech starts:**\n\n* `UserStartedSpeakingFrame`: Informs processors that user began speaking\n* `StartInterruptionFrame`: Triggers interruption handling (if enabled)\n\n**When speech stops:**\n\n* `UserStoppedSpeakingFrame`: Signals end of user input\n* `StopInterruptionFrame`: Resumes normal processing\n\n### Interruption Handling\n\nInterruptions are a critical feature for natural conversations:",
+      "language": "unknown"
+    },
+    {
+      "code": "**How interruptions work:**\n\n1. User starts speaking → `StartInterruptionFrame` emitted\n2. System frame processed immediately (bypasses normal queues)\n3. Current processors stop and clear their queues\n4. Pipeline resets, ready for new user input\n\n<Important>\n  Keep `allow_interruptions=True` (default) for natural conversations. This\n  enables users to interrupt the bot mid-sentence, just like human\n  conversations.\n</Important>\n\n## Best Practices\n\n### Optimal Configuration\n\n**For most voice AI use cases:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Speech Events & Pipeline Coordination",
+      "id": "speech-events-&-pipeline-coordination"
+    },
+    {
+      "level": "h3",
+      "text": "System Frames for Speech Events",
+      "id": "system-frames-for-speech-events"
+    },
+    {
+      "level": "h3",
+      "text": "Interruption Handling",
+      "id": "interruption-handling"
+    },
+    {
+      "level": "h2",
+      "text": "Best Practices",
+      "id": "best-practices"
+    },
+    {
+      "level": "h3",
+      "text": "Optimal Configuration",
+      "id": "optimal-configuration"
+    }
+  ],
+  "url": "llms-txt#configure-vad-for-responsive-turn-detection",
+  "links": []
+}

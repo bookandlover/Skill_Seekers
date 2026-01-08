@@ -1,0 +1,34 @@
+{
+  "title": "OpenAI Image Generation",
+  "content": "Source: https://docs.pipecat.ai/server/services/image-generation/openai\n\nImage generation service implementation using OpenAI's DALL-E models\n\n`OpenAIImageGenService` provides high-quality image generation capabilities using OpenAI's DALL-E models. It transforms text prompts into images with various size options and model configurations, offering both artistic and photorealistic image creation capabilities.\n\n<CardGroup>\n  <Card title=\"OpenAI Image Gen API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.openai.image.html\">\n    Pipecat's API methods for OpenAI image generation integration\n  </Card>\n\n<Card title=\"OpenAI Documentation\" icon=\"book\" href=\"https://platform.openai.com/docs/guides/images\">\n    Official OpenAI DALL-E API documentation and guides\n  </Card>\n\n<Card title=\"OpenAI Platform\" icon=\"image\" href=\"https://platform.openai.com/\">\n    Access DALL-E models and manage API keys\n  </Card>\n</CardGroup>\n\nTo use OpenAI image generation services, install the required dependencies:\n\n### OpenAI Account Setup\n\nBefore using OpenAI image generation services, you need:\n\n1. **OpenAI Account**: Sign up at [OpenAI Platform](https://platform.openai.com/)\n2. **API Key**: Generate an OpenAI API key from your account dashboard\n3. **Model Access**: Ensure access to DALL-E models\n4. **HTTP Session**: Configure aiohttp session for image downloading\n\n### Required Environment Variables\n\n* `OPENAI_API_KEY`: Your OpenAI API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "OpenAI Account Setup",
+      "id": "openai-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#openai-image-generation",
+  "links": []
+}

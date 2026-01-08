@@ -1,0 +1,45 @@
+{
+  "title": "RTVIClient Migration Guide for React Native",
+  "content": "Source: https://docs.pipecat.ai/client/react-native/migration-guide\n\nA Guide to migrating from a React Native RTVIClient to PipecatClient\n\nThis guide covers migrating from RTVIClient to the new `PipecatClient` in a React Native application. The new client introduces simplified configuration and improved client-server messaging. For an overview of the changes, see the top-level [RTVIClient Migration Guide](/client/migration-guide).\n\n<Tip>\n  As primarily a wrapper around the JavaScript SDK with a unique Transport, the\n  changes are the same as those in the [JavaScript migration\n  guide](/client/js/migration-guide) with only the following transport-specific\n  updates. PLEASE REFER TO THE JAVASCRIPT MIGRATION GUIDE FOR FULL DETAILS.\n</Tip>\n\n### 1. Transport Configuration\n\nSame as with the JavaScript transports, the `RNDailyTransport` now accepts a constructor argument, allowing for providing a [Daily configuration](https://docs.daily.co/reference/rn-daily-js/daily-call-client/properties).\n\n### 2. Connection Methods\n\nAgain, same as with the JavaScript transport, you can provide a [Daily configuration](https://docs.daily.co/reference/rn-daily-js/daily-call-client/properties) via one of the connection methods (`connect()` or `startBotAndConnect()`) on the `PipecatClient`.\n\nThere are three options for connecting now. For migration purposes, you are likely to use option 3 (`startBotAndConnect()`):\n\n1. **Direct Connection**: Provide the connection details directly to `connect()`.\n\n2. **Using startBot()**: Fetch connection details from an API endpoint and pass them to `connect()`.\n\n3. **Using startBotAndConnect()**: Fetch connection details and connect in one step.\n\n<Note>\n  When using `startBotAndConnect()`, the response from your endpoint is passed directly to the transport and should match the Daily configuration type.\n</Note>",
+  "code_samples": [
+    {
+      "code": "**New**",
+      "language": "unknown"
+    },
+    {
+      "code": "### 2. Connection Methods\n\nAgain, same as with the JavaScript transport, you can provide a [Daily configuration](https://docs.daily.co/reference/rn-daily-js/daily-call-client/properties) via one of the connection methods (`connect()` or `startBotAndConnect()`) on the `PipecatClient`.\n\n**Old**",
+      "language": "unknown"
+    },
+    {
+      "code": "**New**\n\nThere are three options for connecting now. For migration purposes, you are likely to use option 3 (`startBotAndConnect()`):\n\n1. **Direct Connection**: Provide the connection details directly to `connect()`.",
+      "language": "unknown"
+    },
+    {
+      "code": "2. **Using startBot()**: Fetch connection details from an API endpoint and pass them to `connect()`.",
+      "language": "unknown"
+    },
+    {
+      "code": "3. **Using startBotAndConnect()**: Fetch connection details and connect in one step.\n\n<Note>\n  When using `startBotAndConnect()`, the response from your endpoint is passed directly to the transport and should match the Daily configuration type.\n</Note>",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Key Changes",
+      "id": "key-changes"
+    },
+    {
+      "level": "h3",
+      "text": "1. Transport Configuration",
+      "id": "1.-transport-configuration"
+    },
+    {
+      "level": "h3",
+      "text": "2. Connection Methods",
+      "id": "2.-connection-methods"
+    }
+  ],
+  "url": "llms-txt#rtviclient-migration-guide-for-react-native",
+  "links": []
+}

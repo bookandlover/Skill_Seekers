@@ -1,0 +1,8 @@
+{
+  "title": "Add to pipeline",
+  "content": "wake_notifier = WakeNotifierFilter(\n    notifier=wake_event,\n    types=(TranscriptionFrame, UserStartedSpeakingFrame),\n    filter=wake_phrase_filter\n)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#add-to-pipeline",
+  "links": []
+}

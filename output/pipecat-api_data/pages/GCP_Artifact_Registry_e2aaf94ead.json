@@ -1,0 +1,14 @@
+{
+  "title": "GCP Artifact Registry",
+  "content": "Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/gcp-artifact-registry\n\nDeploy Pipecat Cloud agents using Google Cloud Artifact Registry\n\nFor GCP Artifact Registry, you can use a service account JSON key to authenticate with your private registry.\n\n## Authenticate Docker\n\nFirst, authenticate Docker with your service account key:",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Authenticate Docker",
+      "id": "authenticate-docker"
+    }
+  ],
+  "url": "llms-txt#gcp-artifact-registry",
+  "links": []
+}

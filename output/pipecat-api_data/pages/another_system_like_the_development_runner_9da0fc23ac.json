@@ -1,0 +1,19 @@
+{
+  "title": "another system like the development runner",
+  "content": "runner = PipelineRunner(handle_sigint=False)\npython theme={null}",
+  "code_samples": [
+    {
+      "code": "### Pipeline Lifecycle\n\nThe pipeline runs continuously, processing frames as they arrive, until one of these conditions occurs:\n\n1. **Normal Completion**: Bot code returns (session ends)\n2. **Signal Termination**: SIGINT or SIGTERM received (if `handle_sigint=True`)\n3. **Task Cancellation**: Explicit call to `task.cancel()`\n4. **Error Condition**: Unhandled exception in pipeline\n\n**Common lifecycle patterns:**",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h3",
+      "text": "Pipeline Lifecycle",
+      "id": "pipeline-lifecycle"
+    }
+  ],
+  "url": "llms-txt#another-system-like-the-development-runner",
+  "links": []
+}

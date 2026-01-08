@@ -1,0 +1,8 @@
+{
+  "title": "Tuple unpacking (legacy style)",
+  "content": "room_url, token = await configure(session)",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#tuple-unpacking-(legacy-style)",
+  "links": []
+}

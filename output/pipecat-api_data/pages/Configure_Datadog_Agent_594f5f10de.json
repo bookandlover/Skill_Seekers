@@ -1,0 +1,8 @@
+{
+  "title": "Configure Datadog Agent",
+  "content": "COPY ./datadog.yaml /etc/datadog-agent",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#configure-datadog-agent",
+  "links": []
+}

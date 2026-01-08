@@ -1,0 +1,49 @@
+{
+  "title": "Cartesia",
+  "content": "Source: https://docs.pipecat.ai/server/services/tts/cartesia\n\nText-to-speech services using Cartesia’s WebSocket and HTTP APIs\n\nCartesia provides high-quality text-to-speech synthesis with two service implementations: `CartesiaTTSService` (WebSocket-based) for real-time streaming with word timestamps, and `CartesiaHttpTTSService` (HTTP-based) for simpler batch synthesis. `CartesiaTTSService` is recommended for interactive applications requiring low latency and interruption handling.\n\n<CardGroup>\n  <Card title=\"Cartesia TTS API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.cartesia.tts.html\">\n    Pipecat's API methods for Cartesia TTS integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07-interruptible.py\">\n    Complete example with interruption handling\n  </Card>\n\n<Card title=\"Cartesia Documentation\" icon=\"book\" href=\"https://docs.cartesia.ai/get-started/overview\">\n    Official Cartesia API documentation and features\n  </Card>\n\n<Card title=\"Voice Library\" icon=\"microphone\" href=\"https://play.cartesia.ai/\">\n    Browse and test available voices\n  </Card>\n</CardGroup>\n\nTo use Cartesia services, install the required dependencies:\n\n### Cartesia Account Setup\n\nBefore using Cartesia TTS services, you need:\n\n1. **Cartesia Account**: Sign up at [Cartesia](https://play.cartesia.ai/sign-up)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Voice Selection**: Choose voice IDs from the [voice library](https://play.cartesia.ai/)\n\n### Required Environment Variables\n\n* `CARTESIA_API_KEY`: Your Cartesia API key for authentication\n\n## Customizing Speech\n\n`CartesiaTTSService` provides a set of helper methods for implementing Cartesia-specific customizations, meant to be used as part of text transformers. These include methods for spelling out text, adjusting speech rate, and modifying pitch. See the [Text Transformers for TTS](/guides/learn/text-to-speech#text-transformers-for-tts) section in the Text-to-Speech guide for usage examples.\n\n### SPELL(text: str) -> str:\n\nA convenience method to wrap text in [Cartesia's spell tag](https://docs.cartesia.ai/build-with-cartesia/sonic-3/ssml-tags#spelling-out-numbers-and-letters) for spelling out text character by character.\n\n```python theme={null}",
+  "code_samples": [
+    {
+      "code": "## Prerequisites\n\n### Cartesia Account Setup\n\nBefore using Cartesia TTS services, you need:\n\n1. **Cartesia Account**: Sign up at [Cartesia](https://play.cartesia.ai/sign-up)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Voice Selection**: Choose voice IDs from the [voice library](https://play.cartesia.ai/)\n\n### Required Environment Variables\n\n* `CARTESIA_API_KEY`: Your Cartesia API key for authentication\n\n## Customizing Speech\n\n`CartesiaTTSService` provides a set of helper methods for implementing Cartesia-specific customizations, meant to be used as part of text transformers. These include methods for spelling out text, adjusting speech rate, and modifying pitch. See the [Text Transformers for TTS](/guides/learn/text-to-speech#text-transformers-for-tts) section in the Text-to-Speech guide for usage examples.\n\n### SPELL(text: str) -> str:\n\nA convenience method to wrap text in [Cartesia's spell tag](https://docs.cartesia.ai/build-with-cartesia/sonic-3/ssml-tags#spelling-out-numbers-and-letters) for spelling out text character by character.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Cartesia Account Setup",
+      "id": "cartesia-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    },
+    {
+      "level": "h2",
+      "text": "Customizing Speech",
+      "id": "customizing-speech"
+    },
+    {
+      "level": "h3",
+      "text": "SPELL(text: str) -> str:",
+      "id": "spell(text:-str)-->-str:"
+    }
+  ],
+  "url": "llms-txt#cartesia",
+  "links": []
+}

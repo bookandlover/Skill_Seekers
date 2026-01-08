@@ -1,0 +1,8 @@
+{
+  "title": "Copy from the cache instead of linking since it's a mounted volume",
+  "content": "ENV UV_LINK_MODE=copy",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#copy-from-the-cache-instead-of-linking-since-it's-a-mounted-volume",
+  "links": []
+}

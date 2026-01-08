@@ -1,0 +1,34 @@
+{
+  "title": "Together AI",
+  "content": "Source: https://docs.pipecat.ai/server/services/llm/together\n\nLLM service implementation using Together AI's API with OpenAI-compatible interface\n\n`TogetherLLMService` provides access to Together AI's language models, including Meta's Llama 3.1 and 3.2 models, through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management with optimized open-source model hosting.\n\n<CardGroup>\n  <Card title=\"Together AI LLM API Reference\" icon=\"code\" href=\"https://reference-server.pipecat.ai/en/latest/api/pipecat.services.together.llm.html\">\n    Pipecat's API methods for Together AI integration\n  </Card>\n\n<Card title=\"Example Implementation\" icon=\"play\" href=\"https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14c-function-calling-together.py\">\n    Complete example with function calling\n  </Card>\n\n<Card title=\"Together AI Documentation\" icon=\"book\" href=\"https://docs.together.ai/reference/chat-completions-1\">\n    Official Together AI API documentation and features\n  </Card>\n\n<Card title=\"Together AI Platform\" icon=\"microphone\" href=\"https://together.ai/\">\n    Access open-source models and manage API keys\n  </Card>\n</CardGroup>\n\nTo use Together AI services, install the required dependencies:\n\n### Together AI Account Setup\n\nBefore using Together AI LLM services, you need:\n\n1. **Together AI Account**: Sign up at [Together AI](https://together.ai/)\n2. **API Key**: Generate an API key from your account dashboard\n3. **Model Selection**: Choose from available open-source models (Llama, Mistral, etc.)\n\n### Required Environment Variables\n\n* `TOGETHER_API_KEY`: Your Together AI API key for authentication",
+  "code_samples": [],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Overview",
+      "id": "overview"
+    },
+    {
+      "level": "h2",
+      "text": "Installation",
+      "id": "installation"
+    },
+    {
+      "level": "h2",
+      "text": "Prerequisites",
+      "id": "prerequisites"
+    },
+    {
+      "level": "h3",
+      "text": "Together AI Account Setup",
+      "id": "together-ai-account-setup"
+    },
+    {
+      "level": "h3",
+      "text": "Required Environment Variables",
+      "id": "required-environment-variables"
+    }
+  ],
+  "url": "llms-txt#together-ai",
+  "links": []
+}

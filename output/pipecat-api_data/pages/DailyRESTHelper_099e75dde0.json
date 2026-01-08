@@ -1,0 +1,38 @@
+{
+  "title": "DailyRESTHelper",
+  "content": "Source: https://docs.pipecat.ai/server/utilities/daily/rest-helper\n\nClasses and methods for interacting with the Daily API to manage rooms and tokens\n\n<Card title=\"Daily REST API Documentation\" icon=\"link\" href=\"https://docs.daily.co/reference/rest-api\">\n  For complete Daily REST API reference and additional details\n</Card>\n\n### DailyRoomSipParams\n\nConfiguration for SIP (Session Initiation Protocol) parameters.\n\n<ResponseField name=\"display_name\" type=\"string\">\n  Display name for the SIP endpoint\n</ResponseField>\n\n<ResponseField name=\"video\" type=\"boolean\">\n  Whether video is enabled for SIP\n</ResponseField>\n\n<ResponseField name=\"sip_mode\" type=\"string\">\n  SIP connection mode\n</ResponseField>\n\n<ResponseField name=\"num_endpoints\" type=\"integer\">\n  Number of SIP endpoints\n</ResponseField>\n\n### RecordingsBucketConfig\n\nConfiguration for storing Daily recordings in a custom S3 bucket.\n\n<ResponseField name=\"bucket_name\" type=\"string\">\n  Name of the S3 bucket for storing recordings\n</ResponseField>\n\n<ResponseField name=\"bucket_region\" type=\"string\">\n  AWS region where the S3 bucket is located\n</ResponseField>\n\n<ResponseField name=\"assume_role_arn\" type=\"string\">\n  ARN of the IAM role to assume for S3 access\n</ResponseField>\n\n<ResponseField name=\"allow_api_access\" type=\"boolean\">\n  Whether to allow API access to the recordings\n</ResponseField>\n\n### DailyRoomProperties\n\nProperties that configure a Daily room's behavior and features.\n\n<ResponseField name=\"exp\" type=\"float\">\n  Room expiration time as Unix timestamp (e.g., time.time() + 300 for 5 minutes)\n</ResponseField>\n\n<ResponseField name=\"enable_chat\" type=\"boolean\">\n  Whether chat is enabled in the room\n</ResponseField>\n\n<ResponseField name=\"enable_prejoin_ui\" type=\"boolean\">\n  Whether the prejoin lobby UI is enabled\n</ResponseField>\n\n<ResponseField name=\"enable_emoji_reactions\" type=\"boolean\">\n  Whether emoji reactions are enabled\n</ResponseField>\n\n<ResponseField name=\"eject_at_room_exp\" type=\"boolean\">\n  Whether to eject participants when room expires\n</ResponseField>\n\n<ResponseField name=\"enable_dialout\" type=\"boolean\">\n  Whether dial-out is enabled\n</ResponseField>\n\n<ResponseField name=\"enable_recording\" type=\"string\">\n  Recording settings (\"cloud\", \"local\", or \"raw-tracks\")\n</ResponseField>\n\n<ResponseField name=\"geo\" type=\"string\">\n  Geographic region for room\n</ResponseField>\n\n<ResponseField name=\"max_participants\" type=\"number\">\n  Maximum number of participants allowed in the room\n</ResponseField>\n\n<ResponseField name=\"recordings_bucket\" type=\"RecordingsBucketConfig\">\n  Configuration for custom S3 bucket recordings\n</ResponseField>\n\n<ResponseField name=\"sip\" type=\"DailyRoomSipParams\">\n  SIP configuration parameters\n</ResponseField>\n\n<ResponseField name=\"sip_uri\" type=\"dict\">\n  SIP URI configuration (returned by Daily)\n</ResponseField>\n\n<ResponseField name=\"start_video_off\" type=\"boolean\">\n  Whether the camera video is turned off by default\n</ResponseField>\n\nThe class also includes a `sip_endpoint` property that returns the SIP endpoint URI if available.\n\n```python theme={null}\nimport time\nfrom pipecat.transports.services.helpers.daily_rest import (\n    DailyRoomProperties,\n    DailyRoomSipParams,\n    RecordingsBucketConfig,\n)\n\nproperties = DailyRoomProperties(\n    exp=time.time() + 3600,  # 1 hour from now\n    enable_chat=True,\n    enable_emoji_reactions=True,\n    enable_recording=\"cloud\",\n    geo=\"us-west\",\n    max_participants=50,\n    sip=DailyRoomSipParams(display_name=\"conference\"),\n    recordings_bucket=RecordingsBucketConfig(\n        bucket_name=\"my-bucket\",\n        bucket_region=\"us-west-2\",\n        assume_role_arn=\"arn:aws:iam::123456789012:role/DailyRole\"\n    )\n)",
+  "code_samples": [
+    {
+      "code": "### RecordingsBucketConfig\n\nConfiguration for storing Daily recordings in a custom S3 bucket.\n\n<ResponseField name=\"bucket_name\" type=\"string\">\n  Name of the S3 bucket for storing recordings\n</ResponseField>\n\n<ResponseField name=\"bucket_region\" type=\"string\">\n  AWS region where the S3 bucket is located\n</ResponseField>\n\n<ResponseField name=\"assume_role_arn\" type=\"string\">\n  ARN of the IAM role to assume for S3 access\n</ResponseField>\n\n<ResponseField name=\"allow_api_access\" type=\"boolean\">\n  Whether to allow API access to the recordings\n</ResponseField>",
+      "language": "unknown"
+    },
+    {
+      "code": "### DailyRoomProperties\n\nProperties that configure a Daily room's behavior and features.\n\n<ResponseField name=\"exp\" type=\"float\">\n  Room expiration time as Unix timestamp (e.g., time.time() + 300 for 5 minutes)\n</ResponseField>\n\n<ResponseField name=\"enable_chat\" type=\"boolean\">\n  Whether chat is enabled in the room\n</ResponseField>\n\n<ResponseField name=\"enable_prejoin_ui\" type=\"boolean\">\n  Whether the prejoin lobby UI is enabled\n</ResponseField>\n\n<ResponseField name=\"enable_emoji_reactions\" type=\"boolean\">\n  Whether emoji reactions are enabled\n</ResponseField>\n\n<ResponseField name=\"eject_at_room_exp\" type=\"boolean\">\n  Whether to eject participants when room expires\n</ResponseField>\n\n<ResponseField name=\"enable_dialout\" type=\"boolean\">\n  Whether dial-out is enabled\n</ResponseField>\n\n<ResponseField name=\"enable_recording\" type=\"string\">\n  Recording settings (\"cloud\", \"local\", or \"raw-tracks\")\n</ResponseField>\n\n<ResponseField name=\"geo\" type=\"string\">\n  Geographic region for room\n</ResponseField>\n\n<ResponseField name=\"max_participants\" type=\"number\">\n  Maximum number of participants allowed in the room\n</ResponseField>\n\n<ResponseField name=\"recordings_bucket\" type=\"RecordingsBucketConfig\">\n  Configuration for custom S3 bucket recordings\n</ResponseField>\n\n<ResponseField name=\"sip\" type=\"DailyRoomSipParams\">\n  SIP configuration parameters\n</ResponseField>\n\n<ResponseField name=\"sip_uri\" type=\"dict\">\n  SIP URI configuration (returned by Daily)\n</ResponseField>\n\n<ResponseField name=\"start_video_off\" type=\"boolean\">\n  Whether the camera video is turned off by default\n</ResponseField>\n\nThe class also includes a `sip_endpoint` property that returns the SIP endpoint URI if available.",
+      "language": "unknown"
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Classes",
+      "id": "classes"
+    },
+    {
+      "level": "h3",
+      "text": "DailyRoomSipParams",
+      "id": "dailyroomsipparams"
+    },
+    {
+      "level": "h3",
+      "text": "RecordingsBucketConfig",
+      "id": "recordingsbucketconfig"
+    },
+    {
+      "level": "h3",
+      "text": "DailyRoomProperties",
+      "id": "dailyroomproperties"
+    }
+  ],
+  "url": "llms-txt#dailyresthelper",
+  "links": []
+}

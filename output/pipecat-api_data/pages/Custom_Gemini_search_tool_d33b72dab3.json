@@ -1,0 +1,8 @@
+{
+  "title": "Custom Gemini search tool",
+  "content": "gemini_search_tool = {\n    \"web_search\": {\n        \"description\": \"Search the web for information\"\n    }\n}",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#custom-gemini-search-tool",
+  "links": []
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Basic agent configuration",
+  "content": "agent_name = \"my-voice-agent\"\nimage = \"your-dockername/my-voice-agent:0.1\"\nregion = \"us-west\"",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#basic-agent-configuration",
+  "links": []
+}

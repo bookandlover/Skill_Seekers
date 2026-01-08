@@ -1,0 +1,8 @@
+{
+  "title": "Use config file but force update without confirmation",
+  "content": "pipecat cloud deploy --force\n```",
+  "code_samples": [],
+  "headings": [],
+  "url": "llms-txt#use-config-file-but-force-update-without-confirmation",
+  "links": []
+}
